@@ -1,0 +1,210 @@
+{
+    "name": "stylofitness-frontend",
+    "version": "1.0.0",
+    "description": "Frontend assets para STYLOFITNESS - Aplicación web profesional para gimnasios",
+    "keywords": [
+        "gym",
+        "fitness",
+        "frontend",
+        "javascript",
+        "css",
+        "webapp"
+    ],
+    "author": {
+        "name": "STYLOFITNESS Team",
+        "email": "dev@stylofitness.com",
+        "url": "https://stylofitness.com"
+    },
+    "license": "MIT",
+    "homepage": "https://stylofitness.com",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/stylofitness/gym-system.git"
+    },
+    "bugs": {
+        "url": "https://github.com/stylofitness/gym-system/issues"
+    },
+    "main": "public/js/app.js",
+    "scripts": {
+        "dev": "webpack --mode development --watch",
+        "build": "webpack --mode production",
+        "build:watch": "webpack --mode production --watch",
+        "css:build": "sass public/scss/styles.scss public/css/styles.css --style compressed",
+        "css:watch": "sass public/scss/styles.scss public/css/styles.css --style compressed --watch",
+        "js:build": "babel public/js/src --out-dir public/js/dist --presets @babel/preset-env",
+        "js:watch": "babel public/js/src --out-dir public/js/dist --presets @babel/preset-env --watch",
+        "optimize": "npm run build && npm run optimize:images && npm run optimize:css",
+        "optimize:images": "imagemin public/images/**/*.{jpg,png,gif} --out-dir=public/images/optimized",
+        "optimize:css": "cleancss -o public/css/styles.min.css public/css/styles.css",
+        "optimize:js": "terser public/js/app.js -o public/js/app.min.js --compress --mangle",
+        "lint": "eslint public/js/**/*.js",
+        "lint:fix": "eslint public/js/**/*.js --fix",
+        "test": "jest",
+        "test:watch": "jest --watch",
+        "test:coverage": "jest --coverage",
+        "serve": "live-server --port=3000 --host=localhost --open=/",
+        "clean": "rimraf public/css/*.min.css public/js/*.min.js public/images/optimized",
+        "deploy": "npm run optimize && node deploy.js",
+        "setup": "npm install && npm run build",
+        "audit:security": "npm audit && npm audit fix",
+        "update": "npm update && npm audit fix"
+    },
+    "dependencies": {
+        "@fortawesome/fontawesome-free": "^6.4.0",
+        "aos": "^2.3.4",
+        "chart.js": "^4.2.1",
+        "date-fns": "^2.29.3",
+        "flatpickr": "^4.6.13",
+        "plyr": "^3.7.8",
+        "sortablejs": "^1.15.0",
+        "swiper": "^9.1.1",
+        "tippy.js": "^6.3.7",
+        "vanilla-lazyload": "^17.8.3"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.21.0",
+        "@babel/preset-env": "^7.20.2",
+        "@babel/cli": "^7.21.0",
+        "autoprefixer": "^10.4.14",
+        "babel-loader": "^9.1.2",
+        "clean-css-cli": "^5.6.2",
+        "css-loader": "^6.7.3",
+        "eslint": "^8.36.0",
+        "eslint-config-standard": "^17.0.0",
+        "eslint-plugin-import": "^2.27.5",
+        "eslint-plugin-node": "^11.1.0",
+        "eslint-plugin-promise": "^6.1.1",
+        "file-loader": "^6.2.0",
+        "html-webpack-plugin": "^5.5.0",
+        "imagemin-cli": "^7.0.0",
+        "imagemin-mozjpeg": "^10.0.0",
+        "imagemin-pngquant": "^9.0.2",
+        "jest": "^29.5.0",
+        "live-server": "^1.2.2",
+        "mini-css-extract-plugin": "^2.7.3",
+        "postcss": "^8.4.21",
+        "postcss-loader": "^7.1.0",
+        "rimraf": "^4.4.0",
+        "sass": "^1.59.3",
+        "sass-loader": "^13.2.1",
+        "style-loader": "^3.3.2",
+        "terser": "^5.16.8",
+        "url-loader": "^4.1.1",
+        "webpack": "^5.76.3",
+        "webpack-cli": "^5.0.1",
+        "webpack-dev-server": "^4.13.1"
+    },
+    "browserslist": [
+        "> 1%",
+        "last 2 versions",
+        "not dead",
+        "not ie 11"
+    ],
+    "engines": {
+        "node": ">=16.0.0",
+        "npm": ">=8.0.0"
+    },
+    "volta": {
+        "node": "18.15.0",
+        "npm": "9.5.0"
+    },
+    "eslintConfig": {
+        "extends": [
+            "standard"
+        ],
+        "env": {
+            "browser": true,
+            "es6": true,
+            "node": true,
+            "jest": true
+        },
+        "globals": {
+            "STYLOFITNESS": "readonly",
+            "gtag": "readonly",
+            "Stripe": "readonly",
+            "PayPal": "readonly"
+        },
+        "rules": {
+            "no-console": "warn",
+            "no-debugger": "error",
+            "no-unused-vars": "warn",
+            "prefer-const": "error",
+            "no-var": "error"
+        }
+    },
+    "jest": {
+        "testEnvironment": "jsdom",
+        "setupFilesAfterEnv": [
+            "<rootDir>/tests/setup.js"
+        ],
+        "testMatch": [
+            "<rootDir>/tests/**/*.test.js"
+        ],
+        "collectCoverageFrom": [
+            "public/js/**/*.js",
+            "!public/js/**/*.min.js",
+            "!public/js/vendor/**"
+        ],
+        "coverageDirectory": "coverage",
+        "coverageReporters": [
+            "text",
+            "lcov",
+            "html"
+        ]
+    },
+    "babel": {
+        "presets": [
+            [
+                "@babel/preset-env",
+                {
+                    "targets": {
+                        "browsers": [
+                            "> 1%",
+                            "last 2 versions",
+                            "not dead"
+                        ]
+                    },
+                    "useBuiltIns": "usage",
+                    "corejs": 3
+                }
+            ]
+        ]
+    },
+    "postcss": {
+        "plugins": {
+            "autoprefixer": {}
+        }
+    },
+    "private": false,
+    "workspaces": [
+        "packages/*"
+    ],
+    "funding": {
+        "type": "individual",
+        "url": "https://github.com/sponsors/stylofitness"
+    },
+    "config": {
+        "build_dir": "public/dist",
+        "src_dir": "public/src",
+        "images_dir": "public/images",
+        "fonts_dir": "public/fonts"
+    },
+    "stylofitness": {
+        "version": "1.0.0",
+        "api_version": "v1",
+        "supported_browsers": [
+            "Chrome >= 80",
+            "Firefox >= 75",
+            "Safari >= 13",
+            "Edge >= 80"
+        ],
+        "features": {
+            "pwa": true,
+            "offline": true,
+            "push_notifications": true,
+            "dark_mode": true,
+            "animations": true,
+            "lazy_loading": true
+        }
+    }
+}

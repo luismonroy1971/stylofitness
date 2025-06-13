@@ -1,0 +1,155 @@
+{
+    "name": "stylofitness/gym-management-system",
+    "description": "Aplicación web profesional para gimnasios con rutinas personalizadas, tienda de suplementos integrada y sistema de clases grupales",
+    "type": "project",
+    "keywords": [
+        "gym",
+        "fitness",
+        "routine",
+        "supplements",
+        "ecommerce",
+        "workout",
+        "health"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "STYLOFITNESS Team",
+            "email": "dev@stylofitness.com",
+            "homepage": "https://stylofitness.com"
+        }
+    ],
+    "homepage": "https://stylofitness.com",
+    "support": {
+        "docs": "https://docs.stylofitness.com",
+        "issues": "https://github.com/stylofitness/gym-system/issues",
+        "source": "https://github.com/stylofitness/gym-system"
+    },
+    "require": {
+        "php": "^8.1",
+        "ext-json": "*",
+        "ext-mbstring": "*",
+        "ext-pdo": "*",
+        "ext-pdo_mysql": "*",
+        "ext-gd": "*",
+        "ext-curl": "*",
+        "ext-zip": "*",
+        "ext-fileinfo": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^10.0",
+        "phpstan/phpstan": "^1.9",
+        "squizlabs/php_codesniffer": "^3.7",
+        "friendsofphp/php-cs-fixer": "^3.0",
+        "mockery/mockery": "^1.5",
+        "fakerphp/faker": "^1.21"
+    },
+    "suggest": {
+        "ext-redis": "Para cache Redis avanzado",
+        "ext-memcached": "Para cache Memcached",
+        "ext-imagick": "Para procesamiento avanzado de imágenes",
+        "monolog/monolog": "Para logging avanzado",
+        "swiftmailer/swiftmailer": "Para envío de emails",
+        "stripe/stripe-php": "Para integración con Stripe",
+        "paypal/rest-api-sdk-php": "Para integración con PayPal",
+        "aws/aws-sdk-php": "Para integración con AWS S3",
+        "phpoffice/phpspreadsheet": "Para exportación a Excel",
+        "dompdf/dompdf": "Para generación de PDFs",
+        "intervention/image": "Para manipulación de imágenes",
+        "league/csv": "Para manejo de archivos CSV",
+        "ramsey/uuid": "Para generación de UUIDs",
+        "carbon/carbon": "Para manejo avanzado de fechas",
+        "guzzlehttp/guzzle": "Para cliente HTTP",
+        "vlucas/phpdotenv": "Para manejo de variables de entorno"
+    },
+    "autoload": {
+        "psr-4": {
+            "StyleFitness\\": "app/",
+            "StyleFitness\\Controllers\\": "app/Controllers/",
+            "StyleFitness\\Models\\": "app/Models/",
+            "StyleFitness\\Helpers\\": "app/Helpers/",
+            "StyleFitness\\Config\\": "app/Config/"
+        },
+        "files": [
+            "app/Helpers/functions.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "StyleFitness\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "phpunit",
+        "test-coverage": "phpunit --coverage-html coverage",
+        "stan": "phpstan analyse",
+        "cs-fix": "php-cs-fixer fix",
+        "cs-check": "php-cs-fixer fix --dry-run --diff",
+        "sniff": "phpcs",
+        "quality": [
+            "@cs-check",
+            "@stan",
+            "@test"
+        ],
+        "setup": [
+            "php -r \"copy('.env.example', '.env');\"",
+            "php setup.php"
+        ],
+        "deploy": [
+            "@quality",
+            "php deploy.php"
+        ],
+        "fresh": [
+            "php -r \"array_map('unlink', glob('.env'));\"",
+            "@setup"
+        ]
+    },
+    "scripts-descriptions": {
+        "test": "Ejecuta todos los tests unitarios",
+        "test-coverage": "Ejecuta tests con reporte de cobertura",
+        "stan": "Análisis estático del código con PHPStan",
+        "cs-fix": "Corrige automáticamente el estilo del código",
+        "cs-check": "Verifica el estilo del código sin modificar",
+        "sniff": "Verifica estándares de código con PHP_CodeSniffer",
+        "quality": "Ejecuta todas las comprobaciones de calidad",
+        "setup": "Configuración inicial del proyecto",
+        "deploy": "Proceso completo de despliegue",
+        "fresh": "Limpia y reconfigura el proyecto"
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "allow-plugins": {
+            "composer/package-versions-deprecated": true
+        }
+    },
+    "extra": {
+        "stylofitness": {
+            "version": "1.0.0",
+            "build": "stable",
+            "features": [
+                "routines",
+                "store",
+                "classes",
+                "multi-gym",
+                "analytics",
+                "api"
+            ]
+        }
+    },
+    "archive": {
+        "exclude": [
+            "/tests",
+            "/docs",
+            "/.github",
+            "/.gitignore",
+            "/.env*",
+            "/phpunit.xml",
+            "/phpstan.neon",
+            "/.php-cs-fixer.cache"
+        ]
+    }
+}

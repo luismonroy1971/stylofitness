@@ -1,0 +1,300 @@
+CONTEXTO Y OBJETIVO
+Desarrolla una aplicación web profesional para gimnasios que integre gestión de rutinas personalizadas y tienda virtual de suplementos/accesorios. La aplicación debe ser escalable, visualmente atractiva y funcional para múltiples sedes.
+
+ARQUITECTURA TÉCNICA REQUERIDA
+Backend - PHP MVC
+* Framework: PHP 8.x con arquitectura MVC personalizada o framework como Laravel/CodeIgniter
+* Base de datos: MySQL con diseño relacional optimizado
+* Estructura MVC: 
+  o Models: Gestión de datos (usuarios, rutinas, productos, sedes, instructores)
+  o Views: Interfaces HTML/CSS/JS responsivas y profesionales
+  o Controllers: Lógica de negocio y manejo de peticiones
+* APIs RESTful para integración frontend-backend
+* Sistema de autenticación robusto con roles (admin, instructor, cliente)
+
+Frontend - Experiencia Visual Profesional
+* HTML5 semántico con estructura optimizada
+* CSS3 avanzado con: 
+  o Animations y transitions suaves
+  o Grid/Flexbox para layouts responsivos
+  o Variables CSS para temas personalizables
+  o Efectos hover y micro-interacciones
+* JavaScript ES6+ con: 
+  o Manipulación del DOM moderna
+  o Fetch API para peticiones asíncronas
+  o Efectos visuales y animaciones
+  o Validación de formularios en tiempo real
+
+FUNCIONALIDADES CORE
+1. SISTEMA DE RUTINAS PERSONALIZADAS
+Gestión de Rutinas
+* Creador de rutinas con interfaz drag-and-drop
+* Biblioteca de ejercicios categorizada (fuerza, cardio, flexibilidad, etc.)
+* Configuración detallada por ejercicio: 
+  o Nombre, descripción, músculos trabajados
+  o Series, repeticiones, peso, descanso, tempo
+  o Notas específicas del instructor
+  o Nivel de dificultad y progresión
+
+Sistema Multimedia
+* Subida de videos optimizada con: 
+  o Compresión automática para web
+  o Múltiples resoluciones (360p, 720p, 1080p)
+  o Miniaturas generadas automáticamente
+  o Player HTML5 personalizado con controles
+* Galería de imágenes para ejercicios
+* Sistema de etiquetado para búsqueda avanzada
+
+Asignación y Seguimiento
+* Asignación de rutinas a clientes específicos
+* Calendario de entrenamientos interactivo
+* Tracking de progreso con gráficos y métricas
+* Historial completo de entrenamientos realizados
+
+2. TIENDA VIRTUAL PROFESIONAL
+Catálogo de Productos
+* Categorización avanzada: 
+  o Suplementos (proteínas, pre-entrenos, vitaminas, etc.)
+  o Accesorios (ropa, equipos, gadgets)
+  o Subcategorías dinámicas
+* Ficha de producto completa: 
+  o Galería de imágenes con zoom
+  o Descripción detallada y especificaciones
+  o Reviews y calificaciones
+  o Productos relacionados y recomendados
+
+Funcionalidades E-commerce
+* Carrito de compras persistente
+* Sistema de checkout multi-paso
+* Métodos de pago integrados (tarjetas, PayPal, etc.)
+* Gestión de inventario en tiempo real
+* Sistema de envíos con cálculo automático
+* Cupones y descuentos configurables
+* Programa de fidelización por puntos
+
+3. INTEGRACIÓN RUTINAS-PRODUCTOS
+Recomendaciones Inteligentes
+* Algoritmo de recomendación que sugiere productos basado en: 
+  o Tipo de rutina asignada
+  o Objetivos del cliente (ganancia muscular, pérdida de peso, etc.)
+  o Historial de compras
+  o Preferencias nutricionales
+
+Cross-selling Estratégico
+* Ventanas emergentes contextuales durante la visualización de rutinas
+* Secciones "Productos recomendados" en cada rutina
+* Paquetes promocionales rutina + suplementos
+* Notificaciones push para ofertas personalizadas
+
+4. GESTIÓN DE RUTINAS GRUPALES
+Programación de Clases
+* Calendario maestro con vista mensual/semanal/diaria
+* Configuración de clases: 
+  o Nombre, descripción, duración
+  o Instructor asignado
+  o Capacidad máxima
+  o Sala/ubicación dentro de la sede
+  o Nivel requerido
+
+Sistema de Reservas
+* Reserva online para clientes
+* Lista de espera automática
+* Confirmaciones por email/SMS
+* Penalizaciones por no-shows configurables
+
+5. SISTEMA MULTI-SEDE
+Arquitectura Escalable
+* Base de datos centralizada con separación lógica por sede
+* Panel de administración global para cadena de gimnasios
+* Gestión independiente por sede cuando sea necesario
+* Transferencia de clientes entre sedes
+* Reportes consolidados y por sede individual
+
+Configuración Flexible
+* Personalización por sede: 
+  o Branding (colores, logos)
+  o Horarios de operación
+  o Servicios disponibles
+  o Precios locales
+* Gestión de staff por ubicación
+* Inventario independiente por sede
+
+LANDING PAGE PROFESIONAL
+Diseño y Experiencia
+* Hero section impactante con video de fondo
+* Carrusel de productos con efectos CSS/JS avanzados: 
+  o Transiciones 3D
+  o Lazy loading para performance
+  o Touch/swipe support para móviles
+  o Indicadores y navegación intuitiva
+
+Accesos Rápidos
+* Dashboard personalizado para cada tipo de usuario
+* Acceso directo a rutinas activas
+* Notificaciones en tiempo real
+* Widgets informativos (próximas clases, ofertas, progreso)
+
+Efectos Visuales Profesionales
+* Animaciones CSS con keyframes personalizados
+* Parallax scrolling para sections principales
+* Microinteracciones en botones y formularios
+* Loading animations personalizados
+* Themes oscuro/claro con transición suave
+
+REQUERIMIENTOS TÉCNICOS ESPECÍFICOS
+Performance y Optimización
+* Lazy loading para imágenes y videos
+* Compresión de assets (CSS/JS minificados)
+* CDN para contenido multimedia
+* Cache inteligente en múltiples niveles
+* Optimización SEO completa
+
+Seguridad
+* Encriptación de datos sensibles
+* Validación server-side y client-side
+* Protección CSRF/XSS
+* Backup automatizado de base de datos
+* Logs de auditoría para acciones críticas
+
+Responsividad
+* Mobile-first approach
+* Breakpoints optimizados para todos los dispositivos
+* Touch-friendly interfaces
+* Performance móvil optimizada
+
+INTEGRACIONES AVANZADAS
+* API de pagos (PayPal, Stripe, MercadoPago)
+* Integración con redes sociales para login y compartir
+* Webhooks para notificaciones en tiempo real
+* Exportación de datos en múltiples formatos (CSV, PDF, Excel)
+* Integración con servicios de email marketing (Mailchimp, SendGrid)
+* Conexión con APIs de nutrición para recomendaciones personalizadas
+
+ESTRUCTURA DE ARCHIVOS SUGERIDA
+/stylofitness
+├── /app
+│   ├── /Controllers
+│   │   ├── ApiController.php
+│   │   ├── AuthController.php
+│   │   ├── CartController.php
+│   │   ├── CheckoutController.php
+│   │   ├── GroupClassController.php
+│   │   ├── HomeController.php
+│   │   ├── RoutineController.php
+│   │   └── StoreController.php
+│   ├── /Models
+│   │   ├── Exercise.php
+│   │   ├── GroupClass.php
+│   │   ├── Order.php
+│   │   ├── Product.php
+│   │   ├── ProductCategory.php
+│   │   ├── Routine.php
+│   │   └── User.php
+│   ├── /Views
+│   │   ├── /auth
+│   │   ├── /home
+│   │   ├── /layout
+│   │   └── /store
+│   └── /Config
+│       ├── App.php
+│       └── Database.php
+├── /public
+│   ├── /css
+│   ├── /js
+│   ├── /images
+│   └── /uploads
+│       └── /videos
+├── /database
+│   └── schema.sql
+├── /api
+├── /admin
+└── index.php
+
+CRITERIOS DE ÉXITO
+Funcionalidad
+* ✓ Navegación intuitiva en menos de 3 clics
+* ✓ Tiempo de carga < 3 segundos
+* ✓ Responsive en todos los dispositivos
+* ✓ Integración perfecta entre módulos
+
+Experiencia Visual
+* ✓ Animaciones fluidas (60fps)
+* ✓ Diseño coherente y profesional
+* ✓ Microinteracciones que mejoren UX
+* ✓ Feedback visual inmediato en todas las acciones
+
+Escalabilidad
+* ✓ Soporte para 10,000+ usuarios concurrentes
+* ✓ Fácil adición de nuevas sedes
+* ✓ Arquitectura modular para nuevas funcionalidades
+* ✓ API documentada para integraciones futuras
+
+SEGURIDAD Y CUMPLIMIENTO
+* Implementación de HTTPS en todas las páginas
+* Cumplimiento con GDPR/LGPD para protección de datos
+* Políticas de privacidad y términos de servicio claros
+* Sistema de permisos granular basado en roles
+* Protección contra ataques comunes (SQL Injection, XSS, CSRF)
+* Auditoría de seguridad y penetration testing
+
+ANALÍTICA Y MÉTRICAS
+* Dashboard de analítica para administradores
+* Seguimiento de conversiones y embudo de ventas
+* Métricas de engagement con rutinas y productos
+* Análisis de comportamiento de usuario (heatmaps)
+* Reportes automatizados por email
+* Exportación de datos para análisis externo
+
+ENTREGABLES ESPERADOS
+1. Aplicación web completa con todas las funcionalidades
+2. Panel de administración robusto y user-friendly
+3. Documentación técnica completa
+4. Manual de usuario para diferentes roles
+5. Scripts de instalación y configuración
+6. Plan de mantenimiento y actualizaciones
+7. Estrategia de backup y recuperación
+8. Guía de optimización y escalabilidad
+
+PLAN DE IMPLEMENTACIÓN
+Fase 1: Fundamentos (4 semanas)
+* Configuración de entorno de desarrollo
+* Implementación de arquitectura MVC base
+* Diseño y creación de base de datos
+* Sistema de autenticación y gestión de usuarios
+
+Fase 2: Módulo de Rutinas (6 semanas)
+* Gestión de ejercicios y categorías
+* Creador de rutinas personalizadas
+* Sistema de asignación y seguimiento
+* Integración multimedia para ejercicios
+
+Fase 3: Tienda Virtual (6 semanas)
+* Catálogo de productos y categorías
+* Sistema de carrito y checkout
+* Integración de pasarelas de pago
+* Gestión de inventario y pedidos
+
+Fase 4: Integración y Clases Grupales (4 semanas)
+* Sistema de recomendaciones cruzadas
+* Gestión de clases grupales y reservas
+* Calendario interactivo
+* Notificaciones y alertas
+
+Fase 5: Multi-sede y Optimización (4 semanas)
+* Implementación de sistema multi-sede
+* Optimización de performance
+* Testing exhaustivo y corrección de bugs
+* Despliegue y configuración final
+
+TECNOLOGÍAS RECOMENDADAS
+* Backend: PHP 8.1+, MySQL 8.0+
+* Frontend: HTML5, CSS3, JavaScript ES6+
+* Librerías JS: Alpine.js, Chart.js, Swiper
+* Procesadores CSS: SASS/SCSS
+* Herramientas de build: Webpack/Vite
+* Versionado: Git con flujo GitFlow
+* CI/CD: GitHub Actions o similar
+* Hosting: VPS optimizado con Nginx
+
+INSTRUCCIÓN FINAL: Desarrolla esta aplicación priorizando la experiencia del usuario, la escalabilidad y la integración perfecta entre todos los módulos. Cada funcionalidad debe sentirse como parte de un ecosistema cohesivo, no como módulos independientes. Implementa un diseño visualmente impactante con la paleta de colores corporativa (naranja #FF6B00 como color principal) y asegura que la navegación sea intuitiva y fluida en todos los dispositivos.
+

@@ -1,0 +1,377 @@
+# ==========================================
+# STYLOFITNESS - GYM APPLICATION
+# .gitignore file
+# ==========================================
+
+# ==========================================
+# CONFIGURACIÓN Y ARCHIVOS SENSIBLES
+# ==========================================
+
+# Variables de entorno
+.env
+.env.local
+.env.production
+.env.development
+.env.testing
+
+# Archivos de configuración con datos sensibles
+/app/Config/Database.php
+/app/Config/Production.php
+config.local.php
+settings.local.php
+
+# Claves API y certificados
+*.pem
+*.key
+*.crt
+*.p12
+api-keys.json
+credentials.json
+
+# ==========================================
+# LOGS Y ARCHIVOS TEMPORALES
+# ==========================================
+
+# Logs de la aplicación
+/logs/
+*.log
+error.log
+debug.log
+access.log
+php_error.log
+
+# Archivos temporales
+/tmp/
+/temp/
+*.tmp
+*.temp
+.tmp
+
+# ==========================================
+# CACHE Y SESIONES
+# ==========================================
+
+# Cache de la aplicación
+/storage/cache/
+/cache/
+*.cache
+cache.txt
+
+# Sesiones PHP
+/storage/sessions/
+/sessions/
+sess_*
+
+# Cache de imágenes/thumbnails
+/storage/thumbnails/
+/public/thumbnails/
+
+# ==========================================
+# UPLOADS Y ARCHIVOS DE USUARIO
+# ==========================================
+
+# Videos de ejercicios
+/public/uploads/videos/
+/uploads/videos/
+*.mp4
+*.avi
+*.mov
+*.wmv
+*.webm
+
+# Imágenes subidas (mantener solo las de ejemplo)
+/public/uploads/images/users/
+/public/uploads/images/products/
+/public/uploads/images/exercises/
+/uploads/images/users/
+/uploads/images/products/
+/uploads/images/exercises/
+
+# Documentos y archivos subidos
+/public/uploads/documents/
+/uploads/documents/
+*.pdf
+*.doc
+*.docx
+
+# Avatares de usuarios
+/public/uploads/avatars/
+/uploads/avatars/
+
+# ==========================================
+# DEPENDENCIAS Y LIBRERÍAS
+# ==========================================
+
+# Composer
+/vendor/
+composer.lock
+composer.phar
+
+# Node modules (si se usa para build de assets)
+/node_modules/
+package-lock.json
+yarn.lock
+
+# Bower (si se usa)
+/bower_components/
+
+# ==========================================
+# BASE DE DATOS
+# ==========================================
+
+# Dumps y backups de BD
+*.sql
+*.dump
+*.backup
+/database/backups/
+/backups/
+backup_*.sql
+dump_*.sql
+stylofitness_*.sql
+
+# Archivos SQLite (si se usan para testing)
+*.sqlite
+*.sqlite3
+*.db
+
+# ==========================================
+# ARCHIVOS DEL SISTEMA OPERATIVO
+# ==========================================
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msm
+*.msp
+*.lnk
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon?
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+# ==========================================
+# IDEs Y EDITORES
+# ==========================================
+
+# Visual Studio Code
+.vscode/
+*.code-workspace
+
+# PhpStorm / IntelliJ IDEA
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+*.sublime-session
+
+# NetBeans
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+# Eclipse
+.metadata
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.settings/
+.loadpath
+.recommenders
+
+# Vim
+*.swp
+*.swo
+*~
+.netrwhist
+
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
+
+# ==========================================
+# HERRAMIENTAS DE DESARROLLO
+# ==========================================
+
+# PHPUnit
+/phpunit.xml
+.phpunit.result.cache
+/coverage/
+
+# Xdebug
+xdebug.log
+
+# PHP CS Fixer
+.php_cs
+.php_cs.cache
+
+# PHPStan
+phpstan.neon
+.phpstan.cache
+
+# Psalm
+psalm.xml
+.psalm/
+
+# PHPMD
+phpmd.xml
+
+# ==========================================
+# ARCHIVOS DE BUILD Y DEPLOYMENT
+# ==========================================
+
+# Webpack/Build tools
+/dist/
+/build/
+webpack-stats.json
+
+# Assets compilados
+/public/css/compiled/
+/public/js/compiled/
+/public/mix-manifest.json
+
+# Archivos de deployment
+deploy.php
+deployment.log
+.deployer/
+
+# Docker (si se usa)
+docker-compose.override.yml
+.dockerignore
+
+# ==========================================
+# ARCHIVOS ESPECÍFICOS DE LA APLICACIÓN
+# ==========================================
+
+# Archivos de instalación
+install.lock
+.installed
+
+# Archivos de mantenimiento
+maintenance.flag
+.maintenance
+
+# Archivos de migración ejecutadas
+/database/migrations/executed/
+
+# Reportes generados
+/reports/
+*.report
+
+# Archivos de testing
+/tests/coverage/
+/tests/reports/
+
+# ==========================================
+# OPTIMIZACIÓN Y PERFORMANCE
+# ==========================================
+
+# Cache de OPcache
+opcache.blacklist
+
+# Archivos de compresión
+*.gz
+*.zip
+*.tar
+*.rar
+
+# Archivos de minificación originales
+*.min.css.map
+*.min.js.map
+
+# ==========================================
+# SEGURIDAD
+# ==========================================
+
+# Archivos de claves privadas
+private_key.pem
+public_key.pem
+
+# Tokens y secrets
+.secrets
+tokens.txt
+
+# Archivos de backup sensibles
+*.bak
+*.backup
+*.old
+
+# ==========================================
+# VARIOS
+# ==========================================
+
+# Archivos de registro de errores
+error_reporting.txt
+php_errors.txt
+
+# Archivos de monitoreo
+*.pid
+*.lock
+
+# Archivos de proceso
+process.lock
+
+# Archivos de configuración local del servidor
+.htaccess.local
+nginx.local.conf
+
+# ==========================================
+# PERO MANTENER ESTOS ARCHIVOS IMPORTANTES
+# ==========================================
+
+# Archivos que SÍ queremos versionar
+!.gitignore
+!.htaccess
+!/public/uploads/.gitkeep
+!/storage/.gitkeep
+!/logs/.gitkeep
+!/database/schema.sql
+!/database/seeds/
+!/public/images/placeholders/
+!/public/css/
+!/public/js/
+!/public/fonts/
+
+# Ejemplos y archivos de demostración
+!/public/uploads/images/examples/
+!/public/uploads/videos/examples/
+!example.env
+!README.md
+!INSTALL.md
+!CHANGELOG.md

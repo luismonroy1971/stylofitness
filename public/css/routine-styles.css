@@ -1,0 +1,1550 @@
+/* ==========================================================================
+   STYLOFITNESS - ROUTINE STYLES
+   Estilos específicos para el sistema de rutinas personalizadas
+   ========================================================================== */
+
+/* Variables CSS para rutinas */
+:root {
+  --routine-primary: #FF6B00;
+  --routine-secondary: #E55A00;
+  --routine-accent: #FFB366;
+  --routine-success: #28a745;
+  --routine-warning: #ffc107;
+  --routine-danger: #dc3545;
+  --routine-info: #17a2b8;
+  --routine-light: #f8f9fa;
+  --routine-dark: #2c2c2c;
+  --routine-border: #e9ecef;
+  --routine-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  --routine-shadow-lg: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  --routine-radius: 0.5rem;
+  --routine-radius-lg: 1rem;
+}
+
+/* ==========================================================================
+   PÁGINA DE RUTINAS - LAYOUT GENERAL
+   ========================================================================== */
+
+.routines-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+.hero-section {
+  background: linear-gradient(135deg, var(--routine-primary) 0%, var(--routine-secondary) 100%);
+  padding: 4rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+  opacity: 0.3;
+}
+
+.hero-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.hero-subtitle {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+.hero-stats {
+  text-align: center;
+}
+
+.stat-card {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border-radius: var(--routine-radius-lg);
+  padding: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.stat-card-white {
+  background: rgba(255, 255, 255, 0.95);
+  color: var(--routine-dark);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.stat-number {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 0.5rem;
+}
+
+.stat-card-white .stat-number {
+  color: var(--routine-primary);
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.8);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.stat-card-white .stat-label {
+  color: var(--routine-dark);
+  opacity: 0.7;
+}
+
+/* ==========================================================================
+   FILTROS Y BÚSQUEDA
+   ========================================================================== */
+
+.filters-section {
+  background: white;
+  border-radius: var(--routine-radius-lg);
+  padding: 2rem;
+  box-shadow: var(--routine-shadow);
+  border: 1px solid var(--routine-border);
+}
+
+.filters-form .form-label {
+  font-weight: 600;
+  color: var(--routine-dark);
+  margin-bottom: 0.5rem;
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--routine-primary);
+  box-shadow: 0 0 0 0.2rem rgba(255, 107, 0, 0.25);
+}
+
+.input-group-text {
+  background: var(--routine-light);
+  border-color: var(--routine-border);
+  color: var(--routine-primary);
+}
+
+/* ==========================================================================
+   TARJETAS DE RUTINAS
+   ========================================================================== */
+
+.routine-card {
+  background: white;
+  border-radius: var(--routine-radius-lg);
+  padding: 1.5rem;
+  box-shadow: var(--routine-shadow);
+  border: 1px solid var(--routine-border);
+  transition: all 0.3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.routine-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--routine-shadow-lg);
+  border-color: var(--routine-primary);
+}
+
+.routine-template {
+  border: 2px solid var(--routine-accent);
+  background: linear-gradient(145deg, #fff 0%, #fffaf7 100%);
+}
+
+.routine-header {
+  display: flex;
+  justify-content: between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.routine-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.routine-actions .dropdown-toggle::after {
+  display: none;
+}
+
+.routine-body {
+  flex: 1;
+  margin-bottom: 1rem;
+}
+
+.routine-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  color: var(--routine-dark);
+  line-height: 1.3;
+}
+
+.routine-title a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.routine-title a:hover {
+  color: var(--routine-primary);
+}
+
+.routine-description {
+  color: #6c757d;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+
+.routine-stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.stat-item {
+  display: flex;
+  align-items: center;
+  font-size: 0.875rem;
+  color: #6c757d;
+}
+
+.stat-item i {
+  color: var(--routine-primary);
+  margin-right: 0.5rem;
+  width: 16px;
+  text-align: center;
+}
+
+.routine-client,
+.routine-instructor {
+  padding: 0.5rem 0;
+  border-top: 1px solid var(--routine-border);
+}
+
+.routine-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+  padding-top: 1rem;
+  border-top: 1px solid var(--routine-border);
+}
+
+.routine-date {
+  font-size: 0.8rem;
+  color: #6c757d;
+}
+
+/* ==========================================================================
+   BADGES Y ETIQUETAS
+   ========================================================================== */
+
+.badge {
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 0.375rem 0.75rem;
+  border-radius: 2rem;
+}
+
+.badge-weight_loss {
+  background: linear-gradient(45deg, #dc3545, #e74c3c);
+  color: white;
+}
+
+.badge-muscle_gain {
+  background: linear-gradient(45deg, #28a745, #2ecc71);
+  color: white;
+}
+
+.badge-strength {
+  background: linear-gradient(45deg, #6f42c1, #9b59b6);
+  color: white;
+}
+
+.badge-endurance {
+  background: linear-gradient(45deg, #17a2b8, #3498db);
+  color: white;
+}
+
+.badge-flexibility {
+  background: linear-gradient(45deg, #fd7e14, #f39c12);
+  color: white;
+}
+
+.badge-beginner {
+  background: var(--routine-success);
+  color: white;
+}
+
+.badge-intermediate {
+  background: var(--routine-warning);
+  color: var(--routine-dark);
+}
+
+.badge-advanced {
+  background: var(--routine-danger);
+  color: white;
+}
+
+.badge-outline-beginner {
+  border: 1px solid var(--routine-success);
+  color: var(--routine-success);
+  background: transparent;
+}
+
+.badge-outline-intermediate {
+  border: 1px solid var(--routine-warning);
+  color: #856404;
+  background: transparent;
+}
+
+.badge-outline-advanced {
+  border: 1px solid var(--routine-danger);
+  color: var(--routine-danger);
+  background: transparent;
+}
+
+.badge-template {
+  background: linear-gradient(45deg, #ffc107, #ffca28);
+  color: var(--routine-dark);
+}
+
+.badge-gold {
+  background: linear-gradient(45deg, #ffd700, #ffed4e);
+  color: var(--routine-dark);
+}
+
+.badge-white {
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--routine-primary);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.badge-outline-white {
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.9);
+  background: transparent;
+}
+
+.badge-lg {
+  font-size: 0.875rem;
+  padding: 0.5rem 1rem;
+}
+
+/* ==========================================================================
+   DETALLE DE RUTINA
+   ========================================================================== */
+
+.routine-detail-page {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  min-height: 100vh;
+}
+
+.routine-header {
+  background: linear-gradient(135deg, var(--routine-primary) 0%, var(--routine-secondary) 100%);
+  padding: 3rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.routine-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>');
+  opacity: 0.3;
+}
+
+.breadcrumb {
+  background: transparent;
+  margin-bottom: 0;
+  padding: 0;
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.routine-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 1rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.routine-description {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 1.5rem;
+}
+
+.routine-badges {
+  margin-bottom: 2rem;
+}
+
+.routine-quick-stats .row {
+  gap: 1rem;
+}
+
+.routine-quick-stats .stat-card {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  min-width: 120px;
+}
+
+.stat-icon {
+  font-size: 1.5rem;
+  color: var(--routine-primary);
+  margin-right: 0.75rem;
+}
+
+.stat-card-white .stat-icon {
+  color: var(--routine-primary);
+}
+
+.stat-content .stat-number {
+  font-size: 1.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.stat-content .stat-label {
+  font-size: 0.75rem;
+}
+
+.progress-card {
+  border-radius: var(--routine-radius);
+}
+
+.progress {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.progress-stats {
+  font-size: 0.8rem;
+}
+
+/* ==========================================================================
+   EJERCICIOS EN RUTINA
+   ========================================================================== */
+
+.routine-exercises-section {
+  margin-bottom: 2rem;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.section-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--routine-dark);
+  margin-bottom: 0.5rem;
+}
+
+.section-subtitle {
+  font-size: 1.1rem;
+  color: #6c757d;
+  margin-bottom: 0;
+}
+
+.days-navigation .nav-pills .nav-link {
+  background: white;
+  border: 2px solid var(--routine-border);
+  color: var(--routine-dark);
+  margin-right: 0.5rem;
+  border-radius: var(--routine-radius);
+  padding: 0.75rem 1rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.days-navigation .nav-pills .nav-link:hover {
+  border-color: var(--routine-primary);
+  color: var(--routine-primary);
+  transform: translateY(-2px);
+}
+
+.days-navigation .nav-pills .nav-link.active {
+  background: linear-gradient(135deg, var(--routine-primary), var(--routine-secondary));
+  border-color: var(--routine-primary);
+  color: white;
+  box-shadow: var(--routine-shadow-lg);
+}
+
+.days-navigation .nav-pills .nav-link small {
+  font-size: 0.7rem;
+  opacity: 0.8;
+}
+
+.exercise-card {
+  background: white;
+  border-radius: var(--routine-radius-lg);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: var(--routine-shadow);
+  border: 1px solid var(--routine-border);
+  transition: all 0.3s ease;
+}
+
+.exercise-card:hover {
+  box-shadow: var(--routine-shadow-lg);
+  border-color: var(--routine-accent);
+}
+
+.exercise-completed {
+  border-color: var(--routine-success);
+  background: linear-gradient(145deg, #fff 0%, #f8fff9 100%);
+}
+
+.exercise-header {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.exercise-number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, var(--routine-primary), var(--routine-secondary));
+  color: white;
+  border-radius: 50%;
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-right: 1rem;
+  flex-shrink: 0;
+}
+
+.exercise-info {
+  flex: 1;
+}
+
+.exercise-name {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--routine-dark);
+  margin-bottom: 0.25rem;
+}
+
+.exercise-category {
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 0.25rem 0.5rem;
+  border-radius: 1rem;
+  background: var(--routine-accent);
+  color: var(--routine-dark);
+}
+
+.exercise-actions {
+  flex-shrink: 0;
+}
+
+.exercise-body {
+  margin-left: 56px;
+}
+
+.exercise-description {
+  color: #6c757d;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+
+.exercise-parameters {
+  margin-bottom: 1rem;
+}
+
+.parameter-item {
+  text-align: center;
+}
+
+.parameter-label {
+  font-size: 0.8rem;
+  color: #6c757d;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.25rem;
+}
+
+.parameter-value {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--routine-dark);
+}
+
+.muscle-groups {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.muscle-groups-label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--routine-dark);
+}
+
+.exercise-notes .alert {
+  margin-bottom: 0;
+  font-size: 0.9rem;
+  border-left: 4px solid var(--routine-info);
+}
+
+.exercise-instructions .card {
+  border: 1px solid var(--routine-border);
+  background: var(--routine-light);
+}
+
+/* ==========================================================================
+   SIDEBAR DE RUTINA
+   ========================================================================== */
+
+.routine-sidebar {
+  position: sticky;
+  top: 2rem;
+}
+
+.info-card {
+  background: white;
+  border-radius: var(--routine-radius-lg);
+  padding: 1.5rem;
+  box-shadow: var(--routine-shadow);
+  border: 1px solid var(--routine-border);
+}
+
+.info-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--routine-dark);
+  margin-bottom: 1rem;
+}
+
+.info-subtitle {
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.client-info,
+.instructor-info {
+  display: flex;
+  align-items: center;
+}
+
+.client-avatar,
+.instructor-avatar {
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, var(--routine-primary), var(--routine-secondary));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.2rem;
+  margin-right: 1rem;
+}
+
+.client-name,
+.instructor-name {
+  font-weight: 600;
+  color: var(--routine-dark);
+  margin-bottom: 0.25rem;
+}
+
+.client-email,
+.instructor-role {
+  font-size: 0.85rem;
+  color: #6c757d;
+}
+
+.products-list {
+  margin-bottom: 1rem;
+}
+
+.product-item {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--routine-border);
+}
+
+.product-item:last-child {
+  border-bottom: none;
+}
+
+.product-image {
+  width: 50px;
+  height: 50px;
+  margin-right: 0.75rem;
+  border-radius: var(--routine-radius);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.product-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.product-placeholder {
+  width: 100%;
+  height: 100%;
+  background: var(--routine-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6c757d;
+  font-size: 1.5rem;
+}
+
+.product-info {
+  flex: 1;
+}
+
+.product-name {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--routine-dark);
+  margin-bottom: 0.25rem;
+  line-height: 1.3;
+}
+
+.product-price {
+  font-size: 0.85rem;
+}
+
+.sale-price {
+  color: var(--routine-primary);
+  font-weight: 600;
+}
+
+.original-price {
+  color: #6c757d;
+  text-decoration: line-through;
+  margin-left: 0.5rem;
+}
+
+.price {
+  color: var(--routine-dark);
+  font-weight: 600;
+}
+
+.product-action {
+  flex-shrink: 0;
+}
+
+.detail-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.detail-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--routine-border);
+}
+
+.detail-item:last-child {
+  border-bottom: none;
+}
+
+.detail-label {
+  font-size: 0.9rem;
+  color: #6c757d;
+}
+
+.detail-value {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--routine-dark);
+}
+
+/* ==========================================================================
+   CREAR/EDITAR RUTINA
+   ========================================================================== */
+
+.create-routine-page,
+.edit-routine-page {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  min-height: 100vh;
+}
+
+.page-header {
+  padding: 2rem 0;
+}
+
+.page-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.page-subtitle {
+  font-size: 1.1rem;
+  line-height: 1.5;
+  opacity: 0.9;
+}
+
+.form-section {
+  background: white;
+  border-radius: var(--routine-radius-lg);
+  padding: 2rem;
+  box-shadow: var(--routine-shadow);
+  border: 1px solid var(--routine-border);
+}
+
+.form-section .section-header {
+  text-align: left;
+  margin-bottom: 1.5rem;
+}
+
+.form-section .section-title {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.form-section .section-subtitle {
+  font-size: 1rem;
+  margin-bottom: 0;
+}
+
+.form-label.required::after {
+  content: '*';
+  color: var(--routine-danger);
+  margin-left: 0.25rem;
+}
+
+.sidebar-sticky {
+  position: sticky;
+  top: 2rem;
+}
+
+/* Biblioteca de Ejercicios */
+.exercise-library {
+  background: var(--routine-light);
+  border-radius: var(--routine-radius-lg);
+  padding: 1.5rem;
+  border: 2px dashed var(--routine-border);
+}
+
+.library-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.library-header h5 {
+  margin: 0;
+  color: var(--routine-dark);
+  font-weight: 600;
+}
+
+.library-filters {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.exercises-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1rem;
+  max-height: 300px;
+  overflow-y: auto;
+  padding: 0.5rem;
+}
+
+.exercise-item {
+  background: white;
+  border-radius: var(--routine-radius);
+  padding: 1rem;
+  border: 1px solid var(--routine-border);
+  cursor: grab;
+  transition: all 0.3s ease;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.exercise-item:hover {
+  border-color: var(--routine-primary);
+  box-shadow: var(--routine-shadow);
+  transform: translateY(-2px);
+}
+
+.exercise-item:active {
+  cursor: grabbing;
+}
+
+.exercise-item .exercise-info {
+  flex: 1;
+}
+
+.exercise-item .exercise-name {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--routine-dark);
+  margin-bottom: 0.25rem;
+}
+
+.exercise-item .exercise-category {
+  font-size: 0.8rem;
+  color: #6c757d;
+  font-weight: 500;
+}
+
+.exercise-difficulty {
+  flex-shrink: 0;
+}
+
+/* Constructor de Rutina */
+.routine-builder {
+  background: white;
+  border-radius: var(--routine-radius-lg);
+  border: 1px solid var(--routine-border);
+  overflow: hidden;
+}
+
+.days-tabs {
+  background: var(--routine-light);
+  border-bottom: 1px solid var(--routine-border);
+}
+
+.days-tabs .nav-tabs {
+  border-bottom: none;
+  padding: 0.5rem;
+}
+
+.days-tabs .nav-link {
+  border: none;
+  background: transparent;
+  color: var(--routine-dark);
+  padding: 0.75rem 1rem;
+  margin-right: 0.25rem;
+  border-radius: var(--routine-radius);
+  font-weight: 500;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.days-tabs .nav-link:hover {
+  background: rgba(255, 107, 0, 0.1);
+  color: var(--routine-primary);
+}
+
+.days-tabs .nav-link.active {
+  background: var(--routine-primary);
+  color: white;
+}
+
+.days-tabs .nav-link small {
+  font-size: 0.7rem;
+  opacity: 0.8;
+}
+
+.day-content {
+  padding: 1.5rem;
+}
+
+.day-header {
+  margin-bottom: 1rem;
+}
+
+.day-header h5 {
+  color: var(--routine-dark);
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.exercises-dropzone {
+  min-height: 200px;
+  border: 2px dashed var(--routine-border);
+  border-radius: var(--routine-radius-lg);
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.exercises-dropzone:hover,
+.exercises-dropzone.drag-over {
+  border-color: var(--routine-primary);
+  background: rgba(255, 107, 0, 0.05);
+}
+
+.dropzone-placeholder {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: #6c757d;
+}
+
+.dropzone-placeholder i {
+  font-size: 2rem;
+  color: var(--routine-primary);
+  margin-bottom: 0.5rem;
+}
+
+.exercises-list {
+  padding: 1rem;
+  min-height: 160px;
+}
+
+.routine-exercise-item {
+  background: white;
+  border: 1px solid var(--routine-border);
+  border-radius: var(--routine-radius);
+  padding: 1rem;
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.routine-exercise-item:hover {
+  border-color: var(--routine-primary);
+  box-shadow: var(--routine-shadow);
+}
+
+.exercise-handle {
+  color: #6c757d;
+  margin-right: 0.75rem;
+  cursor: grab;
+}
+
+.exercise-handle:active {
+  cursor: grabbing;
+}
+
+.routine-exercise-item .exercise-info {
+  flex: 1;
+}
+
+.routine-exercise-item .exercise-name {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--routine-dark);
+  margin-bottom: 0.25rem;
+}
+
+.routine-exercise-item .exercise-category {
+  font-size: 0.8rem;
+  color: #6c757d;
+  margin-bottom: 0.5rem;
+}
+
+.exercise-params {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.exercise-params .param {
+  font-size: 0.8rem;
+  color: #6c757d;
+}
+
+.exercise-params .param span {
+  font-weight: 600;
+  color: var(--routine-dark);
+}
+
+.exercise-actions {
+  display: flex;
+  gap: 0.25rem;
+  flex-shrink: 0;
+}
+
+/* Plantillas Rápidas */
+.templates-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.template-btn {
+  background: white;
+  border: 1px solid var(--routine-border);
+  border-radius: var(--routine-radius);
+  padding: 0.75rem;
+  text-align: left;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.template-btn:hover {
+  border-color: var(--routine-primary);
+  background: rgba(255, 107, 0, 0.05);
+}
+
+.template-info h6 {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--routine-dark);
+  margin-bottom: 0.25rem;
+}
+
+.template-info small {
+  font-size: 0.75rem;
+  color: #6c757d;
+}
+
+/* Resumen de Rutina */
+.routine-summary {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.summary-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--routine-border);
+}
+
+.summary-item:last-child {
+  border-bottom: none;
+}
+
+.summary-label {
+  font-size: 0.9rem;
+  color: #6c757d;
+}
+
+.summary-value {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--routine-dark);
+}
+
+/* Acciones del Formulario */
+.form-actions {
+  margin-top: 2rem;
+}
+
+/* ==========================================================================
+   ESTADOS VACÍOS
+   ========================================================================== */
+
+.empty-state {
+  padding: 3rem 1rem;
+}
+
+.empty-icon {
+  color: #6c757d;
+  opacity: 0.5;
+}
+
+.empty-title {
+  color: var(--routine-dark);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.empty-text {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* ==========================================================================
+   BOTONES ESPECÍFICOS
+   ========================================================================== */
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--routine-primary), var(--routine-secondary));
+  border-color: var(--routine-primary);
+  color: white;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  border-radius: var(--routine-radius);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, var(--routine-secondary), #cc4a00);
+  border-color: var(--routine-secondary);
+  transform: translateY(-1px);
+  box-shadow: var(--routine-shadow-lg);
+}
+
+.btn-outline-primary {
+  border-color: var(--routine-primary);
+  color: var(--routine-primary);
+  background: transparent;
+  border-radius: var(--routine-radius);
+}
+
+.btn-outline-primary:hover {
+  background: var(--routine-primary);
+  border-color: var(--routine-primary);
+  color: white;
+}
+
+.btn-white {
+  background: rgba(255, 255, 255, 0.95);
+  border-color: rgba(255, 255, 255, 0.3);
+  color: var(--routine-primary);
+  backdrop-filter: blur(10px);
+}
+
+.btn-white:hover {
+  background: white;
+  color: var(--routine-secondary);
+  transform: translateY(-1px);
+}
+
+.btn-outline-white {
+  border-color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.9);
+  background: transparent;
+}
+
+.btn-outline-white:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.8);
+  color: white;
+}
+
+.btn-ghost {
+  background: transparent;
+  border: none;
+  color: #6c757d;
+  padding: 0.375rem;
+  border-radius: var(--routine-radius);
+}
+
+.btn-ghost:hover {
+  background: var(--routine-light);
+  color: var(--routine-dark);
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+  
+  .routine-quick-stats .row {
+    justify-content: center;
+  }
+  
+  .routine-quick-stats .stat-card {
+    min-width: 100px;
+    padding: 0.75rem;
+  }
+  
+  .routine-stats {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+  
+  .routine-footer {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: stretch;
+  }
+  
+  .exercise-body {
+    margin-left: 0;
+    margin-top: 1rem;
+  }
+  
+  .exercise-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .exercise-number {
+    margin-right: 0;
+    margin-bottom: 0.5rem;
+  }
+  
+  .exercises-grid {
+    grid-template-columns: 1fr;
+    max-height: 250px;
+  }
+  
+  .library-filters {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .library-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  
+  .days-tabs .nav-tabs {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: thin;
+  }
+  
+  .form-actions .row {
+    gap: 0.5rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .filters-section {
+    padding: 1rem;
+  }
+  
+  .form-section {
+    padding: 1rem;
+  }
+  
+  .routine-card {
+    padding: 1rem;
+  }
+  
+  .days-navigation .nav-pills .nav-link {
+    padding: 0.5rem 0.75rem;
+    margin-right: 0.25rem;
+    font-size: 0.85rem;
+  }
+  
+  .exercise-card {
+    padding: 1rem;
+  }
+  
+  .exercise-params {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .routine-exercise-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .exercise-actions {
+    align-self: flex-end;
+    margin-top: 0.5rem;
+  }
+}
+
+/* ==========================================================================
+   ANIMACIONES Y MICROINTERACCIONES
+   ========================================================================== */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.routine-card {
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+.routine-card:hover .routine-title {
+  animation: pulse 0.6s ease;
+}
+
+.exercise-card {
+  animation: slideInRight 0.4s ease forwards;
+}
+
+.stat-card {
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+/* Efectos de hover mejorados */
+.routine-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, var(--routine-primary), var(--routine-secondary));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: var(--routine-radius-lg);
+  z-index: -1;
+}
+
+.routine-card:hover::before {
+  opacity: 0.05;
+}
+
+/* Indicadores de drag and drop */
+.exercise-item.dragging {
+  opacity: 0.5;
+  transform: rotate(5deg);
+}
+
+.exercises-dropzone.drag-over {
+  animation: pulse 1s infinite;
+}
+
+/* Estados de carga */
+.loading {
+  position: relative;
+  pointer-events: none;
+}
+
+.loading::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  margin: -10px 0 0 -10px;
+  border: 2px solid var(--routine-border);
+  border-top-color: var(--routine-primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ==========================================================================
+   UTILIDADES ESPECÍFICAS
+   ========================================================================== */
+
+.text-white-75 {
+  color: rgba(255, 255, 255, 0.75) !important;
+}
+
+.bg-gradient-primary {
+  background: linear-gradient(135deg, var(--routine-primary), var(--routine-secondary));
+}
+
+.bg-white-10 {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.border-routine {
+  border-color: var(--routine-border) !important;
+}
+
+.text-routine-primary {
+  color: var(--routine-primary) !important;
+}
+
+.bg-routine-light {
+  background-color: var(--routine-light) !important;
+}
+
+/* Scrollbars personalizados */
+.exercises-grid::-webkit-scrollbar,
+.days-tabs .nav-tabs::-webkit-scrollbar {
+  height: 4px;
+  width: 4px;
+}
+
+.exercises-grid::-webkit-scrollbar-track,
+.days-tabs .nav-tabs::-webkit-scrollbar-track {
+  background: var(--routine-light);
+  border-radius: 2px;
+}
+
+.exercises-grid::-webkit-scrollbar-thumb,
+.days-tabs .nav-tabs::-webkit-scrollbar-thumb {
+  background: var(--routine-primary);
+  border-radius: 2px;
+}
+
+.exercises-grid::-webkit-scrollbar-thumb:hover,
+.days-tabs .nav-tabs::-webkit-scrollbar-thumb:hover {
+  background: var(--routine-secondary);
+}
+
+/* Print styles */
+@media print {
+  .routine-card,
+  .exercise-card,
+  .form-section {
+    box-shadow: none;
+    border: 1px solid #ccc;
+  }
+  
+  .btn,
+  .routine-actions,
+  .exercise-actions {
+    display: none;
+  }
+  
+  .routine-header {
+    background: none !important;
+    color: #000 !important;
+  }
+  
+  .routine-title,
+  .section-title {
+    color: #000 !important;
+  }
+}
