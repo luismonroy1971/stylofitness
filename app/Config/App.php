@@ -16,7 +16,11 @@ define('UPLOAD_URL', BASE_URL . '/public/uploads');
 // Configuración de sesiones
 ini_set('session.cookie_httponly', 1);
 ini_set('session.cookie_secure', 0); // Cambiar a 1 en HTTPS
-session_start();
+
+// Solo iniciar sesión si no está iniciada
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
 // Configuración de archivos
 define('MAX_FILE_SIZE', 50 * 1024 * 1024); // 50MB
@@ -32,24 +36,32 @@ define('FROM_EMAIL', 'noreply@stylofitness.com');
 define('FROM_NAME', 'STYLOFITNESS');
 
 // Colores del tema basados en el logo
-define('THEME_COLORS', [
-    'primary' => '#FF6B00',      // Naranja principal del logo
-    'secondary' => '#E55A00',    // Naranja más oscuro
-    'accent' => '#FFB366',       // Naranja claro/dorado
-    'dark' => '#2C2C2C',         // Fondo oscuro
-    'light' => '#F8F9FA',        // Fondo claro
-    'white' => '#FFFFFF',        // Blanco puro
-    'text_light' => '#CCCCCC',   // Texto secundario
-    'success' => '#28A745',      // Verde éxito
-    'warning' => '#FFC107',      // Amarillo advertencia
-    'danger' => '#DC3545',       // Rojo peligro
-    'info' => '#17A2B8'          // Azul información
-]);
+if (!defined('THEME_COLORS')) {
+    define('THEME_COLORS', [
+        'primary' => '#FF6B00',      // Naranja principal del logo
+        'secondary' => '#E55A00',    // Naranja más oscuro
+        'accent' => '#FFB366',       // Naranja claro/dorado
+        'dark' => '#2C2C2C',         // Fondo oscuro
+        'light' => '#F8F9FA',        // Fondo claro
+        'white' => '#FFFFFF',        // Blanco puro
+        'text_light' => '#CCCCCC',   // Texto secundario
+        'success' => '#28A745',      // Verde éxito
+        'warning' => '#FFC107',      // Amarillo advertencia
+        'danger' => '#DC3545',       // Rojo peligro
+        'info' => '#17A2B8'          // Azul información
+    ]);
+}
 
 // Configuración de paginación
-define('ITEMS_PER_PAGE', 12);
-define('PRODUCTS_PER_PAGE', 16);
-define('ROUTINES_PER_PAGE', 8);
+if (!defined('ITEMS_PER_PAGE')) {
+    define('ITEMS_PER_PAGE', 12);
+}
+if (!defined('PRODUCTS_PER_PAGE')) {
+    define('PRODUCTS_PER_PAGE', 16);
+}
+if (!defined('ROUTINES_PER_PAGE')) {
+    define('ROUTINES_PER_PAGE', 8);
+}
 
 // Configuración de cache
 define('CACHE_ENABLED', true);

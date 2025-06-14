@@ -19,12 +19,12 @@
             </p>
             
             <div class="hero-buttons animate__animated animate__fadeInUp animate__delay-2s">
-                <a href="<?php echo AppHelper::baseUrl('register'); ?>" class="btn-primary btn-lg">
+                <a href="<?php echo AppHelper::getBaseUrl('register'); ?>" class="btn-primary btn-lg">
                     <i class="fas fa-rocket"></i>
                     Comenzar Ahora
                 </a>
                 
-                <a href="<?php echo AppHelper::baseUrl('store'); ?>" class="btn-secondary btn-lg">
+                <a href="<?php echo AppHelper::getBaseUrl('store'); ?>" class="btn-secondary btn-lg">
                     <i class="fas fa-store"></i>
                     Explorar Tienda
                 </a>
@@ -100,7 +100,7 @@
                                         <i class="fas fa-cart-plus"></i>
                                         Agregar al Carrito
                                     </button>
-                                    <a href="<?php echo AppHelper::baseUrl('store/product/' . $product['slug']); ?>" class="btn-secondary">
+                                    <a href="<?php echo AppHelper::getBaseUrl('store/product/' . $product['slug']); ?>" class="btn-secondary">
                                         Ver Detalles
                                     </a>
                                 </div>
@@ -264,7 +264,7 @@
                     <div class="product-info">
                         <div class="product-category"><?php echo htmlspecialchars($product['category_name'] ?? ''); ?></div>
                         <h3 class="product-title">
-                            <a href="<?php echo AppHelper::baseUrl('store/product/' . $product['slug']); ?>">
+                            <a href="<?php echo AppHelper::getBaseUrl('store/product/' . $product['slug']); ?>">
                                 <?php echo htmlspecialchars($product['name']); ?>
                             </a>
                         </h3>
@@ -317,7 +317,7 @@
         </div>
         
         <div class="section-cta" data-aos="fade-up">
-            <a href="<?php echo AppHelper::baseUrl('store'); ?>" class="btn-primary btn-lg">
+            <a href="<?php echo AppHelper::getBaseUrl('store'); ?>" class="btn-primary btn-lg">
                 <i class="fas fa-store"></i>
                 Ver Todos los Productos
             </a>
@@ -400,7 +400,7 @@
                                 <?php echo $available > 0 ? 'Reservar Clase' : 'Clase Completa'; ?>
                             </button>
                         <?php else: ?>
-                            <a href="<?php echo AppHelper::baseUrl('login'); ?>" class="btn-book-class">
+                            <a href="<?php echo AppHelper::getBaseUrl('login'); ?>" class="btn-book-class">
                                 <i class="fas fa-sign-in-alt"></i>
                                 Inicia Sesión para Reservar
                             </a>
@@ -411,7 +411,7 @@
         </div>
         
         <div class="section-cta" data-aos="fade-up">
-            <a href="<?php echo AppHelper::baseUrl('classes'); ?>" class="btn-primary btn-lg">
+            <a href="<?php echo AppHelper::getBaseUrl('classes'); ?>" class="btn-primary btn-lg">
                 <i class="fas fa-calendar"></i>
                 Ver Todas las Clases
             </a>
@@ -475,20 +475,20 @@
             
             <div class="cta-buttons">
                 <?php if (!AppHelper::isLoggedIn()): ?>
-                    <a href="<?php echo AppHelper::baseUrl('register'); ?>" class="btn-secondary btn-lg">
+                    <a href="<?php echo AppHelper::getBaseUrl('register'); ?>" class="btn-secondary btn-lg">
                         <i class="fas fa-user-plus"></i>
                         Crear Cuenta Gratis
                     </a>
-                    <a href="<?php echo AppHelper::baseUrl('contact'); ?>" class="btn-outline btn-lg">
+                    <a href="<?php echo AppHelper::getBaseUrl('contact'); ?>" class="btn-outline btn-lg">
                         <i class="fas fa-phone"></i>
                         Hablar con un Asesor
                     </a>
                 <?php else: ?>
-                    <a href="<?php echo AppHelper::baseUrl('routines/create'); ?>" class="btn-secondary btn-lg">
+                    <a href="<?php echo AppHelper::getBaseUrl('routines/create'); ?>" class="btn-secondary btn-lg">
                         <i class="fas fa-plus"></i>
                         Crear Mi Primera Rutina
                     </a>
-                    <a href="<?php echo AppHelper::baseUrl('store'); ?>" class="btn-outline btn-lg">
+                    <a href="<?php echo AppHelper::getBaseUrl('store'); ?>" class="btn-outline btn-lg">
                         <i class="fas fa-shopping-cart"></i>
                         Explorar Productos
                     </a>
@@ -520,7 +520,7 @@
     "@type": "WebPage",
     "name": "STYLOFITNESS - Gimnasio Profesional",
     "description": "<?php echo $pageDescription; ?>",
-    "url": "<?php echo AppHelper::baseUrl(); ?>",
+    "url": "<?php echo AppHelper::getBaseUrl(); ?>",
     "mainEntity": {
         "@type": "HealthClub",
         "name": "STYLOFITNESS",

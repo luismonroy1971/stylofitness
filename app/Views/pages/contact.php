@@ -30,7 +30,7 @@
                         </p>
                     </div>
                     
-                    <form id="contact-form" class="contact-form" method="POST" action="<?php echo AppHelper::baseUrl('contact'); ?>">
+                    <form id="contact-form" class="contact-form" method="POST" action="<?php echo AppHelper::getBaseUrl('contact'); ?>">
                         <input type="hidden" name="csrf_token" value="<?php echo csrf_token(); ?>">
                         
                         <div class="form-row">
@@ -138,8 +138,8 @@
                                        name="privacy_policy" 
                                        required>
                                 <label class="custom-control-label" for="privacy_policy">
-                                    Acepto la <a href="<?php echo AppHelper::baseUrl('privacy'); ?>" target="_blank">Política de Privacidad</a> 
-                                    y los <a href="<?php echo AppHelper::baseUrl('terms'); ?>" target="_blank">Términos de Servicio</a> *
+                                    Acepto la <a href="<?php echo AppHelper::getBaseUrl('privacy'); ?>" target="_blank">Política de Privacidad</a> 
+                                    y los <a href="<?php echo AppHelper::getBaseUrl('terms'); ?>" target="_blank">Términos de Servicio</a> *
                                 </label>
                             </div>
                         </div>
@@ -368,7 +368,7 @@
         </div>
         
         <div class="text-center" data-aos="fade-up" data-aos-delay="500">
-            <a href="<?php echo AppHelper::baseUrl('faq'); ?>" class="btn btn-primary">
+            <a href="<?php echo AppHelper::getBaseUrl('faq'); ?>" class="btn btn-primary">
                 <i class="fas fa-plus"></i>
                 Ver Todas las Preguntas
             </a>

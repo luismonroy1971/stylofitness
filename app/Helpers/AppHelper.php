@@ -152,6 +152,13 @@ class AppHelper {
     }
     
     /**
+     * Alias de getBaseUrl para compatibilidad
+     */
+    public static function baseUrl($path = '') {
+        return self::getBaseUrl() . ltrim($path, '/');
+    }
+    
+    /**
      * Generar URL de la aplicación
      */
     public static function url($path = '') {
@@ -159,10 +166,17 @@ class AppHelper {
     }
     
     /**
+     * Generar URL para archivos de assets (CSS, JS, imágenes)
+     */
+    public static function asset($path) {
+        return self::getBaseUrl() . 'public/' . ltrim($path, '/');
+    }
+    
+    /**
      * Generar URL para archivos subidos
      */
     public static function uploadUrl($path = '') {
-        return self::getBaseUrl() . 'public/uploads' . ltrim($path, '/');
+        return self::getBaseUrl() . 'public/uploads/' . ltrim($path, '/');
     }
     
     /**

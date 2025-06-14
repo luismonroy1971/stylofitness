@@ -11,8 +11,10 @@ ini_set('display_errors', 1);
 // Configuración de zona horaria
 date_default_timezone_set('America/Lima');
 
-// Iniciar sesión
-session_start();
+// Iniciar sesión (si no está iniciada)
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
 // Definir constantes de la aplicación
 define('ROOT_PATH', __DIR__);

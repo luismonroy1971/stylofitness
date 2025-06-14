@@ -5,8 +5,12 @@
  */
 
 // Configuración de rutinas
-define('ROUTINES_PER_PAGE', 12);
-define('EXERCISES_PER_PAGE', 20);
+if (!defined('ROUTINES_PER_PAGE')) {
+    define('ROUTINES_PER_PAGE', 12);
+}
+if (!defined('EXERCISES_PER_PAGE')) {
+    define('EXERCISES_PER_PAGE', 20);
+}
 define('MAX_EXERCISES_PER_DAY', 10);
 define('MAX_ROUTINE_DAYS', 7);
 define('DEFAULT_REST_SECONDS', 60);
@@ -438,17 +442,19 @@ define('MEASUREMENT_UNITS', [
 ]);
 
 // Configuración de colores del tema
-define('THEME_COLORS', [
-    'primary' => '#FF6B00',
-    'secondary' => '#E55A00',
-    'accent' => '#FFB366',
-    'success' => '#28a745',
-    'warning' => '#ffc107',
-    'danger' => '#dc3545',
-    'info' => '#17a2b8',
-    'light' => '#f8f9fa',
-    'dark' => '#2c2c2c'
-]);
+if (!defined('THEME_COLORS')) {
+    define('THEME_COLORS', [
+        'primary' => '#FF6B00',
+        'secondary' => '#E55A00',
+        'accent' => '#FFB366',
+        'success' => '#28a745',
+        'warning' => '#ffc107',
+        'danger' => '#dc3545',
+        'info' => '#17a2b8',
+        'light' => '#f8f9fa',
+        'dark' => '#2c2c2c'
+    ]);
+}
 
 /**
  * Función para obtener configuración de rutinas
