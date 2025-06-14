@@ -1,147 +1,279 @@
     </main>
     
-    <!-- Footer -->
-    <footer class="footer">
+    <!-- Footer Moderno -->
+    <footer class="footer-enhanced">
+        <div class="footer-background">
+            <div class="footer-overlay"></div>
+            <div class="footer-particles">
+                <div class="particle particle-1"></div>
+                <div class="particle particle-2"></div>
+                <div class="particle particle-3"></div>
+                <div class="particle particle-4"></div>
+                <div class="particle particle-5"></div>
+            </div>
+        </div>
+        
         <div class="container">
-            <div class="footer-content">
+            <!-- Main Footer Content -->
+            <div class="footer-main">
                 <!-- Información del Gimnasio -->
-                <div class="footer-section">
-                    <h3>STYLOFITNESS</h3>
-                    <p>Tu gimnasio profesional con rutinas personalizadas y los mejores suplementos deportivos. Transformamos vidas a través del fitness.</p>
+                <div class="footer-section footer-brand">
+                    <div class="brand-logo">
+                        <h3 class="brand-name">
+                            <span class="brand-icon">💪</span>
+                            STYLOFITNESS
+                            <span class="brand-tagline">PRO</span>
+                        </h3>
+                    </div>
+                    <p class="brand-description">Transformamos vidas a través del fitness con rutinas personalizadas, suplementos premium y la mejor experiencia de entrenamiento del país.</p>
                     
-                    <div class="contact-info">
-                        <div class="contact-item">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>Av. Principal 123, San Isidro, Lima</span>
+                    <div class="contact-info-enhanced">
+                        <div class="contact-item-enhanced">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-details">
+                                <span class="contact-label">Ubicación Principal</span>
+                                <span class="contact-value">Av. Principal 123, San Isidro, Lima</span>
+                            </div>
                         </div>
-                        <div class="contact-item">
-                            <i class="fas fa-phone"></i>
-                            <span>+51 999 888 777</span>
+                        
+                        <div class="contact-item-enhanced">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="contact-details">
+                                <span class="contact-label">Teléfono</span>
+                                <span class="contact-value">+51 999 888 777</span>
+                            </div>
                         </div>
-                        <div class="contact-item">
-                            <i class="fas fa-envelope"></i>
-                            <span>info@stylofitness.com</span>
+                        
+                        <div class="contact-item-enhanced">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-details">
+                                <span class="contact-label">Email</span>
+                                <span class="contact-value">info@stylofitness.com</span>
+                            </div>
                         </div>
-                        <div class="contact-item">
-                            <i class="fas fa-clock"></i>
-                            <span>Lun - Vie: 5:00 AM - 11:00 PM<br>Sáb - Dom: 6:00 AM - 10:00 PM</span>
+                        
+                        <div class="contact-item-enhanced">
+                            <div class="contact-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="contact-details">
+                                <span class="contact-label">Horarios</span>
+                                <span class="contact-value">Lun - Vie: 5:00 AM - 11:00 PM<br>Sáb - Dom: 6:00 AM - 10:00 PM</span>
+                            </div>
                         </div>
                     </div>
                 </div>
                 
                 <!-- Enlaces Rápidos -->
                 <div class="footer-section">
-                    <h3>Enlaces Rápidos</h3>
-                    <ul class="footer-links">
-                        <li><a href="<?php echo AppHelper::baseUrl(); ?>">Inicio</a></li>
-                        <li><a href="<?php echo AppHelper::baseUrl('routines'); ?>">Rutinas Personalizadas</a></li>
-                        <li><a href="<?php echo AppHelper::baseUrl('store'); ?>">Tienda Online</a></li>
-                        <li><a href="<?php echo AppHelper::baseUrl('classes'); ?>">Clases Grupales</a></li>
-                        <li><a href="<?php echo AppHelper::baseUrl('memberships'); ?>">Membresías</a></li>
-                        <li><a href="<?php echo AppHelper::baseUrl('trainers'); ?>">Entrenadores</a></li>
-                        <li><a href="<?php echo AppHelper::baseUrl('about'); ?>">Nosotros</a></li>
-                        <li><a href="<?php echo AppHelper::baseUrl('contact'); ?>">Contacto</a></li>
+                    <h4 class="footer-title">
+                        <i class="fas fa-link"></i>
+                        Enlaces Rápidos
+                    </h4>
+                    <ul class="footer-links-enhanced">
+                        <li><a href="<?php echo AppHelper::baseUrl(); ?>"><i class="fas fa-home"></i> Inicio</a></li>
+                        <li><a href="<?php echo AppHelper::baseUrl('routines'); ?>"><i class="fas fa-dumbbell"></i> Rutinas Personalizadas</a></li>
+                        <li><a href="<?php echo AppHelper::baseUrl('store'); ?>"><i class="fas fa-store"></i> Tienda Online</a></li>
+                        <li><a href="<?php echo AppHelper::baseUrl('classes'); ?>"><i class="fas fa-users"></i> Clases Grupales</a></li>
+                        <li><a href="<?php echo AppHelper::baseUrl('memberships'); ?>"><i class="fas fa-crown"></i> Membresías</a></li>
+                        <li><a href="<?php echo AppHelper::baseUrl('trainers'); ?>"><i class="fas fa-user-tie"></i> Entrenadores</a></li>
+                        <li><a href="<?php echo AppHelper::baseUrl('about'); ?>"><i class="fas fa-info-circle"></i> Nosotros</a></li>
+                        <li><a href="<?php echo AppHelper::baseUrl('contact'); ?>"><i class="fas fa-envelope"></i> Contacto</a></li>
                     </ul>
                 </div>
                 
                 <!-- Tienda -->
                 <div class="footer-section">
-                    <h3>Tienda</h3>
-                    <ul class="footer-links">
-                        <li><a href="<?php echo AppHelper::baseUrl('store/category/proteinas'); ?>">Proteínas</a></li>
-                        <li><a href="<?php echo AppHelper::baseUrl('store/category/pre-entrenos'); ?>">Pre-entrenos</a></li>
-                        <li><a href="<?php echo AppHelper::baseUrl('store/category/vitaminas'); ?>">Vitaminas</a></li>
-                        <li><a href="<?php echo AppHelper::baseUrl('store/category/accesorios'); ?>">Accesorios</a></li>
-                        <li><a href="<?php echo AppHelper::baseUrl('store/category/ropa-deportiva'); ?>">Ropa Deportiva</a></li>
-                        <li><a href="<?php echo AppHelper::baseUrl('store/offers'); ?>">Ofertas Especiales</a></li>
-                        <li><a href="<?php echo AppHelper::baseUrl('store/new'); ?>">Nuevos Productos</a></li>
-                        <li><a href="<?php echo AppHelper::baseUrl('store/bundles'); ?>">Paquetes Combo</a></li>
+                    <h4 class="footer-title">
+                        <i class="fas fa-shopping-bag"></i>
+                        Nuestra Tienda
+                    </h4>
+                    <ul class="footer-links-enhanced">
+                        <li><a href="<?php echo AppHelper::baseUrl('store/category/proteinas'); ?>"><i class="fas fa-flask"></i> Proteínas</a></li>
+                        <li><a href="<?php echo AppHelper::baseUrl('store/category/pre-entrenos'); ?>"><i class="fas fa-bolt"></i> Pre-entrenos</a></li>
+                        <li><a href="<?php echo AppHelper::baseUrl('store/category/vitaminas'); ?>"><i class="fas fa-pills"></i> Vitaminas</a></li>
+                        <li><a href="<?php echo AppHelper::baseUrl('store/category/accesorios'); ?>"><i class="fas fa-tools"></i> Accesorios</a></li>
+                        <li><a href="<?php echo AppHelper::baseUrl('store/category/ropa-deportiva'); ?>"><i class="fas fa-tshirt"></i> Ropa Deportiva</a></li>
+                        <li><a href="<?php echo AppHelper::baseUrl('store/offers'); ?>"><i class="fas fa-fire"></i> Ofertas Especiales</a></li>
+                        <li><a href="<?php echo AppHelper::baseUrl('store/new'); ?>"><i class="fas fa-star"></i> Nuevos Productos</a></li>
+                        <li><a href="<?php echo AppHelper::baseUrl('store/bundles'); ?>"><i class="fas fa-gift"></i> Paquetes Combo</a></li>
                     </ul>
                 </div>
                 
                 <!-- Newsletter y Redes Sociales -->
-                <div class="footer-section">
-                    <h3>Mantente Conectado</h3>
-                    <p>Suscríbete a nuestro newsletter y recibe las mejores ofertas, rutinas exclusivas y consejos de fitness.</p>
+                <div class="footer-section footer-connect">
+                    <h4 class="footer-title">
+                        <i class="fas fa-wifi"></i>
+                        Mantente Conectado
+                    </h4>
+                    <p class="connect-description">Síguenos en nuestras redes sociales para obtener consejos de fitness, rutinas exclusivas y las últimas novedades.</p>
                     
-                    <form class="newsletter-form" id="newsletter-form">
-                        <div class="newsletter-input">
-                            <input type="email" name="email" placeholder="Tu email" required>
-                            <button type="submit" class="newsletter-btn">
-                                <i class="fas fa-paper-plane"></i>
-                            </button>
+                    <div class="social-section">
+                        <h5 class="social-title">Síguenos en:</h5>
+                        <div class="social-links-enhanced">
+                            <a href="https://facebook.com/stylofitness" target="_blank" rel="noopener" class="social-link-modern facebook" title="Facebook">
+                                <i class="fab fa-facebook-f"></i>
+                                <span class="social-tooltip">Facebook</span>
+                            </a>
+                            <a href="https://instagram.com/stylofitness" target="_blank" rel="noopener" class="social-link-modern instagram" title="Instagram">
+                                <i class="fab fa-instagram"></i>
+                                <span class="social-tooltip">Instagram</span>
+                            </a>
+                            <a href="https://twitter.com/stylofitness" target="_blank" rel="noopener" class="social-link-modern twitter" title="Twitter">
+                                <i class="fab fa-twitter"></i>
+                                <span class="social-tooltip">Twitter</span>
+                            </a>
+                            <a href="https://youtube.com/stylofitness" target="_blank" rel="noopener" class="social-link-modern youtube" title="YouTube">
+                                <i class="fab fa-youtube"></i>
+                                <span class="social-tooltip">YouTube</span>
+                            </a>
+                            <a href="https://tiktok.com/@stylofitness" target="_blank" rel="noopener" class="social-link-modern tiktok" title="TikTok">
+                                <i class="fab fa-tiktok"></i>
+                                <span class="social-tooltip">TikTok</span>
+                            </a>
+                            <a href="https://wa.me/51999888777" target="_blank" rel="noopener" class="social-link-modern whatsapp" title="WhatsApp">
+                                <i class="fab fa-whatsapp"></i>
+                                <span class="social-tooltip">WhatsApp</span>
+                            </a>
                         </div>
-                        <small class="newsletter-note">*No spam. Solo contenido de calidad.</small>
-                    </form>
+                    </div>
                     
-                    <div class="social-links">
-                        <a href="https://facebook.com/stylofitness" target="_blank" rel="noopener" class="social-link facebook">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="https://instagram.com/stylofitness" target="_blank" rel="noopener" class="social-link instagram">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="https://twitter.com/stylofitness" target="_blank" rel="noopener" class="social-link twitter">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="https://youtube.com/stylofitness" target="_blank" rel="noopener" class="social-link youtube">
-                            <i class="fab fa-youtube"></i>
-                        </a>
-                        <a href="https://tiktok.com/@stylofitness" target="_blank" rel="noopener" class="social-link tiktok">
-                            <i class="fab fa-tiktok"></i>
-                        </a>
-                        <a href="https://wa.me/51999888777" target="_blank" rel="noopener" class="social-link whatsapp">
-                            <i class="fab fa-whatsapp"></i>
+                    <div class="contact-cta-section">
+                        <h5 class="contact-cta-title">¿Necesitas ayuda personalizada?</h5>
+                        <p class="contact-cta-text">Nuestros expertos están listos para asesorarte</p>
+                        <a href="tel:+51999888777" class="contact-cta-btn">
+                            <i class="fas fa-phone"></i>
+                            <span>Llamar Ahora</span>
                         </a>
                     </div>
                 </div>
             </div>
             
-            <!-- Información Adicional -->
-            <div class="footer-extra">
-                <div class="footer-badges">
-                    <div class="badge-item">
-                        <i class="fas fa-shield-alt"></i>
-                        <span>Compra Segura</span>
+            <!-- Badges de Confianza -->
+            <div class="footer-badges-section">
+                <div class="badges-grid">
+                    <div class="badge-item-enhanced">
+                        <div class="badge-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div class="badge-content">
+                            <span class="badge-title">Compra Segura</span>
+                            <span class="badge-subtitle">Certificado SSL</span>
+                        </div>
                     </div>
-                    <div class="badge-item">
-                        <i class="fas fa-truck"></i>
-                        <span>Envío Gratis +S/150</span>
+                    
+                    <div class="badge-item-enhanced">
+                        <div class="badge-icon">
+                            <i class="fas fa-truck"></i>
+                        </div>
+                        <div class="badge-content">
+                            <span class="badge-title">Envío Gratis</span>
+                            <span class="badge-subtitle">Compras +S/150</span>
+                        </div>
                     </div>
-                    <div class="badge-item">
-                        <i class="fas fa-medal"></i>
-                        <span>Productos Originales</span>
+                    
+                    <div class="badge-item-enhanced">
+                        <div class="badge-icon">
+                            <i class="fas fa-medal"></i>
+                        </div>
+                        <div class="badge-content">
+                            <span class="badge-title">100% Original</span>
+                            <span class="badge-subtitle">Productos Certificados</span>
+                        </div>
                     </div>
-                    <div class="badge-item">
-                        <i class="fas fa-headset"></i>
-                        <span>Soporte 24/7</span>
-                    </div>
-                </div>
-                
-                <div class="payment-methods">
-                    <span>Métodos de Pago:</span>
-                    <div class="payment-icons">
-                        <i class="fab fa-cc-visa"></i>
-                        <i class="fab fa-cc-mastercard"></i>
-                        <i class="fab fa-paypal"></i>
-                        <i class="fas fa-mobile-alt"></i>
-                        <span class="payment-text">Yape/Plin</span>
+                    
+                    <div class="badge-item-enhanced">
+                        <div class="badge-icon">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <div class="badge-content">
+                            <span class="badge-title">Soporte 24/7</span>
+                            <span class="badge-subtitle">Asistencia Premium</span>
+                        </div>
                     </div>
                 </div>
             </div>
             
-            <!-- Copyright -->
-            <div class="footer-bottom">
-                <div class="footer-copyright">
-                    <p>&copy; <?php echo date('Y'); ?> STYLOFITNESS. Todos los derechos reservados.</p>
-                    <p>Desarrollado con 💪 para transformar vidas a través del fitness.</p>
+            <!-- Métodos de Pago -->
+            <div class="payment-section">
+                <div class="payment-content">
+                    <div class="payment-title">
+                        <i class="fas fa-credit-card"></i>
+                        <span>Métodos de Pago Seguros</span>
+                    </div>
+                    <div class="payment-methods-enhanced">
+                        <div class="payment-group">
+                            <span class="payment-label">Tarjetas:</span>
+                            <div class="payment-icons">
+                                <div class="payment-item visa">
+                                    <i class="fab fa-cc-visa"></i>
+                                    <span>Visa</span>
+                                </div>
+                                <div class="payment-item mastercard">
+                                    <i class="fab fa-cc-mastercard"></i>
+                                    <span>Mastercard</span>
+                                </div>
+                                <div class="payment-item paypal">
+                                    <i class="fab fa-cc-paypal"></i>
+                                    <span>PayPal</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="payment-group">
+                            <span class="payment-label">Billeteras:</span>
+                            <div class="payment-icons">
+                                <div class="payment-item yape">
+                                    <i class="fas fa-mobile-alt"></i>
+                                    <span>Yape</span>
+                                </div>
+                                <div class="payment-item plin">
+                                    <i class="fas fa-wallet"></i>
+                                    <span>Plin</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                
-                <div class="footer-legal">
-                    <a href="<?php echo AppHelper::baseUrl('privacy'); ?>">Política de Privacidad</a>
-                    <a href="<?php echo AppHelper::baseUrl('terms'); ?>">Términos y Condiciones</a>
-                    <a href="<?php echo AppHelper::baseUrl('refund'); ?>">Política de Devoluciones</a>
-                    <a href="<?php echo AppHelper::baseUrl('shipping'); ?>">Información de Envío</a>
+            </div>
+            
+            <!-- Copyright y Enlaces Legales -->
+            <div class="footer-bottom-enhanced">
+                <div class="footer-bottom-content">
+                    <div class="copyright-section">
+                        <div class="copyright-main">
+                            <p>&copy; <?php echo date('Y'); ?> <strong>STYLOFITNESS</strong>. Todos los derechos reservados.</p>
+                            <p class="copyright-tagline">Desarrollado con <span class="heart-icon">💪</span> para transformar vidas a través del fitness.</p>
+                        </div>
+                        
+                        <div class="company-stats">
+                            <div class="stat-item">
+                                <span class="stat-number">10K+</span>
+                                <span class="stat-label">Clientes</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">15</span>
+                                <span class="stat-label">Sedes</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">98%</span>
+                                <span class="stat-label">Satisfacción</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="legal-links">
+                        <a href="<?php echo AppHelper::baseUrl('privacy'); ?>">Política de Privacidad</a>
+                        <a href="<?php echo AppHelper::baseUrl('terms'); ?>">Términos y Condiciones</a>
+                        <a href="<?php echo AppHelper::baseUrl('refund'); ?>">Política de Devoluciones</a>
+                        <a href="<?php echo AppHelper::baseUrl('shipping'); ?>">Información de Envío</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -151,85 +283,6 @@
     <button class="back-to-top" id="back-to-top" title="Ir arriba">
         <i class="fas fa-chevron-up"></i>
     </button>
-    
-    <!-- Chat Widget -->
-    <div class="chat-widget" id="chat-widget">
-        <button class="chat-toggle" id="chat-toggle">
-            <i class="fas fa-comments"></i>
-            <span class="chat-notification" id="chat-notification">1</span>
-        </button>
-        
-        <div class="chat-window" id="chat-window">
-            <div class="chat-header">
-                <div class="chat-title">
-                    <i class="fas fa-dumbbell"></i>
-                    <span>Asistente STYLOFITNESS</span>
-                </div>
-                <button class="chat-close" id="chat-close">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            
-            <div class="chat-messages" id="chat-messages">
-                <div class="chat-message bot-message">
-                    <div class="message-avatar">
-                        <i class="fas fa-robot"></i>
-                    </div>
-                    <div class="message-content">
-                        <p>¡Hola! 👋 Soy tu asistente virtual de STYLOFITNESS.</p>
-                        <p>¿En qué puedo ayudarte hoy?</p>
-                        <div class="quick-actions">
-                            <button class="quick-action" data-action="routines">Ver Rutinas</button>
-                            <button class="quick-action" data-action="store">Explorar Tienda</button>
-                            <button class="quick-action" data-action="classes">Reservar Clase</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="chat-input">
-                <input type="text" placeholder="Escribe tu mensaje..." id="chat-input">
-                <button type="submit" id="chat-send">
-                    <i class="fas fa-paper-plane"></i>
-                </button>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Modales -->
-    
-    <!-- Modal de Producto -->
-    <div class="modal-overlay" id="product-modal-overlay">
-        <div class="modal product-modal" id="product-modal">
-            <div class="modal-header">
-                <h2 class="modal-title">Vista Rápida</h2>
-                <button class="modal-close" id="product-modal-close">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="modal-body" id="product-modal-body">
-                <!-- Contenido cargado dinámicamente -->
-            </div>
-        </div>
-    </div>
-    
-    <!-- Modal de Carrito -->
-    <div class="modal-overlay" id="cart-modal-overlay">
-        <div class="modal cart-modal" id="cart-modal">
-            <div class="modal-header">
-                <h2 class="modal-title">
-                    <i class="fas fa-shopping-cart"></i>
-                    Carrito de Compras
-                </h2>
-                <button class="modal-close" id="cart-modal-close">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="modal-body" id="cart-modal-body">
-                <!-- Contenido cargado dinámicamente -->
-            </div>
-        </div>
-    </div>
     
     <!-- Scripts JavaScript -->
     
@@ -336,37 +389,6 @@
                         behavior: 'smooth'
                     });
                 });
-            }
-            
-            // Newsletter form
-            const newsletterForm = document.getElementById('newsletter-form');
-            if (newsletterForm) {
-                newsletterForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    const email = this.querySelector('input[name="email"]').value;
-                    
-                    // Aquí iría la lógica de suscripción
-                    STYLOFITNESS.showNotification('¡Suscrito!', 'Te has suscrito exitosamente a nuestro newsletter', 'success');
-                    this.reset();
-                });
-            }
-            
-            // Chat widget
-            const chatToggle = document.getElementById('chat-toggle');
-            const chatWindow = document.getElementById('chat-window');
-            const chatClose = document.getElementById('chat-close');
-            
-            if (chatToggle && chatWindow) {
-                chatToggle.addEventListener('click', () => {
-                    chatWindow.classList.toggle('show');
-                    document.getElementById('chat-notification').style.display = 'none';
-                });
-                
-                if (chatClose) {
-                    chatClose.addEventListener('click', () => {
-                        chatWindow.classList.remove('show');
-                    });
-                }
             }
             
             // Flash messages auto-hide

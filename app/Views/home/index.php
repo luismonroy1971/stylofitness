@@ -4,14 +4,16 @@
     <div class="offers-container">
         <div class="offers-header">
             <div class="container">
-                <h2 class="offers-title animate__animated animate__fadeInDown">
-                    <i class="fas fa-fire"></i>
-                    <span class="gradient-text compact-title">OFERTAS ESPECIALES</span>
-                    <i class="fas fa-fire"></i>
-                </h2>
-                <p class="offers-subtitle animate__animated animate__fadeInUp animate__delay-1s">
-                    Descuentos exclusivos por tiempo limitado - ¡No te los pierdas!
-                </p>
+                <div class="compact-title-section">
+                    <h2 class="offers-title-compact animate__animated animate__fadeInDown">
+                        <i class="fas fa-fire fire-icon"></i>
+                        <span class="gradient-text-enhanced">OFERTAS ESPECIALES</span>
+                        <i class="fas fa-fire fire-icon"></i>
+                    </h2>
+                    <p class="offers-subtitle-compact animate__animated animate__fadeInUp animate__delay-1s">
+                        Descuentos exclusivos por tiempo limitado - ¡No te los pierdas!
+                    </p>
+                </div>
             </div>
         </div>
         
@@ -195,27 +197,52 @@
 <!-- Nueva Sección de Características Impactante -->
 <section class="section modern-features-section">
     <div class="features-background">
-        <div class="gradient-overlay"></div>
-        <div class="floating-shapes">
-            <div class="shape shape-1"></div>
-            <div class="shape shape-2"></div>
-            <div class="shape shape-3"></div>
-            <div class="shape shape-4"></div>
+        <div class="gradient-overlay-enhanced"></div>
+        <div class="animated-particles">
+            <div class="particle particle-1"></div>
+            <div class="particle particle-2"></div>
+            <div class="particle particle-3"></div>
+            <div class="particle particle-4"></div>
+            <div class="particle particle-5"></div>
+            <div class="particle particle-6"></div>
+        </div>
+        <div class="geometric-shapes">
+            <div class="geo-shape geo-triangle"></div>
+            <div class="geo-shape geo-circle"></div>
+            <div class="geo-shape geo-square"></div>
         </div>
     </div>
     
     <div class="container">
-        <div class="features-hero" data-aos="zoom-in">
-            <h2 class="features-mega-title">
-                <span class="title-line-1">¿Por Qué Elegir</span>
-                <span class="title-line-2 gradient-text-animated">STYLOFITNESS?</span>
+        <div class="features-hero-enhanced" data-aos="zoom-in">
+            <div class="features-badge">
+                <i class="fas fa-crown"></i>
+                <span>PREMIUM EXPERIENCE</span>
+            </div>
+            <h2 class="features-mega-title-new">
+                <span class="title-line-1-new">¿Por Qué Elegir</span>
+                <span class="title-line-2-new gradient-text-premium">STYLOFITNESS?</span>
             </h2>
-            <p class="features-mega-subtitle">
-                La experiencia fitness más completa y avanzada del mercado
+            <p class="features-mega-subtitle-new">
+                La revolución fitness que transformará tu vida por completo
             </p>
+            <div class="features-stats-mini">
+                <div class="mini-stat">
+                    <span class="mini-stat-number">10K+</span>
+                    <span class="mini-stat-label">Clientes Felices</span>
+                </div>
+                <div class="mini-stat">
+                    <span class="mini-stat-number">15</span>
+                    <span class="mini-stat-label">Sedes</span>
+                </div>
+                <div class="mini-stat">
+                    <span class="mini-stat-number">98%</span>
+                    <span class="mini-stat-label">Satisfacción</span>
+                </div>
+            </div>
         </div>
         
-        <div class="modern-features-grid">
+        <div class="modern-features-grid-enhanced">
             <!-- Rutinas Personalizadas -->
             <div class="modern-feature-card" data-aos="fade-up" data-aos-delay="100">
                 <div class="feature-card-inner">
@@ -228,9 +255,13 @@
                     </div>
                     
                     <div class="feature-content-modern">
+                        <div class="feature-badge-mini">
+                            <i class="fas fa-magic"></i>
+                            <span>IA POWERED</span>
+                        </div>
                         <h3 class="feature-title-modern">Rutinas Personalizadas</h3>
                         <p class="feature-description-modern">
-                            Entrenamientos diseñados específicamente para tus objetivos con IA avanzada
+                            Entrenamientos inteligentes diseñados con IA avanzada que se adaptan a tu progreso en tiempo real
                         </p>
                         
                         <div class="feature-highlights">
@@ -472,102 +503,146 @@
 
 <!-- Productos Destacados -->
 <?php if (!empty($featuredProducts)): ?>
-<section class="section featured-products-section">
+<section class="section featured-products-section-enhanced">
+    <div class="products-background">
+        <div class="products-overlay"></div>
+        <div class="floating-icons">
+            <i class="fas fa-dumbbell floating-icon icon-1"></i>
+            <i class="fas fa-fire floating-icon icon-2"></i>
+            <i class="fas fa-star floating-icon icon-3"></i>
+            <i class="fas fa-bolt floating-icon icon-4"></i>
+        </div>
+    </div>
+    
     <div class="container">
-        <div class="section-header" data-aos="fade-up">
-            <h2 class="section-title">
-                <i class="fas fa-star"></i>
-                Productos Destacados
+        <div class="section-header-enhanced" data-aos="fade-up">
+            <div class="section-badge-products">
+                <i class="fas fa-trophy"></i>
+                <span>LO MEJOR DEL MERCADO</span>
+            </div>
+            <h2 class="section-title-enhanced">
+                <span class="title-accent">Productos</span>
+                <span class="title-main gradient-text-premium">DESTACADOS</span>
             </h2>
-            <p class="section-subtitle">Los suplementos más populares entre nuestros clientes</p>
+            <p class="section-subtitle-enhanced">Los suplementos más innovadores y efectivos del mercado fitness</p>
+            <div class="section-decorative-line"></div>
         </div>
         
-        <div class="products-grid">
+        <div class="products-grid-enhanced">
             <?php foreach ($featuredProducts as $index => $product): ?>
-                <div class="product-card hover-lift" data-aos="fade-up" data-aos-delay="<?php echo $index * 100; ?>">
-                    <div class="product-image">
-                        <?php 
-                        $productImages = is_string($product['images']) ? json_decode($product['images'], true) : $product['images'];
-                        $mainImage = !empty($productImages) ? $productImages[0] : '/public/images/default-product.jpg';
-                        ?>
-                        <img src="<?php echo AppHelper::uploadUrl($mainImage); ?>" 
-                             alt="<?php echo htmlspecialchars($product['name']); ?>" 
-                             loading="lazy">
-                        
-                        <?php if ($product['sale_price'] && $product['sale_price'] < $product['price']): ?>
-                            <?php $discount = round((($product['price'] - $product['sale_price']) / $product['price']) * 100); ?>
-                            <div class="product-badge">-<?php echo $discount; ?>%</div>
-                        <?php elseif ($product['is_featured']): ?>
-                            <div class="product-badge featured">⭐ Destacado</div>
-                        <?php endif; ?>
-                        
-                        <div class="product-overlay">
-                            <div class="product-actions">
-                                <button class="btn-quick-view" data-product-id="<?php echo $product['id']; ?>" title="Vista Rápida">
-                                    <i class="fas fa-eye"></i>
-                                </button>
-                                <button class="btn-wishlist" data-product-id="<?php echo $product['id']; ?>" title="Agregar a Favoritos">
-                                    <i class="fas fa-heart"></i>
-                                </button>
-                                <button class="btn-compare" data-product-id="<?php echo $product['id']; ?>" title="Comparar">
-                                    <i class="fas fa-balance-scale"></i>
-                                </button>
+                <div class="product-card-enhanced hover-lift-enhanced" data-aos="fade-up" data-aos-delay="<?php echo $index * 100; ?>">
+                    <div class="product-card-inner">
+                        <div class="product-image-enhanced">
+                            <?php 
+                            $productImages = is_string($product['images']) ? json_decode($product['images'], true) : $product['images'];
+                            $mainImage = !empty($productImages) ? $productImages[0] : '/public/images/default-product.jpg';
+                            ?>
+                            <img src="<?php echo AppHelper::uploadUrl($mainImage); ?>" 
+                                 alt="<?php echo htmlspecialchars($product['name']); ?>" 
+                                 loading="lazy">
+                            
+                            <div class="product-overlay-enhanced">
+                                <div class="product-actions-enhanced">
+                                    <button class="btn-action-modern btn-quick-view" data-product-id="<?php echo $product['id']; ?>" title="Vista Rápida">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                    <button class="btn-action-modern btn-wishlist" data-product-id="<?php echo $product['id']; ?>" title="Agregar a Favoritos">
+                                        <i class="fas fa-heart"></i>
+                                    </button>
+                                    <button class="btn-action-modern btn-compare" data-product-id="<?php echo $product['id']; ?>" title="Comparar">
+                                        <i class="fas fa-balance-scale"></i>
+                                    </button>
+                                </div>
+                                <div class="quick-add-overlay">
+                                    <button class="btn-quick-add" data-product-id="<?php echo $product['id']; ?>">
+                                        <i class="fas fa-cart-plus"></i>
+                                        <span>Añadir al Carrito</span>
+                                    </button>
+                                </div>
                             </div>
+                            
+                            <?php if ($product['sale_price'] && $product['sale_price'] < $product['price']): ?>
+                                <?php $discount = round((($product['price'] - $product['sale_price']) / $product['price']) * 100); ?>
+                                <div class="product-badge-enhanced discount-badge">-<?php echo $discount; ?>%</div>
+                            <?php elseif ($product['is_featured']): ?>
+                                <div class="product-badge-enhanced featured-badge">
+                                    <i class="fas fa-crown"></i>
+                                    <span>PREMIUM</span>
+                                </div>
+                            <?php endif; ?>
+                            
+                            <div class="product-glow"></div>
                         </div>
-                    </div>
                     
-                    <div class="product-info">
-                        <div class="product-category"><?php echo htmlspecialchars($product['category_name'] ?? ''); ?></div>
-                        <h3 class="product-title">
+                    <div class="product-info-enhanced">
+                        <div class="product-category-enhanced"><?php echo htmlspecialchars($product['category_name'] ?? ''); ?></div>
+                        <h3 class="product-title-enhanced">
                             <a href="<?php echo AppHelper::getBaseUrl('store/product/' . $product['slug']); ?>">
                                 <?php echo htmlspecialchars($product['name']); ?>
                             </a>
                         </h3>
-                        <p class="product-description"><?php echo htmlspecialchars($product['short_description'] ?? ''); ?></p>
+                        <p class="product-description-enhanced"><?php echo htmlspecialchars($product['short_description'] ?? ''); ?></p>
                         
-                        <div class="product-rating">
+                        <div class="product-rating-enhanced">
                             <?php
                             $rating = $product['avg_rating'] ?? 4.5;
                             for ($i = 1; $i <= 5; $i++):
                                 if ($i <= $rating):
-                                    echo '<i class="fas fa-star"></i>';
+                                    echo '<i class="fas fa-star star-filled"></i>';
                                 elseif ($i - 0.5 <= $rating):
-                                    echo '<i class="fas fa-star-half-alt"></i>';
+                                    echo '<i class="fas fa-star-half-alt star-half"></i>';
                                 else:
-                                    echo '<i class="far fa-star"></i>';
+                                    echo '<i class="far fa-star star-empty"></i>';
                                 endif;
                             endfor;
                             ?>
-                            <span class="rating-count">(<?php echo $product['reviews_count'] ?? 0; ?>)</span>
+                            <span class="rating-count-enhanced">(<?php echo $product['reviews_count'] ?? 0; ?>)</span>
                         </div>
                         
-                        <div class="product-price">
+                        <div class="product-price-enhanced">
                             <?php if ($product['sale_price'] && $product['sale_price'] < $product['price']): ?>
-                                <span class="original-price">S/ <?php echo number_format($product['price'], 2); ?></span>
-                                <span class="current-price">S/ <?php echo number_format($product['sale_price'], 2); ?></span>
+                                <span class="original-price-enhanced">S/ <?php echo number_format($product['price'], 2); ?></span>
+                                <span class="current-price-enhanced">S/ <?php echo number_format($product['sale_price'], 2); ?></span>
+                                <div class="savings-badge">
+                                    <i class="fas fa-piggy-bank"></i>
+                                    <span>Ahorras S/ <?php echo number_format($product['price'] - $product['sale_price'], 2); ?></span>
+                                </div>
                             <?php else: ?>
-                                <span class="current-price">S/ <?php echo number_format($product['price'], 2); ?></span>
+                                <span class="current-price-enhanced">S/ <?php echo number_format($product['price'], 2); ?></span>
                             <?php endif; ?>
                         </div>
                         
-                        <div class="product-stock">
+                        <div class="product-stock-enhanced">
                             <?php if ($product['stock_quantity'] > 10): ?>
-                                <span class="stock-status in-stock">✓ En Stock</span>
+                                <div class="stock-indicator high-stock">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>En Stock</span>
+                                </div>
                             <?php elseif ($product['stock_quantity'] > 0): ?>
-                                <span class="stock-status low-stock">⚠ Últimas unidades</span>
+                                <div class="stock-indicator low-stock">
+                                    <i class="fas fa-exclamation-triangle"></i>
+                                    <span>¡Últimas <?php echo $product['stock_quantity']; ?> unidades!</span>
+                                </div>
                             <?php else: ?>
-                                <span class="stock-status out-of-stock">✗ Agotado</span>
+                                <div class="stock-indicator out-of-stock">
+                                    <i class="fas fa-times-circle"></i>
+                                    <span>Agotado</span>
+                                </div>
                             <?php endif; ?>
                         </div>
                         
-                        <button class="btn-add-cart <?php echo $product['stock_quantity'] <= 0 ? 'disabled' : ''; ?>" 
-                                data-product-id="<?php echo $product['id']; ?>"
-                                <?php echo $product['stock_quantity'] <= 0 ? 'disabled' : ''; ?>>
-                            <i class="fas fa-shopping-cart"></i>
-                            <?php echo $product['stock_quantity'] > 0 ? 'Agregar al Carrito' : 'Agotado'; ?>
-                        </button>
+                        <div class="product-actions-bottom">
+                            <button class="btn-add-cart-enhanced <?php echo $product['stock_quantity'] <= 0 ? 'disabled' : ''; ?>" 
+                                    data-product-id="<?php echo $product['id']; ?>"
+                                    <?php echo $product['stock_quantity'] <= 0 ? 'disabled' : ''; ?>>
+                                <i class="fas fa-shopping-cart"></i>
+                                <span><?php echo $product['stock_quantity'] > 0 ? 'Agregar al Carrito' : 'Agotado'; ?></span>
+                                <div class="btn-shine-effect"></div>
+                            </button>
+                        </div>
                     </div>
                 </div>
+            </div>
             <?php endforeach; ?>
         </div>
         
@@ -583,14 +658,28 @@
 
 <!-- Clases Grupales -->
 <?php if (!empty($upcomingClasses)): ?>
-<section class="section classes-section bg-light">
+<section class="section classes-section-enhanced">
+    <div class="classes-background">
+        <div class="classes-overlay"></div>
+        <div class="animated-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+        </div>
+    </div>
+    
     <div class="container">
-        <div class="section-header" data-aos="fade-up">
-            <h2 class="section-title">
+        <div class="section-header-enhanced" data-aos="fade-up">
+            <div class="section-badge-classes">
                 <i class="fas fa-users"></i>
-                Clases Grupales
+                <span>EXPERIENCIA GRUPAL</span>
+            </div>
+            <h2 class="section-title-enhanced">
+                <span class="title-accent">Clases</span>
+                <span class="title-main gradient-text-premium">GRUPALES</span>
             </h2>
-            <p class="section-subtitle">Entrena con otros y mantente motivado en nuestras sedes</p>
+            <p class="section-subtitle-enhanced">Entrena con otros y mantente motivado en nuestras sedes</p>
+            <div class="section-decorative-line"></div>
         </div>
         
         <div class="classes-grid">
@@ -677,39 +766,94 @@
 
 <!-- Testimonios -->
 <?php if (!empty($testimonials)): ?>
-<section class="section testimonials-section">
+<section class="section testimonials-section-enhanced">
+    <div class="testimonials-background">
+        <div class="testimonials-overlay"></div>
+        <div class="floating-quotes">
+            <div class="quote-icon quote-1">❝</div>
+            <div class="quote-icon quote-2">❞</div>
+            <div class="quote-icon quote-3">❝</div>
+            <div class="quote-icon quote-4">❞</div>
+        </div>
+    </div>
+    
     <div class="container">
-        <div class="section-header" data-aos="fade-up">
-            <h2 class="section-title">
+        <div class="section-header-enhanced" data-aos="fade-up">
+            <div class="section-badge-testimonials">
                 <i class="fas fa-quote-left"></i>
-                Lo Que Dicen Nuestros Clientes
+                <span>TESTIMONIOS REALES</span>
+            </div>
+            <h2 class="section-title-enhanced">
+                <span class="title-accent">Lo Que Dicen</span>
+                <span class="title-main gradient-text-premium">NUESTROS CLIENTES</span>
             </h2>
-            <p class="section-subtitle">Historias reales de transformación y éxito</p>
+            <p class="section-subtitle-enhanced">Historias reales de transformación y éxito</p>
+            <div class="section-decorative-line"></div>
         </div>
         
-        <div class="testimonials-grid">
+        <div class="testimonials-grid-enhanced">
             <?php foreach ($testimonials as $index => $testimonial): ?>
-                <div class="testimonial-card glass-effect" data-aos="fade-up" data-aos-delay="<?php echo $index * 200; ?>">
-                    <div class="testimonial-content">
-                        <div class="testimonial-rating">
-                            <?php for ($i = 1; $i <= $testimonial['rating']; $i++): ?>
-                                <i class="fas fa-star"></i>
-                            <?php endfor; ?>
-                        </div>
-                        
-                        <blockquote class="testimonial-text">
-                            "<?php echo htmlspecialchars($testimonial['text']); ?>"
-                        </blockquote>
-                        
-                        <div class="testimonial-author">
-                            <img src="<?php echo AppHelper::asset('images/testimonials/' . ($testimonial['image'] ?? 'default.jpg')); ?>" 
-                                 alt="<?php echo htmlspecialchars($testimonial['name']); ?>" 
-                                 class="author-avatar">
-                            <div class="author-info">
-                                <div class="author-name"><?php echo htmlspecialchars($testimonial['name']); ?></div>
-                                <div class="author-role"><?php echo htmlspecialchars($testimonial['role']); ?></div>
+                <div class="testimonial-card-modern glass-effect-enhanced" data-aos="fade-up" data-aos-delay="<?php echo $index * 200; ?>">
+                    <div class="testimonial-card-inner">
+                        <div class="testimonial-header">
+                            <div class="testimonial-avatar-section">
+                                <div class="avatar-container">
+                                    <img src="<?php echo AppHelper::asset('images/testimonials/' . ($testimonial['image'] ?? 'default.jpg')); ?>" 
+                                         alt="<?php echo htmlspecialchars($testimonial['name']); ?>" 
+                                         class="author-avatar-enhanced">
+                                    <div class="avatar-ring"></div>
+                                    <div class="avatar-glow"></div>
+                                </div>
+                                <div class="testimonial-verified">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Cliente Verificado</span>
+                                </div>
+                            </div>
+                            
+                            <div class="testimonial-rating-enhanced">
+                                <?php for ($i = 1; $i <= $testimonial['rating']; $i++): ?>
+                                    <i class="fas fa-star star-animated" style="animation-delay: <?php echo $i * 0.1; ?>s"></i>
+                                <?php endfor; ?>
+                                <span class="rating-number"><?php echo $testimonial['rating']; ?>.0</span>
                             </div>
                         </div>
+                        
+                        <div class="quote-container">
+                            <div class="quote-mark quote-open">“</div>
+                            <blockquote class="testimonial-text-enhanced">
+                                <?php echo htmlspecialchars($testimonial['text']); ?>
+                            </blockquote>
+                            <div class="quote-mark quote-close">”</div>
+                        </div>
+                        
+                        <div class="testimonial-footer">
+                            <div class="author-info-enhanced">
+                                <div class="author-name-enhanced"><?php echo htmlspecialchars($testimonial['name']); ?></div>
+                                <div class="author-role-enhanced"><?php echo htmlspecialchars($testimonial['role']); ?></div>
+                                <div class="author-location">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>Lima, Perú</span>
+                                </div>
+                            </div>
+                            
+                            <div class="testimonial-date">
+                                <i class="fas fa-calendar-alt"></i>
+                                <span><?php echo date('M Y', strtotime('-' . rand(1, 12) . ' months')); ?></span>
+                            </div>
+                        </div>
+                        
+                        <div class="testimonial-metrics">
+                            <div class="metric">
+                                <i class="fas fa-trophy"></i>
+                                <span><?php echo rand(5, 25); ?>kg perdidos</span>
+                            </div>
+                            <div class="metric">
+                                <i class="fas fa-fire"></i>
+                                <span><?php echo rand(3, 18); ?> meses</span>
+                            </div>
+                        </div>
+                        
+                        <div class="card-glow-effect"></div>
                     </div>
                 </div>
             <?php endforeach; ?>

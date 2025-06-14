@@ -51,6 +51,10 @@
     <!-- Correcciones CSS críticas -->
     <link rel="stylesheet" href="<?php echo AppHelper::asset('css/fixes.css'); ?>">
     
+    <!-- Estilos Homepage Mejorados - v2.0 -->
+    <link rel="stylesheet" href="<?php echo AppHelper::asset('css/homepage-enhanced.css'); ?>?v=<?php echo time(); ?>">
+    
+    
     <!-- Estilos adicionales según la página -->
     <?php if (isset($additionalCSS)): ?>
         <?php foreach ($additionalCSS as $css): ?>
@@ -66,6 +70,82 @@
             --accent-color: <?php echo THEME_COLORS['accent']; ?>;
             --dark-bg: <?php echo THEME_COLORS['dark']; ?>;
             --light-bg: <?php echo THEME_COLORS['light']; ?>;
+        }
+        
+        /* ESTILOS INMEDIATOS - FORZAR CAMBIOS */
+        .compact-title-section {
+            text-align: center !important;
+            padding: 1rem 0 !important;
+            margin-bottom: 0.5rem !important;
+            background: rgba(0, 0, 0, 0.1) !important;
+            border-radius: 15px !important;
+            backdrop-filter: blur(10px) !important;
+            border: 1px solid rgba(255, 107, 0, 0.2) !important;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2) !important;
+            position: relative !important;
+            overflow: hidden !important;
+        }
+        
+        .offers-title-compact {
+            font-family: 'Montserrat', Arial, sans-serif !important;
+            font-size: 2.2rem !important;
+            font-weight: 900 !important;
+            margin: 0 0 0.5rem 0 !important;
+            color: #FFFFFF !important;
+            text-shadow: 0 0 30px rgba(255, 107, 0, 0.5) !important;
+            letter-spacing: 1px !important;
+            line-height: 1.1 !important;
+            text-transform: uppercase !important;
+            position: relative !important;
+            z-index: 2 !important;
+        }
+        
+        .offers-title-compact .fire-icon {
+            color: #FF6B00 !important;
+            animation: fireFlicker 2s infinite alternate !important;
+            margin: 0 0.75rem !important;
+            font-size: 2rem !important;
+            filter: drop-shadow(0 0 10px rgba(255, 107, 0, 0.6)) !important;
+        }
+        
+        .gradient-text-enhanced {
+            background: linear-gradient(135deg, #FF6B00 0%, #FFB366 50%, #FF6B00 100%) !important;
+            background-size: 200% 200% !important;
+            background-clip: text !important;
+            -webkit-background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+            animation: gradientShift 3s ease-in-out infinite !important;
+            display: inline-block !important;
+        }
+        
+        @keyframes fireFlicker {
+            0%, 100% { 
+                transform: scale(1) rotate(-1deg);
+                filter: drop-shadow(0 0 10px rgba(255, 107, 0, 0.6));
+            }
+            50% { 
+                transform: scale(1.1) rotate(1deg);
+                filter: drop-shadow(0 0 15px rgba(255, 107, 0, 0.8));
+            }
+        }
+        
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        .modern-features-section {
+            background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 50%, #2d2d2d 100%) !important;
+        }
+        
+        .featured-products-section-enhanced {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 50%, #f8f9fa 100%) !important;
+        }
+        
+        @media (max-width: 768px) {
+            .offers-title-compact {
+                font-size: 1.8rem !important;
+            }
         }
     </style>
     
