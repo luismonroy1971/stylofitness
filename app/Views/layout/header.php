@@ -48,6 +48,9 @@
     <!-- Estilos principales -->
     <link rel="stylesheet" href="<?php echo AppHelper::asset('css/styles.css'); ?>">
     
+    <!-- Correcciones CSS críticas -->
+    <link rel="stylesheet" href="<?php echo AppHelper::asset('css/fixes.css'); ?>">
+    
     <!-- Estilos adicionales según la página -->
     <?php if (isset($additionalCSS)): ?>
         <?php foreach ($additionalCSS as $css): ?>
@@ -250,10 +253,6 @@
                                 <a href="<?php echo AppHelper::baseUrl('login'); ?>" class="btn-login">
                                     <i class="fas fa-sign-in-alt"></i>
                                     Ingresar
-                                </a>
-                                <a href="<?php echo AppHelper::baseUrl('register'); ?>" class="btn-register">
-                                    <i class="fas fa-user-plus"></i>
-                                    Registrarse
                                 </a>
                             </div>
                         <?php endif; ?>

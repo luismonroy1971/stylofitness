@@ -1,215 +1,470 @@
-<!-- Hero Section -->
-<section class="hero" id="hero">
-    <div class="hero-background">
-        <video autoplay muted loop class="hero-video">
-            <source src="<?php echo AppHelper::asset('videos/hero-bg.mp4'); ?>" type="video/mp4">
-        </video>
-        <div class="hero-overlay"></div>
-    </div>
-    
-    <div class="container">
-        <div class="hero-content" data-aos="fade-up">
-            <h1 class="hero-title animate__animated animate__fadeInUp">
-                Transforma Tu Cuerpo<br>
-                <span class="gradient-text">Con STYLOFITNESS</span>
-            </h1>
-            <p class="hero-subtitle animate__animated animate__fadeInUp animate__delay-1s">
-                Rutinas personalizadas, suplementos de calidad premium y el mejor seguimiento profesional. 
-                Tu transformación comienza aquí.
-            </p>
-            
-            <div class="hero-buttons animate__animated animate__fadeInUp animate__delay-2s">
-                <a href="<?php echo AppHelper::getBaseUrl('register'); ?>" class="btn-primary btn-lg">
-                    <i class="fas fa-rocket"></i>
-                    Comenzar Ahora
-                </a>
-                
-                <a href="<?php echo AppHelper::getBaseUrl('store'); ?>" class="btn-secondary btn-lg">
-                    <i class="fas fa-store"></i>
-                    Explorar Tienda
-                </a>
-            </div>
-            
-            <!-- Estadísticas Hero -->
-            <div class="hero-stats animate__animated animate__fadeInUp animate__delay-3s">
-                <div class="hero-stat">
-                    <div class="stat-number"><?php echo number_format($stats['active_clients'] ?? 0); ?>+</div>
-                    <div class="stat-label">Clientes Activos</div>
-                </div>
-                <div class="hero-stat">
-                    <div class="stat-number"><?php echo number_format($stats['total_routines'] ?? 0); ?>+</div>
-                    <div class="stat-label">Rutinas Creadas</div>
-                </div>
-                <div class="hero-stat">
-                    <div class="stat-number"><?php echo number_format($stats['total_products'] ?? 0); ?>+</div>
-                    <div class="stat-label">Productos Premium</div>
-                </div>
-                <div class="hero-stat">
-                    <div class="stat-number"><?php echo number_format($stats['weekly_classes'] ?? 0); ?>+</div>
-                    <div class="stat-label">Clases Semanales</div>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Scroll Indicator -->
-    <div class="scroll-indicator animate__animated animate__bounce animate__infinite">
-        <i class="fas fa-chevron-down"></i>
-    </div>
-</section>
-
-<!-- Carrusel de Productos Promocionales -->
+<!-- Sección de Ofertas Especiales - PRIMERA SECCIÓN -->
 <?php if (!empty($promotionalProducts)): ?>
-<section class="section promotional-carousel-section">
-    <div class="container">
-        <div class="section-header" data-aos="fade-up">
-            <h2 class="section-title">
-                <i class="fas fa-fire"></i>
-                Ofertas Especiales
-            </h2>
-            <p class="section-subtitle">Descuentos exclusivos en nuestros productos más populares</p>
+<section class="section special-offers-section" id="special-offers">
+    <div class="offers-container">
+        <div class="offers-header">
+            <div class="container">
+                <h2 class="offers-title animate__animated animate__fadeInDown">
+                    <i class="fas fa-fire"></i>
+                    <span class="gradient-text compact-title">OFERTAS ESPECIALES</span>
+                    <i class="fas fa-fire"></i>
+                </h2>
+                <p class="offers-subtitle animate__animated animate__fadeInUp animate__delay-1s">
+                    Descuentos exclusivos por tiempo limitado - ¡No te los pierdas!
+                </p>
+            </div>
         </div>
         
-        <div class="product-carousel" data-aos="fade-up" data-aos-delay="200">
-            <div class="carousel-container" id="promotional-carousel">
-                <?php foreach ($promotionalProducts as $index => $product): ?>
-                    <div class="carousel-slide <?php echo $index === 0 ? 'active' : ''; ?>">
-                        <div class="carousel-content">
-                            <div class="product-badge">
-                                <?php if ($product['discount_percentage']): ?>
-                                    -<?php echo $product['discount_percentage']; ?>% OFF
-                                <?php endif; ?>
+        <div class="mega-carousel" id="mega-offers-carousel">
+            <div class="carousel-wrapper">
+                <div class="carousel-track" id="offers-track">
+                    <?php foreach ($promotionalProducts as $index => $product): ?>
+                        <div class="mega-slide <?php echo $index === 0 ? 'active' : ''; ?>" data-slide="<?php echo $index; ?>">
+                            <div class="slide-background">
+                                <div class="bg-overlay bg-overlay-<?php echo ($index % 4) + 1; ?>"></div>
+                                <div class="bg-particles"></div>
                             </div>
                             
-                            <div class="carousel-text">
-                                <div class="product-category"><?php echo htmlspecialchars($product['category_name']); ?></div>
-                                <h3 class="carousel-title"><?php echo htmlspecialchars($product['name']); ?></h3>
-                                <p class="carousel-description"><?php echo htmlspecialchars($product['short_description'] ?? ''); ?></p>
-                                
-                                <div class="carousel-price">
-                                    <?php if ($product['sale_price']): ?>
-                                        <span class="original-price">S/ <?php echo number_format($product['price'], 2); ?></span>
-                                        <span class="sale-price">S/ <?php echo number_format($product['sale_price'], 2); ?></span>
-                                    <?php else: ?>
-                                        <span class="current-price">S/ <?php echo number_format($product['price'], 2); ?></span>
-                                    <?php endif; ?>
-                                </div>
-                                
-                                <div class="carousel-actions">
-                                    <button class="btn-primary btn-add-cart" data-product-id="<?php echo $product['id']; ?>">
-                                        <i class="fas fa-cart-plus"></i>
-                                        Agregar al Carrito
-                                    </button>
-                                    <a href="<?php echo AppHelper::getBaseUrl('store/product/' . $product['slug']); ?>" class="btn-secondary">
-                                        Ver Detalles
-                                    </a>
+                            <div class="container">
+                                <div class="slide-content">
+                                    <div class="product-info-mega">
+                                        <div class="mega-badge animate__animated animate__bounceIn animate__delay-1s">
+                                            <?php if ($product['discount_percentage']): ?>
+                                                <span class="discount-percent"><?php echo $product['discount_percentage']; ?>%</span>
+                                                <span class="discount-text">OFF</span>
+                                            <?php else: ?>
+                                                <span class="special-text">ESPECIAL</span>
+                                            <?php endif; ?>
+                                        </div>
+                                        
+                                        <div class="product-category-mega animate__animated animate__fadeInLeft animate__delay-1s">
+                                            <?php echo htmlspecialchars($product['category_name']); ?>
+                                        </div>
+                                        
+                                        <h3 class="product-title-mega animate__animated animate__fadeInLeft animate__delay-1-5s">
+                                            <?php echo htmlspecialchars($product['name']); ?>
+                                        </h3>
+                                        
+                                        <p class="product-description-mega animate__animated animate__fadeInLeft animate__delay-2s">
+                                            <?php echo htmlspecialchars($product['short_description'] ?? $product['description'] ?? ''); ?>
+                                        </p>
+                                        
+                                        <div class="price-mega animate__animated animate__fadeInLeft animate__delay-2-5s">
+                                            <?php if ($product['sale_price']): ?>
+                                                <span class="original-price-mega">S/ <?php echo number_format($product['price'], 2); ?></span>
+                                                <span class="sale-price-mega">S/ <?php echo number_format($product['sale_price'], 2); ?></span>
+                                                <span class="savings-mega">
+                                                    ¡Ahorras S/ <?php echo number_format($product['price'] - $product['sale_price'], 2); ?>!
+                                                </span>
+                                            <?php else: ?>
+                                                <span class="current-price-mega">S/ <?php echo number_format($product['price'], 2); ?></span>
+                                            <?php endif; ?>
+                                        </div>
+                                        
+                                        <div class="countdown-timer animate__animated animate__fadeInLeft animate__delay-3s" 
+                                             data-end-date="<?php echo date('Y-m-d H:i:s', strtotime('+7 days')); ?>">
+                                            <div class="timer-label">Oferta termina en:</div>
+                                            <div class="timer-digits">
+                                                <div class="timer-unit">
+                                                    <span class="timer-value" id="days-<?php echo $index; ?>">07</span>
+                                                    <span class="timer-label-small">DÍAS</span>
+                                                </div>
+                                                <div class="timer-separator">:</div>
+                                                <div class="timer-unit">
+                                                    <span class="timer-value" id="hours-<?php echo $index; ?>">23</span>
+                                                    <span class="timer-label-small">HORAS</span>
+                                                </div>
+                                                <div class="timer-separator">:</div>
+                                                <div class="timer-unit">
+                                                    <span class="timer-value" id="minutes-<?php echo $index; ?>">59</span>
+                                                    <span class="timer-label-small">MIN</span>
+                                                </div>
+                                                <div class="timer-separator">:</div>
+                                                <div class="timer-unit">
+                                                    <span class="timer-value" id="seconds-<?php echo $index; ?>">59</span>
+                                                    <span class="timer-label-small">SEG</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="mega-actions animate__animated animate__fadeInUp animate__delay-3-5s">
+                                            <button class="btn-mega-primary btn-add-cart-mega" data-product-id="<?php echo $product['id']; ?>">
+                                                <i class="fas fa-cart-plus"></i>
+                                                <span>AGREGAR AL CARRITO</span>
+                                                <div class="btn-shine"></div>
+                                            </button>
+                                            
+                                            <a href="<?php echo AppHelper::getBaseUrl('store/product/' . $product['slug']); ?>" 
+                                               class="btn-mega-secondary">
+                                                <i class="fas fa-eye"></i>
+                                                Ver Detalles
+                                            </a>
+                                        </div>
+                                        
+                                        <div class="stock-indicator animate__animated animate__fadeInUp animate__delay-4s">
+                                            <?php 
+                                            $stockPercentage = min(100, ($product['stock_quantity'] / 50) * 100);
+                                            $stockClass = $stockPercentage > 50 ? 'high' : ($stockPercentage > 20 ? 'medium' : 'low');
+                                            ?>
+                                            <div class="stock-bar">
+                                                <div class="stock-fill stock-<?php echo $stockClass; ?>" 
+                                                     style="width: <?php echo $stockPercentage; ?>%"></div>
+                                            </div>
+                                            <span class="stock-text">
+                                                <?php if ($product['stock_quantity'] > 10): ?>
+                                                    ✨ ¡En Stock! - Más de <?php echo $product['stock_quantity']; ?> disponibles
+                                                <?php elseif ($product['stock_quantity'] > 0): ?>
+                                                    ⚠ ¡Últimas <?php echo $product['stock_quantity']; ?> unidades!
+                                                <?php else: ?>
+                                                    ❌ Agotado
+                                                <?php endif; ?>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="product-visual-mega animate__animated animate__fadeInRight animate__delay-1s">
+                                        <div class="mega-image-container">
+                                            <?php 
+                                            $productImages = is_string($product['images']) ? json_decode($product['images'], true) : $product['images'];
+                                            $mainImage = !empty($productImages) ? $productImages[0] : '/public/images/default-product.jpg';
+                                            ?>
+                                            <img src="<?php echo AppHelper::uploadUrl($mainImage); ?>" 
+                                                 alt="<?php echo htmlspecialchars($product['name']); ?>" 
+                                                 class="mega-product-image"
+                                                 loading="lazy">
+                                            
+                                            <div class="image-glow"></div>
+                                            <div class="floating-elements">
+                                                <div class="float-element float-1">+</div>
+                                                <div class="float-element float-2">★</div>
+                                                <div class="float-element float-3">◆</div>
+                                                <div class="float-element float-4">✨</div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="product-features">
+                                            <div class="feature-item">
+                                                <i class="fas fa-shipping-fast"></i>
+                                                <span>Envío Gratis</span>
+                                            </div>
+                                            <div class="feature-item">
+                                                <i class="fas fa-shield-alt"></i>
+                                                <span>Garantía Total</span>
+                                            </div>
+                                            <div class="feature-item">
+                                                <i class="fas fa-medal"></i>
+                                                <span>Calidad Premium</span>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        
-                        <div class="carousel-image">
-                            <?php 
-                            $productImages = is_string($product['images']) ? json_decode($product['images'], true) : $product['images'];
-                            $mainImage = !empty($productImages) ? $productImages[0] : '/public/images/default-product.jpg';
-                            ?>
-                            <img src="<?php echo AppHelper::uploadUrl($mainImage); ?>" 
-                                 alt="<?php echo htmlspecialchars($product['name']); ?>" 
-                                 loading="lazy">
-                        </div>
-                    </div>
-                <?php endforeach; ?>
+                    <?php endforeach; ?>
+                </div>
             </div>
             
-            <!-- Controles del carrusel -->
-            <div class="carousel-controls">
+            <!-- Controles avanzados del carrusel -->
+            <div class="mega-carousel-controls">
+                <button class="mega-nav mega-prev" id="mega-prev">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="mega-nav mega-next" id="mega-next">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+            
+            <div class="mega-indicators">
                 <?php foreach ($promotionalProducts as $index => $product): ?>
-                    <button class="carousel-dot <?php echo $index === 0 ? 'active' : ''; ?>" 
-                            data-slide="<?php echo $index; ?>"></button>
+                    <button class="mega-dot <?php echo $index === 0 ? 'active' : ''; ?>" 
+                            data-slide="<?php echo $index; ?>">
+                        <span class="dot-progress"></span>
+                    </button>
                 <?php endforeach; ?>
             </div>
             
-            <button class="carousel-nav carousel-prev">
-                <i class="fas fa-chevron-left"></i>
-            </button>
-            <button class="carousel-nav carousel-next">
-                <i class="fas fa-chevron-right"></i>
-            </button>
+            <!-- Progress bar -->
+            <div class="carousel-progress">
+                <div class="progress-bar-mega" id="carousel-progress"></div>
+            </div>
         </div>
     </div>
 </section>
 <?php endif; ?>
 
-<!-- Sección de Características -->
-<section class="section features-section bg-dark">
+<!-- Nueva Sección de Características Impactante -->
+<section class="section modern-features-section">
+    <div class="features-background">
+        <div class="gradient-overlay"></div>
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+            <div class="shape shape-4"></div>
+        </div>
+    </div>
+    
     <div class="container">
-        <div class="section-header" data-aos="fade-up">
-            <h2 class="section-title text-white">¿Por Qué Elegir STYLOFITNESS?</h2>
-            <p class="section-subtitle text-light">La experiencia fitness más completa del mercado</p>
+        <div class="features-hero" data-aos="zoom-in">
+            <h2 class="features-mega-title">
+                <span class="title-line-1">¿Por Qué Elegir</span>
+                <span class="title-line-2 gradient-text-animated">STYLOFITNESS?</span>
+            </h2>
+            <p class="features-mega-subtitle">
+                La experiencia fitness más completa y avanzada del mercado
+            </p>
         </div>
         
-        <div class="features-grid">
-            <div class="feature-card glass-effect" data-aos="fade-up" data-aos-delay="100">
-                <div class="feature-icon">
-                    <i class="fas fa-dumbbell"></i>
+        <div class="modern-features-grid">
+            <!-- Rutinas Personalizadas -->
+            <div class="modern-feature-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="feature-card-inner">
+                    <div class="feature-glow"></div>
+                    <div class="feature-icon-modern">
+                        <div class="icon-bg">
+                            <i class="fas fa-dumbbell"></i>
+                        </div>
+                        <div class="icon-pulse"></div>
+                    </div>
+                    
+                    <div class="feature-content-modern">
+                        <h3 class="feature-title-modern">Rutinas Personalizadas</h3>
+                        <p class="feature-description-modern">
+                            Entrenamientos diseñados específicamente para tus objetivos con IA avanzada
+                        </p>
+                        
+                        <div class="feature-highlights">
+                            <div class="highlight-item">
+                                <i class="fas fa-video"></i>
+                                <span>Videos HD Explicativos</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-chart-line"></i>
+                                <span>Seguimiento en Tiempo Real</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-robot"></i>
+                                <span>Ajustes Automáticos IA</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-headset"></i>
+                                <span>Soporte 24/7</span>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-stats">
+                            <div class="stat">
+                                <span class="stat-number">1000+</span>
+                                <span class="stat-label">Ejercicios</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">95%</span>
+                                <span class="stat-label">Efectividad</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <h3 class="feature-title">Rutinas Personalizadas</h3>
-                <p class="feature-description">
-                    Entrenamientos diseñados específicamente para tus objetivos, nivel y disponibilidad de tiempo.
-                </p>
-                <ul class="feature-list">
-                    <li>Videos HD explicativos</li>
-                    <li>Seguimiento de progreso</li>
-                    <li>Ajustes automáticos</li>
-                    <li>Soporte 24/7</li>
-                </ul>
             </div>
             
-            <div class="feature-card glass-effect" data-aos="fade-up" data-aos-delay="200">
-                <div class="feature-icon">
-                    <i class="fas fa-store"></i>
+            <!-- Tienda Premium -->
+            <div class="modern-feature-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="feature-card-inner">
+                    <div class="feature-glow"></div>
+                    <div class="feature-icon-modern">
+                        <div class="icon-bg">
+                            <i class="fas fa-store"></i>
+                        </div>
+                        <div class="icon-pulse"></div>
+                    </div>
+                    
+                    <div class="feature-content-modern">
+                        <h3 class="feature-title-modern">Tienda Premium</h3>
+                        <p class="feature-description-modern">
+                            Suplementos y accesorios de máxima calidad con recomendaciones inteligentes
+                        </p>
+                        
+                        <div class="feature-highlights">
+                            <div class="highlight-item">
+                                <i class="fas fa-certificate"></i>
+                                <span>Productos Certificados</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-brain"></i>
+                                <span>Recomendaciones IA</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-shipping-fast"></i>
+                                <span>Envío Express Gratis</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-shield-alt"></i>
+                                <span>Garantía Total</span>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-stats">
+                            <div class="stat">
+                                <span class="stat-number">500+</span>
+                                <span class="stat-label">Productos</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">99%</span>
+                                <span class="stat-label">Satisfacción</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <h3 class="feature-title">Tienda Premium</h3>
-                <p class="feature-description">
-                    Los mejores suplementos y accesorios con integración directa a tus rutinas de entrenamiento.
-                </p>
-                <ul class="feature-list">
-                    <li>Productos originales</li>
-                    <li>Recomendaciones IA</li>
-                    <li>Envío gratis +S/150</li>
-                    <li>Garantía total</li>
-                </ul>
             </div>
             
-            <div class="feature-card glass-effect" data-aos="fade-up" data-aos-delay="300">
-                <div class="feature-icon">
-                    <i class="fas fa-users"></i>
+            <!-- Clases Grupales -->
+            <div class="modern-feature-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="feature-card-inner">
+                    <div class="feature-glow"></div>
+                    <div class="feature-icon-modern">
+                        <div class="icon-bg">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="icon-pulse"></div>
+                    </div>
+                    
+                    <div class="feature-content-modern">
+                        <h3 class="feature-title-modern">Clases Grupales</h3>
+                        <p class="feature-description-modern">
+                            Entrenamientos grupales energizantes con instructores certificados
+                        </p>
+                        
+                        <div class="feature-highlights">
+                            <div class="highlight-item">
+                                <i class="fas fa-calendar-alt"></i>
+                                <span>Horarios Flexibles</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-user-graduate"></i>
+                                <span>Instructores Expertos</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-mobile-alt"></i>
+                                <span>Reserva Online</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-fire"></i>
+                                <span>Ambiente Motivador</span>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-stats">
+                            <div class="stat">
+                                <span class="stat-number">50+</span>
+                                <span class="stat-label">Clases/Sem</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">15</span>
+                                <span class="stat-label">Sedes</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <h3 class="feature-title">Clases Grupales</h3>
-                <p class="feature-description">
-                    Entrenamientos en grupo con instructores certificados en nuestras múltiples sedes.
-                </p>
-                <ul class="feature-list">
-                    <li>Horarios flexibles</li>
-                    <li>Instructores expertos</li>
-                    <li>Reserva online</li>
-                    <li>Ambiente motivador</li>
-                </ul>
             </div>
             
-            <div class="feature-card glass-effect" data-aos="fade-up" data-aos-delay="400">
-                <div class="feature-icon">
-                    <i class="fas fa-chart-line"></i>
+            <!-- Seguimiento Avanzado -->
+            <div class="modern-feature-card" data-aos="fade-up" data-aos-delay="400">
+                <div class="feature-card-inner">
+                    <div class="feature-glow"></div>
+                    <div class="feature-icon-modern">
+                        <div class="icon-bg">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="icon-pulse"></div>
+                    </div>
+                    
+                    <div class="feature-content-modern">
+                        <h3 class="feature-title-modern">Seguimiento Avanzado</h3>
+                        <p class="feature-description-modern">
+                            Monitoreo completo con métricas avanzadas y análisis predictivo
+                        </p>
+                        
+                        <div class="feature-highlights">
+                            <div class="highlight-item">
+                                <i class="fas fa-tachometer-alt"></i>
+                                <span>Dashboard Interactivo</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-file-chart-line"></i>
+                                <span>Reportes Detallados</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-bullseye"></i>
+                                <span>Metas Inteligentes</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-analytics"></i>
+                                <span>Análisis Predictivo</span>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-stats">
+                            <div class="stat">
+                                <span class="stat-number">25+</span>
+                                <span class="stat-label">Métricas</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">100%</span>
+                                <span class="stat-label">Precisión</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <h3 class="feature-title">Seguimiento Avanzado</h3>
-                <p class="feature-description">
-                    Monitoreo completo de tu progreso con métricas detalladas y análisis profesional.
-                </p>
-                <ul class="feature-list">
-                    <li>Dashboard interactivo</li>
-                    <li>Reportes detallados</li>
-                    <li>Metas personalizadas</li>
-                    <li>Análisis de tendencias</li>
-                </ul>
+            </div>
+        </div>
+        
+        <!-- Sección de Beneficios Adicionales -->
+        <div class="additional-benefits" data-aos="fade-up" data-aos-delay="500">
+            <div class="benefits-title">
+                <h3>Y mucho más...</h3>
+            </div>
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <i class="fas fa-mobile-alt"></i>
+                    <span>App Móvil Nativa</span>
+                </div>
+                <div class="benefit-item">
+                    <i class="fas fa-cloud"></i>
+                    <span>Sincronización Cloud</span>
+                </div>
+                <div class="benefit-item">
+                    <i class="fas fa-medal"></i>
+                    <span>Sistema de Logros</span>
+                </div>
+                <div class="benefit-item">
+                    <i class="fas fa-users-cog"></i>
+                    <span>Comunidad Activa</span>
+                </div>
+                <div class="benefit-item">
+                    <i class="fas fa-heart-pulse"></i>
+                    <span>Monitor de Salud</span>
+                </div>
+                <div class="benefit-item">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>Cursos y Talleres</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- CTA de la sección -->
+        <div class="features-cta" data-aos="zoom-in" data-aos-delay="600">
+            <div class="cta-content">
+                <h3>¿Listo para experimentar la diferencia?</h3>
+                <p>Únete a la revolución fitness más avanzada del país</p>
+                <div class="cta-buttons">
+                    <a href="<?php echo AppHelper::getBaseUrl('register'); ?>" class="btn-cta-primary">
+                        <i class="fas fa-rocket"></i>
+                        Comenzar Gratis
+                    </a>
+                    <a href="<?php echo AppHelper::getBaseUrl('contact'); ?>" class="btn-cta-secondary">
+                        <i class="fas fa-phone"></i>
+                        Solicitar Demo
+                    </a>
+                </div>
             </div>
         </div>
     </div>

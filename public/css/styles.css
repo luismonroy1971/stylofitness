@@ -516,6 +516,916 @@ body.nav-open {
     overflow: hidden;
 }
 
+/* =============================================
+   SECCIÓN DE OFERTAS ESPECIALES - CORREGIDA
+   ============================================= */
+.special-offers-section {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
+    padding: 4rem 0; /* CAMBIO: Padding fijo en lugar de flex layout */
+    margin: 0;
+    position: relative;
+    overflow: visible; /* CAMBIO: Permitir overflow para evitar cortes */
+    min-height: 80vh; /* CAMBIO: Altura mínima flexible */
+    display: block; /* CAMBIO: Layout normal en lugar de flex */
+}
+
+.offers-container {
+    position: relative;
+    width: 100%;
+    height: auto; /* CAMBIO: Altura automática */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.offers-header {
+    text-align: center;
+    padding: 2rem 0; /* CAMBIO: Padding más controlado */
+    position: relative;
+    z-index: 10;
+    margin-bottom: 2rem; /* CAMBIO: Margen inferior para separación */
+}
+
+.offers-title {
+    font-family: var(--font-accent);
+    font-size: 2.8rem; /* CAMBIO: Tamaño más moderado */
+    font-weight: 900;
+    margin: 0 0 1rem 0; /* CAMBIO: Margen inferior fijo */
+    color: var(--white);
+    text-shadow: 0 0 30px rgba(255, 107, 0, 0.5);
+    letter-spacing: 2px;
+}
+
+.offers-title i {
+    color: var(--primary-color);
+    animation: pulse 2s infinite;
+    margin: 0 0.5rem;
+}
+
+.offers-subtitle {
+    font-size: 1.2rem;
+    color: var(--text-light);
+    margin: 0;
+    font-weight: 300;
+}
+
+/* Mega Carrusel - Corregido */
+.mega-carousel {
+    position: relative;
+    width: 100%;
+    height: auto; /* CAMBIO: Altura automática */
+    min-height: 550px; /* CAMBIO: Altura mínima más conservadora */
+    overflow: hidden;
+    border-radius: 20px; /* CAMBIO: Bordes redondeados */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3); /* CAMBIO: Sombra para definir límites */
+}
+
+.carousel-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 550px; /* CAMBIO: Altura mínima consistente */
+}
+
+.carousel-track {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.mega-slide {
+    min-width: 100%;
+    height: auto; /* CAMBIO: Altura automática */
+    min-height: 550px; /* CAMBIO: Altura mínima consistente */
+    position: relative;
+    display: flex;
+    align-items: center;
+    overflow: hidden; /* CAMBIO: Ocultar overflow interno */
+    padding: 2rem 0; /* CAMBIO: Padding vertical controlado */
+}
+
+.slide-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+}
+
+.bg-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0.95;
+}
+
+.bg-overlay-1 {
+    background: linear-gradient(135deg, #ff6b00 0%, #ff8533 50%, #ffaa66 100%);
+}
+
+.bg-overlay-2 {
+    background: linear-gradient(135deg, #e55a00 0%, #ff6b00 50%, #ff8533 100%);
+}
+
+.bg-overlay-3 {
+    background: linear-gradient(135deg, #cc5200 0%, #e55a00 50%, #ff6b00 100%);
+}
+
+.bg-overlay-4 {
+    background: linear-gradient(135deg, #b84700 0%, #cc5200 50%, #e55a00 100%);
+}
+
+.bg-particles {
+    display: none; /* Ocultar partículas de fondo */
+}
+
+.slide-content {
+    position: relative;
+    z-index: 5;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem; /* CAMBIO: Padding horizontal fijo */
+    min-height: 450px; /* CAMBIO: Altura mínima para contenido */
+}
+
+/* Información del producto - Corregida */
+.product-info-mega {
+    color: var(--white);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* CAMBIO: Centrado vertical */
+    height: 100%;
+}
+
+.mega-badge {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
+    padding: 1rem 2rem;
+    margin-bottom: 1.5rem; /* CAMBIO: Margen reducido */
+    position: relative;
+    overflow: hidden;
+    align-self: flex-start; /* CAMBIO: Alineación controlada */
+}
+
+.mega-badge::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    animation: shine 3s infinite;
+}
+
+.discount-percent {
+    font-size: 3rem;
+    font-weight: 900;
+    line-height: 1;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+.discount-text {
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.special-text {
+    font-size: 1.8rem;
+    font-weight: 900;
+    letter-spacing: 3px;
+}
+
+.product-category-mega {
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    opacity: 0.9;
+    margin-bottom: 1rem;
+}
+
+.product-title-mega {
+    font-size: 2.5rem;
+    font-weight: 900;
+    line-height: 1.2; /* CAMBIO: Line-height más controlado */
+    margin-bottom: 1rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.product-description-mega {
+    font-size: 1.1rem; /* CAMBIO: Tamaño más legible */
+    line-height: 1.6;
+    margin-bottom: 1.5rem; /* CAMBIO: Margen reducido */
+    opacity: 0.9;
+    max-width: 500px;
+}
+
+.price-mega {
+    margin-bottom: 2rem;
+}
+
+.original-price-mega {
+    font-size: 1.5rem;
+    text-decoration: line-through;
+    opacity: 0.7;
+    margin-right: 1rem;
+}
+
+.sale-price-mega {
+    font-size: 3rem;
+    font-weight: 900;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+    margin-right: 1rem;
+}
+
+.current-price-mega {
+    font-size: 3rem;
+    font-weight: 900;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+.savings-mega {
+    display: block;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #90EE90;
+    margin-top: 0.5rem;
+    text-shadow: 0 0 10px rgba(144, 238, 144, 0.5);
+}
+
+/* Contador regresivo */
+.countdown-timer {
+    margin-bottom: 2rem;
+}
+
+.timer-label {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    opacity: 0.9;
+}
+
+.timer-digits {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.timer-unit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    padding: 0.8rem 0.6rem;
+    min-width: 60px;
+}
+
+.timer-value {
+    font-size: 1.8rem;
+    font-weight: 900;
+    line-height: 1;
+    font-family: 'Courier New', monospace;
+}
+
+.timer-label-small {
+    font-size: 0.7rem;
+    font-weight: 600;
+    margin-top: 0.2rem;
+    opacity: 0.8;
+}
+
+.timer-separator {
+    font-size: 1.5rem;
+    font-weight: 900;
+    opacity: 0.7;
+    animation: blink 1s infinite;
+}
+
+/* Botones mega */
+.mega-actions {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.btn-mega-primary {
+    background: var(--gradient-primary);
+    color: var(--white);
+    border: none;
+    padding: 1.2rem 2.5rem;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: var(--transition-medium);
+    box-shadow: 0 10px 30px rgba(255, 107, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-mega-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(255, 107, 0, 0.6);
+}
+
+.btn-mega-primary i {
+    margin-right: 0.5rem;
+}
+
+.btn-shine {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s;
+}
+
+.btn-mega-primary:hover .btn-shine {
+    left: 100%;
+}
+
+/* Estados especiales para botones mega */
+.btn-mega-primary.adding {
+    background: var(--gradient-secondary);
+    transform: scale(0.95);
+    pointer-events: none;
+}
+
+.btn-mega-primary.added {
+    background: var(--success);
+    transform: scale(1.05);
+    animation: successPulse 0.6s ease;
+}
+
+@keyframes successPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1.05); }
+}
+
+.timer-expired {
+    color: var(--danger);
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-align: center;
+    padding: 1rem;
+    background: rgba(220, 53, 69, 0.1);
+    border-radius: 10px;
+    border: 2px solid var(--danger);
+}
+
+.btn-mega-secondary {
+    background: transparent;
+    color: var(--white);
+    border: 2px solid var(--white);
+    padding: 1.2rem 2.5rem;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    transition: var(--transition-medium);
+}
+
+.btn-mega-secondary:hover {
+    background: var(--white);
+    color: var(--primary-color);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(255, 255, 255, 0.3);
+}
+
+.btn-mega-secondary i {
+    margin-right: 0.5rem;
+}
+
+/* Indicador de stock */
+.stock-indicator {
+    margin-bottom: 1rem;
+}
+
+.stock-bar {
+    width: 200px;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 0.5rem;
+}
+
+.stock-fill {
+    height: 100%;
+    border-radius: 10px;
+    transition: width 0.8s ease;
+}
+
+.stock-high {
+    background: linear-gradient(90deg, #90EE90, #32CD32);
+}
+
+.stock-medium {
+    background: linear-gradient(90deg, #FFD700, #FFA500);
+}
+
+.stock-low {
+    background: linear-gradient(90deg, #FF6347, #DC143C);
+}
+
+.stock-text {
+    font-size: 0.9rem;
+    font-weight: 600;
+    opacity: 0.9;
+}
+
+/* Visual del producto - Corregido */
+.product-visual-mega {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    position: relative;
+}
+
+.mega-image-container {
+    position: relative;
+    width: 350px; /* CAMBIO: Tamaño más controlado */
+    height: 350px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.mega-product-image {
+    max-width: 90%; /* CAMBIO: Tamaño más conservador */
+    max-height: 90%;
+    object-fit: contain;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    transition: transform 0.5s ease;
+    position: relative;
+    z-index: 3;
+}
+
+/* Eliminar animaciones problemáticas */
+.mega-slide.active .mega-product-image {
+    /* CAMBIO: Remover animación flotante problemática */
+    transform: none;
+}
+
+.image-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 110%; /* CAMBIO: Tamaño más conservador */
+    height: 110%;
+    background: radial-gradient(circle, rgba(255, 107, 0, 0.2), transparent 70%);
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    /* CAMBIO: Remover animación problemática */
+    z-index: 1;
+}
+
+.floating-elements {
+    display: none; /* Ocultar elementos flotantes */
+}
+
+.float-element {
+    display: none; /* Ocultar elementos flotantes individuales */
+}
+
+/* Elementos flotantes deshabilitados */
+/*
+.float-1 {
+    top: 20%;
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.float-2 {
+    top: 30%;
+    right: 15%;
+    animation-delay: 2s;
+}
+
+.float-3 {
+    bottom: 25%;
+    left: 20%;
+    animation-delay: 4s;
+}
+
+.float-4 {
+    bottom: 35%;
+    right: 10%;
+    animation-delay: 6s;
+}
+*/
+
+.product-features {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+}
+
+.feature-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--white);
+    font-size: 0.9rem;
+    font-weight: 600;
+    opacity: 0.9;
+}
+
+.feature-item i {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--accent-color);
+}
+
+/* Controles del carrusel - Corregidos */
+.mega-carousel-controls {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    z-index: 20; /* CAMBIO: Z-index más alto */
+    pointer-events: none;
+}
+
+.mega-nav {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.15); /* CAMBIO: Más visible */
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    color: var(--white);
+    width: 55px; /* CAMBIO: Tamaño más conservador */
+    height: 55px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: var(--transition-medium);
+    pointer-events: auto;
+    transform: translateY(-50%);
+}
+
+.mega-nav:hover {
+    background: rgba(255, 255, 255, 0.25);
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+    transform: translateY(-50%) scale(1.05); /* CAMBIO: Escala más sutil */
+    box-shadow: 0 0 20px rgba(255, 107, 0, 0.4);
+}
+
+.mega-prev {
+    left: 1.5rem; /* CAMBIO: Posición más conservadora */
+}
+
+.mega-next {
+    right: 1.5rem;
+}
+
+/* Indicadores - Corregidos */
+.mega-indicators {
+    position: absolute;
+    bottom: 1.5rem; /* CAMBIO: Posición más conservadora */
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 0.8rem;
+    z-index: 20; /* CAMBIO: Z-index más alto */
+}
+
+.mega-dot {
+    width: 50px; /* CAMBIO: Tamaño más conservador */
+    height: 6px;
+    background: rgba(255, 255, 255, 0.3);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: var(--transition-medium);
+}
+
+.mega-dot.active {
+    background: var(--primary-color);
+    box-shadow: 0 0 15px rgba(255, 107, 0, 0.4); /* CAMBIO: Sombra más sutil */
+}
+
+.dot-progress {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background: var(--white);
+    border-radius: 10px;
+    transition: width 0.1s linear;
+    width: 0;
+}
+
+.mega-dot.active .dot-progress {
+    animation: progressFill 5s linear;
+}
+
+/* Progress bar - Corregida */
+.carousel-progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px; /* CAMBIO: Altura más sutil */
+    background: rgba(255, 255, 255, 0.2);
+    z-index: 15;
+}
+
+.progress-bar-mega {
+    height: 100%;
+    background: var(--gradient-primary);
+    width: 0;
+    transition: width 0.1s linear;
+}
+
+/* Animaciones para ofertas especiales */
+/* Animaciones reducidas para evitar distorsiones */
+@keyframes shine {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@keyframes glow {
+    0% { transform: translate(-50%, -50%) scale(1); opacity: 0.3; }
+    100% { transform: translate(-50%, -50%) scale(1.1); opacity: 0.5; }
+}
+
+@keyframes productFloat {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-5px); }
+}
+
+/* Animaciones flotantes eliminadas para evitar distorsiones */
+/*
+@keyframes floatAround {
+    0% { transform: translateY(0px) rotate(0deg); opacity: 0.6; }
+    25% { transform: translateY(-20px) rotate(90deg); opacity: 1; }
+    50% { transform: translateY(-10px) rotate(180deg); opacity: 0.8; }
+    75% { transform: translateY(-30px) rotate(270deg); opacity: 1; }
+    100% { transform: translateY(0px) rotate(360deg); opacity: 0.6; }
+}
+*/
+
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0.3; }
+}
+
+@keyframes progressFill {
+    0% { width: 0%; }
+    100% { width: 100%; }
+}
+
+/* Responsive para ofertas especiales - Corregido */
+@media (max-width: 1024px) {
+    .special-offers-section {
+        padding: 3rem 0;
+        min-height: 70vh; /* CAMBIO: Altura mínima reducida */
+    }
+    
+    .mega-carousel {
+        min-height: 500px; /* CAMBIO: Altura reducida */
+    }
+    
+    .carousel-wrapper {
+        min-height: 500px;
+    }
+    
+    .mega-slide {
+        min-height: 500px;
+    }
+    
+    .offers-title {
+        font-size: 2.5rem; /* CAMBIO: Tamaño ajustado */
+    }
+    
+    .slide-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        text-align: center;
+        min-height: 400px; /* CAMBIO: Altura mínima reducida */
+    }
+    
+    .mega-image-container {
+        width: 280px;
+        height: 280px;
+        order: 1; /* CAMBIO: Imagen primero en móvil */
+    }
+    
+    .product-info-mega {
+        order: 2; /* CAMBIO: Info después en móvil */
+        padding: 1.5rem;
+    }
+    
+    .features-mega-subtitle {
+        font-size: 1rem;
+    }
+    
+    .feature-title-modern {
+        font-size: 1.5rem;
+    }
+    
+    .feature-description-modern {
+        font-size: 1rem;
+    }
+    
+    .benefits-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .benefit-item {
+        padding: 1rem;
+    }
+    
+    .cta-content h3 {
+        font-size: 1.8rem;
+    }
+    
+    .floating-shapes {
+        display: none; /* Ocultar formas flotantes en móviles pequeños */
+    }
+    
+    .icon-orbit {
+        display: none; /* Simplificar en móviles */
+    }
+}
+    }
+    
+    .product-title-mega {
+        font-size: 2rem;
+    }
+    
+    .sale-price-mega,
+    .current-price-mega {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .special-offers-section {
+        padding: 2rem 0;
+        min-height: auto; /* CAMBIO: Altura automática en móvil */
+    }
+    
+    .mega-carousel {
+        min-height: 450px;
+        border-radius: 15px;
+    }
+    
+    .carousel-wrapper {
+        min-height: 450px;
+    }
+    
+    .mega-slide {
+        min-height: 450px;
+        padding: 1rem 0;
+    }
+    
+    .slide-content {
+        min-height: 350px;
+        padding: 0 1rem;
+    }
+    
+    .offers-title {
+        font-size: 2.2rem;
+    }
+    
+    .product-title-mega {
+        font-size: 1.5rem; /* Reducido de 2rem */
+    }
+    
+    .mega-actions {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.75rem;
+    }
+    
+    .btn-mega-primary,
+    .btn-mega-secondary {
+        width: 100%;
+        max-width: 280px;
+        justify-content: center;
+        padding: 0.75rem 1.5rem;
+        font-size: 0.9rem;
+    }
+    
+    .timer-digits {
+        justify-content: center;
+        gap: 0.25rem;
+    }
+    
+    .timer-unit {
+        min-width: 50px;
+        padding: 0.6rem 0.4rem;
+    }
+    
+    .mega-nav {
+        width: 45px;
+        height: 45px;
+    }
+    
+    .mega-prev {
+        left: 0.5rem;
+    }
+    
+    .mega-next {
+        right: 0.5rem;
+    }
+    
+    .product-features {
+        flex-direction: row;
+        gap: 1rem;
+        justify-content: center;
+    }
+    
+    .mega-image-container {
+        width: 200px;
+        height: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    .offers-header {
+        padding: 2rem 0 1rem;
+    }
+    
+    .offers-title {
+        font-size: 2rem;
+    }
+    
+    .offers-title i {
+        margin: 0 0.5rem;
+    }
+    
+    .mega-image-container {
+        width: 250px;
+        height: 250px;
+    }
+    
+    .product-title-mega {
+        font-size: 1.8rem;
+    }
+    
+    .mega-badge {
+        padding: 0.8rem 1.5rem;
+    }
+    
+    .discount-percent {
+        font-size: 2rem;
+    }
+    
+    .timer-unit {
+        min-width: 45px;
+        padding: 0.6rem 0.4rem;
+    }
+    
+    .timer-value {
+        font-size: 1.4rem;
+    }
+    
+    .mega-nav {
+        display: none;
+    }
+}
+
 /* Acciones del navbar */
 .navbar-actions {
     display: flex;
@@ -795,6 +1705,95 @@ body.nav-open {
 }
 
 /* =============================================
+   CORRECCIÓN: HERO SECTION
+   ============================================= */
+
+.hero {
+    /* CAMBIO: Asegurar que el hero tenga posicionamiento correcto */
+    position: relative;
+    z-index: 1; /* CAMBIO: Z-index más bajo que ofertas */
+    height: calc(100vh - 90px);
+    min-height: 600px;
+    background: linear-gradient(var(--gradient-hero), var(--gradient-hero)), 
+                url('/public/images/hero-bg.jpg') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+    margin: 0; /* CAMBIO: Eliminar margin negativo problemático */
+    padding-top: 90px;
+}
+
+/* =============================================
+   CORRECCIÓN: SECCIONES SIGUIENTES
+   ============================================= */
+
+/* CAMBIO: Asegurar que las secciones siguientes tengan el espaciado correcto */
+.features-section {
+    position: relative;
+    z-index: 1;
+    clear: both; /* CAMBIO: Limpiar flotaciones */
+    margin-top: 0; /* CAMBIO: Sin margen superior */
+    padding: 5rem 0;
+}
+
+.featured-products-section {
+    position: relative;
+    z-index: 1;
+    clear: both;
+    margin-top: 0;
+    padding: 5rem 0;
+}
+
+.classes-section {
+    position: relative;
+    z-index: 1;
+    clear: both;
+    margin-top: 0;
+    padding: 5rem 0;
+}
+
+.testimonials-section {
+    position: relative;
+    z-index: 1;
+    clear: both;
+    margin-top: 0;
+    padding: 5rem 0;
+}
+
+.cta-section {
+    position: relative;
+    z-index: 1;
+    clear: both;
+    margin-top: 0;
+    padding: 5rem 0;
+}
+
+/* =============================================
+   REGLAS DE LIMPIEZA GENERAL
+   ============================================= */
+
+/* CAMBIO: Prevenir desbordamientos problemáticos */
+body {
+    overflow-x: hidden;
+}
+
+/* CAMBIO: Asegurar que el main-content tenga el flujo correcto */
+.main-content {
+    position: relative;
+    z-index: 1;
+    overflow-x: hidden; /* CAMBIO: Prevenir scroll horizontal */
+}
+
+/* CAMBIO: Reset de posicionamiento problemático */
+.section {
+    position: relative;
+    clear: both;
+    overflow-x: hidden;
+}
+
+/* =============================================
    CONTENIDO PRINCIPAL
    ============================================= */
 .main-content {
@@ -819,22 +1818,8 @@ body.nav-open {
 }
 
 /* =============================================
-   HERO SECTION
+   HERO SECTION - YA CORREGIDO ARRIBA
    ============================================= */
-.hero {
-    height: calc(100vh - 90px); /* Resta la altura del header */
-    min-height: 600px;
-    background: linear-gradient(var(--gradient-hero), var(--gradient-hero)), 
-                url('/public/images/hero-bg.jpg') center/cover no-repeat;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-    margin-top: -90px; /* Compensar el padding del main-content */
-    padding-top: 90px; /* Asegurar que el contenido no se tape */
-}
 
 .hero::before {
     content: '';
@@ -1834,9 +2819,10 @@ body.nav-open {
 /* =============================================
    EFECTOS ESPECIALES
    ============================================= */
+/* Efectos especiales simplificados para evitar distorsiones */
 .parallax {
-    transform: translateZ(0);
-    will-change: transform;
+    /* transform: translateZ(0); */
+    /* will-change: transform; */
 }
 
 .glass-effect {
@@ -1847,8 +2833,8 @@ body.nav-open {
 
 .neon-effect {
     text-shadow: 0 0 5px var(--primary-color),
-                 0 0 10px var(--primary-color),
-                 0 0 15px var(--primary-color);
+                 0 0 10px var(--primary-color);
+    /* Reducido el efecto neon */
 }
 
 .gradient-text {

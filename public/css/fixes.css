@@ -1,0 +1,282 @@
+/* 
+ * STYLOFITNESS - Correcciones CSS Específicas
+ * Archivo de correcciones para problemas de layout
+ */
+
+/* =============================================
+   CORRECCIÓN CRÍTICA: SECCIÓN OFERTAS ESPECIALES
+   ============================================= */
+
+/* Sobrescribir estilos problemáticos de la sección de ofertas */
+.special-offers-section {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%) !important;
+    padding: 4rem 0 !important;
+    margin: 0 !important;
+    position: relative !important;
+    overflow: visible !important;
+    min-height: 80vh !important;
+    height: auto !important;
+    display: block !important;
+    z-index: 2 !important;
+}
+
+.offers-container {
+    position: relative !important;
+    width: 100% !important;
+    height: auto !important;
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+    padding: 0 20px !important;
+}
+
+.mega-carousel {
+    position: relative !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 550px !important;
+    overflow: hidden !important;
+    border-radius: 20px !important;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3) !important;
+}
+
+.carousel-wrapper {
+    position: relative !important;
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 550px !important;
+}
+
+.mega-slide {
+    min-width: 100% !important;
+    height: auto !important;
+    min-height: 550px !important;
+    position: relative !important;
+    display: flex !important;
+    align-items: center !important;
+    overflow: hidden !important;
+    padding: 2rem 0 !important;
+}
+
+.slide-content {
+    position: relative !important;
+    z-index: 5 !important;
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 3rem !important;
+    align-items: center !important;
+    width: 100% !important;
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+    padding: 0 2rem !important;
+    min-height: 450px !important;
+}
+
+/* =============================================
+   CORRECCIÓN: ESPACIADO ENTRE SECCIONES
+   ============================================= */
+
+/* Asegurar espaciado correcto después de ofertas */
+.special-offers-section + .hero,
+.special-offers-section + .section {
+    margin-top: 0 !important;
+    padding-top: 5rem !important;
+}
+
+/* Hero section correcto */
+.hero {
+    position: relative !important;
+    z-index: 1 !important;
+    height: calc(100vh - 90px) !important;
+    min-height: 600px !important;
+    margin: 0 !important;
+    padding-top: 90px !important;
+    clear: both !important;
+}
+
+/* Todas las secciones principales */
+.features-section,
+.featured-products-section,
+.classes-section,
+.testimonials-section,
+.cta-section {
+    position: relative !important;
+    z-index: 1 !important;
+    clear: both !important;
+    margin-top: 0 !important;
+    overflow-x: hidden !important;
+}
+
+/* =============================================
+   CORRECCIÓN: LAYOUT GENERAL
+   ============================================= */
+
+/* Prevenir problemas de overflow */
+body {
+    overflow-x: hidden !important;
+}
+
+.main-content {
+    position: relative !important;
+    z-index: 1 !important;
+    overflow-x: hidden !important;
+}
+
+/* Reset general para secciones */
+.section {
+    position: relative !important;
+    clear: both !important;
+    overflow-x: hidden !important;
+}
+
+/* =============================================
+   CORRECCIÓN RESPONSIVE
+   ============================================= */
+
+@media (max-width: 1024px) {
+    .special-offers-section {
+        padding: 3rem 0 !important;
+        min-height: 70vh !important;
+    }
+    
+    .mega-carousel {
+        min-height: 500px !important;
+    }
+    
+    .carousel-wrapper {
+        min-height: 500px !important;
+    }
+    
+    .mega-slide {
+        min-height: 500px !important;
+    }
+    
+    .slide-content {
+        grid-template-columns: 1fr !important;
+        gap: 2rem !important;
+        text-align: center !important;
+        min-height: 400px !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .special-offers-section {
+        padding: 2rem 0 !important;
+        min-height: auto !important;
+    }
+    
+    .mega-carousel {
+        min-height: 450px !important;
+        border-radius: 15px !important;
+    }
+    
+    .carousel-wrapper {
+        min-height: 450px !important;
+    }
+    
+    .mega-slide {
+        min-height: 450px !important;
+        padding: 1rem 0 !important;
+    }
+    
+    .slide-content {
+        min-height: 350px !important;
+        padding: 0 1rem !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .special-offers-section {
+        padding: 1.5rem 0 !important;
+    }
+    
+    .mega-carousel {
+        min-height: 400px !important;
+        border-radius: 10px !important;
+    }
+    
+    .carousel-wrapper {
+        min-height: 400px !important;
+    }
+    
+    .mega-slide {
+        min-height: 400px !important;
+    }
+    
+    .slide-content {
+        min-height: 320px !important;
+        gap: 1rem !important;
+    }
+}
+
+/* =============================================
+   CORRECCIÓN: Z-INDEX HIERARCHY
+   ============================================= */
+
+.special-offers-section {
+    z-index: 2 !important;
+}
+
+.hero {
+    z-index: 1 !important;
+}
+
+.features-section,
+.featured-products-section,
+.classes-section,
+.testimonials-section,
+.cta-section {
+    z-index: 1 !important;
+}
+
+.mega-carousel-controls {
+    z-index: 20 !important;
+}
+
+.mega-indicators {
+    z-index: 20 !important;
+}
+
+.carousel-progress {
+    z-index: 15 !important;
+}
+
+/* =============================================
+   CORRECCIÓN: ELIMINACIÓN DE ANIMACIONES PROBLEMÁTICAS
+   ============================================= */
+
+/* Deshabilitar animaciones que causan problemas de layout */
+.mega-slide.active .mega-product-image {
+    animation: none !important;
+    transform: none !important;
+}
+
+.image-glow {
+    animation: none !important;
+}
+
+.floating-elements {
+    display: none !important;
+}
+
+.float-element {
+    display: none !important;
+}
+
+/* =============================================
+   UTILIDADES DE DEPURACIÓN (TEMPORAL)
+   ============================================= */
+
+/* Uncomment for debugging - Descomentar para depuración */
+/*
+.special-offers-section {
+    border: 2px solid red !important;
+}
+
+.hero {
+    border: 2px solid blue !important;
+}
+
+.features-section {
+    border: 2px solid green !important;
+}
+*/
