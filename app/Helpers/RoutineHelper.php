@@ -604,7 +604,7 @@ class RoutineHelper {
      * Generar código QR para rutina
      */
     public static function generateRoutineQR($routineId, $size = 200) {
-        $url = getConfig('app_url') . '/routines/view/' . $routineId;
+        $url = getAppConfig('app_url') . '/routines/view/' . $routineId;
         $qrUrl = "https://api.qrserver.com/v1/create-qr-code/?size={$size}x{$size}&data=" . urlencode($url);
         
         return $qrUrl;

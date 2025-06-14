@@ -1,0 +1,489 @@
+{
+	"info": {
+		"_postman_id": "a1b2c3d4-e5f6-7890-1234-567890abcdef",
+		"name": "StyloFitness API Collection v1.0",
+		"description": "Colección completa de endpoints para la aplicación STYLOFITNESS.\n\n**Funcionalidades incluidas:**\n- Sistema de autenticación (login, registro, logout)\n- Gestión de rutinas personalizadas\n- Catálogo de ejercicios\n- Tienda e-commerce (productos, carrito, checkout)\n- Clases grupales\n- Estadísticas y reportes\n- Panel administrativo\n- Sistema de uploads\n- Webhooks\n\n**Base URL:** http://localhost:8000\n\n**Roles de usuario:**\n- admin (administrador)\n- instructor \n- client (cliente)\n\n**Autenticación:** Basada en sesiones PHP",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12345678"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"description": "Endpoints de autenticación y gestión de usuarios",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "admin@stylofitness.com",
+									"description": "Email del usuario"
+								},
+								{
+									"key": "password",
+									"value": "password",
+									"description": "Contraseña"
+								},
+								{
+									"key": "remember",
+									"value": "1",
+									"description": "Recordar sesión (opcional)"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"login"
+							]
+						},
+						"description": "Autenticar usuario en el sistema"
+					}
+				},
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "first_name",
+									"value": "Juan",
+									"description": "Nombre"
+								},
+								{
+									"key": "last_name",
+									"value": "Pérez",
+									"description": "Apellido"
+								},
+								{
+									"key": "email",
+									"value": "nuevo.usuario@email.com",
+									"description": "Email único"
+								},
+								{
+									"key": "phone",
+									"value": "+51999888777",
+									"description": "Teléfono (opcional)"
+								},
+								{
+									"key": "password",
+									"value": "password123",
+									"description": "Contraseña (mín. 6 caracteres)"
+								},
+								{
+									"key": "password_confirm",
+									"value": "password123",
+									"description": "Confirmación de contraseña"
+								},
+								{
+									"key": "csrf_token",
+									"value": "{{csrf_token}}",
+									"description": "Token CSRF"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/register",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"register"
+							]
+						},
+						"description": "Registrar nuevo usuario cliente"
+					}
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/logout",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"logout"
+							]
+						},
+						"description": "Cerrar sesión del usuario"
+					}
+				},
+				{
+					"name": "Forgot Password",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "usuario@email.com",
+									"description": "Email para recuperación"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/forgot-password",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"forgot-password"
+							]
+						},
+						"description": "Solicitar recuperación de contraseña"
+					}
+				}
+			]
+		},
+		{
+			"name": "API - Routines",
+			"description": "API endpoints para gestión de rutinas",
+			"item": [
+				{
+					"name": "Get All Routines",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/routines?page=1&limit=20&search=&objective=&difficulty=",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"routines"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1",
+									"description": "Número de página"
+								},
+								{
+									"key": "limit",
+									"value": "20",
+									"description": "Elementos por página (max 50)"
+								},
+								{
+									"key": "search",
+									"value": "",
+									"description": "Término de búsqueda"
+								},
+								{
+									"key": "objective",
+									"value": "",
+									"description": "Filtrar por objetivo"
+								},
+								{
+									"key": "difficulty",
+									"value": "",
+									"description": "Filtrar por dificultad"
+								}
+							]
+						},
+						"description": "Obtener lista de rutinas (filtrada por rol del usuario)"
+					}
+				},
+				{
+					"name": "Get Routine by ID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/routines/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"routines",
+								"1"
+							]
+						},
+						"description": "Obtener rutina específica con ejercicios y progreso"
+					}
+				},
+				{
+					"name": "Create Routine",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Rutina de Fuerza Avanzada\",\n  \"description\": \"Rutina diseñada para desarrollar fuerza y masa muscular\",\n  \"objective\": \"muscle_gain\",\n  \"difficulty_level\": \"advanced\",\n  \"duration_weeks\": 8,\n  \"sessions_per_week\": 4,\n  \"estimated_duration_minutes\": 90,\n  \"is_template\": false,\n  \"client_id\": 5,\n  \"exercises\": [\n    {\n      \"exercise_id\": 1,\n      \"day_number\": 1,\n      \"order_index\": 1,\n      \"sets\": 4,\n      \"reps\": \"8-10\",\n      \"weight\": \"80-90kg\",\n      \"rest_seconds\": 120,\n      \"tempo\": \"2-1-2-1\",\n      \"notes\": \"Mantener forma estricta\"\n    },\n    {\n      \"exercise_id\": 2,\n      \"day_number\": 1,\n      \"order_index\": 2,\n      \"sets\": 3,\n      \"reps\": \"12-15\",\n      \"weight\": \"25kg\",\n      \"rest_seconds\": 90,\n      \"tempo\": \"2-0-2-0\",\n      \"notes\": \"Controlar el movimiento\"\n    }\n  ]\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/routines",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"routines"
+							]
+						},
+						"description": "Crear nueva rutina (requiere rol instructor o admin)"
+					}
+				},
+				{
+					"name": "Update Routine",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Rutina de Fuerza Avanzada - Actualizada\",\n  \"description\": \"Rutina actualizada con nuevos ejercicios\",\n  \"objective\": \"strength\",\n  \"difficulty_level\": \"advanced\",\n  \"duration_weeks\": 10,\n  \"sessions_per_week\": 5,\n  \"estimated_duration_minutes\": 100,\n  \"is_template\": true\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/routines/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"routines",
+								"1"
+							]
+						},
+						"description": "Actualizar rutina existente"
+					}
+				},
+				{
+					"name": "Delete Routine",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/routines/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"routines",
+								"1"
+							]
+						},
+						"description": "Eliminar rutina (requiere permisos)"
+					}
+				}
+			]
+		},
+		{
+			"name": "Development Tools",
+			"description": "Endpoints de desarrollo y debugging",
+			"item": [
+				{
+					"name": "PHP Info",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/dev/phpinfo",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"dev",
+								"phpinfo"
+							]
+						},
+						"description": "Mostrar información de PHP (solo en desarrollo)"
+					}
+				},
+				{
+					"name": "Test Database Connection",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/dev/test-db",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"dev",
+								"test-db"
+							]
+						},
+						"description": "Probar conexión a base de datos"
+					}
+				},
+				{
+					"name": "Homepage",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								""
+							]
+						},
+						"description": "Página principal - Testing básico"
+					}
+				},
+				{
+					"name": "Dashboard",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/dashboard",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"dashboard"
+							]
+						},
+						"description": "Dashboard - Testing de sesiones"
+					}
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"// Auto-configurar variables de entorno",
+					"if (!pm.environment.get('base_url')) {",
+					"    pm.environment.set('base_url', 'http://localhost:8000');",
+					"}",
+					"",
+					"// Auto-generar CSRF token si es necesario",
+					"if (pm.request.body && pm.request.body.urlencoded) {",
+					"    const csrfParam = pm.request.body.urlencoded.find(param => param.key === 'csrf_token');",
+					"    if (csrfParam && csrfParam.value === '{{csrf_token}}') {",
+					"        pm.environment.set('csrf_token', 'sample_csrf_token_123');",
+					"    }",
+					"}"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"// Tests automáticos para respuestas comunes",
+					"pm.test('Response status code is valid', function () {",
+					"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 302, 400, 401, 403, 404, 500]);",
+					"});",
+					"",
+					"// Test para APIs JSON",
+					"if (pm.request.url.path.includes('api')) {",
+					"    pm.test('Response is JSON', function () {",
+					"        pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');",
+					"    });",
+					"    ",
+					"    if (pm.response.code === 200) {",
+					"        pm.test('API Response has success field', function () {",
+					"            const jsonData = pm.response.json();",
+					"            pm.expect(jsonData).to.have.property('success');",
+					"        });",
+					"    }",
+					"}",
+					"",
+					"// Auto-extraer cookies de sesión",
+					"const cookies = pm.cookies.toObject();",
+					"if (cookies.PHPSESSID) {",
+					"    pm.environment.set('session_id', cookies.PHPSESSID);",
+					"}",
+					"",
+					"// Logging básico para debugging",
+					"console.log('Request:', pm.request.method, pm.request.url.toString());",
+					"console.log('Response Status:', pm.response.status, pm.response.code);",
+					"if (pm.response.code >= 400) {",
+					"    console.log('Error Response:', pm.response.text());",
+					"}"
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:8000",
+			"type": "string",
+			"description": "URL base de la aplicación StyloFitness"
+		},
+		{
+			"key": "csrf_token",
+			"value": "sample_csrf_token_123",
+			"type": "string",
+			"description": "Token CSRF para formularios"
+		},
+		{
+			"key": "session_id",
+			"value": "",
+			"type": "string",
+			"description": "ID de sesión PHP (se extrae automáticamente)"
+		}
+	],
+	"auth": {
+		"type": "noauth"
+	}
+}
