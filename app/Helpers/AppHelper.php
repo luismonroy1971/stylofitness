@@ -217,7 +217,7 @@ class AppHelper {
     /**
      * Obtener mensajes flash
      */
-    public static function getFlashMessages() {
+    public static function getFlashMessage() {
         $messages = $_SESSION['flash_messages'] ?? [];
         unset($_SESSION['flash_messages']);
         return $messages;
