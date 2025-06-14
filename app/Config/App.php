@@ -14,11 +14,10 @@ define('ASSETS_URL', BASE_URL . '/public');
 define('UPLOAD_URL', BASE_URL . '/public/uploads');
 
 // Configuración de sesiones
-ini_set('session.cookie_httponly', 1);
-ini_set('session.cookie_secure', 0); // Cambiar a 1 en HTTPS
-
-// Solo iniciar sesión si no está iniciada
+// Solo configurar si la sesión no está iniciada
 if (session_status() === PHP_SESSION_NONE) {
+    ini_set('session.cookie_httponly', 1);
+    ini_set('session.cookie_secure', 0); // Cambiar a 1 en HTTPS
     session_start();
 }
 

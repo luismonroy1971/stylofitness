@@ -40,6 +40,7 @@ STYLOFITNESS.init = function() {
     this.cacheElements();
     
     // Inicializar componentes
+    this.initLoadingScreen();
     this.initNavigation();
     this.initCarousel();
     this.initScrollEffects();
@@ -48,6 +49,7 @@ STYLOFITNESS.init = function() {
     this.initCart();
     this.initVideoPlayer();
     this.initLazyLoading();
+    this.initFlashMessages();
     
     // Configurar event listeners
     this.setupEventListeners();
@@ -98,11 +100,59 @@ STYLOFITNESS.initNavigation = function() {
     // Navegación móvil
     const navToggle = this.elements.navToggle;
     const navMenu = this.elements.navMenu;
+    const navOverlay = document.getElementById('nav-overlay');
     
     if (navToggle && navMenu) {
         navToggle.addEventListener('click', () => {
             navMenu.classList.toggle('active');
             navToggle.classList.toggle('active');
+            if (navOverlay) {
+                navOverlay.classList.toggle('active');
+            }
+            document.body.classList.toggle('nav-open');
+        });
+    }
+    
+    // Cerrar menú móvil al hacer clic en overlay
+    if (navOverlay) {
+        navOverlay.addEventListener('click', () => {
+            navMenu.classList.remove('active');
+            navToggle.classList.remove('active');
+            navOverlay.classList.remove('active');
+            document.body.classList.remove('nav-open');
+        });
+    }
+    
+    // Cerrar menú móvil al hacer clic en enlaces
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+            if (window.innerWidth <= 768) {
+                navMenu.classList.remove('active');
+                navToggle.classList.remove('active');
+                if (navOverlay) {
+                    navOverlay.classList.remove('active');
+                }
+                document.body.classList.remove('nav-open');
+            }
+        });
+    });
+    
+    // Dropdown del usuario
+    const userTrigger = document.getElementById('user-menu-trigger');
+    const userDropdown = document.getElementById('user-dropdown-menu');
+    
+    if (userTrigger && userDropdown) {
+        userTrigger.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            userDropdown.classList.toggle('active');
+        });
+        
+        // Cerrar dropdown al hacer clic fuera
+        document.addEventListener('click', (e) => {
+            if (!userTrigger.contains(e.target) && !userDropdown.contains(e.target)) {
+                userDropdown.classList.remove('active');
+            }
         });
     }
     
@@ -119,6 +169,37 @@ STYLOFITNESS.initNavigation = function() {
             }
         });
     });
+    
+    // Búsqueda en tiempo real
+    const searchInput = document.querySelector('.search-input');
+    const searchSuggestions = document.getElementById('search-suggestions');
+    
+    if (searchInput && searchSuggestions) {
+        let searchTimeout;
+        
+        searchInput.addEventListener('input', (e) => {
+            const query = e.target.value.trim();
+            
+            // Limpiar timeout anterior
+            clearTimeout(searchTimeout);
+            
+            if (query.length >= 2) {
+                // Buscar después de 300ms de inactividad
+                searchTimeout = setTimeout(() => {
+                    this.performSearch(query, searchSuggestions);
+                }, 300);
+            } else {
+                searchSuggestions.style.display = 'none';
+            }
+        });
+        
+        // Cerrar sugerencias al hacer clic fuera
+        document.addEventListener('click', (e) => {
+            if (!searchInput.contains(e.target) && !searchSuggestions.contains(e.target)) {
+                searchSuggestions.style.display = 'none';
+            }
+        });
+    }
 };
 
 // =============================================
@@ -824,6 +905,117 @@ STYLOFITNESS.renderProducts = function(products) {
     
     // Reinicializar event listeners
     this.initCart();
+};
+
+// =============================================
+// BÚSQUEDA
+// =============================================
+STYLOFITNESS.performSearch = function(query, suggestionsContainer) {
+    // Mostrar loading en sugerencias
+    suggestionsContainer.innerHTML = '<div class="search-loading">Buscando...</div>';
+    suggestionsContainer.style.display = 'block';
+    
+    // Realizar búsqueda
+    fetch(`${this.config.apiUrl}/search?q=${encodeURIComponent(query)}`)
+        .then(response => response.json())
+        .then(data => {
+            this.renderSearchSuggestions(data.suggestions, suggestionsContainer);
+        })
+        .catch(error => {
+            console.error('Search error:', error);
+            suggestionsContainer.innerHTML = '<div class="search-error">Error en la búsqueda</div>';
+        });
+};
+
+STYLOFITNESS.renderSearchSuggestions = function(suggestions, container) {
+    if (!suggestions || suggestions.length === 0) {
+        container.innerHTML = '<div class="search-no-results">No se encontraron resultados</div>';
+        return;
+    }
+    
+    const html = suggestions.map(item => `
+        <div class="search-suggestion-item" data-type="${item.type}" data-id="${item.id}">
+            <div class="suggestion-icon">
+                <i class="fas fa-${item.type === 'product' ? 'shopping-bag' : 'dumbbell'}"></i>
+            </div>
+            <div class="suggestion-content">
+                <div class="suggestion-title">${item.name}</div>
+                <div class="suggestion-category">${item.category}</div>
+            </div>
+            ${item.price ? `<div class="suggestion-price">S/ ${item.price}</div>` : ''}
+        </div>
+    `).join('');
+    
+    container.innerHTML = html;
+    
+    // Agregar event listeners a las sugerencias
+    container.querySelectorAll('.search-suggestion-item').forEach(item => {
+        item.addEventListener('click', () => {
+            const type = item.dataset.type;
+            const id = item.dataset.id;
+            
+            if (type === 'product') {
+                window.location.href = `/store/product/${id}`;
+            } else if (type === 'routine') {
+                window.location.href = `/routines/${id}`;
+            }
+            
+            container.style.display = 'none';
+        });
+    });
+};
+
+// =============================================
+// NOTIFICACIONES FLASH
+// =============================================
+STYLOFITNESS.initFlashMessages = function() {
+    const flashMessages = document.querySelectorAll('.flash-message');
+    
+    flashMessages.forEach(message => {
+        const closeBtn = message.querySelector('.flash-close');
+        
+        // Auto-cerrar después de 5 segundos
+        setTimeout(() => {
+            this.hideFlashMessage(message);
+        }, 5000);
+        
+        // Cerrar al hacer clic
+        if (closeBtn) {
+            closeBtn.addEventListener('click', () => {
+                this.hideFlashMessage(message);
+            });
+        }
+    });
+};
+
+STYLOFITNESS.hideFlashMessage = function(message) {
+    message.style.transform = 'translateY(-100%)';
+    message.style.opacity = '0';
+    
+    setTimeout(() => {
+        if (message.parentNode) {
+            message.parentNode.removeChild(message);
+        }
+    }, 300);
+};
+
+// =============================================
+// LOADING SCREEN
+// =============================================
+STYLOFITNESS.initLoadingScreen = function() {
+    const loadingScreen = document.getElementById('loading-screen');
+    
+    if (loadingScreen) {
+        // Ocultar loading screen cuando la página esté lista
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                loadingScreen.style.opacity = '0';
+                setTimeout(() => {
+                    loadingScreen.style.display = 'none';
+                }, 500);
+            }, 1000);
+        });
+    }
 };
 
 // =============================================

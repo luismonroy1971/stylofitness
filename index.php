@@ -4,9 +4,16 @@
  * Página principal con enrutamiento MVC mejorado
  */
 
-// Configuración de errores para desarrollo
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
+// Configuración de errores según el entorno
+if (defined('APP_ENV') && APP_ENV === 'production') {
+    error_reporting(0);
+    ini_set('display_errors', 0);
+    ini_set('display_startup_errors', 0);
+} else {
+    error_reporting(E_ALL);
+    ini_set('display_errors', 1);
+    ini_set('display_startup_errors', 1);
+}
 
 // Configuración de zona horaria
 date_default_timezone_set('America/Lima');
