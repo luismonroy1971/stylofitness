@@ -9,8 +9,8 @@
 
 .compact-title-section {
     text-align: center !important;
-    padding: 1rem 0 !important;
-    margin-bottom: 0.5rem !important;
+    padding: 0.75rem 0 !important;
+    margin-bottom: 0.25rem !important;
     background: rgba(0, 0, 0, 0.1) !important;
     border-radius: 15px !important;
     backdrop-filter: blur(10px) !important;
@@ -33,13 +33,13 @@
 
 .offers-title-compact {
     font-family: 'Montserrat', Arial, sans-serif !important;
-    font-size: 2.2rem !important;
+    font-size: 1.8rem !important;
     font-weight: 900 !important;
-    margin: 0 0 0.5rem 0 !important;
+    margin: 0 0 0.25rem 0 !important;
     color: #FFFFFF !important;
     text-shadow: 0 0 30px rgba(255, 107, 0, 0.5) !important;
     letter-spacing: 1px !important;
-    line-height: 1.1 !important;
+    line-height: 1 !important;
     text-transform: uppercase !important;
     position: relative !important;
     z-index: 2 !important;
@@ -48,8 +48,8 @@
 .offers-title-compact .fire-icon {
     color: #FF6B00 !important;
     animation: fireFlicker 2s infinite alternate !important;
-    margin: 0 0.75rem !important;
-    font-size: 2rem !important;
+    margin: 0 0.5rem !important;
+    font-size: 1.5rem !important;
     filter: drop-shadow(0 0 10px rgba(255, 107, 0, 0.6)) !important;
 }
 
@@ -65,7 +65,7 @@
 }
 
 .offers-subtitle-compact {
-    font-size: 1rem !important;
+    font-size: 0.9rem !important;
     color: rgba(255, 255, 255, 0.9) !important;
     margin: 0 !important;
     font-weight: 400 !important;
@@ -1501,18 +1501,18 @@
 
 @media (max-width: 768px) {
     .compact-title-section {
-        padding: 0.75rem 0 !important;
-        margin-bottom: 0.25rem !important;
+        padding: 0.5rem 0 !important;
+        margin-bottom: 0.15rem !important;
         border-radius: 10px !important;
     }
     
     .offers-title-compact {
-        font-size: 1.8rem !important;
+        font-size: 1.5rem !important;
     }
     
     .offers-title-compact .fire-icon {
-        font-size: 1.6rem !important;
-        margin: 0 0.5rem !important;
+        font-size: 1.3rem !important;
+        margin: 0 0.4rem !important;
     }
     
     .title-line-1-new {
@@ -1612,7 +1612,7 @@
 
 @media (max-width: 480px) {
     .offers-title-compact {
-        font-size: 1.5rem !important;
+        font-size: 1.3rem !important;
         letter-spacing: 0.5px !important;
     }
     

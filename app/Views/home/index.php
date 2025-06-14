@@ -29,6 +29,7 @@
                             
                             <div class="container">
                                 <div class="slide-content">
+                                    <!-- Columna 1: Información básica del producto (más angosta) -->
                                     <div class="product-info-mega">
                                         <div class="mega-badge animate__animated animate__bounceIn animate__delay-1s">
                                             <?php if ($product['discount_percentage']): ?>
@@ -62,8 +63,42 @@
                                                 <span class="current-price-mega">S/ <?php echo number_format($product['price'], 2); ?></span>
                                             <?php endif; ?>
                                         </div>
+                                    </div>
+                                    
+                                    <!-- Columna 2: Imagen del producto -->
+                                    <div class="product-visual-mega animate__animated animate__fadeInUp animate__delay-1s">
+                                        <div class="mega-image-container">
+                                            <?php 
+                                            $productImages = is_string($product['images']) ? json_decode($product['images'], true) : $product['images'];
+                                            $mainImage = !empty($productImages) ? $productImages[0] : '/public/images/default-product.jpg';
+                                            ?>
+                                            <img src="<?php echo AppHelper::uploadUrl($mainImage); ?>" 
+                                                 alt="<?php echo htmlspecialchars($product['name']); ?>" 
+                                                 class="mega-product-image"
+                                                 loading="lazy">
+                                            
+                                            <div class="image-glow"></div>
+                                        </div>
                                         
-                                        <div class="countdown-timer animate__animated animate__fadeInLeft animate__delay-3s" 
+                                        <div class="product-features">
+                                            <div class="feature-item">
+                                                <i class="fas fa-shipping-fast"></i>
+                                                <span>Envío Gratis</span>
+                                            </div>
+                                            <div class="feature-item">
+                                                <i class="fas fa-shield-alt"></i>
+                                                <span>Garantía Total</span>
+                                            </div>
+                                            <div class="feature-item">
+                                                <i class="fas fa-medal"></i>
+                                                <span>Calidad Premium</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Columna 3: Detalles adicionales (timer, botones, stock) -->
+                                    <div class="product-details-mega animate__animated animate__fadeInRight animate__delay-2s">
+                                        <div class="countdown-timer" 
                                              data-end-date="<?php echo date('Y-m-d H:i:s', strtotime('+7 days')); ?>">
                                             <div class="timer-label">Oferta termina en:</div>
                                             <div class="timer-digits">
@@ -89,7 +124,7 @@
                                             </div>
                                         </div>
                                         
-                                        <div class="mega-actions animate__animated animate__fadeInUp animate__delay-3-5s">
+                                        <div class="mega-actions">
                                             <button class="btn-mega-primary btn-add-cart-mega" data-product-id="<?php echo $product['id']; ?>">
                                                 <i class="fas fa-cart-plus"></i>
                                                 <span>AGREGAR AL CARRITO</span>
@@ -103,7 +138,7 @@
                                             </a>
                                         </div>
                                         
-                                        <div class="stock-indicator animate__animated animate__fadeInUp animate__delay-4s">
+                                        <div class="stock-indicator">
                                             <?php 
                                             $stockPercentage = min(100, ($product['stock_quantity'] / 50) * 100);
                                             $stockClass = $stockPercentage > 50 ? 'high' : ($stockPercentage > 20 ? 'medium' : 'low');
@@ -121,42 +156,6 @@
                                                     ❌ Agotado
                                                 <?php endif; ?>
                                             </span>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="product-visual-mega animate__animated animate__fadeInRight animate__delay-1s">
-                                        <div class="mega-image-container">
-                                            <?php 
-                                            $productImages = is_string($product['images']) ? json_decode($product['images'], true) : $product['images'];
-                                            $mainImage = !empty($productImages) ? $productImages[0] : '/public/images/default-product.jpg';
-                                            ?>
-                                            <img src="<?php echo AppHelper::uploadUrl($mainImage); ?>" 
-                                                 alt="<?php echo htmlspecialchars($product['name']); ?>" 
-                                                 class="mega-product-image"
-                                                 loading="lazy">
-                                            
-                                            <div class="image-glow"></div>
-                                            <div class="floating-elements">
-                                                <div class="float-element float-1">+</div>
-                                                <div class="float-element float-2">★</div>
-                                                <div class="float-element float-3">◆</div>
-                                                <div class="float-element float-4">✨</div>
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="product-features">
-                                            <div class="feature-item">
-                                                <i class="fas fa-shipping-fast"></i>
-                                                <span>Envío Gratis</span>
-                                            </div>
-                                            <div class="feature-item">
-                                                <i class="fas fa-shield-alt"></i>
-                                                <span>Garantía Total</span>
-                                            </div>
-                                            <div class="feature-item">
-                                                <i class="fas fa-medal"></i>
-                                                <span>Calidad Premium</span>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>

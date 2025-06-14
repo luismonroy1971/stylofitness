@@ -134,6 +134,32 @@
             50% { background-position: 100% 50%; }
         }
         
+        /* MEJORAS NAVBAR COMPACTO */
+        .header {
+            padding: 0.25rem 0 !important;
+        }
+        
+        .navbar {
+            height: 45px !important;
+        }
+        
+        .header.scrolled {
+            padding: 0.15rem 0 !important;
+        }
+        
+        .nav-link {
+            padding: 0.5rem 1rem !important;
+            font-size: 0.9rem !important;
+        }
+        
+        .logo {
+            font-size: 1.6rem !important;
+        }
+        
+        .main-content {
+            padding-top: 50px !important;
+        }
+        
         .modern-features-section {
             background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 50%, #2d2d2d 100%) !important;
         }
@@ -143,8 +169,51 @@
         }
         
         @media (max-width: 768px) {
+            .header {
+                padding: 0.15rem 0 !important;
+            }
+            
+            .navbar {
+                height: 40px !important;
+            }
+            
+            .logo {
+                font-size: 1.4rem !important;
+            }
+            
+            .nav-link {
+                padding: 0.4rem 0.8rem !important;
+                font-size: 0.85rem !important;
+            }
+            
+            .main-content {
+                padding-top: 45px !important;
+            }
+            
             .offers-title-compact {
-                font-size: 1.8rem !important;
+                font-size: 1.5rem !important;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .header {
+                padding: 0.1rem 0 !important;
+            }
+            
+            .navbar {
+                height: 35px !important;
+            }
+            
+            .logo {
+                font-size: 1.2rem !important;
+            }
+            
+            .main-content {
+                padding-top: 40px !important;
+            }
+            
+            .offers-title-compact {
+                font-size: 1.3rem !important;
             }
         }
     </style>
@@ -330,9 +399,9 @@
                             </div>
                         <?php else: ?>
                             <div class="auth-buttons">
-                                <a href="<?php echo AppHelper::baseUrl('login'); ?>" class="btn-login">
-                                    <i class="fas fa-sign-in-alt"></i>
-                                    Ingresar
+                                <a href="<?php echo AppHelper::baseUrl('login'); ?>" class="btn-login" title="Ingresar">
+                                    <i class="fas fa-sign-in-alt btn-icon"></i>
+                                    <span class="btn-text">Ingresar</span>
                                 </a>
                             </div>
                         <?php endif; ?>
