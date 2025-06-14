@@ -332,7 +332,7 @@ $router->post('/webhook/email/mailgun', 'WebhookController@mailgunWebhook');
 // RUTAS DE DESARROLLO (solo en modo debug)
 // ==========================================
 
-if (getConfig('debug_enabled', false)) {
+if (getAppConfig('debug_enabled', false)) {
     $router->get('/dev/phpinfo', function() {
         phpinfo();
     });
@@ -346,7 +346,7 @@ if (getConfig('debug_enabled', false)) {
 set_exception_handler(function($exception) {
     error_log("Uncaught exception: " . $exception->getMessage());
     
-    if (getConfig('debug_enabled', false)) {
+    if (getAppConfig('debug_enabled', false)) {
         echo '<pre>' . $exception->getTraceAsString() . '</pre>';
     } else {
         http_response_code(500);
@@ -364,7 +364,7 @@ try {
 } catch (Exception $e) {
     error_log("Router exception: " . $e->getMessage());
     
-    if (getConfig('debug_enabled', false)) {
+    if (getAppConfig('debug_enabled', false)) {
         echo '<pre>Error: ' . $e->getMessage() . '</pre>';
     } else {
         http_response_code(500);

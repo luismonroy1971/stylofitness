@@ -801,7 +801,7 @@ class AppHelper {
 }
 
 // Función global para obtener configuración (shortcut)
-function getConfig($key, $default = null) {
+function getAppConfig($key, $default = null) {
     return AppHelper::getConfig($key, $default);
 }
 ?>

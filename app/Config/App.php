@@ -9,7 +9,7 @@ define('APP_VERSION', '1.0.0');
 define('APP_ENV', 'development'); // development, production
 
 // URLs y rutas
-define('BASE_URL', 'http://localhost/stylofitness');
+define('BASE_URL', 'http://localhost:8000');
 define('ASSETS_URL', BASE_URL . '/public');
 define('UPLOAD_URL', BASE_URL . '/public/uploads');
 
@@ -56,7 +56,7 @@ define('CACHE_ENABLED', true);
 define('CACHE_TIME', 3600); // 1 hora
 
 // Funciones auxiliares
-class AppHelper {
+class AppConfig {
     
     // Función para obtener URL base
     public static function baseUrl($path = '') {

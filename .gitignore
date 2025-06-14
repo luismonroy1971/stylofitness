@@ -120,14 +120,12 @@ yarn.lock
 # ==========================================
 
 # Dumps y backups de BD
-*.sql
 *.dump
 *.backup
 /database/backups/
 /backups/
 backup_*.sql
 dump_*.sql
-stylofitness_*.sql
 
 # Archivos SQLite (si se usan para testing)
 *.sqlite

@@ -15,7 +15,7 @@ class WebhookController {
     public function stripePayment() {
         $payload = @file_get_contents('php://input');
         $sig_header = $_SERVER['HTTP_STRIPE_SIGNATURE'] ?? '';
-        $endpoint_secret = getConfig('stripe_webhook_secret', '');
+        $endpoint_secret = getWebhookConfig('stripe_webhook_secret', '');
         
         try {
             // Verificar la firma del webhook
@@ -267,7 +267,7 @@ class WebhookController {
     // Métodos privados para manejar eventos de Mailgun
     
     private function verifyMailgunWebhook($payload) {
-        $webhook_key = getConfig('mailgun_webhook_key', '');
+        $webhook_key = getWebhookConfig('mailgun_webhook_key', '');
         
         if (empty($webhook_key)) {
             return false;
@@ -356,7 +356,7 @@ class WebhookController {
 }
 
 // Función auxiliar para obtener configuración
-function getConfig($key, $default = null) {
+function getWebhookConfig($key, $default = null) {
     static $config = null;
     
     if ($config === null) {

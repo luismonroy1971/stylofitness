@@ -451,9 +451,9 @@ define('THEME_COLORS', [
 ]);
 
 /**
- * Función para obtener configuración
+ * Función para obtener configuración de rutinas
  */
-function getConfig($key, $default = null) {
+function getRoutineConfig($key, $default = null) {
     $config = [
         'app_name' => 'STYLOFITNESS',
         'app_version' => '1.0.0',
