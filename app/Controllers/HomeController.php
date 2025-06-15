@@ -93,28 +93,28 @@ class HomeController {
             [
                 'name' => 'María González',
                 'role' => 'Cliente Premium',
-                'image' => '/images/testimonials/maria.jpg',
+                'image' => 'maria.jpg',
                 'text' => 'Las rutinas personalizadas de STYLOFITNESS me ayudaron a alcanzar mis objetivos en tiempo récord. Los videos explicativos son increíbles.',
                 'rating' => 5
             ],
             [
                 'name' => 'Carlos Rodríguez',
                 'role' => 'Atleta',
-                'image' => '/images/testimonials/carlos.jpg',
+                'image' => 'carlos.jpg',
                 'text' => 'La combinación de entrenamiento y suplementos recomendados ha transformado completamente mi rendimiento deportivo.',
                 'rating' => 5
             ],
             [
                 'name' => 'Ana Morales',
                 'role' => 'Fitness Enthusiast',
-                'image' => '/images/testimonials/ana.jpg',
+                'image' => 'ana.jpg',
                 'text' => 'Me encanta poder seguir mis rutinas desde casa con los videos HD. La tienda online tiene los mejores precios.',
                 'rating' => 5
             ],
             [
                 'name' => 'Diego Fernández',
                 'role' => 'Cliente VIP',
-                'image' => '/images/testimonials/diego.jpg',
+                'image' => 'diego.jpg',
                 'text' => 'El seguimiento personalizado y las clases grupales han hecho que entrenar sea adictivo. Resultados garantizados.',
                 'rating' => 5
             ]
