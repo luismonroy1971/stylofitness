@@ -2240,11 +2240,36 @@
     .card-footer-ultra {
         flex-direction: column;
         gap: 1rem;
+        padding: 1.5rem 1rem 1.5rem;
     }
     
     .btn-reserve-ultra {
         width: 100%;
+        padding: 0.75rem 1rem;
+        font-size: 0.9rem;
     }
+    
+    .btn-info-ultra {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        padding: 0.75rem 1rem;
+        background-color: rgba(255, 255, 255, 0.15);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 10px;
+        color: white;
+        font-size: 0.9rem;
+        transition: all 0.3s ease;
+        margin-top: 0.5rem;
+    }
+    
+    .btn-info-ultra:hover {
+        background-color: rgba(255, 255, 255, 0.25);
+        transform: translateY(-2px);
+    }
+    
+    /* Estilos para botones ya definidos en .btn-info-ultra y .btn-reserve-ultra */
 }
 
 @media (max-width: 480px) {

@@ -57,8 +57,8 @@ class HomeController {
     }
     
     private function getUpcomingClasses($limit = 6) {
-        $sql = "SELECT gc.name, gc.description, gc.duration_minutes, gc.max_participants,
-                cs.day_of_week, cs.start_time, cs.end_time,
+        $sql = "SELECT gc.id, gc.name, gc.description, gc.duration_minutes, gc.max_participants,
+                cs.id as schedule_id, cs.day_of_week, cs.start_time, cs.end_time,
                 u.first_name, u.last_name,
                 g.name as gym_name, g.address as gym_address,
                 COUNT(cb.id) as booked_spots
