@@ -34,7 +34,7 @@
                                         <div class="mega-badge animate__animated animate__bounceIn animate__delay-1s">
                                             <?php if ($product['discount_percentage']): ?>
                                                 <span class="discount-percent"><?php echo $product['discount_percentage']; ?>%</span>
-                                                <span class="discount-text">OFF</span>
+                                                <span class="discount-text">Descuento</span>
                                             <?php else: ?>
                                                 <span class="special-text">ESPECIAL</span>
                                             <?php endif; ?>

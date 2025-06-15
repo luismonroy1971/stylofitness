@@ -95,7 +95,7 @@ class AuthController {
         }
         
         // Validar token CSRF
-        if (!AppHelper::verifyCsrfToken($_POST['csrf_token'] ?? '')) {
+        if (!AppHelper::validateCsrfToken($_POST['csrf_token'] ?? '')) {
             AppHelper::setFlashMessage('error', 'Token de seguridad inválido');
             AppHelper::redirect('/register');
             return;
@@ -273,7 +273,7 @@ class AuthController {
     private function sendWelcomeEmail($userData) {
         // Implementar envío de email de bienvenida
         // Por ahora solo log
-        AppHelper::log("Welcome email should be sent to: " . $userData['email']);
+        error_log("Welcome email should be sent to: " . $userData['email']);
     }
     
     public function forgotPassword() {
@@ -293,7 +293,7 @@ class AuthController {
                 $token = $this->generatePasswordResetToken($user['id']);
                 
                 // Enviar email (implementar)
-                AppHelper::log("Password reset token for {$email}: {$token}");
+                error_log("Password reset token for {$email}: {$token}");
                 
                 AppHelper::setFlashMessage('success', 'Te hemos enviado un enlace de recuperación a tu email');
             } else {
