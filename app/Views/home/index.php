@@ -839,6 +839,10 @@
                         
                         <!-- Características de la Clase -->
                         <div class="class-features-ultra">
+                            <div class="feature-tag gym-location">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span><?php echo htmlspecialchars($class['gym_name'] ?? 'Sede Principal'); ?></span>
+                            </div>
                             <div class="feature-tag">
                                 <i class="fas fa-fire"></i>
                                 <span>Alta Intensidad</span>
@@ -1232,7 +1236,7 @@
 /* Grid de Clases Ultra Moderno */
 .ultra-classes-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
     margin-bottom: 4rem;
     position: relative;
@@ -1568,6 +1572,16 @@
 .feature-tag i {
     color: #FF6B00;
     font-size: 0.9rem;
+}
+
+.gym-location {
+    background: rgba(255, 107, 0, 0.25);
+    border: 1px solid rgba(255, 107, 0, 0.5);
+    font-weight: 600;
+}
+
+.gym-location i {
+    color: #FF6B00;
 }
 
 .card-footer-ultra {
@@ -2430,7 +2444,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 ripple.style.height = '0';
             }, 600);
             
-            // Simular reserva (aquí iría la lógica real de reserva)
+            // Obtener el ID de la clase desde el atributo data-class-id
+            const classId = this.getAttribute('data-class-id');
+            if (!classId) return;
+            
             const originalText = this.querySelector('.btn-text').textContent;
             const originalIcon = this.querySelector('i').className;
             
@@ -2438,10 +2455,70 @@ document.addEventListener('DOMContentLoaded', function() {
             this.querySelector('.btn-text').textContent = 'Reservando...';
             this.disabled = true;
             
-            setTimeout(() => {
-                this.querySelector('i').className = 'fas fa-check';
-                this.querySelector('.btn-text').textContent = '¡Reservado!';
-                this.style.background = '#28a745';
+            // Realizar la reserva mediante AJAX
+            const formData = new FormData();
+            formData.append('schedule_id', classId);
+            formData.append('booking_date', new Date().toISOString().split('T')[0]); // Fecha actual
+            
+            fetch('/classes/book', {
+                method: 'POST',
+                body: formData,
+                credentials: 'same-origin'
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // Reserva exitosa
+                    this.querySelector('i').className = 'fas fa-check';
+                    this.querySelector('.btn-text').textContent = '¡Reservado!';
+                    this.style.background = '#28a745';
+                    
+                    // Actualizar contador de lugares
+                    const capacityInfo = this.closest('.class-card-ultra').querySelector('.capacity-info span');
+                    if (capacityInfo) {
+                        const parts = capacityInfo.textContent.split('/');
+                        if (parts.length === 2) {
+                            const booked = parseInt(parts[0]) + 1;
+                            const max = parseInt(parts[1]);
+                            capacityInfo.textContent = `${booked}/${max} lugares`;
+                            
+                            // Actualizar barra de progreso
+                            const progressFill = this.closest('.class-card-ultra').querySelector('.progress-fill-ultra');
+                            if (progressFill) {
+                                const fillPercentage = (booked / max) * 100;
+                                progressFill.style.width = `${fillPercentage}%`;
+                            }
+                        }
+                    }
+                    
+                    // Si la clase está llena, deshabilitar el botón
+                    const parts = capacityInfo ? capacityInfo.textContent.split('/') : [];
+                    if (parts.length === 2 && parseInt(parts[0]) >= parseInt(parts[1])) {
+                        this.classList.add('disabled');
+                        this.setAttribute('disabled', 'disabled');
+                    }
+                } else {
+                    // Error en la reserva
+                    this.querySelector('i').className = 'fas fa-times';
+                    this.querySelector('.btn-text').textContent = 'Error: ' + (data.error || 'Intenta de nuevo');
+                    this.style.background = '#dc3545';
+                }
+                
+                // Restaurar el botón después de un tiempo
+                setTimeout(() => {
+                    if (!data.success) {
+                        this.querySelector('i').className = originalIcon;
+                        this.querySelector('.btn-text').textContent = originalText;
+                        this.style.background = '';
+                        this.disabled = false;
+                    }
+                }, 2000);
+            })
+            .catch(error => {
+                console.error('Error al reservar:', error);
+                this.querySelector('i').className = 'fas fa-times';
+                this.querySelector('.btn-text').textContent = 'Error: Intenta de nuevo';
+                this.style.background = '#dc3545';
                 
                 setTimeout(() => {
                     this.querySelector('i').className = originalIcon;
@@ -2449,7 +2526,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     this.style.background = '';
                     this.disabled = false;
                 }, 2000);
-            }, 1500);
+            });
+        });
         });
     });
     
@@ -2469,7 +2547,7 @@ document.addEventListener('DOMContentLoaded', function() {
             z-index: 1;
         `;
         
-        document.querySelector('.classes-background-ultra').appendChild(particle);
+        document.querySelector('.classes-background-to ultra').appendChild(particle);
         
         setTimeout(() => {
             particle.remove();
@@ -2503,7 +2581,7 @@ document.addEventListener('DOMContentLoaded', function() {
         `;
         document.head.appendChild(style);
     }
-});
+
 </script>
 <?php endif; ?>
 

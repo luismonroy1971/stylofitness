@@ -60,10 +60,12 @@ class HomeController {
         $sql = "SELECT gc.name, gc.description, gc.duration_minutes, gc.max_participants,
                 cs.day_of_week, cs.start_time, cs.end_time,
                 u.first_name, u.last_name,
+                g.name as gym_name, g.address as gym_address,
                 COUNT(cb.id) as booked_spots
                 FROM group_classes gc
                 JOIN class_schedules cs ON gc.id = cs.class_id
                 JOIN users u ON gc.instructor_id = u.id
+                JOIN gyms g ON gc.gym_id = g.id
                 LEFT JOIN class_bookings cb ON cs.id = cb.schedule_id 
                     AND cb.booking_date >= CURDATE() 
                     AND cb.status = 'booked'
