@@ -148,13 +148,6 @@
    SECCIÓN PRODUCTOS MEJORADA
    ============================================= */
 
-.featured-products-section-enhanced {
-    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 50%, #f8f9fa 100%) !important;
-    position: relative !important;
-    overflow: hidden !important;
-    padding: 6rem 0 !important;
-}
-
 .section-header-enhanced {
     text-align: center !important;
     margin-bottom: 4rem !important;

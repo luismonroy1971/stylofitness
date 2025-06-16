@@ -1181,42 +1181,7 @@
                 </div>
                 
                 <!-- Redes Sociales y Newsletter -->
-                <div class="footer-section-pro footer-connect-pro">
-                    <h4 class="footer-title-pro">
-                        <i class="fas fa-wifi footer-title-icon"></i>
-                        Mantente Conectado
-                    </h4>
-                    <p class="connect-description-pro">
-                        Únete a nuestra comunidad y recibe consejos exclusivos, rutinas personalizadas 
-                        y ofertas especiales directamente en tu email.
-                    </p>
-                    
-                    <!-- Newsletter -->
-                    <div class="newsletter-section-pro">
-                        <h5 class="newsletter-title-pro">Newsletter Fitness</h5>
-                        <form class="newsletter-form-pro" id="newsletter-form">
-                            <div class="newsletter-input-group-pro">
-                                <div class="input-wrapper-pro">
-                                    <i class="fas fa-envelope input-icon-pro"></i>
-                                    <input type="email" 
-                                           placeholder="Tu email aquí..." 
-                                           required 
-                                           class="newsletter-input-pro"
-                                           name="email">
-                                </div>
-                                <button type="submit" class="newsletter-btn-pro">
-                                    <i class="fas fa-paper-plane"></i>
-                                    Suscribirse
-                                </button>
-                            </div>
-                            <div class="newsletter-benefits-pro">
-                                <small><i class="fas fa-check-circle"></i> Rutinas exclusivas</small>
-                                <small><i class="fas fa-check-circle"></i> Ofertas especiales</small>
-                                <small><i class="fas fa-check-circle"></i> Consejos de expertos</small>
-                            </div>
-                        </form>
-                    </div>
-                    
+                <div class="footer-section-pro footer-connect-pro">                    
                     <!-- Redes Sociales -->
                     <div class="social-section-pro">
                         <h5 class="social-title-pro">Síguenos</h5>

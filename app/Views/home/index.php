@@ -231,7 +231,7 @@
                     <span class="mini-stat-label">Clientes Felices</span>
                 </div>
                 <div class="mini-stat">
-                    <span class="mini-stat-number">15</span>
+                    <span class="mini-stat-number">2</span>
                     <span class="mini-stat-label">Sedes</span>
                 </div>
                 <div class="mini-stat">
@@ -388,7 +388,7 @@
                                 <span class="stat-label">Clases/Sem</span>
                             </div>
                             <div class="stat">
-                                <span class="stat-number">15</span>
+                                <span class="stat-number">2</span>
                                 <span class="stat-label">Sedes</span>
                             </div>
                         </div>
@@ -447,56 +447,6 @@
             </div>
         </div>
         
-        <!-- Sección de Beneficios Adicionales -->
-        <div class="additional-benefits" data-aos="fade-up" data-aos-delay="500">
-            <div class="benefits-title">
-                <h3>Y mucho más...</h3>
-            </div>
-            <div class="benefits-grid">
-                <div class="benefit-item">
-                    <i class="fas fa-mobile-alt"></i>
-                    <span>App Móvil Nativa</span>
-                </div>
-                <div class="benefit-item">
-                    <i class="fas fa-cloud"></i>
-                    <span>Sincronización Cloud</span>
-                </div>
-                <div class="benefit-item">
-                    <i class="fas fa-medal"></i>
-                    <span>Sistema de Logros</span>
-                </div>
-                <div class="benefit-item">
-                    <i class="fas fa-users-cog"></i>
-                    <span>Comunidad Activa</span>
-                </div>
-                <div class="benefit-item">
-                    <i class="fas fa-heart-pulse"></i>
-                    <span>Monitor de Salud</span>
-                </div>
-                <div class="benefit-item">
-                    <i class="fas fa-graduation-cap"></i>
-                    <span>Cursos y Talleres</span>
-                </div>
-            </div>
-        </div>
-        
-        <!-- CTA de la sección -->
-        <div class="features-cta" data-aos="zoom-in" data-aos-delay="600">
-            <div class="cta-content">
-                <h3>¿Listo para experimentar la diferencia?</h3>
-                <p>Únete a la revolución fitness más avanzada del país</p>
-                <div class="cta-buttons">
-                    <a href="<?php echo AppHelper::getBaseUrl('register'); ?>" class="btn-cta-primary">
-                        <i class="fas fa-rocket"></i>
-                        Comenzar Gratis
-                    </a>
-                    <a href="<?php echo AppHelper::getBaseUrl('contact'); ?>" class="btn-cta-secondary">
-                        <i class="fas fa-phone"></i>
-                        Solicitar Demo
-                    </a>
-                </div>
-            </div>
-        </div>
     </div>
 </section>
 
@@ -706,7 +656,7 @@
                     <span class="stat-label">Clases por Semana</span>
                 </div>
                 <div class="stat-item">
-                    <span class="stat-number" data-count="15">0</span>
+                    <span class="stat-number" data-count="2">0</span>
                     <span class="stat-label">Sedes Disponibles</span>
                 </div>
                 <div class="stat-item">
@@ -4050,56 +4000,6 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 <?php endif; ?>
-
-<!-- CTA Final -->
-<section class="section cta-section bg-primary">
-    <div class="container">
-        <div class="cta-content" data-aos="zoom-in">
-            <h2 class="cta-title">¿Listo Para Transformar Tu Vida?</h2>
-            <p class="cta-subtitle">
-                Únete a miles de personas que ya han logrado sus objetivos con STYLOFITNESS.
-                Tu transformación comienza con un solo clic.
-            </p>
-            
-            <div class="cta-buttons">
-                <?php if (!AppHelper::isLoggedIn()): ?>
-                    <a href="<?php echo AppHelper::getBaseUrl('register'); ?>" class="btn-secondary btn-lg">
-                        <i class="fas fa-user-plus"></i>
-                        Crear Cuenta Gratis
-                    </a>
-                    <a href="<?php echo AppHelper::getBaseUrl('contact'); ?>" class="btn-outline btn-lg">
-                        <i class="fas fa-phone"></i>
-                        Hablar con un Asesor
-                    </a>
-                <?php else: ?>
-                    <a href="<?php echo AppHelper::getBaseUrl('routines/create'); ?>" class="btn-secondary btn-lg">
-                        <i class="fas fa-plus"></i>
-                        Crear Mi Primera Rutina
-                    </a>
-                    <a href="<?php echo AppHelper::getBaseUrl('store'); ?>" class="btn-outline btn-lg">
-                        <i class="fas fa-shopping-cart"></i>
-                        Explorar Productos
-                    </a>
-                <?php endif; ?>
-            </div>
-            
-            <div class="cta-guarantees">
-                <div class="guarantee-item">
-                    <i class="fas fa-shield-alt"></i>
-                    <span>Garantía 30 días</span>
-                </div>
-                <div class="guarantee-item">
-                    <i class="fas fa-headset"></i>
-                    <span>Soporte 24/7</span>
-                </div>
-                <div class="guarantee-item">
-                    <i class="fas fa-medal"></i>
-                    <span>Resultados garantizados</span>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 
 <!-- Esquema estructurado para SEO -->
 <script type="application/ld+json">

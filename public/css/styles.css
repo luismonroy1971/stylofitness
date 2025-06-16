@@ -647,11 +647,11 @@ body.nav-open {
     position: relative;
     z-index: 5;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr; /* Columnas de igual tamaño */
+    grid-template-columns: 1.5fr 1fr 0.8fr; /* Primera columna más ancha, tercera más angosta */
     gap: 1.5rem;
     align-items: center; /* Centrar verticalmente el contenido */
     width: 100%;
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
     padding: 0 2rem;
     min-height: 350px;
@@ -660,7 +660,7 @@ body.nav-open {
 /* Información del producto - Columna 1 */
 .product-info-mega {
     color: var(--white);
-    padding: 1.5rem; /* Padding uniforme */
+    padding: 2rem; /* Padding uniforme */
     display: flex;
     flex-direction: column;
     justify-content: center; /* Centrar verticalmente */
@@ -679,7 +679,7 @@ body.nav-open {
     backdrop-filter: blur(10px);
     border: 2px solid rgba(255, 255, 255, 0.3);
     border-radius: 15px;
-    padding: 0.75rem 1.5rem;
+    padding: 0.5rem 1.5rem;
     margin-bottom: 1rem;
     position: relative;
     overflow: hidden;
