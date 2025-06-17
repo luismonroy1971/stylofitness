@@ -19,8 +19,8 @@ SET time_zone = "+00:00";
 -- CREAR BASE DE DATOS SI NO EXISTE
 -- ==========================================
 
-CREATE DATABASE IF NOT EXISTS `stylofitness_gym` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-USE `stylofitness_gym`;
+-- CREATE DATABASE IF NOT EXISTS `stylofitness_gym` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+-- USE `stylofitness_gym`;
 
 -- ==========================================
 -- TABLAS PRINCIPALES DEL SISTEMA

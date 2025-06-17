@@ -144,7 +144,8 @@ DirectoryIndex index.php index.html
 # Prevenir hotlinking de imágenes
 <IfModule mod_rewrite.c>
     RewriteCond %{HTTP_REFERER} !^$
-    RewriteCond %{HTTP_REFERER} !^http(s)?://(www\.)?stylofitness\.com [NC]
+    #RewriteCond %{HTTP_REFERER} !^http(s)?://(www\.)?stylofitness\.com [NC]
+    RewriteCond %{HTTP_REFERER} !^http(s)?://(www\.|app\.)?stylofitness\.com [NC]
     RewriteCond %{HTTP_REFERER} !^http(s)?://(www\.)?google\.com [NC]
     RewriteCond %{HTTP_REFERER} !^http(s)?://(www\.)?bing\.com [NC]
     RewriteRule \.(jpg|jpeg|png|gif|webp)$ - [F]
