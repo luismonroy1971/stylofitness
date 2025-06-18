@@ -396,4 +396,18 @@ class ProductCategory {
         
         return $this->db->count($sql, $params) > 0;
     }
+    
+    /**
+     * Obtiene el slug de una categoría por su ID
+     * @param int $id ID de la categoría
+     * @return string Slug de la categoría o cadena vacía si no existe
+     */
+    public function getSlugById($id) {
+        $category = $this->db->fetch(
+            "SELECT slug FROM product_categories WHERE id = ?",
+            [$id]
+        );
+        
+        return $category ? $category['slug'] : '';
+    }
 }

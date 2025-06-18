@@ -36,6 +36,17 @@ class GroupClassController {
         $additionalCSS = ['classes.css'];
         $additionalJS = ['classes.js'];
         
+        // Asegurarse de que las variables estén disponibles en la vista
+        $viewData = [
+            'classes' => $classes,
+            'filters' => $filters,
+            'classTypes' => $classTypes,
+            'instructors' => $instructors
+        ];
+        
+        // Extraer variables para que estén disponibles en la vista
+        extract($viewData);
+        
         include APP_PATH . '/Views/layout/header.php';
         include APP_PATH . '/Views/classes/index.php';
         include APP_PATH . '/Views/layout/footer.php';

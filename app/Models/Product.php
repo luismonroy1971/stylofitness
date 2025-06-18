@@ -61,10 +61,10 @@ class Product {
         );
         
         if ($product) {
-            $product['images'] = json_decode($product['images'], true) ?: [];
-            $product['gallery'] = json_decode($product['gallery'], true) ?: [];
-            $product['specifications'] = json_decode($product['specifications'], true) ?: [];
-            $product['nutritional_info'] = json_decode($product['nutritional_info'], true) ?: [];
+            $product['images'] = !empty($product['images']) ? json_decode($product['images'], true) : [];
+            $product['gallery'] = !empty($product['gallery']) ? json_decode($product['gallery'], true) : [];
+            $product['specifications'] = !empty($product['specifications']) ? json_decode($product['specifications'], true) : [];
+            $product['nutritional_info'] = !empty($product['nutritional_info']) ? json_decode($product['nutritional_info'], true) : [];
         }
         
         return $product;
@@ -80,10 +80,10 @@ class Product {
         );
         
         if ($product) {
-            $product['images'] = json_decode($product['images'], true) ?: [];
-            $product['gallery'] = json_decode($product['gallery'], true) ?: [];
-            $product['specifications'] = json_decode($product['specifications'], true) ?: [];
-            $product['nutritional_info'] = json_decode($product['nutritional_info'], true) ?: [];
+            $product['images'] = !empty($product['images']) ? json_decode($product['images'], true) : [];
+            $product['gallery'] = !empty($product['gallery']) ? json_decode($product['gallery'], true) : [];
+            $product['specifications'] = !empty($product['specifications']) ? json_decode($product['specifications'], true) : [];
+            $product['nutritional_info'] = !empty($product['nutritional_info']) ? json_decode($product['nutritional_info'], true) : [];
             
             // Incrementar contador de visualizaciones
             $this->incrementViews($product['id']);
@@ -228,10 +228,10 @@ class Product {
         
         // Decodificar JSON fields
         foreach ($products as &$product) {
-            $product['images'] = json_decode($product['images'], true) ?: [];
-            $product['gallery'] = json_decode($product['gallery'], true) ?: [];
-            $product['specifications'] = json_decode($product['specifications'], true) ?: [];
-            $product['nutritional_info'] = json_decode($product['nutritional_info'], true) ?: [];
+            $product['images'] = !empty($product['images']) ? json_decode($product['images'], true) : [];
+            $product['gallery'] = !empty($product['gallery']) ? json_decode($product['gallery'], true) : [];
+            $product['specifications'] = !empty($product['specifications']) ? json_decode($product['specifications'], true) : [];
+            $product['nutritional_info'] = !empty($product['nutritional_info']) ? json_decode($product['nutritional_info'], true) : [];
         }
         
         return $products;
@@ -316,7 +316,7 @@ class Product {
         $products = $this->db->fetchAll($sql, [$limit]);
         
         foreach ($products as &$product) {
-            $product['images'] = json_decode($product['images'], true) ?: [];
+            $product['images'] = !empty($product['images']) ? json_decode($product['images'], true) : [];
         }
         
         return $products;
@@ -380,7 +380,7 @@ class Product {
         $products = $this->db->fetchAll($sql, $params);
         
         foreach ($products as &$product) {
-            $product['images'] = json_decode($product['images'], true) ?: [];
+            $product['images'] = !empty($product['images']) ? json_decode($product['images'], true) : [];
         }
         
         return $products;

@@ -1,0 +1,366 @@
+/**
+ * Estilos para Clases Grupales - STYLOFITNESS
+ */
+
+/* Contenedor principal */
+.classes-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+/* Encabezado de la página */
+.classes-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.classes-header h1 {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.classes-header .subtitle {
+    font-size: 1.2rem;
+    color: var(--text-color-secondary);
+}
+
+/* Filtros */
+.classes-filters {
+    background-color: var(--bg-light);
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.filter-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+}
+
+.filter-group {
+    flex: 1;
+    min-width: 180px;
+}
+
+.filter-group input,
+.filter-group select {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 1rem;
+    background-color: #fff;
+}
+
+.filter-group select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23333' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: calc(100% - 1rem) center;
+    padding-right: 2.5rem;
+}
+
+.btn-filter {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s;
+}
+
+.btn-filter:hover {
+    background-color: var(--primary-color-dark);
+}
+
+.btn-clear {
+    background-color: transparent;
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    padding: 0.8rem 1.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-block;
+    margin-left: 0.5rem;
+    transition: background-color 0.3s;
+}
+
+.btn-clear:hover {
+    background-color: var(--bg-light-hover);
+}
+
+/* Grid de clases */
+.classes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2rem;
+}
+
+/* Tarjeta de clase */
+.class-card {
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    animation: fadeIn 0.5s ease-out forwards;
+    opacity: 0;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.class-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.class-image {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+}
+
+.class-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s;
+}
+
+.class-card:hover .class-image img {
+    transform: scale(1.05);
+}
+
+.class-difficulty {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: white;
+}
+
+.class-difficulty.principiante {
+    background-color: #4CAF50;
+}
+
+.class-difficulty.intermedio {
+    background-color: #FF9800;
+}
+
+.class-difficulty.avanzado {
+    background-color: #F44336;
+}
+
+.class-content {
+    padding: 1.5rem;
+}
+
+.class-title {
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+}
+
+.class-type {
+    color: var(--primary-color);
+    font-weight: 600;
+    margin-bottom: 1rem;
+    text-transform: capitalize;
+}
+
+.class-details {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.detail {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--text-color-secondary);
+}
+
+.detail i {
+    color: var(--primary-color);
+}
+
+.class-description {
+    margin-bottom: 1rem;
+    color: var(--text-color-secondary);
+    line-height: 1.5;
+}
+
+.class-schedule {
+    margin-bottom: 1.5rem;
+}
+
+.class-schedule h4 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+}
+
+.schedule-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.schedule-item {
+    background-color: var(--bg-light);
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.schedule-item .day {
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.schedule-item .time {
+    color: var(--text-color-secondary);
+}
+
+.class-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+.btn-details,
+.btn-book,
+.btn-login-to-book {
+    flex: 1;
+    text-align: center;
+    padding: 0.8rem 1rem;
+    border-radius: 4px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.btn-details {
+    background-color: transparent;
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+}
+
+.btn-details:hover {
+    background-color: rgba(var(--primary-color-rgb), 0.1);
+}
+
+.btn-book {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+}
+
+.btn-book:hover {
+    background-color: var(--primary-color-dark);
+    transform: translateY(-2px);
+}
+
+.btn-login-to-book {
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+}
+
+.btn-login-to-book:hover {
+    background-color: var(--secondary-color-dark);
+    transform: translateY(-2px);
+}
+
+/* Mensaje de no clases */
+.no-classes {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 3rem;
+    background-color: var(--bg-light);
+    border-radius: 8px;
+}
+
+.no-classes p {
+    margin-bottom: 1.5rem;
+    color: var(--text-color-secondary);
+    font-size: 1.1rem;
+}
+
+.no-classes .btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-block;
+    transition: background-color 0.3s;
+}
+
+.no-classes .btn-primary:hover {
+    background-color: var(--primary-color-dark);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .classes-grid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    }
+    
+    .filter-group {
+        min-width: 100%;
+    }
+    
+    .btn-clear {
+        margin-left: 0;
+        margin-top: 0.5rem;
+        width: 100%;
+        text-align: center;
+    }
+    
+    .class-actions {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 480px) {
+    .classes-header h1 {
+        font-size: 2rem;
+    }
+    
+    .classes-header .subtitle {
+        font-size: 1rem;
+    }
+    
+    .class-details {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}

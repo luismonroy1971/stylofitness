@@ -116,8 +116,11 @@ class StoreController {
         $additionalCSS = ['store.css'];
         $additionalJS = ['store.js'];
         
+        // Pasar la categoría actual a la vista
+        $categoryId = $category['id'];
+        
         include APP_PATH . '/Views/layout/header.php';
-        include APP_PATH . '/Views/store/category.php';
+        include APP_PATH . '/Views/store/index.php';
         include APP_PATH . '/Views/layout/footer.php';
     }
     
@@ -507,5 +510,26 @@ class StoreController {
         } else {
             echo json_encode(['error' => 'Error al remover de la lista de deseos']);
         }
+    }
+    
+    /**
+     * Construye la URL para la paginación manteniendo los filtros actuales
+     * @param int $page Número de página
+     * @return string URL con parámetros de paginación y filtros
+     */
+    private function buildPaginationUrl($page) {
+        $params = $_GET;
+        $params['page'] = $page;
+        
+        $url = AppHelper::baseUrl('store');
+        
+        if (!empty($params['category'])) {
+            $url = AppHelper::baseUrl('store/category/' . $this->categoryModel->getSlugById($params['category']));
+            unset($params['category']);
+        }
+        
+        $queryString = http_build_query($params);
+        
+        return $url . ($queryString ? '?' . $queryString : '');
     }
 }
