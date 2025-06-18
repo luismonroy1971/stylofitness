@@ -132,7 +132,8 @@ class AppHelper {
         // Agregar dominio base si es necesario
         if (!preg_match('/^https?:\/\//', $url)) {
             $baseUrl = self::getBaseUrl();
-            $url = $baseUrl . ltrim($url, '/');
+            $cleanUrl = ltrim($url, '/');
+            $url = $baseUrl . $cleanUrl;
         }
         
         header("Location: $url", true, $statusCode);
@@ -146,9 +147,12 @@ class AppHelper {
         $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https://' : 'http://';
         $host = $_SERVER['HTTP_HOST'];
         $scriptName = $_SERVER['SCRIPT_NAME'];
-        $basePath = dirname($scriptName);
+        $basePath = str_replace('\\', '/', dirname($scriptName));
         
-        return $protocol . $host . ($basePath !== '/' ? $basePath : '') . '/';
+        // Normalizar el path base
+        $basePath = $basePath === '/' ? '' : rtrim($basePath, '/');
+        
+        return $protocol . $host . $basePath . '/';
     }
     
     /**

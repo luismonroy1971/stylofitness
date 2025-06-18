@@ -93,7 +93,7 @@ class Router {
         $requestUri = $requestUri === '/' ? '/' : rtrim($requestUri, '/');
         
         // Debug logging
-        error_log("Routing Debug - Method: {$requestMethod}, Original URI: {$_SERVER['REQUEST_URI']}, Processed URI: {$requestUri}, Base: {$basePath}");
+        error_log("Routing Debug - Method: {$requestMethod}, Original URI: {$_SERVER['REQUEST_URI']}, Processed URI: {$requestUri}, Base: {$basePath}, Script: {$scriptName}");
         
         // Buscar ruta exacta primero
         $callback = $this->routes[$requestMethod][$requestUri] ?? null;

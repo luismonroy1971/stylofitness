@@ -1,0 +1,26 @@
+# Configuración de emergencia para StyloFitness
+RewriteEngine On
+
+# Forzar base específica
+RewriteBase /stylofitness/
+
+# Registrar todas las peticiones (debug)
+# RewriteLog logs/rewrite.log
+# RewriteLogLevel 9
+
+# No reescribir archivos físicos
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Regla principal: todo al index.php
+RewriteRule ^(.*)$ index.php [QSA,L]
+
+# Configuración básica de seguridad
+<Files ".ht*">
+    Require all denied
+</Files>
+
+# Configuración PHP básica
+php_value upload_max_filesize 50M
+php_value post_max_size 50M
+php_value memory_limit 256M
