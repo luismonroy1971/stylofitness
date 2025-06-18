@@ -80,17 +80,26 @@ class Router {
         $requestMethod = $_SERVER['REQUEST_METHOD'];
         
         // Remover el directorio base si existe
-        $basePath = dirname($_SERVER['SCRIPT_NAME']);
-        if ($basePath !== '/') {
+        $scriptName = $_SERVER['SCRIPT_NAME'];
+        $basePath = str_replace('\\', '/', dirname($scriptName));
+        
+        // Si estamos en un subdirectorio, removerlo de la URI
+        if ($basePath !== '/' && strpos($requestUri, $basePath) === 0) {
             $requestUri = substr($requestUri, strlen($basePath));
         }
         
-        $requestUri = $requestUri ?: '/';
+        // Limpiar la URI
+        $requestUri = '/' . ltrim($requestUri, '/');
+        $requestUri = $requestUri === '/' ? '/' : rtrim($requestUri, '/');
+        
+        // Debug logging
+        error_log("Routing Debug - Method: {$requestMethod}, Original URI: {$_SERVER['REQUEST_URI']}, Processed URI: {$requestUri}, Base: {$basePath}");
         
         // Buscar ruta exacta primero
         $callback = $this->routes[$requestMethod][$requestUri] ?? null;
         
         if ($callback) {
+            error_log("Found exact route for {$requestMethod} {$requestUri}");
             return $this->executeCallback($callback);
         }
         
@@ -99,16 +108,21 @@ class Router {
             $pattern = $this->convertRouteToRegex($route);
             if (preg_match($pattern, $requestUri, $matches)) {
                 array_shift($matches); // Remover el match completo
+                error_log("Found parametric route {$route} for {$requestMethod} {$requestUri}");
                 return $this->executeCallback($callback, $matches);
             }
         }
+        
+        // Log para debugging 404
+        error_log("404 - No route found for {$requestMethod} {$requestUri}");
+        error_log("Available routes for {$requestMethod}: " . implode(', ', array_keys($this->routes[$requestMethod] ?? [])));
         
         // Ruta 404
         http_response_code(404);
         if (file_exists(APP_PATH . '/Views/errors/404.php')) {
             include APP_PATH . '/Views/errors/404.php';
         } else {
-            echo '<h1>404 - Página no encontrada</h1>';
+            $this->render404();
         }
     }
     
@@ -124,17 +138,52 @@ class Router {
             $controllerName = $parts[0];
             $method = $parts[1];
             
+            // Verificar que el controlador existe
             if (class_exists($controllerName)) {
                 $controller = new $controllerName();
                 if (method_exists($controller, $method)) {
                     return call_user_func_array([$controller, $method], $params);
+                } else {
+                    error_log("Method {$method} not found in controller {$controllerName}");
+                    throw new Exception("Method {$method} not found in controller {$controllerName}");
                 }
+            } else {
+                error_log("Controller {$controllerName} not found");
+                throw new Exception("Controller {$controllerName} not found");
             }
-            
-            throw new Exception("Controller {$controllerName} or method {$method} not found");
         }
         
         return call_user_func_array($callback, $params);
+    }
+    
+    private function render404() {
+        echo "<!DOCTYPE html>";
+        echo "<html lang='es'>";
+        echo "<head>";
+        echo "<meta charset='UTF-8'>";
+        echo "<meta name='viewport' content='width=device-width, initial-scale=1.0'>";
+        echo "<title>404 - Página No Encontrada | StyloFitness</title>";
+        echo "<style>";
+        echo "body { font-family: Arial, sans-serif; background: linear-gradient(135deg, #FF6B00, #E55A00); margin: 0; padding: 0; display: flex; justify-content: center; align-items: center; min-height: 100vh; }";
+        echo ".container { background: white; padding: 40px; border-radius: 15px; text-align: center; box-shadow: 0 20px 40px rgba(0,0,0,0.2); max-width: 500px; }";
+        echo ".error-code { font-size: 6rem; font-weight: bold; color: #FF6B00; margin: 0; }";
+        echo "h1 { color: #333; margin: 20px 0; }";
+        echo "p { color: #666; margin-bottom: 30px; }";
+        echo ".btn { background: #FF6B00; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; display: inline-block; margin: 5px; }";
+        echo ".btn:hover { background: #E55A00; }";
+        echo "</style>";
+        echo "</head>";
+        echo "<body>";
+        echo "<div class='container'>";
+        echo "<div class='error-code'>404</div>";
+        echo "<h1>Página No Encontrada</h1>";
+        echo "<p>Lo sentimos, la página que buscas no existe o ha sido movida. Pero no te preocupes, ¡tenemos muchas otras opciones increíbles para ti!</p>";
+        echo "<a href='/' class='btn'>🏠 Ir al Inicio</a>";
+        echo "<a href='/store' class='btn'>🛒 Ir a Tienda</a>";
+        echo "<a href='/classes' class='btn'>💪 Clases Grupales</a>";
+        echo "</div>";
+        echo "</body>";
+        echo "</html>";
     }
 }
 
