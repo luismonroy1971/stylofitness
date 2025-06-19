@@ -138,8 +138,17 @@ class Product {
     }
     
     public function getProducts($filters = []) {
-        $where = ["p.is_active = 1"];
+        $where = [];
         $params = [];
+        
+        // Manejar el filtro is_active
+        if (isset($filters['is_active']) && $filters['is_active'] !== '') {
+            $where[] = "p.is_active = ?";
+            $params[] = (bool)$filters['is_active'];
+        } else {
+            // Por defecto, mostrar solo productos activos
+            $where[] = "p.is_active = 1";
+        }
         
         if (!empty($filters['search'])) {
             $where[] = "(p.name LIKE ? OR p.description LIKE ? OR p.short_description LIKE ? OR p.brand LIKE ? OR p.sku LIKE ?)";
@@ -160,11 +169,6 @@ class Product {
         if (isset($filters['is_featured']) && $filters['is_featured'] !== '') {
             $where[] = "p.is_featured = ?";
             $params[] = (bool)$filters['is_featured'];
-        }
-        
-        if (isset($filters['is_active']) && $filters['is_active'] !== '') {
-            $where[] = "p.is_active = ?";
-            $params[] = (bool)$filters['is_active'];
         }
         
         if (!empty($filters['price_min'])) {
@@ -238,8 +242,17 @@ class Product {
     }
     
     public function countProducts($filters = []) {
-        $where = ["p.is_active = 1"];
+        $where = [];
         $params = [];
+        
+        // Manejar el filtro is_active
+        if (isset($filters['is_active']) && $filters['is_active'] !== '') {
+            $where[] = "p.is_active = ?";
+            $params[] = (bool)$filters['is_active'];
+        } else {
+            // Por defecto, mostrar solo productos activos
+            $where[] = "p.is_active = 1";
+        }
         
         if (!empty($filters['search'])) {
             $where[] = "(p.name LIKE ? OR p.description LIKE ? OR p.short_description LIKE ? OR p.brand LIKE ? OR p.sku LIKE ?)";
@@ -260,11 +273,6 @@ class Product {
         if (isset($filters['is_featured']) && $filters['is_featured'] !== '') {
             $where[] = "p.is_featured = ?";
             $params[] = (bool)$filters['is_featured'];
-        }
-        
-        if (isset($filters['is_active']) && $filters['is_active'] !== '') {
-            $where[] = "p.is_active = ?";
-            $params[] = (bool)$filters['is_active'];
         }
         
         if (!empty($filters['price_min'])) {
@@ -296,7 +304,6 @@ class Product {
     public function getFeaturedProducts($limit = 8) {
         return $this->getProducts([
             'is_featured' => true,
-            'is_active' => true,
             'limit' => $limit,
             'sort' => 'popular'
         ]);
@@ -325,7 +332,6 @@ class Product {
     public function getRelatedProducts($productId, $categoryId, $limit = 4) {
         return $this->getProducts([
             'category_id' => $categoryId,
-            'is_active' => true,
             'limit' => $limit
         ]);
     }
@@ -333,7 +339,7 @@ class Product {
     public function getRecommendationsForUser($userId, $limit = 5) {
         // Obtener objetivos de rutinas del usuario
         $userObjectives = $this->db->fetchAll(
-            "SELECT DISTINCT objective FROM routines WHERE client_id = ? AND is_active = 1",
+            "SELECT DISTINCT objective FROM routines WHERE client_id = ? AND routines.is_active = 1",
             [$userId]
         );
         
@@ -360,7 +366,6 @@ class Product {
         if (empty($objectiveCategories)) {
             // Productos más populares por defecto
             return $this->getProducts([
-                'is_active' => true,
                 'limit' => $limit,
                 'sort' => 'popular'
             ]);
@@ -415,7 +420,7 @@ class Product {
         return $this->db->fetchAll(
             "SELECT brand, COUNT(*) as product_count
              FROM products 
-             WHERE brand IS NOT NULL AND brand != '' AND is_active = 1
+             WHERE brand IS NOT NULL AND brand != '' AND products.is_active = 1
              GROUP BY brand
              ORDER BY brand"
         );
@@ -427,7 +432,7 @@ class Product {
                 MIN(COALESCE(sale_price, price)) as min_price,
                 MAX(COALESCE(sale_price, price)) as max_price
              FROM products 
-             WHERE is_active = 1"
+             WHERE products.is_active = 1"
         );
     }
     
@@ -501,7 +506,7 @@ class Product {
         $stats = $this->db->fetch(
             "SELECT AVG(rating) as avg_rating, COUNT(*) as review_count
              FROM product_reviews 
-             WHERE product_id = ? AND is_approved = 1",
+             WHERE product_id = ? AND product_reviews.is_approved = 1",
             [$productId]
         );
         

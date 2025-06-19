@@ -15,7 +15,6 @@
 .env.testing
 
 # Archivos de configuración con datos sensibles
-/app/Config/Database.php
 /app/Config/Production.php
 config.local.php
 settings.local.php
