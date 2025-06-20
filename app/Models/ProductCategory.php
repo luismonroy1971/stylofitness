@@ -106,7 +106,7 @@ class ProductCategory {
         }
         
         if (!$includeInactive) {
-            $where[] = "is_active = 1";
+            $where[] = "pc.is_active = 1";
         }
         
         $sql = "SELECT pc.*, 
@@ -129,7 +129,7 @@ class ProductCategory {
     }
     
     public function getAllCategories($includeInactive = false) {
-        $where = $includeInactive ? "1=1" : "is_active = 1";
+        $where = $includeInactive ? "1=1" : "pc.is_active = 1";
         
         $sql = "SELECT pc.*, parent.name as parent_name,
                 COUNT(p.id) as product_count
@@ -162,7 +162,7 @@ class ProductCategory {
     public function getProductCount($categoryId, $includeSubcategories = true) {
         if (!$includeSubcategories) {
             return $this->db->count(
-                "SELECT COUNT(*) FROM products WHERE category_id = ? AND is_active = 1",
+                "SELECT COUNT(*) FROM products WHERE category_id = ? AND products.is_active = 1",
                 [$categoryId]
             );
         }
@@ -172,7 +172,7 @@ class ProductCategory {
         $placeholders = str_repeat('?,', count($categoryIds) - 1) . '?';
         
         return $this->db->count(
-            "SELECT COUNT(*) FROM products WHERE category_id IN ({$placeholders}) AND is_active = 1",
+            "SELECT COUNT(*) FROM products WHERE category_id IN ({$placeholders}) AND products.is_active = 1",
             $categoryIds
         );
     }
