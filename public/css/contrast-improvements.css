@@ -1,0 +1,355 @@
+/* 
+ * STYLOFITNESS - Mejoras de Contraste
+ * Mejoras para aumentar el contraste y la visibilidad de la tienda
+ */
+
+/* Mejoras para las tarjetas de categorías */
+.category-card {
+    border: 2px solid #e0e0e0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    border-radius: 10px;
+    background-position: center;
+    background-size: cover;
+    z-index: 1;
+}
+
+.category-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.4) 100%);
+    z-index: -1;
+    transition: all 0.3s ease;
+}
+
+.category-card:hover::before,
+.category-card.active::before {
+    background: linear-gradient(135deg, rgba(255, 107, 0, 0.8) 0%, rgba(229, 90, 0, 0.6) 100%);
+}
+
+.category-card:hover,
+.category-card.active {
+    border-color: var(--primary-color);
+    transform: translateY(-5px) scale(1.03);
+    box-shadow: 0 10px 20px rgba(255, 107, 0, 0.4);
+    z-index: 2;
+}
+
+.category-card:hover .category-name,
+.category-card.active .category-name {
+    transform: scale(1.05);
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+}
+
+.category-card:hover .category-icon,
+.category-card.active .category-icon {
+    transform: rotate(5deg) scale(1.1);
+    background: var(--secondary-color);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+.category-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -2;
+    transition: transform 0.5s ease;
+}
+
+.category-card:hover .category-image {
+    transform: scale(1.1);
+}
+
+.category-icon {
+    width: 50px;
+    height: 50px;
+    background: var(--gradient-primary);
+    border-radius: 50%;
+    color: white;
+    font-size: 1.3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    margin-right: 15px;
+    flex-shrink: 0;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.category-info {
+    z-index: 1;
+}
+
+.category-name {
+    font-weight: 700;
+    color: white;
+    font-size: 1.1rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    margin-bottom: 5px;
+    transition: all 0.3s ease;
+}
+
+.product-count {
+    color: #ffffff;
+    font-weight: 700;
+    background: linear-gradient(135deg, rgba(255, 107, 0, 0.9) 0%, rgba(229, 90, 0, 0.9) 100%);
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    display: inline-block;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    letter-spacing: 0.5px;
+}
+
+.category-card:hover .product-count,
+.category-card.active .product-count {
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.8) 0%, rgba(40, 40, 40, 0.8) 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+/* Mejoras para las tarjetas de productos */
+.product-card {
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    background: white;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.12);
+    border-color: var(--primary-color);
+}
+
+.product-image {
+    position: relative;
+    overflow: hidden;
+    height: 220px;
+    background: #f5f5f5;
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.product-card:hover .product-image img {
+    transform: scale(1.08);
+}
+
+.product-badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: var(--gradient-primary);
+    color: white;
+    font-weight: 700;
+    padding: 6px 12px;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(255, 107, 0, 0.3);
+    z-index: 2;
+}
+
+.featured-badge {
+    top: 12px;
+    left: 12px;
+    right: auto;
+    background: none;
+    padding: 0;
+    box-shadow: none;
+}
+
+.featured-badge img {
+    width: 40px;
+    height: 40px;
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3));
+}
+
+.product-category {
+    margin-bottom: 8px;
+}
+
+.product-category a {
+    color: var(--primary-color);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+    background: rgba(255, 107, 0, 0.1);
+    padding: 4px 10px;
+    border-radius: 15px;
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+.product-category a:hover {
+    background: rgba(255, 107, 0, 0.2);
+    color: var(--secondary-color);
+}
+
+.product-title a {
+    color: var(--text-dark);
+    text-decoration: none;
+    font-weight: 700;
+    transition: color 0.3s ease;
+    display: block;
+    font-size: 1.2rem;
+    line-height: 1.4;
+}
+
+.product-title a:hover {
+    color: var(--primary-color);
+}
+
+.current-price {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--primary-color);
+}
+
+.original-price {
+    font-size: 1.1rem;
+    color: #999;
+    text-decoration: line-through;
+}
+
+/* Mejoras para la sección de productos destacados */
+.featured-section {
+    background: linear-gradient(135deg, #f8f9fa 0%, #f0f0f0 100%);
+    padding: 3rem 0;
+    border-top: 1px solid #e0e0e0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.section-title {
+    color: var(--text-dark);
+    font-size: 2.2rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    position: relative;
+    display: inline-block;
+}
+
+.section-title i {
+    color: var(--primary-color);
+    margin-right: 10px;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 80px;
+    height: 4px;
+    background: var(--gradient-primary);
+    border-radius: 2px;
+}
+
+/* Mejoras para la última sección (ofertas) */
+.store-newsletter {
+    background: linear-gradient(135deg, #FF6B00 0%, #E55A00 100%);
+    padding: 3rem 0;
+    color: white;
+    box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.newsletter-content {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 15px;
+    padding: 2.5rem;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.newsletter-title {
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    color: white;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.newsletter-description {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 500;
+}
+
+.newsletter-form .form-control {
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    height: 50px;
+    font-size: 1rem;
+    color: var(--text-dark);
+    border-radius: 25px 0 0 25px;
+    padding: 0 1.5rem;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.newsletter-form .btn {
+    background: var(--dark-bg);
+    color: white;
+    border: none;
+    height: 50px;
+    font-size: 1rem;
+    font-weight: 700;
+    border-radius: 0 25px 25px 0;
+    padding: 0 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.newsletter-form .btn:hover {
+    background: black;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.newsletter-benefits {
+    margin-top: 1.5rem;
+}
+
+.benefit-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    color: white;
+    font-weight: 500;
+}
+
+.benefit-item i {
+    color: white;
+    margin-right: 10px;
+    background: rgba(0, 0, 0, 0.2);
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 0.8rem;
+}

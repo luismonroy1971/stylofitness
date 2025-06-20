@@ -61,17 +61,46 @@
                 </h3>
                 <div class="category-grid">
                     <?php foreach ($categories as $category): ?>
+                        <?php 
+                        $categorySlug = $category['slug'];
+                        $svgPath = 'images/categories/' . $categorySlug . '.svg';
+                        $svgFullPath = __DIR__ . '/../../../public/' . $svgPath;
+                        $hasImage = false;
+                        $imagePath = '';
+                        
+                        if (file_exists($svgFullPath)) {
+                            $hasImage = true;
+                            $imagePath = AppHelper::asset($svgPath);
+                        } elseif ($category['image_url']) {
+                            $hasImage = true;
+                            $imagePath = AppHelper::uploadUrl($category['image_url']);
+                        }
+                        ?>
                         <a href="<?php echo AppHelper::baseUrl('store/category/' . $category['slug']); ?>" 
                            class="category-card <?php echo ($categoryId == $category['id']) ? 'active' : ''; ?>">
-                            <?php if ($category['image_url']): ?>
-                                <img src="<?php echo AppHelper::uploadUrl($category['image_url']); ?>" 
+                            <?php if ($hasImage): ?>
+                                <img src="<?php echo $imagePath; ?>" 
                                      alt="<?php echo htmlspecialchars($category['name']); ?>" 
                                      class="category-image">
-                            <?php else: ?>
-                                <div class="category-icon">
-                                    <i class="fas fa-tag"></i>
-                                </div>
                             <?php endif; ?>
+                            <div class="category-icon">
+                                <?php
+                                // Asignar iconos basados en el slug de la categoría
+                                $iconMap = [
+                                    'proteinas' => 'dumbbell',
+                                    'pre-entrenos' => 'bolt',
+                                    'creatina' => 'flask',
+                                    'quemadores' => 'fire',
+                                    'aminoacidos' => 'vial',
+                                    'ganadores' => 'weight',
+                                    'multivitaminicos' => 'pills',
+                                    'accesorios' => 'shopping-bag',
+                                    'ropa' => 'tshirt'
+                                ];
+                                $icon = isset($iconMap[$categorySlug]) ? $iconMap[$categorySlug] : 'tag';
+                                ?>
+                                <i class="fas fa-<?php echo $icon; ?>"></i>
+                            </div>
                             <div class="category-info">
                                 <h4 class="category-name"><?php echo htmlspecialchars($category['name']); ?></h4>
                                 <span class="product-count"><?php echo $category['product_count']; ?> productos</span>

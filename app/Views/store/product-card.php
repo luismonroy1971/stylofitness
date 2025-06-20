@@ -27,6 +27,12 @@ $discountPercentage = $hasDiscount ? round(100 - ($product['sale_price'] * 100 /
             </div>
         <?php endif; ?>
         
+        <?php if (!empty($product['is_featured'])): ?>
+            <div class="product-badge featured-badge">
+                <img src="<?php echo AppHelper::asset('images/featured-badge.svg'); ?>" alt="Destacado" class="featured-icon">
+            </div>
+        <?php endif; ?>
+        
         <div class="product-actions">
             <button class="btn-action btn-quick-view" data-product-id="<?php echo $product['id']; ?>" title="Vista Rápida">
                 <i class="fas fa-eye"></i>
