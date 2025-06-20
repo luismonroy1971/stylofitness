@@ -83,24 +83,8 @@
                                      alt="<?php echo htmlspecialchars($category['name']); ?>" 
                                      class="category-image">
                             <?php endif; ?>
-                            <div class="category-icon">
-                                <?php
-                                // Asignar iconos basados en el slug de la categoría
-                                $iconMap = [
-                                    'proteinas' => 'dumbbell',
-                                    'pre-entrenos' => 'bolt',
-                                    'creatina' => 'flask',
-                                    'quemadores' => 'fire',
-                                    'aminoacidos' => 'vial',
-                                    'ganadores' => 'weight',
-                                    'multivitaminicos' => 'pills',
-                                    'accesorios' => 'shopping-bag',
-                                    'ropa' => 'tshirt'
-                                ];
-                                $icon = isset($iconMap[$categorySlug]) ? $iconMap[$categorySlug] : 'tag';
-                                ?>
-                                <i class="fas fa-<?php echo $icon; ?>"></i>
-                            </div>
+                            <div class="category-overlay"></div>
+                            
                             <div class="category-info">
                                 <h4 class="category-name"><?php echo htmlspecialchars($category['name']); ?></h4>
                                 <span class="product-count"><?php echo $category['product_count']; ?> productos</span>
@@ -575,12 +559,15 @@ document.addEventListener('DOMContentLoaded', function() {
     transform: translateY(-2px);
 }
 
+/* Estos estilos están sobrescritos en contrast-improvements.css */
+/*
 .category-image {
     width: 50px;
     height: 50px;
     border-radius: 8px;
     object-fit: cover;
 }
+*/
 
 .category-icon {
     width: 50px;
