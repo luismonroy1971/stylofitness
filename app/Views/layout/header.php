@@ -52,11 +52,7 @@
     <link rel="stylesheet" href="<?php echo AppHelper::asset('css/fixes.css'); ?>">
     
     <!-- Estilos Homepage Mejorados - v2.0 -->
-    <link rel="stylesheet" href="<?php echo AppHelper::asset('css/homepage-enhanced.css'); ?>?v=<?php echo time(); ?>">
-    
-    <!-- Mejoras de contraste para la tienda -->
-    <link rel="stylesheet" href="<?php echo AppHelper::asset('css/contrast-improvements.css'); ?>?v=<?php echo time(); ?>">
-    
+    <link rel="stylesheet" href="<?php echo AppHelper::asset('css/homepage-enhanced.css'); ?>?v=<?php echo time(); ?>">   
     
     
     <!-- Estilos adicionales según la página -->

@@ -41,15 +41,23 @@
                                         </div>
                                         
                                         <div class="product-category-mega animate__animated animate__fadeInLeft animate__delay-1s">
-                                            <?php echo htmlspecialchars($product['category_name']); ?>
+                                            <?php echo htmlspecialchars($product['category_name'] ?? 'Categoría'); ?>
                                         </div>
-                                        
+
                                         <h3 class="product-title-mega animate__animated animate__fadeInLeft animate__delay-1-5s">
-                                            <?php echo htmlspecialchars($product['name']); ?>
+                                            <?php echo htmlspecialchars($product['name'] ?? 'Producto'); ?>
                                         </h3>
-                                        
+
                                         <p class="product-description-mega animate__animated animate__fadeInLeft animate__delay-2s">
-                                            <?php echo htmlspecialchars($product['short_description'] ?? $product['description'] ?? ''); ?>
+                                            <?php 
+                                            $description = '';
+                                            if (!empty($product['short_description'])) {
+                                                $description = $product['short_description'];
+                                            } elseif (!empty($product['description'])) {
+                                                $description = $product['description'];
+                                            }
+                                            echo htmlspecialchars($description); 
+                                            ?>
                                         </p>
                                         
                                         <div class="price-mega animate__animated animate__fadeInLeft animate__delay-2-5s">
@@ -73,7 +81,7 @@
                                             $mainImage = !empty($productImages) ? $productImages[0] : '/public/images/default-product.jpg';
                                             ?>
                                             <img src="<?php echo AppHelper::uploadUrl($mainImage); ?>" 
-                                                 alt="<?php echo htmlspecialchars($product['name']); ?>" 
+                                                 alt="<?php echo htmlspecialchars($product['name'] ?? 'Producto'); ?>"
                                                  class="mega-product-image"
                                                  loading="lazy">
                                             
@@ -524,13 +532,13 @@
                         </div>
                     
                     <div class="product-info-enhanced">
-                        <div class="product-category-enhanced"><?php echo htmlspecialchars($product['category_name'] ?? ''); ?></div>
+                        <div class="product-category-enhanced"><?php echo htmlspecialchars($product['category_name'] ?? 'Categoría'); ?></div>
                         <h3 class="product-title-enhanced">
                             <a href="<?php echo AppHelper::getBaseUrl('store/product/' . $product['slug']); ?>">
-                                <?php echo htmlspecialchars($product['name']); ?>
+                                <?php echo htmlspecialchars($product['name'] ?? 'Producto'); ?>
                             </a>
                         </h3>
-                        <p class="product-description-enhanced"><?php echo htmlspecialchars($product['short_description'] ?? ''); ?></p>
+                       <p class="product-description-enhanced"><?php echo htmlspecialchars($product['short_description'] ?? 'Descripción del producto'); ?></p>
                         
                         <div class="product-rating-enhanced">
                             <?php

@@ -559,16 +559,6 @@ document.addEventListener('DOMContentLoaded', function() {
     transform: translateY(-2px);
 }
 
-/* Estos estilos están sobrescritos en contrast-improvements.css */
-/*
-.category-image {
-    width: 50px;
-    height: 50px;
-    border-radius: 8px;
-    object-fit: cover;
-}
-*/
-
 .category-icon {
     width: 50px;
     height: 50px;

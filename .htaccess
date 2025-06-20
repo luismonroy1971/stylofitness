@@ -1,39 +1,33 @@
 # ==========================================
-# STYLOFITNESS - Configuración Apache OPTIMIZADA
+# STYLOFITNESS - Configuración Apache
 # ==========================================
 
 # Habilitar motor de reescritura
 RewriteEngine On
 
-# IMPORTANTE: Definir la base correcta para evitar problemas de URLs
-RewriteBase /stylofitness/
+# Redirigir a HTTPS en producción
+# RewriteCond %{HTTPS} off
+# RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
-# ==========================================
-# REGLAS DE REESCRITURA PRINCIPALES
-# ==========================================
-
-# No reescribir archivos que existen físicamente
+# Redireccionar todas las peticiones al index.php
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-
-# No reescribir para directorios específicos
-RewriteCond %{REQUEST_URI} !^/stylofitness/(public|uploads|api|admin|vendor|node_modules)/ [NC]
-
-# Reescribir todas las demás peticiones al index.php
 RewriteRule ^(.*)$ index.php [L,QSA]
 
 # ==========================================
-# SEGURIDAD BÁSICA
+# SEGURIDAD
 # ==========================================
 
 # Prevenir acceso a archivos de configuración
 <Files ~ "^\.">
-    Require all denied
+    Order allow,deny
+    Deny from all
 </Files>
 
 # Proteger archivos sensibles
-<FilesMatch "\.(env|log|sql|md|json|lock|htaccess|htpasswd)$">
-    Require all denied
+<FilesMatch "\.(env|log|sql|md|json|lock)$">
+    Order allow,deny
+    Deny from all
 </FilesMatch>
 
 # Prevenir ejecución de PHP en uploads
@@ -42,16 +36,101 @@ RewriteRule ^(.*)$ index.php [L,QSA]
     AddType text/plain .php .php3 .phtml .pht
 </Directory>
 
-# Headers de seguridad básicos
+# Headers de seguridad
 <IfModule mod_headers.c>
     Header always set X-Content-Type-Options nosniff
     Header always set X-Frame-Options DENY
     Header always set X-XSS-Protection "1; mode=block"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+    
+    # Strict Transport Security (solo para HTTPS)
+    # Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
 </IfModule>
 
 # ==========================================
-# CONFIGURACIÓN PHP
+# COMPRESIÓN
 # ==========================================
+
+# Habilitar compresión GZIP
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/plain
+    AddOutputFilterByType DEFLATE text/html
+    AddOutputFilterByType DEFLATE text/xml
+    AddOutputFilterByType DEFLATE text/css
+    AddOutputFilterByType DEFLATE application/xml
+    AddOutputFilterByType DEFLATE application/xhtml+xml
+    AddOutputFilterByType DEFLATE application/rss+xml
+    AddOutputFilterByType DEFLATE application/javascript
+    AddOutputFilterByType DEFLATE application/x-javascript
+    AddOutputFilterByType DEFLATE application/json
+    
+    # Evitar compresión de imágenes
+    SetEnvIfNoCase Request_URI \.(?:gif|jpe?g|png|ico|webp)$ no-gzip dont-vary
+    SetEnvIfNoCase Request_URI \.(?:exe|t?gz|zip|bz2|sit|rar)$ no-gzip dont-vary
+</IfModule>
+
+# ==========================================
+# CACHE
+# ==========================================
+
+# Configurar ExpiresActive
+<IfModule mod_expires.c>
+    ExpiresActive On
+    
+    # Imágenes - 1 mes
+    ExpiresByType image/jpg "access plus 1 month"
+    ExpiresByType image/jpeg "access plus 1 month"
+    ExpiresByType image/gif "access plus 1 month"
+    ExpiresByType image/png "access plus 1 month"
+    ExpiresByType image/webp "access plus 1 month"
+    ExpiresByType image/svg+xml "access plus 1 month"
+    ExpiresByType image/x-icon "access plus 1 year"
+    
+    # CSS y JavaScript - 1 semana
+    ExpiresByType text/css "access plus 1 week"
+    ExpiresByType application/javascript "access plus 1 week"
+    ExpiresByType application/x-javascript "access plus 1 week"
+    
+    # Videos - 1 mes
+    ExpiresByType video/mp4 "access plus 1 month"
+    ExpiresByType video/webm "access plus 1 month"
+    
+    # Fuentes - 1 año
+    ExpiresByType font/woff "access plus 1 year"
+    ExpiresByType font/woff2 "access plus 1 year"
+    ExpiresByType application/font-woff "access plus 1 year"
+    ExpiresByType application/font-woff2 "access plus 1 year"
+    
+    # HTML - 1 hora
+    ExpiresByType text/html "access plus 1 hour"
+    
+    # Manifesto y datos - 1 día
+    ExpiresByType application/json "access plus 1 day"
+    ExpiresByType application/manifest+json "access plus 1 day"
+</IfModule>
+
+# Cache-Control headers
+<IfModule mod_headers.c>
+    # Cache para recursos estáticos
+    <FilesMatch "\.(css|js|png|jpg|jpeg|gif|ico|svg|woff|woff2|eot|ttf)$">
+        Header set Cache-Control "public, max-age=2592000"
+    </FilesMatch>
+    
+    # No cache para archivos dinámicos
+    <FilesMatch "\.(php|html)$">
+        Header set Cache-Control "no-cache, no-store, must-revalidate"
+        Header set Pragma "no-cache"
+        Header set Expires 0
+    </FilesMatch>
+</IfModule>
+
+# ==========================================
+# OPTIMIZACIONES
+# ==========================================
+
+# Deshabilitar server signature
+ServerSignature Off
 
 # Aumentar límites para uploads
 php_value upload_max_filesize 50M
@@ -59,19 +138,42 @@ php_value post_max_size 50M
 php_value max_execution_time 300
 php_value memory_limit 256M
 
-# Configuración de sesiones
-php_value session.gc_maxlifetime 7200
-php_value session.cookie_lifetime 0
+# Optimización de índices
+DirectoryIndex index.php index.html
+
+# Prevenir hotlinking de imágenes
+<IfModule mod_rewrite.c>
+    RewriteCond %{HTTP_REFERER} !^$
+    #RewriteCond %{HTTP_REFERER} !^http(s)?://(www\.)?stylofitness\.com [NC]
+    RewriteCond %{HTTP_REFERER} !^http(s)?://(www\.|app\.)?stylofitness\.com [NC]
+    RewriteCond %{HTTP_REFERER} !^http(s)?://(www\.)?google\.com [NC]
+    RewriteCond %{HTTP_REFERER} !^http(s)?://(www\.)?bing\.com [NC]
+    RewriteRule \.(jpg|jpeg|png|gif|webp)$ - [F]
+</IfModule>
 
 # ==========================================
-# CONFIGURACIÓN GENERAL
+# ERRORES PERSONALIZADOS
+# ==========================================
+
+# ErrorDocument 400 /errors/400.html
+# ErrorDocument 401 /errors/401.html
+# ErrorDocument 403 /errors/403.html
+# ErrorDocument 404 /errors/404.html
+# ErrorDocument 500 /errors/500.html
+# ErrorDocument 503 /errors/503.html
+
+# ==========================================
+# CONFIGURACIÓN ADICIONAL
 # ==========================================
 
 # Charset UTF-8
 AddDefaultCharset UTF-8
 
-# Optimización de índices
-DirectoryIndex index.php index.html
+# Tipos MIME adicionales
+AddType image/webp .webp
+AddType font/woff .woff
+AddType font/woff2 .woff2
+AddType text/css .css
 
 # Prevenir acceso directo a directorios
 Options -Indexes
@@ -81,40 +183,3 @@ Options +FollowSymLinks
 
 # Multi-views off para mejor performance
 Options -MultiViews
-
-# ==========================================
-# TIPOS MIME ADICIONALES
-# ==========================================
-
-AddType image/webp .webp
-AddType video/webm .webm
-AddType video/mp4 .mp4
-AddType font/woff .woff
-AddType font/woff2 .woff2
-
-# ==========================================
-# COMPRESIÓN BÁSICA
-# ==========================================
-
-<IfModule mod_deflate.c>
-    AddOutputFilterByType DEFLATE text/plain
-    AddOutputFilterByType DEFLATE text/html
-    AddOutputFilterByType DEFLATE text/css
-    AddOutputFilterByType DEFLATE application/javascript
-    AddOutputFilterByType DEFLATE application/json
-</IfModule>
-
-# ==========================================
-# ERRORES PERSONALIZADOS
-# ==========================================
-
-# Redirigir errores 404 a nuestra aplicación
-ErrorDocument 404 /stylofitness/index.php
-
-# ==========================================
-# DEBUG (comentar en producción)
-# ==========================================
-
-# Para debug, descomentar estas líneas:
-# RewriteLog logs/rewrite.log
-# RewriteLogLevel 3
