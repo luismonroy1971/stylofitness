@@ -1431,7 +1431,14 @@
     <!-- Inicialización final -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Ocultar loading screen, 300);
+            // Ocultar loading screen
+            const loadingScreen = document.getElementById('loading-screen');
+            if (loadingScreen) {
+                setTimeout(() => {
+                    loadingScreen.style.opacity = '0';
+                    setTimeout(() => {
+                        loadingScreen.style.display = 'none';
+                    }, 300);
                 }, 1000);
             }
             
