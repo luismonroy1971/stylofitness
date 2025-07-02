@@ -4,6 +4,8 @@
  * Gestión del catálogo de productos y tienda online
  */
 
+namespace StyleFitness\Controllers;
+
 use StyleFitness\Helpers\AppHelper;
 use StyleFitness\Config\Database;
 use StyleFitness\Models\Product;

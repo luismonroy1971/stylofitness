@@ -108,7 +108,7 @@
    ========================================================================== */
 
 .filters-section {
-  background: white;
+  background: #FAF7F0;
   border-radius: var(--routine-radius-lg);
   padding: 2rem;
   box-shadow: var(--routine-shadow);
@@ -138,7 +138,7 @@
    ========================================================================== */
 
 .routine-card {
-  background: white;
+  background: #FAF7F0;
   border-radius: var(--routine-radius-lg);
   padding: 1.5rem;
   box-shadow: var(--routine-shadow);
@@ -157,7 +157,7 @@
 
 .routine-template {
   border: 2px solid var(--routine-accent);
-  background: linear-gradient(145deg, #fff 0%, #fffaf7 100%);
+  background: linear-gradient(145deg, #FAF7F0 0%, #F5F2EA 100%);
 }
 
 .routine-header {
@@ -469,7 +469,7 @@
 }
 
 .days-navigation .nav-pills .nav-link {
-  background: white;
+  background: #FAF7F0;
   border: 2px solid var(--routine-border);
   color: var(--routine-dark);
   margin-right: 0.5rem;
@@ -499,7 +499,7 @@
 }
 
 .exercise-card {
-  background: white;
+  background: #FAF7F0;
   border-radius: var(--routine-radius-lg);
   padding: 1.5rem;
   margin-bottom: 1.5rem;
@@ -515,7 +515,7 @@
 
 .exercise-completed {
   border-color: var(--routine-success);
-  background: linear-gradient(145deg, #fff 0%, #f8fff9 100%);
+  background: linear-gradient(145deg, #FAF7F0 0%, #F0F7F1 100%);
 }
 
 .exercise-header {
@@ -630,7 +630,7 @@
 }
 
 .info-card {
-  background: white;
+  background: #FAF7F0;
   border-radius: var(--routine-radius-lg);
   padding: 1.5rem;
   box-shadow: var(--routine-shadow);
@@ -815,7 +815,7 @@
 }
 
 .form-section {
-  background: white;
+  background: #FAF7F0;
   border-radius: var(--routine-radius-lg);
   padding: 2rem;
   box-shadow: var(--routine-shadow);
@@ -884,7 +884,7 @@
 }
 
 .exercise-item {
-  background: white;
+  background: #FAF7F0;
   border-radius: var(--routine-radius);
   padding: 1rem;
   border: 1px solid var(--routine-border);

@@ -64,6 +64,19 @@ $heroConfig = $heroData['config'];
                                 <div class="slide-content">
                                     <!-- Columna 1: Información básica del producto (más angosta) -->
                                     <div class="product-info-mega">
+                                        <div class="mega-badge animate__animated animate__bounceIn animate__delay-1s">
+                            <?php 
+                            $hasDiscount = !empty($product['sale_price']) && $product['sale_price'] < $product['price'];
+                            $discountPercentage = $hasDiscount ? round((($product['price'] - $product['sale_price']) / $product['price']) * 100) : 0;
+                            ?>
+                            <?php if ($hasDiscount): ?>
+                                <span class="discount-percent"><?php echo $discountPercentage; ?>%</span>
+                                <span class="discount-text">Descuento</span>
+                            <?php else: ?>
+                                <span class="special-text">ESPECIAL</span>
+                            <?php endif; ?>
+                                        </div>
+                                        
                                         <div class="product-category-mega animate__animated animate__fadeInLeft animate__delay-1s">
                                             <?php echo htmlspecialchars($product['category_name'] ?? 'Categoría'); ?>
                                         </div>
@@ -130,6 +143,10 @@ $heroConfig = $heroData['config'];
                                             <div class="feature-item">
                                                 <i class="fas fa-shield-alt"></i>
                                                 <span>Garantía Total</span>
+                                            </div>
+                                            <div class="feature-item">
+                                                <i class="fas fa-medal"></i>
+                                                <span>Calidad Premium</span>
                                             </div>
                                         </div>
                                     </div>
@@ -243,6 +260,7 @@ $gymStats = $heroData['stats'] ?? [];
             <div class="hero-config-badge">
                 <i class="fas fa-rocket"></i>
                 <span>CONFIGURACIÓN DINÁMICA</span>
+                <div class="badge-glow"></div>
             </div>
             <h1 class="hero-config-title">
                 <?php echo htmlspecialchars($heroConfig['title'] ?? 'Bienvenido a STYLOFITNESS'); ?>
@@ -303,6 +321,7 @@ $whyChooseUsItems = $servicesData['why_choose_us'];
             <div class="features-config-badge">
                 <i class="fas fa-star"></i>
                 <span>CARACTERÍSTICAS ÚNICAS</span>
+                <div class="badge-glow"></div>
             </div>
             <h2 class="features-mega-title-new">
                 <span class="title-line-1-new"><?php echo htmlspecialchars($featuresConfig['title'] ?? '¿Por qué elegir'); ?></span>
@@ -541,8 +560,11 @@ $whyChooseUsItems = $servicesData['why_choose_us'];
 <section class="why-choose-us-section">
     <div class="container">
         <div class="section-header text-center">
-            <h2 class="section-title">¿Por Qué Elegirnos?</h2>
-            <p class="section-subtitle">Descubre las razones que nos hacen únicos</p>
+            <div class="header-badge-ultra">
+                <i class="fas fa-users"></i>
+                <span>¿Por Qué Elegirnos?</span>
+                <div class="badge-glow"></div>
+            </div>
         </div>
         <div class="features-grid">
             <?php $featureIndex = 0; foreach ($whyChooseUs as $feature): ?>
@@ -577,13 +599,12 @@ $whyChooseUsItems = $servicesData['why_choose_us'];
             <div class="section-badge-products">
                 <i class="fas fa-trophy"></i>
                 <span>LO MEJOR DEL MERCADO</span>
+                <div class="badge-glow"></div>
             </div>
             <h2 class="section-title-enhanced">
                 <span class="title-accent">Productos</span>
                 <span class="title-main gradient-text-premium">DESTACADOS</span>
             </h2>
-            <p class="section-subtitle-enhanced">Los suplementos más innovadores y efectivos del mercado fitness</p>
-            <div class="section-decorative-line"></div>
         </div>
         
         <div class="products-grid-enhanced">
@@ -745,22 +766,17 @@ $whyChooseUsItems = $servicesData['why_choose_us'];
     <div class="container">
         <!-- Header Ultra Moderno -->
         <div class="ultra-header" data-aos="zoom-in">
-            <div class="header-badge-ultra">
-                <i class="fas fa-users"></i>
-                <span>EXPERIENCIA PREMIUM</span>
-                <div class="badge-glow"></div>
-            </div>
+                <div class="header-badge-ultra">
+                    <i class="fas fa-users"></i>
+                    <span>EXPERIENCIA PREMIUM</span>
+                    <div class="badge-glow"></div>
+                </div>
             
             <h2 class="ultra-title">
                 <span class="title-line-1">CLASES</span>
                 <span class="title-line-2 gradient-text-ultra">GRUPALES</span>
                 <div class="title-underline"></div>
-            </h2>
-            
-            <p class="ultra-subtitle">
-                Entrena con otros y mantente motivado en nuestras sedes
-            </p>
-            
+            </h2>            
             <div class="quick-stats">
                 <div class="stat-item">
                     <span class="stat-number" data-count="50">0</span>
@@ -779,11 +795,12 @@ $whyChooseUsItems = $servicesData['why_choose_us'];
         
         <!-- Grid de Clases Ultra Moderno -->
         <div class="ultra-classes-grid">
-            <?php foreach ($upcomingClasses as $index => $class): ?>
+            <?php if (isset($upcomingClasses) && is_array($upcomingClasses) && !empty($upcomingClasses)): ?>
+                <?php foreach ($upcomingClasses as $index => $class): ?>
                 <div class="ultra-class-card" 
                      data-aos="fade-up" 
                      data-aos-delay="<?php echo $index * 100; ?>"
-                     data-class-id="<?php echo $class['id']; ?>">
+                     data-class-id="<?php echo $class['id'] ?? '0'; ?>">
                     
                     <!-- Header de la Tarjeta -->
                     <div class="card-header-ultra">
@@ -803,15 +820,17 @@ $whyChooseUsItems = $servicesData['why_choose_us'];
                                         'saturday' => 'Sábado',
                                         'sunday' => 'Domingo'
                                     ];
-                                    echo $dayNames[$class['day_of_week']];
+                                    echo isset($class['day_of_week']) && isset($dayNames[$class['day_of_week']]) 
+                                        ? $dayNames[$class['day_of_week']] 
+                                        : 'Día no disponible';
                                     ?>
                                 </span>
-                                <span class="time-slot"><?php echo date('H:i', strtotime($class['start_time'])); ?></span>
+                                <span class="time-slot"><?php echo isset($class['start_time']) ? date('H:i', strtotime($class['start_time'])) : '--:--'; ?></span>
                             </div>
                         </div>
                         
                         <div class="duration-badge">
-                            <span><?php echo $class['duration_minutes']; ?> min</span>
+                            <span><?php echo isset($class['duration_minutes']) ? $class['duration_minutes'] : '0'; ?> min</span>
                         </div>
                     </div>
                     
@@ -841,17 +860,17 @@ $whyChooseUsItems = $servicesData['why_choose_us'];
                             <i class="<?php echo $icon; ?>"></i>
                         </div>
                         
-                        <h3 class="class-title-ultra"><?php echo htmlspecialchars($class['name']); ?></h3>
+                        <h3 class="class-title-ultra"><?php echo htmlspecialchars($class['name'] ?? 'Clase sin nombre'); ?></h3>
                         
                         <div class="instructor-info-ultra">
                             <div class="instructor-avatar">
                                 <img src="<?php echo AppHelper::asset('images/trainers/' . ($class['trainer_photo'] ?? 'default-trainer.jpg')); ?>" 
-                                     alt="<?php echo htmlspecialchars($class['first_name'] . ' ' . $class['last_name']); ?>"
+                                     alt="<?php echo htmlspecialchars(($class['first_name'] ?? '') . ' ' . ($class['last_name'] ?? '')); ?>"
                                      onerror="this.src='<?php echo AppHelper::asset('images/trainers/default-trainer.jpg'); ?>'">
                                 <div class="avatar-ring"></div>
                             </div>
                             <div class="instructor-details">
-                                <span class="instructor-name"><?php echo htmlspecialchars($class['first_name'] . ' ' . $class['last_name']); ?></span>
+                                <span class="instructor-name"><?php echo htmlspecialchars(($class['first_name'] ?? '') . ' ' . ($class['last_name'] ?? 'Instructor')); ?></span>
                                 <span class="instructor-title">Instructor Certificado</span>
                             </div>
                         </div>
@@ -865,11 +884,13 @@ $whyChooseUsItems = $servicesData['why_choose_us'];
                             <div class="capacity-header">
                                 <div class="capacity-info">
                                     <i class="fas fa-users"></i>
-                                    <span><?php echo $class['booked_spots']; ?>/<?php echo $class['max_participants']; ?> lugares</span>
+                                    <span><?php echo ($class['booked_spots'] ?? 0); ?>/<?php echo ($class['max_participants'] ?? 0); ?> lugares</span>
                                 </div>
                                 <div class="availability-status">
                                     <?php 
-                                    $available = $class['max_participants'] - $class['booked_spots'];
+                                    $maxParticipants = $class['max_participants'] ?? 0;
+                                    $bookedSpots = $class['booked_spots'] ?? 0;
+                                    $available = $maxParticipants - $bookedSpots;
                                     $availabilityClass = $available > 5 ? 'high' : ($available > 0 ? 'medium' : 'full');
                                     ?>
                                     <span class="status-indicator status-<?php echo $availabilityClass; ?>">
@@ -886,7 +907,11 @@ $whyChooseUsItems = $servicesData['why_choose_us'];
                             
                             <!-- Barra de Progreso Animada -->
                             <div class="progress-container-ultra">
-                                <?php $fillPercentage = ($class['booked_spots'] / $class['max_participants']) * 100; ?>
+                                <?php 
+                                $maxParticipants = $class['max_participants'] ?? 1;
+                                $bookedSpots = $class['booked_spots'] ?? 0;
+                                $fillPercentage = $maxParticipants > 0 ? ($bookedSpots / $maxParticipants) * 100 : 0;
+                                ?>
                                 <div class="progress-bar-ultra">
                                     <div class="progress-fill-ultra progress-<?php echo $availabilityClass; ?>" 
                                          style="width: 0%"
@@ -923,7 +948,7 @@ $whyChooseUsItems = $servicesData['why_choose_us'];
                     <div class="card-footer-ultra">
                         <?php if (AppHelper::isLoggedIn()): ?>
                             <button class="btn-reserve-ultra <?php echo $available <= 0 ? 'disabled' : ''; ?>" 
-                                    data-class-id="<?php echo $class['id']; ?>"
+                                    data-class-id="<?php echo $class['id'] ?? '0'; ?>"
                                     <?php echo $available <= 0 ? 'disabled' : ''; ?>>
                                 <div class="btn-content">
                                     <i class="fas fa-calendar-plus"></i>
@@ -946,7 +971,7 @@ $whyChooseUsItems = $servicesData['why_choose_us'];
                         <?php endif; ?>
                         
                         <!-- Botón Secundario - Más Info -->
-                        <button class="btn-info-ultra" data-class-id="<?php echo $class['id']; ?>">
+                        <button class="btn-info-ultra" data-class-id="<?php echo $class['id'] ?? '0'; ?>">
                             <i class="fas fa-info-circle"></i>
                             <span>Más Info</span>
                         </button>
@@ -962,7 +987,8 @@ $whyChooseUsItems = $servicesData['why_choose_us'];
                     </div>
                     
                     <!-- Live Indicator (si la clase está en vivo) -->
-                    <?php if (date('H:i') >= date('H:i', strtotime($class['start_time'])) && 
+                    <?php if (isset($class['start_time']) && isset($class['duration_minutes']) && 
+                              date('H:i') >= date('H:i', strtotime($class['start_time'])) && 
                               date('H:i') <= date('H:i', strtotime($class['start_time'] . ' + ' . $class['duration_minutes'] . ' minutes'))): ?>
                         <div class="live-indicator">
                             <div class="live-dot"></div>
@@ -970,12 +996,25 @@ $whyChooseUsItems = $servicesData['why_choose_us'];
                         </div>
                     <?php endif; ?>
                 </div>
-            <?php endforeach; ?>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <div class="no-classes-message">
+                    <div class="no-classes-content">
+                        <i class="fas fa-calendar-times"></i>
+                        <h3>No hay clases programadas</h3>
+                        <p>Actualmente no hay clases grupales disponibles. ¡Vuelve pronto para ver las nuevas programaciones!</p>
+                    </div>
+                </div>
+            <?php endif; ?>
         </div>
         
         <!-- Sección de Beneficios de Clases Grupales -->
         <div class="benefits-section-ultra" data-aos="fade-up" data-aos-delay="400">
-            <h3 class="benefits-title">¿Por qué entrenar en grupo?</h3>
+                <div class="header-badge-ultra">
+                    <i class="fas fa-users"></i>
+                    <span>¿Por qué entrenar en grupo?</span>
+                    <div class="badge-glow"></div>
+                </div>            
             <div class="benefits-grid-ultra">
                 <div class="benefit-item-ultra">
                     <div class="benefit-icon">
@@ -1011,7 +1050,11 @@ $whyChooseUsItems = $servicesData['why_choose_us'];
         <!-- CTA Section -->
         <div class="ultra-cta-section" data-aos="zoom-in" data-aos-delay="500">
             <div class="cta-content-ultra">
-                <h3>¿Listo para unirte a la experiencia grupal?</h3>
+                <div class="header-badge-ultra">
+                    <i class="fas fa-users"></i>
+                    <span>¿Listo para unirte a la experiencia grupal?</span>
+                    <div class="badge-glow"></div>
+                </div>                
                 <p>Descubre todas nuestras clases y encuentra la que mejor se adapte a ti</p>
                 <div class="cta-buttons-ultra">
                     <a href="<?php echo AppHelper::getBaseUrl('classes'); ?>" class="btn-primary-ultra">
@@ -1840,7 +1883,7 @@ $whyChooseUsItems = $servicesData['why_choose_us'];
 .live-dot {
     width: 8px;
     height: 8px;
-    background: white;
+    background: #FAF7F0;
     border-radius: 50%;
     animation: livePulse 1s infinite;
 }
@@ -2981,7 +3024,7 @@ document.addEventListener('DOMContentLoaded', function() {
     display: inline-flex;
     align-items: center;
     gap: 0.75rem;
-    background: rgba(255, 107, 0, 0.1);
+    background: rgba(0, 0, 0, 0.4);
     border: 2px solid rgba(255, 107, 0, 0.3);
     padding: 1rem 2.5rem;
     border-radius: 50px;
@@ -3086,7 +3129,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 /* Tarjetas de testimonios ultra modernas */
 .testimonial-card-ultra {
-    background: rgba(255, 255, 255, 0.03);
+    background: rgba(0, 0, 0, 0.4);
     border: 1px solid rgba(255, 107, 0, 0.2);
     border-radius: 30px;
     padding: 0;
@@ -3114,13 +3157,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
 /* Header de tarjeta */
 .testimonial-header-ultra {
-    background: linear-gradient(135deg, rgba(255, 107, 0, 0.9), rgba(255, 179, 102, 0.8));
+    background: rgba(0, 0, 0, 0.4);
     padding: 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
     position: relative;
     overflow: hidden;
+    transition: all 0.3s ease;
 }
 
 .testimonial-header-ultra::before {
@@ -3132,6 +3176,10 @@ document.addEventListener('DOMContentLoaded', function() {
     height: 200%;
     background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
     animation: headerPulse 4s ease-in-out infinite;
+}
+
+.testimonial-card-ultra:hover .testimonial-header-ultra {
+    background: rgba(0, 0, 0, 0.4);
 }
 
 .testimonial-avatar-section-ultra {
@@ -3317,21 +3365,26 @@ document.addEventListener('DOMContentLoaded', function() {
 
 /* Métricas de transformación */
 .transformation-metrics-ultra {
-    padding: 1.5rem 2.5rem 2.5rem;
+    padding: 1.5rem 1.5rem 2rem;
     display: flex;
-    justify-content: space-around;
-    gap: 1rem;
+    justify-content: space-between;
+    gap: 0.5rem;
+    flex-wrap: wrap;
 }
 
 .metric-item-ultra {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 1rem;
-    background: rgba(255, 107, 0, 0.1);
-    padding: 1rem;
-    border-radius: 15px;
+    gap: 0.5rem;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 0.8rem 0.5rem;
+    border-radius: 12px;
     border: 1px solid rgba(255, 107, 0, 0.2);
     transition: all 0.3s ease;
+    flex: 1;
+    min-width: 0;
+    text-align: center;
 }
 
 .metric-item-ultra:hover {
@@ -3340,15 +3393,16 @@ document.addEventListener('DOMContentLoaded', function() {
 }
 
 .metric-icon-ultra {
-    width: 40px;
-    height: 40px;
+    width: 32px;
+    height: 32px;
     background: linear-gradient(135deg, #FF6B00, #FFB366);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
-    font-size: 1.2rem;
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
 }
 
 .metric-data-ultra {
@@ -3357,17 +3411,19 @@ document.addEventListener('DOMContentLoaded', function() {
 
 .metric-number {
     display: block;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: 900;
     color: #FF6B00;
-    margin-bottom: 0.25rem;
+    margin-bottom: 0.1rem;
+    line-height: 1;
 }
 
 .metric-label {
-    font-size: 0.8rem;
+    font-size: 0.7rem;
     color: rgba(255, 255, 255, 0.7);
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    line-height: 1;
 }
 
 /* Efectos visuales */

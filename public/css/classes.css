@@ -54,7 +54,7 @@
     border: 1px solid var(--border-color);
     border-radius: 4px;
     font-size: 1rem;
-    background-color: #fff;
+    background-color: #FAF7F0;
 }
 
 .filter-group select {
@@ -107,7 +107,7 @@
 
 /* Tarjeta de clase */
 .class-card {
-    background-color: white;
+    background-color: #FAF7F0;
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);

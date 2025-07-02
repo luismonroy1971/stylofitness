@@ -547,8 +547,6 @@ $whyChooseUsItems = $servicesData['why_choose_us'];
                 <span class="title-accent">Productos</span>
                 <span class="title-main gradient-text-premium">DESTACADOS</span>
             </h2>
-            <p class="section-subtitle-enhanced">Los suplementos mÃ¡s innovadores y efectivos del mercado fitness</p>
-            <div class="section-decorative-line"></div>
         </div>
         
         <div class="products-grid-enhanced">
@@ -720,12 +718,7 @@ $whyChooseUsItems = $servicesData['why_choose_us'];
                 <span class="title-line-1">CLASES</span>
                 <span class="title-line-2 gradient-text-ultra">GRUPALES</span>
                 <div class="title-underline"></div>
-            </h2>
-            
-            <p class="ultra-subtitle">
-                Entrena con otros y mantente motivado en nuestras sedes
-            </p>
-            
+            </h2>            
             <div class="quick-stats">
                 <div class="stat-item">
                     <span class="stat-number" data-count="50">0</span>
@@ -1805,7 +1798,7 @@ $whyChooseUsItems = $servicesData['why_choose_us'];
 .live-dot {
     width: 8px;
     height: 8px;
-    background: white;
+    background: #FAF7F0;
     border-radius: 50%;
     animation: livePulse 1s infinite;
 }
@@ -2946,7 +2939,7 @@ document.addEventListener('DOMContentLoaded', function() {
     display: inline-flex;
     align-items: center;
     gap: 0.75rem;
-    background: rgba(255, 107, 0, 0.1);
+    background: rgba(0, 0, 0, 0.4);
     border: 2px solid rgba(255, 107, 0, 0.3);
     padding: 1rem 2.5rem;
     border-radius: 50px;
@@ -3051,7 +3044,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 /* Tarjetas de testimonios ultra modernas */
 .testimonial-card-ultra {
-    background: rgba(255, 255, 255, 0.03);
+    background: rgba(0, 0, 0, 0.4);
     border: 1px solid rgba(255, 107, 0, 0.2);
     border-radius: 30px;
     padding: 0;
@@ -3079,13 +3072,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
 /* Header de tarjeta */
 .testimonial-header-ultra {
-    background: linear-gradient(135deg, rgba(255, 107, 0, 0.9), rgba(255, 179, 102, 0.8));
+    background: rgba(0, 0, 0, 0.4);
     padding: 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
     position: relative;
     overflow: hidden;
+    transition: all 0.3s ease;
 }
 
 .testimonial-header-ultra::before {
@@ -3097,6 +3091,10 @@ document.addEventListener('DOMContentLoaded', function() {
     height: 200%;
     background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
     animation: headerPulse 4s ease-in-out infinite;
+}
+
+.testimonial-card-ultra:hover .testimonial-header-ultra {
+    background: rgba(0, 0, 0, 0.4);
 }
 
 .testimonial-avatar-section-ultra {
@@ -3282,21 +3280,26 @@ document.addEventListener('DOMContentLoaded', function() {
 
 /* MÃ©tricas de transformaciÃ³n */
 .transformation-metrics-ultra {
-    padding: 1.5rem 2.5rem 2.5rem;
+    padding: 1.5rem 1.5rem 2rem;
     display: flex;
-    justify-content: space-around;
-    gap: 1rem;
+    justify-content: space-between;
+    gap: 0.5rem;
+    flex-wrap: wrap;
 }
 
 .metric-item-ultra {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 1rem;
-    background: rgba(255, 107, 0, 0.1);
-    padding: 1rem;
-    border-radius: 15px;
+    gap: 0.5rem;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 0.8rem 0.5rem;
+    border-radius: 12px;
     border: 1px solid rgba(255, 107, 0, 0.2);
     transition: all 0.3s ease;
+    flex: 1;
+    min-width: 0;
+    text-align: center;
 }
 
 .metric-item-ultra:hover {
@@ -3305,15 +3308,16 @@ document.addEventListener('DOMContentLoaded', function() {
 }
 
 .metric-icon-ultra {
-    width: 40px;
-    height: 40px;
+    width: 32px;
+    height: 32px;
     background: linear-gradient(135deg, #FF6B00, #FFB366);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
-    font-size: 1.2rem;
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
 }
 
 .metric-data-ultra {
@@ -3322,17 +3326,19 @@ document.addEventListener('DOMContentLoaded', function() {
 
 .metric-number {
     display: block;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: 900;
     color: #FF6B00;
-    margin-bottom: 0.25rem;
+    margin-bottom: 0.1rem;
+    line-height: 1;
 }
 
 .metric-label {
-    font-size: 0.8rem;
+    font-size: 0.7rem;
     color: rgba(255, 255, 255, 0.7);
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    line-height: 1;
 }
 
 /* Efectos visuales */
