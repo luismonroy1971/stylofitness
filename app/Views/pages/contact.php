@@ -1,4 +1,5 @@
 <!-- Página de Contacto - STYLOFITNESS -->
+<?php use StyleFitness\Helpers\AppHelper; ?>
 <section class="contact-hero bg-primary">
     <div class="container">
         <div class="hero-content text-center text-white" data-aos="fade-up">

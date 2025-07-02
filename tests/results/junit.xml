@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="CLI Arguments" tests="20" assertions="79" errors="0" failures="0" skipped="0" time="0.190307">
+    <testsuite name="AuthTest" file="C:\trabajos\stylofitness\tests\Unit\AuthTest.php" tests="10" assertions="39" errors="0" failures="0" skipped="0" time="0.188021">
+      <testcase name="testUserRoles" file="C:\trabajos\stylofitness\tests\Unit\AuthTest.php" line="40" class="AuthTest" classname="AuthTest" assertions="3" time="0.024516"/>
+      <testcase name="testPasswordValidation" file="C:\trabajos\stylofitness\tests\Unit\AuthTest.php" line="51" class="AuthTest" classname="AuthTest" assertions="7" time="0.000301"/>
+      <testcase name="testUserRegistrationValidation" file="C:\trabajos\stylofitness\tests\Unit\AuthTest.php" line="159" class="AuthTest" classname="AuthTest" assertions="2" time="0.000660"/>
+      <testcase name="testLoginAttemptLimiting" file="C:\trabajos\stylofitness\tests\Unit\AuthTest.php" line="182" class="AuthTest" classname="AuthTest" assertions="1" time="0.000195"/>
+      <testcase name="testEmailValidation" file="C:\trabajos\stylofitness\tests\Unit\AuthTest.php" line="75" class="AuthTest" classname="AuthTest" assertions="7" time="0.000404"/>
+      <testcase name="testCSRFTokenGeneration" file="C:\trabajos\stylofitness\tests\Unit\AuthTest.php" line="128" class="AuthTest" classname="AuthTest" assertions="3" time="0.002049"/>
+      <testcase name="testUserAuthentication" file="C:\trabajos\stylofitness\tests\Unit\AuthTest.php" line="28" class="AuthTest" classname="AuthTest" assertions="2" time="0.000150"/>
+      <testcase name="testPasswordHashing" file="C:\trabajos\stylofitness\tests\Unit\AuthTest.php" line="195" class="AuthTest" classname="AuthTest" assertions="3" time="0.157708"/>
+      <testcase name="testInputSanitization" file="C:\trabajos\stylofitness\tests\Unit\AuthTest.php" line="99" class="AuthTest" classname="AuthTest" assertions="8" time="0.001311"/>
+      <testcase name="testSessionSecurity" file="C:\trabajos\stylofitness\tests\Unit\AuthTest.php" line="139" class="AuthTest" classname="AuthTest" assertions="3" time="0.000729"/>
+    </testsuite>
+    <testsuite name="ProductTest" file="C:\trabajos\stylofitness\tests\Unit\ProductTest.php" tests="10" assertions="40" errors="0" failures="0" skipped="0" time="0.002286">
+      <testcase name="testProductCreation" file="C:\trabajos\stylofitness\tests\Unit\ProductTest.php" line="21" class="ProductTest" classname="ProductTest" assertions="4" time="0.000301"/>
+      <testcase name="testProductSlugGeneration" file="C:\trabajos\stylofitness\tests\Unit\ProductTest.php" line="35" class="ProductTest" classname="ProductTest" assertions="1" time="0.000189"/>
+      <testcase name="testProductPriceValidation" file="C:\trabajos\stylofitness\tests\Unit\ProductTest.php" line="47" class="ProductTest" classname="ProductTest" assertions="6" time="0.000168"/>
+      <testcase name="testProductStockValidation" file="C:\trabajos\stylofitness\tests\Unit\ProductTest.php" line="61" class="ProductTest" classname="ProductTest" assertions="7" time="0.000171"/>
+      <testcase name="testProductNameValidation" file="C:\trabajos\stylofitness\tests\Unit\ProductTest.php" line="75" class="ProductTest" classname="ProductTest" assertions="6" time="0.000162"/>
+      <testcase name="testProductCategoryAssignment" file="C:\trabajos\stylofitness\tests\Unit\ProductTest.php" line="89" class="ProductTest" classname="ProductTest" assertions="2" time="0.000138"/>
+      <testcase name="testProductActiveStatus" file="C:\trabajos\stylofitness\tests\Unit\ProductTest.php" line="99" class="ProductTest" classname="ProductTest" assertions="2" time="0.000140"/>
+      <testcase name="testProductDescriptionLength" file="C:\trabajos\stylofitness\tests\Unit\ProductTest.php" line="108" class="ProductTest" classname="ProductTest" assertions="3" time="0.000128"/>
+      <testcase name="testProductImageValidation" file="C:\trabajos\stylofitness\tests\Unit\ProductTest.php" line="120" class="ProductTest" classname="ProductTest" assertions="8" time="0.000192"/>
+      <testcase name="testProductSearchFunctionality" file="C:\trabajos\stylofitness\tests\Unit\ProductTest.php" line="142" class="ProductTest" classname="ProductTest" assertions="1" time="0.000696"/>
+    </testsuite>
+  </testsuite>
+</testsuites>

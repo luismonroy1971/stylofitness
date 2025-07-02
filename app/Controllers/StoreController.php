@@ -4,6 +4,11 @@
  * Gestión del catálogo de productos y tienda online
  */
 
+use StyleFitness\Helpers\AppHelper;
+use StyleFitness\Config\Database;
+use StyleFitness\Models\Product;
+use StyleFitness\Models\ProductCategory;
+
 class StoreController {
     
     private $db;
@@ -54,6 +59,14 @@ class StoreController {
             'has_previous' => $page > 1,
             'has_next' => $page < $totalPages
         ];
+        
+        // Si es una petición AJAX, devolver solo el contenido de productos
+        if (isset($_GET['ajax']) && $_GET['ajax'] == '1') {
+            // Establecer variables necesarias para la vista
+            $categoryId = $filters['category_id'];
+            include APP_PATH . '/Views/store/index.php';
+            return;
+        }
         
         $pageTitle = 'Tienda - STYLOFITNESS';
         $pageDescription = 'Los mejores suplementos y accesorios deportivos con envío gratis';

@@ -1,4 +1,6 @@
 <?php
+use StyleFitness\Helpers\AppHelper;
+
 /**
  * Vista: Detalle de Rutina - STYLOFITNESS
  * Muestra el detalle completo de una rutina con ejercicios por días
@@ -384,7 +386,7 @@ $difficultyLabels = [
                                 <div class="product-image">
                                     <?php if (!empty($product['images'])): ?>
                                         <?php $images = json_decode($product['images'], true); ?>
-                                        <img src="/public/images/products/<?= $images[0] ?>" alt="<?= htmlspecialchars($product['name']) ?>">
+                                        <img src="<?= AppHelper::uploadUrl('images/products/' . $images[0]) ?>" alt="<?= htmlspecialchars($product['name']) ?>">
                                     <?php else: ?>
                                         <div class="product-placeholder">
                                             <i class="fas fa-supplement"></i>

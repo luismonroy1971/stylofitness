@@ -10,7 +10,7 @@ const STYLOFITNESS = {
     config: {
         apiUrl: '/api',
         animationDuration: 300,
-        carouselInterval: 5000,
+        carouselInterval: 18000,
         scrollOffset: 100
     },
     
@@ -30,10 +30,10 @@ const STYLOFITNESS = {
 // MEGA CARRUSEL DE OFERTAS ESPECIALES
 // =============================================
 STYLOFITNESS.initMegaCarousel = function() {
-    const megaCarousel = document.getElementById('mega-offers-carousel');
+    const megaCarousel = document.getElementById('hero-products-carousel');
     if (!megaCarousel) return;
     
-    const track = document.getElementById('offers-track');
+    const track = document.getElementById('hero-track');
     const slides = document.querySelectorAll('.mega-slide');
     const dots = document.querySelectorAll('.mega-dot');
     const prevBtn = document.getElementById('mega-prev');
@@ -51,7 +51,7 @@ STYLOFITNESS.initMegaCarousel = function() {
     // Función para mover a un slide específico
     const moveToSlide = (index) => {
         currentSlide = index;
-        const translateX = -index * 100;
+        const translateX = -index * 20; // 20% por slide (100% / 5 slides)
         track.style.transform = `translateX(${translateX}%)`;
         
         // Actualizar clases activas
@@ -88,14 +88,14 @@ STYLOFITNESS.initMegaCarousel = function() {
     if (nextBtn) {
         nextBtn.addEventListener('click', () => {
             nextSlide();
-            resetAutoplay();
+            // resetAutoplay(); // Carrusel continuo
         });
     }
     
     if (prevBtn) {
         prevBtn.addEventListener('click', () => {
             prevSlide();
-            resetAutoplay();
+            // resetAutoplay(); // Carrusel continuo
         });
     }
     
@@ -103,7 +103,7 @@ STYLOFITNESS.initMegaCarousel = function() {
     dots.forEach((dot, index) => {
         dot.addEventListener('click', () => {
             moveToSlide(index);
-            resetAutoplay();
+            // resetAutoplay(); // Carrusel continuo
         });
     });
     
@@ -136,9 +136,9 @@ STYLOFITNESS.initMegaCarousel = function() {
         startAutoplay();
     };
     
-    // Pausar autoplay al hover
-    megaCarousel.addEventListener('mouseenter', stopAutoplay);
-    megaCarousel.addEventListener('mouseleave', startAutoplay);
+    // Carrusel continuo - no pausar al hover
+    // megaCarousel.addEventListener('mouseenter', stopAutoplay);
+    // megaCarousel.addEventListener('mouseleave', startAutoplay);
     
     // Soporte para touch/swipe
     let startX = 0;
@@ -168,7 +168,7 @@ STYLOFITNESS.initMegaCarousel = function() {
             } else {
                 prevSlide();
             }
-            resetAutoplay();
+            // resetAutoplay(); // Carrusel continuo
         }
     }, { passive: true });
     
@@ -176,10 +176,10 @@ STYLOFITNESS.initMegaCarousel = function() {
     document.addEventListener('keydown', (e) => {
         if (e.key === 'ArrowLeft') {
             prevSlide();
-            resetAutoplay();
+            // resetAutoplay(); // Carrusel continuo
         } else if (e.key === 'ArrowRight') {
             nextSlide();
-            resetAutoplay();
+            // resetAutoplay(); // Carrusel continuo
         }
     });
     
@@ -357,6 +357,7 @@ STYLOFITNESS.init = function() {
     this.initLoadingScreen();
     this.initNavigation();
     this.initMegaCarousel(); // Nuevo carrusel de ofertas
+    this.initHeroProductsCarousel(); // Carrusel de productos destacados
     this.initCarousel();
     this.initScrollEffects();
     this.initAnimations();
@@ -1153,7 +1154,7 @@ STYLOFITNESS.setupEventListeners = function() {
     // Manejar errores de imágenes
     document.addEventListener('error', (e) => {
         if (e.target.tagName === 'IMG') {
-            e.target.src = '/public/images/placeholder.jpg';
+            e.target.src = '/images/placeholder.jpg';
         }
     }, true);
 };
@@ -1373,6 +1374,69 @@ STYLOFITNESS.api = {
         });
         return response.json();
     }
+};
+
+// =============================================
+// CARRUSEL DE PRODUCTOS DESTACADOS
+// =============================================
+STYLOFITNESS.initHeroProductsCarousel = function() {
+    const carousel = document.getElementById('hero-products-carousel');
+    if (!carousel) return;
+    
+    const track = carousel.querySelector('.mega-carousel-inner');
+    const slides = carousel.querySelectorAll('.mega-slide');
+    const indicators = carousel.querySelectorAll('.mega-indicator');
+    
+    if (!track || slides.length === 0) return;
+    
+    let currentSlide = 0;
+    const totalSlides = slides.length;
+    const slideWidth = 100 / 3; // 3 productos visibles
+    
+    // Función para mover el carrusel
+    const moveToSlide = (index) => {
+        currentSlide = index;
+        const translateX = -(currentSlide * slideWidth);
+        track.style.transform = `translateX(${translateX}%)`;
+        
+        // Actualizar indicadores
+        indicators.forEach((indicator, i) => {
+            indicator.classList.toggle('active', i === currentSlide);
+        });
+    };
+    
+    // Auto-play cada 12 segundos
+    let autoplayInterval = setInterval(() => {
+        const nextIndex = (currentSlide + 1) % totalSlides;
+        moveToSlide(nextIndex);
+    }, 12000);
+    
+    // Event listeners para indicadores
+    indicators.forEach((indicator, index) => {
+        indicator.addEventListener('click', () => {
+            moveToSlide(index);
+            clearInterval(autoplayInterval);
+            autoplayInterval = setInterval(() => {
+                const nextIndex = (currentSlide + 1) % totalSlides;
+                moveToSlide(nextIndex);
+            }, 12000);
+        });
+    });
+    
+    // Pausar autoplay al hover
+    carousel.addEventListener('mouseenter', () => {
+        clearInterval(autoplayInterval);
+    });
+    
+    carousel.addEventListener('mouseleave', () => {
+        autoplayInterval = setInterval(() => {
+            const nextIndex = (currentSlide + 1) % totalSlides;
+            moveToSlide(nextIndex);
+        }, 12000);
+    });
+    
+    // Inicializar
+    moveToSlide(0);
 };
 
 // =============================================

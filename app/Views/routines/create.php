@@ -1,4 +1,6 @@
 <?php
+use StyleFitness\Helpers\AppHelper;
+
 /**
  * Vista: Crear Rutina - STYLOFITNESS
  * Formulario para crear una nueva rutina personalizada

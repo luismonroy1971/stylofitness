@@ -34,7 +34,14 @@
         "ext-gd": "*",
         "ext-curl": "*",
         "ext-zip": "*",
-        "ext-fileinfo": "*"
+        "ext-fileinfo": "*",
+        "vlucas/phpdotenv": "^5.4",
+        "monolog/monolog": "^3.0",
+        "guzzlehttp/guzzle": "^7.5",
+        "ramsey/uuid": "^4.7",
+        "nesbot/carbon": "^2.68",
+        "intervention/image": "^2.7",
+        "league/csv": "^9.8"
     },
     "require-dev": {
         "phpunit/phpunit": "^10.0",

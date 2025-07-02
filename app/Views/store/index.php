@@ -63,15 +63,57 @@
                     <?php foreach ($categories as $category): ?>
                         <?php 
                         $categorySlug = $category['slug'];
-                        $svgPath = 'images/categories/' . $categorySlug . '.svg';
-                        $svgFullPath = __DIR__ . '/../../../public/' . $svgPath;
                         $hasImage = false;
                         $imagePath = '';
                         
-                        if (file_exists($svgFullPath)) {
-                            $hasImage = true;
-                            $imagePath = AppHelper::asset($svgPath);
-                        } elseif ($category['image_url']) {
+                        // Mapeo de slugs a nombres de archivos de imagen
+                        $imageMapping = [
+                            'proteinas' => 'proteins.jpg',
+                            'pre-entrenos' => 'oxido.jpg',
+                            'vitaminas-minerales' => 'vitaminas.jpg',
+                            'creatina' => 'creatinas-glutaminas.jpg',
+                            'quemadores-grasa' => 'quemadores.jpg',
+                            'aminoacidos' => 'bcca-amino.jpg',
+                            'accesorios-entrenamiento' => 'protectores.jpg',
+                            'ropa-deportiva' => 'gainers.jpg'
+                        ];
+                        
+                        // Buscar imagen usando el mapeo
+                        if (isset($imageMapping[$categorySlug])) {
+                            $uploadImagePath = 'uploads/images/categories/' . $imageMapping[$categorySlug];
+                            $uploadFullPath = __DIR__ . '/../../../public/' . $uploadImagePath;
+                            if (file_exists($uploadFullPath)) {
+                                $hasImage = true;
+                                $imagePath = AppHelper::baseUrl($uploadImagePath);
+                            }
+                        }
+                        
+                        // Si no se encuentra con el mapeo, buscar por slug directo
+                        if (!$hasImage) {
+                            $uploadImageExtensions = ['jpg', 'jpeg', 'png', 'webp'];
+                            foreach ($uploadImageExtensions as $ext) {
+                                $uploadImagePath = 'uploads/images/categories/' . $categorySlug . '.' . $ext;
+                                $uploadFullPath = __DIR__ . '/../../../public/' . $uploadImagePath;
+                                if (file_exists($uploadFullPath)) {
+                                    $hasImage = true;
+                                    $imagePath = AppHelper::baseUrl($uploadImagePath);
+                                    break;
+                                }
+                            }
+                        }
+                        
+                        // Si no se encuentra, buscar SVG en images/categories
+                        if (!$hasImage) {
+                            $svgPath = 'images/categories/' . $categorySlug . '.svg';
+                            $svgFullPath = __DIR__ . '/../../../public/' . $svgPath;
+                            if (file_exists($svgFullPath)) {
+                                $hasImage = true;
+                                $imagePath = AppHelper::asset($svgPath);
+                            }
+                        }
+                        
+                        // Fallback a image_url de la base de datos
+                        if (!$hasImage && !empty($category['image_url'])) {
                             $hasImage = true;
                             $imagePath = AppHelper::uploadUrl($category['image_url']);
                         }

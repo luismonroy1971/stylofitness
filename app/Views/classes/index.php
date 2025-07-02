@@ -1,4 +1,6 @@
 <?php
+use StyleFitness\Helpers\AppHelper;
+
 /**
  * Vista de Clases Grupales - STYLOFITNESS
  * Muestra listado de clases grupales disponibles
@@ -64,7 +66,7 @@
             <?php foreach ($classes as $class): ?>
                 <div class="class-card">
                     <div class="class-image">
-                        <img src="<?= htmlspecialchars($class['image_url'] ?: '/public/images/placeholder.jpg') ?>" alt="<?= htmlspecialchars($class['name']) ?>">
+                        <img src="<?= htmlspecialchars($class['image_url'] ?: AppHelper::asset('images/placeholder.jpg')) ?>" alt="<?= htmlspecialchars($class['name']) ?>">
                         <div class="class-difficulty <?= strtolower($class['difficulty_level']) ?>">
                             <?= htmlspecialchars($class['difficulty_level']) ?>
                         </div>

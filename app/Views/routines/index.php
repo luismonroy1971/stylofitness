@@ -1,4 +1,6 @@
 <?php
+use StyleFitness\Helpers\AppHelper;
+
 /**
  * Vista: Listado de Rutinas - STYLOFITNESS
  * Muestra las rutinas del usuario con filtros y paginación

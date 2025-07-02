@@ -1,3 +1,4 @@
+<?php use StyleFitness\Helpers\AppHelper; ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -161,6 +162,7 @@
             font-weight: 800;
             background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
             margin-bottom: 0.5rem;
         }

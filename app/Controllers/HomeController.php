@@ -1,49 +1,105 @@
 <?php
+
+namespace StyleFitness\Controllers;
+
+use StyleFitness\Config\Database;
+use StyleFitness\Models\Product;
+use StyleFitness\Models\ProductCategory;
+use StyleFitness\Controllers\LandingController;
+use StyleFitness\Helpers\AppHelper;
+use Exception;
+
 /**
  * Controlador Principal - STYLOFITNESS
  * Maneja la página de inicio y navegación principal
  */
 
-class HomeController {
-    
+class HomeController
+{
     private $db;
-    
-    public function __construct() {
+    private $landingController;
+
+    public function __construct()
+    {
         $this->db = Database::getInstance();
+        $this->landingController = new LandingController();
+    }
+
+    public function index()
+    {
+        try {
+            // Obtener todos los datos de la landing page usando el nuevo controlador
+            $landingData = $this->landingController->getLandingData();
+            
+            // Mantener compatibilidad con variables existentes en la vista
+            $featuredProducts = $landingData['featured_products'];
+            $upcomingClasses = $landingData['upcoming_classes'];
+            $testimonials = $landingData['testimonials'];
+            $stats = $landingData['stats'];
+            $promotionalProducts = $landingData['special_offers'];
+            
+            // Nuevas variables para las secciones mejoradas
+            $specialOffers = $landingData['special_offers'];
+            $whyChooseUs = $landingData['why_choose_us'];
+            $landingConfig = $landingData['landing_config'];
+            $gyms = $landingData['gyms'];
+            
+            // Incluir la vista principal
+            $pageTitle = 'Inicio - STYLOFITNESS';
+            $pageDescription = 'Gimnasio profesional con rutinas personalizadas y tienda de suplementos';
+
+            include APP_PATH . '/Views/layout/header.php';
+            include APP_PATH . '/Views/home/index.php';
+            include APP_PATH . '/Views/layout/footer.php';
+            
+        } catch (Exception $e) {
+            error_log("Error en HomeController::index: " . $e->getMessage());
+            
+            // Fallback a datos por defecto
+            $this->indexFallback();
+        }
     }
     
-    public function index() {
-        // Obtener datos para la página principal
+    /**
+     * Método de respaldo en caso de error
+     */
+    private function indexFallback()
+    {
         $featuredProducts = $this->getFeaturedProducts();
         $upcomingClasses = $this->getUpcomingClasses();
         $testimonials = $this->getTestimonials();
         $stats = $this->getGymStats();
-        
-        // Datos para el carrusel de productos
         $promotionalProducts = $this->getPromotionalProducts();
         
-        // Incluir la vista principal
+        // Variables vacías para las nuevas secciones
+        $specialOffers = [];
+        $whyChooseUs = [];
+        $landingConfig = [];
+        $gyms = [];
+        
         $pageTitle = 'Inicio - STYLOFITNESS';
         $pageDescription = 'Gimnasio profesional con rutinas personalizadas y tienda de suplementos';
-        
+
         include APP_PATH . '/Views/layout/header.php';
         include APP_PATH . '/Views/home/index.php';
         include APP_PATH . '/Views/layout/footer.php';
     }
-    
-    private function getFeaturedProducts($limit = 8) {
-        $sql = "SELECT p.*, pc.name as category_name 
+
+    private function getFeaturedProducts($limit = 8)
+    {
+        $sql = 'SELECT p.*, pc.name as category_name 
                 FROM products p 
                 LEFT JOIN product_categories pc ON p.category_id = pc.id 
                 WHERE p.is_featured = 1 AND p.is_active = 1 
                 ORDER BY p.created_at DESC 
-                LIMIT ?";
-        
+                LIMIT ?';
+
         return $this->db->fetchAll($sql, [$limit]);
     }
-    
-    private function getPromotionalProducts($limit = 10) {
-        $sql = "SELECT p.*, pc.name as category_name,
+
+    private function getPromotionalProducts($limit = 10)
+    {
+        $sql = 'SELECT p.*, pc.name as category_name,
                 ROUND(((p.price - p.sale_price) / p.price) * 100) as discount_percentage
                 FROM products p 
                 LEFT JOIN product_categories pc ON p.category_id = pc.id 
@@ -51,12 +107,13 @@ class HomeController {
                 AND p.sale_price < p.price 
                 AND p.is_active = 1 
                 ORDER BY discount_percentage DESC 
-                LIMIT ?";
-        
+                LIMIT ?';
+
         return $this->db->fetchAll($sql, [$limit]);
     }
-    
-    private function getUpcomingClasses($limit = 6) {
+
+    private function getUpcomingClasses($limit = 6)
+    {
         $sql = "SELECT gc.id, gc.name, gc.description, gc.duration_minutes, gc.max_participants,
                 cs.id as schedule_id, cs.day_of_week, cs.start_time, cs.end_time,
                 u.first_name, u.last_name,
@@ -83,11 +140,12 @@ class HomeController {
                     END,
                     cs.start_time
                 LIMIT ?";
-        
+
         return $this->db->fetchAll($sql, [$limit]);
     }
-    
-    private function getTestimonials($limit = 4) {
+
+    private function getTestimonials($limit = 4)
+    {
         // Testimonios estáticos por ahora, después se pueden mover a base de datos
         return [
             [
@@ -95,70 +153,90 @@ class HomeController {
                 'role' => 'Cliente Premium',
                 'image' => 'maria.jpg',
                 'text' => 'Las rutinas personalizadas de STYLOFITNESS me ayudaron a alcanzar mis objetivos en tiempo récord. Los videos explicativos son increíbles.',
-                'rating' => 5
+                'rating' => 5,
             ],
             [
                 'name' => 'Carlos Rodríguez',
                 'role' => 'Atleta',
                 'image' => 'carlos.jpg',
                 'text' => 'La combinación de entrenamiento y suplementos recomendados ha transformado completamente mi rendimiento deportivo.',
-                'rating' => 5
+                'rating' => 5,
             ],
             [
                 'name' => 'Ana Morales',
                 'role' => 'Fitness Enthusiast',
                 'image' => 'ana.jpg',
                 'text' => 'Me encanta poder seguir mis rutinas desde casa con los videos HD. La tienda online tiene los mejores precios.',
-                'rating' => 5
+                'rating' => 5,
             ],
             [
                 'name' => 'Diego Fernández',
                 'role' => 'Cliente VIP',
                 'image' => 'diego.jpg',
                 'text' => 'El seguimiento personalizado y las clases grupales han hecho que entrenar sea adictivo. Resultados garantizados.',
-                'rating' => 5
+                'rating' => 5,
+            ],
+        ];
+    }
+
+    private function getGymStats()
+    {
+        $rawStats = [];
+
+        // Total de clientes activos
+        $rawStats['active_clients'] = $this->db->count(
+            "SELECT COUNT(*) FROM users WHERE role = 'client' AND is_active = 1"
+        );
+
+        // Total de rutinas creadas
+        $rawStats['total_routines'] = $this->db->count(
+            'SELECT COUNT(*) FROM routines WHERE is_active = 1'
+        );
+
+        // Total de productos en tienda
+        $rawStats['total_products'] = $this->db->count(
+            'SELECT COUNT(*) FROM products WHERE is_active = 1'
+        );
+
+        // Clases disponibles esta semana
+        $rawStats['weekly_classes'] = $this->db->count(
+            'SELECT COUNT(*) FROM class_schedules cs 
+             JOIN group_classes gc ON cs.class_id = gc.id 
+             WHERE cs.is_active = 1 AND gc.is_active = 1'
+        );
+
+        // Formatear estadísticas para la vista
+        return [
+            [
+                'value' => number_format($rawStats['active_clients']),
+                'label' => 'Clientes Activos'
+            ],
+            [
+                'value' => number_format($rawStats['total_routines']),
+                'label' => 'Rutinas Creadas'
+            ],
+            [
+                'value' => number_format($rawStats['total_products']),
+                'label' => 'Productos Disponibles'
+            ],
+            [
+                'value' => number_format($rawStats['weekly_classes']),
+                'label' => 'Clases Semanales'
             ]
         ];
     }
-    
-    private function getGymStats() {
-        $stats = [];
-        
-        // Total de clientes activos
-        $stats['active_clients'] = $this->db->count(
-            "SELECT COUNT(*) FROM users WHERE role = 'client' AND is_active = 1"
-        );
-        
-        // Total de rutinas creadas
-        $stats['total_routines'] = $this->db->count(
-            "SELECT COUNT(*) FROM routines WHERE is_active = 1"
-        );
-        
-        // Total de productos en tienda
-        $stats['total_products'] = $this->db->count(
-            "SELECT COUNT(*) FROM products WHERE is_active = 1"
-        );
-        
-        // Clases disponibles esta semana
-        $stats['weekly_classes'] = $this->db->count(
-            "SELECT COUNT(*) FROM class_schedules cs 
-             JOIN group_classes gc ON cs.class_id = gc.id 
-             WHERE cs.is_active = 1 AND gc.is_active = 1"
-        );
-        
-        return $stats;
-    }
-    
-    public function dashboard() {
+
+    public function dashboard()
+    {
         // Verificar si el usuario está logueado
         if (!AppHelper::isLoggedIn()) {
             AppHelper::redirect('/login');
             return;
         }
-        
+
         $user = AppHelper::getCurrentUser();
         $dashboardData = [];
-        
+
         switch ($user['role']) {
             case 'admin':
                 $dashboardData = $this->getAdminDashboardData();
@@ -170,20 +248,21 @@ class HomeController {
                 $dashboardData = $this->getClientDashboardData($user['id']);
                 break;
         }
-        
+
         $pageTitle = 'Dashboard - STYLOFITNESS';
         include APP_PATH . '/Views/layout/header.php';
         include APP_PATH . '/Views/dashboard/' . $user['role'] . '.php';
         include APP_PATH . '/Views/layout/footer.php';
     }
-    
-    private function getAdminDashboardData() {
+
+    private function getAdminDashboardData()
+    {
         return [
-            'total_users' => $this->db->count("SELECT COUNT(*) FROM users WHERE is_active = 1"),
+            'total_users' => $this->db->count('SELECT COUNT(*) FROM users WHERE is_active = 1'),
             'monthly_revenue' => $this->db->fetch(
-                "SELECT SUM(total_amount) as revenue FROM orders 
+                'SELECT SUM(total_amount) as revenue FROM orders 
                  WHERE MONTH(created_at) = MONTH(CURRENT_DATE()) 
-                 AND YEAR(created_at) = YEAR(CURRENT_DATE())"
+                 AND YEAR(created_at) = YEAR(CURRENT_DATE())'
             )['revenue'] ?? 0,
             'pending_orders' => $this->db->count(
                 "SELECT COUNT(*) FROM orders WHERE status = 'pending'"
@@ -191,46 +270,48 @@ class HomeController {
             'active_memberships' => $this->db->count(
                 "SELECT COUNT(*) FROM users 
                  WHERE role = 'client' AND membership_expires > CURDATE()"
-            )
+            ),
         ];
     }
-    
-    private function getInstructorDashboardData($instructorId) {
+
+    private function getInstructorDashboardData($instructorId)
+    {
         return [
             'assigned_clients' => $this->db->count(
-                "SELECT COUNT(DISTINCT client_id) FROM routines WHERE instructor_id = ?", 
+                'SELECT COUNT(DISTINCT client_id) FROM routines WHERE instructor_id = ?',
                 [$instructorId]
             ),
             'active_routines' => $this->db->count(
-                "SELECT COUNT(*) FROM routines WHERE instructor_id = ? AND is_active = 1", 
+                'SELECT COUNT(*) FROM routines WHERE instructor_id = ? AND is_active = 1',
                 [$instructorId]
             ),
             'scheduled_classes' => $this->db->count(
-                "SELECT COUNT(*) FROM group_classes gc
+                'SELECT COUNT(*) FROM group_classes gc
                  JOIN class_schedules cs ON gc.id = cs.class_id
-                 WHERE gc.instructor_id = ? AND cs.is_active = 1", 
+                 WHERE gc.instructor_id = ? AND cs.is_active = 1',
                 [$instructorId]
             ),
             'this_week_sessions' => $this->db->count(
-                "SELECT COUNT(*) FROM class_bookings cb
+                'SELECT COUNT(*) FROM class_bookings cb
                  JOIN class_schedules cs ON cb.schedule_id = cs.id
                  JOIN group_classes gc ON cs.class_id = gc.id
                  WHERE gc.instructor_id = ? 
                  AND cb.booking_date BETWEEN DATE_SUB(CURDATE(), INTERVAL WEEKDAY(CURDATE()) DAY) 
-                 AND DATE_ADD(DATE_SUB(CURDATE(), INTERVAL WEEKDAY(CURDATE()) DAY), INTERVAL 6 DAY)", 
+                 AND DATE_ADD(DATE_SUB(CURDATE(), INTERVAL WEEKDAY(CURDATE()) DAY), INTERVAL 6 DAY)',
                 [$instructorId]
-            )
+            ),
         ];
     }
-    
-    private function getClientDashboardData($clientId) {
+
+    private function getClientDashboardData($clientId)
+    {
         return [
             'active_routine' => $this->db->fetch(
-                "SELECT * FROM routines WHERE client_id = ? AND is_active = 1 ORDER BY created_at DESC LIMIT 1", 
+                'SELECT * FROM routines WHERE client_id = ? AND is_active = 1 ORDER BY created_at DESC LIMIT 1',
                 [$clientId]
             ),
             'completed_workouts' => $this->db->count(
-                "SELECT COUNT(*) FROM workout_logs WHERE user_id = ?", 
+                'SELECT COUNT(*) FROM workout_logs WHERE user_id = ?',
                 [$clientId]
             ),
             'upcoming_classes' => $this->db->fetchAll(
@@ -239,14 +320,13 @@ class HomeController {
                  JOIN class_schedules cs ON cb.schedule_id = cs.id
                  JOIN group_classes gc ON cs.class_id = gc.id
                  WHERE cb.user_id = ? AND cb.booking_date >= CURDATE() AND cb.status = 'booked'
-                 ORDER BY cb.booking_date, cs.start_time LIMIT 5", 
+                 ORDER BY cb.booking_date, cs.start_time LIMIT 5",
                 [$clientId]
             ),
             'recent_orders' => $this->db->fetchAll(
-                "SELECT * FROM orders WHERE user_id = ? ORDER BY created_at DESC LIMIT 3", 
+                'SELECT * FROM orders WHERE user_id = ? ORDER BY created_at DESC LIMIT 3',
                 [$clientId]
-            )
+            ),
         ];
     }
 }
-?>

@@ -1,26 +1,59 @@
 <!-- Sección de Ofertas Especiales - PRIMERA SECCIÓN -->
-<?php if (!empty($promotionalProducts)): ?>
-<section class="section special-offers-section" id="special-offers">
-    <div class="offers-container">
-        <div class="offers-header">
+<?php use StyleFitness\Helpers\AppHelper; ?>
+
+<!-- Hero Section Configurado -->
+<?php 
+$heroData = $this->landingController->getHeroData();
+$heroConfig = $heroData['config'];
+?>
+<section class="hero-main-section" id="hero-main">
+    <div class="hero-main-container">
+        <div class="hero-background">
+            <div class="hero-overlay"></div>
+            <?php if (!empty($heroConfig['config_data']['background_image'])): ?>
+                <img src="<?php echo AppHelper::asset($heroConfig['config_data']['background_image']); ?>" alt="Hero Background" class="hero-bg-image">
+            <?php endif; ?>
+        </div>
+        
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <?php if (!empty($heroConfig['config_data']['show_stats']) && !empty($heroData['stats'])): ?>
+                    <div class="hero-stats animate__animated animate__fadeInUp animate__delay-4s">
+                        <?php foreach ($heroData['stats'] as $stat): ?>
+                        <div class="hero-stat-item">
+                            <span class="stat-number"><?php echo $stat['value']; ?></span>
+                            <span class="stat-label"><?php echo $stat['label']; ?></span>
+                        </div>
+                        <?php endforeach; ?>
+                    </div>
+                    <?php endif; ?>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Carrusel Impresionante de Productos Destacados -->
+<?php if (!empty($featuredProducts)): ?>
+<section class="hero-carousel-section" id="hero-carousel">
+    <div class="hero-container">
+        <div class="hero-header">
             <div class="container">
-                <div class="compact-title-section">
-                    <h2 class="offers-title-compact animate__animated animate__fadeInDown">
-                        <i class="fas fa-fire fire-icon"></i>
-                        <span class="gradient-text-enhanced">OFERTAS ESPECIALES</span>
-                        <i class="fas fa-fire fire-icon"></i>
-                    </h2>
-                    <p class="offers-subtitle-compact animate__animated animate__fadeInUp animate__delay-1s">
-                        Descuentos exclusivos por tiempo limitado - ¡No te los pierdas!
-                    </p>
+                <div class="hero-title-section">
+                    <h1 class="hero-title animate__animated animate__fadeInDown">
+                        <i class="fas fa-crown crown-icon"></i>
+                        <span class="gradient-text-premium">PRODUCTOS DESTACADOS</span>
+                        <i class="fas fa-crown crown-icon"></i>
+                    </h1>
                 </div>
             </div>
         </div>
         
-        <div class="mega-carousel" id="mega-offers-carousel">
+        <div class="hero-carousel" id="hero-products-carousel">
             <div class="carousel-wrapper">
-                <div class="carousel-track" id="offers-track">
-                    <?php foreach ($promotionalProducts as $index => $product): ?>
+                <div class="carousel-track" id="hero-track">
+                    <?php foreach ($featuredProducts as $index => $product): ?>
                         <div class="mega-slide <?php echo $index === 0 ? 'active' : ''; ?>" data-slide="<?php echo $index; ?>">
                             <div class="slide-background">
                                 <div class="bg-overlay bg-overlay-<?php echo ($index % 4) + 1; ?>"></div>
@@ -31,15 +64,6 @@
                                 <div class="slide-content">
                                     <!-- Columna 1: Información básica del producto (más angosta) -->
                                     <div class="product-info-mega">
-                                        <div class="mega-badge animate__animated animate__bounceIn animate__delay-1s">
-                                            <?php if ($product['discount_percentage']): ?>
-                                                <span class="discount-percent"><?php echo $product['discount_percentage']; ?>%</span>
-                                                <span class="discount-text">Descuento</span>
-                                            <?php else: ?>
-                                                <span class="special-text">ESPECIAL</span>
-                                            <?php endif; ?>
-                                        </div>
-                                        
                                         <div class="product-category-mega animate__animated animate__fadeInLeft animate__delay-1s">
                                             <?php echo htmlspecialchars($product['category_name'] ?? 'Categoría'); ?>
                                         </div>
@@ -78,9 +102,19 @@
                                         <div class="mega-image-container">
                                             <?php 
                                             $productImages = is_string($product['images']) ? json_decode($product['images'], true) : $product['images'];
-                                            $mainImage = !empty($productImages) ? $productImages[0] : '/public/images/default-product.jpg';
+                                            if (!empty($productImages)) {
+                                                // Si la ruta ya incluye /uploads/, usar directamente con baseUrl
+                                                if (strpos($productImages[0], '/uploads/') === 0) {
+                                                    $mainImage = AppHelper::baseUrl($productImages[0]);
+                                                } else {
+                                                    // Si no incluye /uploads/, usar uploadUrl
+                                                    $mainImage = AppHelper::uploadUrl($productImages[0]);
+                                                }
+                                            } else {
+                                                $mainImage = AppHelper::asset('images/placeholder.jpg');
+                                            }
                                             ?>
-                                            <img src="<?php echo AppHelper::uploadUrl($mainImage); ?>" 
+                                            <img src="<?php echo $mainImage; ?>" 
                                                  alt="<?php echo htmlspecialchars($product['name'] ?? 'Producto'); ?>"
                                                  class="mega-product-image"
                                                  loading="lazy">
@@ -96,10 +130,6 @@
                                             <div class="feature-item">
                                                 <i class="fas fa-shield-alt"></i>
                                                 <span>Garantía Total</span>
-                                            </div>
-                                            <div class="feature-item">
-                                                <i class="fas fa-medal"></i>
-                                                <span>Calidad Premium</span>
                                             </div>
                                         </div>
                                     </div>
@@ -184,7 +214,7 @@
             </div>
             
             <div class="mega-indicators">
-                <?php foreach ($promotionalProducts as $index => $product): ?>
+                <?php foreach ($featuredProducts as $index => $product): ?>
                     <button class="mega-dot <?php echo $index === 0 ? 'active' : ''; ?>" 
                             data-slide="<?php echo $index; ?>">
                         <span class="dot-progress"></span>
@@ -201,8 +231,56 @@
 </section>
 <?php endif; ?>
 
-<!-- Nueva Sección de Características Impactante -->
-<section class="section modern-features-section">
+<!-- Nueva Sección Hero Configurada -->
+<?php 
+$heroData = $this->landingController->getHeroData();
+$heroConfig = $heroData['config'];
+$gymStats = $heroData['stats'] ?? [];
+?>
+<section class="hero-config-section" id="hero-configurado">
+    <div class="container">
+        <div class="hero-config-content">
+            <div class="hero-config-badge">
+                <i class="fas fa-rocket"></i>
+                <span>CONFIGURACIÓN DINÁMICA</span>
+            </div>
+            <h1 class="hero-config-title">
+                <?php echo htmlspecialchars($heroConfig['title'] ?? 'Bienvenido a STYLOFITNESS'); ?>
+            </h1>
+            <h2 class="hero-config-subtitle">
+                <?php echo htmlspecialchars($heroConfig['subtitle'] ?? 'Tu transformación comienza aquí'); ?>
+            </h2>
+            <p class="hero-config-description">
+                <?php echo htmlspecialchars($heroConfig['description'] ?? 'Descubre una nueva forma de entrenar con tecnología de vanguardia y entrenadores expertos.'); ?>
+            </p>
+            <?php if (!empty($heroConfig['cta_link']) && !empty($heroConfig['cta_text'])): ?>
+            <a href="<?php echo htmlspecialchars($heroConfig['cta_link']); ?>" class="hero-config-cta">
+                <i class="fas fa-play"></i>
+                <?php echo htmlspecialchars($heroConfig['cta_text']); ?>
+            </a>
+            <?php endif; ?>
+            
+            <?php if (!empty($gymStats)): ?>
+            <div class="hero-config-stats">
+                <?php foreach ($gymStats as $stat): ?>
+                <div class="hero-config-stat">
+                    <span class="hero-config-stat-number"><?php echo htmlspecialchars($stat['value']); ?></span>
+                    <span class="hero-config-stat-label"><?php echo htmlspecialchars($stat['label']); ?></span>
+                </div>
+                <?php endforeach; ?>
+            </div>
+            <?php endif; ?>
+        </div>
+    </div>
+</section>
+
+<!-- Nueva Sección de Características Configurada -->
+<?php 
+$servicesData = $this->landingController->getServicesData();
+$featuresConfig = $servicesData['config'];
+$whyChooseUsItems = $servicesData['why_choose_us'];
+?>
+<section class="section features-config-section" id="features-configurado" style="background-color: <?php echo $featuresConfig['config_data']['background_color'] ?? '#2d1b69'; ?>">
     <div class="features-background">
         <div class="gradient-overlay-enhanced"></div>
         <div class="animated-particles">
@@ -222,16 +300,16 @@
     
     <div class="container">
         <div class="features-hero-enhanced" data-aos="zoom-in">
-            <div class="features-badge">
-                <i class="fas fa-crown"></i>
-                <span>PREMIUM EXPERIENCE</span>
+            <div class="features-config-badge">
+                <i class="fas fa-star"></i>
+                <span>CARACTERÍSTICAS ÚNICAS</span>
             </div>
             <h2 class="features-mega-title-new">
-                <span class="title-line-1-new">¿Por Qué Elegir</span>
-                <span class="title-line-2-new gradient-text-premium">STYLOFITNESS?</span>
+                <span class="title-line-1-new"><?php echo htmlspecialchars($featuresConfig['title'] ?? '¿Por qué elegir'); ?></span>
+                <span class="title-line-2-new features-config-title">STYLOFITNESS?</span>
             </h2>
             <p class="features-mega-subtitle-new">
-                La revolución fitness que transformará tu vida por completo
+                <?php echo htmlspecialchars($featuresConfig['subtitle'] ?? 'Descubre lo que nos hace únicos'); ?>
             </p>
             <div class="features-stats-mini">
                 <div class="mini-stat">
@@ -458,6 +536,29 @@
     </div>
 </section>
 
+<!-- Sección Por Qué Elegirnos -->
+<?php if (!empty($whyChooseUs)): ?>
+<section class="why-choose-us-section">
+    <div class="container">
+        <div class="section-header text-center">
+            <h2 class="section-title">¿Por Qué Elegirnos?</h2>
+            <p class="section-subtitle">Descubre las razones que nos hacen únicos</p>
+        </div>
+        <div class="features-grid">
+            <?php $featureIndex = 0; foreach ($whyChooseUs as $feature): ?>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="<?php echo $featureIndex * 100; ?>">
+                    <div class="feature-icon">
+                        <i class="<?php echo htmlspecialchars($feature['icon'] ?? 'fas fa-star'); ?>"></i>
+                    </div>
+                    <h3 class="feature-title"><?php echo htmlspecialchars($feature['title']); ?></h3>
+                    <p class="feature-description"><?php echo htmlspecialchars($feature['description']); ?></p>
+                </div>
+            <?php $featureIndex++; endforeach; ?>
+        </div>
+    </div>
+</section>
+<?php endif; ?>
+
 <!-- Productos Destacados -->
 <?php if (!empty($featuredProducts)): ?>
 <section class="section featured-products-section-enhanced">
@@ -492,9 +593,11 @@
                         <div class="product-image-enhanced">
                             <?php 
                             $productImages = is_string($product['images']) ? json_decode($product['images'], true) : $product['images'];
-                            $mainImage = !empty($productImages) ? $productImages[0] : '/public/images/default-product.jpg';
+                            $mainImage = !empty($productImages) ? 
+                                (strpos($productImages[0], '/uploads/') === 0 ? AppHelper::getBaseUrl() . ltrim($productImages[0], '/') : AppHelper::uploadUrl($productImages[0])) : 
+                                AppHelper::asset('images/placeholder.jpg');
                             ?>
-                            <img src="<?php echo AppHelper::uploadUrl($mainImage); ?>" 
+                            <img src="<?php echo $mainImage; ?>" 
                                  alt="<?php echo htmlspecialchars($product['name']); ?>" 
                                  loading="lazy">
                             
@@ -965,11 +1068,13 @@
    ============================================= */
 
 .ultra-modern-classes-section {
-    background: linear-gradient(135deg, #0f0f23 0%, #1a1a3e 50%, #0f0f23 100%);
+    background: linear-gradient(135deg, #0d1b2a 0%, #1b263b 30%, #415a77 70%, #778da9 100%);
     position: relative;
     overflow: hidden;
-    padding: 6rem 0;
+    padding: 120px 0;
     min-height: 100vh;
+    border-top: 5px solid #415a77;
+    border-bottom: 5px solid #415a77;
 }
 
 .classes-background-ultra {
@@ -987,7 +1092,16 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(45deg, rgba(255, 107, 0, 0.1) 0%, transparent 50%, rgba(255, 107, 0, 0.05) 100%);
+    background: 
+        linear-gradient(45deg, rgba(65, 90, 119, 0.3) 0%, transparent 50%, rgba(119, 141, 169, 0.2) 100%),
+        radial-gradient(circle at 30% 40%, rgba(27, 38, 59, 0.4) 0%, transparent 60%),
+        radial-gradient(circle at 70% 60%, rgba(65, 90, 119, 0.3) 0%, transparent 60%);
+    animation: classesOverlayShift 12s ease-in-out infinite alternate;
+}
+
+@keyframes classesOverlayShift {
+    0% { transform: translateX(-25px) translateY(-20px); }
+    100% { transform: translateX(25px) translateY(20px); }
 }
 
 .floating-elements-classes {
@@ -3800,6 +3914,316 @@ document.addEventListener('DOMContentLoaded', function() {
     opacity: 1;
     transform: translateY(0);
 }
+
+/* =============================================
+   SECCIÓN POR QUÉ ELEGIRNOS
+   ============================================= */
+
+.why-choose-us-section {
+    padding: 120px 0;
+    background: linear-gradient(135deg, #2c1810 0%, #8b4513 30%, #d2691e 70%, #ff8c00 100%);
+    position: relative;
+    overflow: hidden;
+    border-top: 5px solid #ff6b00;
+    border-bottom: 5px solid #ff6b00;
+}
+
+.why-choose-us-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 30%, rgba(255, 140, 0, 0.3) 0%, transparent 40%),
+        radial-gradient(circle at 80% 70%, rgba(255, 165, 0, 0.2) 0%, transparent 50%),
+        linear-gradient(45deg, transparent 30%, rgba(255, 107, 0, 0.1) 50%, transparent 70%);
+    pointer-events: none;
+    animation: backgroundShift 8s ease-in-out infinite alternate;
+}
+
+@keyframes backgroundShift {
+    0% { transform: translateX(-20px) translateY(-10px); }
+    100% { transform: translateX(20px) translateY(10px); }
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.feature-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 107, 0, 0.2);
+    border-radius: 20px;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.4s ease;
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+}
+
+.feature-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 107, 0, 0.1) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    border-color: rgba(255, 107, 0, 0.5);
+    box-shadow: 0 20px 40px rgba(255, 107, 0, 0.2);
+}
+
+.feature-card:hover::before {
+    opacity: 1;
+}
+
+.feature-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #ff6b00, #ffb366);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    font-size: 2rem;
+    color: white;
+    position: relative;
+    z-index: 2;
+}
+
+.feature-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 1rem;
+    position: relative;
+    z-index: 2;
+}
+
+.feature-description {
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
+    position: relative;
+    z-index: 2;
+}
+
+/* =============================================
+   SECCIÓN PRODUCTOS DESTACADOS
+   ============================================= */
+
+.featured-products-section-enhanced {
+    padding: 120px 0;
+    background: linear-gradient(135deg, #1a0033 0%, #330066 30%, #4d0099 70%, #6600cc 100%);
+    position: relative;
+    overflow: hidden;
+    border-top: 5px solid #6600cc;
+    border-bottom: 5px solid #6600cc;
+}
+
+.featured-products-section-enhanced::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 25% 25%, rgba(102, 0, 204, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 75% 75%, rgba(153, 51, 255, 0.2) 0%, transparent 50%),
+        linear-gradient(45deg, transparent 40%, rgba(102, 0, 204, 0.1) 60%, transparent 80%);
+    pointer-events: none;
+    animation: featuredBackgroundShift 10s ease-in-out infinite alternate;
+}
+
+@keyframes featuredBackgroundShift {
+    0% { transform: translateX(-30px) translateY(-15px) rotate(0deg); }
+    100% { transform: translateX(30px) translateY(15px) rotate(2deg); }
+}
+
+.featured-products-section-enhanced .section-header-enhanced {
+    text-align: center;
+    margin-bottom: 4rem;
+    position: relative;
+    z-index: 2;
+}
+
+.featured-products-section-enhanced .section-title {
+    color: #ffffff;
+    font-size: 3rem;
+    font-weight: 800;
+    text-shadow: 0 0 20px rgba(102, 0, 204, 0.5);
+    margin-bottom: 1rem;
+}
+
+.featured-products-section-enhanced .section-subtitle {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* =============================================
+   SECCIÓN OFERTAS ESPECIALES
+   ============================================= */
+
+.special-offers-section {
+    padding: 100px 0;
+    background: linear-gradient(135deg, #0f0f23 0%, #1a1a3e 50%, #0f0f23 100%);
+    position: relative;
+}
+
+.offers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.offer-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 107, 0, 0.2);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    backdrop-filter: blur(10px);
+    position: relative;
+}
+
+.offer-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    border-color: rgba(255, 107, 0, 0.5);
+    box-shadow: 0 25px 50px rgba(255, 107, 0, 0.3);
+}
+
+.offer-image {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+}
+
+.offer-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.offer-card:hover .offer-image img {
+    transform: scale(1.1);
+}
+
+.discount-badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: linear-gradient(135deg, #ff6b00, #ffb366);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    box-shadow: 0 5px 15px rgba(255, 107, 0, 0.4);
+}
+
+.offer-content {
+    padding: 2rem;
+}
+
+.offer-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 1rem;
+}
+
+.offer-description {
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.offer-pricing {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.original-price {
+    color: rgba(255, 255, 255, 0.5);
+    text-decoration: line-through;
+    font-size: 1.1rem;
+}
+
+.discounted-price {
+    color: #ff6b00;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.offer-validity {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+}
+
+.btn-offer {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: linear-gradient(135deg, #ff6b00, #ffb366);
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-offer:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(255, 107, 0, 0.4);
+    text-decoration: none;
+    color: white;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .features-grid,
+    .offers-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .feature-card,
+    .offer-card {
+        padding: 1.5rem;
+    }
+    
+    .why-choose-us-section,
+    .special-offers-section {
+        padding: 60px 0;
+    }
+}
+
 </style>
 
 <!-- JavaScript para interactividad -->

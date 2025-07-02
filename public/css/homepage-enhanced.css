@@ -75,7 +75,142 @@
 }
 
 /* =============================================
-   SECCIÓN CARACTERÍSTICAS MEJORADA
+   SECCIÓN HERO CONFIGURADA
+   ============================================= */
+
+.hero-config-section {
+    background: linear-gradient(135deg, #2A2A2A 0%, #8A8A8A 50%, #2A2A2A 100%) !important;
+    position: relative !important;
+    overflow: hidden !important;
+    padding: 8rem 0 !important;
+    border-bottom: 3px solid #FF6B00 !important;
+}
+
+.hero-config-section::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    background: radial-gradient(circle at 30% 20%, rgba(255, 107, 0, 0.1) 0%, transparent 50%) !important;
+    z-index: 1 !important;
+}
+
+.hero-config-content {
+    position: relative !important;
+    z-index: 5 !important;
+    text-align: center !important;
+}
+
+.hero-config-badge {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 0.5rem !important;
+    background: rgba(42, 42, 42, 0.9) !important;
+    border: 2px solid rgba(255, 107, 0, 0.6) !important;
+    padding: 0.75rem 1.5rem !important;
+    border-radius: 50px !important;
+    color: #FF8533 !important;
+    font-size: 0.9rem !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
+    margin-bottom: 2rem !important;
+    backdrop-filter: blur(15px) !important;
+    box-shadow: 0 0 25px rgba(255, 107, 0, 0.3) !important;
+}
+
+.hero-config-title {
+    font-family: 'Montserrat', Arial, sans-serif !important;
+    font-size: 4rem !important;
+    font-weight: 900 !important;
+    color: #FFFFFF !important;
+    margin-bottom: 1.5rem !important;
+    text-transform: uppercase !important;
+    letter-spacing: 3px !important;
+    text-shadow: 0 0 40px rgba(255, 107, 0, 0.6) !important;
+    line-height: 1.1 !important;
+}
+
+.hero-config-subtitle {
+    font-size: 1.4rem !important;
+    color: rgba(255, 255, 255, 0.9) !important;
+    margin-bottom: 2rem !important;
+    font-weight: 300 !important;
+    line-height: 1.6 !important;
+}
+
+.hero-config-description {
+    font-size: 1.1rem !important;
+    color: rgba(255, 255, 255, 0.7) !important;
+    margin-bottom: 3rem !important;
+    max-width: 600px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    line-height: 1.7 !important;
+}
+
+.hero-config-cta {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 0.75rem !important;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%) !important;
+    color: white !important;
+    padding: 1rem 2.5rem !important;
+    border-radius: 50px !important;
+    text-decoration: none !important;
+    font-weight: 600 !important;
+    font-size: 1.1rem !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 8px 25px rgba(255, 107, 0, 0.4) !important;
+    border: 2px solid transparent !important;
+}
+
+.hero-config-cta:hover {
+    transform: translateY(-3px) !important;
+    box-shadow: 0 12px 35px rgba(255, 107, 0, 0.6) !important;
+    background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%) !important;
+    border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+.hero-config-stats {
+    display: flex !important;
+    justify-content: center !important;
+    gap: 3rem !important;
+    margin-top: 4rem !important;
+    flex-wrap: wrap !important;
+}
+
+.hero-config-stat {
+    text-align: center !important;
+    background: rgba(0, 0, 0, 0.6) !important;
+    padding: 1.5rem 2rem !important;
+    border-radius: 15px !important;
+    backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(255, 107, 0, 0.3) !important;
+}
+
+.hero-config-stat-number {
+    font-size: 2.5rem !important;
+    font-weight: 900 !important;
+    color: var(--primary-color) !important;
+    display: block !important;
+    margin-bottom: 0.5rem !important;
+}
+
+.hero-config-stat-label {
+    font-size: 0.9rem !important;
+    color: rgba(255, 255, 255, 0.95) !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
+    font-weight: 500 !important;
+}
+
+/* =============================================
+   SECCIÓN CARACTERÍSTICAS CONFIGURADA
    ============================================= */
 
 .modern-features-section {
@@ -83,6 +218,61 @@
     position: relative !important;
     overflow: hidden !important;
     padding: 6rem 0 !important;
+    border-top: 3px solid var(--accent-color) !important;
+    border-bottom: 3px solid var(--accent-color) !important;
+}
+
+/* Estilos específicos para sección de características configurada */
+.features-config-section {
+    background: linear-gradient(135deg, #2d1b69 0%, #11998e 50%, #38ef7d 100%) !important;
+    position: relative !important;
+    overflow: hidden !important;
+    padding: 6rem 0 !important;
+    border-top: 3px solid #38ef7d !important;
+    border-bottom: 3px solid #11998e !important;
+}
+
+.features-config-section::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    background: radial-gradient(circle at 70% 80%, rgba(56, 239, 125, 0.1) 0%, transparent 50%) !important;
+    z-index: 1 !important;
+}
+
+.features-config-badge {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 0.5rem !important;
+    background: rgba(45, 27, 105, 0.8) !important;
+    border: 2px solid rgba(56, 239, 125, 0.5) !important;
+    padding: 0.75rem 1.5rem !important;
+    border-radius: 50px !important;
+    color: #38ef7d !important;
+    font-size: 0.9rem !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
+    margin-bottom: 1.5rem !important;
+    backdrop-filter: blur(15px) !important;
+    box-shadow: 0 0 25px rgba(56, 239, 125, 0.3) !important;
+}
+
+.features-config-title {
+    background: linear-gradient(135deg, #38ef7d 0%, #11998e 50%, #2d1b69 100%) !important;
+    background-size: 400% 400% !important;
+    background-clip: text !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    animation: featuresGradient 3s ease-in-out infinite !important;
+}
+
+@keyframes featuresGradient {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
 }
 
 .features-hero-enhanced {

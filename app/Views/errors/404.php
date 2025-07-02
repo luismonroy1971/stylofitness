@@ -1,3 +1,4 @@
+<?php use StyleFitness\Helpers\AppHelper; ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>

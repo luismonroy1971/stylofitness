@@ -1,3 +1,4 @@
+<?php use StyleFitness\Helpers\AppHelper; ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -52,8 +53,13 @@
     <link rel="stylesheet" href="<?php echo AppHelper::asset('css/fixes.css'); ?>">
     
     <!-- Estilos Homepage Mejorados - v2.0 -->
-    <link rel="stylesheet" href="<?php echo AppHelper::asset('css/homepage-enhanced.css'); ?>?v=<?php echo time(); ?>">   
+    <link rel="stylesheet" href="<?php echo AppHelper::asset('css/homepage-enhanced.css'); ?>?v=<?php echo time(); ?>">
     
+    <!-- Correcciones del Carrusel -->
+    <link rel="stylesheet" href="<?php echo AppHelper::asset('css/carousel-fixes.css'); ?>?v=<?php echo time(); ?>">
+    
+    <!-- Correcciones de Contraste y Visibilidad -->
+    <link rel="stylesheet" href="<?php echo AppHelper::asset('css/contrast-fixes.css'); ?>?v=<?php echo time(); ?>">
     
     <!-- Estilos adicionales según la página -->
     <?php if (isset($additionalCSS)): ?>
@@ -65,11 +71,11 @@
     <!-- Variables CSS dinámicas -->
     <style>
         :root {
-            --primary-color: <?php echo THEME_COLORS['primary']; ?>;
-            --secondary-color: <?php echo THEME_COLORS['secondary']; ?>;
-            --accent-color: <?php echo THEME_COLORS['accent']; ?>;
-            --dark-bg: <?php echo THEME_COLORS['dark']; ?>;
-            --light-bg: <?php echo THEME_COLORS['light']; ?>;
+            --primary-color: <?php echo defined('THEME_COLORS') ? THEME_COLORS['primary'] : '#FF6B00'; ?>;
+            --secondary-color: <?php echo defined('THEME_COLORS') ? THEME_COLORS['secondary'] : '#E55A00'; ?>;
+            --accent-color: <?php echo defined('THEME_COLORS') ? THEME_COLORS['accent'] : '#FFB366'; ?>;
+            --dark-bg: <?php echo defined('THEME_COLORS') ? THEME_COLORS['dark'] : '#2C2C2C'; ?>;
+            --light-bg: <?php echo defined('THEME_COLORS') ? THEME_COLORS['light'] : '#F8F9FA'; ?>;
         }
         
         /* ESTILOS INMEDIATOS - FORZAR CAMBIOS */

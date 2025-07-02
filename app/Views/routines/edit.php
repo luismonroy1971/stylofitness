@@ -1,4 +1,6 @@
 <?php
+use StyleFitness\Helpers\AppHelper;
+
 /**
  * Vista: Editar Rutina - STYLOFITNESS
  * Formulario para editar una rutina existente

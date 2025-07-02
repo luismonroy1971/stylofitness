@@ -40,6 +40,9 @@ require_once APP_PATH . '/Helpers/RoutineHelper.php';
 
 // Autoloader simple para clases
 spl_autoload_register(function ($class) {
+    // Extraer solo el nombre de la clase del namespace completo
+    $className = basename(str_replace('\\', '/', $class));
+    
     $paths = [
         APP_PATH . '/Controllers/',
         APP_PATH . '/Models/',
@@ -47,7 +50,7 @@ spl_autoload_register(function ($class) {
     ];
     
     foreach ($paths as $path) {
-        $file = $path . $class . '.php';
+        $file = $path . $className . '.php';
         if (file_exists($file)) {
             require_once $file;
             return;
@@ -138,18 +141,24 @@ class Router {
             $controllerName = $parts[0];
             $method = $parts[1];
             
+            // Agregar namespace completo si no lo tiene
+            $fullControllerName = $controllerName;
+            if (strpos($controllerName, '\\') === false) {
+                $fullControllerName = 'StyleFitness\\Controllers\\' . $controllerName;
+            }
+            
             // Verificar que el controlador existe
-            if (class_exists($controllerName)) {
-                $controller = new $controllerName();
+            if (class_exists($fullControllerName)) {
+                $controller = new $fullControllerName();
                 if (method_exists($controller, $method)) {
                     return call_user_func_array([$controller, $method], $params);
                 } else {
-                    error_log("Method {$method} not found in controller {$controllerName}");
-                    throw new Exception("Method {$method} not found in controller {$controllerName}");
+                    error_log("Method {$method} not found in controller {$fullControllerName}");
+                    throw new Exception("Method {$method} not found in controller {$fullControllerName}");
                 }
             } else {
-                error_log("Controller {$controllerName} not found");
-                throw new Exception("Controller {$controllerName} not found");
+                error_log("Controller {$fullControllerName} not found");
+                throw new Exception("Controller {$fullControllerName} not found");
             }
         }
         
@@ -332,6 +341,47 @@ $router->get('/admin/settings', 'AdminController@settings');
 $router->post('/admin/settings/update', 'AdminController@updateSettings');
 
 // ==========================================
+// RUTAS DE ADMINISTRACIÓN - LANDING PAGE
+// ==========================================
+
+// Special Offers
+$router->get('/admin/landing/special-offers', 'AdminLandingController@specialOffers');
+$router->get('/admin/landing/special-offers/get', 'AdminLandingController@getSpecialOffers');
+$router->get('/admin/landing/special-offers/get-single', 'AdminLandingController@getSingleSpecialOffer');
+$router->post('/admin/landing/special-offers/create', 'AdminLandingController@createSpecialOffer');
+$router->post('/admin/landing/special-offers/update', 'AdminLandingController@updateSpecialOffer');
+$router->post('/admin/landing/special-offers/delete', 'AdminLandingController@deleteSpecialOffer');
+$router->post('/admin/landing/special-offers/toggle-status', 'AdminLandingController@toggleSpecialOfferStatus');
+
+// Why Choose Us
+$router->get('/admin/landing/why-choose-us', 'AdminLandingController@whyChooseUs');
+$router->get('/admin/landing/why-choose-us/get', 'AdminLandingController@getWhyChooseUsFeatures');
+$router->get('/admin/landing/why-choose-us/get-single', 'AdminLandingController@getSingleWhyChooseUsFeature');
+$router->post('/admin/landing/why-choose-us/create', 'AdminLandingController@createWhyChooseUsFeature');
+$router->post('/admin/landing/why-choose-us/update', 'AdminLandingController@updateWhyChooseUsFeature');
+$router->post('/admin/landing/why-choose-us/delete', 'AdminLandingController@deleteWhyChooseUsFeature');
+$router->post('/admin/landing/why-choose-us/toggle-status', 'AdminLandingController@toggleWhyChooseUsFeatureStatus');
+
+// Testimonials
+$router->get('/admin/landing/testimonials', 'AdminLandingController@testimonials');
+$router->get('/admin/landing/testimonials/get', 'AdminLandingController@getTestimonials');
+$router->get('/admin/landing/testimonials/get-single', 'AdminLandingController@getSingleTestimonial');
+$router->post('/admin/landing/testimonials/create', 'AdminLandingController@createTestimonial');
+$router->post('/admin/landing/testimonials/update', 'AdminLandingController@updateTestimonial');
+$router->post('/admin/landing/testimonials/delete', 'AdminLandingController@deleteTestimonial');
+$router->post('/admin/landing/testimonials/toggle-status', 'AdminLandingController@toggleTestimonialStatus');
+
+// Landing Page Config
+$router->get('/admin/landing/config', 'AdminLandingController@config');
+$router->get('/admin/landing/config/get', 'AdminLandingController@getConfigs');
+$router->get('/admin/landing/config/get-section', 'AdminLandingController@getSectionConfigs');
+$router->get('/admin/landing/config/get-single', 'AdminLandingController@getSingleConfig');
+$router->post('/admin/landing/config/create', 'AdminLandingController@createConfig');
+$router->post('/admin/landing/config/update', 'AdminLandingController@updateConfig');
+$router->post('/admin/landing/config/delete', 'AdminLandingController@deleteConfig');
+$router->post('/admin/landing/config/toggle-status', 'AdminLandingController@toggleConfigStatus');
+
+// ==========================================
 // API ROUTES
 // ==========================================
 
@@ -390,7 +440,7 @@ $router->post('/webhook/email/mailgun', 'WebhookController@mailgunWebhook');
 // RUTAS DE DESARROLLO (solo en modo debug)
 // ==========================================
 
-if (getAppConfig('debug_enabled', false)) {
+if (function_exists('getAppConfig') && getAppConfig('debug_enabled', false)) {
     $router->get('/dev/phpinfo', function() {
         phpinfo();
     });
@@ -404,7 +454,7 @@ if (getAppConfig('debug_enabled', false)) {
 set_exception_handler(function($exception) {
     error_log("Uncaught exception: " . $exception->getMessage());
     
-    if (getAppConfig('debug_enabled', false)) {
+    if (function_exists('getAppConfig') && getAppConfig('debug_enabled', false)) {
         echo '<pre>' . $exception->getTraceAsString() . '</pre>';
     } else {
         http_response_code(500);
@@ -422,7 +472,7 @@ try {
 } catch (Exception $e) {
     error_log("Router exception: " . $e->getMessage());
     
-    if (getAppConfig('debug_enabled', false)) {
+    if (function_exists('getAppConfig') && getAppConfig('debug_enabled', false)) {
         echo '<pre>Error: ' . $e->getMessage() . '</pre>';
     } else {
         http_response_code(500);

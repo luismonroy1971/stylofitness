@@ -1,24 +1,34 @@
 <?php
+
+namespace StyleFitness\Models;
+
+use StyleFitness\Config\Database;
+use Exception;
+use PDO;
+use DateTime;
+
 /**
  * Modelo de Clases Grupales - STYLOFITNESS
  * Gestión de clases grupales, horarios y reservas
  */
 
-class GroupClass {
-    
+class GroupClass
+{
     private $db;
-    
-    public function __construct() {
+
+    public function __construct()
+    {
         $this->db = Database::getInstance();
     }
-    
-    public function create($data) {
-        $sql = "INSERT INTO group_classes (
+
+    public function create($data)
+    {
+        $sql = 'INSERT INTO group_classes (
             gym_id, instructor_id, name, description, class_type, duration_minutes,
             max_participants, room, equipment_needed, difficulty_level, price,
             image_url, requirements, benefits, is_active, created_at
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())";
-        
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())';
+
         return $this->db->insert($sql, [
             $data['gym_id'],
             $data['instructor_id'],
@@ -34,139 +44,144 @@ class GroupClass {
             $data['image_url'] ?? null,
             $data['requirements'] ?? null,
             $data['benefits'] ?? null,
-            $data['is_active'] ?? true
+            $data['is_active'] ?? true,
         ]);
     }
-    
-    public function findById($id) {
+
+    public function findById($id)
+    {
         $class = $this->db->fetch(
-            "SELECT gc.*, u.first_name, u.last_name, u.email as instructor_email,
+            'SELECT gc.*, u.first_name, u.last_name, u.email as instructor_email,
              g.name as gym_name
              FROM group_classes gc
              LEFT JOIN users u ON gc.instructor_id = u.id
              LEFT JOIN gyms g ON gc.gym_id = g.id
-             WHERE gc.id = ?",
+             WHERE gc.id = ?',
             [$id]
         );
-        
+
         if ($class) {
             $class['schedules'] = $this->getClassSchedules($id);
             $class['next_sessions'] = $this->getNextSessions($id, 5);
         }
-        
+
         return $class;
     }
-    
-    public function update($id, $data) {
+
+    public function update($id, $data)
+    {
         $fields = [];
         $values = [];
-        
+
         $allowedFields = [
             'instructor_id', 'name', 'description', 'class_type', 'duration_minutes',
-            'max_participants', 'room', 'equipment_needed', 'difficulty_level', 
-            'price', 'image_url', 'requirements', 'benefits', 'is_active'
+            'max_participants', 'room', 'equipment_needed', 'difficulty_level',
+            'price', 'image_url', 'requirements', 'benefits', 'is_active',
         ];
-        
+
         foreach ($data as $key => $value) {
             if (in_array($key, $allowedFields)) {
                 $fields[] = "{$key} = ?";
                 $values[] = $value;
             }
         }
-        
+
         if (empty($fields)) {
             return false;
         }
-        
-        $fields[] = "updated_at = NOW()";
+
+        $fields[] = 'updated_at = NOW()';
         $values[] = $id;
-        
-        $sql = "UPDATE group_classes SET " . implode(', ', $fields) . " WHERE id = ?";
-        
+
+        $sql = 'UPDATE group_classes SET ' . implode(', ', $fields) . ' WHERE id = ?';
+
         return $this->db->query($sql, $values);
     }
-    
-    public function getClasses($filters = []) {
-        $where = ["gc.is_active = 1"];
+
+    public function getClasses($filters = [])
+    {
+        $where = ['gc.is_active = 1'];
         $params = [];
-        
+
         if (!empty($filters['search'])) {
-            $where[] = "(gc.name LIKE ? OR gc.description LIKE ?)";
+            $where[] = '(gc.name LIKE ? OR gc.description LIKE ?)';
             $searchTerm = '%' . $filters['search'] . '%';
             $params = array_merge($params, [$searchTerm, $searchTerm]);
         }
-        
+
         if (!empty($filters['class_type'])) {
-            $where[] = "gc.class_type = ?";
+            $where[] = 'gc.class_type = ?';
             $params[] = $filters['class_type'];
         }
-        
+
         if (!empty($filters['instructor_id'])) {
-            $where[] = "gc.instructor_id = ?";
+            $where[] = 'gc.instructor_id = ?';
             $params[] = $filters['instructor_id'];
         }
-        
+
         if (!empty($filters['gym_id'])) {
-            $where[] = "gc.gym_id = ?";
+            $where[] = 'gc.gym_id = ?';
             $params[] = $filters['gym_id'];
         }
-        
+
         if (!empty($filters['difficulty_level'])) {
-            $where[] = "gc.difficulty_level = ?";
+            $where[] = 'gc.difficulty_level = ?';
             $params[] = $filters['difficulty_level'];
         }
-        
-        $sql = "SELECT gc.*, u.first_name, u.last_name, g.name as gym_name,
+
+        $sql = 'SELECT gc.*, u.first_name, u.last_name, g.name as gym_name,
                 COUNT(DISTINCT cs.id) as schedule_count
                 FROM group_classes gc
                 LEFT JOIN users u ON gc.instructor_id = u.id
                 LEFT JOIN gyms g ON gc.gym_id = g.id
                 LEFT JOIN class_schedules cs ON gc.id = cs.class_id AND cs.is_active = 1
-                WHERE " . implode(' AND ', $where) . "
+                WHERE ' . implode(' AND ', $where) . '
                 GROUP BY gc.id
-                ORDER BY gc.name ASC";
-        
+                ORDER BY gc.name ASC';
+
         if (!empty($filters['limit'])) {
-            $sql .= " LIMIT " . (int)$filters['limit'];
+            $sql .= ' LIMIT ' . (int)$filters['limit'];
             if (!empty($filters['offset'])) {
-                $sql .= " OFFSET " . (int)$filters['offset'];
+                $sql .= ' OFFSET ' . (int)$filters['offset'];
             }
         }
-        
+
         return $this->db->fetchAll($sql, $params);
     }
-    
-    public function countClasses($filters = []) {
-        $where = ["gc.is_active = 1"];
+
+    public function countClasses($filters = [])
+    {
+        $where = ['gc.is_active = 1'];
         $params = [];
-        
+
         if (!empty($filters['search'])) {
-            $where[] = "(gc.name LIKE ? OR gc.description LIKE ?)";
+            $where[] = '(gc.name LIKE ? OR gc.description LIKE ?)';
             $searchTerm = '%' . $filters['search'] . '%';
             $params = array_merge($params, [$searchTerm, $searchTerm]);
         }
-        
+
         if (!empty($filters['class_type'])) {
-            $where[] = "gc.class_type = ?";
+            $where[] = 'gc.class_type = ?';
             $params[] = $filters['class_type'];
         }
-        
+
         if (!empty($filters['instructor_id'])) {
-            $where[] = "gc.instructor_id = ?";
+            $where[] = 'gc.instructor_id = ?';
             $params[] = $filters['instructor_id'];
         }
-        
+
         if (!empty($filters['gym_id'])) {
-            $where[] = "gc.gym_id = ?";
+            $where[] = 'gc.gym_id = ?';
             $params[] = $filters['gym_id'];
         }
-        
-        $sql = "SELECT COUNT(*) FROM group_classes gc WHERE " . implode(' AND ', $where);
-        
+
+        $sql = 'SELECT COUNT(*) FROM group_classes gc WHERE ' . implode(' AND ', $where);
+
         return $this->db->count($sql, $params);
     }
-    
-    public function getUpcomingClasses($limit = 10) {
+
+    public function getUpcomingClasses($limit = 10)
+    {
         return $this->db->fetchAll(
             "SELECT gc.name, gc.description, gc.duration_minutes, gc.max_participants,
              cs.day_of_week, cs.start_time, cs.end_time,
@@ -196,8 +211,9 @@ class GroupClass {
             [$limit]
         );
     }
-    
-    public function getClassSchedules($classId) {
+
+    public function getClassSchedules($classId)
+    {
         return $this->db->fetchAll(
             "SELECT * FROM class_schedules 
              WHERE class_id = ? AND is_active = 1
@@ -215,13 +231,14 @@ class GroupClass {
             [$classId]
         );
     }
-    
-    public function addSchedule($classId, $scheduleData) {
-        $sql = "INSERT INTO class_schedules (
+
+    public function addSchedule($classId, $scheduleData)
+    {
+        $sql = 'INSERT INTO class_schedules (
             class_id, day_of_week, start_time, end_time, start_date, 
             end_date, is_recurring, exceptions, is_active, created_at
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())";
-        
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())';
+
         return $this->db->insert($sql, [
             $classId,
             $scheduleData['day_of_week'],
@@ -231,19 +248,20 @@ class GroupClass {
             $scheduleData['end_date'] ?? null,
             $scheduleData['is_recurring'] ?? true,
             json_encode($scheduleData['exceptions'] ?? []),
-            $scheduleData['is_active'] ?? true
+            $scheduleData['is_active'] ?? true,
         ]);
     }
-    
-    public function updateSchedule($scheduleId, $data) {
+
+    public function updateSchedule($scheduleId, $data)
+    {
         $fields = [];
         $values = [];
-        
+
         $allowedFields = [
-            'day_of_week', 'start_time', 'end_time', 'start_date', 
-            'end_date', 'is_recurring', 'exceptions', 'is_active'
+            'day_of_week', 'start_time', 'end_time', 'start_date',
+            'end_date', 'is_recurring', 'exceptions', 'is_active',
         ];
-        
+
         foreach ($data as $key => $value) {
             if (in_array($key, $allowedFields)) {
                 $fields[] = "{$key} = ?";
@@ -254,30 +272,31 @@ class GroupClass {
                 }
             }
         }
-        
+
         if (empty($fields)) {
             return false;
         }
-        
+
         $values[] = $scheduleId;
-        
-        $sql = "UPDATE class_schedules SET " . implode(', ', $fields) . " WHERE id = ?";
-        
+
+        $sql = 'UPDATE class_schedules SET ' . implode(', ', $fields) . ' WHERE id = ?';
+
         return $this->db->query($sql, $values);
     }
-    
-    public function bookClass($userId, $scheduleId, $bookingDate) {
+
+    public function bookClass($userId, $scheduleId, $bookingDate)
+    {
         // Verificar disponibilidad
         $schedule = $this->getScheduleById($scheduleId);
         if (!$schedule) {
             return ['error' => 'Horario no encontrado'];
         }
-        
+
         $class = $this->findById($schedule['class_id']);
         if (!$class) {
             return ['error' => 'Clase no encontrada'];
         }
-        
+
         // Verificar si ya está reservado
         $existingBooking = $this->db->fetch(
             "SELECT id FROM class_bookings 
@@ -285,11 +304,11 @@ class GroupClass {
              AND status IN ('booked', 'confirmed')",
             [$scheduleId, $userId, $bookingDate]
         );
-        
+
         if ($existingBooking) {
             return ['error' => 'Ya tienes una reserva para esta clase'];
         }
-        
+
         // Verificar capacidad
         $bookedCount = $this->db->count(
             "SELECT COUNT(*) FROM class_bookings 
@@ -297,11 +316,11 @@ class GroupClass {
              AND status IN ('booked', 'confirmed')",
             [$scheduleId, $bookingDate]
         );
-        
+
         if ($bookedCount >= $class['max_participants']) {
             return ['error' => 'La clase está completa'];
         }
-        
+
         // Crear reserva
         $bookingId = $this->db->insert(
             "INSERT INTO class_bookings (
@@ -310,15 +329,16 @@ class GroupClass {
             ) VALUES (?, ?, ?, 'booked', 'free', 0, NOW(), NOW())",
             [$scheduleId, $userId, $bookingDate]
         );
-        
+
         if ($bookingId) {
             return ['success' => true, 'booking_id' => $bookingId];
         } else {
             return ['error' => 'Error al crear la reserva'];
         }
     }
-    
-    public function cancelBooking($bookingId) {
+
+    public function cancelBooking($bookingId)
+    {
         return $this->db->query(
             "UPDATE class_bookings 
              SET status = 'cancelled', updated_at = NOW() 
@@ -326,20 +346,21 @@ class GroupClass {
             [$bookingId]
         );
     }
-    
+
     /**
      * Obtener reservas de usuario con filtro por tipo
      */
-    public function getUserBookings($userId, $type = 'all') {
-        $where = "cb.user_id = ?";
+    public function getUserBookings($userId, $type = 'all')
+    {
+        $where = 'cb.user_id = ?';
         $params = [$userId];
-        
+
         switch ($type) {
             case 'upcoming':
                 $where .= " AND cb.booking_date >= CURDATE() AND cb.status IN ('booked', 'confirmed')";
                 break;
             case 'past':
-                $where .= " AND cb.booking_date < CURDATE()";
+                $where .= ' AND cb.booking_date < CURDATE()';
                 break;
             case 'cancelled':
                 $where .= " AND cb.status = 'cancelled'";
@@ -348,7 +369,7 @@ class GroupClass {
                 // 'all' - no additional filter
                 break;
         }
-        
+
         return $this->db->fetchAll(
             "SELECT cb.*, gc.name as class_name, gc.description, gc.duration_minutes,
              cs.day_of_week, cs.start_time, cs.end_time,
@@ -362,28 +383,31 @@ class GroupClass {
             $params
         );
     }
-    
-    public function getInstructorClasses($instructorId) {
+
+    public function getInstructorClasses($instructorId)
+    {
         return $this->getClasses(['instructor_id' => $instructorId]);
     }
-    
-    public function getNextSessions($classId, $limit = 10) {
+
+    public function getNextSessions($classId, $limit = 10)
+    {
         $schedules = $this->getClassSchedules($classId);
         $sessions = [];
-        
+
         foreach ($schedules as $schedule) {
             $sessions = array_merge($sessions, $this->generateSessions($schedule, $limit));
         }
-        
+
         // Ordenar por fecha
-        usort($sessions, function($a, $b) {
+        usort($sessions, function ($a, $b) {
             return strtotime($a['date'] . ' ' . $a['start_time']) - strtotime($b['date'] . ' ' . $b['start_time']);
         });
-        
+
         return array_slice($sessions, 0, $limit);
     }
-    
-    public function getClassTypes() {
+
+    public function getClassTypes()
+    {
         return [
             'cardio' => 'Cardio',
             'strength' => 'Fuerza',
@@ -395,33 +419,35 @@ class GroupClass {
             'pilates' => 'Pilates',
             'crossfit' => 'CrossFit',
             'hiit' => 'HIIT',
-            'spinning' => 'Spinning'
+            'spinning' => 'Spinning',
         ];
     }
-    
-    public function validateClass($data) {
+
+    public function validateClass($data)
+    {
         $errors = [];
-        
+
         if (empty($data['name'])) {
             $errors['name'] = 'El nombre es obligatorio';
         }
-        
+
         if (empty($data['instructor_id'])) {
             $errors['instructor_id'] = 'El instructor es obligatorio';
         }
-        
+
         if (!isset($data['duration_minutes']) || $data['duration_minutes'] <= 0) {
             $errors['duration_minutes'] = 'La duración debe ser mayor a 0';
         }
-        
+
         if (!isset($data['max_participants']) || $data['max_participants'] <= 0) {
             $errors['max_participants'] = 'El número máximo de participantes debe ser mayor a 0';
         }
-        
+
         return $errors;
     }
-    
-    public function delete($id) {
+
+    public function delete($id)
+    {
         // Verificar si hay reservas activas
         $activeBookings = $this->db->count(
             "SELECT COUNT(*) FROM class_bookings cb
@@ -430,28 +456,24 @@ class GroupClass {
              AND cb.status IN ('booked', 'confirmed')",
             [$id]
         );
-        
+
         if ($activeBookings > 0) {
             return false; // No eliminar clases con reservas activas
         }
-        
+
         // Eliminar horarios
-        $this->db->query("DELETE FROM class_schedules WHERE class_id = ?", [$id]);
-        
+        $this->db->query('DELETE FROM class_schedules WHERE class_id = ?', [$id]);
+
         // Eliminar clase
-        return $this->db->query("DELETE FROM group_classes WHERE id = ?", [$id]);
+        return $this->db->query('DELETE FROM group_classes WHERE id = ?', [$id]);
     }
-    
-    private function getScheduleStartTime($scheduleId) {
-        $schedule = $this->getScheduleById($scheduleId);
-        return $schedule ? $schedule['start_time'] : '00:00:00';
-    }
-    
-    private function generateSessions($schedule, $limit) {
+
+    private function generateSessions($schedule, $limit)
+    {
         $sessions = [];
         $currentDate = new DateTime();
         $endDate = new DateTime('+2 months'); // Generar sesiones para los próximos 2 meses
-        
+
         $dayMap = [
             'monday' => 1,
             'tuesday' => 2,
@@ -459,11 +481,11 @@ class GroupClass {
             'thursday' => 4,
             'friday' => 5,
             'saturday' => 6,
-            'sunday' => 0
+            'sunday' => 0,
         ];
-        
+
         $targetDay = $dayMap[$schedule['day_of_week']];
-        
+
         while ($currentDate <= $endDate && count($sessions) < $limit) {
             if ($currentDate->format('w') == $targetDay) {
                 $sessions[] = [
@@ -471,53 +493,54 @@ class GroupClass {
                     'date' => $currentDate->format('Y-m-d'),
                     'day_of_week' => $schedule['day_of_week'],
                     'start_time' => $schedule['start_time'],
-                    'end_time' => $schedule['end_time']
+                    'end_time' => $schedule['end_time'],
                 ];
             }
             $currentDate->modify('+1 day');
         }
-        
+
         return $sessions;
     }
-    
+
     // ==========================================
     // MÉTODOS ADICIONALES REQUERIDOS POR EL CONTROLADOR
     // ==========================================
-    
+
     /**
      * Obtener clases con sus horarios (para index del controlador)
      */
-    public function getClassesWithSchedules($filters = []) {
-        $where = ["gc.is_active = 1"];
+    public function getClassesWithSchedules($filters = [])
+    {
+        $where = ['gc.is_active = 1'];
         $params = [];
-        
+
         if (!empty($filters['search'])) {
-            $where[] = "(gc.name LIKE ? OR gc.description LIKE ?)";
+            $where[] = '(gc.name LIKE ? OR gc.description LIKE ?)';
             $searchTerm = '%' . $filters['search'] . '%';
             $params = array_merge($params, [$searchTerm, $searchTerm]);
         }
-        
+
         if (!empty($filters['class_type'])) {
-            $where[] = "gc.class_type = ?";
+            $where[] = 'gc.class_type = ?';
             $params[] = $filters['class_type'];
         }
-        
+
         if (!empty($filters['difficulty'])) {
-            $where[] = "gc.difficulty_level = ?";
+            $where[] = 'gc.difficulty_level = ?';
             $params[] = $filters['difficulty'];
         }
-        
+
         if (!empty($filters['instructor'])) {
-            $where[] = "(u.first_name LIKE ? OR u.last_name LIKE ?)";
+            $where[] = '(u.first_name LIKE ? OR u.last_name LIKE ?)';
             $instructorTerm = '%' . $filters['instructor'] . '%';
             $params = array_merge($params, [$instructorTerm, $instructorTerm]);
         }
-        
+
         if (!empty($filters['day'])) {
-            $where[] = "cs.day_of_week = ?";
+            $where[] = 'cs.day_of_week = ?';
             $params[] = $filters['day'];
         }
-        
+
         $sql = "SELECT gc.*, u.first_name, u.last_name, u.email as instructor_email,
                 g.name as gym_name,
                 GROUP_CONCAT(
@@ -528,12 +551,12 @@ class GroupClass {
                 LEFT JOIN users u ON gc.instructor_id = u.id
                 LEFT JOIN gyms g ON gc.gym_id = g.id
                 LEFT JOIN class_schedules cs ON gc.id = cs.class_id AND cs.is_active = 1
-                WHERE " . implode(' AND ', $where) . "
+                WHERE " . implode(' AND ', $where) . '
                 GROUP BY gc.id
-                ORDER BY gc.name ASC";
-        
+                ORDER BY gc.name ASC';
+
         $classes = $this->db->fetchAll($sql, $params);
-        
+
         // Procesar datos de horarios
         foreach ($classes as &$class) {
             $class['schedules'] = [];
@@ -546,21 +569,22 @@ class GroupClass {
                             'day_of_week' => $parts[0],
                             'start_time' => $parts[1],
                             'end_time' => $parts[2],
-                            'id' => $parts[3]
+                            'id' => $parts[3],
                         ];
                     }
                 }
             }
             unset($class['schedules_data']);
         }
-        
+
         return $classes;
     }
-    
+
     /**
      * Obtener lista de instructores únicos
      */
-    public function getInstructors() {
+    public function getInstructors()
+    {
         return $this->db->fetchAll(
             "SELECT DISTINCT u.id, u.first_name, u.last_name, u.email
              FROM users u
@@ -569,11 +593,12 @@ class GroupClass {
              ORDER BY u.first_name, u.last_name"
         );
     }
-    
+
     /**
      * Obtener reservas de un horario en un rango de fechas
      */
-    public function getScheduleBookings($scheduleId, $startDate, $endDate) {
+    public function getScheduleBookings($scheduleId, $startDate, $endDate)
+    {
         return $this->db->fetchAll(
             "SELECT cb.*, u.first_name, u.last_name, u.email
              FROM class_bookings cb
@@ -584,86 +609,90 @@ class GroupClass {
             [$scheduleId, $startDate, $endDate]
         );
     }
-    
+
     /**
      * Obtener estadísticas de una clase
      */
-    public function getClassStats($id) {
+    public function getClassStats($id)
+    {
         $stats = [];
-        
+
         // Total de reservas
         $stats['total_bookings'] = $this->db->count(
-            "SELECT COUNT(*) FROM class_bookings cb
+            'SELECT COUNT(*) FROM class_bookings cb
              JOIN class_schedules cs ON cb.schedule_id = cs.id
-             WHERE cs.class_id = ?",
+             WHERE cs.class_id = ?',
             [$id]
         );
-        
+
         // Reservas este mes
         $stats['bookings_this_month'] = $this->db->count(
-            "SELECT COUNT(*) FROM class_bookings cb
+            'SELECT COUNT(*) FROM class_bookings cb
              JOIN class_schedules cs ON cb.schedule_id = cs.id
              WHERE cs.class_id = ? AND MONTH(cb.booking_date) = MONTH(CURDATE())
-             AND YEAR(cb.booking_date) = YEAR(CURDATE())",
+             AND YEAR(cb.booking_date) = YEAR(CURDATE())',
             [$id]
         );
-        
+
         // Tasa de ocupación promedio
         $class = $this->findById($id);
         $avgOccupancy = $this->db->fetch(
-            "SELECT AVG(booking_count) as avg_occupancy FROM (
+            'SELECT AVG(booking_count) as avg_occupancy FROM (
                 SELECT COUNT(*) as booking_count
                 FROM class_bookings cb
                 JOIN class_schedules cs ON cb.schedule_id = cs.id
                 WHERE cs.class_id = ? AND cb.booking_date >= DATE_SUB(CURDATE(), INTERVAL 30 DAY)
                 GROUP BY cb.schedule_id, cb.booking_date
-             ) as subquery",
+             ) as subquery',
             [$id]
         );
-        
-        $stats['avg_occupancy_rate'] = $class && $class['max_participants'] > 0 
+
+        $stats['avg_occupancy_rate'] = $class && $class['max_participants'] > 0
             ? round(($avgOccupancy['avg_occupancy'] / $class['max_participants']) * 100, 1)
             : 0;
-        
+
         // Próximas sesiones disponibles
         $stats['upcoming_sessions'] = count($this->getNextSessions($id, 10));
-        
+
         return $stats;
     }
-    
+
     /**
      * Verificar si un usuario ya tiene reserva para una clase específica
      */
-    public function hasUserBooking($scheduleId, $userId, $bookingDate) {
+    public function hasUserBooking($scheduleId, $userId, $bookingDate)
+    {
         $count = $this->db->count(
             "SELECT COUNT(*) FROM class_bookings 
              WHERE schedule_id = ? AND user_id = ? AND booking_date = ?
              AND status IN ('booked', 'confirmed')",
             [$scheduleId, $userId, $bookingDate]
         );
-        
+
         return $count > 0;
     }
-    
+
     /**
      * Obtener horario por ID
      */
-    public function getScheduleById($scheduleId) {
+    public function getScheduleById($scheduleId)
+    {
         return $this->db->fetch(
-            "SELECT cs.*, gc.name as class_name, gc.max_participants, gc.price,
+            'SELECT cs.*, gc.name as class_name, gc.max_participants, gc.price,
              u.first_name as instructor_first_name, u.last_name as instructor_last_name
              FROM class_schedules cs
              JOIN group_classes gc ON cs.class_id = gc.id
              LEFT JOIN users u ON gc.instructor_id = u.id
-             WHERE cs.id = ?",
+             WHERE cs.id = ?',
             [$scheduleId]
         );
     }
-    
+
     /**
      * Contar reservas para un horario específico en una fecha
      */
-    public function countBookings($scheduleId, $bookingDate) {
+    public function countBookings($scheduleId, $bookingDate)
+    {
         return $this->db->count(
             "SELECT COUNT(*) FROM class_bookings 
              WHERE schedule_id = ? AND booking_date = ?
@@ -671,47 +700,50 @@ class GroupClass {
             [$scheduleId, $bookingDate]
         );
     }
-    
+
     /**
      * Crear una nueva reserva
      */
-    public function createBooking($bookingData) {
-        $sql = "INSERT INTO class_bookings (
+    public function createBooking($bookingData)
+    {
+        $sql = 'INSERT INTO class_bookings (
                 schedule_id, user_id, booking_date, status, payment_status,
                 amount_paid, booking_time, created_at
-            ) VALUES (?, ?, ?, ?, ?, ?, NOW(), NOW())";
-        
+            ) VALUES (?, ?, ?, ?, ?, ?, NOW(), NOW())';
+
         return $this->db->insert($sql, [
             $bookingData['schedule_id'],
             $bookingData['user_id'],
             $bookingData['booking_date'],
             $bookingData['status'] ?? 'booked',
             $bookingData['payment_status'] ?? 'free',
-            $bookingData['amount_paid'] ?? 0
+            $bookingData['amount_paid'] ?? 0,
         ]);
     }
-    
+
     /**
      * Obtener reserva por ID
      */
-    public function getBookingById($bookingId) {
+    public function getBookingById($bookingId)
+    {
         return $this->db->fetch(
-            "SELECT cb.*, cs.start_time, cs.end_time, cs.day_of_week,
+            'SELECT cb.*, cs.start_time, cs.end_time, cs.day_of_week,
              gc.name as class_name, gc.max_participants,
              u.first_name, u.last_name, u.email
              FROM class_bookings cb
              JOIN class_schedules cs ON cb.schedule_id = cs.id
              JOIN group_classes gc ON cs.class_id = gc.id
              JOIN users u ON cb.user_id = u.id
-             WHERE cb.id = ?",
+             WHERE cb.id = ?',
             [$bookingId]
         );
     }
-        
+
     /**
      * Obtener horarios de una semana específica
      */
-    public function getWeekSchedule($startDate, $endDate) {
+    public function getWeekSchedule($startDate, $endDate)
+    {
         return $this->db->fetchAll(
             "SELECT cs.*, gc.name as class_name, gc.description, gc.duration_minutes,
              gc.max_participants, gc.difficulty_level, gc.class_type,
@@ -739,47 +771,102 @@ class GroupClass {
             [$startDate, $endDate]
         );
     }
-    
+
     /**
      * Verificar si un usuario está en lista de espera
      */
-    public function isInWaitlist($scheduleId, $userId, $bookingDate) {
+    public function isInWaitlist($scheduleId, $userId, $bookingDate)
+    {
         $count = $this->db->count(
             "SELECT COUNT(*) FROM class_waitlist 
              WHERE schedule_id = ? AND user_id = ? AND booking_date = ?
              AND status = 'waiting'",
             [$scheduleId, $userId, $bookingDate]
         );
-        
+
         return $count > 0;
     }
-    
+
     /**
      * Obtener la siguiente posición en lista de espera
      */
-    public function getNextWaitlistPosition($scheduleId, $bookingDate) {
+    public function getNextWaitlistPosition($scheduleId, $bookingDate)
+    {
         $maxPosition = $this->db->fetch(
-            "SELECT MAX(position) as max_pos FROM class_waitlist 
-             WHERE schedule_id = ? AND booking_date = ?",
+            'SELECT MAX(position) as max_pos FROM class_waitlist 
+             WHERE schedule_id = ? AND booking_date = ?',
             [$scheduleId, $bookingDate]
         );
-        
+
         return ($maxPosition['max_pos'] ?? 0) + 1;
     }
-    
+
     /**
      * Agregar usuario a lista de espera
      */
-    public function addToWaitlist($waitlistData) {
+    public function addToWaitlist($waitlistData)
+    {
         $sql = "INSERT INTO class_waitlist (
                 schedule_id, user_id, booking_date, position, status, created_at
             ) VALUES (?, ?, ?, ?, 'waiting', NOW())";
-        
+
         return $this->db->insert($sql, [
             $waitlistData['schedule_id'],
             $waitlistData['user_id'],
             $waitlistData['booking_date'],
-            $waitlistData['position']
+            $waitlistData['position'],
         ]);
+    }
+
+    /**
+     * Obtener clases populares basadas en reservas
+     */
+    public function getPopularClasses($limit = 4)
+    {
+        return $this->db->fetchAll(
+            "SELECT gc.*, u.first_name, u.last_name, g.name as gym_name,
+             COUNT(cb.id) as total_bookings
+             FROM group_classes gc
+             LEFT JOIN users u ON gc.instructor_id = u.id
+             LEFT JOIN gyms g ON gc.gym_id = g.id
+             LEFT JOIN class_schedules cs ON gc.id = cs.class_id
+             LEFT JOIN class_bookings cb ON cs.id = cb.schedule_id
+             WHERE gc.is_active = 1
+             GROUP BY gc.id
+             ORDER BY total_bookings DESC, gc.name ASC
+             LIMIT ?",
+            [$limit]
+        );
+    }
+
+    /**
+     * Obtener estadísticas de clases
+     */
+    public function getStats()
+    {
+        $totalClasses = $this->db->fetch(
+            'SELECT COUNT(*) as total FROM group_classes WHERE is_active = 1'
+        );
+        
+        $totalBookings = $this->db->fetch(
+            'SELECT COUNT(*) as total FROM class_bookings WHERE status IN ("booked", "confirmed")'
+        );
+        
+        $avgParticipants = $this->db->fetch(
+            'SELECT AVG(booking_count) as avg_participants
+             FROM (
+                 SELECT COUNT(cb.id) as booking_count
+                 FROM class_schedules cs
+                 LEFT JOIN class_bookings cb ON cs.id = cb.schedule_id
+                 WHERE cs.is_active = 1
+                 GROUP BY cs.id
+             ) as subquery'
+        );
+        
+        return [
+            'total_classes' => $totalClasses['total'] ?? 0,
+            'total_bookings' => $totalBookings['total'] ?? 0,
+            'avg_participants' => round($avgParticipants['avg_participants'] ?? 0, 1)
+        ];
     }
 }

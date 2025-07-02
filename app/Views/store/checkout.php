@@ -1,4 +1,5 @@
 <!-- Vista de Checkout - STYLOFITNESS -->
+<?php use StyleFitness\Helpers\AppHelper; ?>
 <div class="checkout-page">
     <div class="container">
         <div class="page-header">
@@ -298,7 +299,7 @@
                             <?php foreach ($cartItems as $item): ?>
                                 <?php 
                                 $images = is_string($item['images']) ? json_decode($item['images'], true) : $item['images'];
-                                $mainImage = !empty($images) ? $images[0] : '/images/default-product.jpg';
+                                $mainImage = !empty($images) ? $images[0] : AppHelper::asset('images/placeholder.jpg');
                                 $currentPrice = $item['sale_price'] ?? $item['price'];
                                 ?>
                                 <div class="order-item">

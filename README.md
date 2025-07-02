@@ -1,19 +1,33 @@
-# 🏋️‍♂️ STYLOFITNESS
+# StyloFitness - Sistema de Gestión de Fitness
 
-<div align="center">
+![PHP Version](https://img.shields.io/badge/PHP-8.1%2B-blue)
+![License](https://img.shields.io/badge/License-MIT-green)
+![Build Status](https://img.shields.io/badge/Build-Passing-brightgreen)
+![Code Quality](https://img.shields.io/badge/Code%20Quality-A-brightgreen)
 
-[![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)](https://github.com/stylofitness/gym-system)
-[![PHP](https://img.shields.io/badge/PHP-8.1+-777BB4.svg)](https://php.net/)
-[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
-[![Status](https://img.shields.io/badge/status-production%20ready-brightgreen.svg)]()
+StyloFitness es una aplicación web moderna para la gestión de rutinas de fitness, productos de suplementos y seguimiento de progreso personal. Construida con PHP moderno y las mejores prácticas de desarrollo.
 
-**Sistema de Gestión Integral para Gimnasios**
+## 🚀 Características Principales
 
-*Rutinas Personalizadas • Tienda E-commerce • Clases Grupales • Sistema Multi-sede*
+- **Gestión de Usuarios**: Sistema completo de autenticación y autorización
+- **Catálogo de Productos**: Gestión de suplementos y productos fitness
+- **Rutinas Personalizadas**: Creación y seguimiento de rutinas de ejercicio
+- **Panel de Administración**: Interface completa para gestión del sistema
+- **API RESTful**: Endpoints para integración con aplicaciones móviles
+- **Sistema de Pagos**: Integración con Stripe y PayPal
+- **Notificaciones**: Sistema de emails y notificaciones push
+- **Análisis y Reportes**: Dashboard con métricas y estadísticas
 
-[🚀 Demo en Vivo](https://stylofitness.com) • [📖 Documentación](https://docs.stylofitness.com) • [🐛 Reportar Issue](https://github.com/stylofitness/gym-system/issues)
+## 🛠️ Tecnologías Utilizadas
 
-</div>
+- **Backend**: PHP 8.1+, PDO, Custom MVC Framework
+- **Frontend**: HTML5, CSS3, JavaScript (ES6+), Bootstrap 5
+- **Base de Datos**: MySQL 8.0
+- **Cache**: Redis
+- **Contenedores**: Docker & Docker Compose
+- **Testing**: PHPUnit
+- **Análisis de Código**: PHPStan, PHP CS Fixer
+- **CI/CD**: GitHub Actions
 
 ---
 

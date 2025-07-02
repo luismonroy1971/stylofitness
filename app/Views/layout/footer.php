@@ -1,4 +1,4 @@
-   <head>
+<head>
     <style>
         /* =============================================
             FOOTER ULTRA MODERNO Y PROFESIONAL
@@ -1063,7 +1063,8 @@
     </main>
     
     <!-- Footer Ultra Moderno y Profesional -->
-    <footer class="footer-enhanced-pro">
+    <?php use StyleFitness\Helpers\AppHelper; ?>
+<footer class="footer-enhanced-pro">
         <div class="footer-background-pro">
             <div class="footer-overlay-pro"></div>
             <div class="footer-pattern"></div>

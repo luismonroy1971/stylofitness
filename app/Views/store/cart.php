@@ -1,4 +1,5 @@
 <!-- Vista de Carrito de Compras - STYLOFITNESS -->
+<?php use StyleFitness\Helpers\AppHelper; ?>
 <div class="cart-page">
     <div class="container">
         <div class="page-header">
@@ -23,7 +24,7 @@
                         <?php foreach ($cartItems as $item): ?>
                             <?php 
                             $images = is_string($item['images']) ? json_decode($item['images'], true) : $item['images'];
-                            $mainImage = !empty($images) ? $images[0] : '/images/default-product.jpg';
+                            $mainImage = !empty($images) ? $images[0] : AppHelper::asset('images/placeholder.jpg');
                             $currentPrice = $item['sale_price'] ?? $item['price'];
                             $originalPrice = $item['price'];
                             $hasDiscount = $item['sale_price'] && $item['sale_price'] < $item['price'];
@@ -221,11 +222,11 @@
                         <?php foreach ($recommendedProducts as $product): ?>
                             <?php 
                             $images = is_string($product['images']) ? json_decode($product['images'], true) : $product['images'];
-                            $mainImage = !empty($images) ? $images[0] : '/images/default-product.jpg';
+                            $mainImage = !empty($images) ? $images[0] : AppHelper::asset('images/placeholder.jpg');
                             ?>
                             <div class="product-card">
                                 <div class="product-image">
-                                    <img src="<?php echo AppHelper::uploadUrl($mainImage); ?>" 
+                                    <img src="<?php echo (strpos($mainImage, '/uploads/') === 0 ? AppHelper::getBaseUrl() . ltrim($mainImage, '/') : AppHelper::uploadUrl($mainImage)); ?>" 
                                          alt="<?php echo htmlspecialchars($product['name']); ?>"
                                          loading="lazy">
                                     

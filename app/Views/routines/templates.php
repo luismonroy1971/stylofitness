@@ -1,4 +1,6 @@
 <?php
+use StyleFitness\Helpers\AppHelper;
+
 /**
  * Vista: Plantillas de Rutinas - STYLOFITNESS
  * Galería de plantillas públicas de rutinas profesionales

@@ -4,6 +4,8 @@
  * Plantilla para mostrar un producto en la tienda
  */
 
+use StyleFitness\Helpers\AppHelper;
+
 // Asegurarse de que las imágenes sean un array
 $images = is_string($product['images']) ? json_decode($product['images'], true) : $product['images'];
 $mainImage = !empty($images) ? $images[0] : '/images/default-product.jpg';
@@ -16,7 +18,7 @@ $discountPercentage = $hasDiscount ? round(100 - ($product['sale_price'] * 100 /
 <div class="product-card" data-product-id="<?php echo $product['id']; ?>">
     <div class="product-image">
         <a href="<?php echo AppHelper::baseUrl('store/product/' . $product['slug']); ?>">
-            <img src="<?php echo AppHelper::uploadUrl($mainImage); ?>" 
+            <img src="<?php echo (strpos($mainImage, '/uploads/') === 0 ? AppHelper::getBaseUrl() . ltrim($mainImage, '/') : AppHelper::uploadUrl($mainImage)); ?>" 
                  alt="<?php echo htmlspecialchars($product['name']); ?>" 
                  loading="lazy">
         </a>
@@ -61,7 +63,7 @@ $discountPercentage = $hasDiscount ? round(100 - ($product['sale_price'] * 100 /
         
         <div class="product-rating">
             <?php 
-            $rating = round($product['avg_rating'] * 2) / 2; // Redondear a 0.5 más cercano
+            $rating = isset($product['avg_rating']) ? round($product['avg_rating'] * 2) / 2 : 0; // Redondear a 0.5 más cercano
             for ($i = 1; $i <= 5; $i++) {
                 if ($i <= $rating) {
                     echo '<i class="fas fa-star"></i>';
@@ -72,7 +74,7 @@ $discountPercentage = $hasDiscount ? round(100 - ($product['sale_price'] * 100 /
                 }
             }
             ?>
-            <span class="rating-count">(<?php echo $product['review_count']; ?>)</span>
+            <span class="rating-count">(<?php echo isset($product['review_count']) ? $product['review_count'] : 0; ?>)</span>
         </div>
         
         <div class="product-price">
@@ -85,12 +87,17 @@ $discountPercentage = $hasDiscount ? round(100 - ($product['sale_price'] * 100 /
         </div>
         
         <div class="product-description">
-            <?php echo htmlspecialchars(substr($product['short_description'], 0, 100) . '...'); ?>
+            <?php 
+            $description = isset($product['short_description']) && !empty($product['short_description']) 
+                ? $product['short_description'] 
+                : (isset($product['description']) ? $product['description'] : 'Sin descripción disponible');
+            echo htmlspecialchars(substr($description, 0, 100) . '...');
+            ?>
         </div>
         
         <div class="product-footer">
-            <div class="stock-status <?php echo $product['stock_quantity'] > 0 ? 'in-stock' : 'out-of-stock'; ?>">
-                <?php if ($product['stock_quantity'] > 0): ?>
+            <div class="stock-status <?php echo (isset($product['stock_quantity']) && $product['stock_quantity'] > 0) ? 'in-stock' : 'out-of-stock'; ?>">
+                <?php if (isset($product['stock_quantity']) && $product['stock_quantity'] > 0): ?>
                     <i class="fas fa-check-circle"></i> En stock
                 <?php else: ?>
                     <i class="fas fa-times-circle"></i> Agotado
@@ -98,7 +105,7 @@ $discountPercentage = $hasDiscount ? round(100 - ($product['sale_price'] * 100 /
             </div>
             
             <div class="product-brand">
-                <?php echo htmlspecialchars($product['brand']); ?>
+                <?php echo htmlspecialchars(isset($product['brand']) ? $product['brand'] : 'Sin marca'); ?>
             </div>
         </div>
     </div>
