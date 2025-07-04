@@ -565,6 +565,8 @@ $whyChooseUsItems = $servicesData['why_choose_us'];
                 <span>¿Por Qué Elegirnos?</span>
                 <div class="badge-glow"></div>
             </div>
+
+            <p class="section-subtitle">Descubre las razones que nos hacen únicos</p>
         </div>
         <div class="features-grid">
             <?php $featureIndex = 0; foreach ($whyChooseUs as $feature): ?>
@@ -605,6 +607,8 @@ $whyChooseUsItems = $servicesData['why_choose_us'];
                 <span class="title-accent">Productos</span>
                 <span class="title-main gradient-text-premium">DESTACADOS</span>
             </h2>
+            <p class="section-subtitle-enhanced">Los suplementos más innovadores y efectivos del mercado fitness</p>
+            <div class="section-decorative-line"></div>
         </div>
         
         <div class="products-grid-enhanced">
@@ -776,7 +780,12 @@ $whyChooseUsItems = $servicesData['why_choose_us'];
                 <span class="title-line-1">CLASES</span>
                 <span class="title-line-2 gradient-text-ultra">GRUPALES</span>
                 <div class="title-underline"></div>
-            </h2>            
+            </h2>
+            
+            <p class="ultra-subtitle">
+                Entrena con otros y mantente motivado en nuestras sedes
+            </p>
+            
             <div class="quick-stats">
                 <div class="stat-item">
                     <span class="stat-number" data-count="50">0</span>
@@ -1883,7 +1892,7 @@ $whyChooseUsItems = $servicesData['why_choose_us'];
 .live-dot {
     width: 8px;
     height: 8px;
-    background: #FAF7F0;
+    background: white;
     border-radius: 50%;
     animation: livePulse 1s infinite;
 }

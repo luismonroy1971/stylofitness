@@ -11,7 +11,7 @@
     text-align: center !important;
     padding: 0.75rem 0 !important;
     margin-bottom: 0.25rem !important;
-    background: rgba(10, 10, 10, 0.1) !important;
+    background: rgba(0, 0, 0, 0.1) !important;
     border-radius: 15px !important;
     backdrop-filter: blur(10px) !important;
     border: 1px solid rgba(255, 107, 0, 0.2) !important;
@@ -123,7 +123,7 @@
 
 .hero-config-title {
     font-family: 'Montserrat', Arial, sans-serif !important;
-    font-size: 2.6rem !important;
+    font-size: 2.8rem !important;
     font-weight: 900 !important;
     color: #FFFFFF !important;
     margin-bottom: 1.5rem !important;
@@ -569,10 +569,10 @@
 }
 
 .glass-effect-enhanced {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.85) 100%) !important;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.3) 100%) !important;
     backdrop-filter: blur(25px) !important;
     -webkit-backdrop-filter: blur(25px) !important;
-    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    border: 1px solid rgba(255, 107, 0, 0.2) !important;
 }
 
 .testimonial-card-inner {

@@ -1,7 +1,4 @@
 <?php
-
-use StyleFitness\Helpers\AppHelper;
-
 // Verificar que tenemos los datos del producto
 if (!isset($product) || empty($product)) {
     header('HTTP/1.0 404 Not Found');
@@ -70,9 +67,9 @@ $finalPrice = $hasDiscount ? $product['sale_price'] : $product['price'];
                 <?php if (count($productImages) > 1): ?>
                 <div class="image-thumbnails">
                     <?php foreach ($productImages as $index => $image): ?>
-                    <img src="<?= strpos($image, '/uploads/') === 0 ? AppHelper::getBaseUrl() . ltrim($image, '/') : AppHelper::baseUrl($image) ?>" alt="<?= htmlspecialchars($product['name']) ?> - Imagen <?= $index + 1 ?>" 
+                    <img src="<?= AppHelper::baseUrl($image) ?>" alt="<?= htmlspecialchars($product['name']) ?> - Imagen <?= $index + 1 ?>" 
                          class="thumbnail-image <?= $index === 0 ? 'active' : '' ?>" 
-                         onclick="changeMainImage('<?= strpos($image, '/uploads/') === 0 ? AppHelper::getBaseUrl() . ltrim($image, '/') : AppHelper::baseUrl($image) ?>', this)">
+                         onclick="changeMainImage('<?= AppHelper::baseUrl($image) ?>', this)">
                     <?php endforeach; ?>
                 </div>
                 <?php endif; ?>
@@ -199,7 +196,7 @@ $finalPrice = $hasDiscount ? $product['sale_price'] : $product['price'];
                             }
                             $relatedImageSrc = !empty($relatedImages) ? $relatedImages[0] : '/images/placeholder.jpg';
                             ?>
-                            <img src="<?= strpos($relatedImageSrc, '/uploads/') === 0 ? AppHelper::getBaseUrl() . ltrim($relatedImageSrc, '/') : AppHelper::baseUrl($relatedImageSrc) ?>" alt="<?= htmlspecialchars($relatedProduct['name']) ?>" class="product-image">
+                            <img src="<?= AppHelper::baseUrl($relatedImageSrc) ?>" alt="<?= htmlspecialchars($relatedProduct['name']) ?>" class="product-image">
                             <?php if (!empty($relatedProduct['sale_price']) && $relatedProduct['sale_price'] < $relatedProduct['price']): ?>
                             <div class="discount-badge">-<?= round((($relatedProduct['price'] - $relatedProduct['sale_price']) / $relatedProduct['price']) * 100) ?>%</div>
                             <?php endif; ?>

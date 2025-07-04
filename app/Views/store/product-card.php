@@ -4,8 +4,6 @@
  * Plantilla para mostrar un producto en la tienda
  */
 
-use StyleFitness\Helpers\AppHelper;
-
 // Asegurarse de que las imágenes sean un array
 $images = is_string($product['images']) ? json_decode($product['images'], true) : $product['images'];
 $mainImage = !empty($images) ? $images[0] : '/images/default-product.jpg';
@@ -18,7 +16,7 @@ $discountPercentage = $hasDiscount ? round(100 - ($product['sale_price'] * 100 /
 <div class="product-card" data-product-id="<?php echo $product['id']; ?>">
     <div class="product-image">
         <a href="<?php echo AppHelper::baseUrl('store/product/' . $product['slug']); ?>">
-            <img src="<?php echo (strpos($mainImage, '/uploads/') === 0 ? AppHelper::getBaseUrl() . ltrim($mainImage, '/') : AppHelper::uploadUrl($mainImage)); ?>" 
+            <img src="<?php echo AppHelper::uploadUrl($mainImage); ?>" 
                  alt="<?php echo htmlspecialchars($product['name']); ?>" 
                  loading="lazy">
         </a>

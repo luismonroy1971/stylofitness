@@ -10,7 +10,7 @@ const STYLOFITNESS = {
     config: {
         apiUrl: '/api',
         animationDuration: 300,
-        carouselInterval: 18000,
+        carouselInterval: 12000,
         scrollOffset: 100
     },
     
@@ -46,12 +46,12 @@ STYLOFITNESS.initMegaCarousel = function() {
     const totalSlides = slides.length;
     let autoplayInterval;
     let progressInterval;
-    const slideInterval = 5000; // 5 segundos por slide
+    const slideInterval = 12000; // 12 segundos por slide
     
     // Función para mover a un slide específico
     const moveToSlide = (index) => {
         currentSlide = index;
-        const translateX = -index * 20; // 20% por slide (100% / 5 slides)
+        const translateX = -index * 100;
         track.style.transform = `translateX(${translateX}%)`;
         
         // Actualizar clases activas
@@ -88,14 +88,14 @@ STYLOFITNESS.initMegaCarousel = function() {
     if (nextBtn) {
         nextBtn.addEventListener('click', () => {
             nextSlide();
-            // resetAutoplay(); // Carrusel continuo
+            resetAutoplay();
         });
     }
     
     if (prevBtn) {
         prevBtn.addEventListener('click', () => {
             prevSlide();
-            // resetAutoplay(); // Carrusel continuo
+            resetAutoplay();
         });
     }
     
@@ -103,7 +103,7 @@ STYLOFITNESS.initMegaCarousel = function() {
     dots.forEach((dot, index) => {
         dot.addEventListener('click', () => {
             moveToSlide(index);
-            // resetAutoplay(); // Carrusel continuo
+            resetAutoplay();
         });
     });
     
@@ -136,9 +136,9 @@ STYLOFITNESS.initMegaCarousel = function() {
         startAutoplay();
     };
     
-    // Carrusel continuo - no pausar al hover
-    // megaCarousel.addEventListener('mouseenter', stopAutoplay);
-    // megaCarousel.addEventListener('mouseleave', startAutoplay);
+    // Pausar autoplay al hover
+    megaCarousel.addEventListener('mouseenter', stopAutoplay);
+    megaCarousel.addEventListener('mouseleave', startAutoplay);
     
     // Soporte para touch/swipe
     let startX = 0;
@@ -168,7 +168,7 @@ STYLOFITNESS.initMegaCarousel = function() {
             } else {
                 prevSlide();
             }
-            // resetAutoplay(); // Carrusel continuo
+            resetAutoplay();
         }
     }, { passive: true });
     
@@ -176,10 +176,10 @@ STYLOFITNESS.initMegaCarousel = function() {
     document.addEventListener('keydown', (e) => {
         if (e.key === 'ArrowLeft') {
             prevSlide();
-            // resetAutoplay(); // Carrusel continuo
+            resetAutoplay();
         } else if (e.key === 'ArrowRight') {
             nextSlide();
-            // resetAutoplay(); // Carrusel continuo
+            resetAutoplay();
         }
     });
     
