@@ -265,6 +265,33 @@ $router->get('/exercises/category/{id}', 'ExerciseController@byCategory');
 $router->get('/exercises/search', 'ExerciseController@search');
 
 // ==========================================
+// RUTAS DE GESTIÓN DE EJERCICIOS (ADMIN)
+// ==========================================
+
+$router->get('/admin/exercise-management', 'ExerciseManagementController@index');
+$router->get('/admin/exercise-management/create', 'ExerciseManagementController@create');
+$router->post('/admin/exercise-management/store', 'ExerciseManagementController@store');
+$router->get('/admin/exercise-management/show/{id}', 'ExerciseManagementController@show');
+$router->get('/admin/exercise-management/edit/{id}', 'ExerciseManagementController@edit');
+$router->post('/admin/exercise-management/update/{id}', 'ExerciseManagementController@update');
+$router->post('/admin/exercise-management/delete/{id}', 'ExerciseManagementController@delete');
+
+// ==========================================
+// RUTAS DE PLANTILLAS DE RUTINAS (TRAINER)
+// ==========================================
+
+$router->get('/trainer/templates', 'RoutineTemplateController@index');
+$router->get('/trainer/templates/create', 'RoutineTemplateController@create');
+$router->post('/trainer/templates/store', 'RoutineTemplateController@store');
+$router->get('/trainer/templates/show/{id}', 'RoutineTemplateController@show');
+$router->get('/trainer/templates/edit/{id}', 'RoutineTemplateController@edit');
+$router->post('/trainer/templates/update/{id}', 'RoutineTemplateController@update');
+$router->post('/trainer/templates/assign', 'RoutineTemplateController@assign');
+$router->get('/trainer/templates/duplicate/{id}', 'RoutineTemplateController@duplicate');
+$router->post('/trainer/templates/duplicate/{id}', 'RoutineTemplateController@duplicate');
+$router->get('/trainer/templates/export/{id}', 'RoutineTemplateController@export');
+
+// ==========================================
 // RUTAS DE TIENDA
 // ==========================================
 
@@ -396,6 +423,14 @@ $router->delete('/api/routines/{id}', 'ApiController@deleteRoutine');
 $router->get('/api/exercises', 'ApiController@exercises');
 $router->get('/api/exercises/categories', 'ApiController@exerciseCategories');
 $router->get('/api/exercises/search', 'ApiController@searchExercises');
+$router->get('/api/exercises/by-zone/{zone}', 'RoutineTemplateController@getExercisesByZone');
+$router->get('/api/exercises/by-category/{categoryId}', 'ExerciseManagementController@getExercisesByCategory');
+
+// API de instructor
+$router->get('/api/instructor/clients', 'RoutineTemplateController@getInstructorClients');
+
+// API de plantillas
+$router->get('/api/templates/usage-stats/{id}', 'RoutineTemplateController@getUsageStats');
 
 // API de productos
 $router->get('/api/products', 'ApiController@products');

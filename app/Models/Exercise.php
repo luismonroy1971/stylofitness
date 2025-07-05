@@ -339,6 +339,34 @@ class Exercise
     }
 
     /**
+     * Obtener ejercicios por zona corporal
+     */
+    public function getExercisesByBodyZone($zone, $limit = null)
+    {
+        $sql = "SELECT e.*, ec.name as category_name, ec.color as category_color 
+                FROM {$this->table} e 
+                LEFT JOIN exercise_categories ec ON e.category_id = ec.id 
+                WHERE e.is_active = 1 AND JSON_CONTAINS(e.muscle_groups, ?)
+                ORDER BY e.name ASC";
+
+        $params = [json_encode($zone)];
+
+        if ($limit) {
+            $sql .= ' LIMIT ?';
+            $params[] = $limit;
+        }
+
+        $exercises = $this->db->fetchAll($sql, $params);
+
+        foreach ($exercises as &$exercise) {
+            $exercise['muscle_groups'] = json_decode($exercise['muscle_groups'], true) ?: [];
+            $exercise['tags'] = json_decode($exercise['tags'], true) ?: [];
+        }
+
+        return $exercises;
+    }
+
+    /**
      * Obtener grupos musculares únicos
      */
     public function getMuscleGroups()

@@ -1,4 +1,6 @@
 <?php
+use StyleFitness\Helpers\AppHelper;
+
 // Verificar que tenemos los datos del producto
 if (!isset($product) || empty($product)) {
     header('HTTP/1.0 404 Not Found');

@@ -4,6 +4,8 @@
  * Plantilla para mostrar un producto en la tienda
  */
 
+use StyleFitness\Helpers\AppHelper;
+
 // Asegurarse de que las imágenes sean un array
 $images = is_string($product['images']) ? json_decode($product['images'], true) : $product['images'];
 $mainImage = !empty($images) ? $images[0] : '/images/default-product.jpg';

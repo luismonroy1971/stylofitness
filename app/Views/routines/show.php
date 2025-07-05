@@ -6,7 +6,7 @@ use StyleFitness\Helpers\AppHelper;
  * Muestra el detalle completo de una rutina con ejercicios por días
  */
 
-$currentUser = AppHelper::getCurrentUser();
+$currentUser = \StyleFitness\Helpers\AppHelper::getCurrentUser();
 $isClient = ($currentUser['role'] === 'client');
 $isInstructor = ($currentUser['role'] === 'instructor');
 $isAdmin = ($currentUser['role'] === 'admin');
@@ -386,7 +386,7 @@ $difficultyLabels = [
                                 <div class="product-image">
                                     <?php if (!empty($product['images'])): ?>
                                         <?php $images = json_decode($product['images'], true); ?>
-                                        <img src="<?= AppHelper::uploadUrl('images/products/' . $images[0]) ?>" alt="<?= htmlspecialchars($product['name']) ?>">
+                                        <img src="<?= \StyleFitness\Helpers\AppHelper::uploadUrl('images/products/' . $images[0]) ?>" alt="<?= htmlspecialchars($product['name']) ?>">
                                     <?php else: ?>
                                         <div class="product-placeholder">
                                             <i class="fas fa-supplement"></i>

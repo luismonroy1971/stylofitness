@@ -6,7 +6,7 @@ use StyleFitness\Helpers\AppHelper;
  * Galería de plantillas públicas de rutinas profesionales
  */
 
-$currentUser = AppHelper::getCurrentUser();
+$currentUser = \StyleFitness\Helpers\AppHelper::getCurrentUser();
 $isInstructor = ($currentUser['role'] === 'instructor');
 $isAdmin = ($currentUser['role'] === 'admin');
 
@@ -409,7 +409,7 @@ function useTemplate(routineId) {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'X-CSRF-Token': '<?= AppHelper::generateCsrfToken() ?>'
+                'X-CSRF-Token': '<?= \StyleFitness\Helpers\AppHelper::generateCsrfToken() ?>'
             }
         })
         .then(response => response.json())

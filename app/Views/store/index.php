@@ -1,3 +1,4 @@
+<?php use StyleFitness\Helpers\AppHelper; ?>
 <!-- Hero Section de Tienda -->
 <section class="store-hero">
     <div class="container">

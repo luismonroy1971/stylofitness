@@ -272,6 +272,82 @@ class Routine
     }
 
     /**
+     * Obtener plantillas de rutinas
+     */
+    public function getTemplates($limit = 20)
+    {
+        $sql = "SELECT r.*, 
+                       i.first_name as instructor_first_name, 
+                       i.last_name as instructor_last_name,
+                       COUNT(re.id) as exercise_count
+                FROM {$this->table} r 
+                LEFT JOIN users i ON r.instructor_id = i.id 
+                LEFT JOIN routine_exercises re ON r.id = re.routine_id
+                WHERE r.is_template = 1 AND r.is_active = 1 
+                GROUP BY r.id 
+                ORDER BY r.created_at DESC 
+                LIMIT ?";
+
+        return $this->db->fetchAll($sql, [$limit]);
+    }
+
+    /**
+     * Contar plantillas de rutinas
+     */
+    public function countTemplates()
+    {
+        return $this->db->count(
+            "SELECT COUNT(*) FROM {$this->table} WHERE is_template = 1 AND is_active = 1"
+        );
+    }
+
+    /**
+     * Crear plantilla de rutina
+     */
+    public function createTemplate($data)
+    {
+        $data['is_template'] = 1;
+        $data['client_id'] = null;
+        return $this->create($data);
+    }
+
+    /**
+     * Obtener ejercicios de plantilla por zona corporal
+     */
+    public function getTemplateExercisesByZone($templateId, $zone)
+    {
+        $sql = 'SELECT re.*, 
+                       e.name as exercise_name,
+                       e.description as exercise_description,
+                       e.muscle_groups,
+                       e.equipment_needed,
+                       ec.name as category_name
+                FROM routine_exercises re
+                JOIN exercises e ON re.exercise_id = e.id
+                LEFT JOIN exercise_categories ec ON e.category_id = ec.id
+                WHERE re.routine_id = ? AND JSON_CONTAINS(e.muscle_groups, ?)
+                ORDER BY re.day_number ASC, re.order_index ASC';
+
+        return $this->db->fetchAll($sql, [$templateId, json_encode($zone)]);
+    }
+
+    /**
+     * Agregar ejercicio a plantilla
+     */
+    public function addExerciseToTemplate($data)
+    {
+        return $this->addExerciseToRoutine($data);
+    }
+
+    /**
+     * Eliminar todos los ejercicios de una plantilla
+     */
+    public function removeAllTemplateExercises($templateId)
+    {
+        return $this->removeAllExercisesFromRoutine($templateId);
+    }
+
+    /**
      * Obtener ejercicios de una rutina
      */
     public function getRoutineExercises($routineId)

@@ -85,6 +85,36 @@ if (!function_exists('isProduction')) {
     }
 }
 
+if (!function_exists('getAppConfig')) {
+    /**
+     * Obtener configuración de la aplicación
+     * Función de compatibilidad para el sistema
+     */
+    function getAppConfig($key, $default = null)
+    {
+        // Mapeo de claves específicas
+        $keyMap = [
+            'debug_enabled' => 'app_debug',
+            'app_name' => 'app_name',
+            'app_version' => 'app_version',
+            'environment' => 'app_env'
+        ];
+        
+        // Usar mapeo si existe, sino usar la clave directamente
+        $configKey = $keyMap[$key] ?? $key;
+        
+        // Para debug_enabled, también verificar constantes
+        if ($key === 'debug_enabled') {
+            if (defined('APP_ENV') && APP_ENV === 'development') {
+                return true;
+            }
+            return config($configKey, $default) === true || config($configKey, $default) === 'true';
+        }
+        
+        return config($configKey, $default);
+    }
+}
+
 // ==========================================
 // FUNCIONES DE UTILIDAD
 // ==========================================

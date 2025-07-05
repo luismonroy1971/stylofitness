@@ -6,7 +6,7 @@ use StyleFitness\Helpers\AppHelper;
  * Formulario para editar una rutina existente
  */
 
-$currentUser = AppHelper::getCurrentUser();
+$currentUser = \StyleFitness\Helpers\AppHelper::getCurrentUser();
 $isInstructor = ($currentUser['role'] === 'instructor');
 $isAdmin = ($currentUser['role'] === 'admin');
 
@@ -64,7 +64,7 @@ foreach ($routineExercises as $exercise) {
 
     <div class="container py-5">
         <form id="editRoutineForm" method="POST" action="/routines/update/<?= $routine['id'] ?>" class="needs-validation" novalidate>
-            <input type="hidden" name="csrf_token" value="<?= AppHelper::generateCsrfToken() ?>">
+            <input type="hidden" name="csrf_token" value="<?= \StyleFitness\Helpers\AppHelper::generateCsrfToken() ?>">
             
             <div class="row">
                 <div class="col-lg-8">

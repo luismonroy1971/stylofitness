@@ -793,7 +793,7 @@
                     <?php endif; ?>
                     
                     <form action="<?php echo AppHelper::baseUrl('register'); ?>" method="POST" class="auth-form" id="register-form">
-                        <input type="hidden" name="csrf_token" value="<?php echo AppHelper::generateCsrfToken(); ?>">
+                        <input type="hidden" name="csrf_token" value="<?php echo \StyleFitness\Helpers\AppHelper::generateCsrfToken(); ?>">
                         
                         <!-- Nombres -->
                         <div class="form-row">

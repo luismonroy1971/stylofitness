@@ -6,7 +6,7 @@ use StyleFitness\Helpers\AppHelper;
  * Muestra las rutinas del usuario con filtros y paginación
  */
 
-$currentUser = AppHelper::getCurrentUser();
+$currentUser = \StyleFitness\Helpers\AppHelper::getCurrentUser();
 $isClient = ($currentUser['role'] === 'client');
 $isInstructor = ($currentUser['role'] === 'instructor');
 $isAdmin = ($currentUser['role'] === 'admin');

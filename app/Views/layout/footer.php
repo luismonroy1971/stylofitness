@@ -1,3 +1,6 @@
+<?php
+use StyleFitness\Helpers\AppHelper;
+?>
 <head>
     <style>
         /* =============================================
@@ -1063,7 +1066,6 @@
     </main>
     
     <!-- Footer Ultra Moderno y Profesional -->
-    <?php use StyleFitness\Helpers\AppHelper; ?>
 <footer class="footer-enhanced-pro">
         <div class="footer-background-pro">
             <div class="footer-overlay-pro"></div>
@@ -1431,7 +1433,14 @@
     <!-- Inicialización final -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Ocultar loading screen, 300);
+            // Ocultar loading screen
+            const loadingScreen = document.getElementById('loading-screen');
+            if (loadingScreen) {
+                setTimeout(() => {
+                    loadingScreen.style.opacity = '0';
+                    setTimeout(() => {
+                        loadingScreen.style.display = 'none';
+                    }, 300);
                 }, 1000);
             }
             

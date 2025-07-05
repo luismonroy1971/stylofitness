@@ -6,7 +6,7 @@ use StyleFitness\Helpers\AppHelper;
  * Formulario para crear una nueva rutina personalizada
  */
 
-$currentUser = AppHelper::getCurrentUser();
+$currentUser = \StyleFitness\Helpers\AppHelper::getCurrentUser();
 $isInstructor = ($currentUser['role'] === 'instructor');
 $isAdmin = ($currentUser['role'] === 'admin');
 
@@ -49,7 +49,7 @@ unset($_SESSION['routine_errors'], $_SESSION['routine_data']);
 
     <div class="container py-5">
         <form id="createRoutineForm" method="POST" action="/routines/store" class="needs-validation" novalidate>
-            <input type="hidden" name="csrf_token" value="<?= AppHelper::generateCsrfToken() ?>">
+            <input type="hidden" name="csrf_token" value="<?= \StyleFitness\Helpers\AppHelper::generateCsrfToken() ?>">
             
             <div class="row">
                 <div class="col-lg-8">
