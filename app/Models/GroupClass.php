@@ -25,9 +25,9 @@ class GroupClass
     {
         $sql = 'INSERT INTO group_classes (
             gym_id, instructor_id, name, description, class_type, duration_minutes,
-            max_participants, room, equipment_needed, difficulty_level, price,
+            max_participants, room_id, room, equipment_needed, difficulty_level, price,
             image_url, requirements, benefits, is_active, created_at
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())';
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())';
 
         return $this->db->insert($sql, [
             $data['gym_id'],
@@ -37,6 +37,7 @@ class GroupClass
             $data['class_type'] ?? 'cardio',
             $data['duration_minutes'] ?? 60,
             $data['max_participants'] ?? 20,
+            $data['room_id'] ?? null,
             $data['room'] ?? null,
             $data['equipment_needed'] ?? null,
             $data['difficulty_level'] ?? 'intermediate',
@@ -52,10 +53,11 @@ class GroupClass
     {
         $class = $this->db->fetch(
             'SELECT gc.*, u.first_name, u.last_name, u.email as instructor_email,
-             g.name as gym_name
+             g.name as gym_name, r.name as room_name, r.room_type, r.total_capacity as room_capacity
              FROM group_classes gc
              LEFT JOIN users u ON gc.instructor_id = u.id
              LEFT JOIN gyms g ON gc.gym_id = g.id
+             LEFT JOIN rooms r ON gc.room_id = r.id
              WHERE gc.id = ?',
             [$id]
         );
@@ -63,6 +65,16 @@ class GroupClass
         if ($class) {
             $class['schedules'] = $this->getClassSchedules($id);
             $class['next_sessions'] = $this->getNextSessions($id, 5);
+            
+            // Agregar información de la sala si existe
+            if ($class['room_id']) {
+                $class['room_info'] = [
+                    'id' => $class['room_id'],
+                    'name' => $class['room_name'],
+                    'type' => $class['room_type'],
+                    'capacity' => $class['room_capacity']
+                ];
+            }
         }
 
         return $class;
@@ -75,7 +87,7 @@ class GroupClass
 
         $allowedFields = [
             'instructor_id', 'name', 'description', 'class_type', 'duration_minutes',
-            'max_participants', 'room', 'equipment_needed', 'difficulty_level',
+            'max_participants', 'room_id', 'room', 'equipment_needed', 'difficulty_level',
             'price', 'image_url', 'requirements', 'benefits', 'is_active',
         ];
 
@@ -868,5 +880,219 @@ class GroupClass
             'total_bookings' => $totalBookings['total'] ?? 0,
             'avg_participants' => round($avgParticipants['avg_participants'] ?? 0, 1)
         ];
+    }
+
+    // ==========================================
+    // MÉTODOS PARA GESTIÓN DE SALAS Y POSICIONES
+    // ==========================================
+
+    /**
+     * Reservar clase con posición específica
+     */
+    public function bookClassWithPosition($userId, $scheduleId, $bookingDate, $positionId = null)
+    {
+        // Verificar disponibilidad básica
+        $bookingResult = $this->bookClass($userId, $scheduleId, $bookingDate);
+        
+        if (isset($bookingResult['error'])) {
+            return $bookingResult;
+        }
+
+        $bookingId = $bookingResult['booking_id'];
+
+        // Si se especifica una posición, reservarla
+        if ($positionId) {
+            $roomModel = new \StyleFitness\Models\Room();
+            $positionResult = $roomModel->reservePosition($bookingId, $positionId);
+            
+            if (isset($positionResult['error'])) {
+                // Cancelar la reserva de clase si no se pudo reservar la posición
+                $this->cancelBooking($bookingId);
+                return $positionResult;
+            }
+
+            return [
+                'success' => true,
+                'booking_id' => $bookingId,
+                'position_reservation_id' => $positionResult['reservation_id']
+            ];
+        }
+
+        return $bookingResult;
+    }
+
+    /**
+     * Obtener disponibilidad de posiciones para una clase
+     */
+    public function getClassPositionAvailability($scheduleId, $bookingDate)
+    {
+        // Obtener información del horario y la clase
+        $schedule = $this->getScheduleById($scheduleId);
+        if (!$schedule) {
+            return ['error' => 'Horario no encontrado'];
+        }
+
+        $class = $this->findById($schedule['class_id']);
+        if (!$class || !$class['room_id']) {
+            return ['error' => 'Clase o sala no encontrada'];
+        }
+
+        // Verificar si la sala tiene posiciones específicas
+        $roomModel = new \StyleFitness\Models\Room();
+        $room = $roomModel->findById($class['room_id']);
+        
+        if ($room['room_type'] !== 'positioned') {
+            return ['error' => 'Esta sala no maneja posiciones específicas'];
+        }
+
+        // Obtener disponibilidad de posiciones
+        $positions = $roomModel->getPositionAvailability($class['room_id'], $scheduleId, $bookingDate);
+        
+        return [
+            'success' => true,
+            'room_info' => $room,
+            'positions' => $positions,
+            'total_positions' => count($positions),
+            'available_positions' => count(array_filter($positions, function($p) { return $p['is_available_for_booking']; }))
+        ];
+    }
+
+    /**
+     * Obtener reservas con posiciones para un horario específico
+     */
+    public function getScheduleBookingsWithPositions($scheduleId, $bookingDate)
+    {
+        return $this->db->fetchAll(
+            "SELECT cb.*, u.first_name, u.last_name, u.email,
+             cpb.id as position_booking_id, rp.position_number, rp.row_number, rp.seat_number
+             FROM class_bookings cb
+             JOIN users u ON cb.user_id = u.id
+             LEFT JOIN class_position_bookings cpb ON cb.id = cpb.booking_id AND cpb.status IN ('reserved', 'confirmed')
+             LEFT JOIN room_positions rp ON cpb.position_id = rp.id
+             WHERE cb.schedule_id = ? AND cb.booking_date = ?
+             AND cb.status IN ('booked', 'confirmed')
+             ORDER BY rp.row_number, rp.seat_number, cb.created_at ASC",
+            [$scheduleId, $bookingDate]
+        );
+    }
+
+    /**
+     * Cambiar posición de una reserva existente
+     */
+    public function changeBookingPosition($bookingId, $newPositionId)
+    {
+        $roomModel = new \StyleFitness\Models\Room();
+        
+        // Cancelar posición actual
+        $roomModel->cancelPositionReservation($bookingId);
+        
+        // Reservar nueva posición
+        return $roomModel->reservePosition($bookingId, $newPositionId);
+    }
+
+    /**
+     * Verificar si una clase requiere selección de posición
+     */
+    public function requiresPositionSelection($classId)
+    {
+        $class = $this->findById($classId);
+        return $class && $class['room_id'] && isset($class['room_info']) && $class['room_info']['type'] === 'positioned';
+    }
+
+    /**
+     * Obtener clases con información de salas
+     */
+    public function getClassesWithRooms($filters = [])
+    {
+        $where = ['gc.is_active = 1'];
+        $params = [];
+
+        if (!empty($filters['search'])) {
+            $where[] = '(gc.name LIKE ? OR gc.description LIKE ?)';
+            $searchTerm = '%' . $filters['search'] . '%';
+            $params = array_merge($params, [$searchTerm, $searchTerm]);
+        }
+
+        if (!empty($filters['class_type'])) {
+            $where[] = 'gc.class_type = ?';
+            $params[] = $filters['class_type'];
+        }
+
+        if (!empty($filters['room_id'])) {
+            $where[] = 'gc.room_id = ?';
+            $params[] = $filters['room_id'];
+        }
+
+        if (!empty($filters['gym_id'])) {
+            $where[] = 'gc.gym_id = ?';
+            $params[] = $filters['gym_id'];
+        }
+
+        $sql = "SELECT gc.*, u.first_name, u.last_name, u.email as instructor_email,
+                g.name as gym_name, r.name as room_name, r.room_type, r.total_capacity as room_capacity,
+                COUNT(DISTINCT cs.id) as schedule_count
+                FROM group_classes gc
+                LEFT JOIN users u ON gc.instructor_id = u.id
+                LEFT JOIN gyms g ON gc.gym_id = g.id
+                LEFT JOIN rooms r ON gc.room_id = r.id
+                LEFT JOIN class_schedules cs ON gc.id = cs.class_id AND cs.is_active = 1
+                WHERE " . implode(' AND ', $where) . '
+                GROUP BY gc.id
+                ORDER BY gc.name ASC';
+
+        if (!empty($filters['limit'])) {
+            $sql .= ' LIMIT ' . (int)$filters['limit'];
+            if (!empty($filters['offset'])) {
+                $sql .= ' OFFSET ' . (int)$filters['offset'];
+            }
+        }
+
+        $classes = $this->db->fetchAll($sql, $params);
+
+        // Agregar información de sala formateada
+        foreach ($classes as &$class) {
+            if ($class['room_id']) {
+                $class['room_info'] = [
+                    'id' => $class['room_id'],
+                    'name' => $class['room_name'],
+                    'type' => $class['room_type'],
+                    'capacity' => $class['room_capacity']
+                ];
+            }
+        }
+
+        return $classes;
+    }
+
+    /**
+     * Agregar usuario a lista de espera
+     */
+    public function addToWaitlistEnhanced($scheduleId, $userId, $bookingDate)
+    {
+        // Verificar si ya está en lista de espera
+        if ($this->isInWaitlist($scheduleId, $userId, $bookingDate)) {
+            return ['error' => 'Ya estás en la lista de espera para esta clase'];
+        }
+
+        // Obtener siguiente posición
+        $position = $this->getNextWaitlistPosition($scheduleId, $bookingDate);
+
+        // Agregar a lista de espera
+        $waitlistId = $this->addToWaitlist([
+            'schedule_id' => $scheduleId,
+            'user_id' => $userId,
+            'booking_date' => $bookingDate,
+            'position' => $position
+        ]);
+
+        if ($waitlistId) {
+            return [
+                'success' => true,
+                'waitlist_id' => $waitlistId,
+                'position' => $position
+            ];
+        } else {
+            return ['error' => 'Error al agregar a lista de espera'];
+        }
     }
 }

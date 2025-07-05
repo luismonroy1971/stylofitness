@@ -5,6 +5,7 @@ namespace StyleFitness\Controllers;
 use StyleFitness\Config\Database;
 use StyleFitness\Models\GroupClass;
 use StyleFitness\Models\User;
+use StyleFitness\Models\Room;
 use StyleFitness\Helpers\AppHelper;
 use Exception;
 
@@ -17,11 +18,15 @@ class GroupClassController
 {
     private $db;
     private $classModel;
+    private $userModel;
+    private $roomModel;
 
     public function __construct()
     {
         $this->db = Database::getInstance();
         $this->classModel = new GroupClass();
+        $this->userModel = new User();
+        $this->roomModel = new Room();
     }
 
     public function index()
@@ -116,6 +121,7 @@ class GroupClassController
 
         $scheduleId = isset($_POST['schedule_id']) ? (int)$_POST['schedule_id'] : 0;
         $bookingDate = AppHelper::sanitize($_POST['booking_date'] ?? '');
+        $positionId = isset($_POST['position_id']) ? (int)$_POST['position_id'] : null;
 
         if (!$scheduleId || !$bookingDate) {
             http_response_code(400);
@@ -148,12 +154,30 @@ class GroupClassController
         }
 
         $class = $this->classModel->findById($schedule['class_id']);
-        $currentBookings = $this->classModel->countBookings($scheduleId, $bookingDate);
-
-        if ($currentBookings >= $class['max_participants']) {
-            http_response_code(400);
-            echo json_encode(['error' => 'Clase completa']);
-            exit();
+        
+        // Verificar si la clase requiere selección de posición
+        if ($this->classModel->requiresPositionSelection($schedule['class_id'])) {
+            if (!$positionId) {
+                http_response_code(400);
+                echo json_encode(['error' => 'Debe seleccionar una posición específica']);
+                exit();
+            }
+            
+            // Verificar disponibilidad de la posición
+            $positionAvailable = $this->roomModel->isPositionAvailable($positionId, $scheduleId, $bookingDate);
+            if (!$positionAvailable) {
+                http_response_code(409);
+                echo json_encode(['error' => 'La posición seleccionada no está disponible']);
+                exit();
+            }
+        } else {
+            // Para salas de aforo, verificar capacidad total
+            $currentBookings = $this->classModel->countBookings($scheduleId, $bookingDate);
+            if ($currentBookings >= $class['max_participants']) {
+                http_response_code(400);
+                echo json_encode(['error' => 'Clase completa']);
+                exit();
+            }
         }
 
         // Verificar membresía activa
@@ -163,17 +187,20 @@ class GroupClassController
             exit();
         }
 
-        // Crear reserva
-        $bookingData = [
-            'schedule_id' => $scheduleId,
-            'user_id' => $user['id'],
-            'booking_date' => $bookingDate,
-            'status' => 'booked',
-            'payment_status' => $class['price'] > 0 ? 'pending' : 'paid',
-            'amount_paid' => $class['price'],
-        ];
-
-        $bookingId = $this->classModel->createBooking($bookingData);
+        // Crear reserva con o sin posición
+        if ($positionId) {
+            $bookingId = $this->classModel->bookClassWithPosition($scheduleId, $user['id'], $bookingDate, $positionId);
+        } else {
+            $bookingData = [
+                'schedule_id' => $scheduleId,
+                'user_id' => $user['id'],
+                'booking_date' => $bookingDate,
+                'status' => 'booked',
+                'payment_status' => $class['price'] > 0 ? 'pending' : 'paid',
+                'amount_paid' => $class['price'],
+            ];
+            $bookingId = $this->classModel->createBooking($bookingData);
+        }
 
         if ($bookingId) {
             // Enviar notificación
@@ -184,6 +211,7 @@ class GroupClassController
                 'success' => true,
                 'message' => 'Reserva realizada exitosamente',
                 'booking_id' => $bookingId,
+                'position_id' => $positionId,
             ]);
         } else {
             http_response_code(500);
@@ -417,6 +445,88 @@ class GroupClassController
         } else {
             http_response_code(500);
             echo json_encode(['error' => 'Error al procesar solicitud']);
+        }
+    }
+
+    public function getRoomLayout()
+    {
+        $scheduleId = isset($_GET['schedule_id']) ? (int)$_GET['schedule_id'] : 0;
+        $bookingDate = AppHelper::sanitize($_GET['booking_date'] ?? '');
+
+        if (!$scheduleId || !$bookingDate) {
+            http_response_code(400);
+            echo json_encode(['error' => 'Parámetros requeridos']);
+            exit();
+        }
+
+        $schedule = $this->classModel->getScheduleById($scheduleId);
+        if (!$schedule) {
+            http_response_code(404);
+            echo json_encode(['error' => 'Horario no encontrado']);
+            exit();
+        }
+
+        $roomLayout = $this->roomModel->getRoomLayout($schedule['room_id']);
+        $occupiedPositions = $this->roomModel->getOccupiedPositions($scheduleId, $bookingDate);
+
+        header('Content-Type: application/json');
+        echo json_encode([
+            'layout' => $roomLayout,
+            'occupied_positions' => $occupiedPositions,
+            'room_info' => [
+                'id' => $schedule['room_id'],
+                'name' => $schedule['room_name'],
+                'capacity' => $schedule['room_capacity'],
+            ],
+        ]);
+    }
+
+    public function selectPosition()
+    {
+        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+            http_response_code(405);
+            exit();
+        }
+
+        if (!AppHelper::isLoggedIn()) {
+            http_response_code(401);
+            echo json_encode(['error' => 'No autorizado']);
+            exit();
+        }
+
+        $scheduleId = isset($_POST['schedule_id']) ? (int)$_POST['schedule_id'] : 0;
+        $positionId = isset($_POST['position_id']) ? (int)$_POST['position_id'] : 0;
+        $bookingDate = AppHelper::sanitize($_POST['booking_date'] ?? '');
+
+        if (!$scheduleId || !$positionId || !$bookingDate) {
+            http_response_code(400);
+            echo json_encode(['error' => 'Datos incompletos']);
+            exit();
+        }
+
+        $user = AppHelper::getCurrentUser();
+
+        // Verificar si la posición está disponible
+        if (!$this->roomModel->isPositionAvailable($positionId, $scheduleId, $bookingDate)) {
+            http_response_code(409);
+            echo json_encode(['error' => 'Posición no disponible']);
+            exit();
+        }
+
+        // Reservar temporalmente la posición (5 minutos)
+        $tempReservation = $this->roomModel->createTempReservation($positionId, $scheduleId, $bookingDate, $user['id']);
+
+        if ($tempReservation) {
+            header('Content-Type: application/json');
+            echo json_encode([
+                'success' => true,
+                'message' => 'Posición reservada temporalmente',
+                'temp_reservation_id' => $tempReservation,
+                'expires_at' => date('Y-m-d H:i:s', strtotime('+5 minutes')),
+            ]);
+        } else {
+            http_response_code(500);
+            echo json_encode(['error' => 'Error al reservar posición']);
         }
     }
 }

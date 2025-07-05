@@ -85,8 +85,19 @@ use StyleFitness\Helpers\AppHelper;
                             </div>
                             <div class="detail">
                                 <i class="fas fa-map-marker-alt"></i>
-                                <span><?= htmlspecialchars($class['room']) ?></span>
+                                <span><?= htmlspecialchars($class['room_info']['name'] ?? $class['room'] ?? 'Sala no asignada') ?></span>
                             </div>
+                            <?php if (isset($class['room_info'])): ?>
+                            <div class="detail room-type">
+                                <?php if ($class['room_info']['room_type'] === 'positioned'): ?>
+                                    <i class="fas fa-th"></i>
+                                    <span class="room-type-badge positioned">Selección de Posición</span>
+                                <?php else: ?>
+                                    <i class="fas fa-users"></i>
+                                    <span class="room-type-badge capacity">Solo Aforo</span>
+                                <?php endif; ?>
+                            </div>
+                            <?php endif; ?>
                         </div>
                         <p class="class-description"><?= htmlspecialchars(substr($class['description'], 0, 100)) ?>...</p>
                         <div class="class-schedule">
