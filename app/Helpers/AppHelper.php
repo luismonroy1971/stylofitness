@@ -890,6 +890,32 @@ class AppHelper
 
         return $xml->asXML();
     }
+
+    /**
+     * Cargar una vista con datos
+     */
+    public static function loadView($viewPath, $data = [])
+    {
+        // Extraer variables para la vista
+        extract($data);
+        
+        // Construir la ruta completa de la vista
+        $viewFile = APP_PATH . '/Views/' . $viewPath . '.php';
+        
+        // Verificar que el archivo existe
+        if (!file_exists($viewFile)) {
+            throw new Exception("Vista no encontrada: {$viewPath}");
+        }
+        
+        // Incluir el header
+        include APP_PATH . '/Views/layout/header.php';
+        
+        // Incluir la vista
+        include $viewFile;
+        
+        // Incluir el footer
+        include APP_PATH . '/Views/layout/footer.php';
+    }
 }
 
 // Función global para obtener configuración (shortcut)

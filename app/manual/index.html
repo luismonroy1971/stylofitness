@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manual de Usuario - StyloFitness</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header h1 {
+            color: #FF6B00;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header p {
+            color: #666;
+            font-size: 1.1rem;
+        }
+        
+        .roles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .role-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .role-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .role-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .role-icon {
+            font-size: 2.5rem;
+            margin-right: 15px;
+        }
+        
+        .role-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .role-description {
+            color: #666;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+        
+        .features-list {
+            list-style: none;
+        }
+        
+        .features-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+            color: #555;
+        }
+        
+        .features-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .features-list li::before {
+            content: "✓";
+            color: #28a745;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        .admin { --accent-color: #dc3545; }
+        .instructor { --accent-color: #007bff; }
+        .staff { --accent-color: #28a745; }
+        .client { --accent-color: #ffc107; }
+        
+        .role-card.admin .role-icon { color: var(--accent-color); }
+        .role-card.instructor .role-icon { color: var(--accent-color); }
+        .role-card.staff .role-icon { color: var(--accent-color); }
+        .role-card.client .role-icon { color: var(--accent-color); }
+        
+        .missing-features {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .missing-features h2 {
+            color: #dc3545;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+        
+        .missing-list {
+            list-style: none;
+        }
+        
+        .missing-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+            color: #666;
+        }
+        
+        .missing-list li::before {
+            content: "⚠️";
+            margin-right: 10px;
+        }
+        
+        .status-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+        
+        .implemented {
+            background: #d4edda;
+            color: #155724;
+        }
+        
+        .partial {
+            background: #fff3cd;
+            color: #856404;
+        }
+        
+        .missing {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 30px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 800px;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .close:hover {
+            color: #000;
+        }
+        
+        .screen-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .screen-item {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent-color);
+        }
+        
+        .screen-name {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        
+        .screen-path {
+            font-size: 0.85rem;
+            color: #666;
+            font-family: monospace;
+            background: #e9ecef;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+        /* Estilos específicos para colores de roles */
+        .role-card.admin {
+            --role-color: #e74c3c;
+            --role-color-secondary: #c0392b;
+        }
+        .role-card.trainer {
+            --role-color: #3498db;
+            --role-color-secondary: #2980b9;
+        }
+        .role-card.staff {
+            --role-color: #f39c12;
+            --role-color-secondary: #e67e22;
+        }
+        .role-card.client {
+            --role-color: #27ae60;
+            --role-color-secondary: #229954;
+        }
+    </style>
+    <script src="config.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📋 Manual de Usuario - StyloFitness</h1>
+            <p>Guía completa de funcionalidades por rol de usuario</p>
+        </div>
+        
+        <div class="roles-grid">
+            <!-- ADMINISTRADOR -->
+            <div class="role-card admin" onclick="openModal('admin')">
+                <div class="role-header">
+                    <div class="role-icon">👑</div>
+                    <div class="role-title">Administrador</div>
+                </div>
+                <div class="role-description">
+                    Control total del sistema, gestión de usuarios, productos, configuraciones y reportes.
+                </div>
+                <ul class="features-list">
+                    <li>Dashboard administrativo <span class="status-badge implemented">✓ Implementado</span></li>
+                    <li>Gestión de usuarios <span class="status-badge implemented">✓ Implementado</span></li>
+                    <li>Gestión de productos <span class="status-badge implemented">✓ Implementado</span></li>
+                    <li>Gestión de ejercicios <span class="status-badge implemented">✓ Implementado</span></li>
+                    <li>Configuración landing page <span class="status-badge implemented">✓ Implementado</span></li>
+                    <li>Gestión de salas <span class="status-badge implemented">✓ Implementado</span></li>
+                    <li>Reportes y estadísticas <span class="status-badge partial">⚠️ Parcial</span></li>
+                </ul>
+            </div>
+            
+            <!-- ENTRENADOR/INSTRUCTOR -->
+            <div class="role-card instructor" onclick="openModal('instructor')">
+                <div class="role-header">
+                    <div class="role-icon">💪</div>
+                    <div class="role-title">Entrenador/Instructor</div>
+                </div>
+                <div class="role-description">
+                    Creación de rutinas, plantillas, gestión de clientes y seguimiento de progreso.
+                </div>
+                <ul class="features-list">
+                    <li>Dashboard de instructor <span class="status-badge implemented">✓ Implementado</span></li>
+                    <li>Plantillas de rutinas <span class="status-badge implemented">✓ Implementado</span></li>
+                    <li>Asignación de rutinas <span class="status-badge implemented">✓ Implementado</span></li>
+                    <li>Gestión de clases grupales <span class="status-badge implemented">✓ Implementado</span></li>
+                    <li>Seguimiento de clientes <span class="status-badge partial">⚠️ Parcial</span></li>
+                    <li>Chat con clientes <span class="status-badge missing">❌ Faltante</span></li>
+                </ul>
+            </div>
+            
+            <!-- STAFF -->
+            <div class="role-card staff" onclick="openModal('staff')">
+                <div class="role-header">
+                    <div class="role-icon">👥</div>
+                    <div class="role-title">Staff/Personal</div>
+                </div>
+                <div class="role-description">
+                    Gestión de clases, reservas, atención al cliente y operaciones diarias.
+                </div>
+                <ul class="features-list">
+                    <li>Gestión de reservas <span class="status-badge partial">⚠️ Parcial</span></li>
+                    <li>Check-in de clientes <span class="status-badge missing">❌ Faltante</span></li>
+                    <li>Gestión de clases <span class="status-badge implemented">✓ Implementado</span></li>
+                    <li>Atención al cliente <span class="status-badge missing">❌ Faltante</span></li>
+                    <li>Gestión de pagos <span class="status-badge partial">⚠️ Parcial</span></li>
+                </ul>
+            </div>
+            
+            <!-- CLIENTE -->
+            <div class="role-card client" onclick="openModal('client')">
+                <div class="role-header">
+                    <div class="role-icon">🏃‍♂️</div>
+                    <div class="role-title">Cliente</div>
+                </div>
+                <div class="role-description">
+                    Acceso a rutinas, tienda, reserva de clases y seguimiento de progreso personal.
+                </div>
+                <ul class="features-list">
+                    <li>Dashboard personal <span class="status-badge implemented">✓ Implementado</span></li>
+                    <li>Mis rutinas <span class="status-badge implemented">✓ Implementado</span></li>
+                    <li>Tienda online <span class="status-badge implemented">✓ Implementado</span></li>
+                    <li>Reserva de clases <span class="status-badge implemented">✓ Implementado</span></li>
+                    <li>Seguimiento de progreso <span class="status-badge partial">⚠️ Parcial</span></li>
+                    <li>Perfil y configuración <span class="status-badge partial">⚠️ Parcial</span></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="missing-features">
+            <h2>🚧 Funcionalidades Faltantes Identificadas</h2>
+            <ul class="missing-list">
+                <li><strong>Sistema de Notificaciones:</strong> Push notifications, emails automáticos</li>
+                <li><strong>Chat/Mensajería:</strong> Comunicación entre instructores y clientes</li>
+                <li><strong>Check-in Digital:</strong> Sistema de entrada/salida del gimnasio</li>
+                <li><strong>Reportes Avanzados:</strong> Analytics detallados, métricas de rendimiento</li>
+                <li><strong>Sistema de Pagos:</strong> Integración completa con pasarelas de pago</li>
+                <li><strong>App Móvil:</strong> Versión nativa para iOS/Android</li>
+                <li><strong>Calendario Avanzado:</strong> Vista de calendario con disponibilidad</li>
+                <li><strong>Sistema de Evaluaciones:</strong> Mediciones corporales, fotos de progreso</li>
+                <li><strong>Gamificación:</strong> Logros, badges, rankings</li>
+                <li><strong>Integración con Wearables:</strong> Sincronización con dispositivos fitness</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Modales para cada rol -->
+    <div id="adminModal" class="modal">
+        <div class="modal-content admin">
+            <span class="close" onclick="closeModal('adminModal')">&times;</span>
+            <h2>👑 Pantallas del Administrador</h2>
+            <div class="screen-grid">
+                <div class="screen-item">
+                    <div class="screen-name">Dashboard Principal</div>
+                    <div class="screen-path">/admin</div>
+                </div>
+                <div class="screen-item">
+                    <div class="screen-name">Gestión de Usuarios</div>
+                    <div class="screen-path">/admin/users</div>
+                </div>
+                <div class="screen-item">
+                    <div class="screen-name">Crear Usuario</div>
+                    <div class="screen-path">/admin/users/create</div>
+                </div>
+                <div class="screen-item">
+                    <div class="screen-name">Editar Usuario</div>
+                    <div class="screen-path">/admin/users/edit/{id}</div>
+                </div>
+                <div class="screen-item">
+                    <div class="screen-name">Gestión de Productos</div>
+                    <div class="screen-path">/admin/products</div>
+                </div>
+                <div class="screen-item">
+                    <div class="screen-name">Crear Producto</div>
+                    <div class="screen-path">/admin/products/create</div>
+                </div>
+                <div class="screen-item">
+                    <div class="screen-name">Gestión de Ejercicios</div>
+                    <div class="screen-path">/admin/exercise-management</div>
+                </div>
+                <div class="screen-item">
+                    <div class="screen-name">Crear Ejercicio</div>
+                    <div class="screen-path">/admin/exercise-management/create</div>
+                </div>
+                <div class="screen-item">
+                    <div class="screen-name">Ofertas Especiales</div>
+                    <div class="screen-path">/admin/landing/special-offers</div>
+                </div>
+                <div class="screen-item">
+                    <div class="screen-name">Por Qué Elegirnos</div>
+                    <div class="screen-path">/admin/landing/why-choose-us</div>
+                </div>
+                <div class="screen-item">
+                    <div class="screen-name">Testimonios</div>
+                    <div class="screen-path">/admin/landing/testimonials</div>
+                </div>
+                <div class="screen-item">
+                    <div class="screen-name">Gestión de Órdenes</div>
+                    <div class="screen-path">/admin/orders</div>
+                </div>
+                <div class="screen-item">
+                    <div class="screen-name">Gestión de Clases</div>
+                    <div class="screen-path">/admin/classes</div>
+                </div>
+                <div class="screen-item">
+                    <div class="screen-name">Reportes</div>
+                    <div class="screen-path">/admin/reports</div>
+                </div>
+                <div class="screen-item">
+                    <div class="screen-name">Configuraciones</div>
+                    <div class="screen-path">/admin/settings</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="instructorModal" class="modal">
+        <div class="modal-content instructor">
+            <span class="close" onclick="closeModal('instructorModal')">&times;</span>
+            <h2>💪 Pantallas del Entrenador/Instructor</h2>
+            <div class="screen-grid">
+                <div class="screen-item">
+                    <div class="screen-name">Dashboard Personal</div>
+                    <div class="screen-path">/dashboard</div>
+                </div>
+                <div class="screen-item">
+                    <div class="screen-name">Plantillas de Rutinas</div>
+                    <div class="screen-path">/trainer/templates</div>
+                </div>
+                <div class="screen-item">
+                    <div class="screen-name">Crear Plantilla</div>
+                    <div class="screen-path">/trainer/templates/create</div>
+                </div>
+                <div class="screen-item">
+                    <div class="screen-name">Editar Plantilla</div>
+                    <div class="screen-path">/trainer/templates/edit/{id}</div>
+                </div>
+                <div class="screen-item">
+                    <div class="screen-name">Ver Plantilla</div>
+                    <div class="screen-path">/trainer/templates/show/{id}</div>
+                </div>
+                <div class="screen-item">
+                    <div class="screen-name">Rutinas Asignadas</div>
+                    <div class="screen-path">/routines</div>
+                </div>
+                <div class="screen-item">
+                    <div class="screen-name">Crear Rutina</div>
+                    <div class="screen-path">/routines/create</div>
+                </div>
+                <div class="screen-item">
+                    <div class="screen-name">Editar Rutina</div>
+                    <div class="screen-path">/routines/edit/{id}</div>
+                </div>
+                <div class="screen-item">
+                    <div class="screen-name">Clases Grupales</div>
+                    <div class="screen-path">/classes</div>
+                </div>
+                <div class="screen-item">
+                    <div class="screen-name">Gestión de Salas</div>
+                    <div class="screen-path">/rooms</div>
+                </div>
+                <div class="screen-item">
+                    <div class="screen-name">Posiciones de Sala</div>
+                    <div class="screen-path">/rooms/positions</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="staffModal" class="modal">
+        <div class="modal-content staff">
+            <span class="close" onclick="closeModal('staffModal')">&times;</span>
+            <h2>👥 Pantallas del Staff/Personal</h2>
+            <div class="screen-grid">
+                <div class="screen-item">
+                    <div class="screen-name">Dashboard Personal</div>
+                    <div class="screen-path">/dashboard</div>
+                </div>
+                <div class="screen-item">
+                    <div class="screen-name">Clases Grupales</div>
+                    <div class="screen-path">/classes</div>
+                </div>
+                <div class="screen-item">
+                    <div class="screen-name">Detalle de Clase</div>
+                    <div class="screen-path">/classes/view/{id}</div>
+                </div>
+                <div class="screen-item">
+                    <div class="screen-name">Horario de Clases</div>
+                    <div class="screen-path">/classes/schedule</div>
+                </div>
+                <div class="screen-item">
+                    <div class="screen-name">Gestión de Salas</div>
+                    <div class="screen-path">/rooms</div>
+                </div>
+                <div class="screen-item">
+                    <div class="screen-name">Layout de Salas</div>
+                    <div class="screen-path">/classes/room-layout</div>
+                </div>
+                <div class="screen-item">
+                    <div class="screen-name">Tienda (Ventas)</div>
+                    <div class="screen-path">/store</div>
+                </div>
+                <div class="screen-item">
+                    <div class="screen-name">Checkout</div>
+                    <div class="screen-path">/checkout</div>
+                </div>
+            </div>
+            <div style="margin-top: 20px; padding: 15px; background: #fff3cd; border-radius: 8px;">
+                <strong>⚠️ Funcionalidades Faltantes para Staff:</strong>
+                <ul style="margin-top: 10px; margin-left: 20px;">
+                    <li>Sistema de check-in/check-out de clientes</li>
+                    <li>Panel de atención al cliente</li>
+                    <li>Gestión de pagos en efectivo</li>
+                    <li>Reportes de ventas diarias</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <div id="clientModal" class="modal">
+        <div class="modal-content client">
+            <span class="close" onclick="closeModal('clientModal')">&times;</span>
+            <h2>🏃‍♂️ Pantallas del Cliente</h2>
+            <div class="screen-grid">
+                <div class="screen-item">
+                    <div class="screen-name">Página Principal</div>
+                    <div class="screen-path">/</div>
+                </div>
+                <div class="screen-item">
+                    <div class="screen-name">Dashboard Personal</div>
+                    <div class="screen-path">/dashboard</div>
+                </div>
+                <div class="screen-item">
+                    <div class="screen-name">Mis Rutinas</div>
+                    <div class="screen-path">/my-routines</div>
+                </div>
+                <div class="screen-item">
+                    <div class="screen-name">Ver Rutina</div>
+                    <div class="screen-path">/routines/view/{id}</div>
+                </div>
+                <div class="screen-item">
+                    <div class="screen-name">Plantillas de Rutinas</div>
+                    <div class="screen-path">/routines/templates</div>
+                </div>
+                <div class="screen-item">
+                    <div class="screen-name">Tienda Online</div>
+                    <div class="screen-path">/store</div>
+                </div>
+                <div class="screen-item">
+                    <div class="screen-name">Producto Individual</div>
+                    <div class="screen-path">/store/product/{slug}</div>
+                </div>
+                <div class="screen-item">
+                    <div class="screen-name">Carrito de Compras</div>
+                    <div class="screen-path">/cart</div>
+                </div>
+                <div class="screen-item">
+                    <div class="screen-name">Checkout</div>
+                    <div class="screen-path">/checkout</div>
+                </div>
+                <div class="screen-item">
+                    <div class="screen-name">Clases Grupales</div>
+                    <div class="screen-path">/classes</div>
+                </div>
+                <div class="screen-item">
+                    <div class="screen-name">Detalle de Clase</div>
+                    <div class="screen-path">/classes/view/{id}</div>
+                </div>
+                <div class="screen-item">
+                    <div class="screen-name">Mis Clases</div>
+                    <div class="screen-path">/my-classes</div>
+                </div>
+                <div class="screen-item">
+                    <div class="screen-name">Mi Perfil</div>
+                    <div class="screen-path">/profile</div>
+                </div>
+                <div class="screen-item">
+                    <div class="screen-name">Mis Órdenes</div>
+                    <div class="screen-path">/my-orders</div>
+                </div>
+                <div class="screen-item">
+                    <div class="screen-name">Mi Progreso</div>
+                    <div class="screen-path">/my-progress</div>
+                </div>
+            </div>
+            <div style="margin-top: 20px; padding: 15px; background: #fff3cd; border-radius: 8px;">
+                <strong>⚠️ Funcionalidades Faltantes para Clientes:</strong>
+                <ul style="margin-top: 10px; margin-left: 20px;">
+                    <li>Sistema de seguimiento de progreso detallado</li>
+                    <li>Chat con entrenadores</li>
+                    <li>Calendario personal de entrenamientos</li>
+                    <li>Mediciones corporales y fotos de progreso</li>
+                    <li>Sistema de logros y gamificación</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <script src="scripts.js"></script>
+</body>
+</html>

@@ -1,0 +1,1165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manual Detallado por Perfiles - StyloFitness</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="manual-perfiles.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #64748b;
+            --success-color: #059669;
+            --warning-color: #d97706;
+            --danger-color: #dc2626;
+            --admin-color: #7c3aed;
+            --trainer-color: #059669;
+            --staff-color: #d97706;
+            --client-color: #2563eb;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .main-container {
+            background: white;
+            margin: 20px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .navigation {
+            background: #f8fafc;
+            padding: 1rem 2rem;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .nav-pills .nav-link {
+            border-radius: 12px;
+            margin: 0 0.25rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .nav-pills .nav-link.active {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .nav-pills .nav-link:not(.active) {
+            color: var(--secondary-color);
+        }
+
+        .nav-pills .nav-link:not(.active):hover {
+            background: #e2e8f0;
+            color: var(--primary-color);
+        }
+
+        .content {
+            padding: 2rem;
+        }
+
+        .profile-section {
+            display: none;
+        }
+
+        .profile-section.active {
+            display: block;
+        }
+
+        .profile-header {
+            background: linear-gradient(135deg, var(--profile-color, #2563eb) 0%, var(--profile-color-dark, #1d4ed8) 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 16px;
+            margin-bottom: 2rem;
+        }
+
+        .profile-header h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .profile-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .stat-card {
+            background: rgba(255,255,255,0.1);
+            padding: 1rem;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .screens-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .screen-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .screen-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+        }
+
+        .screen-preview {
+            height: 200px;
+            background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .screen-preview::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="20" fill="%23e2e8f0"/><rect y="25" width="70" height="10" fill="%23cbd5e1"/><rect y="40" width="90" height="10" fill="%23cbd5e1"/><rect y="55" width="60" height="10" fill="%23cbd5e1"/></svg>') no-repeat center;
+            background-size: 80%;
+            opacity: 0.3;
+        }
+
+        .screen-icon {
+            font-size: 3rem;
+            color: var(--profile-color, #2563eb);
+            z-index: 1;
+        }
+
+        .screen-info {
+            padding: 1.5rem;
+        }
+
+        .screen-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: #1e293b;
+        }
+
+        .screen-path {
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 0.85rem;
+            background: #f1f5f9;
+            padding: 0.5rem;
+            border-radius: 6px;
+            color: #475569;
+            margin-bottom: 1rem;
+        }
+
+        .screen-description {
+            color: #64748b;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .screen-features {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .screen-features li {
+            padding: 0.25rem 0;
+            color: #475569;
+            font-size: 0.9rem;
+        }
+
+        .screen-features li::before {
+            content: '✓';
+            color: var(--success-color);
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .status-implemented {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .status-partial {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .status-missing {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        .admin-section {
+            --profile-color: #7c3aed;
+            --profile-color-dark: #6d28d9;
+        }
+
+        .trainer-section {
+            --profile-color: #059669;
+            --profile-color-dark: #047857;
+        }
+
+        .staff-section {
+            --profile-color: #d97706;
+            --profile-color-dark: #b45309;
+        }
+
+        .client-section {
+            --profile-color: #2563eb;
+            --profile-color-dark: #1d4ed8;
+        }
+
+        .missing-features {
+            background: #fef2f2;
+            border: 1px solid #fecaca;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .missing-features h4 {
+            color: #991b1b;
+            margin-bottom: 1rem;
+        }
+
+        .missing-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .missing-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #fecaca;
+            color: #7f1d1d;
+        }
+
+        .missing-list li:last-child {
+            border-bottom: none;
+        }
+
+        .priority-high {
+            border-left: 4px solid #dc2626;
+            padding-left: 1rem;
+        }
+
+        .priority-medium {
+            border-left: 4px solid #d97706;
+            padding-left: 1rem;
+        }
+
+        .priority-low {
+            border-left: 4px solid #059669;
+            padding-left: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .main-container {
+                margin: 10px;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .screens-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .profile-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <div class="header">
+            <h1><i class="fas fa-users"></i> Manual Detallado por Perfiles</h1>
+            <p>Guía completa de pantallas y funcionalidades para cada tipo de usuario en StyloFitness</p>
+        </div>
+
+        <div class="navigation">
+            <ul class="nav nav-pills justify-content-center">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#" onclick="showProfile('admin')">
+                        <i class="fas fa-crown me-2"></i>Administrador
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" onclick="showProfile('trainer')">
+                        <i class="fas fa-dumbbell me-2"></i>Entrenador
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" onclick="showProfile('staff')">
+                        <i class="fas fa-users-cog me-2"></i>Staff
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" onclick="showProfile('client')">
+                        <i class="fas fa-user me-2"></i>Cliente
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="content">
+            <!-- ADMINISTRADOR -->
+            <div id="admin-profile" class="profile-section admin-section active">
+                <div class="profile-header">
+                    <h2><i class="fas fa-crown me-3"></i>Perfil Administrador</h2>
+                    <p>Control total del sistema, gestión de usuarios, productos, configuraciones y reportes avanzados.</p>
+                    
+                    <div class="profile-stats">
+                        <div class="stat-card">
+                            <div class="stat-number">15</div>
+                            <div class="stat-label">Pantallas Principales</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">85%</div>
+                            <div class="stat-label">Implementado</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">3</div>
+                            <div class="stat-label">Funciones Críticas Faltantes</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="screens-grid">
+                    <div class="screen-card">
+                        <div class="screen-preview">
+                            <i class="screen-icon fas fa-tachometer-alt"></i>
+                        </div>
+                        <div class="screen-info">
+                            <h3 class="screen-title">Dashboard Administrativo</h3>
+                            <div class="screen-path">/admin</div>
+                            <p class="screen-description">Panel principal con estadísticas generales del sistema, gráficos de rendimiento y actividad reciente.</p>
+                            <ul class="screen-features">
+                                <li>Estadísticas en tiempo real</li>
+                                <li>Gráficos de usuarios activos</li>
+                                <li>Alertas del sistema</li>
+                                <li>Resumen de ventas</li>
+                            </ul>
+                            <span class="status-badge status-implemented">Implementado</span>
+                        </div>
+                    </div>
+
+                    <div class="screen-card">
+                        <div class="screen-preview">
+                            <i class="screen-icon fas fa-users"></i>
+                        </div>
+                        <div class="screen-info">
+                            <h3 class="screen-title">Gestión de Usuarios</h3>
+                            <div class="screen-path">/admin/users</div>
+                            <p class="screen-description">Administración completa de usuarios con filtros avanzados, edición de perfiles y asignación de roles.</p>
+                            <ul class="screen-features">
+                                <li>Listado con filtros y paginación</li>
+                                <li>Crear/editar usuarios</li>
+                                <li>Asignación de roles</li>
+                                <li>Gestión de estados</li>
+                            </ul>
+                            <span class="status-badge status-implemented">Implementado</span>
+                        </div>
+                    </div>
+
+                    <div class="screen-card">
+                        <div class="screen-preview">
+                            <i class="screen-icon fas fa-dumbbell"></i>
+                        </div>
+                        <div class="screen-info">
+                            <h3 class="screen-title">Gestión de Ejercicios</h3>
+                            <div class="screen-path">/admin/exercise-management</div>
+                            <p class="screen-description">Catálogo completo de ejercicios con videos, categorías y niveles de dificultad.</p>
+                            <ul class="screen-features">
+                                <li>CRUD completo de ejercicios</li>
+                                <li>Gestión de videos</li>
+                                <li>Categorización avanzada</li>
+                                <li>Estadísticas de uso</li>
+                            </ul>
+                            <span class="status-badge status-implemented">Implementado</span>
+                        </div>
+                    </div>
+
+                    <div class="screen-card">
+                        <div class="screen-preview">
+                            <i class="screen-icon fas fa-store"></i>
+                        </div>
+                        <div class="screen-info">
+                            <h3 class="screen-title">Gestión de Productos</h3>
+                            <div class="screen-path">/admin/products</div>
+                            <p class="screen-description">Administración del catálogo de productos, inventario y configuración de la tienda online.</p>
+                            <ul class="screen-features">
+                                <li>CRUD de productos</li>
+                                <li>Gestión de categorías</li>
+                                <li>Control de inventario</li>
+                                <li>Configuración de precios</li>
+                            </ul>
+                            <span class="status-badge status-implemented">Implementado</span>
+                        </div>
+                    </div>
+
+                    <div class="screen-card">
+                        <div class="screen-preview">
+                            <i class="screen-icon fas fa-cogs"></i>
+                        </div>
+                        <div class="screen-info">
+                            <h3 class="screen-title">Configuración Landing Page</h3>
+                            <div class="screen-path">/admin/landing/config</div>
+                            <p class="screen-description">Personalización completa de la página principal con secciones dinámicas y contenido editable.</p>
+                            <ul class="screen-features">
+                                <li>Configuración de secciones</li>
+                                <li>Gestión de contenido dinámico</li>
+                                <li>Personalización de estilos</li>
+                                <li>Vista previa en tiempo real</li>
+                            </ul>
+                            <span class="status-badge status-implemented">Implementado</span>
+                        </div>
+                    </div>
+
+                    <div class="screen-card">
+                        <div class="screen-preview">
+                            <i class="screen-icon fas fa-star"></i>
+                        </div>
+                        <div class="screen-info">
+                            <h3 class="screen-title">Gestión de Testimonios</h3>
+                            <div class="screen-path">/admin/landing/testimonials</div>
+                            <p class="screen-description">Administración de testimonios de clientes para mostrar en la página principal.</p>
+                            <ul class="screen-features">
+                                <li>CRUD de testimonios</li>
+                                <li>Moderación de contenido</li>
+                                <li>Configuración de visibilidad</li>
+                                <li>Ordenamiento personalizado</li>
+                            </ul>
+                            <span class="status-badge status-implemented">Implementado</span>
+                        </div>
+                    </div>
+
+                    <div class="screen-card">
+                        <div class="screen-preview">
+                            <i class="screen-icon fas fa-building"></i>
+                        </div>
+                        <div class="screen-info">
+                            <h3 class="screen-title">Gestión de Salas</h3>
+                            <div class="screen-path">/rooms</div>
+                            <p class="screen-description">Administración de salas del gimnasio con configuración de capacidad y posiciones.</p>
+                            <ul class="screen-features">
+                                <li>CRUD de salas</li>
+                                <li>Configuración de posiciones</li>
+                                <li>Gestión de capacidad</li>
+                                <li>Asignación de equipamiento</li>
+                            </ul>
+                            <span class="status-badge status-implemented">Implementado</span>
+                        </div>
+                    </div>
+
+                    <div class="screen-card">
+                        <div class="screen-preview">
+                            <i class="screen-icon fas fa-chart-bar"></i>
+                        </div>
+                        <div class="screen-info">
+                            <h3 class="screen-title">Reportes y Estadísticas</h3>
+                            <div class="screen-path">/admin/reports</div>
+                            <p class="screen-description">Sistema de reportes avanzados con métricas de negocio y análisis de rendimiento.</p>
+                            <ul class="screen-features">
+                                <li>Reportes de ventas</li>
+                                <li>Análisis de usuarios</li>
+                                <li>Métricas de clases</li>
+                                <li>Exportación de datos</li>
+                            </ul>
+                            <span class="status-badge status-partial">Parcial</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="missing-features">
+                    <h4><i class="fas fa-exclamation-triangle me-2"></i>Funcionalidades Faltantes - Prioridad Alta</h4>
+                    <ul class="missing-list">
+                        <li class="priority-high">Sistema de notificaciones push y email</li>
+                        <li class="priority-high">Reportes avanzados con gráficos interactivos</li>
+                        <li class="priority-medium">Sistema de backup automático</li>
+                        <li class="priority-medium">Logs de auditoría detallados</li>
+                        <li class="priority-low">Integración con sistemas externos</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- ENTRENADOR -->
+            <div id="trainer-profile" class="profile-section trainer-section">
+                <div class="profile-header">
+                    <h2><i class="fas fa-dumbbell me-3"></i>Perfil Entrenador/Instructor</h2>
+                    <p>Gestión de rutinas personalizadas, seguimiento de clientes y administración de plantillas de entrenamiento.</p>
+                    
+                    <div class="profile-stats">
+                        <div class="stat-card">
+                            <div class="stat-number">11</div>
+                            <div class="stat-label">Pantallas Principales</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">80%</div>
+                            <div class="stat-label">Implementado</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">4</div>
+                            <div class="stat-label">Funciones Faltantes</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="screens-grid">
+                    <div class="screen-card">
+                        <div class="screen-preview">
+                            <i class="screen-icon fas fa-tachometer-alt"></i>
+                        </div>
+                        <div class="screen-info">
+                            <h3 class="screen-title">Dashboard Personal</h3>
+                            <div class="screen-path">/dashboard</div>
+                            <p class="screen-description">Panel personalizado con estadísticas del instructor, clientes asignados y clases programadas.</p>
+                            <ul class="screen-features">
+                                <li>Estadísticas personales</li>
+                                <li>Lista de clientes activos</li>
+                                <li>Próximas clases</li>
+                                <li>Progreso de rutinas</li>
+                            </ul>
+                            <span class="status-badge status-implemented">Implementado</span>
+                        </div>
+                    </div>
+
+                    <div class="screen-card">
+                        <div class="screen-preview">
+                            <i class="screen-icon fas fa-clipboard-list"></i>
+                        </div>
+                        <div class="screen-info">
+                            <h3 class="screen-title">Plantillas de Rutinas</h3>
+                            <div class="screen-path">/trainer/templates</div>
+                            <p class="screen-description">Gestión de plantillas reutilizables diferenciadas por género y objetivos específicos.</p>
+                            <ul class="screen-features">
+                                <li>Crear plantillas por género</li>
+                                <li>Diferenciación por objetivos</li>
+                                <li>Duplicar plantillas existentes</li>
+                                <li>Asignar a múltiples clientes</li>
+                            </ul>
+                            <span class="status-badge status-implemented">Implementado</span>
+                        </div>
+                    </div>
+
+                    <div class="screen-card">
+                        <div class="screen-preview">
+                            <i class="screen-icon fas fa-plus"></i>
+                        </div>
+                        <div class="screen-info">
+                            <h3 class="screen-title">Crear Plantilla</h3>
+                            <div class="screen-path">/trainer/templates/create</div>
+                            <p class="screen-description">Formulario avanzado para crear nuevas plantillas con configuración detallada de ejercicios.</p>
+                            <ul class="screen-features">
+                                <li>Selección de ejercicios</li>
+                                <li>Configuración de series/reps</li>
+                                <li>Asignación de género objetivo</li>
+                                <li>Nivel de dificultad</li>
+                            </ul>
+                            <span class="status-badge status-implemented">Implementado</span>
+                        </div>
+                    </div>
+
+                    <div class="screen-card">
+                        <div class="screen-preview">
+                            <i class="screen-icon fas fa-list"></i>
+                        </div>
+                        <div class="screen-info">
+                            <h3 class="screen-title">Gestión de Rutinas</h3>
+                            <div class="screen-path">/routines</div>
+                            <p class="screen-description">Administración de rutinas personalizadas asignadas a clientes específicos.</p>
+                            <ul class="screen-features">
+                                <li>Ver rutinas de clientes</li>
+                                <li>Crear rutinas personalizadas</li>
+                                <li>Editar rutinas existentes</li>
+                                <li>Seguimiento de progreso</li>
+                            </ul>
+                            <span class="status-badge status-implemented">Implementado</span>
+                        </div>
+                    </div>
+
+                    <div class="screen-card">
+                        <div class="screen-preview">
+                            <i class="screen-icon fas fa-edit"></i>
+                        </div>
+                        <div class="screen-info">
+                            <h3 class="screen-title">Crear/Editar Rutina</h3>
+                            <div class="screen-path">/routines/create | /routines/edit/{id}</div>
+                            <p class="screen-description">Editor completo de rutinas con selección de ejercicios y configuración personalizada.</p>
+                            <ul class="screen-features">
+                                <li>Selector de ejercicios</li>
+                                <li>Configuración de parámetros</li>
+                                <li>Asignación a cliente</li>
+                                <li>Programación temporal</li>
+                            </ul>
+                            <span class="status-badge status-implemented">Implementado</span>
+                        </div>
+                    </div>
+
+                    <div class="screen-card">
+                        <div class="screen-preview">
+                            <i class="screen-icon fas fa-users"></i>
+                        </div>
+                        <div class="screen-info">
+                            <h3 class="screen-title">Mis Clientes</h3>
+                            <div class="screen-path">/trainer/clients</div>
+                            <p class="screen-description">Lista de clientes asignados con acceso rápido a sus rutinas y progreso.</p>
+                            <ul class="screen-features">
+                                <li>Lista de clientes asignados</li>
+                                <li>Progreso individual</li>
+                                <li>Historial de entrenamientos</li>
+                                <li>Comunicación directa</li>
+                            </ul>
+                            <span class="status-badge status-partial">Parcial</span>
+                        </div>
+                    </div>
+
+                    <div class="screen-card">
+                        <div class="screen-preview">
+                            <i class="screen-icon fas fa-calendar"></i>
+                        </div>
+                        <div class="screen-info">
+                            <h3 class="screen-title">Clases Programadas</h3>
+                            <div class="screen-path">/classes/instructor</div>
+                            <p class="screen-description">Gestión de clases grupales asignadas al instructor con control de asistencia.</p>
+                            <ul class="screen-features">
+                                <li>Calendario de clases</li>
+                                <li>Lista de participantes</li>
+                                <li>Control de asistencia</li>
+                                <li>Notas de clase</li>
+                            </ul>
+                            <span class="status-badge status-implemented">Implementado</span>
+                        </div>
+                    </div>
+
+                    <div class="screen-card">
+                        <div class="screen-preview">
+                            <i class="screen-icon fas fa-chart-line"></i>
+                        </div>
+                        <div class="screen-info">
+                            <h3 class="screen-title">Progreso de Clientes</h3>
+                            <div class="screen-path">/trainer/progress</div>
+                            <p class="screen-description">Seguimiento detallado del progreso de cada cliente con métricas y gráficos.</p>
+                            <ul class="screen-features">
+                                <li>Gráficos de progreso</li>
+                                <li>Métricas de rendimiento</li>
+                                <li>Comparativas temporales</li>
+                                <li>Reportes individuales</li>
+                            </ul>
+                            <span class="status-badge status-missing">Faltante</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="missing-features">
+                    <h4><i class="fas fa-exclamation-triangle me-2"></i>Funcionalidades Faltantes</h4>
+                    <ul class="missing-list">
+                        <li class="priority-high">Chat directo con clientes</li>
+                        <li class="priority-high">Sistema de evaluaciones físicas</li>
+                        <li class="priority-medium">Seguimiento avanzado de progreso</li>
+                        <li class="priority-medium">Calendario integrado de citas</li>
+                        <li class="priority-low">Generación de reportes personalizados</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- STAFF -->
+            <div id="staff-profile" class="profile-section staff-section">
+                <div class="profile-header">
+                    <h2><i class="fas fa-users-cog me-3"></i>Perfil Staff/Personal</h2>
+                    <p>Gestión operativa del gimnasio, control de acceso, clases grupales y atención al cliente.</p>
+                    
+                    <div class="profile-stats">
+                        <div class="stat-card">
+                            <div class="stat-number">8</div>
+                            <div class="stat-label">Pantallas Principales</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">60%</div>
+                            <div class="stat-label">Implementado</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">5</div>
+                            <div class="stat-label">Funciones Críticas Faltantes</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="screens-grid">
+                    <div class="screen-card">
+                        <div class="screen-preview">
+                            <i class="screen-icon fas fa-tachometer-alt"></i>
+                        </div>
+                        <div class="screen-info">
+                            <h3 class="screen-title">Dashboard Operativo</h3>
+                            <div class="screen-path">/dashboard</div>
+                            <p class="screen-description">Panel de control para operaciones diarias del gimnasio con información en tiempo real.</p>
+                            <ul class="screen-features">
+                                <li>Usuarios activos en el gimnasio</li>
+                                <li>Clases del día</li>
+                                <li>Alertas operativas</li>
+                                <li>Estadísticas de ocupación</li>
+                            </ul>
+                            <span class="status-badge status-implemented">Implementado</span>
+                        </div>
+                    </div>
+
+                    <div class="screen-card">
+                        <div class="screen-preview">
+                            <i class="screen-icon fas fa-calendar-check"></i>
+                        </div>
+                        <div class="screen-info">
+                            <h3 class="screen-title">Gestión de Clases</h3>
+                            <div class="screen-path">/classes</div>
+                            <p class="screen-description">Administración de clases grupales, horarios y reservas de los miembros.</p>
+                            <ul class="screen-features">
+                                <li>Ver clases programadas</li>
+                                <li>Gestionar reservas</li>
+                                <li>Control de asistencia</li>
+                                <li>Configurar horarios</li>
+                            </ul>
+                            <span class="status-badge status-implemented">Implementado</span>
+                        </div>
+                    </div>
+
+                    <div class="screen-card">
+                        <div class="screen-preview">
+                            <i class="screen-icon fas fa-qrcode"></i>
+                        </div>
+                        <div class="screen-info">
+                            <h3 class="screen-title">Check-in Digital</h3>
+                            <div class="screen-path">/checkin</div>
+                            <p class="screen-description">Sistema de registro de entrada y salida de miembros con códigos QR y validación.</p>
+                            <ul class="screen-features">
+                                <li>Escaneo de códigos QR</li>
+                                <li>Validación de membresías</li>
+                                <li>Registro de horarios</li>
+                                <li>Control de aforo</li>
+                            </ul>
+                            <span class="status-badge status-missing">Faltante</span>
+                        </div>
+                    </div>
+
+                    <div class="screen-card">
+                        <div class="screen-preview">
+                            <i class="screen-icon fas fa-users"></i>
+                        </div>
+                        <div class="screen-info">
+                            <h3 class="screen-title">Gestión de Miembros</h3>
+                            <div class="screen-path">/members</div>
+                            <p class="screen-description">Administración básica de miembros con búsqueda y actualización de información.</p>
+                            <ul class="screen-features">
+                                <li>Búsqueda de miembros</li>
+                                <li>Actualizar información</li>
+                                <li>Verificar membresías</li>
+                                <li>Historial de visitas</li>
+                            </ul>
+                            <span class="status-badge status-partial">Parcial</span>
+                        </div>
+                    </div>
+
+                    <div class="screen-card">
+                        <div class="screen-preview">
+                            <i class="screen-icon fas fa-shopping-cart"></i>
+                        </div>
+                        <div class="screen-info">
+                            <h3 class="screen-title">Ventas en Mostrador</h3>
+                            <div class="screen-path">/pos</div>
+                            <p class="screen-description">Sistema de punto de venta para productos y servicios adicionales del gimnasio.</p>
+                            <ul class="screen-features">
+                                <li>Catálogo de productos</li>
+                                <li>Procesamiento de pagos</li>
+                                <li>Gestión de inventario</li>
+                                <li>Emisión de recibos</li>
+                            </ul>
+                            <span class="status-badge status-missing">Faltante</span>
+                        </div>
+                    </div>
+
+                    <div class="screen-card">
+                        <div class="screen-preview">
+                            <i class="screen-icon fas fa-headset"></i>
+                        </div>
+                        <div class="screen-info">
+                            <h3 class="screen-title">Atención al Cliente</h3>
+                            <div class="screen-path">/support</div>
+                            <p class="screen-description">Sistema de tickets y gestión de consultas de los miembros del gimnasio.</p>
+                            <ul class="screen-features">
+                                <li>Crear tickets de soporte</li>
+                                <li>Gestionar consultas</li>
+                                <li>Base de conocimientos</li>
+                                <li>Seguimiento de casos</li>
+                            </ul>
+                            <span class="status-badge status-missing">Faltante</span>
+                        </div>
+                    </div>
+
+                    <div class="screen-card">
+                        <div class="screen-preview">
+                            <i class="screen-icon fas fa-building"></i>
+                        </div>
+                        <div class="screen-info">
+                            <h3 class="screen-title">Gestión de Salas</h3>
+                            <div class="screen-path">/rooms</div>
+                            <p class="screen-description">Visualización y gestión básica del estado de las salas del gimnasio.</p>
+                            <ul class="screen-features">
+                                <li>Estado de ocupación</li>
+                                <li>Reservas activas</li>
+                                <li>Mantenimiento de equipos</li>
+                                <li>Reportar incidencias</li>
+                            </ul>
+                            <span class="status-badge status-implemented">Implementado</span>
+                        </div>
+                    </div>
+
+                    <div class="screen-card">
+                        <div class="screen-preview">
+                            <i class="screen-icon fas fa-chart-bar"></i>
+                        </div>
+                        <div class="screen-info">
+                            <h3 class="screen-title">Reportes Operativos</h3>
+                            <div class="screen-path">/reports/operational</div>
+                            <p class="screen-description">Reportes básicos de operaciones diarias y estadísticas de uso del gimnasio.</p>
+                            <ul class="screen-features">
+                                <li>Reporte de asistencia</li>
+                                <li>Ocupación de salas</li>
+                                <li>Ventas del día</li>
+                                <li>Incidencias reportadas</li>
+                            </ul>
+                            <span class="status-badge status-partial">Parcial</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="missing-features">
+                    <h4><i class="fas fa-exclamation-triangle me-2"></i>Funcionalidades Críticas Faltantes</h4>
+                    <ul class="missing-list">
+                        <li class="priority-high">Sistema de check-in digital con QR</li>
+                        <li class="priority-high">Punto de venta (POS) integrado</li>
+                        <li class="priority-high">Sistema de tickets de soporte</li>
+                        <li class="priority-medium">Control de acceso automatizado</li>
+                        <li class="priority-medium">Gestión de inventario en tiempo real</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- CLIENTE -->
+            <div id="client-profile" class="profile-section client-section">
+                <div class="profile-header">
+                    <h2><i class="fas fa-user me-3"></i>Perfil Cliente</h2>
+                    <p>Experiencia completa del miembro con acceso a rutinas, clases, tienda online y seguimiento personal.</p>
+                    
+                    <div class="profile-stats">
+                        <div class="stat-card">
+                            <div class="stat-number">12</div>
+                            <div class="stat-label">Pantallas Principales</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">75%</div>
+                            <div class="stat-label">Implementado</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">6</div>
+                            <div class="stat-label">Funciones Faltantes</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="screens-grid">
+                    <div class="screen-card">
+                        <div class="screen-preview">
+                            <i class="screen-icon fas fa-tachometer-alt"></i>
+                        </div>
+                        <div class="screen-info">
+                            <h3 class="screen-title">Dashboard Personal</h3>
+                            <div class="screen-path">/dashboard</div>
+                            <p class="screen-description">Panel personalizado con resumen de actividad, rutinas asignadas y próximas clases.</p>
+                            <ul class="screen-features">
+                                <li>Resumen de actividad semanal</li>
+                                <li>Rutinas activas</li>
+                                <li>Próximas clases reservadas</li>
+                                <li>Progreso personal</li>
+                            </ul>
+                            <span class="status-badge status-implemented">Implementado</span>
+                        </div>
+                    </div>
+
+                    <div class="screen-card">
+                        <div class="screen-preview">
+                            <i class="screen-icon fas fa-dumbbell"></i>
+                        </div>
+                        <div class="screen-info">
+                            <h3 class="screen-title">Mis Rutinas</h3>
+                            <div class="screen-path">/my-routines</div>
+                            <p class="screen-description">Acceso a rutinas personalizadas asignadas por el entrenador con seguimiento de progreso.</p>
+                            <ul class="screen-features">
+                                <li>Ver rutinas asignadas</li>
+                                <li>Acceso a plantillas públicas</li>
+                                <li>Seguimiento básico</li>
+                                <li>Historial de entrenamientos</li>
+                            </ul>
+                            <span class="status-badge status-implemented">Implementado</span>
+                        </div>
+                    </div>
+
+                    <div class="screen-card">
+                        <div class="screen-preview">
+                            <i class="screen-icon fas fa-play"></i>
+                        </div>
+                        <div class="screen-info">
+                            <h3 class="screen-title">Ejecutar Rutina</h3>
+                            <div class="screen-path">/routines/workout/{id}</div>
+                            <p class="screen-description">Interfaz de entrenamiento con temporizadores, videos de ejercicios y registro de progreso.</p>
+                            <ul class="screen-features">
+                                <li>Videos de ejercicios</li>
+                                <li>Temporizadores de descanso</li>
+                                <li>Registro de pesos/reps</li>
+                                <li>Notas personales</li>
+                            </ul>
+                            <span class="status-badge status-partial">Parcial</span>
+                        </div>
+                    </div>
+
+                    <div class="screen-card">
+                        <div class="screen-preview">
+                            <i class="screen-icon fas fa-calendar"></i>
+                        </div>
+                        <div class="screen-info">
+                            <h3 class="screen-title">Clases Grupales</h3>
+                            <div class="screen-path">/classes</div>
+                            <p class="screen-description">Exploración y reserva de clases grupales con información detallada y horarios.</p>
+                            <ul class="screen-features">
+                                <li>Catálogo de clases</li>
+                                <li>Filtros por tipo y horario</li>
+                                <li>Sistema de reservas</li>
+                                <li>Información de instructores</li>
+                            </ul>
+                            <span class="status-badge status-implemented">Implementado</span>
+                        </div>
+                    </div>
+
+                    <div class="screen-card">
+                        <div class="screen-preview">
+                            <i class="screen-icon fas fa-store"></i>
+                        </div>
+                        <div class="screen-info">
+                            <h3 class="screen-title">Tienda Online</h3>
+                            <div class="screen-path">/store</div>
+                            <p class="screen-description">Catálogo completo de productos con filtros avanzados y sistema de compras integrado.</p>
+                            <ul class="screen-features">
+                                <li>Catálogo de productos</li>
+                                <li>Filtros por categoría y precio</li>
+                                <li>Carrito de compras</li>
+                                <li>Sistema de wishlist</li>
+                            </ul>
+                            <span class="status-badge status-implemented">Implementado</span>
+                        </div>
+                    </div>
+
+                    <div class="screen-card">
+                        <div class="screen-preview">
+                            <i class="screen-icon fas fa-shopping-cart"></i>
+                        </div>
+                        <div class="screen-info">
+                            <h3 class="screen-title">Carrito y Checkout</h3>
+                            <div class="screen-path">/store/cart | /store/checkout</div>
+                            <p class="screen-description">Proceso de compra completo con múltiples métodos de pago y confirmación de pedidos.</p>
+                            <ul class="screen-features">
+                                <li>Gestión de carrito</li>
+                                <li>Múltiples métodos de pago</li>
+                                <li>Cálculo de envío</li>
+                                <li>Confirmación de pedido</li>
+                            </ul>
+                            <span class="status-badge status-implemented">Implementado</span>
+                        </div>
+                    </div>
+
+                    <div class="screen-card">
+                        <div class="screen-preview">
+                            <i class="screen-icon fas fa-user-circle"></i>
+                        </div>
+                        <div class="screen-info">
+                            <h3 class="screen-title">Mi Perfil</h3>
+                            <div class="screen-path">/profile</div>
+                            <p class="screen-description">Gestión de información personal, preferencias y configuración de la cuenta.</p>
+                            <ul class="screen-features">
+                                <li>Editar información personal</li>
+                                <li>Cambiar contraseña</li>
+                                <li>Preferencias de notificaciones</li>
+                                <li>Historial de actividad</li>
+                            </ul>
+                            <span class="status-badge status-implemented">Implementado</span>
+                        </div>
+                    </div>
+
+                    <div class="screen-card">
+                        <div class="screen-preview">
+                            <i class="screen-icon fas fa-chart-line"></i>
+                        </div>
+                        <div class="screen-info">
+                            <h3 class="screen-title">Mi Progreso</h3>
+                            <div class="screen-path">/progress</div>
+                            <p class="screen-description">Seguimiento detallado del progreso personal con gráficos y métricas de rendimiento.</p>
+                            <ul class="screen-features">
+                                <li>Gráficos de progreso</li>
+                                <li>Métricas corporales</li>
+                                <li>Historial de entrenamientos</li>
+                                <li>Objetivos personales</li>
+                            </ul>
+                            <span class="status-badge status-missing">Faltante</span>
+                        </div>
+                    </div>
+
+                    <div class="screen-card">
+                        <div class="screen-preview">
+                            <i class="screen-icon fas fa-comments"></i>
+                        </div>
+                        <div class="screen-info">
+                            <h3 class="screen-title">Chat con Entrenador</h3>
+                            <div class="screen-path">/chat</div>
+                            <p class="screen-description">Sistema de mensajería directa con el entrenador asignado para consultas y seguimiento.</p>
+                            <ul class="screen-features">
+                                <li>Chat en tiempo real</li>
+                                <li>Envío de fotos/videos</li>
+                                <li>Historial de conversaciones</li>
+                                <li>Notificaciones push</li>
+                            </ul>
+                            <span class="status-badge status-missing">Faltante</span>
+                        </div>
+                    </div>
+
+                    <div class="screen-card">
+                        <div class="screen-preview">
+                            <i class="screen-icon fas fa-bell"></i>
+                        </div>
+                        <div class="screen-info">
+                            <h3 class="screen-title">Notificaciones</h3>
+                            <div class="screen-path">/notifications</div>
+                            <p class="screen-description">Centro de notificaciones con alertas de clases, rutinas y mensajes del entrenador.</p>
+                            <ul class="screen-features">
+                                <li>Notificaciones de clases</li>
+                                <li>Recordatorios de rutinas</li>
+                                <li>Mensajes del entrenador</li>
+                                <li>Ofertas especiales</li>
+                            </ul>
+                            <span class="status-badge status-missing">Faltante</span>
+                        </div>
+                    </div>
+
+                    <div class="screen-card">
+                        <div class="screen-preview">
+                            <i class="screen-icon fas fa-qrcode"></i>
+                        </div>
+                        <div class="screen-info">
+                            <h3 class="screen-title">Mi Código QR</h3>
+                            <div class="screen-path">/qr-code</div>
+                            <p class="screen-description">Código QR personal para check-in rápido en el gimnasio y acceso a servicios.</p>
+                            <ul class="screen-features">
+                                <li>Código QR único</li>
+                                <li>Check-in automático</li>
+                                <li>Validación de membresía</li>
+                                <li>Historial de visitas</li>
+                            </ul>
+                            <span class="status-badge status-missing">Faltante</span>
+                        </div>
+                    </div>
+
+                    <div class="screen-card">
+                        <div class="screen-preview">
+                            <i class="screen-icon fas fa-receipt"></i>
+                        </div>
+                        <div class="screen-info">
+                            <h3 class="screen-title">Mis Pedidos</h3>
+                            <div class="screen-path">/orders</div>
+                            <p class="screen-description">Historial completo de pedidos realizados en la tienda online con seguimiento de envíos.</p>
+                            <ul class="screen-features">
+                                <li>Historial de pedidos</li>
+                                <li>Estado de envíos</li>
+                                <li>Facturas digitales</li>
+                                <li>Recomprar productos</li>
+                            </ul>
+                            <span class="status-badge status-implemented">Implementado</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="missing-features">
+                    <h4><i class="fas fa-exclamation-triangle me-2"></i>Funcionalidades Faltantes</h4>
+                    <ul class="missing-list">
+                        <li class="priority-high">Sistema de seguimiento de progreso avanzado</li>
+                        <li class="priority-high">Chat directo con entrenador</li>
+                        <li class="priority-high">Centro de notificaciones</li>
+                        <li class="priority-medium">Código QR para check-in</li>
+                        <li class="priority-medium">Aplicación móvil nativa</li>
+                        <li class="priority-low">Integración con wearables</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="manual-perfiles.js"></script>
+</body>
+</html>

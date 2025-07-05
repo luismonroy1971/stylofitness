@@ -1,0 +1,368 @@
+/* Manual Detallado por Perfiles - Estilos Específicos */
+
+/* Variables CSS para colores por perfil */
+:root {
+    --admin-gradient: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);
+    --trainer-gradient: linear-gradient(135deg, #059669 0%, #047857 100%);
+    --staff-gradient: linear-gradient(135deg, #d97706 0%, #b45309 100%);
+    --client-gradient: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+}
+
+/* Estilos específicos para cada perfil */
+.admin-section {
+    --profile-color: #7c3aed;
+    --profile-color-dark: #6d28d9;
+}
+
+.admin-section .screen-icon {
+    color: var(--profile-color);
+}
+
+.admin-section .nav-link.active {
+    background: var(--admin-gradient);
+}
+
+.trainer-section {
+    --profile-color: #059669;
+    --profile-color-dark: #047857;
+}
+
+.trainer-section .screen-icon {
+    color: var(--profile-color);
+}
+
+.trainer-section .nav-link.active {
+    background: var(--trainer-gradient);
+}
+
+.staff-section {
+    --profile-color: #d97706;
+    --profile-color-dark: #b45309;
+}
+
+.staff-section .screen-icon {
+    color: var(--profile-color);
+}
+
+.staff-section .nav-link.active {
+    background: var(--staff-gradient);
+}
+
+.client-section {
+    --profile-color: #2563eb;
+    --profile-color-dark: #1d4ed8;
+}
+
+.client-section .screen-icon {
+    color: var(--profile-color);
+}
+
+.client-section .nav-link.active {
+    background: var(--client-gradient);
+}
+
+/* Animaciones específicas para las tarjetas de pantallas */
+.screen-card {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Efectos hover mejorados */
+.screen-card:hover .screen-icon {
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+}
+
+.screen-card:hover .screen-title {
+    color: var(--profile-color);
+    transition: color 0.3s ease;
+}
+
+/* Estilos para badges de estado mejorados */
+.status-badge {
+    position: relative;
+    overflow: hidden;
+}
+
+.status-badge::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: left 0.5s;
+}
+
+.status-badge:hover::before {
+    left: 100%;
+}
+
+/* Mejoras en la navegación */
+.nav-pills .nav-link {
+    position: relative;
+    overflow: hidden;
+}
+
+.nav-pills .nav-link::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--primary-color);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.nav-pills .nav-link:hover::before {
+    width: 80%;
+}
+
+.nav-pills .nav-link.active::before {
+    width: 100%;
+    background: rgba(255,255,255,0.3);
+}
+
+/* Efectos de carga para estadísticas */
+.stat-number {
+    animation: countUp 1s ease-out;
+}
+
+@keyframes countUp {
+    from {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Mejoras en las características de pantallas */
+.screen-features li {
+    position: relative;
+    padding-left: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.screen-features li::before {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: all 0.3s ease;
+}
+
+.screen-features li:hover {
+    padding-left: 2rem;
+    color: var(--profile-color);
+}
+
+.screen-features li:hover::before {
+    transform: translateY(-50%) scale(1.2);
+}
+
+/* Estilos para funcionalidades faltantes mejorados */
+.missing-features {
+    position: relative;
+    overflow: hidden;
+}
+
+.missing-features::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #dc2626, #d97706, #059669);
+    border-radius: 12px 12px 0 0;
+}
+
+.missing-list li {
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.missing-list li:hover {
+    background: rgba(239, 68, 68, 0.05);
+    padding-left: 1.5rem;
+    border-radius: 6px;
+}
+
+/* Responsive mejorado */
+@media (max-width: 992px) {
+    .profile-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .screens-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+}
+
+@media (max-width: 576px) {
+    .profile-stats {
+        grid-template-columns: 1fr;
+    }
+    
+    .nav-pills {
+        flex-direction: column;
+    }
+    
+    .nav-pills .nav-link {
+        margin: 0.25rem 0;
+        text-align: center;
+    }
+    
+    .header h1 {
+        font-size: 1.8rem;
+    }
+    
+    .profile-header h2 {
+        font-size: 1.5rem;
+    }
+}
+
+/* Efectos de transición suaves para cambio de perfiles */
+.profile-section {
+    opacity: 0;
+    transform: translateX(20px);
+    transition: all 0.4s ease;
+}
+
+.profile-section.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Mejoras en la accesibilidad */
+.screen-card:focus {
+    outline: 2px solid var(--profile-color);
+    outline-offset: 2px;
+}
+
+.nav-link:focus {
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.3);
+}
+
+/* Indicadores de carga */
+.loading {
+    position: relative;
+}
+
+.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #f3f3f3;
+    border-top: 2px solid var(--profile-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    transform: translate(-50%, -50%);
+}
+
+@keyframes spin {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* Tooltips personalizados */
+[data-tooltip] {
+    position: relative;
+    cursor: help;
+}
+
+[data-tooltip]:hover::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.9);
+    color: white;
+    padding: 0.5rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    white-space: nowrap;
+    z-index: 1000;
+    animation: fadeIn 0.3s ease;
+}
+
+[data-tooltip]:hover::before {
+    content: '';
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(100%);
+    border: 5px solid transparent;
+    border-top-color: rgba(0, 0, 0, 0.9);
+    z-index: 1000;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Estilos para impresión */
+@media print {
+    .navigation,
+    .missing-features {
+        display: none;
+    }
+    
+    .profile-section {
+        display: block !important;
+        page-break-after: always;
+    }
+    
+    .screen-card {
+        break-inside: avoid;
+        margin-bottom: 1rem;
+    }
+    
+    .main-container {
+        box-shadow: none;
+        margin: 0;
+    }
+}
+
+/* Modo oscuro (opcional) */
+@media (prefers-color-scheme: dark) {
+    .main-container {
+        background: #1a1a1a;
+        color: #e5e5e5;
+    }
+    
+    .screen-card {
+        background: #2a2a2a;
+        border-color: #404040;
+    }
+    
+    .screen-preview {
+        background: linear-gradient(135deg, #2a2a2a 0%, #404040 100%);
+    }
+    
+    .screen-path {
+        background: #404040;
+        color: #e5e5e5;
+    }
+}

@@ -51,7 +51,8 @@ STYLOFITNESS.initMegaCarousel = function() {
     // Función para mover a un slide específico
     const moveToSlide = (index) => {
         currentSlide = index;
-        const translateX = -index * 100;
+        // Para 5 productos: cada movimiento es 20% (100% / 5)
+        const translateX = -index * 20;
         track.style.transform = `translateX(${translateX}%)`;
         
         // Actualizar clases activas
@@ -69,18 +70,21 @@ STYLOFITNESS.initMegaCarousel = function() {
         }
         
         // Actualizar contadores de tiempo
-        this.updateCountdownTimers();
+        if (this.updateCountdownTimers) {
+            this.updateCountdownTimers();
+        }
     };
     
     // Función para ir al siguiente slide
     const nextSlide = () => {
-        const nextIndex = (currentSlide + 1) % totalSlides;
+        // Para 5 productos: navegar de 0 a 4
+        const nextIndex = currentSlide >= totalSlides - 1 ? 0 : currentSlide + 1;
         moveToSlide(nextIndex);
     };
     
     // Función para ir al slide anterior
     const prevSlide = () => {
-        const prevIndex = (currentSlide - 1 + totalSlides) % totalSlides;
+        const prevIndex = currentSlide <= 0 ? totalSlides - 1 : currentSlide - 1;
         moveToSlide(prevIndex);
     };
     

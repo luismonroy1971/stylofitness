@@ -93,6 +93,19 @@ class User
     }
 
     /**
+     * Buscar usuario por email o username (para login flexible)
+     */
+    public function findByEmailOrUsername($identifier)
+    {
+        $sql = "SELECT u.*, g.name as gym_name 
+                FROM {$this->table} u 
+                LEFT JOIN gyms g ON u.gym_id = g.id 
+                WHERE u.email = ? OR u.username = ?";
+
+        return $this->db->fetch($sql, [$identifier, $identifier]);
+    }
+
+    /**
      * Verificar si existe el email
      */
     public function emailExists($email, $excludeId = null)

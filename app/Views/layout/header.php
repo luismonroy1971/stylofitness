@@ -58,6 +58,9 @@
     <!-- Correcciones del Carrusel -->
     <link rel="stylesheet" href="<?php echo AppHelper::asset('css/carousel-fixes.css'); ?>?v=<?php echo time(); ?>">
     
+    <!-- Estilos del Carrusel de Landing -->
+    <link rel="stylesheet" href="<?php echo AppHelper::asset('css/landing-carousel.css'); ?>?v=<?php echo time(); ?>">
+    
     <!-- Correcciones de Contraste y Visibilidad -->
     <link rel="stylesheet" href="<?php echo AppHelper::asset('css/contrast-fixes.css'); ?>?v=<?php echo time(); ?>">
     
@@ -76,6 +79,98 @@
             --accent-color: <?php echo defined('THEME_COLORS') ? THEME_COLORS['accent'] : '#FFB366'; ?>;
             --dark-bg: <?php echo defined('THEME_COLORS') ? THEME_COLORS['dark'] : '#2C2C2C'; ?>;
             --light-bg: <?php echo defined('THEME_COLORS') ? THEME_COLORS['light'] : '#F8F9FA'; ?>;
+        }
+        
+        /* Estilos críticos para el carrusel */
+        .hero-carousel-section {
+            visibility: visible !important;
+            opacity: 1 !important;
+            display: block !important;
+        }
+        
+        .hero-carousel {
+            position: relative !important;
+            overflow: hidden !important;
+            width: 100% !important;
+            height: auto !important;
+            min-height: 300px !important;
+        }
+        
+        .carousel-track {
+            display: flex !important;
+            width: 500% !important;
+            height: auto !important;
+            transition: transform 0.6s ease !important;
+        }
+        
+        .mega-slide {
+            min-width: 20% !important;
+            flex: 0 0 20% !important;
+            height: auto !important;
+            min-height: 280px !important;
+            position: relative !important;
+            display: flex !important;
+            align-items: center !important;
+        }
+        
+        .mega-slide.active {
+            opacity: 1 !important;
+            transform: scale(1) !important;
+        }
+        
+        .carousel-controls {
+            position: absolute !important;
+            bottom: 20px !important;
+            left: 50% !important;
+            transform: translateX(-50%) !important;
+            display: flex !important;
+            gap: 10px !important;
+            z-index: 10 !important;
+        }
+        
+        .mega-dot {
+            width: 12px !important;
+            height: 12px !important;
+            border-radius: 50% !important;
+            background: rgba(255, 255, 255, 0.5) !important;
+            cursor: pointer !important;
+            transition: all 0.3s ease !important;
+        }
+        
+        .mega-dot.active {
+            background: #fff !important;
+            transform: scale(1.2) !important;
+        }
+        
+        .carousel-nav {
+            position: absolute !important;
+            top: 50% !important;
+            transform: translateY(-50%) !important;
+            background: rgba(0, 0, 0, 0.5) !important;
+            color: white !important;
+            border: none !important;
+            width: 50px !important;
+            height: 50px !important;
+            border-radius: 50% !important;
+            cursor: pointer !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            z-index: 10 !important;
+            transition: all 0.3s ease !important;
+        }
+        
+        .carousel-nav:hover {
+            background: rgba(0, 0, 0, 0.8) !important;
+            transform: translateY(-50%) scale(1.1) !important;
+        }
+        
+        .mega-prev {
+            left: 20px !important;
+        }
+        
+        .mega-next {
+            right: 20px !important;
         }
         
         /* ESTILOS INMEDIATOS - FORZAR CAMBIOS */

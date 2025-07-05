@@ -39,12 +39,21 @@ class AuthController
 
     public function register()
     {
-        if (AppHelper::isLoggedIn()) {
+        // Verificar que el usuario esté logueado y sea staff o admin
+        if (!AppHelper::isLoggedIn()) {
+            AppHelper::setFlashMessage('error', 'Debes iniciar sesión para acceder a esta página');
+            AppHelper::redirect('/login');
+            return;
+        }
+
+        $currentUser = AppHelper::getCurrentUser();
+        if (!in_array($currentUser['role'], ['admin', 'instructor', 'staff'])) {
+            AppHelper::setFlashMessage('error', 'No tienes permisos para registrar nuevos usuarios');
             AppHelper::redirect('/dashboard');
             return;
         }
 
-        $pageTitle = 'Registrarse - STYLOFITNESS';
+        $pageTitle = 'Registrar Usuario - STYLOFITNESS';
         include APP_PATH . '/Views/layout/header.php';
         include APP_PATH . '/Views/auth/register.php';
         include APP_PATH . '/Views/layout/footer.php';
@@ -57,19 +66,19 @@ class AuthController
             return;
         }
 
-        $email = AppHelper::sanitize($_POST['email'] ?? '');
+        $identifier = AppHelper::sanitize($_POST['email'] ?? ''); // Puede ser email, username o DNI
         $password = $_POST['password'] ?? '';
         $remember = isset($_POST['remember']);
 
         // Validación básica
-        if (empty($email) || empty($password)) {
-            AppHelper::setFlashMessage('error', 'Email y contraseña son obligatorios');
+        if (empty($identifier) || empty($password)) {
+            AppHelper::setFlashMessage('error', 'Usuario/Email y contraseña son obligatorios');
             AppHelper::redirect('/login');
             return;
         }
 
-        // Verificar credenciales
-        $user = $this->userModel->findByEmail($email);
+        // Verificar credenciales (buscar por email o username)
+        $user = $this->userModel->findByEmailOrUsername($identifier);
 
         if ($user && password_verify($password, $user['password'])) {
             if (!$user['is_active']) {
@@ -104,14 +113,28 @@ class AuthController
     public function store()
     {
         if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-            AppHelper::redirect('/register');
+            AppHelper::redirect('/admin/register');
+            return;
+        }
+
+        // Verificar que el usuario esté logueado y sea staff o admin
+        if (!AppHelper::isLoggedIn()) {
+            AppHelper::setFlashMessage('error', 'Debes iniciar sesión para realizar esta acción');
+            AppHelper::redirect('/login');
+            return;
+        }
+
+        $currentUser = AppHelper::getCurrentUser();
+        if (!in_array($currentUser['role'], ['admin', 'instructor', 'staff'])) {
+            AppHelper::setFlashMessage('error', 'No tienes permisos para registrar nuevos usuarios');
+            AppHelper::redirect('/dashboard');
             return;
         }
 
         // Validar token CSRF
         if (!AppHelper::validateCsrfToken($_POST['csrf_token'] ?? '')) {
             AppHelper::setFlashMessage('error', 'Token de seguridad inválido');
-            AppHelper::redirect('/register');
+            AppHelper::redirect('/admin/register');
             return;
         }
 
@@ -132,14 +155,14 @@ class AuthController
         if (!empty($errors)) {
             $_SESSION['registration_errors'] = $errors;
             $_SESSION['registration_data'] = $data;
-            AppHelper::redirect('/register');
+            AppHelper::redirect('/admin/register');
             return;
         }
 
         // Verificar si el email ya existe
         if ($this->userModel->emailExists($data['email'])) {
             AppHelper::setFlashMessage('error', 'Este email ya está registrado');
-            AppHelper::redirect('/register');
+            AppHelper::redirect('/admin/register');
             return;
         }
 
@@ -153,15 +176,12 @@ class AuthController
             // Enviar email de bienvenida
             $this->sendWelcomeEmail($data);
 
-            // Iniciar sesión automáticamente
-            $user = $this->userModel->findById($userId);
-            $this->createSession($user);
-
-            AppHelper::setFlashMessage('success', '¡Cuenta creada exitosamente! Bienvenido a STYLOFITNESS');
-            AppHelper::redirect('/dashboard');
+            // No iniciar sesión automáticamente cuando es creado por staff/admin
+            AppHelper::setFlashMessage('success', '¡Usuario creado exitosamente!');
+            AppHelper::redirect('/admin/register');
         } else {
             AppHelper::setFlashMessage('error', 'Error al crear la cuenta. Inténtalo de nuevo.');
-            AppHelper::redirect('/register');
+            AppHelper::redirect('/admin/register');
         }
     }
 

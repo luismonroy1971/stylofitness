@@ -690,10 +690,10 @@
 
                 <form class="auth-form" id="login-form">
                     <div class="form-group">
-                        <label for="email" class="form-label">Email</label>
+                        <label for="email" class="form-label">Usuario / Email / DNI</label>
                         <div class="form-input-wrapper">
-                            <input type="email" id="email" name="email" class="form-input" placeholder="tu@email.com" required>
-                            <i class="fas fa-envelope form-icon"></i>
+                            <input type="text" id="email" name="email" class="form-input" placeholder="usuario, email o DNI" required>
+                            <i class="fas fa-user form-icon"></i>
                         </div>
                     </div>
 
@@ -738,7 +738,7 @@
                 </div>
 
                 <div class="form-footer">
-                    <p>¿No tienes una cuenta? <a href="/register">Regístrate gratis</a></p>
+                    <p>¿Necesitas ayuda? Contacta al administrador</p>
                 </div>
             </div>
         </div>

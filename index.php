@@ -212,13 +212,20 @@ $router->get('/dashboard', 'HomeController@dashboard');
 
 $router->get('/login', 'AuthController@login');
 $router->post('/login', 'AuthController@authenticate');
-$router->get('/register', 'AuthController@register');
-$router->post('/register', 'AuthController@store');
 $router->get('/logout', 'AuthController@logout');
 $router->get('/forgot-password', 'AuthController@forgotPassword');
 $router->post('/forgot-password', 'AuthController@sendResetLink');
 $router->get('/reset-password/{token}', 'AuthController@resetPassword');
 $router->post('/reset-password', 'AuthController@updatePassword');
+
+// ==========================================
+// RUTAS DE REGISTRO (SOLO STAFF/ADMIN)
+// ==========================================
+
+$router->get('/admin/register', 'AuthController@register');
+$router->post('/admin/register', 'AuthController@store');
+$router->get('/staff/register', 'AuthController@register');
+$router->post('/staff/register', 'AuthController@store');
 
 // ==========================================
 // RUTAS DE RUTINAS
@@ -292,6 +299,38 @@ $router->post('/trainer/templates/duplicate/{id}', 'RoutineTemplateController@du
 $router->get('/trainer/templates/export/{id}', 'RoutineTemplateController@export');
 
 // ==========================================
+// RUTAS DE SEGUIMIENTO DE PROGRESO (TRAINER)
+// ==========================================
+
+// Dashboard de progreso
+$router->get('/trainer/progress', 'TrainerProgressController@index');
+$router->get('/trainer/progress/dashboard', 'TrainerProgressController@dashboard');
+
+// Progreso de clientes individuales
+$router->get('/trainer/progress/client/{id}', 'TrainerProgressController@clientProgress');
+$router->get('/trainer/progress/client/{id}/details', 'TrainerProgressController@clientDetails');
+$router->post('/trainer/progress/client/{id}/notes', 'TrainerProgressController@saveClientNotes');
+
+// Comparación de clientes
+$router->get('/trainer/progress/compare', 'TrainerProgressController@compare');
+$router->post('/trainer/progress/compare/data', 'TrainerProgressController@getComparisonData');
+
+// Reportes de progreso
+$router->get('/trainer/progress/reports', 'TrainerProgressController@reports');
+$router->post('/trainer/progress/reports/generate', 'TrainerProgressController@generateReport');
+$router->post('/trainer/progress/reports/preview', 'TrainerProgressController@previewReport');
+$router->post('/trainer/progress/reports/schedule', 'TrainerProgressController@scheduleReport');
+$router->get('/trainer/progress/reports/{id}/duplicate', 'TrainerProgressController@duplicateReport');
+$router->post('/trainer/progress/reports/{id}/share', 'TrainerProgressController@shareReport');
+$router->delete('/trainer/progress/reports/{id}', 'TrainerProgressController@deleteReport');
+
+// Plantillas de reportes
+$router->get('/trainer/progress/templates', 'TrainerProgressController@reportTemplates');
+$router->post('/trainer/progress/templates', 'TrainerProgressController@saveReportTemplate');
+$router->get('/trainer/progress/templates/{id}', 'TrainerProgressController@loadReportTemplate');
+$router->delete('/trainer/progress/templates/{id}', 'TrainerProgressController@deleteReportTemplate');
+
+// ==========================================
 // RUTAS DE TIENDA
 // ==========================================
 
@@ -335,10 +374,11 @@ $router->get('/my-classes', 'GroupClassController@myClasses');
 
 $router->get('/profile', 'UserController@profile');
 $router->post('/profile/update', 'UserController@updateProfile');
-$router->post('/profile/password', 'UserController@updatePassword');
-$router->post('/profile/avatar', 'UserController@updateAvatar');
+$router->post('/profile/update-password', 'UserController@updatePassword');
+$router->post('/profile/update-avatar', 'UserController@updateAvatar');
+$router->get('/my-progress', 'TrainerProgressController@clientProgress');
+$router->get('/progress', 'TrainerProgressController@clientProgress');
 $router->get('/my-routines', 'UserController@myRoutines');
-$router->get('/my-progress', 'UserController@myProgress');
 $router->get('/my-orders', 'UserController@myOrders');
 
 // ==========================================
@@ -431,6 +471,19 @@ $router->get('/api/instructor/clients', 'RoutineTemplateController@getInstructor
 
 // API de plantillas
 $router->get('/api/templates/usage-stats/{id}', 'RoutineTemplateController@getUsageStats');
+
+// API de seguimiento de progreso
+$router->get('/api/trainer/progress/dashboard', 'TrainerProgressController@getDashboardData');
+$router->get('/api/trainer/progress/client/{id}', 'TrainerProgressController@getClientProgressData');
+$router->get('/api/trainer/progress/client/{id}/workouts', 'TrainerProgressController@getClientWorkouts');
+$router->get('/api/trainer/progress/client/{id}/stats', 'TrainerProgressController@getClientStats');
+$router->get('/api/trainer/progress/client/{id}/charts', 'TrainerProgressController@getClientCharts');
+$router->get('/api/trainer/progress/alerts', 'TrainerProgressController@getProgressAlerts');
+$router->get('/api/trainer/progress/compare/clients', 'TrainerProgressController@getClientsForComparison');
+$router->post('/api/trainer/progress/export', 'TrainerProgressController@exportProgressData');
+$router->get('/api/trainer/reports/recent', 'TrainerProgressController@getRecentReports');
+$router->post('/api/trainer/workout-logs', 'TrainerProgressController@logWorkout');
+$router->get('/api/trainer/workout-logs/{clientId}', 'TrainerProgressController@getWorkoutLogs');
 
 // API de productos
 $router->get('/api/products', 'ApiController@products');

@@ -386,7 +386,7 @@ $difficultyLabels = [
                                 <div class="product-image">
                                     <?php if (!empty($product['images'])): ?>
                                         <?php $images = json_decode($product['images'], true); ?>
-                                        <img src="<?= \StyleFitness\Helpers\AppHelper::uploadUrl('images/products/' . $images[0]) ?>" alt="<?= htmlspecialchars($product['name']) ?>">
+                                        <img src="<?= \StyleFitness\Helpers\AppHelper::uploadUrl('uploads/images/categories/products/' . $images[0]) ?>" alt="<?= htmlspecialchars($product['name']) ?>">
                                     <?php else: ?>
                                         <div class="product-placeholder">
                                             <i class="fas fa-supplement"></i>

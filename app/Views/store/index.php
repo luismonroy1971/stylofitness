@@ -81,7 +81,7 @@
                         
                         // Buscar imagen usando el mapeo
                         if (isset($imageMapping[$categorySlug])) {
-                            $uploadImagePath = 'uploads/images/categories/' . $imageMapping[$categorySlug];
+                            $uploadImagePath = 'public/uploads/images/categories/' . $imageMapping[$categorySlug];
                             $uploadFullPath = __DIR__ . '/../../../public/' . $uploadImagePath;
                             if (file_exists($uploadFullPath)) {
                                 $hasImage = true;
@@ -93,7 +93,7 @@
                         if (!$hasImage) {
                             $uploadImageExtensions = ['jpg', 'jpeg', 'png', 'webp'];
                             foreach ($uploadImageExtensions as $ext) {
-                                $uploadImagePath = 'uploads/images/categories/' . $categorySlug . '.' . $ext;
+                                $uploadImagePath = 'public/uploads/images/categories/' . $categorySlug . '.' . $ext;
                                 $uploadFullPath = __DIR__ . '/../../../public/' . $uploadImagePath;
                                 if (file_exists($uploadFullPath)) {
                                     $hasImage = true;
@@ -105,7 +105,7 @@
                         
                         // Si no se encuentra, buscar SVG en images/categories
                         if (!$hasImage) {
-                            $svgPath = 'images/categories/' . $categorySlug . '.svg';
+                            $svgPath = 'public/images/categories/' . $categorySlug . '.svg';
                             $svgFullPath = __DIR__ . '/../../../public/' . $svgPath;
                             if (file_exists($svgFullPath)) {
                                 $hasImage = true;

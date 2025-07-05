@@ -482,6 +482,36 @@ class Exercise
     }
 
     /**
+     * Obtener ID de ejercicio por nombre
+     */
+    public function getExerciseIdByName($name)
+    {
+        $sql = "SELECT id FROM {$this->table} WHERE name = ? AND is_active = 1 LIMIT 1";
+        $result = $this->db->fetch($sql, [$name]);
+        return $result ? $result['id'] : null;
+    }
+
+    /**
+     * Buscar ejercicio por nombre
+     */
+    public function findByName($name)
+    {
+        $sql = "SELECT e.*, ec.name as category_name, ec.color as category_color 
+                FROM {$this->table} e 
+                LEFT JOIN exercise_categories ec ON e.category_id = ec.id 
+                WHERE e.name = ? AND e.is_active = 1 LIMIT 1";
+
+        $exercise = $this->db->fetch($sql, [$name]);
+
+        if ($exercise) {
+            $exercise['muscle_groups'] = json_decode($exercise['muscle_groups'], true) ?: [];
+            $exercise['tags'] = json_decode($exercise['tags'], true) ?: [];
+        }
+
+        return $exercise;
+    }
+
+    /**
      * Obtener estadísticas de ejercicios
      */
     public function getExerciseStats()

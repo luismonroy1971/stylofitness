@@ -954,4 +954,30 @@ class Routine
 
         return $stats;
     }
+
+    /**
+     * Obtener rutinas activas de un cliente
+     */
+    public function getClientActiveRoutines($clientId)
+    {
+        $sql = "SELECT r.*, 
+                       i.first_name as instructor_first_name, 
+                       i.last_name as instructor_last_name,
+                       COUNT(re.id) as exercise_count,
+                       (
+                           SELECT COUNT(DISTINCT DATE(wl.workout_date))
+                           FROM workout_logs wl 
+                           WHERE wl.routine_id = r.id 
+                           AND wl.user_id = r.client_id
+                           AND wl.workout_date >= DATE_SUB(CURDATE(), INTERVAL 30 DAY)
+                       ) as recent_workouts
+                FROM {$this->table} r 
+                LEFT JOIN users i ON r.instructor_id = i.id 
+                LEFT JOIN routine_exercises re ON r.id = re.routine_id
+                WHERE r.client_id = ? AND r.is_active = 1
+                GROUP BY r.id 
+                ORDER BY r.created_at DESC";
+
+        return $this->db->fetchAll($sql, [$clientId]);
+    }
 }
