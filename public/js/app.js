@@ -10,7 +10,7 @@ const STYLOFITNESS = {
     config: {
         apiUrl: '/api',
         animationDuration: 300,
-        carouselInterval: 12000,
+        carouselInterval: 5000,
         scrollOffset: 100
     },
     
@@ -46,7 +46,7 @@ STYLOFITNESS.initMegaCarousel = function() {
     const totalSlides = slides.length;
     let autoplayInterval;
     let progressInterval;
-    const slideInterval = 12000; // 12 segundos por slide
+    const slideInterval = 5000; // 10 segundos por slide
     
     // Función para mover a un slide específico
     const moveToSlide = (index) => {
