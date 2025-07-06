@@ -1346,15 +1346,27 @@ STYLOFITNESS.initLoadingScreen = function() {
     const loadingScreen = document.getElementById('loading-screen');
     
     if (loadingScreen) {
-        // Ocultar loading screen cuando la página esté lista
-        window.addEventListener('load', () => {
+        // Función para ocultar el loading screen
+        const hideLoadingScreen = () => {
+            loadingScreen.style.opacity = '0';
             setTimeout(() => {
-                loadingScreen.style.opacity = '0';
-                setTimeout(() => {
-                    loadingScreen.style.display = 'none';
-                }, 500);
-            }, 1000);
-        });
+                loadingScreen.style.display = 'none';
+            }, 500);
+        };
+        
+        // Ocultar loading screen cuando la página esté lista
+        if (document.readyState === 'complete') {
+            // Si la página ya está cargada, ocultar inmediatamente
+            setTimeout(hideLoadingScreen, 500);
+        } else {
+            // Escuchar el evento load
+            window.addEventListener('load', () => {
+                setTimeout(hideLoadingScreen, 500);
+            });
+            
+            // Fallback: ocultar después de 3 segundos máximo
+            setTimeout(hideLoadingScreen, 3000);
+        }
     }
 };
 

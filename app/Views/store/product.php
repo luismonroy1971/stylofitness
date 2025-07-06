@@ -11,9 +11,14 @@ if (!isset($product) || empty($product)) {
 // Obtener imágenes del producto
 $productImages = [];
 if (!empty($product['images'])) {
-    $images = json_decode($product['images'], true);
-    if (is_array($images)) {
-        $productImages = $images;
+    // Verificar si ya es un array o si es un string JSON
+    if (is_array($product['images'])) {
+        $productImages = $product['images'];
+    } elseif (is_string($product['images'])) {
+        $images = json_decode($product['images'], true);
+        if (is_array($images)) {
+            $productImages = $images;
+        }
     }
 }
 
@@ -191,9 +196,14 @@ $finalPrice = $hasDiscount ? $product['sale_price'] : $product['price'];
                             <?php
                             $relatedImages = [];
                             if (!empty($relatedProduct['images'])) {
-                                $images = json_decode($relatedProduct['images'], true);
-                                if (is_array($images)) {
-                                    $relatedImages = $images;
+                                // Verificar si ya es un array o si es un string JSON
+                                if (is_array($relatedProduct['images'])) {
+                                    $relatedImages = $relatedProduct['images'];
+                                } elseif (is_string($relatedProduct['images'])) {
+                                    $images = json_decode($relatedProduct['images'], true);
+                                    if (is_array($images)) {
+                                        $relatedImages = $images;
+                                    }
                                 }
                             }
                             $relatedImageSrc = !empty($relatedImages) ? $relatedImages[0] : '/images/placeholder.jpg';
@@ -224,6 +234,105 @@ $finalPrice = $hasDiscount ? $product['sale_price'] : $product['price'];
 </div>
 
 <script>
+// CRÍTICO: Forzar ocultación inmediata del loading screen
+(function() {
+    function hideLoadingScreen() {
+        // Buscar por ID y por clase para máxima compatibilidad
+        const loadingScreenById = document.getElementById('loading-screen');
+        const loadingScreenByClass = document.querySelector('.loading-screen');
+        const loadingScreen = loadingScreenById || loadingScreenByClass;
+        
+        if (loadingScreen) {
+            console.log('🚀 Ocultando loading screen desde product.php');
+            
+            // Forzar ocultación inmediata sin transición
+            loadingScreen.style.transition = 'none';
+            loadingScreen.style.opacity = '0';
+            loadingScreen.style.visibility = 'hidden';
+            loadingScreen.style.pointerEvents = 'none';
+            loadingScreen.style.zIndex = '-9999';
+            
+            // Eliminar completamente después de un breve delay
+            setTimeout(() => {
+                if (loadingScreen.parentNode) {
+                    loadingScreen.style.display = 'none';
+                    loadingScreen.remove();
+                    console.log('✅ Loading screen eliminado completamente');
+                }
+            }, 50);
+            
+            return true;
+        }
+        return false;
+    }
+    
+    // Ejecutar inmediatamente
+    hideLoadingScreen();
+    
+    // Ejecutar cuando el DOM esté listo
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', hideLoadingScreen);
+    }
+    
+    // Múltiples fallbacks agresivos
+    setTimeout(hideLoadingScreen, 1);
+    setTimeout(hideLoadingScreen, 10);
+    setTimeout(hideLoadingScreen, 50);
+    setTimeout(hideLoadingScreen, 100);
+    setTimeout(hideLoadingScreen, 200);
+    setTimeout(hideLoadingScreen, 500);
+    
+    // Fallback cuando la ventana se carga
+    window.addEventListener('load', hideLoadingScreen);
+    
+    // Observer para detectar cambios en el DOM
+    const observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+            if (mutation.type === 'childList' || mutation.type === 'attributes') {
+                const loadingScreen = document.getElementById('loading-screen') || document.querySelector('.loading-screen');
+                if (loadingScreen && loadingScreen.style.display !== 'none') {
+                    console.log('🔍 Loading screen detectado por observer, forzando ocultación...');
+                    hideLoadingScreen();
+                }
+            }
+        });
+    });
+    
+    // Iniciar observer
+    if (document.body) {
+        observer.observe(document.body, { 
+            childList: true, 
+            subtree: true, 
+            attributes: true, 
+            attributeFilter: ['style', 'class'] 
+        });
+    } else {
+        document.addEventListener('DOMContentLoaded', function() {
+            observer.observe(document.body, { 
+                childList: true, 
+                subtree: true, 
+                attributes: true, 
+                attributeFilter: ['style', 'class'] 
+            });
+        });
+    }
+    
+    // Fallback final con setInterval para casos extremos
+    let attempts = 0;
+    const maxAttempts = 20;
+    const forceHideInterval = setInterval(() => {
+        attempts++;
+        const success = hideLoadingScreen();
+        
+        if (success || attempts >= maxAttempts) {
+            clearInterval(forceHideInterval);
+            if (attempts >= maxAttempts) {
+                console.log('⚠️ Máximo de intentos alcanzado para ocultar loading screen');
+            }
+        }
+    }, 100);
+})();
+
 function changeMainImage(imageSrc, thumbnail) {
     document.getElementById('mainProductImage').src = imageSrc;
     

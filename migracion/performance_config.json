@@ -1,0 +1,16 @@
+{
+    "database_optimizations": [
+        "CREATE INDEX IF NOT EXISTS idx_products_name ON products(name)",
+        "CREATE INDEX IF NOT EXISTS idx_products_slug ON products(slug)",
+        "CREATE INDEX IF NOT EXISTS idx_products_category ON products(category_id)",
+        "CREATE INDEX IF NOT EXISTS idx_categories_name ON product_categories(name)"
+    ],
+    "memory_limits": {
+        "php_memory_limit": "512M",
+        "max_execution_time": 300
+    },
+    "batch_processing": {
+        "recommended_batch_size": 50,
+        "image_processing_batch": 10
+    }
+}

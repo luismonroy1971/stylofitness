@@ -1433,16 +1433,7 @@ use StyleFitness\Helpers\AppHelper;
     <!-- Inicialización final -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Ocultar loading screen
-            const loadingScreen = document.getElementById('loading-screen');
-            if (loadingScreen) {
-                setTimeout(() => {
-                    loadingScreen.style.opacity = '0';
-                    setTimeout(() => {
-                        loadingScreen.style.display = 'none';
-                    }, 300);
-                }, 1000);
-            }
+            // El loading screen se maneja en app.js para evitar duplicación
             
             // Inicializar AOS
             if (typeof AOS !== 'undefined') {

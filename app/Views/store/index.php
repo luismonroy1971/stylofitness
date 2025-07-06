@@ -1,5 +1,6 @@
 <?php use StyleFitness\Helpers\AppHelper; ?>
 <!-- Hero Section Premium de Tienda -->
+<?php if (empty($categoryId)): ?>
 <section class="store-hero-premium">
     <div class="hero-background">
         <div class="hero-particles"></div>
@@ -100,8 +101,10 @@
         </div>
     </div>
 </section>
+<?php endif; ?>
 
 <!-- Categorías Premium -->
+<?php if (empty($categoryId)): ?>
 <section class="categories-premium-section">
     <div class="container">
         <div class="section-header-premium" data-aos="fade-up">
@@ -185,6 +188,7 @@
         </div>
     </div>
 </section>
+<?php endif; ?>
 
 <!-- Filtros Avanzados -->
 <section class="filters-premium-section">
@@ -342,7 +346,7 @@
                 <div class="pagination-wrapper-premium">
                     <nav class="pagination-premium" aria-label="Navegación de productos">
                         <?php if ($pagination['has_previous']): ?>
-                            <a href="<?php echo $this->buildPaginationUrl($pagination['previous_page']); ?>" 
+                            <a href="<?php echo $buildPaginationUrl($pagination['previous_page']); ?>" 
                                class="pagination-btn-premium prev-btn">
                                 <i class="fas fa-chevron-left"></i>
                                 <span>Anterior</span>
@@ -355,14 +359,14 @@
                             $end = min($pagination['total_pages'], $pagination['current_page'] + 2);
                             
                             if ($start > 1): ?>
-                                <a href="<?php echo $this->buildPaginationUrl(1); ?>" class="pagination-number-premium">1</a>
+                                <a href="<?php echo $buildPaginationUrl(1); ?>" class="pagination-number-premium">1</a>
                                 <?php if ($start > 2): ?>
                                     <span class="pagination-ellipsis-premium">...</span>
                                 <?php endif; ?>
                             <?php endif; ?>
                             
                             <?php for ($i = $start; $i <= $end; $i++): ?>
-                                <a href="<?php echo $this->buildPaginationUrl($i); ?>" 
+                                <a href="<?php echo $buildPaginationUrl($i); ?>" 
                                    class="pagination-number-premium <?php echo $i === $pagination['current_page'] ? 'active' : ''; ?>">
                                     <?php echo $i; ?>
                                 </a>
@@ -372,13 +376,13 @@
                                 <?php if ($end < $pagination['total_pages'] - 1): ?>
                                     <span class="pagination-ellipsis-premium">...</span>
                                 <?php endif; ?>
-                                <a href="<?php echo $this->buildPaginationUrl($pagination['total_pages']); ?>" 
+                                <a href="<?php echo $buildPaginationUrl($pagination['total_pages']); ?>" 
                                    class="pagination-number-premium"><?php echo $pagination['total_pages']; ?></a>
                             <?php endif; ?>
                         </div>
                         
                         <?php if ($pagination['has_next']): ?>
-                            <a href="<?php echo $this->buildPaginationUrl($pagination['next_page']); ?>" 
+                            <a href="<?php echo $buildPaginationUrl($pagination['next_page']); ?>" 
                                class="pagination-btn-premium next-btn">
                                 <span>Siguiente</span>
                                 <i class="fas fa-chevron-right"></i>
@@ -429,6 +433,7 @@
 </section>
 
 <!-- Newsletter Premium -->
+<?php if (empty($categoryId)): ?>
 <section class="newsletter-premium-section">
     <div class="newsletter-background">
         <div class="newsletter-particles"></div>
@@ -471,6 +476,7 @@
         </div>
     </div>
 </section>
+<?php endif; ?>
 
 <script>
 // JavaScript para efectos premium

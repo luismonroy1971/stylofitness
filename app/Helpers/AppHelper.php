@@ -204,6 +204,10 @@ class AppHelper
      */
     public static function uploadUrl($path = '')
     {
+        // Si el path ya incluye 'uploads/', no duplicar
+        if (strpos($path, '/uploads/') === 0 || strpos($path, 'uploads/') === 0) {
+            return self::getBaseUrl() . ltrim($path, '/');
+        }
         return self::getBaseUrl() . 'uploads/' . ltrim($path, '/');
     }
 

@@ -742,7 +742,7 @@ class AdminController
         }
 
         $uploadedImages = [];
-        $uploadDir = UPLOAD_PATH . '/products/';
+        $uploadDir = UPLOAD_PATH . '/images/products/';
 
         if (!is_dir($uploadDir)) {
             mkdir($uploadDir, 0755, true);
@@ -757,7 +757,7 @@ class AdminController
             $filePath = $uploadDir . $fileName;
 
             if (move_uploaded_file($images['tmp_name'][$i], $filePath)) {
-                $uploadedImages[] = 'images/products/' . $fileName;
+                $uploadedImages[] = '/uploads/images/products/' . $fileName;
             }
         }
 

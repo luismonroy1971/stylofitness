@@ -1,0 +1,73 @@
+/* Landing Carousel CSS - Archivo creado para evitar errores 404 */
+
+.landing-carousel {
+    position: relative;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+}
+
+.landing-carousel .carousel-track {
+    display: flex;
+    transition: transform 0.6s ease;
+}
+
+.landing-carousel .carousel-slide {
+    min-width: 100%;
+    flex: 0 0 100%;
+}
+
+.landing-carousel .carousel-controls {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 10;
+}
+
+.landing-carousel .carousel-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.landing-carousel .carousel-dot.active {
+    background: #fff;
+    transform: scale(1.2);
+}
+
+.landing-carousel .carousel-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    transition: all 0.3s ease;
+}
+
+.landing-carousel .carousel-nav:hover {
+    background: rgba(0, 0, 0, 0.8);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.landing-carousel .carousel-prev {
+    left: 20px;
+}
+
+.landing-carousel .carousel-next {
+    right: 20px;
+}

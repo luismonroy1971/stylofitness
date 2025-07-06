@@ -1,0 +1,72 @@
+{
+  "wordpress_database": {
+    "host": "localhost",
+    "database": "wordpress_db",
+    "username": "root",
+    "password": "",
+    "port": 3306,
+    "charset": "utf8mb4"
+  },
+  "stylofitness_database": {
+    "host": "localhost",
+    "database": "stylofitness_gym",
+    "username": "root",
+    "password": "",
+    "port": 3306,
+    "charset": "utf8mb4"
+  },
+  "migration_settings": {
+    "batch_size": 100,
+    "backup_before_migration": true,
+    "log_level": "INFO",
+    "dry_run": false,
+    "skip_existing": true,
+    "default_category_id": 1,
+    "default_stock_quantity": 100,
+    "image_migration": true
+  },
+  "image_settings": {
+    "wordpress_uploads_path": "C:/xampp/htdocs/wordpress/wp-content/uploads",
+    "stylofitness_uploads_path": "C:/trabajos/stylofitness/public/uploads/images",
+    "download_from_url": true,
+    "generate_thumbnails": true,
+    "thumbnail_sizes": {
+      "small": [150, 150],
+      "medium": [300, 300],
+      "large": [600, 600]
+    },
+    "max_file_size_mb": 10,
+    "allowed_extensions": ["jpg", "jpeg", "png", "gif", "webp"],
+    "image_quality": 85,
+    "preserve_original_names": false
+   },
+   "category_mapping": {
+    "18": "PROTEÍNAS WHEY",
+    "19": "GANADORES DE MASA",
+    "20": "PROTEINAS ISOLATADAS",
+    "21": "PRE ENTRENOS Y ÓXIDO NITRICO",
+    "22": "PRECURSOR DE LA TESTO",
+    "23": "MULTIVITAMINICO Colágenos OMEGAS",
+    "24": "QUEMADORES DE GRASA",
+    "25": "AMINOÁCIDOS Y BCAA",
+    "26": "CREATINAS Y GLUTAMINAS",
+    "27": "PROTECTOR HEPÁTICO"
+  },
+  "brand_keywords": [
+    "CARNIVOR",
+    "MUTANT",
+    "PROSTAR",
+    "NITROTECH",
+    "MUSCLETECH",
+    "DIMATIZE",
+    "RONNIE COLEMAN",
+    "LAB",
+    "ISOLATE",
+    "MASS",
+    "WHEY",
+    "GOLD STANDARD",
+    "OPTIMUM",
+    "BSN",
+    "DYMATIZE"
+  ]
+}

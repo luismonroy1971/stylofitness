@@ -59,8 +59,15 @@ class StoreController {
             'total_items' => $totalProducts,
             'per_page' => $perPage,
             'has_previous' => $page > 1,
-            'has_next' => $page < $totalPages
+            'has_next' => $page < $totalPages,
+            'previous_page' => $page - 1,
+            'next_page' => $page + 1
         ];
+        
+        // Función auxiliar para construir URLs de paginación
+        $buildPaginationUrl = function($pageNum) {
+            return $this->buildPaginationUrl($pageNum);
+        };
         
         // Si es una petición AJAX, devolver solo el contenido de productos
         if (isset($_GET['ajax']) && $_GET['ajax'] == '1') {
@@ -123,8 +130,15 @@ class StoreController {
             'total_items' => $totalProducts,
             'per_page' => $perPage,
             'has_previous' => $page > 1,
-            'has_next' => $page < $totalPages
+            'has_next' => $page < $totalPages,
+            'previous_page' => $page - 1,
+            'next_page' => $page + 1
         ];
+        
+        // Función auxiliar para construir URLs de paginación
+        $buildPaginationUrl = function($pageNum) {
+            return $this->buildPaginationUrl($pageNum);
+        };
         
         $pageTitle = $category['name'] . ' - Tienda STYLOFITNESS';
         $pageDescription = $category['meta_description'] ?: $category['description'];
