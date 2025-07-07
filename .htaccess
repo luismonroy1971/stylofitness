@@ -123,6 +123,21 @@ RewriteRule ^(.*)$ index.php [L,QSA]
         Header set Pragma "no-cache"
         Header set Expires 0
     </FilesMatch>
+    
+    # No cache específico para API de productos destacados
+    <If "%{REQUEST_URI} =~ m#/api/products/featured#">
+        Header set Cache-Control "no-cache, no-store, must-revalidate, max-age=0"
+        Header set Pragma "no-cache"
+        Header set Expires "Thu, 01 Jan 1970 00:00:00 GMT"
+        Header set Last-Modified "Thu, 01 Jan 1970 00:00:00 GMT"
+    </If>
+    
+    # No cache para páginas que muestran productos destacados
+    <If "%{REQUEST_URI} =~ m#/(home|store)#">
+        Header set Cache-Control "no-cache, no-store, must-revalidate, max-age=0"
+        Header set Pragma "no-cache"
+        Header set Expires "Thu, 01 Jan 1970 00:00:00 GMT"
+    </If>
 </IfModule>
 
 # ==========================================

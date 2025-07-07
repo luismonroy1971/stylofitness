@@ -93,7 +93,7 @@ $heroConfig = $heroData['config'];
                                             } elseif (!empty($product['description'])) {
                                                 $description = $product['description'];
                                             }
-                                            echo htmlspecialchars($description); 
+                                            echo AppHelper::safeDescription($description); 
                                             ?>
                                         </p>
                                         
@@ -667,7 +667,7 @@ $whyChooseUsItems = $servicesData['why_choose_us'];
                                 <?php echo htmlspecialchars($product['name'] ?? 'Producto'); ?>
                             </a>
                         </h3>
-                       <p class="product-description-enhanced"><?php echo htmlspecialchars($product['short_description'] ?? 'Descripción del producto'); ?></p>
+                       <p class="product-description-enhanced"><?php echo AppHelper::safeDescription($product['short_description'] ?? 'Descripción del producto'); ?></p>
                         
                         <div class="product-rating-enhanced">
                             <?php

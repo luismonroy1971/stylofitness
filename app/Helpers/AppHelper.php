@@ -943,6 +943,42 @@ class AppHelper
         // Incluir el footer
         include APP_PATH . '/Views/layout/footer.php';
     }
+
+    /**
+     * Limpiar y mostrar descripción de producto
+     * Decodifica entidades HTML y limpia caracteres especiales
+     */
+    public static function cleanDescription(string $description, int $maxLength = 0): string
+    {
+        if (empty($description)) {
+            return '';
+        }
+
+        // Decodificar entidades HTML como &amp; &lt; &gt;
+        $cleaned = html_entity_decode($description, ENT_QUOTES | ENT_HTML5, 'UTF-8');
+        
+        // Limpiar caracteres de control y espacios extra
+        $cleaned = preg_replace('/[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]/', '', $cleaned);
+        $cleaned = preg_replace('/\s+/', ' ', $cleaned);
+        $cleaned = trim($cleaned);
+        
+        // Truncar si se especifica longitud máxima
+        if ($maxLength > 0 && mb_strlen($cleaned) > $maxLength) {
+            $cleaned = mb_substr($cleaned, 0, $maxLength) . '...';
+        }
+        
+        return $cleaned;
+    }
+
+    /**
+     * Mostrar descripción segura para HTML
+     * Limpia la descripción y la escapa para mostrar en HTML
+     */
+    public static function safeDescription(string $description, int $maxLength = 0): string
+    {
+        $cleaned = self::cleanDescription($description, $maxLength);
+        return htmlspecialchars($cleaned, ENT_QUOTES | ENT_HTML5, 'UTF-8');
+    }
 }
 
 // Función global para obtener configuración (shortcut)

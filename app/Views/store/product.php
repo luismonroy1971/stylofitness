@@ -128,7 +128,7 @@ $finalPrice = $hasDiscount ? $salePrice : $normalPrice;
 
                 <div class="product-description">
                     <h3>Descripción</h3>
-                    <p><?= nl2br(htmlspecialchars($product['description'])) ?></p>
+                    <p><?= nl2br(AppHelper::safeDescription($product['description'])) ?></p>
                 </div>
 
                 <div class="product-details">
