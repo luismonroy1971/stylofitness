@@ -3451,8 +3451,8 @@ body {
    ============================================= */
 /* Efectos especiales simplificados para evitar distorsiones */
 .parallax {
-    /* transform: translateZ(0); */
-    /* will-change: transform; */
+    transform: translateZ(0);
+    will-change: transform;
 }
 
 .glass-effect {

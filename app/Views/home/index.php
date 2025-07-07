@@ -114,19 +114,20 @@ $heroConfig = $heroData['config'];
                                     <div class="product-visual-mega animate__animated animate__fadeInUp animate__delay-1s">
                                         <div class="mega-image-container">
                                             <?php 
-                                            $productImages = is_string($product['images']) ? json_decode($product['images'], true) : $product['images'];
-                                            if (!empty($productImages)) {
-                                                // Si la ruta ya incluye /uploads/, usar directamente con baseUrl
-                                                if (strpos($productImages[0], '/uploads/') === 0) {
-                                                    $mainImage = AppHelper::baseUrl($productImages[0]);
-                                                } else {
-                                                    // Si no incluye /uploads/, usar uploadUrl
-                                                    $mainImage = AppHelper::uploadUrl($productImages[0]);
-                                                }
-                                            } else {
-                                                $mainImage = AppHelper::asset('images/placeholder.jpg');
-                                            }
-                                            ?>
+                            $productImages = is_string($product['images']) ? json_decode($product['images'], true) : $product['images'];
+                            if (!empty($productImages) && is_array($productImages)) {
+                                $imagePath = $productImages[0];
+                                // Verificar si el archivo existe
+                                $fullPath = 'public' . $imagePath;
+                                if (file_exists($fullPath)) {
+                                    $mainImage = AppHelper::baseUrl(ltrim($imagePath, '/'));
+                                } else {
+                                    $mainImage = AppHelper::asset('images/placeholder.jpg');
+                                }
+                            } else {
+                                $mainImage = AppHelper::asset('images/placeholder.jpg');
+                            }
+                            ?>
                                             <img src="<?php echo $mainImage; ?>" 
                                                  alt="<?php echo htmlspecialchars($product['name'] ?? 'Producto'); ?>"
                                                  class="mega-product-image"

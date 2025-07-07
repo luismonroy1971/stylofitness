@@ -38,6 +38,9 @@ require_once APP_PATH . '/Config/RoutineConfig.php';
 require_once APP_PATH . '/Helpers/AppHelper.php';
 require_once APP_PATH . '/Helpers/RoutineHelper.php';
 
+// Usar las clases necesarias
+use StyleFitness\Config\Database;
+
 // Autoloader simple para clases
 spl_autoload_register(function ($class) {
     // Extraer solo el nombre de la clase del namespace completo
