@@ -23,6 +23,11 @@ class ApiController
 
     public function __construct()
     {
+        // Iniciar sesión si no está iniciada
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+        
         $this->db = Database::getInstance();
 
         // Configurar headers para API
@@ -454,8 +459,143 @@ class ApiController
     }
 
     // ==========================================
+    // ENDPOINTS DE CLASES
+    // ==========================================
+
+    public function classes()
+    {
+        $this->requireAuth();
+
+        $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+        $limit = isset($_GET['limit']) ? min((int)$_GET['limit'], 50) : 20;
+        $offset = ($page - 1) * $limit;
+
+        $filters = [
+            'search' => AppHelper::sanitize($_GET['search'] ?? ''),
+            'instructor_id' => isset($_GET['instructor_id']) ? (int)$_GET['instructor_id'] : null,
+            'is_active' => true,
+            'limit' => $limit,
+            'offset' => $offset,
+        ];
+
+        $classModel = new GroupClass();
+        $classes = $classModel->getClasses($filters);
+        $total = $classModel->countClasses($filters);
+
+        $this->jsonResponse([
+            'success' => true,
+            'data' => $classes,
+            'pagination' => [
+                'current_page' => $page,
+                'per_page' => $limit,
+                'total' => $total,
+                'total_pages' => ceil($total / $limit),
+            ],
+        ]);
+    }
+
+    public function upcomingClasses()
+    {
+        $this->requireAuth();
+
+        $limit = isset($_GET['limit']) ? min((int)$_GET['limit'], 20) : 10;
+        $days = isset($_GET['days']) ? min((int)$_GET['days'], 30) : 7;
+
+        $classModel = new GroupClass();
+        $upcomingClasses = $classModel->getUpcomingClasses($limit, $days);
+
+        $this->jsonResponse([
+            'success' => true,
+            'data' => $upcomingClasses,
+        ]);
+    }
+
+    public function getClass($id)
+    {
+        $this->requireAuth();
+
+        $classModel = new GroupClass();
+        $class = $classModel->findById($id);
+
+        if (!$class) {
+            $this->jsonResponse(['error' => 'Clase no encontrada'], 404);
+            return;
+        }
+
+        // Obtener horarios de la clase
+        $schedules = $classModel->getClassSchedules($id);
+        $class['schedules'] = $schedules;
+
+        // Obtener próximas sesiones
+        $class['next_sessions'] = $classModel->getNextSessions($id, 5);
+
+        $this->jsonResponse([
+            'success' => true,
+            'data' => $class,
+        ]);
+    }
+
+    public function getClassSchedule($id)
+    {
+        $this->requireAuth();
+
+        $classModel = new GroupClass();
+        $schedules = $classModel->getClassSchedules($id);
+
+        if (empty($schedules)) {
+            $this->jsonResponse(['error' => 'Horarios no encontrados'], 404);
+            return;
+        }
+
+        $this->jsonResponse([
+            'success' => true,
+            'data' => $schedules,
+        ]);
+    }
+
+    public function getScheduleAvailability()
+    {
+        $this->requireAuth();
+
+        $scheduleId = isset($_GET['schedule_id']) ? (int)$_GET['schedule_id'] : 0;
+        $date = AppHelper::sanitize($_GET['date'] ?? '');
+
+        if (!$scheduleId || !$date) {
+            $this->jsonResponse(['error' => 'Parámetros requeridos: schedule_id y date'], 400);
+            return;
+        }
+
+        $classModel = new GroupClass();
+        $schedule = $classModel->getScheduleById($scheduleId);
+        
+        if (!$schedule) {
+            $this->jsonResponse(['error' => 'Horario no encontrado'], 404);
+            return;
+        }
+
+        $class = $classModel->findById($schedule['class_id']);
+        $currentBookings = $classModel->countBookings($scheduleId, $date);
+        $availableSpots = $class['max_participants'] - $currentBookings;
+
+        $this->jsonResponse([
+            'success' => true,
+            'data' => [
+                'available_spots' => max(0, $availableSpots),
+                'max_participants' => $class['max_participants'],
+                'current_bookings' => $currentBookings,
+                'is_available' => $availableSpots > 0,
+            ],
+        ]);
+    }
+
+    // ==========================================
     // ENDPOINTS DE ESTADÍSTICAS
     // ==========================================
+
+    public function stats()
+    {
+        return $this->dashboardStats();
+    }
 
     public function dashboardStats()
     {
@@ -654,8 +794,175 @@ class ApiController
     }
 
     // ==========================================
+    // MÉTODOS DE AUTENTICACIÓN API
+    // ==========================================
+
+    public function login()
+    {
+        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+            $this->jsonResponse(['error' => 'Method not allowed'], 405);
+            return;
+        }
+
+        // Obtener datos del cuerpo de la petición
+        $input = $this->getJsonInput();
+        
+        // También soportar form-data
+        $email = $input['email'] ?? $_POST['email'] ?? '';
+        $password = $input['password'] ?? $_POST['password'] ?? '';
+        $remember = $input['remember'] ?? $_POST['remember'] ?? false;
+
+        // Validación básica
+        if (empty($email) || empty($password)) {
+            $this->jsonResponse([
+                'error' => 'Email and password are required',
+                'message' => 'Usuario/Email y contraseña son obligatorios'
+            ], 400);
+            return;
+        }
+
+        try {
+            // Log para depuración
+            error_log("API Login attempt for: " . $email);
+            
+            // Verificar credenciales
+            $userModel = new User();
+            $user = $userModel->findByEmailOrUsername($email);
+            
+            error_log("User found: " . ($user ? 'Yes' : 'No'));
+            if ($user) {
+                error_log("User active: " . ($user['is_active'] ? 'Yes' : 'No'));
+                error_log("Password verify: " . (password_verify($password, $user['password']) ? 'Yes' : 'No'));
+            }
+
+            if ($user && password_verify($password, $user['password'])) {
+                if (!$user['is_active']) {
+                    $this->jsonResponse([
+                        'error' => 'Account disabled',
+                        'message' => 'Tu cuenta está desactivada. Contacta al administrador.'
+                    ], 403);
+                    return;
+                }
+
+                // Crear sesión
+                $this->createApiSession($user);
+
+                // Registrar login
+                $this->logUserActivity($user['id'], 'api_login');
+
+                // Respuesta exitosa
+                $this->jsonResponse([
+                    'success' => true,
+                    'message' => '¡Bienvenido de vuelta!',
+                    'user' => [
+                        'id' => $user['id'],
+                        'username' => $user['username'],
+                        'email' => $user['email'],
+                        'first_name' => $user['first_name'],
+                        'last_name' => $user['last_name'],
+                        'role' => $user['role'],
+                        'gym_id' => $user['gym_id'],
+                        'profile_image' => $user['profile_image'],
+                        'membership_type' => $user['membership_type'],
+                        'membership_expires' => $user['membership_expires']
+                    ]
+                ]);
+
+            } else {
+                $this->jsonResponse([
+                    'error' => 'Invalid credentials',
+                    'message' => 'Credenciales incorrectas'
+                ], 401);
+            }
+
+        } catch (Exception $e) {
+            error_log('API Login error: ' . $e->getMessage());
+            $this->jsonResponse([
+                'error' => 'Internal server error',
+                'message' => 'Error interno del servidor'
+            ], 500);
+        }
+    }
+
+    public function logout()
+    {
+        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+            $this->jsonResponse(['error' => 'Method not allowed'], 405);
+            return;
+        }
+
+        try {
+            // Registrar logout si hay usuario logueado
+            if (AppHelper::isLoggedIn()) {
+                $user = AppHelper::getCurrentUser();
+                $this->logUserActivity($user['id'], 'api_logout');
+            }
+
+            // Destruir sesión
+            session_destroy();
+
+            $this->jsonResponse([
+                'success' => true,
+                'message' => 'Sesión cerrada correctamente'
+            ]);
+
+        } catch (Exception $e) {
+            error_log('API Logout error: ' . $e->getMessage());
+            $this->jsonResponse([
+                'error' => 'Internal server error',
+                'message' => 'Error interno del servidor'
+            ], 500);
+        }
+    }
+
+    // ==========================================
     // MÉTODOS AUXILIARES
     // ==========================================
+
+    private function createApiSession($user)
+    {
+        $_SESSION['user_id'] = $user['id'];
+        $_SESSION['user_data'] = [
+            'id' => $user['id'],
+            'username' => $user['username'],
+            'email' => $user['email'],
+            'first_name' => $user['first_name'],
+            'last_name' => $user['last_name'],
+            'role' => $user['role'],
+            'gym_id' => $user['gym_id'],
+            'profile_image' => $user['profile_image'],
+            'membership_type' => $user['membership_type'],
+            'membership_expires' => $user['membership_expires'],
+        ];
+        $_SESSION['login_time'] = time();
+
+        // Actualizar último login
+        try {
+            $this->db->query(
+                'UPDATE users SET last_login_at = NOW(), login_count = login_count + 1 WHERE id = ?',
+                [$user['id']]
+            );
+        } catch (Exception $e) {
+            error_log('Error updating login info: ' . $e->getMessage());
+        }
+    }
+
+    private function logUserActivity($userId, $action)
+    {
+        try {
+            $this->db->query(
+                'INSERT INTO user_activity_logs (user_id, action, ip_address, user_agent, created_at) VALUES (?, ?, ?, ?, NOW())',
+                [
+                    $userId,
+                    $action,
+                    $_SERVER['REMOTE_ADDR'] ?? 'unknown',
+                    $_SERVER['HTTP_USER_AGENT'] ?? 'unknown'
+                ]
+            );
+        } catch (Exception $e) {
+            error_log('Error logging user activity: ' . $e->getMessage());
+        }
+    }
 
     private function requireAuth($roles = null)
     {

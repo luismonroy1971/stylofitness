@@ -581,6 +581,100 @@ class ShoppingCart {
         };
         return icons[type] || 'info-circle';
     }
+    
+    initAjaxFilters() {
+        // Interceptar envío de formularios de filtros
+        const filtersForm = document.getElementById('filters-form');
+        if (filtersForm) {
+            filtersForm.addEventListener('change', (e) => {
+                if (e.target.matches('select, input[type="checkbox"]')) {
+                    this.loadProductsAjax(filtersForm);
+                }
+            });
+        }
+        
+        // Interceptar filtros de precio
+        const priceFilterBtn = document.querySelector('.price-filter-btn');
+        if (priceFilterBtn) {
+            priceFilterBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                this.loadProductsAjax(filtersForm);
+            });
+        }
+    }
+    
+    async loadProductsAjax(form) {
+        const formData = new FormData(form);
+        const params = new URLSearchParams(formData);
+        
+        // Agregar parámetro para indicar que es una petición AJAX
+        params.append('ajax', '1');
+        
+        try {
+            // Mostrar loading
+            const productsGrid = document.getElementById('products-grid');
+            if (productsGrid) {
+                productsGrid.style.opacity = '0.5';
+                productsGrid.style.pointerEvents = 'none';
+            }
+            
+            const response = await fetch(window.location.pathname + '?' + params.toString(), {
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest'
+                }
+            });
+            
+            if (response.ok) {
+                const html = await response.text();
+                
+                // Crear un elemento temporal para parsear el HTML
+                const tempDiv = document.createElement('div');
+                tempDiv.innerHTML = html;
+                
+                // Extraer solo la sección de productos
+                const newProductsGrid = tempDiv.querySelector('#products-grid');
+                const newPagination = tempDiv.querySelector('.pagination-wrapper');
+                const newResultsInfo = tempDiv.querySelector('.results-info');
+                
+                if (newProductsGrid && productsGrid) {
+                    productsGrid.innerHTML = newProductsGrid.innerHTML;
+                    productsGrid.style.opacity = '1';
+                    productsGrid.style.pointerEvents = 'auto';
+                }
+                
+                // Actualizar paginación si existe
+                const currentPagination = document.querySelector('.pagination-wrapper');
+                if (newPagination && currentPagination) {
+                    currentPagination.innerHTML = newPagination.innerHTML;
+                } else if (!newPagination && currentPagination) {
+                    currentPagination.remove();
+                }
+                
+                // Actualizar información de resultados
+                const currentResultsInfo = document.querySelector('.results-info');
+                if (newResultsInfo && currentResultsInfo) {
+                    currentResultsInfo.innerHTML = newResultsInfo.innerHTML;
+                }
+                
+                // Actualizar URL sin recargar la página
+                const newUrl = window.location.pathname + '?' + params.toString().replace('ajax=1&', '').replace('&ajax=1', '').replace('ajax=1', '');
+                window.history.pushState({}, '', newUrl);
+                
+            } else {
+                console.error('Error al cargar productos:', response.statusText);
+                if (productsGrid) {
+                    productsGrid.style.opacity = '1';
+                    productsGrid.style.pointerEvents = 'auto';
+                }
+            }
+        } catch (error) {
+            console.error('Error en la petición AJAX:', error);
+            if (productsGrid) {
+                productsGrid.style.opacity = '1';
+                productsGrid.style.pointerEvents = 'auto';
+            }
+        }
+    }
 }
 
 // Clase para gestión de productos
@@ -907,26 +1001,7 @@ class ProductManager {
         window.location.href = currentUrl.toString();
     }
     
-    initAjaxFilters() {
-        // Interceptar envío de formularios de filtros
-        const filtersForm = document.getElementById('filters-form');
-        if (filtersForm) {
-            filtersForm.addEventListener('change', (e) => {
-                if (e.target.matches('select, input[type="checkbox"]')) {
-                    this.loadProductsAjax(filtersForm);
-                }
-            });
-        }
-        
-        // Interceptar filtros de precio
-        const priceFilterBtn = document.querySelector('.price-filter-btn');
-        if (priceFilterBtn) {
-            priceFilterBtn.addEventListener('click', (e) => {
-                e.preventDefault();
-                this.loadProductsAjax(filtersForm);
-            });
-        }
-    }
+
     
     async loadProductsAjax(form) {
         const formData = new FormData(form);
@@ -1006,10 +1081,4 @@ class ProductManager {
 document.addEventListener('DOMContentLoaded', () => {
     window.shoppingCart = new ShoppingCart();
     window.productManager = new ProductManager();
-    
-    // Inicializar StoreManager si estamos en la página de tienda
-    if (document.querySelector('.store-page')) {
-        window.storeManager = new StoreManager();
-        window.storeManager.initAjaxFilters();
-    }
 });

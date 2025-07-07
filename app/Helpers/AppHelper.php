@@ -242,21 +242,35 @@ class AppHelper
      */
     public static function setFlashMessage($message, $type = 'info')
     {
-        $_SESSION['flash_messages'][] = [
-            'message' => $message,
-            'type' => $type,
-            'timestamp' => time(),
-        ];
+        $_SESSION['flash_messages'][$type] = $message;
     }
 
     /**
-     * Obtener mensajes flash
+     * Obtener mensaje flash por tipo
      */
-    public static function getFlashMessage()
+    public static function getFlashMessage($type = null)
     {
-        $messages = $_SESSION['flash_messages'] ?? [];
-        unset($_SESSION['flash_messages']);
-        return $messages;
+        if ($type === null) {
+            $messages = $_SESSION['flash_messages'] ?? [];
+            unset($_SESSION['flash_messages']);
+            return $messages;
+        }
+        
+        if (isset($_SESSION['flash_messages'][$type])) {
+            $message = $_SESSION['flash_messages'][$type];
+            unset($_SESSION['flash_messages'][$type]);
+            return $message;
+        }
+        
+        return null;
+    }
+
+    /**
+     * Verificar si hay mensaje flash de un tipo específico
+     */
+    public static function hasFlashMessage($type)
+    {
+        return isset($_SESSION['flash_messages'][$type]);
     }
 
     /**

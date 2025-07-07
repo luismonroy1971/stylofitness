@@ -1377,6 +1377,15 @@ use StyleFitness\Helpers\AppHelper;
     <!-- AOS (Animate On Scroll) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" defer></script>
     
+    <!-- Configuración global -->
+    <script>
+        window.APP_CONFIG = {
+            isLoggedIn: <?php echo AppHelper::isLoggedIn() ? 'true' : 'false'; ?>,
+            userRole: <?php echo AppHelper::isLoggedIn() ? "'" . AppHelper::getCurrentUser()['role'] . "'" : 'null'; ?>,
+            baseUrl: '<?php echo AppHelper::getBaseUrl(); ?>'
+        };
+    </script>
+    
     <!-- JavaScript principal -->
     <script src="<?php echo AppHelper::asset('js/app.js'); ?>" defer></script>
     
@@ -1406,6 +1415,7 @@ use StyleFitness\Helpers\AppHelper;
     </script>
     
     <!-- Facebook Pixel -->
+    <?php if (!empty($_ENV['FACEBOOK_PIXEL_ID'])): ?>
     <script>
         !function(f,b,e,v,n,t,s)
         {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -1415,13 +1425,14 @@ use StyleFitness\Helpers\AppHelper;
         t.src=v;s=b.getElementsByTagName(e)[0];
         s.parentNode.insertBefore(t,s)}(window,document,'script',
         'https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init', 'FB_PIXEL_ID'); 
+        fbq('init', '<?php echo $_ENV['FACEBOOK_PIXEL_ID']; ?>'); 
         fbq('track', 'PageView');
     </script>
     <noscript>
         <img height="1" width="1" style="display:none" 
-             src="https://www.facebook.com/tr?id=FB_PIXEL_ID&ev=PageView&noscript=1"/>
+             src="https://www.facebook.com/tr?id=<?php echo $_ENV['FACEBOOK_PIXEL_ID']; ?>&ev=PageView&noscript=1"/>
     </noscript>
+    <?php endif; ?>
     
     <!-- Schema.org datos estructurados específicos de la página -->
     <?php if (isset($structuredData)): ?>

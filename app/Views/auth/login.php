@@ -1,3 +1,6 @@
+<?php
+use StyleFitness\Helpers\AppHelper;
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -524,8 +527,9 @@
             margin-bottom: 1.5rem;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.75rem;
             backdrop-filter: blur(10px);
+            font-weight: 500;
         }
 
         .alert-error {
@@ -538,6 +542,12 @@
             background: rgba(0, 212, 170, 0.1);
             border: 1px solid rgba(0, 212, 170, 0.3);
             color: var(--success);
+        }
+
+        .alert-info {
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            color: #3b82f6;
         }
 
         /* Responsive */
@@ -682,17 +692,23 @@
                     <p class="form-subtitle">Ingresa tus credenciales para acceder a tu cuenta</p>
                 </div>
 
-                <!-- Mensaje de error ejemplo -->
-                <div class="alert alert-error" style="display: none;" id="error-alert">
-                    <i class="fas fa-exclamation-circle"></i>
-                    <span>Credenciales incorrectas. Inténtalo de nuevo.</span>
-                </div>
+                <!-- Mensajes del sistema -->
+                <?php 
+                $flashMessages = AppHelper::getFlashMessage();
+                if (!empty($flashMessages)): 
+                    foreach ($flashMessages as $flash): ?>
+                        <div class="alert alert-<?php echo $flash['type']; ?>">
+                            <i class="fas fa-<?php echo $flash['type'] === 'error' ? 'exclamation-circle' : ($flash['type'] === 'success' ? 'check-circle' : 'info-circle'); ?>"></i>
+                            <span><?php echo htmlspecialchars($flash['message']); ?></span>
+                        </div>
+                    <?php endforeach;
+                endif; ?>
 
-                <form class="auth-form" id="login-form">
+                <form class="auth-form" id="login-form" action="/login" method="POST">
                     <div class="form-group">
                         <label for="email" class="form-label">Usuario / Email / DNI</label>
                         <div class="form-input-wrapper">
-                            <input type="text" id="email" name="email" class="form-input" placeholder="usuario, email o DNI" required>
+                            <input type="text" id="email" name="email" class="form-input" placeholder="usuario, email o DNI" autocomplete="username" required>
                             <i class="fas fa-user form-icon"></i>
                         </div>
                     </div>
@@ -700,7 +716,7 @@
                     <div class="form-group">
                         <label for="password" class="form-label">Contraseña</label>
                         <div class="form-input-wrapper">
-                            <input type="password" id="password" name="password" class="form-input" placeholder="••••••••" required>
+                            <input type="password" id="password" name="password" class="form-input" placeholder="••••••••" autocomplete="current-password" required>
                             <i class="fas fa-lock form-icon"></i>
                             <button type="button" class="password-toggle" id="password-toggle">
                                 <i class="fas fa-eye"></i>
@@ -761,22 +777,10 @@
             }
         });
 
-        // Simulación de envío de formulario
+        // Manejo real del formulario de login
         document.getElementById('login-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-            
-            // Simulación de validación
-            if (email === 'demo@stylofitness.com' && password === 'demo123') {
-                alert('¡Login exitoso! Redirigiendo al dashboard...');
-            } else {
-                document.getElementById('error-alert').style.display = 'flex';
-                setTimeout(() => {
-                    document.getElementById('error-alert').style.display = 'none';
-                }, 3000);
-            }
+            // Permitir el envío normal del formulario al servidor
+            // El AuthController manejará la autenticación
         });
 
         // Efectos de focus en inputs

@@ -242,7 +242,11 @@ class HomeController
                 $dashboardData = $this->getAdminDashboardData();
                 break;
             case 'instructor':
+            case 'trainer':
                 $dashboardData = $this->getInstructorDashboardData($user['id']);
+                break;
+            case 'staff':
+                $dashboardData = $this->getStaffDashboardData($user['id']);
                 break;
             case 'client':
                 $dashboardData = $this->getClientDashboardData($user['id']);
@@ -251,7 +255,14 @@ class HomeController
 
         $pageTitle = 'Dashboard - STYLOFITNESS';
         include APP_PATH . '/Views/layout/header.php';
-        include APP_PATH . '/Views/dashboard/' . $user['role'] . '.php';
+        
+        // Mapear roles a archivos de vista
+        $viewFile = $user['role'];
+        if ($user['role'] === 'trainer') {
+            $viewFile = 'instructor'; // Los trainers usan la misma vista que instructors
+        }
+        
+        include APP_PATH . '/Views/dashboard/' . $viewFile . '.php';
         include APP_PATH . '/Views/layout/footer.php';
     }
 
@@ -326,6 +337,32 @@ class HomeController
             'recent_orders' => $this->db->fetchAll(
                 'SELECT * FROM orders WHERE user_id = ? ORDER BY created_at DESC LIMIT 3',
                 [$clientId]
+            ),
+        ];
+    }
+
+    private function getStaffDashboardData($staffId)
+    {
+        return [
+            'total_members' => $this->db->count(
+                "SELECT COUNT(*) FROM users WHERE role = 'client' AND is_active = 1"
+            ),
+            'pending_orders' => $this->db->count(
+                "SELECT COUNT(*) FROM orders WHERE status = 'pending'"
+            ),
+            'todays_classes' => $this->db->count(
+                'SELECT COUNT(*) FROM class_schedules cs
+                 JOIN group_classes gc ON cs.class_id = gc.id
+                 WHERE cs.day_of_week = LOWER(DAYNAME(CURDATE())) AND cs.is_active = 1'
+            ),
+            'inventory_alerts' => $this->db->count(
+                'SELECT COUNT(*) FROM products WHERE stock_quantity <= 10 AND is_active = 1'
+            ),
+            'recent_registrations' => $this->db->fetchAll(
+                "SELECT first_name, last_name, email, created_at 
+                 FROM users 
+                 WHERE role = 'client' AND created_at >= DATE_SUB(CURDATE(), INTERVAL 7 DAY)
+                 ORDER BY created_at DESC LIMIT 5"
             ),
         ];
     }

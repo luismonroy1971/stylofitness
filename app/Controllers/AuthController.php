@@ -72,7 +72,7 @@ class AuthController
 
         // Validación básica
         if (empty($identifier) || empty($password)) {
-            AppHelper::setFlashMessage('error', 'Usuario/Email y contraseña son obligatorios');
+            AppHelper::setFlashMessage('Usuario/Email y contraseña son obligatorios', 'error');
             AppHelper::redirect('/login');
             return;
         }
@@ -82,7 +82,7 @@ class AuthController
 
         if ($user && password_verify($password, $user['password'])) {
             if (!$user['is_active']) {
-                AppHelper::setFlashMessage('error', 'Tu cuenta está desactivada. Contacta al administrador.');
+                AppHelper::setFlashMessage('Tu cuenta está desactivada. Contacta al administrador.', 'error');
                 AppHelper::redirect('/login');
                 return;
             }
@@ -98,14 +98,14 @@ class AuthController
             // Registrar login
             $this->logUserActivity($user['id'], 'login');
 
-            AppHelper::setFlashMessage('success', '¡Bienvenido de vuelta!');
+            AppHelper::setFlashMessage('¡Bienvenido de vuelta!', 'success');
 
             // Redirigir según rol
             $redirectUrl = $this->getRedirectUrl($user['role']);
             AppHelper::redirect($redirectUrl);
 
         } else {
-            AppHelper::setFlashMessage('error', 'Credenciales incorrectas');
+            AppHelper::setFlashMessage('Credenciales incorrectas', 'error');
             AppHelper::redirect('/login');
         }
     }

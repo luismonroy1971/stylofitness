@@ -2609,7 +2609,13 @@ document.addEventListener('DOMContentLoaded', function() {
             z-index: 1;
         `;
         
-        document.querySelector('.classes-background-to ultra').appendChild(particle);
+        const container = document.querySelector('.classes-background-to ultra');
+        if (container) {
+            container.appendChild(particle);
+        } else {
+            // Fallback: usar body si el contenedor no existe
+            document.body.appendChild(particle);
+        }
         
         setTimeout(() => {
             particle.remove();

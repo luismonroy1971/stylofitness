@@ -752,13 +752,19 @@ STYLOFITNESS.handleFormSubmit = function(form) {
     const method = form.method || 'POST';
     
     // Enviar datos
-    fetch(action, {
+    const fetchOptions = {
         method: method,
-        body: formData,
         headers: {
             'X-Requested-With': 'XMLHttpRequest'
         }
-    })
+    };
+    
+    // Solo agregar body si no es GET o HEAD
+    if (method.toUpperCase() !== 'GET' && method.toUpperCase() !== 'HEAD') {
+        fetchOptions.body = formData;
+    }
+    
+    fetch(action, fetchOptions)
     .then(response => response.json())
     .then(data => {
         this.hideLoading(submitBtn);
@@ -1189,6 +1195,12 @@ STYLOFITNESS.loadFeaturedProducts = function() {
 };
 
 STYLOFITNESS.loadUpcomingClasses = function() {
+    // Solo cargar si el usuario está autenticado
+    if (!window.APP_CONFIG || !window.APP_CONFIG.isLoggedIn) {
+        console.log('Usuario no autenticado, omitiendo carga de clases próximas');
+        return;
+    }
+    
     fetch(`${this.config.apiUrl}/classes/upcoming`)
         .then(response => response.json())
         .then(classes => {
@@ -1200,6 +1212,12 @@ STYLOFITNESS.loadUpcomingClasses = function() {
 };
 
 STYLOFITNESS.loadStats = function() {
+    // Solo cargar si el usuario está autenticado
+    if (!window.APP_CONFIG || !window.APP_CONFIG.isLoggedIn) {
+        console.log('Usuario no autenticado, omitiendo carga de estadísticas');
+        return;
+    }
+    
     fetch(`${this.config.apiUrl}/stats`)
         .then(response => response.json())
         .then(stats => {
@@ -1208,6 +1226,50 @@ STYLOFITNESS.loadStats = function() {
         .catch(error => {
             console.error('Error loading stats:', error);
         });
+};
+
+STYLOFITNESS.renderClasses = function(classes) {
+    const container = document.querySelector('.upcoming-classes-container');
+    if (!container) return;
+    
+    if (!classes || classes.length === 0) {
+        container.innerHTML = '<div class="no-classes">No hay clases próximas</div>';
+        return;
+    }
+    
+    container.innerHTML = classes.map(classItem => `
+        <div class="class-card">
+            <div class="class-time">${classItem.time}</div>
+            <div class="class-name">${classItem.name}</div>
+            <div class="class-instructor">${classItem.instructor}</div>
+            <div class="class-spots">${classItem.available_spots} cupos disponibles</div>
+        </div>
+    `).join('');
+};
+
+STYLOFITNESS.renderStats = function(stats) {
+    const container = document.querySelector('.stats-container');
+    if (!container) return;
+    
+    if (!stats) {
+        container.innerHTML = '<div class="no-stats">No hay estadísticas disponibles</div>';
+        return;
+    }
+    
+    container.innerHTML = `
+        <div class="stat-item">
+            <div class="stat-number">${stats.total_members || 0}</div>
+            <div class="stat-label">Miembros</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">${stats.total_classes || 0}</div>
+            <div class="stat-label">Clases</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">${stats.total_routines || 0}</div>
+            <div class="stat-label">Rutinas</div>
+        </div>
+    `;
 };
 
 // =============================================

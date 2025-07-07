@@ -341,6 +341,7 @@ $router->get('/store/search', 'StoreController@search');
 
 // Carrito de compras
 $router->get('/cart', 'CartController@index');
+$router->get('/cart/count', 'CartController@getCount');
 $router->post('/cart/add', 'CartController@add');
 $router->post('/cart/update', 'CartController@update');
 $router->post('/cart/remove', 'CartController@remove');
@@ -490,12 +491,26 @@ $router->get('/api/products', 'ApiController@products');
 $router->get('/api/products/featured', 'ApiController@featuredProducts');
 $router->get('/api/products/recommendations', 'ApiController@productRecommendations');
 
+// API de autenticación
+$router->post('/api/v1/auth/login', 'ApiController@login');
+$router->post('/api/auth/login', 'ApiController@login');
+$router->post('/api/v1/auth/logout', 'ApiController@logout');
+$router->post('/api/auth/logout', 'ApiController@logout');
+
 // API de usuarios
 $router->get('/api/users', 'ApiController@users');
 $router->get('/api/clients', 'ApiController@clients');
 $router->get('/api/instructors', 'ApiController@instructors');
 
+// API de clases
+$router->get('/api/classes', 'ApiController@classes');
+$router->get('/api/classes/upcoming', 'ApiController@upcomingClasses');
+$router->get('/api/classes/{id}', 'ApiController@getClass');
+$router->get('/api/classes/{id}/schedule', 'ApiController@getClassSchedule');
+$router->get('/api/classes/schedule/availability', 'ApiController@getScheduleAvailability');
+
 // API de estadísticas
+$router->get('/api/stats', 'ApiController@dashboardStats');
 $router->get('/api/stats/dashboard', 'ApiController@dashboardStats');
 $router->get('/api/stats/routines', 'ApiController@routineStats');
 $router->get('/api/stats/sales', 'ApiController@salesStats');
