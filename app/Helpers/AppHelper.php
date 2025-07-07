@@ -91,6 +91,11 @@ class AppHelper
      */
     public static function logout()
     {
+        // Eliminar cookies de remember_token si existen
+        if (isset($_COOKIE['remember_token'])) {
+            setcookie('remember_token', '', time() - 3600, '/', '', false, true);
+        }
+        
         session_unset();
         session_destroy();
         session_start(); // Reiniciar para flash messages
@@ -196,7 +201,11 @@ class AppHelper
      */
     public static function asset($path)
     {
-        return self::getBaseUrl() . ltrim($path, '/');
+        $cleanPath = ltrim($path, '/');
+        
+        // Para el servidor de desarrollo de PHP, no agregar 'public/' 
+        // ya que el router.php maneja la redirección a la carpeta public
+        return self::getBaseUrl() . $cleanPath;
     }
 
     /**

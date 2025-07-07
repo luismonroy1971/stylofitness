@@ -511,3 +511,13 @@ document.getElementById('name').addEventListener('input', function() {
     }
 });
 </script>
+
+<!-- Incluir JavaScript para manejo AJAX de formularios -->
+<script src="/js/admin-product-edit.js"></script>
+<script>
+// Inicializar funcionalidades cuando el DOM esté listo
+document.addEventListener('DOMContentLoaded', function() {
+    handleProductUpdateForm();
+    addCancelButton();
+});
+</script>

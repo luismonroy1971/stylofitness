@@ -187,21 +187,21 @@ class AuthController
 
     public function logout()
     {
-        // Eliminar remember token si existe
-        if (isset($_COOKIE['remember_token'])) {
-            $this->deleteRememberToken($_COOKIE['remember_token']);
-            setcookie('remember_token', '', time() - 3600, '/');
-        }
-
-        // Registrar logout
+        // Registrar logout antes de destruir la sesión
         if (AppHelper::isLoggedIn()) {
             $user = AppHelper::getCurrentUser();
             $this->logUserActivity($user['id'], 'logout');
         }
 
-        // Destruir sesión
-        session_destroy();
+        // Eliminar remember token si existe
+        if (isset($_COOKIE['remember_token'])) {
+            $this->deleteRememberToken($_COOKIE['remember_token']);
+            setcookie('remember_token', '', time() - 3600, '/', '', false, true);
+        }
 
+        // Usar AppHelper::logout() que maneja correctamente la sesión
+        AppHelper::logout();
+        
         AppHelper::setFlashMessage('info', 'Sesión cerrada correctamente');
         AppHelper::redirect('/');
     }
@@ -269,8 +269,8 @@ class AuthController
 
         // Guardar token en base de datos
         $this->db->query(
-            'INSERT INTO remember_tokens (user_id, token, expires_at) VALUES (?, ?, ?)',
-            [$userId, $hashedToken, $expires]
+            'INSERT INTO security_tokens (user_id, token, type, expires_at) VALUES (?, ?, ?, ?)',
+            [$userId, $hashedToken, 'remember_me', $expires]
         );
 
         // Establecer cookie
@@ -280,7 +280,7 @@ class AuthController
     private function deleteRememberToken($token)
     {
         $hashedToken = hash('sha256', $token);
-        $this->db->query('DELETE FROM remember_tokens WHERE token = ?', [$hashedToken]);
+        $this->db->query('DELETE FROM security_tokens WHERE token = ? AND type = ?', [$hashedToken, 'remember_me']);
     }
 
     private function getRedirectUrl($role)
@@ -361,12 +361,12 @@ class AuthController
         $expires = date('Y-m-d H:i:s', strtotime('+1 hour'));
 
         // Eliminar tokens anteriores
-        $this->db->query('DELETE FROM password_reset_tokens WHERE user_id = ?', [$userId]);
+        $this->db->query('DELETE FROM security_tokens WHERE user_id = ? AND type = ?', [$userId, 'password_reset']);
 
         // Crear nuevo token
         $this->db->query(
-            'INSERT INTO password_reset_tokens (user_id, token, expires_at) VALUES (?, ?, ?)',
-            [$userId, $hashedToken, $expires]
+            'INSERT INTO security_tokens (user_id, token, type, expires_at) VALUES (?, ?, ?, ?)',
+            [$userId, $hashedToken, 'password_reset', $expires]
         );
 
         return $token;

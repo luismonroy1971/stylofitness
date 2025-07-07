@@ -8,6 +8,9 @@ if (!AppHelper::isLoggedIn() || AppHelper::getCurrentUser()['role'] !== 'admin')
 }
 
 $user = AppHelper::getCurrentUser();
+$pageTitle = 'Gestión de Productos - STYLOFITNESS';
+$additionalCSS = ['admin.css'];
+$additionalJS = ['admin-products.js'];
 ?>
 
 <div class="admin-products-page">
@@ -494,23 +497,3 @@ $user = AppHelper::getCurrentUser();
         <?php endif; ?>
     </div>
 </div>
-
-<script>
-function deleteProduct(productId) {
-    if (confirm('¿Estás seguro de que deseas eliminar este producto? Esta acción no se puede deshacer.')) {
-        // Crear formulario para enviar DELETE request
-        const form = document.createElement('form');
-        form.method = 'POST';
-        form.action = `/admin/products/delete/${productId}`;
-        
-        const methodInput = document.createElement('input');
-        methodInput.type = 'hidden';
-        methodInput.name = '_method';
-        methodInput.value = 'DELETE';
-        form.appendChild(methodInput);
-        
-        document.body.appendChild(form);
-        form.submit();
-    }
-}
-</script>

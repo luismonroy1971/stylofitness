@@ -234,14 +234,21 @@ class AdminController
 
     public function products()
     {
+        // Si es una petición AJAX, devolver solo los datos
+        if (isset($_GET['ajax']) && $_GET['ajax'] === '1') {
+            $this->getProductsAjax();
+            return;
+        }
+
         $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
         $perPage = 20;
         $offset = ($page - 1) * $perPage;
 
         $filters = [
             'search' => AppHelper::sanitize($_GET['search'] ?? ''),
-            'category_id' => (int)($_GET['category_id'] ?? 0),
-            'is_active' => $_GET['is_active'] ?? '',
+            'category_id' => !empty($_GET['category']) ? (int)$_GET['category'] : 0,
+            'is_active' => $_GET['status'] ?? '',
+            'is_featured' => $_GET['featured'] ?? '',
             'limit' => $perPage,
             'offset' => $offset,
         ];
@@ -262,6 +269,37 @@ class AdminController
         include APP_PATH . '/Views/layout/header.php';
         include APP_PATH . '/Views/admin/products.php';
         include APP_PATH . '/Views/layout/footer.php';
+    }
+
+    public function getProductsAjax()
+    {
+        header('Content-Type: application/json');
+        
+        $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+        $perPage = 20;
+        $offset = ($page - 1) * $perPage;
+
+        $filters = [
+            'search' => AppHelper::sanitize($_GET['search'] ?? ''),
+            'category_id' => !empty($_GET['category']) ? (int)$_GET['category'] : 0,
+            'is_active' => $_GET['status'] ?? '',
+            'is_featured' => $_GET['featured'] ?? '',
+            'limit' => $perPage,
+            'offset' => $offset,
+        ];
+
+        $productModel = new Product();
+        $products = $productModel->getProducts($filters);
+        $totalProducts = $productModel->countProducts($filters);
+
+        $pagination = $this->calculatePagination($page, $totalProducts, $perPage);
+
+        echo json_encode([
+            'success' => true,
+            'products' => $products,
+            'pagination' => $pagination,
+            'total' => $totalProducts
+        ]);
     }
 
     public function createProduct()
@@ -353,6 +391,11 @@ class AdminController
     public function updateProduct($id)
     {
         if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+            if ($this->isAjaxRequest()) {
+                header('Content-Type: application/json');
+                echo json_encode(['success' => false, 'message' => 'Método no permitido']);
+                return;
+            }
             AppHelper::redirect('/admin/products');
             return;
         }
@@ -361,6 +404,11 @@ class AdminController
         $existingProduct = $productModel->findById($id);
 
         if (!$existingProduct) {
+            if ($this->isAjaxRequest()) {
+                header('Content-Type: application/json');
+                echo json_encode(['success' => false, 'message' => 'Producto no encontrado']);
+                return;
+            }
             AppHelper::setFlashMessage('error', 'Producto no encontrado');
             AppHelper::redirect('/admin/products');
             return;
@@ -390,12 +438,95 @@ class AdminController
                 $this->processProductImages($id, $_FILES['images']);
             }
 
+            if ($this->isAjaxRequest()) {
+                header('Content-Type: application/json');
+                echo json_encode(['success' => true, 'message' => 'Producto actualizado exitosamente']);
+                return;
+            }
             AppHelper::setFlashMessage('success', 'Producto actualizado exitosamente');
             AppHelper::redirect('/admin/products');
         } else {
+            if ($this->isAjaxRequest()) {
+                header('Content-Type: application/json');
+                echo json_encode(['success' => false, 'message' => 'Error al actualizar el producto']);
+                return;
+            }
             AppHelper::setFlashMessage('error', 'Error al actualizar el producto');
             AppHelper::redirect('/admin/products/edit/' . $id);
         }
+    }
+
+    public function deleteProduct($id)
+    {
+        $productModel = new Product();
+        $product = $productModel->findById($id);
+
+        if (!$product) {
+            if ($this->isAjaxRequest()) {
+                header('Content-Type: application/json');
+                echo json_encode(['success' => false, 'message' => 'Producto no encontrado']);
+                return;
+            }
+            AppHelper::setFlashMessage('error', 'Producto no encontrado');
+            AppHelper::redirect('/admin/products');
+            return;
+        }
+
+        // Verificar si el producto tiene pedidos asociados
+        $orderCount = $this->db->count(
+            'SELECT COUNT(*) FROM order_items oi 
+             JOIN orders o ON oi.order_id = o.id 
+             WHERE oi.product_id = ? AND o.status != "cancelled"',
+            [$id]
+        );
+
+        if ($orderCount > 0) {
+            if ($this->isAjaxRequest()) {
+                header('Content-Type: application/json');
+                echo json_encode(['success' => false, 'message' => 'No se puede eliminar el producto porque tiene pedidos asociados']);
+                return;
+            }
+            AppHelper::setFlashMessage('error', 'No se puede eliminar el producto porque tiene pedidos asociados');
+            AppHelper::redirect('/admin/products');
+            return;
+        }
+
+        // Eliminar imágenes del producto
+        if (!empty($product['images'])) {
+            // Verificar si images ya es un array o es una cadena JSON
+            if (is_string($product['images'])) {
+                $images = json_decode($product['images'], true);
+            } else {
+                $images = $product['images'];
+            }
+            
+            if (is_array($images)) {
+                foreach ($images as $image) {
+                    $imagePath = PUBLIC_PATH . $image;
+                    if (file_exists($imagePath)) {
+                        unlink($imagePath);
+                    }
+                }
+            }
+        }
+
+        if ($productModel->delete($id)) {
+            if ($this->isAjaxRequest()) {
+                header('Content-Type: application/json');
+                echo json_encode(['success' => true, 'message' => 'Producto eliminado exitosamente']);
+                return;
+            }
+            AppHelper::setFlashMessage('success', 'Producto eliminado exitosamente');
+        } else {
+            if ($this->isAjaxRequest()) {
+                header('Content-Type: application/json');
+                echo json_encode(['success' => false, 'message' => 'Error al eliminar el producto']);
+                return;
+            }
+            AppHelper::setFlashMessage('error', 'Error al eliminar el producto');
+        }
+
+        AppHelper::redirect('/admin/products');
     }
 
     public function orders()
@@ -791,6 +922,15 @@ class AdminController
     {
         // Implementar reporte general
         return [];
+    }
+
+    /**
+     * Detecta si la petición es AJAX
+     */
+    private function isAjaxRequest()
+    {
+        return !empty($_SERVER['HTTP_X_REQUESTED_WITH']) && 
+               strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest';
     }
 }
 

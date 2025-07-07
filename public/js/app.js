@@ -478,6 +478,16 @@ STYLOFITNESS.initNavigation = function() {
             userDropdown.classList.toggle('active');
         });
         
+        // Permitir que los enlaces dentro del dropdown funcionen
+        userDropdown.addEventListener('click', (e) => {
+            // Si es un enlace, permitir navegación
+            if (e.target.tagName === 'A' || e.target.closest('a')) {
+                // No prevenir el comportamiento por defecto para enlaces
+                return;
+            }
+            e.stopPropagation();
+        });
+        
         // Cerrar dropdown al hacer clic fuera
         document.addEventListener('click', (e) => {
             if (!userTrigger.contains(e.target) && !userDropdown.contains(e.target)) {

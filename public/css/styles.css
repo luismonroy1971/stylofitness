@@ -125,7 +125,7 @@ body > div:first-child:not(.loading-screen):not(.container):not(.header) {
    ============================================= */
 .header {
     background: var(--gradient-dark);
-    padding: 0.5rem 0;
+    padding: 0.25rem 0;
     position: fixed;
     top: 0;
     left: 0;
@@ -136,7 +136,7 @@ body > div:first-child:not(.loading-screen):not(.container):not(.header) {
 }
 
 .header.scrolled {
-    padding: 0.25rem 0;
+    padding: 0.15rem 0;
     box-shadow: var(--shadow-medium);
 }
 
@@ -144,17 +144,20 @@ body > div:first-child:not(.loading-screen):not(.container):not(.header) {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 50px;
+    height: 40px;
     position: relative;
 }
 
 .navbar-brand {
     z-index: 1001;
+    margin-right: auto;
+    padding-right: 1rem;
+    padding-left: 0.5rem;
 }
 
 .logo {
     font-family: var(--font-accent);
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     font-weight: 700;
     color: var(--white);
     text-decoration: none;
@@ -172,7 +175,7 @@ body > div:first-child:not(.loading-screen):not(.container):not(.header) {
 .nav-menu {
     display: flex;
     list-style: none;
-    gap: 1.5rem;
+    gap: 0.4rem;
     margin: 0;
     padding: 0;
     align-items: center;
@@ -186,15 +189,15 @@ body > div:first-child:not(.loading-screen):not(.container):not(.header) {
     color: var(--white);
     text-decoration: none;
     font-weight: 500;
-    padding: 0.75rem 1.25rem;
-    border-radius: 25px;
+    padding: 0.35rem 0.5rem;
+    border-radius: 16px;
     transition: var(--transition-fast);
     position: relative;
     overflow: hidden;
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    font-size: 0.95rem;
+    gap: 0.25rem;
+    font-size: 0.75rem;
 }
 
 .nav-link i {
@@ -233,7 +236,7 @@ body > div:first-child:not(.loading-screen):not(.container):not(.header) {
 /* Buscador en navbar */
 .navbar-search {
     position: relative;
-    margin: 0 1rem;
+    margin: 0 0.5rem;
 }
 
 .search-form {
@@ -247,14 +250,14 @@ body > div:first-child:not(.loading-screen):not(.container):not(.header) {
 }
 
 .search-input {
-    width: 280px;
-    padding: 0.75rem 1rem;
-    padding-right: 45px;
+    width: 160px;
+    padding: 0.35rem 0.5rem;
+    padding-right: 28px;
     border: 2px solid rgba(255, 255, 255, 0.2);
-    border-radius: 25px;
+    border-radius: 16px;
     background: rgba(255, 255, 255, 0.1);
     color: var(--white);
-    font-size: 0.9rem;
+    font-size: 0.7rem;
     outline: none;
     transition: var(--transition-fast);
     backdrop-filter: blur(10px);
@@ -272,20 +275,21 @@ body > div:first-child:not(.loading-screen):not(.container):not(.header) {
 
 .search-btn {
     position: absolute;
-    right: 8px;
+    right: 5px;
     top: 50%;
     transform: translateY(-50%);
     background: var(--gradient-primary);
     border: none;
     color: var(--white);
-    width: 32px;
-    height: 32px;
+    width: 22px;
+    height: 22px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     transition: var(--transition-fast);
+    font-size: 0.7rem;
 }
 
 .search-btn:hover {
@@ -1964,7 +1968,7 @@ body.nav-open {
 .navbar-actions {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 0.3rem;
     z-index: 1001;
 }
 
@@ -1976,8 +1980,8 @@ body.nav-open {
 .cart-icon,
 .wishlist-icon {
     color: var(--white);
-    font-size: 1.2rem;
-    padding: 0.75rem;
+    font-size: 0.9rem;
+    padding: 0.4rem;
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.1);
     text-decoration: none;
@@ -1986,8 +1990,8 @@ body.nav-open {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 45px;
-    height: 45px;
+    width: 32px;
+    height: 32px;
 }
 
 .cart-icon:hover,
@@ -2025,15 +2029,15 @@ body.nav-open {
 .user-trigger {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.3rem;
     background: rgba(255, 255, 255, 0.1);
     border: 2px solid rgba(255, 255, 255, 0.2);
     color: var(--white);
-    padding: 0.5rem 1rem;
-    border-radius: 25px;
+    padding: 0.3rem 0.6rem;
+    border-radius: 18px;
     cursor: pointer;
     transition: var(--transition-fast);
-    font-size: 0.9rem;
+    font-size: 0.75rem;
 }
 
 .user-trigger:hover {
@@ -2043,22 +2047,22 @@ body.nav-open {
 }
 
 .user-avatar {
-    width: 32px;
-    height: 32px;
+    width: 22px;
+    height: 22px;
     border-radius: 50%;
     object-fit: cover;
 }
 
 .user-avatar-placeholder {
-    width: 32px;
-    height: 32px;
+    width: 22px;
+    height: 22px;
     border-radius: 50%;
     background: var(--gradient-primary);
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: 700;
-    font-size: 0.9rem;
+    font-size: 0.7rem;
 }
 
 .user-name {
@@ -2393,15 +2397,15 @@ body {
    CONTENIDO PRINCIPAL
    ============================================= */
 .main-content {
-    padding-top: 60px; /* Altura del header + margen reducida */
-    min-height: calc(100vh - 60px);
+    padding-top: 45px; /* Altura del header + margen reducida */
+    min-height: calc(100vh - 45px);
     transition: var(--transition-medium);
 }
 
 /* Ajuste cuando el header se contrae al hacer scroll */
 .header.scrolled + .nav-overlay + .flash-message ~ .main-content,
 .header.scrolled ~ .main-content {
-    padding-top: 50px;
+    padding-top: 35px;
 }
 
 /* Espaciado adicional para las secciones */
@@ -3165,14 +3169,14 @@ body {
     }
     
     .main-content {
-        padding-top: 60px;
+        padding-top: 45px;
     }
     
     .hero {
-        height: calc(100vh - 60px);
+        height: calc(100vh - 45px);
         min-height: 500px;
-        margin-top: -60px;
-        padding-top: 60px;
+        margin-top: -45px;
+        padding-top: 45px;
     }
     
     .nav-menu {
@@ -3347,11 +3351,11 @@ body {
     }
     
     .main-content {
-        padding-top: 50px; /* Aún menos padding en móviles pequeños */
+        padding-top: 40px; /* Aún menos padding en móviles pequeños */
     }
     
     .navbar {
-        height: 50px;
+        height: 40px;
     }
     
     .logo {
@@ -3359,10 +3363,10 @@ body {
     }
     
     .hero {
-        height: calc(100vh - 50px);
+        height: calc(100vh - 40px);
         min-height: 450px;
-        margin-top: -50px;
-        padding-top: 50px;
+        margin-top: -40px;
+        padding-top: 40px;
     }
     
     .hero-title {

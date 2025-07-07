@@ -9,9 +9,25 @@ $requestMethod = $_SERVER['REQUEST_METHOD'];
 $requestUri = parse_url($requestUri, PHP_URL_PATH);
 
 // Check if it's a static file request
-if ($requestUri !== '/' && file_exists(__DIR__ . '/public' . $requestUri)) {
-    // Serve static files directly
-    return false;
+if ($requestUri !== '/') {
+    // Try to serve from public directory first
+    $publicFile = __DIR__ . '/public' . $requestUri;
+    
+    // For static files, check if they exist in public directory
+    if (preg_match('/\.(css|js|png|jpg|jpeg|gif|ico|svg|woff|woff2|eot|ttf|mp4|webm|pdf)$/i', $requestUri)) {
+        if (file_exists($publicFile)) {
+            return false; // Let PHP serve the file
+        }
+        // If the file doesn't exist in public, return 404
+        http_response_code(404);
+        echo "File not found: " . $requestUri;
+        return true;
+    }
+    
+    // For other files, try to serve from public directory
+    if (file_exists($publicFile)) {
+        return false; // Let PHP serve the file
+    }
 }
 
 // For all other requests, route through index.php

@@ -58,6 +58,55 @@ spl_autoload_register(function ($class) {
     }
 });
 
+// Validación automática de remember token
+if (!isset($_SESSION['user_id']) && isset($_COOKIE['remember_token'])) {
+    try {
+        $db = Database::getInstance()->getConnection();
+        $token = $_COOKIE['remember_token'];
+        
+        // Buscar el token en la tabla security_tokens
+        $stmt = $db->prepare("SELECT u.* FROM users u 
+                             INNER JOIN security_tokens st ON u.id = st.user_id 
+                             WHERE st.token = ? AND st.type = 'remember_me' AND st.expires_at > NOW()");
+        $stmt->execute([hash('sha256', $token)]);
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+        
+        if ($user) {
+            // Regenerar sesión por seguridad
+            session_regenerate_id(true);
+            
+            // Establecer datos de sesión usando la estructura correcta
+            $_SESSION['user_id'] = $user['id'];
+            $_SESSION['user_data'] = [
+                'id' => $user['id'],
+                'username' => $user['username'],
+                'email' => $user['email'],
+                'first_name' => $user['first_name'],
+                'last_name' => $user['last_name'],
+                'role' => $user['role'],
+                'gym_id' => $user['gym_id'],
+                'profile_image' => $user['profile_image'],
+                'membership_type' => $user['membership_type'],
+                'membership_expires' => $user['membership_expires'],
+            ];
+            
+            // Actualizar último acceso
+            $updateStmt = $db->prepare("UPDATE users SET last_login_at = NOW() WHERE id = ?");
+            $updateStmt->execute([$user['id']]);
+            
+            error_log("Auto-login successful for user: " . $user['email']);
+        } else {
+            // Token inválido o expirado, eliminar cookie
+            setcookie('remember_token', '', time() - 3600, '/');
+            error_log("Invalid or expired remember token, cookie cleared");
+        }
+    } catch (Exception $e) {
+        error_log("Remember token validation error: " . $e->getMessage());
+        // En caso de error, eliminar cookie por seguridad
+        setcookie('remember_token', '', time() - 3600, '/');
+    }
+}
+
 // Sistema de enrutamiento mejorado
 class Router {
     private $routes = [];
@@ -399,6 +448,7 @@ $router->get('/admin/products/create', 'AdminController@createProduct');
 $router->post('/admin/products/store', 'AdminController@storeProduct');
 $router->get('/admin/products/edit/{id}', 'AdminController@editProduct');
 $router->post('/admin/products/update/{id}', 'AdminController@updateProduct');
+$router->post('/admin/products/delete/{id}', 'AdminController@deleteProduct');
 
 $router->get('/admin/routines', 'AdminController@routines');
 $router->get('/admin/exercises', 'AdminController@exercises');
