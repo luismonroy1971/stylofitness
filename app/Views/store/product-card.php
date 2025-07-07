@@ -10,9 +10,11 @@ use StyleFitness\Helpers\AppHelper;
 $images = is_string($product['images']) ? json_decode($product['images'], true) : $product['images'];
 $mainImage = !empty($images) ? $images[0] : '/images/default-product.jpg';
 
-// Calcular descuento si hay precio de oferta
-$hasDiscount = !empty($product['sale_price']) && $product['sale_price'] < $product['price'];
-$discountPercentage = $hasDiscount ? round(100 - ($product['sale_price'] * 100 / $product['price'])) : 0;
+// Sistema de doble precio: price = precio normal, sale_price = precio oferta
+$normalPrice = $product['price']; // Precio normal
+$salePrice = $product['sale_price']; // Precio de oferta
+$hasDiscount = !empty($salePrice) && $salePrice > 0;
+$discountPercentage = $hasDiscount ? round((($normalPrice - $salePrice) / $normalPrice) * 100) : 0;
 ?>
 
 <div class="product-card" data-product-id="<?php echo $product['id']; ?>">
@@ -79,10 +81,16 @@ $discountPercentage = $hasDiscount ? round(100 - ($product['sale_price'] * 100 /
         
         <div class="product-price">
             <?php if ($hasDiscount): ?>
-                <span class="original-price">S/ <?php echo number_format($product['price'], 2); ?></span>
-                <span class="current-price">S/ <?php echo number_format($product['sale_price'], 2); ?></span>
+                <div class="price-gym-member">
+                    <span class="gym-label">🏋️ Precio gimnasio:</span>
+                    <span class="current-price">S/ <?php echo number_format($salePrice, 2); ?></span>
+                </div>
+                <span class="original-price">Público: S/ <?php echo number_format($normalPrice, 2); ?></span>
             <?php else: ?>
-                <span class="current-price">S/ <?php echo number_format($product['price'], 2); ?></span>
+                <div class="price-gym-member">
+                    <span class="gym-label">🏋️ Precio gimnasio:</span>
+                    <span class="current-price">S/ <?php echo number_format($normalPrice, 2); ?></span>
+                </div>
             <?php endif; ?>
         </div>
         

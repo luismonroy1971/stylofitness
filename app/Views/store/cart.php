@@ -50,13 +50,13 @@
 
                                     <div class="item-price">
                                         <?php if ($hasDiscount): ?>
-                                            <span class="original-price">S/ <?php echo number_format($originalPrice, 2); ?></span>
-                                            <span class="current-price">S/ <?php echo number_format($currentPrice, 2); ?></span>
+                                            <span class="original-price">S/ <?php echo number_format($item['price'], 2); ?></span>
+                <span class="current-price">S/ <?php echo number_format($item['sale_price'], 2); ?></span>
                                             <span class="discount-badge">
                                                 -<?php echo round((($originalPrice - $currentPrice) / $originalPrice) * 100); ?>%
                                             </span>
                                         <?php else: ?>
-                                            <span class="current-price">S/ <?php echo number_format($currentPrice, 2); ?></span>
+                                            <span class="current-price">S/ <?php echo number_format($item['price'], 2); ?></span>
                                         <?php endif; ?>
                                     </div>
 
@@ -246,7 +246,7 @@
                                     <div class="product-price">
                                         <?php if ($product['sale_price'] && $product['sale_price'] < $product['price']): ?>
                                             <span class="original-price">S/ <?php echo number_format($product['price'], 2); ?></span>
-                                            <span class="current-price">S/ <?php echo number_format($product['sale_price'], 2); ?></span>
+                <span class="current-price">S/ <?php echo number_format($product['sale_price'], 2); ?></span>
                                         <?php else: ?>
                                             <span class="current-price">S/ <?php echo number_format($product['price'], 2); ?></span>
                                         <?php endif; ?>

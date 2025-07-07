@@ -186,12 +186,12 @@ class Product
         }
 
         if (!empty($filters['price_min'])) {
-            $where[] = 'COALESCE(p.sale_price, p.price) >= ?';
+            $where[] = 'CASE WHEN p.sale_price IS NOT NULL AND p.sale_price > 0 THEN p.sale_price ELSE p.price END >= ?';
             $params[] = $filters['price_min'];
         }
 
         if (!empty($filters['price_max'])) {
-            $where[] = 'COALESCE(p.sale_price, p.price) <= ?';
+            $where[] = 'CASE WHEN p.sale_price IS NOT NULL AND p.sale_price > 0 THEN p.sale_price ELSE p.price END <= ?';
             $params[] = $filters['price_max'];
         }
 
@@ -215,10 +215,10 @@ class Product
                     $orderBy = 'p.name DESC';
                     break;
                 case 'price_asc':
-                    $orderBy = 'COALESCE(p.sale_price, p.price) ASC';
+                    $orderBy = 'CASE WHEN p.sale_price IS NOT NULL AND p.sale_price > 0 THEN p.sale_price ELSE p.price END ASC';
                     break;
                 case 'price_desc':
-                    $orderBy = 'COALESCE(p.sale_price, p.price) DESC';
+                    $orderBy = 'CASE WHEN p.sale_price IS NOT NULL AND p.sale_price > 0 THEN p.sale_price ELSE p.price END DESC';
                     break;
                 case 'rating':
                     $orderBy = 'p.avg_rating DESC';
@@ -291,12 +291,12 @@ class Product
         }
 
         if (!empty($filters['price_min'])) {
-            $where[] = 'COALESCE(p.sale_price, p.price) >= ?';
+            $where[] = 'CASE WHEN p.sale_price IS NOT NULL AND p.sale_price > 0 THEN p.sale_price ELSE p.price END >= ?';
             $params[] = $filters['price_min'];
         }
 
         if (!empty($filters['price_max'])) {
-            $where[] = 'COALESCE(p.sale_price, p.price) <= ?';
+            $where[] = 'CASE WHEN p.sale_price IS NOT NULL AND p.sale_price > 0 THEN p.sale_price ELSE p.price END <= ?';
             $params[] = $filters['price_max'];
         }
 
@@ -332,7 +332,7 @@ class Product
                 FROM products p 
                 LEFT JOIN product_categories pc ON p.category_id = pc.id 
                 WHERE p.sale_price IS NOT NULL 
-                AND p.sale_price < p.price 
+                AND p.sale_price > 0 
                 AND p.is_active = 1 
                 ORDER BY discount_percentage DESC 
                 LIMIT ?';

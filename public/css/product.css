@@ -197,6 +197,85 @@ body {
     line-height: 1.2;
 }
 
+/* Estilos para precios de gimnasio */
+.price-labels {
+    margin-bottom: 0.5rem;
+}
+
+.price-label-normal {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    display: block;
+    margin-bottom: 0.25rem;
+}
+
+.price-offer {
+    margin: 1rem 0;
+    padding: 1rem;
+    background: linear-gradient(135deg, rgba(255, 107, 53, 0.1) 0%, rgba(255, 140, 66, 0.1) 100%);
+    border: 2px solid var(--accent-primary);
+    border-radius: 12px;
+    position: relative;
+}
+
+.price-label-offer {
+    font-size: 1.1rem;
+    color: var(--accent-primary);
+    font-weight: 600;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.savings-highlight {
+    margin: 1rem 0;
+    padding: 0.75rem;
+    background: linear-gradient(135deg, rgba(0, 255, 136, 0.1) 0%, rgba(0, 200, 100, 0.1) 100%);
+    border: 1px solid var(--success-color);
+    border-radius: 8px;
+    text-align: center;
+}
+
+.savings {
+    font-size: 1.2rem;
+    color: var(--success-color);
+    font-weight: 700;
+    display: block;
+    margin-bottom: 0.25rem;
+}
+
+.discount-percentage {
+    font-size: 0.9rem;
+    color: var(--success-color);
+    font-weight: 500;
+}
+
+.membership-note {
+    margin-top: 0.75rem;
+    padding: 0.5rem;
+    background: var(--bg-tertiary);
+    border-radius: 6px;
+    text-align: center;
+}
+
+.membership-note small {
+    color: var(--text-secondary);
+    font-style: italic;
+}
+
+/* Estilos para tarjetas de productos */
+.price-gym-member {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.gym-label {
+    font-size: 0.8rem;
+    color: var(--accent-primary);
+    font-weight: 600;
+}
+
 .product-brand {
     font-size: 1.1rem;
     color: var(--text-secondary);

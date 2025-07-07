@@ -27,14 +27,16 @@ if (empty($productImages)) {
     $productImages = ['/images/placeholder.jpg'];
 }
 
-// Calcular descuento si existe
-$hasDiscount = !empty($product['sale_price']) && $product['sale_price'] < $product['price'];
+// Sistema de doble precio: price = precio normal, sale_price = precio oferta
+$normalPrice = $product['price']; // Precio normal
+$salePrice = $product['sale_price']; // Precio de oferta
+$hasDiscount = !empty($salePrice) && $salePrice > 0;
 $discountPercentage = 0;
 if ($hasDiscount) {
-    $discountPercentage = round((($product['price'] - $product['sale_price']) / $product['price']) * 100);
+    $discountPercentage = round((($normalPrice - $salePrice) / $normalPrice) * 100);
 }
 
-$finalPrice = $hasDiscount ? $product['sale_price'] : $product['price'];
+$finalPrice = $hasDiscount ? $salePrice : $normalPrice;
 ?>
 
 <div class="product-detail-container" data-product-id="<?= $product['id'] ?>">
@@ -95,13 +97,31 @@ $finalPrice = $hasDiscount ? $product['sale_price'] : $product['price'];
                 <div class="product-pricing">
                     <?php if ($hasDiscount): ?>
                     <div class="price-container">
-                        <span class="current-price">S/ <?= number_format($product['sale_price'], 2) ?></span>
-                        <span class="original-price">S/ <?= number_format($product['price'], 2) ?></span>
-                        <span class="savings">Ahorras S/ <?= number_format($product['price'] - $product['sale_price'], 2) ?></span>
+                        <div class="price-labels">
+                            <span class="price-label-normal">Precio público:</span>
+                            <span class="original-price">S/ <?= number_format($normalPrice, 2) ?></span>
+                        </div>
+                        <div class="price-offer">
+                            <span class="price-label-offer">🏋️ Precio exclusivo para clientes del gimnasio:</span>
+                            <span class="current-price">S/ <?= number_format($salePrice, 2) ?></span>
+                        </div>
+                        <div class="savings-highlight">
+                            <span class="savings">💰 ¡Ahorras S/ <?= number_format($normalPrice - $salePrice, 2) ?>!</span>
+                            <span class="discount-percentage"><?= round((($normalPrice - $salePrice) / $normalPrice) * 100) ?>% de descuento</span>
+                        </div>
+                        <div class="membership-note">
+                            <small>* Precio especial válido solo para miembros activos del gimnasio</small>
+                        </div>
                     </div>
                     <?php else: ?>
                     <div class="price-container">
-                        <span class="current-price">S/ <?= number_format($product['price'], 2) ?></span>
+                        <div class="price-offer">
+                            <span class="price-label-offer">🏋️ Precio para clientes del gimnasio:</span>
+                            <span class="current-price">S/ <?= number_format($normalPrice, 2) ?></span>
+                        </div>
+                        <div class="membership-note">
+                            <small>* Precio especial para miembros del gimnasio</small>
+                        </div>
                     </div>
                     <?php endif; ?>
                 </div>
@@ -209,18 +229,33 @@ $finalPrice = $hasDiscount ? $product['sale_price'] : $product['price'];
                             $relatedImageSrc = !empty($relatedImages) ? $relatedImages[0] : '/images/placeholder.jpg';
                             ?>
                             <img src="<?= AppHelper::baseUrl($relatedImageSrc) ?>" alt="<?= htmlspecialchars($relatedProduct['name']) ?>" class="product-image">
-                            <?php if (!empty($relatedProduct['sale_price']) && $relatedProduct['sale_price'] < $relatedProduct['price']): ?>
-                            <div class="discount-badge">-<?= round((($relatedProduct['price'] - $relatedProduct['sale_price']) / $relatedProduct['price']) * 100) ?>%</div>
+                            <?php 
+                            $relatedHasDiscount = !empty($relatedProduct['sale_price']) && $relatedProduct['sale_price'] > 0;
+                            if ($relatedHasDiscount): 
+                                $relatedDiscountPercentage = round((($relatedProduct['price'] - $relatedProduct['sale_price']) / $relatedProduct['price']) * 100);
+                            ?>
+                            <div class="discount-badge">-<?= $relatedDiscountPercentage ?>%</div>
                             <?php endif; ?>
                         </div>
                         <div class="product-info">
                             <h3 class="product-name"><?= htmlspecialchars($relatedProduct['name']) ?></h3>
                             <div class="product-price">
-                                <?php if (!empty($relatedProduct['sale_price']) && $relatedProduct['sale_price'] < $relatedProduct['price']): ?>
-                                <span class="current-price">S/ <?= number_format($relatedProduct['sale_price'], 2) ?></span>
-                                <span class="original-price">S/ <?= number_format($relatedProduct['price'], 2) ?></span>
+                                <?php 
+                                $relatedNormalPrice = $relatedProduct['price'];
+                                $relatedSalePrice = $relatedProduct['sale_price'];
+                                $relatedHasDiscount = !empty($relatedSalePrice) && $relatedSalePrice > 0;
+                                ?>
+                                <?php if ($relatedHasDiscount): ?>
+                                <div class="price-gym-member">
+                                    <span class="gym-label">🏋️ Precio gimnasio:</span>
+                                    <span class="current-price">S/ <?= number_format($relatedSalePrice, 2) ?></span>
+                                </div>
+                                <span class="original-price">Público: S/ <?= number_format($relatedNormalPrice, 2) ?></span>
                                 <?php else: ?>
-                                <span class="current-price">S/ <?= number_format($relatedProduct['price'], 2) ?></span>
+                                <div class="price-gym-member">
+                                    <span class="gym-label">🏋️ Precio gimnasio:</span>
+                                    <span class="current-price">S/ <?= number_format($relatedNormalPrice, 2) ?></span>
+                                </div>
                                 <?php endif; ?>
                             </div>
                         </div>
