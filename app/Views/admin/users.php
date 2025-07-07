@@ -187,8 +187,8 @@ $additionalJS = ['admin-users.js'];
         }
         
         .role-trainer {
-            background: #fff3cd;
-            color: #856404;
+            background: #f0ad4e;
+            color: #ffffff;
         }
         
         .role-client {

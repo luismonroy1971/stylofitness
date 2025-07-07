@@ -369,10 +369,13 @@ class UserController
             $routines = [];
         }
         
-        AppHelper::loadView('user/my-routines', [
-            'routines' => $routines,
-            'user' => $currentUser
-        ]);
+        $pageTitle = 'Mis Rutinas - STYLOFITNESS';
+        $additionalCSS = ['routine-styles.css'];
+        $additionalJS = [];
+
+        include APP_PATH . '/Views/layout/header.php';
+        include APP_PATH . '/Views/user/my-routines.php';
+        include APP_PATH . '/Views/layout/footer.php';
     }
 
     /**
@@ -445,9 +448,12 @@ class UserController
             $orders = [];
         }
         
-        AppHelper::loadView('user/my-orders', [
-            'orders' => $orders,
-            'user' => $currentUser
-        ]);
+        $pageTitle = 'Mis Pedidos - STYLOFITNESS';
+        $additionalCSS = [];
+        $additionalJS = [];
+
+        include APP_PATH . '/Views/layout/header.php';
+        include APP_PATH . '/Views/user/my-orders.php';
+        include APP_PATH . '/Views/layout/footer.php';
     }
 }

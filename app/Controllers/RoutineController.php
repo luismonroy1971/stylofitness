@@ -78,6 +78,7 @@ class RoutineController
         ];
 
         $pageTitle = 'Mis Rutinas - STYLOFITNESS';
+        $additionalCSS = ['routine-styles.css'];
         include APP_PATH . '/Views/layout/header.php';
         include APP_PATH . '/Views/routines/index.php';
         include APP_PATH . '/Views/layout/footer.php';
@@ -112,7 +113,7 @@ class RoutineController
         }
 
         $pageTitle = 'Crear Rutina - STYLOFITNESS';
-        $additionalCSS = ['routine-builder.css'];
+        $additionalCSS = ['routine-styles.css', 'routine-builder.css'];
         $additionalJS = ['routine-builder.js'];
 
         include APP_PATH . '/Views/layout/header.php';
@@ -234,7 +235,7 @@ class RoutineController
         $recommendedProducts = $this->getRecommendedProducts($routine);
 
         $pageTitle = $routine['name'] . ' - STYLOFITNESS';
-        $additionalCSS = ['routine-view.css'];
+        $additionalCSS = ['routine-styles.css', 'routine-view.css'];
         $additionalJS = ['routine-view.js'];
 
         include APP_PATH . '/Views/layout/header.php';
@@ -278,7 +279,7 @@ class RoutineController
         }
 
         $pageTitle = 'Editar: ' . $routine['name'] . ' - STYLOFITNESS';
-        $additionalCSS = ['routine-builder.css'];
+        $additionalCSS = ['routine-styles.css', 'routine-builder.css'];
         $additionalJS = ['routine-builder.js'];
 
         include APP_PATH . '/Views/layout/header.php';

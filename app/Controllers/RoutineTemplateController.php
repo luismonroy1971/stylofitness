@@ -69,7 +69,7 @@ class RoutineTemplateController
         ];
 
         $pageTitle = 'Plantillas de Rutinas - STYLOFITNESS';
-        $additionalCSS = ['routine-templates.css'];
+        $additionalCSS = ['routine-styles.css', 'routine-templates.css'];
         $additionalJS = ['routine-templates.js'];
 
         include APP_PATH . '/Views/layout/header.php';
@@ -100,7 +100,7 @@ class RoutineTemplateController
         unset($_SESSION['template_errors'], $_SESSION['template_data']);
 
         $pageTitle = 'Crear Plantilla de Rutina - STYLOFITNESS';
-        $additionalCSS = ['template-builder.css', 'body-zone-selector.css'];
+        $additionalCSS = ['routine-styles.css', 'template-builder.css', 'body-zone-selector.css'];
         $additionalJS = ['template-builder.js', 'body-zone-selector.js'];
 
         include APP_PATH . '/Views/layout/header.php';
@@ -213,7 +213,7 @@ class RoutineTemplateController
         }
 
         $pageTitle = $template['name'] . ' - Plantilla de Rutina';
-        $additionalCSS = ['template-view.css'];
+        $additionalCSS = ['routine-styles.css', 'template-view.css'];
         $additionalJS = ['template-view.js', 'template-assignment.js'];
 
         include APP_PATH . '/Views/layout/header.php';
@@ -259,7 +259,7 @@ class RoutineTemplateController
         unset($_SESSION['template_errors'], $_SESSION['template_data']);
 
         $pageTitle = 'Editar: ' . $template['name'] . ' - STYLOFITNESS';
-        $additionalCSS = ['template-builder.css', 'body-zone-selector.css'];
+        $additionalCSS = ['routine-styles.css', 'template-builder.css', 'body-zone-selector.css'];
         $additionalJS = ['template-builder.js', 'body-zone-selector.js'];
 
         include APP_PATH . '/Views/layout/header.php';
