@@ -7,7 +7,6 @@ use Dotenv\Dotenv;
 class Environment
 {
     private static $loaded = false;
-    private static $config = [];
 
     /**
      * Load environment variables

@@ -20,7 +20,7 @@ if (!function_exists('config')) {
     /**
      * Obtener valor de configuración
      */
-    function config($key, $default = null)
+    function config(string $key, mixed $default = null): mixed
     {
         static $config = null;
 
@@ -69,7 +69,7 @@ if (!function_exists('isDebug')) {
     /**
      * Verificar si estamos en modo debug
      */
-    function isDebug()
+    function isDebug(): bool
     {
         return config('app_debug', false) === true || config('app_debug', false) === 'true';
     }
@@ -79,7 +79,7 @@ if (!function_exists('isProduction')) {
     /**
      * Verificar si estamos en producción
      */
-    function isProduction()
+    function isProduction(): bool
     {
         return config('app_env', 'production') === 'production';
     }
@@ -90,7 +90,7 @@ if (!function_exists('getAppConfig')) {
      * Obtener configuración de la aplicación
      * Función de compatibilidad para el sistema
      */
-    function getAppConfig($key, $default = null)
+    function getAppConfig(string $key, mixed $default = null): mixed
     {
         // Mapeo de claves específicas
         $keyMap = [
@@ -182,7 +182,7 @@ if (!function_exists('generateUuid')) {
     /**
      * Generar UUID v4
      */
-    function generateUuid()
+    function generateUuid(): string
     {
         $data = random_bytes(16);
         $data[6] = chr(ord($data[6]) & 0x0f | 0x40);
@@ -195,7 +195,7 @@ if (!function_exists('generateSecureToken')) {
     /**
      * Generar token seguro
      */
-    function generateSecureToken($length = 32)
+    function generateSecureToken(int $length = 32): string
     {
         return bin2hex(random_bytes($length));
     }
@@ -205,7 +205,7 @@ if (!function_exists('hashPassword')) {
     /**
      * Hash de password seguro
      */
-    function hashPassword($password)
+    function hashPassword(string $password): string
     {
         return password_hash($password, PASSWORD_BCRYPT, ['cost' => 12]);
     }
@@ -215,7 +215,7 @@ if (!function_exists('verifyPassword')) {
     /**
      * Verificar password
      */
-    function verifyPassword($password, $hash)
+    function verifyPassword(string $password, string $hash): bool
     {
         return password_verify($password, $hash);
     }
@@ -229,7 +229,7 @@ if (!function_exists('formatPrice')) {
     /**
      * Formatear precio
      */
-    function formatPrice($price, $currency = 'PEN')
+    function formatPrice(float $price, string $currency = 'PEN'): string
     {
         $symbols = [
             'PEN' => 'S/',
@@ -246,7 +246,7 @@ if (!function_exists('formatDate')) {
     /**
      * Formatear fecha
      */
-    function formatDate($date, $format = 'd/m/Y')
+    function formatDate(string $date, string $format = 'd/m/Y'): string
     {
         if (is_string($date)) {
             $date = new DateTime($date);
@@ -260,7 +260,7 @@ if (!function_exists('timeAgo')) {
     /**
      * Formatear fecha relativa
      */
-    function timeAgo($datetime)
+    function timeAgo(string $datetime): string
     {
         $time = time() - strtotime($datetime);
 
@@ -288,7 +288,7 @@ if (!function_exists('formatFileSize')) {
     /**
      * Formatear tamaño de archivo
      */
-    function formatFileSize($bytes)
+    function formatFileSize(int $bytes): string
     {
         $units = ['B', 'KB', 'MB', 'GB', 'TB'];
 
@@ -304,13 +304,13 @@ if (!function_exists('truncate')) {
     /**
      * Truncar texto
      */
-    function truncate($text, $length = 100, $ending = '...')
+    function truncate(string $text, int $length = 100, string $suffix = '...'): string
     {
         if (strlen($text) <= $length) {
             return $text;
         }
 
-        return substr($text, 0, $length - strlen($ending)) . $ending;
+        return substr($text, 0, $length - strlen($suffix)) . $suffix;
     }
 }
 
@@ -318,7 +318,7 @@ if (!function_exists('pluralize')) {
     /**
      * Pluralizar texto
      */
-    function pluralize($count, $singular, $plural = null)
+    function pluralize(int $count, string $singular, ?string $plural = null): string
     {
         if ($plural === null) {
             $plural = $singular . 's';
@@ -336,7 +336,7 @@ if (!function_exists('isValidEmail')) {
     /**
      * Validar email
      */
-    function isValidEmail($email)
+    function isValidEmail(string $email): bool
     {
         return filter_var($email, FILTER_VALIDATE_EMAIL) !== false;
     }
@@ -346,7 +346,7 @@ if (!function_exists('isValidUrl')) {
     /**
      * Validar URL
      */
-    function isValidUrl($url)
+    function isValidUrl(string $url): bool
     {
         return filter_var($url, FILTER_VALIDATE_URL) !== false;
     }
@@ -356,7 +356,7 @@ if (!function_exists('isValidPhone')) {
     /**
      * Validar teléfono
      */
-    function isValidPhone($phone)
+    function isValidPhone(string $phone): bool
     {
         // Patrón básico para teléfonos peruanos
         return preg_match('/^(\+51|51)?[9][0-9]{8}$/', str_replace([' ', '-', '(', ')'], '', $phone));
@@ -367,7 +367,7 @@ if (!function_exists('isValidDNI')) {
     /**
      * Validar DNI peruano
      */
-    function isValidDNI($dni)
+    function isValidDNI(string $dni): bool
     {
         return preg_match('/^[0-9]{8}$/', $dni);
     }
@@ -377,7 +377,7 @@ if (!function_exists('isValidRUC')) {
     /**
      * Validar RUC peruano
      */
-    function isValidRUC($ruc)
+    function isValidRUC(string $ruc): bool
     {
         return preg_match('/^[0-9]{11}$/', $ruc);
     }
@@ -391,7 +391,7 @@ if (!function_exists('getFileExtension')) {
     /**
      * Obtener extensión de archivo
      */
-    function getFileExtension($filename)
+    function getFileExtension(string $filename): string
     {
         return strtolower(pathinfo($filename, PATHINFO_EXTENSION));
     }
@@ -401,7 +401,7 @@ if (!function_exists('isImage')) {
     /**
      * Verificar si el archivo es una imagen
      */
-    function isImage($filename)
+    function isImage(string $filename): bool
     {
         $imageExtensions = ['jpg', 'jpeg', 'png', 'gif', 'webp', 'svg'];
         return in_array(getFileExtension($filename), $imageExtensions);
@@ -412,7 +412,7 @@ if (!function_exists('isVideo')) {
     /**
      * Verificar si el archivo es un video
      */
-    function isVideo($filename)
+    function isVideo(string $filename): bool
     {
         $videoExtensions = ['mp4', 'webm', 'ogg', 'avi', 'mov', 'wmv'];
         return in_array(getFileExtension($filename), $videoExtensions);
@@ -423,7 +423,7 @@ if (!function_exists('sanitizeFilename')) {
     /**
      * Limpiar nombre de archivo
      */
-    function sanitizeFilename($filename)
+    function sanitizeFilename(string $filename): string
     {
         // Remover caracteres especiales
         $clean = preg_replace('/[^a-zA-Z0-9._-]/', '', $filename);
@@ -441,7 +441,7 @@ if (!function_exists('generateUniqueFilename')) {
     /**
      * Generar nombre único de archivo
      */
-    function generateUniqueFilename($originalName, $directory = '')
+    function generateUniqueFilename(string $originalName, string $directory = ''): string
     {
         $extension = getFileExtension($originalName);
         $basename = pathinfo($originalName, PATHINFO_FILENAME);
@@ -467,7 +467,7 @@ if (!function_exists('array_get')) {
     /**
      * Obtener valor de array con valor por defecto
      */
-    function array_get($array, $key, $default = null)
+    function array_get(array $array, string $key, mixed $default = null): mixed
     {
         if (!is_array($array)) {
             return $default;
@@ -500,7 +500,7 @@ if (!function_exists('isAssociativeArray')) {
     /**
      * Verificar si array es asociativo
      */
-    function isAssociativeArray($array)
+    function isAssociativeArray(array $array): bool
     {
         if (!is_array($array)) {
             return false;
@@ -514,7 +514,7 @@ if (!function_exists('array_only')) {
     /**
      * Filtrar array por claves
      */
-    function array_only($array, $keys)
+    function array_only(array $array, array $keys): array
     {
         return array_intersect_key($array, array_flip((array) $keys));
     }
@@ -524,7 +524,7 @@ if (!function_exists('array_group_by')) {
     /**
      * Agrupar array por clave
      */
-    function array_group_by($array, $key)
+    function array_group_by(array $array, string $key): array
     {
         $grouped = [];
 
@@ -545,7 +545,7 @@ if (!function_exists('str_slug')) {
     /**
      * Generar slug
      */
-    function str_slug($text, $separator = '-')
+    function str_slug(string $text, string $separator = '-'): string
     {
         // Convertir a minúsculas
         $text = strtolower($text);
@@ -567,7 +567,7 @@ if (!function_exists('str_slug')) {
  * Verificar si string contiene otra string (PHP 8.0+)
  */
 if (!function_exists('str_contains')) {
-    function str_contains($haystack, $needle)
+    function str_contains(string $haystack, string $needle): bool
     {
         return $needle !== '' && strpos($haystack, $needle) !== false;
     }
@@ -577,7 +577,7 @@ if (!function_exists('str_contains')) {
  * Verificar si string empieza con otra string (PHP 8.0+)
  */
 if (!function_exists('str_starts_with')) {
-    function str_starts_with($haystack, $needle)
+    function str_starts_with(string $haystack, string $needle): bool
     {
         return $needle !== '' && strpos($haystack, $needle) === 0;
     }
@@ -587,7 +587,7 @@ if (!function_exists('str_starts_with')) {
  * Verificar si string termina con otra string (PHP 8.0+)
  */
 if (!function_exists('str_ends_with')) {
-    function str_ends_with($haystack, $needle)
+    function str_ends_with(string $haystack, string $needle): bool
     {
         return $needle !== '' && substr($haystack, -strlen($needle)) === $needle;
     }
@@ -597,7 +597,7 @@ if (!function_exists('str_camel')) {
     /**
      * Convertir a camelCase
      */
-    function str_camel($string)
+    function str_camel(string $string): string
     {
         return lcfirst(str_replace(' ', '', ucwords(str_replace(['-', '_'], ' ', $string))));
     }
@@ -607,7 +607,7 @@ if (!function_exists('str_pascal')) {
     /**
      * Convertir a PascalCase
      */
-    function str_pascal($string)
+    function str_pascal(string $string): string
     {
         return str_replace(' ', '', ucwords(str_replace(['-', '_'], ' ', $string)));
     }
@@ -617,7 +617,7 @@ if (!function_exists('str_snake')) {
     /**
      * Convertir a snake_case
      */
-    function str_snake($string)
+    function str_snake(string $string): string
     {
         return strtolower(preg_replace('/([a-z])([A-Z])/', '$1_$2', $string));
     }
@@ -631,7 +631,7 @@ if (!function_exists('request_method')) {
     /**
      * Obtener método HTTP actual
      */
-    function request_method()
+    function request_method(): string
     {
         return $_SERVER['REQUEST_METHOD'] ?? 'GET';
     }
@@ -641,7 +641,7 @@ if (!function_exists('is_ajax')) {
     /**
      * Verificar si es request AJAX
      */
-    function is_ajax()
+    function is_ajax(): bool
     {
         return !empty($_SERVER['HTTP_X_REQUESTED_WITH']) &&
                strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest';
@@ -652,7 +652,7 @@ if (!function_exists('get_client_ip')) {
     /**
      * Obtener IP del cliente
      */
-    function get_client_ip()
+    function get_client_ip(): string
     {
         $ipKeys = ['HTTP_X_FORWARDED_FOR', 'HTTP_X_REAL_IP', 'HTTP_CLIENT_IP', 'REMOTE_ADDR'];
 
@@ -674,7 +674,7 @@ if (!function_exists('get_user_agent')) {
     /**
      * Obtener User Agent
      */
-    function get_user_agent()
+    function get_user_agent(): string
     {
         return $_SERVER['HTTP_USER_AGENT'] ?? '';
     }
@@ -684,7 +684,7 @@ if (!function_exists('is_mobile')) {
     /**
      * Verificar si es dispositivo móvil
      */
-    function is_mobile()
+    function is_mobile(): bool
     {
         $userAgent = get_user_agent();
         return preg_match('/Mobile|Android|iPhone|iPad|BlackBerry|Windows Phone/', $userAgent);
@@ -699,7 +699,7 @@ if (!function_exists('json_response')) {
     /**
      * Respuesta JSON
      */
-    function json_response($data, $statusCode = 200)
+    function json_response(mixed $data, int $statusCode = 200): void
     {
         http_response_code($statusCode);
         header('Content-Type: application/json');
@@ -712,7 +712,7 @@ if (!function_exists('json_error')) {
     /**
      * Respuesta de error JSON
      */
-    function json_error($message, $statusCode = 400, $details = null)
+    function json_error(string $message, int $statusCode = 400, mixed $details = null): void
     {
         $response = ['error' => $message];
 
@@ -728,7 +728,7 @@ if (!function_exists('json_success')) {
     /**
      * Respuesta de éxito JSON
      */
-    function json_success($data = null, $message = 'Success')
+    function json_success(mixed $data = null, string $message = 'Success'): void
     {
         $response = ['success' => true, 'message' => $message];
 
@@ -748,7 +748,7 @@ if (!function_exists('now')) {
     /**
      * Obtener timestamp actual
      */
-    function now()
+    function now(): int
     {
         return time();
     }
@@ -758,7 +758,7 @@ if (!function_exists('today')) {
     /**
      * Obtener fecha actual
      */
-    function today()
+    function today(): string
     {
         return date('Y-m-d');
     }
@@ -768,7 +768,7 @@ if (!function_exists('current_datetime')) {
     /**
      * Obtener fecha y hora actual
      */
-    function current_datetime()
+    function current_datetime(): string
     {
         return date('Y-m-d H:i:s');
     }
@@ -778,7 +778,7 @@ if (!function_exists('add_days')) {
     /**
      * Agregar días a una fecha
      */
-    function add_days($date, $days)
+    function add_days(string $date, int $days): string
     {
         return date('Y-m-d', strtotime($date . " +{$days} days"));
     }
@@ -788,7 +788,7 @@ if (!function_exists('days_between')) {
     /**
      * Diferencia en días entre fechas
      */
-    function days_between($date1, $date2)
+    function days_between(string $date1, string $date2): int
     {
         $datetime1 = new DateTime($date1);
         $datetime2 = new DateTime($date2);
@@ -805,7 +805,7 @@ if (!function_exists('view')) {
     /**
      * Renderizar vista
      */
-    function view($viewPath, $data = [])
+    function view(string $viewPath, array $data = []): string
     {
         extract($data);
 
@@ -825,7 +825,7 @@ if (!function_exists('partial')) {
     /**
      * Incluir parcial
      */
-    function partial($partialPath, $data = [])
+    function partial(string $partialPath, array $data = []): void
     {
         echo view($partialPath, $data);
     }
@@ -839,7 +839,7 @@ if (!function_exists('e')) {
     /**
      * Escape HTML
      */
-    function e($value)
+    function e(string $value): string
     {
         return htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
     }
@@ -849,7 +849,7 @@ if (!function_exists('clean')) {
     /**
      * Limpiar input
      */
-    function clean($input)
+    function clean(mixed $input): mixed
     {
         if (is_array($input)) {
             return array_map('clean', $input);
@@ -863,7 +863,7 @@ if (!function_exists('csrf_token')) {
     /**
      * Generar token anti-CSRF
      */
-    function csrf_token()
+    function csrf_token(): string
     {
         if (!isset($_SESSION['_token'])) {
             $_SESSION['_token'] = bin2hex(random_bytes(32));
@@ -877,7 +877,7 @@ if (!function_exists('csrf_verify')) {
     /**
      * Verificar token anti-CSRF
      */
-    function csrf_verify($token)
+    function csrf_verify(string $token): bool
     {
         return isset($_SESSION['_token']) && hash_equals($_SESSION['_token'], $token);
     }
@@ -891,7 +891,7 @@ if (!function_exists('write_log')) {
     /**
      * Log simple
      */
-    function write_log($message, $level = 'info')
+    function write_log(string $message, string $level = 'info'): void
     {
         $logFile = ROOT_PATH . '/logs/' . date('Y-m-d') . '.log';
         $timestamp = date('Y-m-d H:i:s');
@@ -907,25 +907,25 @@ if (!function_exists('write_log')) {
 
 // Alias para diferentes niveles de log
 if (!function_exists('log_info')) {
-    function log_info($message)
+    function log_info(string $message): void
     {
         write_log($message, 'info');
     }
 }
 if (!function_exists('log_warning')) {
-    function log_warning($message)
+    function log_warning(string $message): void
     {
         write_log($message, 'warning');
     }
 }
 if (!function_exists('log_error')) {
-    function log_error($message)
+    function log_error(string $message): void
     {
         write_log($message, 'error');
     }
 }
 if (!function_exists('log_debug')) {
-    function log_debug($message)
+    function log_debug(string $message): void
     {
         write_log($message, 'debug');
     }
@@ -954,7 +954,7 @@ if (!class_exists('SimpleCache')) {
             return self::$cacheDir;
         }
 
-        public static function get($key, $default = null)
+        public static function get(string $key, mixed $default = null): mixed
         {
             $file = self::getCacheDir() . '/' . md5($key) . '.cache';
 
@@ -972,7 +972,7 @@ if (!class_exists('SimpleCache')) {
             return $data['value'];
         }
 
-        public static function put($key, $value, $ttl = 3600)
+        public static function put(string $key, mixed $value, int $ttl = 3600): void
         {
             $file = self::getCacheDir() . '/' . md5($key) . '.cache';
 
@@ -984,7 +984,7 @@ if (!class_exists('SimpleCache')) {
             file_put_contents($file, serialize($data));
         }
 
-        public static function forget($key)
+        public static function forget(string $key): void
         {
             $file = self::getCacheDir() . '/' . md5($key) . '.cache';
 
@@ -993,7 +993,7 @@ if (!class_exists('SimpleCache')) {
             }
         }
 
-        public static function flush()
+        public static function flush(): void
         {
             $files = glob(self::getCacheDir() . '/*.cache');
 
@@ -1009,29 +1009,29 @@ if (!class_exists('SimpleCache')) {
 // ==========================================
 
 if (!function_exists('cache_get')) {
-    function cache_get($key, $default = null)
+    function cache_get(string $key, mixed $default = null): mixed
     {
         return SimpleCache::get($key, $default);
     }
 }
 
 if (!function_exists('cache_put')) {
-    function cache_put($key, $value, $ttl = 3600)
+    function cache_put(string $key, mixed $value, int $ttl = 3600): void
     {
-        return SimpleCache::put($key, $value, $ttl);
+        SimpleCache::put($key, $value, $ttl);
     }
 }
 
 if (!function_exists('cache_forget')) {
-    function cache_forget($key)
+    function cache_forget(string $key): void
     {
-        return SimpleCache::forget($key);
+        SimpleCache::forget($key);
     }
 }
 
 if (!function_exists('cache_flush')) {
-    function cache_flush()
+    function cache_flush(): void
     {
-        return SimpleCache::flush();
+        SimpleCache::flush();
     }
 }

@@ -2,6 +2,6 @@
 
 // variadic-method-AppConfig-getCurrentUser-C:\trabajos\stylofitness\app\Config\App.php
 return \PHPStan\Cache\CacheItem::__set_state(array(
-   'variableKey' => '1751250129-v4',
+   'variableKey' => '1751884253-v4',
    'data' => false,
 ));

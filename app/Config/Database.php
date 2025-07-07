@@ -113,7 +113,23 @@ class Database
      */
     private function getEnvVar($key, $default = null)
     {
-        return $_ENV[$key] ?? $_SERVER[$key] ?? getenv($key) ?? $default;
+        // Verificar $_ENV primero
+        if (isset($_ENV[$key]) && $_ENV[$key] !== '') {
+            return $_ENV[$key];
+        }
+        
+        // Verificar $_SERVER
+        if (isset($_SERVER[$key]) && $_SERVER[$key] !== '') {
+            return $_SERVER[$key];
+        }
+        
+        // Verificar getenv()
+        $envValue = getenv($key);
+        if ($envValue !== false && $envValue !== '') {
+            return $envValue;
+        }
+        
+        return $default;
     }
 
     public static function getInstance()

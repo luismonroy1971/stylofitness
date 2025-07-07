@@ -612,7 +612,7 @@ function generateRecommendations($user, $routine)
     $analysis = analyzeRoutine($routine);
 
     // Generar recomendaciones basadas en el análisis
-    if ($analysis['cardio_percentage'] < $rules['cardio_percentage']) {
+    if (isset($rules['cardio_percentage']) && $analysis['cardio_percentage'] < $rules['cardio_percentage']) {
         $recommendations[] = [
             'type' => 'cardio',
             'message' => 'Considera agregar más ejercicios cardiovasculares',
@@ -620,7 +620,7 @@ function generateRecommendations($user, $routine)
         ];
     }
 
-    if ($analysis['avg_rest_time'] > $rules['rest_time_max']) {
+    if (isset($rules['rest_time_max']) && $analysis['avg_rest_time'] > $rules['rest_time_max']) {
         $recommendations[] = [
             'type' => 'rest',
             'message' => 'Reduce los tiempos de descanso para mejorar la intensidad',

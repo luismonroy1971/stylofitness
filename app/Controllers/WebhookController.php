@@ -162,7 +162,7 @@ class WebhookController
         }
 
         // Verificar el timestamp (no más de 5 minutos)
-        if (abs(time() - $timestamp) > 300) {
+        if (abs(time() - (int)$timestamp) > 300) {
             throw new Exception('Request timestamp too old');
         }
 

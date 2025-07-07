@@ -24,7 +24,7 @@ class WorkoutLog
     /**
      * Registrar un ejercicio completado
      */
-    public function logExercise($data)
+    public function logExercise(array $data): int|false
     {
         $sql = "INSERT INTO {$this->table} 
                 (user_id, routine_id, exercise_id, workout_date, sets_completed, reps, weight_used, 
@@ -51,7 +51,7 @@ class WorkoutLog
     /**
      * Obtener historial de entrenamientos de un cliente
      */
-    public function getClientWorkoutHistory($clientId, $filters = [])
+    public function getClientWorkoutHistory(int $clientId, array $filters = []): array
     {
         $sql = "SELECT wl.*, 
                        e.name as exercise_name, 
@@ -100,7 +100,7 @@ class WorkoutLog
     /**
      * Obtener progreso de un ejercicio específico
      */
-    public function getExerciseProgress($clientId, $exerciseId, $days = 30)
+    public function getExerciseProgress(int $clientId, int $exerciseId, int $days = 30): array
     {
         $sql = "SELECT 
                     workout_date,
@@ -121,7 +121,7 @@ class WorkoutLog
     /**
      * Obtener estadísticas de progreso de un cliente
      */
-    public function getClientProgressStats($clientId, $days = 30)
+    public function getClientProgressStats(int $clientId, int $days = 30): array
     {
         $stats = [];
 
@@ -199,7 +199,7 @@ class WorkoutLog
     /**
      * Obtener resumen de actividad por día
      */
-    public function getDailyActivitySummary($clientId, $days = 7)
+    public function getDailyActivitySummary(int $clientId, int $days = 7): array
     {
         $sql = "SELECT 
                     workout_date,
@@ -219,7 +219,7 @@ class WorkoutLog
     /**
      * Obtener comparativa de progreso entre períodos
      */
-    public function getProgressComparison($clientId, $currentDays = 30, $previousDays = 30)
+    public function getProgressComparison(int $clientId, int $currentDays = 30, int $previousDays = 30): array
     {
         // Período actual
         $currentStats = $this->getClientProgressStats($clientId, $currentDays);
@@ -269,7 +269,7 @@ class WorkoutLog
     /**
      * Obtener clientes más activos de un entrenador
      */
-    public function getTrainerActiveClients($trainerId, $days = 30)
+    public function getTrainerActiveClients(int $trainerId, int $days = 30): array
     {
         $sql = "SELECT 
                     u.id, u.first_name, u.last_name, u.email, u.avatar,
@@ -292,7 +292,7 @@ class WorkoutLog
     /**
      * Obtener alertas de progreso para entrenadores
      */
-    public function getProgressAlerts($trainerId)
+    public function getProgressAlerts(int $trainerId): array
     {
         $alerts = [];
 
@@ -354,7 +354,7 @@ class WorkoutLog
     /**
      * Eliminar logs antiguos (limpieza de datos)
      */
-    public function cleanOldLogs($daysToKeep = 365)
+    public function cleanOldLogs(int $daysToKeep = 365): bool
     {
         $sql = "DELETE FROM {$this->table} 
                 WHERE workout_date < DATE_SUB(CURDATE(), INTERVAL ? DAY)";
@@ -365,7 +365,7 @@ class WorkoutLog
     /**
      * Obtener estadísticas de un ejercicio específico
      */
-    public function getExerciseStats($exerciseId, $clientId = null, $days = 90)
+    public function getExerciseStats(int $exerciseId, ?int $clientId = null, int $days = 90): array
     {
         $sql = "SELECT 
                     COUNT(*) as total_sessions,
@@ -392,7 +392,7 @@ class WorkoutLog
     /**
      * Obtener entrenamientos recientes de un cliente
      */
-    public function getClientRecentWorkouts($clientId, $limit = 10)
+    public function getClientRecentWorkouts(int $clientId, int $limit = 10): array
     {
         $sql = "SELECT 
                     wl.*,
@@ -412,7 +412,7 @@ class WorkoutLog
     /**
      * Obtener estadísticas de ejercicios de un cliente
      */
-    public function getClientExerciseStats($clientId, $days = 30)
+    public function getClientExerciseStats(int $clientId, int $days = 30): array
     {
         $sql = "SELECT 
                     e.id,

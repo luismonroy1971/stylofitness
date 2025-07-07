@@ -25,7 +25,7 @@ class CheckoutController
         $this->orderModel = new Order();
     }
 
-    public function index()
+    public function index(): void
     {
         if (!AppHelper::isLoggedIn()) {
             AppHelper::setFlashMessage('error', 'Debes iniciar sesión para continuar');
@@ -81,7 +81,7 @@ class CheckoutController
         include APP_PATH . '/Views/layout/footer.php';
     }
 
-    public function process()
+    public function process(): void
     {
         if (!AppHelper::isLoggedIn()) {
             $this->jsonResponse(['error' => 'Debes iniciar sesión'], 401);
@@ -212,7 +212,7 @@ class CheckoutController
         }
     }
 
-    public function success($orderNumber)
+    public function success(string $orderNumber): void
     {
         if (!AppHelper::isLoggedIn()) {
             AppHelper::redirect('/login');
@@ -236,7 +236,7 @@ class CheckoutController
         include APP_PATH . '/Views/layout/footer.php';
     }
 
-    public function cancel()
+    public function cancel(): void
     {
         $pageTitle = 'Compra Cancelada - STYLOFITNESS';
         $additionalCSS = ['checkout.css'];
@@ -246,7 +246,7 @@ class CheckoutController
         include APP_PATH . '/Views/layout/footer.php';
     }
 
-    private function getCartItems($userId)
+    private function getCartItems(int $userId): array
     {
         return $this->db->fetchAll(
             'SELECT ci.*, p.name, p.slug, p.images, p.stock_quantity, p.sale_price, p.sku
@@ -258,7 +258,7 @@ class CheckoutController
         );
     }
 
-    private function validateStock($cartItems)
+    private function validateStock(array $cartItems): array
     {
         $errors = [];
 
@@ -276,7 +276,7 @@ class CheckoutController
         return $errors;
     }
 
-    private function calculateTotals($items)
+    private function calculateTotals(array $items): array
     {
         $subtotal = 0;
         $totalItems = 0;
@@ -300,7 +300,7 @@ class CheckoutController
         ];
     }
 
-    private function validateCheckoutData($data)
+    private function validateCheckoutData(array $data): array
     {
         $errors = [];
 
@@ -389,7 +389,7 @@ class CheckoutController
         ];
     }
 
-    private function processPayment($orderId, $checkoutData, $totals)
+    private function processPayment(int $orderId, array $checkoutData, array $totals): array
     {
         switch ($checkoutData['payment_method']) {
             case 'credit_card':
@@ -409,7 +409,7 @@ class CheckoutController
         }
     }
 
-    private function processCreditCardPayment($orderId, $checkoutData, $totals)
+    private function processCreditCardPayment(int $orderId, array $checkoutData, array $totals): array
     {
         // Integración con Stripe u otro procesador de pagos
         // Por ahora, simulamos el pago exitoso
@@ -438,11 +438,12 @@ class CheckoutController
             ];
 
         } catch (Exception $e) {
-            return ['success' => false, 'error' => 'Error al procesar el pago con tarjeta'];
+            error_log('Error en pago con tarjeta: ' . $e->getMessage());
+            return ['success' => false, 'error' => 'Error al procesar el pago con tarjeta: ' . $e->getMessage()];
         }
     }
 
-    private function processPayPalPayment($orderId, $checkoutData, $totals)
+    private function processPayPalPayment(int $orderId, array $checkoutData, array $totals): array
     {
         // Integración con PayPal
         try {
@@ -456,11 +457,12 @@ class CheckoutController
             ];
 
         } catch (Exception $e) {
-            return ['success' => false, 'error' => 'Error al procesar el pago con PayPal'];
+            error_log('Error en pago con PayPal: ' . $e->getMessage());
+            return ['success' => false, 'error' => 'Error al procesar el pago con PayPal: ' . $e->getMessage()];
         }
     }
 
-    private function processBankTransferPayment($orderId, $checkoutData, $totals)
+    private function processBankTransferPayment(int $orderId, array $checkoutData, array $totals): array
     {
         // Actualizar orden como pendiente de pago
         $this->orderModel->update($orderId, [
@@ -476,7 +478,7 @@ class CheckoutController
         ];
     }
 
-    private function processCashOnDeliveryPayment($orderId, $checkoutData, $totals)
+    private function processCashOnDeliveryPayment(int $orderId, array $checkoutData, array $totals): array
     {
         // Actualizar orden como pendiente de pago
         $this->orderModel->update($orderId, [
@@ -492,7 +494,7 @@ class CheckoutController
         ];
     }
 
-    private function getUserAddresses($userId)
+    private function getUserAddresses(int $userId): array
     {
         // Obtener direcciones guardadas del usuario
         return $this->db->fetchAll(
@@ -501,7 +503,7 @@ class CheckoutController
         );
     }
 
-    private function getAvailablePaymentMethods()
+    private function getAvailablePaymentMethods(): array
     {
         return [
             'credit_card' => [
@@ -531,7 +533,7 @@ class CheckoutController
         ];
     }
 
-    private function getShippingMethods($subtotal)
+    private function getShippingMethods(float $subtotal): array
     {
         $methods = [
             'standard' => [
@@ -551,7 +553,7 @@ class CheckoutController
         return $methods;
     }
 
-    private function recordCouponUsage($couponId, $userId, $orderId, $discountAmount)
+    private function recordCouponUsage(int $couponId, int $userId, int $orderId, float $discountAmount): void
     {
         $this->db->insert(
             'INSERT INTO coupon_usage (coupon_id, user_id, order_id, discount_amount, used_at) VALUES (?, ?, ?, ?, NOW())',
@@ -565,18 +567,18 @@ class CheckoutController
         );
     }
 
-    private function clearCart($userId)
+    private function clearCart(int $userId): bool
     {
         return $this->db->query('DELETE FROM cart_items WHERE user_id = ?', [$userId]);
     }
 
-    private function getOrderNumber($orderId)
+    private function getOrderNumber(int $orderId): ?string
     {
         $order = $this->orderModel->findById($orderId);
         return $order ? $order['order_number'] : null;
     }
 
-    private function jsonResponse($data, $statusCode = 200)
+    private function jsonResponse(array $data, int $statusCode = 200): void
     {
         http_response_code($statusCode);
         header('Content-Type: application/json');

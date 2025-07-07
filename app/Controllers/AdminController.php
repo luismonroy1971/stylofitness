@@ -34,7 +34,7 @@ class AdminController
         }
     }
 
-    public function dashboard()
+    public function dashboard(): void
     {
         // Obtener estadísticas generales
         $stats = $this->getDashboardStats();
@@ -57,8 +57,14 @@ class AdminController
         include APP_PATH . '/Views/layout/footer.php';
     }
 
-    public function users()
+    public function users(): void
     {
+        // Si es una petición AJAX, devolver solo los datos
+        if (isset($_GET['ajax']) && $_GET['ajax'] === '1') {
+            $this->getUsersAjax();
+            return;
+        }
+
         $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
         $perPage = 20;
         $offset = ($page - 1) * $perPage;
@@ -66,10 +72,14 @@ class AdminController
         $filters = [
             'search' => AppHelper::sanitize($_GET['search'] ?? ''),
             'role' => AppHelper::sanitize($_GET['role'] ?? ''),
-            'status' => AppHelper::sanitize($_GET['status'] ?? ''),
             'limit' => $perPage,
             'offset' => $offset,
         ];
+        
+        // Manejar el filtro de status correctamente
+        if (isset($_GET['status']) && $_GET['status'] !== '') {
+            $filters['is_active'] = (int)$_GET['status'];
+        }
 
         $userModel = new User();
         $users = $userModel->getUsers($filters);
@@ -86,7 +96,51 @@ class AdminController
         include APP_PATH . '/Views/layout/footer.php';
     }
 
-    public function createUser()
+    private function getUsersAjax(): void
+    {
+        $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+        $perPage = 20;
+        $offset = ($page - 1) * $perPage;
+
+        $filters = [
+            'search' => AppHelper::sanitize($_GET['search'] ?? ''),
+            'role' => AppHelper::sanitize($_GET['role'] ?? ''),
+            'limit' => $perPage,
+            'offset' => $offset,
+        ];
+        
+        // Manejar el filtro de status correctamente
+        if (isset($_GET['status']) && $_GET['status'] !== '') {
+            $filters['is_active'] = (int)$_GET['status'];
+        }
+
+        $userModel = new User();
+        $users = $userModel->getUsers($filters);
+        $totalUsers = $userModel->countUsers($filters);
+        $pagination = $this->calculatePagination($page, $totalUsers, $perPage);
+
+        // Generar HTML de la tabla
+        ob_start();
+        include APP_PATH . '/Views/admin/users-table.php';
+        $tableHtml = ob_get_clean();
+
+        // Generar HTML de la paginación
+        ob_start();
+        include APP_PATH . '/Views/admin/users-pagination.php';
+        $paginationHtml = ob_get_clean();
+
+        header('Content-Type: application/json');
+        echo json_encode([
+            'success' => true,
+            'tableHtml' => $tableHtml,
+            'paginationHtml' => $paginationHtml,
+            'totalUsers' => $totalUsers,
+            'currentPage' => $page,
+            'totalPages' => $pagination['total_pages']
+        ]);
+    }
+
+    public function createUser(): void
     {
         $pageTitle = 'Crear Usuario - STYLOFITNESS';
         $additionalCSS = ['admin.css'];
@@ -97,7 +151,7 @@ class AdminController
         include APP_PATH . '/Views/layout/footer.php';
     }
 
-    public function storeUser()
+    public function storeUser(): void
     {
         if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
             AppHelper::redirect('/admin/users');
@@ -140,7 +194,7 @@ class AdminController
         }
     }
 
-    public function editUser($id)
+    public function editUser(int $id): void
     {
         $userModel = new User();
         $user = $userModel->findById($id);
@@ -160,7 +214,7 @@ class AdminController
         include APP_PATH . '/Views/layout/footer.php';
     }
 
-    public function updateUser($id)
+    public function updateUser(int $id): void
     {
         if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
             AppHelper::redirect('/admin/users');
@@ -202,12 +256,20 @@ class AdminController
         }
     }
 
-    public function deleteUser($id)
+    public function deleteUser(int $id): void
     {
         $userModel = new User();
         $user = $userModel->findById($id);
 
+        // Si es una petición AJAX, devolver JSON
+        $isAjax = isset($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH'] === 'XMLHttpRequest';
+        
         if (!$user) {
+            if ($isAjax) {
+                header('Content-Type: application/json');
+                echo json_encode(['success' => false, 'message' => 'Usuario no encontrado']);
+                return;
+            }
             AppHelper::setFlashMessage('error', 'Usuario no encontrado');
             AppHelper::redirect('/admin/users');
             return;
@@ -217,6 +279,11 @@ class AdminController
         if ($user['role'] === 'admin') {
             $adminCount = $this->db->count("SELECT COUNT(*) FROM users WHERE role = 'admin' AND is_active = 1");
             if ($adminCount <= 1) {
+                if ($isAjax) {
+                    header('Content-Type: application/json');
+                    echo json_encode(['success' => false, 'message' => 'No se puede eliminar el último administrador']);
+                    return;
+                }
                 AppHelper::setFlashMessage('error', 'No se puede eliminar el último administrador');
                 AppHelper::redirect('/admin/users');
                 return;
@@ -224,15 +291,25 @@ class AdminController
         }
 
         if ($userModel->delete($id)) {
+            if ($isAjax) {
+                header('Content-Type: application/json');
+                echo json_encode(['success' => true, 'message' => 'Usuario eliminado exitosamente']);
+                return;
+            }
             AppHelper::setFlashMessage('success', 'Usuario eliminado exitosamente');
         } else {
+            if ($isAjax) {
+                header('Content-Type: application/json');
+                echo json_encode(['success' => false, 'message' => 'Error al eliminar el usuario']);
+                return;
+            }
             AppHelper::setFlashMessage('error', 'Error al eliminar el usuario');
         }
 
         AppHelper::redirect('/admin/users');
     }
 
-    public function products()
+    public function products(): void
     {
         // Si es una petición AJAX, devolver solo los datos
         if (isset($_GET['ajax']) && $_GET['ajax'] === '1') {
@@ -271,7 +348,7 @@ class AdminController
         include APP_PATH . '/Views/layout/footer.php';
     }
 
-    public function getProductsAjax()
+    public function getProductsAjax(): void
     {
         header('Content-Type: application/json');
         
@@ -302,7 +379,7 @@ class AdminController
         ]);
     }
 
-    public function createProduct()
+    public function createProduct(): void
     {
         $categoryModel = new ProductCategory();
         $categories = $categoryModel->getCategories();
@@ -316,7 +393,7 @@ class AdminController
         include APP_PATH . '/Views/layout/footer.php';
     }
 
-    public function storeProduct()
+    public function storeProduct(): void
     {
         if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
             AppHelper::redirect('/admin/products');
@@ -365,7 +442,7 @@ class AdminController
         }
     }
 
-    public function editProduct($id)
+    public function editProduct(int $id): void
     {
         $productModel = new Product();
         $product = $productModel->findById($id);
@@ -388,7 +465,7 @@ class AdminController
         include APP_PATH . '/Views/layout/footer.php';
     }
 
-    public function updateProduct($id)
+    public function updateProduct(int $id): void
     {
         if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
             if ($this->isAjaxRequest()) {
@@ -456,7 +533,7 @@ class AdminController
         }
     }
 
-    public function deleteProduct($id)
+    public function deleteProduct(int $id): void
     {
         $productModel = new Product();
         $product = $productModel->findById($id);
@@ -529,7 +606,7 @@ class AdminController
         AppHelper::redirect('/admin/products');
     }
 
-    public function orders()
+    public function orders(): void
     {
         $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
         $perPage = 20;
@@ -560,7 +637,7 @@ class AdminController
         include APP_PATH . '/Views/layout/footer.php';
     }
 
-    public function routines()
+    public function routines(): void
     {
         $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
         $perPage = 20;
@@ -590,7 +667,7 @@ class AdminController
         include APP_PATH . '/Views/layout/footer.php';
     }
 
-    public function exercises()
+    public function exercises(): void
     {
         $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
         $perPage = 20;
@@ -621,7 +698,7 @@ class AdminController
         include APP_PATH . '/Views/layout/footer.php';
     }
 
-    public function classes()
+    public function classes(): void
     {
         $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
         $perPage = 20;
@@ -653,7 +730,7 @@ class AdminController
         include APP_PATH . '/Views/layout/footer.php';
     }
 
-    public function reports()
+    public function reports(): void
     {
         $reportType = AppHelper::sanitize($_GET['type'] ?? 'overview');
         $dateFrom = $_GET['date_from'] ?? date('Y-m-01');
@@ -686,7 +763,7 @@ class AdminController
         include APP_PATH . '/Views/layout/footer.php';
     }
 
-    public function settings()
+    public function settings(): void
     {
         $settingsModel = new SystemSettings();
         $settings = $settingsModel->getAllSettings();
@@ -700,7 +777,7 @@ class AdminController
         include APP_PATH . '/Views/layout/footer.php';
     }
 
-    public function updateSettings()
+    public function updateSettings(): void
     {
         if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
             AppHelper::redirect('/admin/settings');
@@ -727,7 +804,7 @@ class AdminController
 
     // Métodos auxiliares
 
-    private function getDashboardStats()
+    private function getDashboardStats(): array
     {
         return [
             'total_users' => $this->db->count('SELECT COUNT(*) FROM users WHERE is_active = 1'),
@@ -754,7 +831,7 @@ class AdminController
         ];
     }
 
-    private function getChartData()
+    private function getChartData(): array
     {
         // Datos para gráficos del dashboard
         $last30Days = [];
@@ -792,7 +869,7 @@ class AdminController
         ];
     }
 
-    private function getRecentActivity()
+    private function getRecentActivity(): array
     {
         return $this->db->fetchAll(
             'SELECT ual.*, u.first_name, u.last_name, u.email
@@ -803,7 +880,7 @@ class AdminController
         );
     }
 
-    private function getSystemAlerts()
+    private function getSystemAlerts(): array
     {
         $alerts = [];
 
@@ -850,7 +927,7 @@ class AdminController
         return $alerts;
     }
 
-    private function calculatePagination($currentPage, $totalItems, $perPage)
+    private function calculatePagination(int $currentPage, int $totalItems, int $perPage): array
     {
         $totalPages = ceil($totalItems / $perPage);
 
@@ -866,7 +943,7 @@ class AdminController
         ];
     }
 
-    private function processProductImages($productId, $images)
+    private function processProductImages(int $productId, array $images): void
     {
         if (empty($images['name'][0])) {
             return;
@@ -900,25 +977,25 @@ class AdminController
         }
     }
 
-    private function getSalesReport($dateFrom, $dateTo)
+    private function getSalesReport(string $dateFrom, string $dateTo): array
     {
         // Implementar reporte de ventas
         return [];
     }
 
-    private function getUsersReport($dateFrom, $dateTo)
+    private function getUsersReport(string $dateFrom, string $dateTo): array
     {
         // Implementar reporte de usuarios
         return [];
     }
 
-    private function getRoutinesReport($dateFrom, $dateTo)
+    private function getRoutinesReport(string $dateFrom, string $dateTo): array
     {
         // Implementar reporte de rutinas
         return [];
     }
 
-    private function getOverviewReport($dateFrom, $dateTo)
+    private function getOverviewReport(string $dateFrom, string $dateTo): array
     {
         // Implementar reporte general
         return [];
@@ -927,7 +1004,7 @@ class AdminController
     /**
      * Detecta si la petición es AJAX
      */
-    private function isAjaxRequest()
+    private function isAjaxRequest(): bool
     {
         return !empty($_SERVER['HTTP_X_REQUESTED_WITH']) && 
                strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest';
@@ -944,14 +1021,14 @@ class SystemSettings
         $this->db = Database::getInstance();
     }
 
-    public function getAllSettings()
+    public function getAllSettings(): array
     {
         return $this->db->fetchAll(
             'SELECT * FROM system_settings ORDER BY `group`, `key`'
         );
     }
 
-    public function getSetting($key, $default = null)
+    public function getSetting(string $key, mixed $default = null): mixed
     {
         $setting = $this->db->fetch(
             'SELECT value FROM system_settings WHERE `key` = ?',
@@ -961,7 +1038,7 @@ class SystemSettings
         return $setting ? $setting['value'] : $default;
     }
 
-    public function updateSetting($key, $value)
+    public function updateSetting(string $key, mixed $value): bool
     {
         $exists = $this->db->count(
             'SELECT COUNT(*) FROM system_settings WHERE `key` = ?',

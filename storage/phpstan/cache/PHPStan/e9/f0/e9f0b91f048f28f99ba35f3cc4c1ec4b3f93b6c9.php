@@ -2,6 +2,6 @@
 
 // variadic-method-StyleFitness\Config\Environment-load-C:\trabajos\stylofitness\app\Config\Environment.php
 return \PHPStan\Cache\CacheItem::__set_state(array(
-   'variableKey' => '1751250129-v4',
+   'variableKey' => '1751883577-v4',
    'data' => false,
 ));

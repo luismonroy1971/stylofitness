@@ -2,6 +2,6 @@
 
 // variadic-method-StyleFitness\Helpers\RoutineHelper-hasCardioExercises-C:\trabajos\stylofitness\app\Helpers\RoutineHelper.php
 return \PHPStan\Cache\CacheItem::__set_state(array(
-   'variableKey' => '1751251415-v4',
+   'variableKey' => '1751884446-v4',
    'data' => false,
 ));

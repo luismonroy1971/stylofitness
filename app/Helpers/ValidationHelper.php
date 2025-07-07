@@ -15,7 +15,7 @@ class ValidationHelper
     /**
      * Validar email
      */
-    public static function validateEmail($email)
+    public static function validateEmail(string $email): bool
     {
         return filter_var($email, FILTER_VALIDATE_EMAIL) !== false;
     }
@@ -23,7 +23,7 @@ class ValidationHelper
     /**
      * Validar teléfono
      */
-    public static function validatePhone($phone)
+    public static function validatePhone(string $phone): int|false
     {
         $pattern = '/^[+]?[\d\s\-\(\)]{8,15}$/';
         return preg_match($pattern, $phone);
@@ -32,7 +32,7 @@ class ValidationHelper
     /**
      * Validar contraseña fuerte
      */
-    public static function validateStrongPassword($password)
+    public static function validateStrongPassword(string $password): bool
     {
         if (strlen($password) < 8) {
             return false;
@@ -49,7 +49,7 @@ class ValidationHelper
     /**
      * Validar URL
      */
-    public static function validateUrl($url)
+    public static function validateUrl(string $url): bool
     {
         return filter_var($url, FILTER_VALIDATE_URL) !== false;
     }
@@ -57,7 +57,7 @@ class ValidationHelper
     /**
      * Validar fecha
      */
-    public static function validateDate($date, $format = 'Y-m-d')
+    public static function validateDate(string $date, string $format = 'Y-m-d'): bool
     {
         $d = DateTime::createFromFormat($format, $date);
         return $d && $d->format($format) === $date;
@@ -66,7 +66,7 @@ class ValidationHelper
     /**
      * Validar rango numérico
      */
-    public static function validateNumericRange($value, $min, $max)
+    public static function validateNumericRange(float|int $value, float|int $min, float|int $max): bool
     {
         return is_numeric($value) && $value >= $min && $value <= $max;
     }
@@ -74,7 +74,7 @@ class ValidationHelper
     /**
      * Validar SKU de producto
      */
-    public static function validateSKU($sku)
+    public static function validateSKU(string $sku): int|false
     {
         $pattern = '/^[A-Z0-9]{3,20}$/';
         return preg_match($pattern, strtoupper($sku));
@@ -83,7 +83,7 @@ class ValidationHelper
     /**
      * Validar slug
      */
-    public static function validateSlug($slug)
+    public static function validateSlug(string $slug): int|false
     {
         $pattern = '/^[a-z0-9]+(?:-[a-z0-9]+)*$/';
         return preg_match($pattern, $slug);
@@ -92,7 +92,7 @@ class ValidationHelper
     /**
      * Sanitizar entrada HTML
      */
-    public static function sanitizeHtml($html, $allowedTags = '<p><br><strong><em><ul><ol><li>')
+    public static function sanitizeHtml(string $html, string $allowedTags = '<p><br><strong><em><ul><ol><li>'): string
     {
         return strip_tags($html, $allowedTags);
     }
@@ -100,7 +100,7 @@ class ValidationHelper
     /**
      * Validar archivo de imagen
      */
-    public static function validateImageFile($file)
+    public static function validateImageFile(array $file): array
     {
         $allowedTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
         $maxSize = 5 * 1024 * 1024; // 5MB
@@ -119,7 +119,7 @@ class ValidationHelper
     /**
      * Validar archivo de video
      */
-    public static function validateVideoFile($file)
+    public static function validateVideoFile(array $file): array
     {
         $allowedTypes = ['video/mp4', 'video/quicktime', 'video/x-msvideo'];
         $maxSize = 50 * 1024 * 1024; // 50MB
@@ -138,7 +138,7 @@ class ValidationHelper
     /**
      * Validar datos de tarjeta de crédito (básico)
      */
-    public static function validateCreditCard($number)
+    public static function validateCreditCard(string $number): bool
     {
         // Eliminar espacios y guiones
         $number = preg_replace('/[\s\-]/', '', $number);
@@ -178,7 +178,7 @@ class ValidationHelper
     /**
      * Validar código postal peruano
      */
-    public static function validatePeruvianPostalCode($code)
+    public static function validatePeruvianPostalCode(string $code): int|false
     {
         $pattern = '/^[0-9]{5}$/';
         return preg_match($pattern, $code);
@@ -187,7 +187,7 @@ class ValidationHelper
     /**
      * Validar RUC peruano
      */
-    public static function validatePeruvianRUC($ruc)
+    public static function validatePeruvianRUC(string $ruc): bool
     {
         if (strlen($ruc) !== 11 || !ctype_digit($ruc)) {
             return false;
@@ -209,7 +209,7 @@ class ValidationHelper
     /**
      * Validar DNI peruano
      */
-    public static function validatePeruvianDNI($dni)
+    public static function validatePeruvianDNI(string $dni): bool
     {
         return strlen($dni) === 8 && ctype_digit($dni);
     }
@@ -217,7 +217,7 @@ class ValidationHelper
     /**
      * Validar horario (formato HH:MM)
      */
-    public static function validateTime($time)
+    public static function validateTime(string $time): int|false
     {
         $pattern = '/^([01]?[0-9]|2[0-3]):[0-5][0-9]$/';
         return preg_match($pattern, $time);
@@ -226,7 +226,7 @@ class ValidationHelper
     /**
      * Validar JSON
      */
-    public static function validateJson($json)
+    public static function validateJson(string $json): bool
     {
         json_decode($json);
         return json_last_error() === JSON_ERROR_NONE;
@@ -235,7 +235,7 @@ class ValidationHelper
     /**
      * Generar reglas de validación para formularios
      */
-    public static function getValidationRules($formType)
+    public static function getValidationRules(string $formType): array
     {
         $rules = [
             'user_registration' => [
@@ -267,7 +267,7 @@ class ValidationHelper
     /**
      * Ejecutar validación con reglas
      */
-    public static function validate($data, $rules)
+    public static function validate(array $data, array $rules): array
     {
         $errors = [];
 
@@ -290,7 +290,7 @@ class ValidationHelper
         return $errors;
     }
 
-    private static function validateRule($field, $value, $rule, $param, $allData)
+    private static function validateRule(string $field, mixed $value, string $rule, ?string $param, array $allData): ?string
     {
         switch ($rule) {
             case 'required':

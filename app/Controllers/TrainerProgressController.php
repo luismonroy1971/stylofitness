@@ -73,7 +73,7 @@ class TrainerProgressController
     /**
      * Ver progreso detallado de un cliente específico
      */
-    public function clientDetail($clientId)
+    public function clientDetail(int $clientId): void
     {
         if (!AppHelper::isLoggedIn()) {
             AppHelper::redirect('/login');
@@ -357,7 +357,7 @@ class TrainerProgressController
     /**
      * Obtener estadísticas generales del entrenador
      */
-    private function getTrainerOverviewStats($trainerId)
+    private function getTrainerOverviewStats(?int $trainerId): array
     {
         $stats = [];
 
@@ -384,7 +384,7 @@ class TrainerProgressController
     /**
      * Obtener progreso por ejercicio de un cliente
      */
-    private function getClientExerciseProgress($clientId, $days)
+    private function getClientExerciseProgress(int $clientId, int $days): array
     {
         $exerciseProgress = [];
         
@@ -408,7 +408,7 @@ class TrainerProgressController
     /**
      * Generar datos para reporte
      */
-    private function generateReportData($clientId, $reportType)
+    private function generateReportData(int $clientId, string $reportType): array
     {
         $days = match($reportType) {
             'weekly' => 7,
@@ -432,7 +432,7 @@ class TrainerProgressController
     /**
      * Generar reporte en PDF
      */
-    private function generatePDFReport($client, $reportData, $reportType)
+    private function generatePDFReport(array $client, array $reportData, string $reportType): void
     {
         // Aquí se implementaría la generación de PDF
         // Por ahora, redirigir a la versión HTML

@@ -21,7 +21,7 @@ class AppHelper
     /**
      * Verificar si el usuario está logueado
      */
-    public static function isLoggedIn()
+    public static function isLoggedIn(): bool
     {
         return isset($_SESSION['user_id']) && !empty($_SESSION['user_id']);
     }
@@ -29,7 +29,7 @@ class AppHelper
     /**
      * Obtener el usuario actual de la sesión
      */
-    public static function getCurrentUser()
+    public static function getCurrentUser(): ?array
     {
         if (!self::isLoggedIn()) {
             return null;
@@ -68,7 +68,7 @@ class AppHelper
     /**
      * Iniciar sesión de usuario
      */
-    public static function login($user)
+    public static function login(array $user): void
     {
         $_SESSION['user_id'] = $user['id'];
         $_SESSION['user_data'] = $user;
@@ -89,7 +89,7 @@ class AppHelper
     /**
      * Cerrar sesión
      */
-    public static function logout()
+    public static function logout(): void
     {
         // Eliminar cookies de remember_token si existen
         if (isset($_COOKIE['remember_token'])) {
@@ -104,7 +104,7 @@ class AppHelper
     /**
      * Verificar si el usuario tiene un rol específico
      */
-    public static function hasRole($role)
+    public static function hasRole(string|array $role): bool
     {
         $user = self::getCurrentUser();
         if (!$user) {
@@ -121,7 +121,7 @@ class AppHelper
     /**
      * Verificar si el usuario es administrador
      */
-    public static function isAdmin()
+    public static function isAdmin(): bool
     {
         return self::hasRole('admin');
     }
@@ -129,7 +129,7 @@ class AppHelper
     /**
      * Verificar si el usuario es instructor
      */
-    public static function isInstructor()
+    public static function isInstructor(): bool
     {
         return self::hasRole('instructor');
     }
@@ -137,7 +137,7 @@ class AppHelper
     /**
      * Verificar si el usuario es cliente
      */
-    public static function isClient()
+    public static function isClient(): bool
     {
         return self::hasRole('client');
     }
@@ -149,7 +149,7 @@ class AppHelper
     /**
      * Redireccionar a una URL
      */
-    public static function redirect($url, $permanent = false)
+    public static function redirect(string $url, bool $permanent = false): void
     {
         $statusCode = $permanent ? 301 : 302;
 
@@ -167,7 +167,7 @@ class AppHelper
     /**
      * Obtener URL base de la aplicación
      */
-    public static function getBaseUrl()
+    public static function getBaseUrl(): string
     {
         $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https://' : 'http://';
         $host = $_SERVER['HTTP_HOST'];
@@ -183,7 +183,7 @@ class AppHelper
     /**
      * Alias de getBaseUrl para compatibilidad
      */
-    public static function baseUrl($path = '')
+    public static function baseUrl(string $path = ''): string
     {
         return self::getBaseUrl() . ltrim($path, '/');
     }
@@ -191,7 +191,7 @@ class AppHelper
     /**
      * Generar URL de la aplicación
      */
-    public static function url($path = '')
+    public static function url(string $path = ''): string
     {
         return self::getBaseUrl() . ltrim($path, '/');
     }
@@ -199,7 +199,7 @@ class AppHelper
     /**
      * Generar URL para archivos de assets (CSS, JS, imágenes)
      */
-    public static function asset($path)
+    public static function asset(string $path): string
     {
         $cleanPath = ltrim($path, '/');
         
@@ -211,7 +211,7 @@ class AppHelper
     /**
      * Generar URL para archivos subidos
      */
-    public static function uploadUrl($path = '')
+    public static function uploadUrl(string $path = ''): string
     {
         // Si el path ya incluye 'uploads/', no duplicar
         if (strpos($path, '/uploads/') === 0 || strpos($path, 'uploads/') === 0) {
@@ -223,7 +223,7 @@ class AppHelper
     /**
      * Redireccionar con autenticación requerida
      */
-    public static function requireAuth($redirectUrl = null)
+    public static function requireAuth(?string $redirectUrl = null): void
     {
         if (!self::isLoggedIn()) {
             $redirect = $redirectUrl ?: $_SERVER['REQUEST_URI'];
@@ -234,7 +234,7 @@ class AppHelper
     /**
      * Redireccionar con rol requerido
      */
-    public static function requireRole($role, $redirectUrl = '/')
+    public static function requireRole(string|array $role, string $redirectUrl = '/'): void
     {
         if (!self::hasRole($role)) {
             self::setFlashMessage('No tienes permisos para acceder a esta página', 'error');
@@ -249,7 +249,7 @@ class AppHelper
     /**
      * Establecer mensaje flash
      */
-    public static function setFlashMessage($message, $type = 'info')
+    public static function setFlashMessage(string $message, string $type = 'info'): void
     {
         $_SESSION['flash_messages'][$type] = $message;
     }
@@ -257,7 +257,7 @@ class AppHelper
     /**
      * Obtener mensaje flash por tipo
      */
-    public static function getFlashMessage($type = null)
+    public static function getFlashMessage(?string $type = null): mixed
     {
         if ($type === null) {
             $messages = $_SESSION['flash_messages'] ?? [];
@@ -277,7 +277,7 @@ class AppHelper
     /**
      * Verificar si hay mensaje flash de un tipo específico
      */
-    public static function hasFlashMessage($type)
+    public static function hasFlashMessage(string $type): bool
     {
         return isset($_SESSION['flash_messages'][$type]);
     }
@@ -285,7 +285,7 @@ class AppHelper
     /**
      * Verificar si hay mensajes flash
      */
-    public static function hasFlashMessages()
+    public static function hasFlashMessages(): bool
     {
         return !empty($_SESSION['flash_messages']);
     }
@@ -297,7 +297,7 @@ class AppHelper
     /**
      * Enviar respuesta JSON
      */
-    public static function jsonResponse($data, $statusCode = 200)
+    public static function jsonResponse(mixed $data, int $statusCode = 200): void
     {
         http_response_code($statusCode);
         header('Content-Type: application/json');
@@ -308,7 +308,7 @@ class AppHelper
     /**
      * Respuesta JSON de éxito
      */
-    public static function jsonSuccess($message = 'Operación exitosa', $data = null)
+    public static function jsonSuccess(string $message = 'Operación exitosa', mixed $data = null): void
     {
         $response = ['success' => true, 'message' => $message];
         if ($data !== null) {
@@ -320,7 +320,7 @@ class AppHelper
     /**
      * Respuesta JSON de error
      */
-    public static function jsonError($message = 'Error en la operación', $statusCode = 400)
+    public static function jsonError(string $message = 'Error en la operación', int $statusCode = 400): void
     {
         self::jsonResponse(['success' => false, 'message' => $message], $statusCode);
     }
@@ -332,7 +332,7 @@ class AppHelper
     /**
      * Validar email
      */
-    public static function validateEmail($email)
+    public static function validateEmail(string $email): bool
     {
         return filter_var($email, FILTER_VALIDATE_EMAIL) !== false;
     }
@@ -340,7 +340,7 @@ class AppHelper
     /**
      * Validar contraseña
      */
-    public static function validatePassword($password)
+    public static function validatePassword(string $password): bool
     {
         return strlen($password) >= 8;
     }
@@ -348,7 +348,7 @@ class AppHelper
     /**
      * Validar teléfono
      */
-    public static function validatePhone($phone)
+    public static function validatePhone(string $phone): int|false
     {
         return preg_match('/^[\+]?[0-9\s\-\(\)]{8,20}$/', $phone);
     }
@@ -356,7 +356,7 @@ class AppHelper
     /**
      * Sanitizar datos de entrada
      */
-    public static function sanitize($data)
+    public static function sanitize(mixed $data): mixed
     {
         if (is_array($data)) {
             return array_map([self::class, 'sanitize'], $data);
@@ -367,7 +367,7 @@ class AppHelper
     /**
      * Limpiar entrada de datos
      */
-    public static function cleanInput($input)
+    public static function cleanInput(string $input): string
     {
         return htmlspecialchars(trim($input), ENT_QUOTES, 'UTF-8');
     }
@@ -375,7 +375,7 @@ class AppHelper
     /**
      * Validar CSRF token
      */
-    public static function validateCsrfToken($token)
+    public static function validateCsrfToken(string $token): bool
     {
         return isset($_SESSION['csrf_token']) && hash_equals($_SESSION['csrf_token'], $token);
     }
@@ -383,7 +383,7 @@ class AppHelper
     /**
      * Generar CSRF token
      */
-    public static function generateCsrfToken()
+    public static function generateCsrfToken(): string
     {
         if (!isset($_SESSION['csrf_token'])) {
             $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
@@ -394,7 +394,7 @@ class AppHelper
     /**
      * Verificar CSRF token
      */
-    public static function verifyCsrfToken($token)
+    public static function verifyCsrfToken(string $token): bool
     {
         return isset($_SESSION['csrf_token']) && hash_equals($_SESSION['csrf_token'], $token);
     }
@@ -402,7 +402,7 @@ class AppHelper
     /**
      * Validar datos de usuario
      */
-    public static function validateUser($data)
+    public static function validateUser(array $data): array
     {
         $errors = [];
 
@@ -451,7 +451,7 @@ class AppHelper
     /**
      * Formatear precio
      */
-    public static function formatPrice($price, $currency = 'S/')
+    public static function formatPrice(float|int $price, string $currency = 'S/'): string
     {
         return $currency . ' ' . number_format((float)$price, 2);
     }
@@ -459,7 +459,7 @@ class AppHelper
     /**
      * Formatear fecha
      */
-    public static function formatDate($date, $format = 'd/m/Y')
+    public static function formatDate(string|DateTime|null $date, string $format = 'd/m/Y'): string
     {
         if (!$date) {
             return '';
@@ -475,7 +475,7 @@ class AppHelper
     /**
      * Formatear fecha con hora
      */
-    public static function formatDateTime($datetime, $format = 'd/m/Y H:i')
+    public static function formatDateTime(string|DateTime|null $datetime, string $format = 'd/m/Y H:i'): string
     {
         return self::formatDate($datetime, $format);
     }
@@ -483,7 +483,7 @@ class AppHelper
     /**
      * Formatear fecha relativa (hace X tiempo)
      */
-    public static function timeAgo($datetime)
+    public static function timeAgo(string|DateTime $datetime): string
     {
         if (is_string($datetime)) {
             $datetime = new DateTime($datetime);
@@ -508,7 +508,7 @@ class AppHelper
     /**
      * Truncar texto
      */
-    public static function truncate($text, $length = 100, $suffix = '...')
+    public static function truncate(string $text, int $length = 100, string $suffix = '...'): string
     {
         if (strlen($text) <= $length) {
             return $text;
@@ -520,7 +520,7 @@ class AppHelper
     /**
      * Generar slug
      */
-    public static function generateSlug($text)
+    public static function generateSlug(string $text): string
     {
         $text = strtolower($text);
         $text = preg_replace('/[^a-z0-9\s-]/', '', $text);
@@ -531,7 +531,7 @@ class AppHelper
     /**
      * Crear slug URL-friendly (alias de generateSlug)
      */
-    public static function createSlug($text)
+    public static function createSlug(string $text): string
     {
         return self::generateSlug($text);
     }
@@ -539,7 +539,7 @@ class AppHelper
     /**
      * Formatear bytes
      */
-    public static function formatBytes($size, $precision = 2)
+    public static function formatBytes(int|float $size, int $precision = 2): string
     {
         $units = ['B', 'KB', 'MB', 'GB', 'TB'];
 
@@ -557,7 +557,7 @@ class AppHelper
     /**
      * Obtener extensión de archivo
      */
-    public static function getFileExtension($filename)
+    public static function getFileExtension(string $filename): string
     {
         return strtolower(pathinfo($filename, PATHINFO_EXTENSION));
     }
@@ -565,7 +565,7 @@ class AppHelper
     /**
      * Verificar si es imagen
      */
-    public static function isImage($filename)
+    public static function isImage(string $filename): bool
     {
         $imageExtensions = ['jpg', 'jpeg', 'png', 'gif', 'webp', 'svg'];
         return in_array(self::getFileExtension($filename), $imageExtensions);
@@ -574,7 +574,7 @@ class AppHelper
     /**
      * Verificar si es video
      */
-    public static function isVideo($filename)
+    public static function isVideo(string $filename): bool
     {
         $videoExtensions = ['mp4', 'avi', 'mov', 'wmv', 'flv', 'webm'];
         return in_array(self::getFileExtension($filename), $videoExtensions);
@@ -583,7 +583,7 @@ class AppHelper
     /**
      * Generar nombre único para archivo
      */
-    public static function generateUniqueFilename($originalName)
+    public static function generateUniqueFilename(string $originalName): string
     {
         $extension = self::getFileExtension($originalName);
         return uniqid() . '_' . time() . '.' . $extension;
@@ -596,7 +596,7 @@ class AppHelper
     /**
      * Generar enlaces de paginación
      */
-    public static function generatePagination($currentPage, $totalPages, $baseUrl, $params = [])
+    public static function generatePagination(int $currentPage, int $totalPages, string $baseUrl, array $params = []): string
     {
         if ($totalPages <= 1) {
             return '';
@@ -653,7 +653,7 @@ class AppHelper
     /**
      * Construir URL con parámetros
      */
-    public static function buildUrl($baseUrl, $params = [])
+    public static function buildUrl(string $baseUrl, array $params = []): string
     {
         if (empty($params)) {
             return $baseUrl;
@@ -672,7 +672,7 @@ class AppHelper
     /**
      * Obtener configuración del sistema
      */
-    public static function getConfig($key, $default = null)
+    public static function getConfig(string $key, mixed $default = null): mixed
     {
         static $config = null;
 
@@ -716,7 +716,7 @@ class AppHelper
     /**
      * Log de actividad del usuario
      */
-    public static function logActivity($action, $resourceType = null, $resourceId = null, $details = [])
+    public static function logActivity(string $action, ?string $resourceType = null, ?int $resourceId = null, array $details = []): void
     {
         $user = self::getCurrentUser();
         if (!$user) {
@@ -750,7 +750,7 @@ class AppHelper
     /**
      * Obtener colores del tema del gimnasio
      */
-    public static function getGymThemeColors()
+    public static function getGymThemeColors(): array
     {
         $user = self::getCurrentUser();
         if (!$user || !isset($user['theme_colors'])) {
@@ -769,7 +769,7 @@ class AppHelper
     /**
      * Formatear duración de ejercicio
      */
-    public static function formatExerciseDuration($minutes)
+    public static function formatExerciseDuration(int $minutes): string
     {
         if ($minutes < 60) {
             return $minutes . ' min';
@@ -784,7 +784,7 @@ class AppHelper
     /**
      * Formatear dificultad
      */
-    public static function formatDifficulty($level)
+    public static function formatDifficulty(string $level): string
     {
         $levels = [
             'beginner' => 'Principiante',
@@ -798,7 +798,7 @@ class AppHelper
     /**
      * Formatear objetivo de rutina
      */
-    public static function formatObjective($objective)
+    public static function formatObjective(string $objective): string
     {
         $objectives = [
             'weight_loss' => 'Pérdida de Peso',
@@ -815,7 +815,7 @@ class AppHelper
     /**
      * Comprimir imagen
      */
-    public static function compressImage($source, $destination, $quality = 80)
+    public static function compressImage(string $source, string $destination, int $quality = 80): bool
     {
         if (!file_exists($source)) {
             return false;
@@ -894,7 +894,7 @@ class AppHelper
     /**
      * Convertir array a XML
      */
-    public static function arrayToXml($data, $rootElement = 'root', $xml = null)
+    public static function arrayToXml(array $data, string $rootElement = 'root', ?SimpleXMLElement $xml = null): string|false
     {
         if ($xml === null) {
             $xml = new SimpleXMLElement('<' . $rootElement . '/>');
@@ -921,7 +921,7 @@ class AppHelper
     /**
      * Cargar una vista con datos
      */
-    public static function loadView($viewPath, $data = [])
+    public static function loadView(string $viewPath, array $data = []): void
     {
         // Extraer variables para la vista
         extract($data);
@@ -946,7 +946,7 @@ class AppHelper
 }
 
 // Función global para obtener configuración (shortcut)
-function getAppConfig($key, $default = null)
+function getAppConfig(string $key, mixed $default = null): mixed
 {
     return AppHelper::getConfig($key, $default);
 }

@@ -47,7 +47,7 @@ class ApiController
     // ENDPOINTS DE RUTINAS
     // ==========================================
 
-    public function routines()
+    public function routines(): void
     {
         $this->requireAuth();
 
@@ -89,7 +89,7 @@ class ApiController
         ]);
     }
 
-    public function routine($id)
+    public function routine(int $id): void
     {
         $this->requireAuth();
 
@@ -122,7 +122,7 @@ class ApiController
         ]);
     }
 
-    public function createRoutine()
+    public function createRoutine(): void
     {
         $this->requireAuth(['instructor', 'admin']);
 
@@ -171,7 +171,7 @@ class ApiController
         }
     }
 
-    public function updateRoutine($id)
+    public function updateRoutine(int $id): void
     {
         $this->requireAuth(['instructor', 'admin']);
 
@@ -220,7 +220,7 @@ class ApiController
         }
     }
 
-    public function deleteRoutine($id)
+    public function deleteRoutine(int $id): void
     {
         $this->requireAuth(['instructor', 'admin']);
 
@@ -252,7 +252,7 @@ class ApiController
     // ENDPOINTS DE EJERCICIOS
     // ==========================================
 
-    public function exercises()
+    public function exercises(): void
     {
         $this->requireAuth();
 
@@ -286,7 +286,7 @@ class ApiController
         ]);
     }
 
-    public function exerciseCategories()
+    public function exerciseCategories(): void
     {
         $this->requireAuth();
 
@@ -299,7 +299,7 @@ class ApiController
         ]);
     }
 
-    public function searchExercises()
+    public function searchExercises(): void
     {
         $this->requireAuth();
 
@@ -322,7 +322,7 @@ class ApiController
     // ENDPOINTS DE PRODUCTOS
     // ==========================================
 
-    public function products()
+    public function products(): void
     {
         $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
         $limit = isset($_GET['limit']) ? min((int)$_GET['limit'], 50) : 20;
@@ -355,7 +355,7 @@ class ApiController
         ]);
     }
 
-    public function featuredProducts()
+    public function featuredProducts(): void
     {
         $limit = isset($_GET['limit']) ? min((int)$_GET['limit'], 20) : 8;
 
@@ -368,7 +368,7 @@ class ApiController
         ]);
     }
 
-    public function productRecommendations()
+    public function productRecommendations(): void
     {
         $this->requireAuth();
 
@@ -389,7 +389,7 @@ class ApiController
     // ENDPOINTS DE USUARIOS
     // ==========================================
 
-    public function users()
+    public function users(): void
     {
         $this->requireAuth(['admin']);
 
@@ -426,7 +426,7 @@ class ApiController
         ]);
     }
 
-    public function clients()
+    public function clients(): void
     {
         $this->requireAuth(['instructor', 'admin']);
 
@@ -445,7 +445,7 @@ class ApiController
         ]);
     }
 
-    public function instructors()
+    public function instructors(): void
     {
         $this->requireAuth();
 
@@ -462,7 +462,7 @@ class ApiController
     // ENDPOINTS DE CLASES
     // ==========================================
 
-    public function classes()
+    public function classes(): void
     {
         $this->requireAuth();
 
@@ -494,7 +494,7 @@ class ApiController
         ]);
     }
 
-    public function upcomingClasses()
+    public function upcomingClasses(): void
     {
         $this->requireAuth();
 
@@ -510,7 +510,7 @@ class ApiController
         ]);
     }
 
-    public function getClass($id)
+    public function getClass(int $id): void
     {
         $this->requireAuth();
 
@@ -535,7 +535,7 @@ class ApiController
         ]);
     }
 
-    public function getClassSchedule($id)
+    public function getClassSchedule(int $id): void
     {
         $this->requireAuth();
 
@@ -553,7 +553,7 @@ class ApiController
         ]);
     }
 
-    public function getScheduleAvailability()
+    public function getScheduleAvailability(): void
     {
         $this->requireAuth();
 
@@ -592,12 +592,12 @@ class ApiController
     // ENDPOINTS DE ESTADÍSTICAS
     // ==========================================
 
-    public function stats()
+    public function stats(): void
     {
-        return $this->dashboardStats();
+        $this->dashboardStats();
     }
 
-    public function dashboardStats()
+    public function dashboardStats(): void
     {
         $this->requireAuth();
 
@@ -622,7 +622,7 @@ class ApiController
         ]);
     }
 
-    public function routineStats()
+    public function routineStats(): void
     {
         $this->requireAuth(['instructor', 'admin']);
 
@@ -641,7 +641,7 @@ class ApiController
         ]);
     }
 
-    public function salesStats()
+    public function salesStats(): void
     {
         $this->requireAuth(['admin']);
 
@@ -661,7 +661,7 @@ class ApiController
     // ENDPOINTS DE UPLOAD
     // ==========================================
 
-    public function uploadImage()
+    public function uploadImage(): void
     {
         $this->requireAuth(['instructor', 'admin']);
 
@@ -705,7 +705,7 @@ class ApiController
         }
     }
 
-    public function uploadVideo()
+    public function uploadVideo(): void
     {
         $this->requireAuth(['instructor', 'admin']);
 
@@ -749,7 +749,7 @@ class ApiController
         }
     }
 
-    public function uploadDocument()
+    public function uploadDocument(): void
     {
         $this->requireAuth(['admin']);
 
@@ -797,7 +797,7 @@ class ApiController
     // MÉTODOS DE AUTENTICACIÓN API
     // ==========================================
 
-    public function login()
+    public function login(): void
     {
         if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
             $this->jsonResponse(['error' => 'Method not allowed'], 405);
@@ -884,7 +884,7 @@ class ApiController
         }
     }
 
-    public function logout()
+    public function logout(): void
     {
         if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
             $this->jsonResponse(['error' => 'Method not allowed'], 405);
@@ -919,7 +919,7 @@ class ApiController
     // MÉTODOS AUXILIARES
     // ==========================================
 
-    private function createApiSession($user)
+    private function createApiSession(array $user): void
     {
         $_SESSION['user_id'] = $user['id'];
         $_SESSION['user_data'] = [
@@ -947,7 +947,7 @@ class ApiController
         }
     }
 
-    private function logUserActivity($userId, $action)
+    private function logUserActivity(int $userId, string $action): void
     {
         try {
             $this->db->query(
@@ -964,7 +964,7 @@ class ApiController
         }
     }
 
-    private function requireAuth($roles = null)
+    private function requireAuth(array|string|null $roles = null): void
     {
         if (!AppHelper::isLoggedIn()) {
             $this->jsonResponse(['error' => 'Authentication required'], 401);
@@ -982,20 +982,20 @@ class ApiController
         }
     }
 
-    private function jsonResponse($data, $statusCode = 200)
+    private function jsonResponse(array $data, int $statusCode = 200): void
     {
         http_response_code($statusCode);
         echo json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
         exit();
     }
 
-    private function getJsonInput()
+    private function getJsonInput(): array
     {
         $input = file_get_contents('php://input');
         return json_decode($input, true) ?: [];
     }
 
-    private function canViewRoutine($routine, $user)
+    private function canViewRoutine(array $routine, array $user): bool
     {
         if ($user['role'] === 'admin') {
             return true;
@@ -1012,7 +1012,7 @@ class ApiController
         return false;
     }
 
-    private function canEditRoutine($routine, $user)
+    private function canEditRoutine(array $routine, array $user): bool
     {
         if ($user['role'] === 'client') {
             return false;
@@ -1025,7 +1025,7 @@ class ApiController
         return $routine['instructor_id'] == $user['id'];
     }
 
-    private function processRoutineExercises($routineId, $exercises)
+    private function processRoutineExercises(int $routineId, array $exercises): void
     {
         foreach ($exercises as $exercise) {
             $exerciseData = [
@@ -1046,7 +1046,7 @@ class ApiController
         }
     }
 
-    private function getAdminStats()
+    private function getAdminStats(): array
     {
         return [
             'total_users' => $this->db->count('SELECT COUNT(*) FROM users WHERE is_active = 1'),
@@ -1064,7 +1064,7 @@ class ApiController
         ];
     }
 
-    private function getInstructorStats($instructorId)
+    private function getInstructorStats(int $instructorId): array
     {
         return [
             'assigned_clients' => $this->db->count(
@@ -1084,7 +1084,7 @@ class ApiController
         ];
     }
 
-    private function getClientStats($clientId)
+    private function getClientStats(int $clientId): array
     {
         return [
             'active_routines' => $this->db->count(

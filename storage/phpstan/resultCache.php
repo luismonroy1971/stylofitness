@@ -1,7 +1,7 @@
 <?php declare(strict_types = 1);
 
 return [
-	'lastFullAnalysisTime' => 1751252096,
+	'lastFullAnalysisTime' => 1751885493,
 	'meta' => array (
   'cacheVersion' => 'v12-linesToIgnore',
   'phpstanVersion' => '1.12.27',
@@ -13,7 +13,7 @@ return [
   ),
   'scannedFiles' => 
   array (
-    'C:\\trabajos\\stylofitness\\index.php' => '52894f96bf65eec43c7a5c3bbcd5af559a52571e',
+    'C:\\trabajos\\stylofitness\\index.php' => '8e0bc21fdf02c892083d46c230dbf3dca3457a2e',
     'C:\\trabajos\\stylofitness\\setup.php' => 'cbbaf3e8944724b1b142e6466cfc4ee5de4ffbe1',
   ),
   'composerLocks' => 
@@ -1160,8 +1160,8 @@ return [
   ),
   'executedFilesHashes' => 
   array (
-    'C:\\trabajos\\stylofitness\\app\\Config\\App.php' => '05179fef87a26ba3bf14f26c5ecb9ce048a524e9',
-    'C:\\trabajos\\stylofitness\\app\\Helpers\\functions.php' => '0b2c518dcb0e3cbec179a7b128ae8b4a910bae06',
+    'C:\\trabajos\\stylofitness\\app\\Config\\App.php' => 'a56e3a8dcffb61bcb924a98bd93b3060a9da7d40',
+    'C:\\trabajos\\stylofitness\\app\\Helpers\\functions.php' => '6e08d72e7d1570eee827a9d661aee0f67b205135',
     'phar://C:\\trabajos\\stylofitness\\vendor\\phpstan\\phpstan\\phpstan.phar\\stubs\\runtime\\Attribute.php' => 'eaf9127f074e9c7ebc65043ec4050f9fed60c2bb',
     'phar://C:\\trabajos\\stylofitness\\vendor\\phpstan\\phpstan\\phpstan.phar\\stubs\\runtime\\ReflectionAttribute.php' => '0b4b78277eb6545955d2ce5e09bff28f1f8052c8',
     'phar://C:\\trabajos\\stylofitness\\vendor\\phpstan\\phpstan\\phpstan.phar\\stubs\\runtime\\ReflectionIntersectionType.php' => 'a3e6299b87ee5d407dae7651758edfa11a74cb11',
@@ -1220,52 +1220,14 @@ return [
     \PHPStan\Analyser\Error::__set_state(array(
        'message' => 'Strict comparison using === between \'development\' and \'production\' will always evaluate to false.',
        'file' => 'C:\\trabajos\\stylofitness\\app\\Config\\App.php',
-       'line' => 264,
+       'line' => 291,
        'canBeIgnored' => true,
        'filePath' => 'C:\\trabajos\\stylofitness\\app\\Config\\App.php',
        'traitFilePath' => NULL,
        'tip' => NULL,
-       'nodeLine' => 264,
+       'nodeLine' => 291,
        'nodeType' => 'PhpParser\\Node\\Expr\\BinaryOp\\Identical',
        'identifier' => 'identical.alwaysFalse',
-       'metadata' => 
-      array (
-      ),
-    )),
-  ),
-  'C:\\trabajos\\stylofitness\\app\\Config\\Database.php' => 
-  array (
-    0 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Expression on left side of ?? is not nullable.',
-       'file' => 'C:\\trabajos\\stylofitness\\app\\Config\\Database.php',
-       'line' => 116,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\trabajos\\stylofitness\\app\\Config\\Database.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 116,
-       'nodeType' => 'PhpParser\\Node\\Expr\\BinaryOp\\Coalesce',
-       'identifier' => 'nullCoalesce.expr',
-       'metadata' => 
-      array (
-      ),
-    )),
-  ),
-  'C:\\trabajos\\stylofitness\\app\\Config\\Environment.php' => 
-  array (
-    0 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Static property StyleFitness\\Config\\Environment::$config is never read, only written.',
-       'file' => 'C:\\trabajos\\stylofitness\\app\\Config\\Environment.php',
-       'line' => 10,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\trabajos\\stylofitness\\app\\Config\\Environment.php',
-       'traitFilePath' => NULL,
-       'tip' => 'See: https://phpstan.org/developing-extensions/always-read-written-properties',
-       'nodeLine' => 7,
-       'nodeType' => 'PHPStan\\Node\\ClassPropertiesNode',
-       'identifier' => 'property.onlyWritten',
        'metadata' => 
       array (
       ),
@@ -1290,18 +1252,56 @@ return [
       ),
     )),
   ),
+  'C:\\trabajos\\stylofitness\\app\\Controllers\\AdminLandingController.php' => 
+  array (
+    0 => 
+    \PHPStan\Analyser\Error::__set_state(array(
+       'message' => 'Property StyleFitness\\Controllers\\AdminLandingController::$groupClassModel is never read, only written.',
+       'file' => 'C:\\trabajos\\stylofitness\\app\\Controllers\\AdminLandingController.php',
+       'line' => 23,
+       'canBeIgnored' => true,
+       'filePath' => 'C:\\trabajos\\stylofitness\\app\\Controllers\\AdminLandingController.php',
+       'traitFilePath' => NULL,
+       'tip' => 'See: https://phpstan.org/developing-extensions/always-read-written-properties',
+       'nodeLine' => 17,
+       'nodeType' => 'PHPStan\\Node\\ClassPropertiesNode',
+       'identifier' => 'property.onlyWritten',
+       'metadata' => 
+      array (
+      ),
+    )),
+  ),
+  'C:\\trabajos\\stylofitness\\app\\Controllers\\ApiController.php' => 
+  array (
+    0 => 
+    \PHPStan\Analyser\Error::__set_state(array(
+       'message' => 'Method StyleFitness\\Models\\GroupClass::getUpcomingClasses() invoked with 2 parameters, 0-1 required.',
+       'file' => 'C:\\trabajos\\stylofitness\\app\\Controllers\\ApiController.php',
+       'line' => 505,
+       'canBeIgnored' => true,
+       'filePath' => 'C:\\trabajos\\stylofitness\\app\\Controllers\\ApiController.php',
+       'traitFilePath' => NULL,
+       'tip' => NULL,
+       'nodeLine' => 505,
+       'nodeType' => 'PhpParser\\Node\\Expr\\MethodCall',
+       'identifier' => 'arguments.count',
+       'metadata' => 
+      array (
+      ),
+    )),
+  ),
   'C:\\trabajos\\stylofitness\\app\\Controllers\\CheckoutController.php' => 
   array (
     0 => 
     \PHPStan\Analyser\Error::__set_state(array(
        'message' => 'Dead catch - Exception is never thrown in the try block.',
        'file' => 'C:\\trabajos\\stylofitness\\app\\Controllers\\CheckoutController.php',
-       'line' => 458,
+       'line' => 459,
        'canBeIgnored' => true,
        'filePath' => 'C:\\trabajos\\stylofitness\\app\\Controllers\\CheckoutController.php',
        'traitFilePath' => NULL,
        'tip' => NULL,
-       'nodeLine' => 458,
+       'nodeLine' => 459,
        'nodeType' => 'PHPStan\\Node\\CatchWithUnthrownExceptionNode',
        'identifier' => 'catch.neverThrown',
        'metadata' => 
@@ -1309,18 +1309,56 @@ return [
       ),
     )),
   ),
-  'C:\\trabajos\\stylofitness\\app\\Controllers\\StoreController.php' => 
+  'C:\\trabajos\\stylofitness\\app\\Controllers\\ExerciseManagementController.php' => 
   array (
     0 => 
     \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Method StyleFitness\\Controllers\\StoreController::buildPaginationUrl() is unused.',
-       'file' => 'C:\\trabajos\\stylofitness\\app\\Controllers\\StoreController.php',
-       'line' => 549,
+       'message' => 'Property StyleFitness\\Controllers\\ExerciseManagementController::$userModel is never read, only written.',
+       'file' => 'C:\\trabajos\\stylofitness\\app\\Controllers\\ExerciseManagementController.php',
+       'line' => 20,
        'canBeIgnored' => true,
-       'filePath' => 'C:\\trabajos\\stylofitness\\app\\Controllers\\StoreController.php',
+       'filePath' => 'C:\\trabajos\\stylofitness\\app\\Controllers\\ExerciseManagementController.php',
+       'traitFilePath' => NULL,
+       'tip' => 'See: https://phpstan.org/developing-extensions/always-read-written-properties',
+       'nodeLine' => 16,
+       'nodeType' => 'PHPStan\\Node\\ClassPropertiesNode',
+       'identifier' => 'property.onlyWritten',
+       'metadata' => 
+      array (
+      ),
+    )),
+  ),
+  'C:\\trabajos\\stylofitness\\app\\Controllers\\GroupClassController.php' => 
+  array (
+    0 => 
+    \PHPStan\Analyser\Error::__set_state(array(
+       'message' => 'Property StyleFitness\\Controllers\\GroupClassController::$userModel is never read, only written.',
+       'file' => 'C:\\trabajos\\stylofitness\\app\\Controllers\\GroupClassController.php',
+       'line' => 21,
+       'canBeIgnored' => true,
+       'filePath' => 'C:\\trabajos\\stylofitness\\app\\Controllers\\GroupClassController.php',
+       'traitFilePath' => NULL,
+       'tip' => 'See: https://phpstan.org/developing-extensions/always-read-written-properties',
+       'nodeLine' => 17,
+       'nodeType' => 'PHPStan\\Node\\ClassPropertiesNode',
+       'identifier' => 'property.onlyWritten',
+       'metadata' => 
+      array (
+      ),
+    )),
+  ),
+  'C:\\trabajos\\stylofitness\\app\\Controllers\\LandingController.php' => 
+  array (
+    0 => 
+    \PHPStan\Analyser\Error::__set_state(array(
+       'message' => 'Method StyleFitness\\Controllers\\LandingController::validateAndSanitize() is unused.',
+       'file' => 'C:\\trabajos\\stylofitness\\app\\Controllers\\LandingController.php',
+       'line' => 369,
+       'canBeIgnored' => true,
+       'filePath' => 'C:\\trabajos\\stylofitness\\app\\Controllers\\LandingController.php',
        'traitFilePath' => NULL,
        'tip' => NULL,
-       'nodeLine' => 16,
+       'nodeLine' => 18,
        'nodeType' => 'PHPStan\\Node\\ClassMethodsNode',
        'identifier' => 'method.unused',
        'metadata' => 
@@ -1328,20 +1366,58 @@ return [
       ),
     )),
   ),
-  'C:\\trabajos\\stylofitness\\app\\Controllers\\WebhookController.php' => 
+  'C:\\trabajos\\stylofitness\\app\\Controllers\\RoomController.php' => 
   array (
     0 => 
     \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Binary operation "-" between int<1, max> and non-falsy-string results in an error.',
-       'file' => 'C:\\trabajos\\stylofitness\\app\\Controllers\\WebhookController.php',
-       'line' => 165,
+       'message' => 'Property StyleFitness\\Controllers\\RoomController::$db is never read, only written.',
+       'file' => 'C:\\trabajos\\stylofitness\\app\\Controllers\\RoomController.php',
+       'line' => 17,
        'canBeIgnored' => true,
-       'filePath' => 'C:\\trabajos\\stylofitness\\app\\Controllers\\WebhookController.php',
+       'filePath' => 'C:\\trabajos\\stylofitness\\app\\Controllers\\RoomController.php',
        'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 165,
-       'nodeType' => 'PhpParser\\Node\\Expr\\BinaryOp\\Minus',
-       'identifier' => 'binaryOp.invalid',
+       'tip' => 'See: https://phpstan.org/developing-extensions/always-read-written-properties',
+       'nodeLine' => 15,
+       'nodeType' => 'PHPStan\\Node\\ClassPropertiesNode',
+       'identifier' => 'property.onlyWritten',
+       'metadata' => 
+      array (
+      ),
+    )),
+  ),
+  'C:\\trabajos\\stylofitness\\app\\Controllers\\TrainerProgressController.php' => 
+  array (
+    0 => 
+    \PHPStan\Analyser\Error::__set_state(array(
+       'message' => 'Property StyleFitness\\Controllers\\TrainerProgressController::$db is never read, only written.',
+       'file' => 'C:\\trabajos\\stylofitness\\app\\Controllers\\TrainerProgressController.php',
+       'line' => 20,
+       'canBeIgnored' => true,
+       'filePath' => 'C:\\trabajos\\stylofitness\\app\\Controllers\\TrainerProgressController.php',
+       'traitFilePath' => NULL,
+       'tip' => 'See: https://phpstan.org/developing-extensions/always-read-written-properties',
+       'nodeLine' => 18,
+       'nodeType' => 'PHPStan\\Node\\ClassPropertiesNode',
+       'identifier' => 'property.onlyWritten',
+       'metadata' => 
+      array (
+      ),
+    )),
+  ),
+  'C:\\trabajos\\stylofitness\\app\\Controllers\\UserController.php' => 
+  array (
+    0 => 
+    \PHPStan\Analyser\Error::__set_state(array(
+       'message' => 'Property StyleFitness\\Controllers\\UserController::$db is never read, only written.',
+       'file' => 'C:\\trabajos\\stylofitness\\app\\Controllers\\UserController.php',
+       'line' => 20,
+       'canBeIgnored' => true,
+       'filePath' => 'C:\\trabajos\\stylofitness\\app\\Controllers\\UserController.php',
+       'traitFilePath' => NULL,
+       'tip' => 'See: https://phpstan.org/developing-extensions/always-read-written-properties',
+       'nodeLine' => 18,
+       'nodeType' => 'PHPStan\\Node\\ClassPropertiesNode',
+       'identifier' => 'property.onlyWritten',
        'metadata' => 
       array (
       ),
@@ -1359,14 +1435,14 @@ return [
 	'dependencies' => array (
   'C:\\trabajos\\stylofitness\\app\\Config\\App.php' => 
   array (
-    'fileHash' => '05179fef87a26ba3bf14f26c5ecb9ce048a524e9',
+    'fileHash' => 'a56e3a8dcffb61bcb924a98bd93b3060a9da7d40',
     'dependentFiles' => 
     array (
     ),
   ),
   'C:\\trabajos\\stylofitness\\app\\Config\\Cache.php' => 
   array (
-    'fileHash' => '59defd31615306726c1470ba6cd844b1d306c8c3',
+    'fileHash' => 'cde488df4192da035207d84421bad866f5f23d1a',
     'dependentFiles' => 
     array (
     ),
@@ -1380,7 +1456,7 @@ return [
   ),
   'C:\\trabajos\\stylofitness\\app\\Config\\Database.php' => 
   array (
-    'fileHash' => 'b5678deb9f2450fc94a60036707b97e156bf00ae',
+    'fileHash' => 'e513ad02c2626929794997987c9979d38c652d3c',
     'dependentFiles' => 
     array (
       0 => 'C:\\trabajos\\stylofitness\\app\\Config\\Migration.php',
@@ -1389,25 +1465,37 @@ return [
       3 => 'C:\\trabajos\\stylofitness\\app\\Controllers\\AuthController.php',
       4 => 'C:\\trabajos\\stylofitness\\app\\Controllers\\CartController.php',
       5 => 'C:\\trabajos\\stylofitness\\app\\Controllers\\CheckoutController.php',
-      6 => 'C:\\trabajos\\stylofitness\\app\\Controllers\\GroupClassController.php',
-      7 => 'C:\\trabajos\\stylofitness\\app\\Controllers\\HomeController.php',
-      8 => 'C:\\trabajos\\stylofitness\\app\\Controllers\\RoutineController.php',
-      9 => 'C:\\trabajos\\stylofitness\\app\\Controllers\\StoreController.php',
-      10 => 'C:\\trabajos\\stylofitness\\app\\Controllers\\WebhookController.php',
-      11 => 'C:\\trabajos\\stylofitness\\app\\Helpers\\AppHelper.php',
-      12 => 'C:\\trabajos\\stylofitness\\app\\Helpers\\ValidationHelper.php',
-      13 => 'C:\\trabajos\\stylofitness\\app\\Models\\Exercise.php',
-      14 => 'C:\\trabajos\\stylofitness\\app\\Models\\GroupClass.php',
-      15 => 'C:\\trabajos\\stylofitness\\app\\Models\\Order.php',
-      16 => 'C:\\trabajos\\stylofitness\\app\\Models\\Product.php',
-      17 => 'C:\\trabajos\\stylofitness\\app\\Models\\ProductCategory.php',
-      18 => 'C:\\trabajos\\stylofitness\\app\\Models\\Routine.php',
-      19 => 'C:\\trabajos\\stylofitness\\app\\Models\\User.php',
+      6 => 'C:\\trabajos\\stylofitness\\app\\Controllers\\ExerciseManagementController.php',
+      7 => 'C:\\trabajos\\stylofitness\\app\\Controllers\\GroupClassController.php',
+      8 => 'C:\\trabajos\\stylofitness\\app\\Controllers\\HomeController.php',
+      9 => 'C:\\trabajos\\stylofitness\\app\\Controllers\\RoomController.php',
+      10 => 'C:\\trabajos\\stylofitness\\app\\Controllers\\RoutineController.php',
+      11 => 'C:\\trabajos\\stylofitness\\app\\Controllers\\RoutineTemplateController.php',
+      12 => 'C:\\trabajos\\stylofitness\\app\\Controllers\\StoreController.php',
+      13 => 'C:\\trabajos\\stylofitness\\app\\Controllers\\TrainerProgressController.php',
+      14 => 'C:\\trabajos\\stylofitness\\app\\Controllers\\UserController.php',
+      15 => 'C:\\trabajos\\stylofitness\\app\\Controllers\\WebhookController.php',
+      16 => 'C:\\trabajos\\stylofitness\\app\\Helpers\\AppHelper.php',
+      17 => 'C:\\trabajos\\stylofitness\\app\\Helpers\\ValidationHelper.php',
+      18 => 'C:\\trabajos\\stylofitness\\app\\Models\\Exercise.php',
+      19 => 'C:\\trabajos\\stylofitness\\app\\Models\\GroupClass.php',
+      20 => 'C:\\trabajos\\stylofitness\\app\\Models\\Gym.php',
+      21 => 'C:\\trabajos\\stylofitness\\app\\Models\\LandingPageConfig.php',
+      22 => 'C:\\trabajos\\stylofitness\\app\\Models\\Order.php',
+      23 => 'C:\\trabajos\\stylofitness\\app\\Models\\Product.php',
+      24 => 'C:\\trabajos\\stylofitness\\app\\Models\\ProductCategory.php',
+      25 => 'C:\\trabajos\\stylofitness\\app\\Models\\Room.php',
+      26 => 'C:\\trabajos\\stylofitness\\app\\Models\\Routine.php',
+      27 => 'C:\\trabajos\\stylofitness\\app\\Models\\SpecialOffer.php',
+      28 => 'C:\\trabajos\\stylofitness\\app\\Models\\Testimonial.php',
+      29 => 'C:\\trabajos\\stylofitness\\app\\Models\\User.php',
+      30 => 'C:\\trabajos\\stylofitness\\app\\Models\\WhyChooseUs.php',
+      31 => 'C:\\trabajos\\stylofitness\\app\\Models\\WorkoutLog.php',
     ),
   ),
   'C:\\trabajos\\stylofitness\\app\\Config\\Environment.php' => 
   array (
-    'fileHash' => 'b1e009553625413796cbf42e488a70d3806d74c1',
+    'fileHash' => '81deb0d2d61da7f0fb1739f9d2fb9becb7c64b89',
     'dependentFiles' => 
     array (
       0 => 'C:\\trabajos\\stylofitness\\app\\Config\\CacheManager.php',
@@ -1430,42 +1518,57 @@ return [
   ),
   'C:\\trabajos\\stylofitness\\app\\Config\\Optimize.php' => 
   array (
-    'fileHash' => 'f3f75c01ffe3efb8917c2bc208016e7c0721f225',
+    'fileHash' => '74f7b5a170f438f25995a30385e328aab95a8cd3',
     'dependentFiles' => 
     array (
     ),
   ),
+  'C:\\trabajos\\stylofitness\\app\\Config\\ProgressConfig.php' => 
+  array (
+    'fileHash' => '22713550872d698ac847c2dc0ce5d1657d4d5199',
+    'dependentFiles' => 
+    array (
+      0 => 'C:\\trabajos\\stylofitness\\app\\Helpers\\ProgressHelper.php',
+    ),
+  ),
   'C:\\trabajos\\stylofitness\\app\\Config\\RoutineConfig.php' => 
   array (
-    'fileHash' => '5199b6cec57f2be1382c95f7302cc705982511c1',
+    'fileHash' => 'd6eb3c9f77b21bde869d61501be8e6c688ec5a28',
     'dependentFiles' => 
     array (
     ),
   ),
   'C:\\trabajos\\stylofitness\\app\\Config\\Session.php' => 
   array (
-    'fileHash' => 'c56b535e24ea897f152ed1b04f4e8bb2b6ab9745',
+    'fileHash' => 'd455181b4fa1c03a4daa33c9ef8014e9e56f4afa',
     'dependentFiles' => 
     array (
     ),
   ),
   'C:\\trabajos\\stylofitness\\app\\Controllers\\AdminController.php' => 
   array (
-    'fileHash' => '59d1a9c15cfc51a044e625dbfe9e389b823c5314',
+    'fileHash' => 'aefa5c34188dba79f276d96b4d81463bd304b19c',
+    'dependentFiles' => 
+    array (
+    ),
+  ),
+  'C:\\trabajos\\stylofitness\\app\\Controllers\\AdminLandingController.php' => 
+  array (
+    'fileHash' => '75bde4ec573027a90c318584059dfd5dd22388e7',
     'dependentFiles' => 
     array (
     ),
   ),
   'C:\\trabajos\\stylofitness\\app\\Controllers\\ApiController.php' => 
   array (
-    'fileHash' => 'ea5ddc83921b44e61d97bc5e58131c640c2e8397',
+    'fileHash' => '8243ca92b4b4fff9472893834680b7c90b033209',
     'dependentFiles' => 
     array (
     ),
   ),
   'C:\\trabajos\\stylofitness\\app\\Controllers\\AuthController.php' => 
   array (
-    'fileHash' => 'f57aab0b7fa2ce5d0e18553aec883c98a1dcce43',
+    'fileHash' => 'f64f5c42cc000055cc119c23c474387fd845347d',
     'dependentFiles' => 
     array (
     ),
@@ -1479,21 +1582,43 @@ return [
   ),
   'C:\\trabajos\\stylofitness\\app\\Controllers\\CheckoutController.php' => 
   array (
-    'fileHash' => 'f987100c1e0bb10529d879236fa6fe01b09335f0',
+    'fileHash' => 'a6aeb2ac14670f5998eb3577f8232512c191236c',
+    'dependentFiles' => 
+    array (
+    ),
+  ),
+  'C:\\trabajos\\stylofitness\\app\\Controllers\\ExerciseManagementController.php' => 
+  array (
+    'fileHash' => 'd2d5e4ea8aaf2bd0a28a637d37e7ab0d5d34d166',
     'dependentFiles' => 
     array (
     ),
   ),
   'C:\\trabajos\\stylofitness\\app\\Controllers\\GroupClassController.php' => 
   array (
-    'fileHash' => 'b83d4cdd9fd30f88ff01ee5b89dc953676717fed',
+    'fileHash' => '33c8682cf7f141e304aa982c1fbb4da04702c044',
     'dependentFiles' => 
     array (
     ),
   ),
   'C:\\trabajos\\stylofitness\\app\\Controllers\\HomeController.php' => 
   array (
-    'fileHash' => '00bd2ac7c4daca146a36c71ce48cde6d157f7e78',
+    'fileHash' => '5ddd9103b712d71aab98fe55331114199675f05c',
+    'dependentFiles' => 
+    array (
+    ),
+  ),
+  'C:\\trabajos\\stylofitness\\app\\Controllers\\LandingController.php' => 
+  array (
+    'fileHash' => '1f08fe328b655192f6d7d40d80e0526613f47b35',
+    'dependentFiles' => 
+    array (
+      0 => 'C:\\trabajos\\stylofitness\\app\\Controllers\\HomeController.php',
+    ),
+  ),
+  'C:\\trabajos\\stylofitness\\app\\Controllers\\RoomController.php' => 
+  array (
+    'fileHash' => '1eea4400fec82904b0a58b2ab0276229f136f431',
     'dependentFiles' => 
     array (
     ),
@@ -1505,23 +1630,44 @@ return [
     array (
     ),
   ),
+  'C:\\trabajos\\stylofitness\\app\\Controllers\\RoutineTemplateController.php' => 
+  array (
+    'fileHash' => 'd26c27ce532ffa4cce03a49291d1381bbefbf0ca',
+    'dependentFiles' => 
+    array (
+    ),
+  ),
   'C:\\trabajos\\stylofitness\\app\\Controllers\\StoreController.php' => 
   array (
-    'fileHash' => '021f8867f73aef606e1dea21b283abd96dcc7f33',
+    'fileHash' => '86db11ff32e715e412a852ca0168b90c24025548',
+    'dependentFiles' => 
+    array (
+    ),
+  ),
+  'C:\\trabajos\\stylofitness\\app\\Controllers\\TrainerProgressController.php' => 
+  array (
+    'fileHash' => '2ba047f886b5f353a7203e2f735968afde500956',
+    'dependentFiles' => 
+    array (
+    ),
+  ),
+  'C:\\trabajos\\stylofitness\\app\\Controllers\\UserController.php' => 
+  array (
+    'fileHash' => '7de7ff046506756b03f6b291889c329626d9d52d',
     'dependentFiles' => 
     array (
     ),
   ),
   'C:\\trabajos\\stylofitness\\app\\Controllers\\WebhookController.php' => 
   array (
-    'fileHash' => 'ed647ad08461483b287979ef0f5fd47de9ebfef9',
+    'fileHash' => '5ec5639b57f21daca8563b14afe2889f302f10e6',
     'dependentFiles' => 
     array (
     ),
   ),
   'C:\\trabajos\\stylofitness\\app\\Helpers\\AppHelper.php' => 
   array (
-    'fileHash' => '1038ce01f42f779fc3ab4a1796b8321aabd3d609',
+    'fileHash' => '9862da10b7ad07107aab1669adb60b4ba124be3a',
     'dependentFiles' => 
     array (
       0 => 'C:\\trabajos\\stylofitness\\app\\Controllers\\AdminController.php',
@@ -1529,33 +1675,45 @@ return [
       2 => 'C:\\trabajos\\stylofitness\\app\\Controllers\\AuthController.php',
       3 => 'C:\\trabajos\\stylofitness\\app\\Controllers\\CartController.php',
       4 => 'C:\\trabajos\\stylofitness\\app\\Controllers\\CheckoutController.php',
-      5 => 'C:\\trabajos\\stylofitness\\app\\Controllers\\GroupClassController.php',
-      6 => 'C:\\trabajos\\stylofitness\\app\\Controllers\\HomeController.php',
-      7 => 'C:\\trabajos\\stylofitness\\app\\Controllers\\RoutineController.php',
-      8 => 'C:\\trabajos\\stylofitness\\app\\Controllers\\StoreController.php',
-      9 => 'C:\\trabajos\\stylofitness\\app\\Helpers\\RoutineHelper.php',
-      10 => 'C:\\trabajos\\stylofitness\\app\\Middleware\\AuthMiddleware.php',
-      11 => 'C:\\trabajos\\stylofitness\\app\\Models\\Exercise.php',
-      12 => 'C:\\trabajos\\stylofitness\\app\\Models\\User.php',
+      5 => 'C:\\trabajos\\stylofitness\\app\\Controllers\\ExerciseManagementController.php',
+      6 => 'C:\\trabajos\\stylofitness\\app\\Controllers\\GroupClassController.php',
+      7 => 'C:\\trabajos\\stylofitness\\app\\Controllers\\HomeController.php',
+      8 => 'C:\\trabajos\\stylofitness\\app\\Controllers\\RoomController.php',
+      9 => 'C:\\trabajos\\stylofitness\\app\\Controllers\\RoutineController.php',
+      10 => 'C:\\trabajos\\stylofitness\\app\\Controllers\\RoutineTemplateController.php',
+      11 => 'C:\\trabajos\\stylofitness\\app\\Controllers\\StoreController.php',
+      12 => 'C:\\trabajos\\stylofitness\\app\\Controllers\\TrainerProgressController.php',
+      13 => 'C:\\trabajos\\stylofitness\\app\\Controllers\\UserController.php',
+      14 => 'C:\\trabajos\\stylofitness\\app\\Helpers\\RoutineHelper.php',
+      15 => 'C:\\trabajos\\stylofitness\\app\\Middleware\\AuthMiddleware.php',
+      16 => 'C:\\trabajos\\stylofitness\\app\\Models\\Exercise.php',
+      17 => 'C:\\trabajos\\stylofitness\\app\\Models\\User.php',
+    ),
+  ),
+  'C:\\trabajos\\stylofitness\\app\\Helpers\\ProgressHelper.php' => 
+  array (
+    'fileHash' => '884690f753b2d66f41b980aa1bf0d4e6360c5ac5',
+    'dependentFiles' => 
+    array (
     ),
   ),
   'C:\\trabajos\\stylofitness\\app\\Helpers\\RoutineHelper.php' => 
   array (
-    'fileHash' => 'ec635fb07fdcddf2ec782e06eb35d14faba1cd32',
+    'fileHash' => '0639cc6d20c79929107a294874cc83df8af99daa',
     'dependentFiles' => 
     array (
     ),
   ),
   'C:\\trabajos\\stylofitness\\app\\Helpers\\ValidationHelper.php' => 
   array (
-    'fileHash' => '149af376720789f561c5b9d2cfa7c1a93d0d251a',
+    'fileHash' => '10600bd8d1eb0cf5da7b6d06e22ea1fba7258aa3',
     'dependentFiles' => 
     array (
     ),
   ),
   'C:\\trabajos\\stylofitness\\app\\Helpers\\functions.php' => 
   array (
-    'fileHash' => '0b2c518dcb0e3cbec179a7b128ae8b4a910bae06',
+    'fileHash' => '6e08d72e7d1570eee827a9d661aee0f67b205135',
     'dependentFiles' => 
     array (
     ),
@@ -1576,44 +1734,70 @@ return [
   ),
   'C:\\trabajos\\stylofitness\\app\\Models\\Exercise.php' => 
   array (
-    'fileHash' => '1e60f05cc4762e32ea4fc77db127d414b6a4502c',
+    'fileHash' => '74902908c41af46f41e62e3d14d7105523adfd1d',
     'dependentFiles' => 
     array (
       0 => 'C:\\trabajos\\stylofitness\\app\\Controllers\\AdminController.php',
       1 => 'C:\\trabajos\\stylofitness\\app\\Controllers\\ApiController.php',
-      2 => 'C:\\trabajos\\stylofitness\\app\\Controllers\\RoutineController.php',
+      2 => 'C:\\trabajos\\stylofitness\\app\\Controllers\\ExerciseManagementController.php',
+      3 => 'C:\\trabajos\\stylofitness\\app\\Controllers\\RoutineController.php',
+      4 => 'C:\\trabajos\\stylofitness\\app\\Controllers\\RoutineTemplateController.php',
+      5 => 'C:\\trabajos\\stylofitness\\app\\Controllers\\TrainerProgressController.php',
     ),
   ),
   'C:\\trabajos\\stylofitness\\app\\Models\\GroupClass.php' => 
   array (
-    'fileHash' => 'b9a70f1ca4dbcc1abad69793d1ddaaccbc866808',
+    'fileHash' => 'f2949086807a39f9bda8182bdd2e3619c31a3f7a',
     'dependentFiles' => 
     array (
       0 => 'C:\\trabajos\\stylofitness\\app\\Controllers\\AdminController.php',
-      1 => 'C:\\trabajos\\stylofitness\\app\\Controllers\\GroupClassController.php',
+      1 => 'C:\\trabajos\\stylofitness\\app\\Controllers\\AdminLandingController.php',
+      2 => 'C:\\trabajos\\stylofitness\\app\\Controllers\\ApiController.php',
+      3 => 'C:\\trabajos\\stylofitness\\app\\Controllers\\GroupClassController.php',
+      4 => 'C:\\trabajos\\stylofitness\\app\\Controllers\\LandingController.php',
+    ),
+  ),
+  'C:\\trabajos\\stylofitness\\app\\Models\\Gym.php' => 
+  array (
+    'fileHash' => 'cc82bcaf7fec87feae1978015564854bfb1d6ec9',
+    'dependentFiles' => 
+    array (
+      0 => 'C:\\trabajos\\stylofitness\\app\\Controllers\\LandingController.php',
+      1 => 'C:\\trabajos\\stylofitness\\app\\Controllers\\RoomController.php',
+    ),
+  ),
+  'C:\\trabajos\\stylofitness\\app\\Models\\LandingPageConfig.php' => 
+  array (
+    'fileHash' => '1d2f1092e275fc47145c269b91d0f7cf9e4ba53f',
+    'dependentFiles' => 
+    array (
+      0 => 'C:\\trabajos\\stylofitness\\app\\Controllers\\AdminLandingController.php',
+      1 => 'C:\\trabajos\\stylofitness\\app\\Controllers\\LandingController.php',
     ),
   ),
   'C:\\trabajos\\stylofitness\\app\\Models\\Order.php' => 
   array (
-    'fileHash' => '7661e2efd4c2442481d740c323658719faae3107',
+    'fileHash' => '7ad8fb49f7b65dc535fd0c3b45ec7490803a352b',
     'dependentFiles' => 
     array (
       0 => 'C:\\trabajos\\stylofitness\\app\\Controllers\\AdminController.php',
       1 => 'C:\\trabajos\\stylofitness\\app\\Controllers\\ApiController.php',
       2 => 'C:\\trabajos\\stylofitness\\app\\Controllers\\CheckoutController.php',
-      3 => 'C:\\trabajos\\stylofitness\\app\\Controllers\\WebhookController.php',
+      3 => 'C:\\trabajos\\stylofitness\\app\\Controllers\\UserController.php',
+      4 => 'C:\\trabajos\\stylofitness\\app\\Controllers\\WebhookController.php',
     ),
   ),
   'C:\\trabajos\\stylofitness\\app\\Models\\Product.php' => 
   array (
-    'fileHash' => 'd9dab65754dbbc32bc283eba7ed762bb4b3143fb',
+    'fileHash' => 'a92f2682589f1367b435285b8d1cc7c1c3339952',
     'dependentFiles' => 
     array (
       0 => 'C:\\trabajos\\stylofitness\\app\\Controllers\\AdminController.php',
       1 => 'C:\\trabajos\\stylofitness\\app\\Controllers\\ApiController.php',
       2 => 'C:\\trabajos\\stylofitness\\app\\Controllers\\CartController.php',
-      3 => 'C:\\trabajos\\stylofitness\\app\\Controllers\\RoutineController.php',
-      4 => 'C:\\trabajos\\stylofitness\\app\\Controllers\\StoreController.php',
+      3 => 'C:\\trabajos\\stylofitness\\app\\Controllers\\LandingController.php',
+      4 => 'C:\\trabajos\\stylofitness\\app\\Controllers\\RoutineController.php',
+      5 => 'C:\\trabajos\\stylofitness\\app\\Controllers\\StoreController.php',
     ),
   ),
   'C:\\trabajos\\stylofitness\\app\\Models\\ProductCategory.php' => 
@@ -1625,26 +1809,79 @@ return [
       1 => 'C:\\trabajos\\stylofitness\\app\\Controllers\\StoreController.php',
     ),
   ),
+  'C:\\trabajos\\stylofitness\\app\\Models\\Room.php' => 
+  array (
+    'fileHash' => '96db5784495dc117a61b38953c7e0fcd2520567d',
+    'dependentFiles' => 
+    array (
+      0 => 'C:\\trabajos\\stylofitness\\app\\Controllers\\GroupClassController.php',
+      1 => 'C:\\trabajos\\stylofitness\\app\\Controllers\\RoomController.php',
+      2 => 'C:\\trabajos\\stylofitness\\app\\Models\\GroupClass.php',
+    ),
+  ),
   'C:\\trabajos\\stylofitness\\app\\Models\\Routine.php' => 
   array (
-    'fileHash' => '30d93b0644b59e12d00ffcf9998b6832904d56e2',
+    'fileHash' => '3dac9e3adc4d393181f8d5b9d0ede5e1feb3e2da',
     'dependentFiles' => 
     array (
       0 => 'C:\\trabajos\\stylofitness\\app\\Controllers\\AdminController.php',
       1 => 'C:\\trabajos\\stylofitness\\app\\Controllers\\ApiController.php',
       2 => 'C:\\trabajos\\stylofitness\\app\\Controllers\\RoutineController.php',
+      3 => 'C:\\trabajos\\stylofitness\\app\\Controllers\\RoutineTemplateController.php',
+      4 => 'C:\\trabajos\\stylofitness\\app\\Controllers\\TrainerProgressController.php',
+      5 => 'C:\\trabajos\\stylofitness\\app\\Controllers\\UserController.php',
+    ),
+  ),
+  'C:\\trabajos\\stylofitness\\app\\Models\\SpecialOffer.php' => 
+  array (
+    'fileHash' => 'e59d51767495dd6ba5d905051410531ccbd88f93',
+    'dependentFiles' => 
+    array (
+      0 => 'C:\\trabajos\\stylofitness\\app\\Controllers\\AdminLandingController.php',
+      1 => 'C:\\trabajos\\stylofitness\\app\\Controllers\\LandingController.php',
+    ),
+  ),
+  'C:\\trabajos\\stylofitness\\app\\Models\\Testimonial.php' => 
+  array (
+    'fileHash' => '0ec9f4243347a48143e07f9538c224f48e2c839b',
+    'dependentFiles' => 
+    array (
+      0 => 'C:\\trabajos\\stylofitness\\app\\Controllers\\AdminLandingController.php',
+      1 => 'C:\\trabajos\\stylofitness\\app\\Controllers\\LandingController.php',
     ),
   ),
   'C:\\trabajos\\stylofitness\\app\\Models\\User.php' => 
   array (
-    'fileHash' => '78103db890020738014ac0af9c13aea5542c8c1f',
+    'fileHash' => 'a97307a15e51188b9a1b69240d01157a8be11da0',
     'dependentFiles' => 
     array (
       0 => 'C:\\trabajos\\stylofitness\\app\\Controllers\\AdminController.php',
       1 => 'C:\\trabajos\\stylofitness\\app\\Controllers\\ApiController.php',
       2 => 'C:\\trabajos\\stylofitness\\app\\Controllers\\AuthController.php',
-      3 => 'C:\\trabajos\\stylofitness\\app\\Controllers\\RoutineController.php',
-      4 => 'C:\\trabajos\\stylofitness\\app\\Controllers\\WebhookController.php',
+      3 => 'C:\\trabajos\\stylofitness\\app\\Controllers\\ExerciseManagementController.php',
+      4 => 'C:\\trabajos\\stylofitness\\app\\Controllers\\GroupClassController.php',
+      5 => 'C:\\trabajos\\stylofitness\\app\\Controllers\\RoutineController.php',
+      6 => 'C:\\trabajos\\stylofitness\\app\\Controllers\\RoutineTemplateController.php',
+      7 => 'C:\\trabajos\\stylofitness\\app\\Controllers\\TrainerProgressController.php',
+      8 => 'C:\\trabajos\\stylofitness\\app\\Controllers\\UserController.php',
+      9 => 'C:\\trabajos\\stylofitness\\app\\Controllers\\WebhookController.php',
+    ),
+  ),
+  'C:\\trabajos\\stylofitness\\app\\Models\\WhyChooseUs.php' => 
+  array (
+    'fileHash' => '57424d8a82dd917207b5d5a37d2fb9be330dfbe8',
+    'dependentFiles' => 
+    array (
+      0 => 'C:\\trabajos\\stylofitness\\app\\Controllers\\AdminLandingController.php',
+      1 => 'C:\\trabajos\\stylofitness\\app\\Controllers\\LandingController.php',
+    ),
+  ),
+  'C:\\trabajos\\stylofitness\\app\\Models\\WorkoutLog.php' => 
+  array (
+    'fileHash' => 'f5fc7e3b2d4ab267cfedf81d9eaea8ef87f13d1f',
+    'dependentFiles' => 
+    array (
+      0 => 'C:\\trabajos\\stylofitness\\app\\Controllers\\TrainerProgressController.php',
     ),
   ),
 ),
@@ -1679,13 +1916,13 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => true,
-           'returnType' => NULL,
+           'returnType' => 'string',
            'parameters' => 
           array (
             0 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'path',
-               'type' => NULL,
+               'type' => 'string',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => true,
@@ -1708,13 +1945,13 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => true,
-           'returnType' => NULL,
+           'returnType' => 'string',
            'parameters' => 
           array (
             0 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'path',
-               'type' => NULL,
+               'type' => 'string',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -1737,13 +1974,13 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => true,
-           'returnType' => NULL,
+           'returnType' => 'string',
            'parameters' => 
           array (
             0 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'path',
-               'type' => NULL,
+               'type' => 'string',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -1766,13 +2003,13 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => true,
-           'returnType' => NULL,
+           'returnType' => 'mixed',
            'parameters' => 
           array (
             0 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'input',
-               'type' => NULL,
+               'type' => 'mixed',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -1795,13 +2032,13 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => true,
-           'returnType' => NULL,
+           'returnType' => 'string|false',
            'parameters' => 
           array (
             0 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'email',
-               'type' => NULL,
+               'type' => 'string',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -1824,13 +2061,13 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => true,
-           'returnType' => NULL,
+           'returnType' => 'string',
            'parameters' => 
           array (
             0 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'text',
-               'type' => NULL,
+               'type' => '?string',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -1853,13 +2090,13 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => true,
-           'returnType' => NULL,
+           'returnType' => 'string',
            'parameters' => 
           array (
             0 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'price',
-               'type' => NULL,
+               'type' => 'float',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -1882,7 +2119,7 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => true,
-           'returnType' => NULL,
+           'returnType' => 'string',
            'parameters' => 
           array (
           ),
@@ -1900,13 +2137,13 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => true,
-           'returnType' => NULL,
+           'returnType' => 'bool',
            'parameters' => 
           array (
             0 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'token',
-               'type' => NULL,
+               'type' => 'string',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -1929,13 +2166,13 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => true,
-           'returnType' => NULL,
+           'returnType' => 'void',
            'parameters' => 
           array (
             0 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'url',
-               'type' => NULL,
+               'type' => 'string',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -1958,13 +2195,13 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => true,
-           'returnType' => NULL,
+           'returnType' => 'void',
            'parameters' => 
           array (
             0 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'type',
-               'type' => NULL,
+               'type' => 'string',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -1975,7 +2212,7 @@ return [
             1 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'message',
-               'type' => NULL,
+               'type' => 'string',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -1998,13 +2235,13 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => true,
-           'returnType' => NULL,
+           'returnType' => '?string',
            'parameters' => 
           array (
             0 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'type',
-               'type' => NULL,
+               'type' => 'string',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -2027,7 +2264,7 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => true,
-           'returnType' => NULL,
+           'returnType' => 'bool',
            'parameters' => 
           array (
           ),
@@ -2045,7 +2282,7 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => true,
-           'returnType' => NULL,
+           'returnType' => '?array',
            'parameters' => 
           array (
           ),
@@ -2063,13 +2300,13 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => true,
-           'returnType' => NULL,
+           'returnType' => 'bool',
            'parameters' => 
           array (
             0 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'role',
-               'type' => NULL,
+               'type' => 'string',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -2092,13 +2329,13 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => true,
-           'returnType' => NULL,
+           'returnType' => 'bool',
            'parameters' => 
           array (
             0 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'source',
-               'type' => NULL,
+               'type' => 'string',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -2109,7 +2346,7 @@ return [
             1 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'destination',
-               'type' => NULL,
+               'type' => 'string',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -2120,7 +2357,7 @@ return [
             2 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'quality',
-               'type' => NULL,
+               'type' => 'int',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => true,
@@ -2143,13 +2380,13 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => true,
-           'returnType' => NULL,
+           'returnType' => 'bool',
            'parameters' => 
           array (
             0 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'source',
-               'type' => NULL,
+               'type' => 'string',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -2160,7 +2397,7 @@ return [
             1 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'destination',
-               'type' => NULL,
+               'type' => 'string',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -2171,7 +2408,7 @@ return [
             2 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'width',
-               'type' => NULL,
+               'type' => 'int',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => true,
@@ -2182,7 +2419,7 @@ return [
             3 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'height',
-               'type' => NULL,
+               'type' => 'int',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => true,
@@ -2205,13 +2442,13 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => true,
-           'returnType' => NULL,
+           'returnType' => 'void',
            'parameters' => 
           array (
             0 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'message',
-               'type' => NULL,
+               'type' => 'string',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -2222,7 +2459,7 @@ return [
             1 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'level',
-               'type' => NULL,
+               'type' => 'string',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => true,
@@ -2245,13 +2482,13 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => true,
-           'returnType' => NULL,
+           'returnType' => 'bool',
            'parameters' => 
           array (
             0 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'file',
-               'type' => NULL,
+               'type' => 'string',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -2274,7 +2511,7 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => true,
-           'returnType' => NULL,
+           'returnType' => 'bool',
            'parameters' => 
           array (
           ),
@@ -4481,6 +4718,1148 @@ return [
       ),
     )),
   ),
+  'C:\\trabajos\\stylofitness\\app\\Config\\ProgressConfig.php' => 
+  array (
+    0 => 
+    \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state(array(
+       'name' => 'ProgressConfig',
+       'phpDoc' => 
+      \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+         'phpDocString' => '/**
+ * Configuración del Sistema de Seguimiento de Progreso
+ * StyloFitness - Configuraciones para tracking avanzado
+ */',
+         'namespace' => NULL,
+         'uses' => 
+        array (
+        ),
+         'constUses' => 
+        array (
+        ),
+      )),
+       'abstract' => false,
+       'final' => false,
+       'extends' => NULL,
+       'implements' => 
+      array (
+      ),
+       'usedTraits' => 
+      array (
+      ),
+       'traitUseAdaptations' => 
+      array (
+      ),
+       'statements' => 
+      array (
+        0 => 
+        \PHPStan\Dependency\ExportedNode\ExportedClassConstantsNode::__set_state(array(
+           'constants' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedClassConstantNode::__set_state(array(
+               'name' => 'INACTIVITY_ALERT_DAYS',
+               'value' => '7',
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'public' => true,
+           'private' => false,
+           'final' => false,
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Días de inactividad antes de generar alerta
+     */',
+             'namespace' => NULL,
+             'uses' => 
+            array (
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+        )),
+        1 => 
+        \PHPStan\Dependency\ExportedNode\ExportedClassConstantsNode::__set_state(array(
+           'constants' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedClassConstantNode::__set_state(array(
+               'name' => 'CRITICAL_INACTIVITY_DAYS',
+               'value' => '14',
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'public' => true,
+           'private' => false,
+           'final' => false,
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Días de inactividad para alerta crítica
+     */',
+             'namespace' => NULL,
+             'uses' => 
+            array (
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+        )),
+        2 => 
+        \PHPStan\Dependency\ExportedNode\ExportedClassConstantsNode::__set_state(array(
+           'constants' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedClassConstantNode::__set_state(array(
+               'name' => 'HIGH_RPE_THRESHOLD',
+               'value' => '8',
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'public' => true,
+           'private' => false,
+           'final' => false,
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * RPE máximo antes de generar alerta
+     */',
+             'namespace' => NULL,
+             'uses' => 
+            array (
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+        )),
+        3 => 
+        \PHPStan\Dependency\ExportedNode\ExportedClassConstantsNode::__set_state(array(
+           'constants' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedClassConstantNode::__set_state(array(
+               'name' => 'MAX_CLIENTS_COMPARISON',
+               'value' => '10',
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'public' => true,
+           'private' => false,
+           'final' => false,
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Número máximo de clientes por comparación
+     */',
+             'namespace' => NULL,
+             'uses' => 
+            array (
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+        )),
+        4 => 
+        \PHPStan\Dependency\ExportedNode\ExportedClassConstantsNode::__set_state(array(
+           'constants' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedClassConstantNode::__set_state(array(
+               'name' => 'TEMP_REPORT_RETENTION_DAYS',
+               'value' => '7',
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'public' => true,
+           'private' => false,
+           'final' => false,
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Días de retención de reportes temporales
+     */',
+             'namespace' => NULL,
+             'uses' => 
+            array (
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+        )),
+        5 => 
+        \PHPStan\Dependency\ExportedNode\ExportedClassConstantsNode::__set_state(array(
+           'constants' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedClassConstantNode::__set_state(array(
+               'name' => 'MAX_REPORT_FILE_SIZE_MB',
+               'value' => '50',
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'public' => true,
+           'private' => false,
+           'final' => false,
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Tamaño máximo de archivo de reporte (MB)
+     */',
+             'namespace' => NULL,
+             'uses' => 
+            array (
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+        )),
+        6 => 
+        \PHPStan\Dependency\ExportedNode\ExportedClassConstantsNode::__set_state(array(
+           'constants' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedClassConstantNode::__set_state(array(
+               'name' => 'ALERT_TYPES',
+               'value' => '[\'inactive\' => [\'name\' => \'Cliente Inactivo\', \'description\' => \'Cliente sin actividad por varios días\', \'icon\' => \'fas fa-user-clock\', \'color\' => \'warning\'], \'high_rpe\' => [\'name\' => \'RPE Alto\', \'description\' => \'Cliente reportando esfuerzo muy alto\', \'icon\' => \'fas fa-exclamation-triangle\', \'color\' => \'danger\'], \'no_progress\' => [\'name\' => \'Sin Progreso\', \'description\' => \'Cliente sin progreso en objetivos\', \'icon\' => \'fas fa-chart-line\', \'color\' => \'info\'], \'goal_achieved\' => [\'name\' => \'Objetivo Alcanzado\', \'description\' => \'Cliente ha completado un objetivo\', \'icon\' => \'fas fa-trophy\', \'color\' => \'success\'], \'injury_risk\' => [\'name\' => \'Riesgo de Lesión\', \'description\' => \'Patrones que sugieren riesgo de lesión\', \'icon\' => \'fas fa-first-aid\', \'color\' => \'danger\']]',
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'public' => true,
+           'private' => false,
+           'final' => false,
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Tipos de alertas disponibles
+     */',
+             'namespace' => NULL,
+             'uses' => 
+            array (
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+        )),
+        7 => 
+        \PHPStan\Dependency\ExportedNode\ExportedClassConstantsNode::__set_state(array(
+           'constants' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedClassConstantNode::__set_state(array(
+               'name' => 'SEVERITY_LEVELS',
+               'value' => '[\'low\' => [\'name\' => \'Baja\', \'color\' => \'info\', \'priority\' => 1], \'medium\' => [\'name\' => \'Media\', \'color\' => \'warning\', \'priority\' => 2], \'high\' => [\'name\' => \'Alta\', \'color\' => \'danger\', \'priority\' => 3], \'critical\' => [\'name\' => \'Crítica\', \'color\' => \'dark\', \'priority\' => 4]]',
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'public' => true,
+           'private' => false,
+           'final' => false,
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Niveles de severidad de alertas
+     */',
+             'namespace' => NULL,
+             'uses' => 
+            array (
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+        )),
+        8 => 
+        \PHPStan\Dependency\ExportedNode\ExportedClassConstantsNode::__set_state(array(
+           'constants' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedClassConstantNode::__set_state(array(
+               'name' => 'REPORT_TYPES',
+               'value' => '[\'individual\' => [\'name\' => \'Reporte Individual\', \'description\' => \'Reporte detallado de un cliente específico\', \'max_clients\' => 1], \'group\' => [\'name\' => \'Reporte Grupal\', \'description\' => \'Comparación de múltiples clientes\', \'max_clients\' => 10], \'summary\' => [\'name\' => \'Resumen Ejecutivo\', \'description\' => \'Resumen general de todos los clientes\', \'max_clients\' => \\null]]',
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'public' => true,
+           'private' => false,
+           'final' => false,
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Tipos de reportes disponibles
+     */',
+             'namespace' => NULL,
+             'uses' => 
+            array (
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+        )),
+        9 => 
+        \PHPStan\Dependency\ExportedNode\ExportedClassConstantsNode::__set_state(array(
+           'constants' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedClassConstantNode::__set_state(array(
+               'name' => 'OUTPUT_FORMATS',
+               'value' => '[\'pdf\' => [\'name\' => \'PDF\', \'extension\' => \'pdf\', \'mime_type\' => \'application/pdf\', \'icon\' => \'fas fa-file-pdf\'], \'excel\' => [\'name\' => \'Excel\', \'extension\' => \'xlsx\', \'mime_type\' => \'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet\', \'icon\' => \'fas fa-file-excel\'], \'html\' => [\'name\' => \'HTML\', \'extension\' => \'html\', \'mime_type\' => \'text/html\', \'icon\' => \'fas fa-file-code\']]',
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'public' => true,
+           'private' => false,
+           'final' => false,
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Formatos de salida disponibles
+     */',
+             'namespace' => NULL,
+             'uses' => 
+            array (
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+        )),
+        10 => 
+        \PHPStan\Dependency\ExportedNode\ExportedClassConstantsNode::__set_state(array(
+           'constants' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedClassConstantNode::__set_state(array(
+               'name' => 'REPORT_SECTIONS',
+               'value' => '[\'summary\' => [\'name\' => \'Resumen General\', \'description\' => \'Estadísticas generales del período\', \'required\' => \\true], \'progress_charts\' => [\'name\' => \'Gráficos de Progreso\', \'description\' => \'Gráficos de evolución y tendencias\', \'required\' => \\false], \'workout_history\' => [\'name\' => \'Historial de Entrenamientos\', \'description\' => \'Detalle de sesiones realizadas\', \'required\' => \\false], \'exercise_analysis\' => [\'name\' => \'Análisis de Ejercicios\', \'description\' => \'Análisis por ejercicio y grupo muscular\', \'required\' => \\false], \'physical_progress\' => [\'name\' => \'Progreso Físico\', \'description\' => \'Mediciones corporales y composición\', \'required\' => \\false], \'goals_tracking\' => [\'name\' => \'Seguimiento de Objetivos\', \'description\' => \'Estado y progreso de objetivos\', \'required\' => \\false], \'recommendations\' => [\'name\' => \'Recomendaciones\', \'description\' => \'Sugerencias y próximos pasos\', \'required\' => \\false]]',
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'public' => true,
+           'private' => false,
+           'final' => false,
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Secciones disponibles para reportes
+     */',
+             'namespace' => NULL,
+             'uses' => 
+            array (
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+        )),
+        11 => 
+        \PHPStan\Dependency\ExportedNode\ExportedClassConstantsNode::__set_state(array(
+           'constants' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedClassConstantNode::__set_state(array(
+               'name' => 'METRIC_TYPES',
+               'value' => '[\'numeric\' => [\'name\' => \'Numérico\', \'description\' => \'Valor numérico simple\', \'format\' => \'number\'], \'percentage\' => [\'name\' => \'Porcentaje\', \'description\' => \'Valor en porcentaje (0-100)\', \'format\' => \'percentage\'], \'time\' => [\'name\' => \'Tiempo\', \'description\' => \'Duración en minutos o segundos\', \'format\' => \'time\'], \'distance\' => [\'name\' => \'Distancia\', \'description\' => \'Distancia en metros o kilómetros\', \'format\' => \'distance\'], \'weight\' => [\'name\' => \'Peso\', \'description\' => \'Peso en kilogramos\', \'format\' => \'weight\']]',
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'public' => true,
+           'private' => false,
+           'final' => false,
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Tipos de métricas personalizadas
+     */',
+             'namespace' => NULL,
+             'uses' => 
+            array (
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+        )),
+        12 => 
+        \PHPStan\Dependency\ExportedNode\ExportedClassConstantsNode::__set_state(array(
+           'constants' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedClassConstantNode::__set_state(array(
+               'name' => 'DEFAULT_METRICS',
+               'value' => '[\'flexibility\' => [\'name\' => \'Flexibilidad General\', \'description\' => \'Medición general de flexibilidad corporal\', \'unit\' => \'puntos\', \'type\' => \'numeric\', \'higher_better\' => \\true], \'cardio_endurance\' => [\'name\' => \'Resistencia Cardiovascular\', \'description\' => \'Tiempo en prueba de resistencia cardiovascular\', \'unit\' => \'minutos\', \'type\' => \'time\', \'higher_better\' => \\true], \'body_fat\' => [\'name\' => \'Porcentaje de Grasa Corporal\', \'description\' => \'Medición del porcentaje de grasa corporal\', \'unit\' => \'%\', \'type\' => \'percentage\', \'higher_better\' => \\false], \'vo2_max\' => [\'name\' => \'VO2 Máximo\', \'description\' => \'Consumo máximo de oxígeno\', \'unit\' => \'ml/kg/min\', \'type\' => \'numeric\', \'higher_better\' => \\true], \'resting_hr\' => [\'name\' => \'Frecuencia Cardíaca en Reposo\', \'description\' => \'Pulsaciones por minuto en reposo\', \'unit\' => \'bpm\', \'type\' => \'numeric\', \'higher_better\' => \\false]]',
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'public' => true,
+           'private' => false,
+           'final' => false,
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Métricas predefinidas del sistema
+     */',
+             'namespace' => NULL,
+             'uses' => 
+            array (
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+        )),
+        13 => 
+        \PHPStan\Dependency\ExportedNode\ExportedClassConstantsNode::__set_state(array(
+           'constants' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedClassConstantNode::__set_state(array(
+               'name' => 'GOAL_TYPES',
+               'value' => '[\'weight_loss\' => [\'name\' => \'Pérdida de Peso\', \'description\' => \'Reducir peso corporal\', \'unit\' => \'kg\', \'icon\' => \'fas fa-weight\', \'color\' => \'primary\'], \'muscle_gain\' => [\'name\' => \'Ganancia Muscular\', \'description\' => \'Aumentar masa muscular\', \'unit\' => \'kg\', \'icon\' => \'fas fa-dumbbell\', \'color\' => \'success\'], \'strength\' => [\'name\' => \'Fuerza\', \'description\' => \'Mejorar fuerza máxima\', \'unit\' => \'kg\', \'icon\' => \'fas fa-fist-raised\', \'color\' => \'danger\'], \'endurance\' => [\'name\' => \'Resistencia\', \'description\' => \'Mejorar resistencia cardiovascular\', \'unit\' => \'minutos\', \'icon\' => \'fas fa-running\', \'color\' => \'info\'], \'flexibility\' => [\'name\' => \'Flexibilidad\', \'description\' => \'Mejorar flexibilidad general\', \'unit\' => \'cm\', \'icon\' => \'fas fa-expand-arrows-alt\', \'color\' => \'warning\'], \'custom\' => [\'name\' => \'Personalizado\', \'description\' => \'Objetivo personalizado\', \'unit\' => \'variable\', \'icon\' => \'fas fa-bullseye\', \'color\' => \'secondary\']]',
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'public' => true,
+           'private' => false,
+           'final' => false,
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Tipos de objetivos disponibles
+     */',
+             'namespace' => NULL,
+             'uses' => 
+            array (
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+        )),
+        14 => 
+        \PHPStan\Dependency\ExportedNode\ExportedClassConstantsNode::__set_state(array(
+           'constants' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedClassConstantNode::__set_state(array(
+               'name' => 'GOAL_STATUSES',
+               'value' => '[\'active\' => [\'name\' => \'Activo\', \'color\' => \'success\', \'icon\' => \'fas fa-play\'], \'paused\' => [\'name\' => \'Pausado\', \'color\' => \'warning\', \'icon\' => \'fas fa-pause\'], \'completed\' => [\'name\' => \'Completado\', \'color\' => \'primary\', \'icon\' => \'fas fa-check\'], \'cancelled\' => [\'name\' => \'Cancelado\', \'color\' => \'danger\', \'icon\' => \'fas fa-times\']]',
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'public' => true,
+           'private' => false,
+           'final' => false,
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Estados de objetivos
+     */',
+             'namespace' => NULL,
+             'uses' => 
+            array (
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+        )),
+        15 => 
+        \PHPStan\Dependency\ExportedNode\ExportedClassConstantsNode::__set_state(array(
+           'constants' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedClassConstantNode::__set_state(array(
+               'name' => 'CHART_COLORS',
+               'value' => '[\'primary\' => \'#007bff\', \'secondary\' => \'#6c757d\', \'success\' => \'#28a745\', \'danger\' => \'#dc3545\', \'warning\' => \'#ffc107\', \'info\' => \'#17a2b8\', \'light\' => \'#f8f9fa\', \'dark\' => \'#343a40\']',
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'public' => true,
+           'private' => false,
+           'final' => false,
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Colores para gráficos
+     */',
+             'namespace' => NULL,
+             'uses' => 
+            array (
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+        )),
+        16 => 
+        \PHPStan\Dependency\ExportedNode\ExportedClassConstantsNode::__set_state(array(
+           'constants' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedClassConstantNode::__set_state(array(
+               'name' => 'CHART_PERIODS',
+               'value' => '[\'7d\' => [\'name\' => \'Última Semana\', \'days\' => 7, \'format\' => \'D M j\'], \'30d\' => [\'name\' => \'Último Mes\', \'days\' => 30, \'format\' => \'M j\'], \'90d\' => [\'name\' => \'Últimos 3 Meses\', \'days\' => 90, \'format\' => \'M j\'], \'1y\' => [\'name\' => \'Último Año\', \'days\' => 365, \'format\' => \'M Y\']]',
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'public' => true,
+           'private' => false,
+           'final' => false,
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Configuraciones de períodos para gráficos
+     */',
+             'namespace' => NULL,
+             'uses' => 
+            array (
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+        )),
+        17 => 
+        \PHPStan\Dependency\ExportedNode\ExportedClassConstantsNode::__set_state(array(
+           'constants' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedClassConstantNode::__set_state(array(
+               'name' => 'NOTIFICATION_TYPES',
+               'value' => '[\'goal_reminder\' => [\'name\' => \'Recordatorio de Objetivo\', \'icon\' => \'fas fa-bullseye\', \'color\' => \'info\'], \'progress_update\' => [\'name\' => \'Actualización de Progreso\', \'icon\' => \'fas fa-chart-line\', \'color\' => \'success\'], \'session_reminder\' => [\'name\' => \'Recordatorio de Sesión\', \'icon\' => \'fas fa-calendar\', \'color\' => \'warning\'], \'achievement\' => [\'name\' => \'Logro Alcanzado\', \'icon\' => \'fas fa-trophy\', \'color\' => \'success\'], \'alert\' => [\'name\' => \'Alerta\', \'icon\' => \'fas fa-exclamation-triangle\', \'color\' => \'danger\']]',
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'public' => true,
+           'private' => false,
+           'final' => false,
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Tipos de notificaciones
+     */',
+             'namespace' => NULL,
+             'uses' => 
+            array (
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+        )),
+        18 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getAlertType',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Obtener configuración de tipo de alerta
+     */',
+             'namespace' => NULL,
+             'uses' => 
+            array (
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => true,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'type',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        19 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getSeverityLevel',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Obtener configuración de nivel de severidad
+     */',
+             'namespace' => NULL,
+             'uses' => 
+            array (
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => true,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'level',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        20 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getReportType',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Obtener configuración de tipo de reporte
+     */',
+             'namespace' => NULL,
+             'uses' => 
+            array (
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => true,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'type',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        21 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getOutputFormat',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Obtener configuración de formato de salida
+     */',
+             'namespace' => NULL,
+             'uses' => 
+            array (
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => true,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'format',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        22 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getMetricType',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Obtener configuración de tipo de métrica
+     */',
+             'namespace' => NULL,
+             'uses' => 
+            array (
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => true,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'type',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        23 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getGoalType',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Obtener configuración de tipo de objetivo
+     */',
+             'namespace' => NULL,
+             'uses' => 
+            array (
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => true,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'type',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        24 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getGoalStatus',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Obtener configuración de estado de objetivo
+     */',
+             'namespace' => NULL,
+             'uses' => 
+            array (
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => true,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'status',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        25 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getChartColor',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Obtener color para gráfico
+     */',
+             'namespace' => NULL,
+             'uses' => 
+            array (
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => true,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'color',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        26 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getChartPeriod',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Obtener configuración de período para gráfico
+     */',
+             'namespace' => NULL,
+             'uses' => 
+            array (
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => true,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'period',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        27 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getNotificationType',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Obtener configuración de tipo de notificación
+     */',
+             'namespace' => NULL,
+             'uses' => 
+            array (
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => true,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'type',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        28 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'canAccessProgress',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Validar si un usuario puede acceder a funciones de progreso
+     */',
+             'namespace' => NULL,
+             'uses' => 
+            array (
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => true,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'userRole',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        29 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getComparisonLimit',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Obtener límite de clientes para comparación según rol
+     */',
+             'namespace' => NULL,
+             'uses' => 
+            array (
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => true,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'userRole',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        30 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getProgressChartConfig',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Generar configuración para gráfico de progreso
+     */',
+             'namespace' => NULL,
+             'uses' => 
+            array (
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => true,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'type',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => true,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        31 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getDefaultExportConfig',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Obtener configuración de exportación por defecto
+     */',
+             'namespace' => NULL,
+             'uses' => 
+            array (
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => true,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+      ),
+       'attributes' => 
+      array (
+      ),
+    )),
+  ),
   'C:\\trabajos\\stylofitness\\app\\Config\\RoutineConfig.php' => 
   array (
     0 => 
@@ -4967,7 +6346,7 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => false,
-           'returnType' => NULL,
+           'returnType' => 'void',
            'parameters' => 
           array (
           ),
@@ -4985,7 +6364,7 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => false,
-           'returnType' => NULL,
+           'returnType' => 'void',
            'parameters' => 
           array (
           ),
@@ -5003,7 +6382,7 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => false,
-           'returnType' => NULL,
+           'returnType' => 'void',
            'parameters' => 
           array (
           ),
@@ -5021,7 +6400,7 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => false,
-           'returnType' => NULL,
+           'returnType' => 'void',
            'parameters' => 
           array (
           ),
@@ -5039,13 +6418,13 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => false,
-           'returnType' => NULL,
+           'returnType' => 'void',
            'parameters' => 
           array (
             0 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'id',
-               'type' => NULL,
+               'type' => 'int',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -5068,13 +6447,13 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => false,
-           'returnType' => NULL,
+           'returnType' => 'void',
            'parameters' => 
           array (
             0 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'id',
-               'type' => NULL,
+               'type' => 'int',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -5097,13 +6476,13 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => false,
-           'returnType' => NULL,
+           'returnType' => 'void',
            'parameters' => 
           array (
             0 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'id',
-               'type' => NULL,
+               'type' => 'int',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -5126,7 +6505,7 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => false,
-           'returnType' => NULL,
+           'returnType' => 'void',
            'parameters' => 
           array (
           ),
@@ -5136,7 +6515,7 @@ return [
         )),
         9 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
-           'name' => 'createProduct',
+           'name' => 'getProductsAjax',
            'phpDoc' => NULL,
            'byRef' => false,
            'public' => true,
@@ -5144,7 +6523,7 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => false,
-           'returnType' => NULL,
+           'returnType' => 'void',
            'parameters' => 
           array (
           ),
@@ -5154,7 +6533,7 @@ return [
         )),
         10 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
-           'name' => 'storeProduct',
+           'name' => 'createProduct',
            'phpDoc' => NULL,
            'byRef' => false,
            'public' => true,
@@ -5162,7 +6541,7 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => false,
-           'returnType' => NULL,
+           'returnType' => 'void',
            'parameters' => 
           array (
           ),
@@ -5172,6 +6551,24 @@ return [
         )),
         11 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'storeProduct',
+           'phpDoc' => NULL,
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => 'void',
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        12 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'editProduct',
            'phpDoc' => NULL,
            'byRef' => false,
@@ -5180,42 +6577,13 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => false,
-           'returnType' => NULL,
+           'returnType' => 'void',
            'parameters' => 
           array (
             0 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'id',
-               'type' => NULL,
-               'byRef' => false,
-               'variadic' => false,
-               'hasDefault' => false,
-               'attributes' => 
-              array (
-              ),
-            )),
-          ),
-           'attributes' => 
-          array (
-          ),
-        )),
-        12 => 
-        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
-           'name' => 'updateProduct',
-           'phpDoc' => NULL,
-           'byRef' => false,
-           'public' => true,
-           'private' => false,
-           'abstract' => false,
-           'final' => false,
-           'static' => false,
-           'returnType' => NULL,
-           'parameters' => 
-          array (
-            0 => 
-            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
-               'name' => 'id',
-               'type' => NULL,
+               'type' => 'int',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -5230,6 +6598,64 @@ return [
         )),
         13 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'updateProduct',
+           'phpDoc' => NULL,
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => 'void',
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'id',
+               'type' => 'int',
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        14 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'deleteProduct',
+           'phpDoc' => NULL,
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => 'void',
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'id',
+               'type' => 'int',
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        15 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'orders',
            'phpDoc' => NULL,
            'byRef' => false,
@@ -5238,43 +6664,7 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => false,
-           'returnType' => NULL,
-           'parameters' => 
-          array (
-          ),
-           'attributes' => 
-          array (
-          ),
-        )),
-        14 => 
-        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
-           'name' => 'routines',
-           'phpDoc' => NULL,
-           'byRef' => false,
-           'public' => true,
-           'private' => false,
-           'abstract' => false,
-           'final' => false,
-           'static' => false,
-           'returnType' => NULL,
-           'parameters' => 
-          array (
-          ),
-           'attributes' => 
-          array (
-          ),
-        )),
-        15 => 
-        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
-           'name' => 'exercises',
-           'phpDoc' => NULL,
-           'byRef' => false,
-           'public' => true,
-           'private' => false,
-           'abstract' => false,
-           'final' => false,
-           'static' => false,
-           'returnType' => NULL,
+           'returnType' => 'void',
            'parameters' => 
           array (
           ),
@@ -5284,7 +6674,7 @@ return [
         )),
         16 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
-           'name' => 'classes',
+           'name' => 'routines',
            'phpDoc' => NULL,
            'byRef' => false,
            'public' => true,
@@ -5292,7 +6682,7 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => false,
-           'returnType' => NULL,
+           'returnType' => 'void',
            'parameters' => 
           array (
           ),
@@ -5302,7 +6692,7 @@ return [
         )),
         17 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
-           'name' => 'reports',
+           'name' => 'exercises',
            'phpDoc' => NULL,
            'byRef' => false,
            'public' => true,
@@ -5310,7 +6700,7 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => false,
-           'returnType' => NULL,
+           'returnType' => 'void',
            'parameters' => 
           array (
           ),
@@ -5320,7 +6710,7 @@ return [
         )),
         18 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
-           'name' => 'settings',
+           'name' => 'classes',
            'phpDoc' => NULL,
            'byRef' => false,
            'public' => true,
@@ -5328,7 +6718,7 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => false,
-           'returnType' => NULL,
+           'returnType' => 'void',
            'parameters' => 
           array (
           ),
@@ -5338,6 +6728,42 @@ return [
         )),
         19 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'reports',
+           'phpDoc' => NULL,
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => 'void',
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        20 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'settings',
+           'phpDoc' => NULL,
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => 'void',
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        21 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'updateSettings',
            'phpDoc' => NULL,
            'byRef' => false,
@@ -5346,7 +6772,7 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => false,
-           'returnType' => NULL,
+           'returnType' => 'void',
            'parameters' => 
           array (
           ),
@@ -5405,7 +6831,7 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => false,
-           'returnType' => NULL,
+           'returnType' => 'array',
            'parameters' => 
           array (
           ),
@@ -5423,13 +6849,13 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => false,
-           'returnType' => NULL,
+           'returnType' => 'mixed',
            'parameters' => 
           array (
             0 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'key',
-               'type' => NULL,
+               'type' => 'string',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -5440,7 +6866,7 @@ return [
             1 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'default',
-               'type' => NULL,
+               'type' => '?mixed',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => true,
@@ -5463,13 +6889,13 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => false,
-           'returnType' => NULL,
+           'returnType' => 'bool',
            'parameters' => 
           array (
             0 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'key',
-               'type' => NULL,
+               'type' => 'string',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -5480,7 +6906,7 @@ return [
             1 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'value',
-               'type' => NULL,
+               'type' => 'mixed',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -5488,6 +6914,466 @@ return [
               array (
               ),
             )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+      ),
+       'attributes' => 
+      array (
+      ),
+    )),
+  ),
+  'C:\\trabajos\\stylofitness\\app\\Controllers\\AdminLandingController.php' => 
+  array (
+    0 => 
+    \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state(array(
+       'name' => 'StyleFitness\\Controllers\\AdminLandingController',
+       'phpDoc' => 
+      \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+         'phpDocString' => '/**
+ * Controlador Administrativo para Landing Page
+ * Gestiona todas las secciones de la página de inicio
+ */',
+         'namespace' => 'StyleFitness\\Controllers',
+         'uses' => 
+        array (
+          'specialoffer' => 'StyleFitness\\Models\\SpecialOffer',
+          'whychooseus' => 'StyleFitness\\Models\\WhyChooseUs',
+          'testimonial' => 'StyleFitness\\Models\\Testimonial',
+          'landingpageconfig' => 'StyleFitness\\Models\\LandingPageConfig',
+          'groupclass' => 'StyleFitness\\Models\\GroupClass',
+          'apphelper' => 'StyleFitness\\Helpers\\AppHelper',
+          'exception' => 'Exception',
+        ),
+         'constUses' => 
+        array (
+        ),
+      )),
+       'abstract' => false,
+       'final' => false,
+       'extends' => NULL,
+       'implements' => 
+      array (
+      ),
+       'usedTraits' => 
+      array (
+      ),
+       'traitUseAdaptations' => 
+      array (
+      ),
+       'statements' => 
+      array (
+        0 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => '__construct',
+           'phpDoc' => NULL,
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        1 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'specialOffers',
+           'phpDoc' => NULL,
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        2 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getSpecialOffers',
+           'phpDoc' => NULL,
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        3 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'createSpecialOffer',
+           'phpDoc' => NULL,
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        4 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'updateSpecialOffer',
+           'phpDoc' => NULL,
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        5 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'deleteSpecialOffer',
+           'phpDoc' => NULL,
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        6 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'toggleSpecialOfferStatus',
+           'phpDoc' => NULL,
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        7 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'whyChooseUs',
+           'phpDoc' => NULL,
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        8 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getWhyChooseUsFeatures',
+           'phpDoc' => NULL,
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        9 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'createWhyChooseUsFeature',
+           'phpDoc' => NULL,
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        10 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'updateWhyChooseUsFeature',
+           'phpDoc' => NULL,
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        11 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'deleteWhyChooseUsFeature',
+           'phpDoc' => NULL,
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        12 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'testimonials',
+           'phpDoc' => NULL,
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        13 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getTestimonials',
+           'phpDoc' => NULL,
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        14 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'createTestimonial',
+           'phpDoc' => NULL,
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        15 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'updateTestimonial',
+           'phpDoc' => NULL,
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        16 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'deleteTestimonial',
+           'phpDoc' => NULL,
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        17 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'config',
+           'phpDoc' => NULL,
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        18 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getLandingConfig',
+           'phpDoc' => NULL,
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        19 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'createLandingConfig',
+           'phpDoc' => NULL,
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        20 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'updateLandingConfig',
+           'phpDoc' => NULL,
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        21 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'deleteLandingConfig',
+           'phpDoc' => NULL,
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        22 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'exportLandingConfig',
+           'phpDoc' => NULL,
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
           ),
            'attributes' => 
           array (
@@ -5569,7 +7455,7 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => false,
-           'returnType' => NULL,
+           'returnType' => 'void',
            'parameters' => 
           array (
           ),
@@ -5587,13 +7473,13 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => false,
-           'returnType' => NULL,
+           'returnType' => 'void',
            'parameters' => 
           array (
             0 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'id',
-               'type' => NULL,
+               'type' => 'int',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -5616,7 +7502,7 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => false,
-           'returnType' => NULL,
+           'returnType' => 'void',
            'parameters' => 
           array (
           ),
@@ -5634,13 +7520,13 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => false,
-           'returnType' => NULL,
+           'returnType' => 'void',
            'parameters' => 
           array (
             0 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'id',
-               'type' => NULL,
+               'type' => 'int',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -5663,13 +7549,13 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => false,
-           'returnType' => NULL,
+           'returnType' => 'void',
            'parameters' => 
           array (
             0 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'id',
-               'type' => NULL,
+               'type' => 'int',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -5692,7 +7578,7 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => false,
-           'returnType' => NULL,
+           'returnType' => 'void',
            'parameters' => 
           array (
           ),
@@ -5710,7 +7596,7 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => false,
-           'returnType' => NULL,
+           'returnType' => 'void',
            'parameters' => 
           array (
           ),
@@ -5728,7 +7614,7 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => false,
-           'returnType' => NULL,
+           'returnType' => 'void',
            'parameters' => 
           array (
           ),
@@ -5746,7 +7632,7 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => false,
-           'returnType' => NULL,
+           'returnType' => 'void',
            'parameters' => 
           array (
           ),
@@ -5764,7 +7650,7 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => false,
-           'returnType' => NULL,
+           'returnType' => 'void',
            'parameters' => 
           array (
           ),
@@ -5782,7 +7668,7 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => false,
-           'returnType' => NULL,
+           'returnType' => 'void',
            'parameters' => 
           array (
           ),
@@ -5800,7 +7686,7 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => false,
-           'returnType' => NULL,
+           'returnType' => 'void',
            'parameters' => 
           array (
           ),
@@ -5818,7 +7704,7 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => false,
-           'returnType' => NULL,
+           'returnType' => 'void',
            'parameters' => 
           array (
           ),
@@ -5836,7 +7722,7 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => false,
-           'returnType' => NULL,
+           'returnType' => 'void',
            'parameters' => 
           array (
           ),
@@ -5846,7 +7732,7 @@ return [
         )),
         15 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
-           'name' => 'dashboardStats',
+           'name' => 'classes',
            'phpDoc' => NULL,
            'byRef' => false,
            'public' => true,
@@ -5854,7 +7740,7 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => false,
-           'returnType' => NULL,
+           'returnType' => 'void',
            'parameters' => 
           array (
           ),
@@ -5864,7 +7750,7 @@ return [
         )),
         16 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
-           'name' => 'routineStats',
+           'name' => 'upcomingClasses',
            'phpDoc' => NULL,
            'byRef' => false,
            'public' => true,
@@ -5872,7 +7758,7 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => false,
-           'returnType' => NULL,
+           'returnType' => 'void',
            'parameters' => 
           array (
           ),
@@ -5882,7 +7768,7 @@ return [
         )),
         17 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
-           'name' => 'salesStats',
+           'name' => 'getClass',
            'phpDoc' => NULL,
            'byRef' => false,
            'public' => true,
@@ -5890,9 +7776,20 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => false,
-           'returnType' => NULL,
+           'returnType' => 'void',
            'parameters' => 
           array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'id',
+               'type' => 'int',
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
           ),
            'attributes' => 
           array (
@@ -5900,7 +7797,7 @@ return [
         )),
         18 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
-           'name' => 'uploadImage',
+           'name' => 'getClassSchedule',
            'phpDoc' => NULL,
            'byRef' => false,
            'public' => true,
@@ -5908,9 +7805,20 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => false,
-           'returnType' => NULL,
+           'returnType' => 'void',
            'parameters' => 
           array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'id',
+               'type' => 'int',
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
           ),
            'attributes' => 
           array (
@@ -5918,7 +7826,7 @@ return [
         )),
         19 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
-           'name' => 'uploadVideo',
+           'name' => 'getScheduleAvailability',
            'phpDoc' => NULL,
            'byRef' => false,
            'public' => true,
@@ -5926,7 +7834,7 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => false,
-           'returnType' => NULL,
+           'returnType' => 'void',
            'parameters' => 
           array (
           ),
@@ -5936,6 +7844,114 @@ return [
         )),
         20 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'stats',
+           'phpDoc' => NULL,
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => 'void',
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        21 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'dashboardStats',
+           'phpDoc' => NULL,
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => 'void',
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        22 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'routineStats',
+           'phpDoc' => NULL,
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => 'void',
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        23 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'salesStats',
+           'phpDoc' => NULL,
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => 'void',
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        24 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'uploadImage',
+           'phpDoc' => NULL,
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => 'void',
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        25 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'uploadVideo',
+           'phpDoc' => NULL,
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => 'void',
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        26 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'uploadDocument',
            'phpDoc' => NULL,
            'byRef' => false,
@@ -5944,7 +7960,43 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => false,
-           'returnType' => NULL,
+           'returnType' => 'void',
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        27 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'login',
+           'phpDoc' => NULL,
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => 'void',
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        28 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'logout',
+           'phpDoc' => NULL,
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => 'void',
            'parameters' => 
           array (
           ),
@@ -6400,7 +8452,7 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => false,
-           'returnType' => NULL,
+           'returnType' => 'void',
            'parameters' => 
           array (
           ),
@@ -6418,7 +8470,7 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => false,
-           'returnType' => NULL,
+           'returnType' => 'void',
            'parameters' => 
           array (
           ),
@@ -6436,13 +8488,13 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => false,
-           'returnType' => NULL,
+           'returnType' => 'void',
            'parameters' => 
           array (
             0 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'orderNumber',
-               'type' => NULL,
+               'type' => 'string',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -6465,9 +8517,700 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => false,
+           'returnType' => 'void',
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+      ),
+       'attributes' => 
+      array (
+      ),
+    )),
+  ),
+  'C:\\trabajos\\stylofitness\\app\\Controllers\\ExerciseManagementController.php' => 
+  array (
+    0 => 
+    \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state(array(
+       'name' => 'StyleFitness\\Controllers\\ExerciseManagementController',
+       'phpDoc' => 
+      \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+         'phpDocString' => '/**
+ * Controlador de Gestión de Ejercicios - STYLOFITNESS
+ * Maneja la administración completa de ejercicios y videos por parte de administradores
+ */',
+         'namespace' => 'StyleFitness\\Controllers',
+         'uses' => 
+        array (
+          'database' => 'StyleFitness\\Config\\Database',
+          'exercise' => 'StyleFitness\\Models\\Exercise',
+          'user' => 'StyleFitness\\Models\\User',
+          'apphelper' => 'StyleFitness\\Helpers\\AppHelper',
+          'exception' => 'Exception',
+          'pdo' => 'PDO',
+        ),
+         'constUses' => 
+        array (
+        ),
+      )),
+       'abstract' => false,
+       'final' => false,
+       'extends' => NULL,
+       'implements' => 
+      array (
+      ),
+       'usedTraits' => 
+      array (
+      ),
+       'traitUseAdaptations' => 
+      array (
+      ),
+       'statements' => 
+      array (
+        0 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => '__construct',
+           'phpDoc' => NULL,
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
            'returnType' => NULL,
            'parameters' => 
           array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        1 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'index',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Página principal de gestión de ejercicios
+     */',
+             'namespace' => 'StyleFitness\\Controllers',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'exercise' => 'StyleFitness\\Models\\Exercise',
+              'user' => 'StyleFitness\\Models\\User',
+              'apphelper' => 'StyleFitness\\Helpers\\AppHelper',
+              'exception' => 'Exception',
+              'pdo' => 'PDO',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        2 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'create',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Formulario para crear nuevo ejercicio
+     */',
+             'namespace' => 'StyleFitness\\Controllers',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'exercise' => 'StyleFitness\\Models\\Exercise',
+              'user' => 'StyleFitness\\Models\\User',
+              'apphelper' => 'StyleFitness\\Helpers\\AppHelper',
+              'exception' => 'Exception',
+              'pdo' => 'PDO',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        3 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'store',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Procesar creación de ejercicio
+     */',
+             'namespace' => 'StyleFitness\\Controllers',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'exercise' => 'StyleFitness\\Models\\Exercise',
+              'user' => 'StyleFitness\\Models\\User',
+              'apphelper' => 'StyleFitness\\Helpers\\AppHelper',
+              'exception' => 'Exception',
+              'pdo' => 'PDO',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        4 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'show',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Ver detalles de un ejercicio
+     */',
+             'namespace' => 'StyleFitness\\Controllers',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'exercise' => 'StyleFitness\\Models\\Exercise',
+              'user' => 'StyleFitness\\Models\\User',
+              'apphelper' => 'StyleFitness\\Helpers\\AppHelper',
+              'exception' => 'Exception',
+              'pdo' => 'PDO',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'id',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        5 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'edit',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Formulario para editar ejercicio
+     */',
+             'namespace' => 'StyleFitness\\Controllers',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'exercise' => 'StyleFitness\\Models\\Exercise',
+              'user' => 'StyleFitness\\Models\\User',
+              'apphelper' => 'StyleFitness\\Helpers\\AppHelper',
+              'exception' => 'Exception',
+              'pdo' => 'PDO',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'id',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        6 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'update',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Procesar actualización de ejercicio
+     */',
+             'namespace' => 'StyleFitness\\Controllers',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'exercise' => 'StyleFitness\\Models\\Exercise',
+              'user' => 'StyleFitness\\Models\\User',
+              'apphelper' => 'StyleFitness\\Helpers\\AppHelper',
+              'exception' => 'Exception',
+              'pdo' => 'PDO',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'id',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        7 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'delete',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Eliminar ejercicio
+     */',
+             'namespace' => 'StyleFitness\\Controllers',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'exercise' => 'StyleFitness\\Models\\Exercise',
+              'user' => 'StyleFitness\\Models\\User',
+              'apphelper' => 'StyleFitness\\Helpers\\AppHelper',
+              'exception' => 'Exception',
+              'pdo' => 'PDO',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'id',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        8 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'categories',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Gestión de categorías de ejercicios
+     */',
+             'namespace' => 'StyleFitness\\Controllers',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'exercise' => 'StyleFitness\\Models\\Exercise',
+              'user' => 'StyleFitness\\Models\\User',
+              'apphelper' => 'StyleFitness\\Helpers\\AppHelper',
+              'exception' => 'Exception',
+              'pdo' => 'PDO',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        9 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getExercisesByCategory',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * API para obtener ejercicios por categoría (AJAX)
+     */',
+             'namespace' => 'StyleFitness\\Controllers',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'exercise' => 'StyleFitness\\Models\\Exercise',
+              'user' => 'StyleFitness\\Models\\User',
+              'apphelper' => 'StyleFitness\\Helpers\\AppHelper',
+              'exception' => 'Exception',
+              'pdo' => 'PDO',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        10 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getUsageStats',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Obtener estadísticas de uso
+     */',
+             'namespace' => 'StyleFitness\\Controllers',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'exercise' => 'StyleFitness\\Models\\Exercise',
+              'user' => 'StyleFitness\\Models\\User',
+              'apphelper' => 'StyleFitness\\Helpers\\AppHelper',
+              'exception' => 'Exception',
+              'pdo' => 'PDO',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        11 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getCategories',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Obtener todas las categorías de ejercicios
+     */',
+             'namespace' => 'StyleFitness\\Controllers',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'exercise' => 'StyleFitness\\Models\\Exercise',
+              'user' => 'StyleFitness\\Models\\User',
+              'apphelper' => 'StyleFitness\\Helpers\\AppHelper',
+              'exception' => 'Exception',
+              'pdo' => 'PDO',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        12 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getGeneralStats',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Obtener estadísticas generales de ejercicios
+     */',
+             'namespace' => 'StyleFitness\\Controllers',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'exercise' => 'StyleFitness\\Models\\Exercise',
+              'user' => 'StyleFitness\\Models\\User',
+              'apphelper' => 'StyleFitness\\Helpers\\AppHelper',
+              'exception' => 'Exception',
+              'pdo' => 'PDO',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        13 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getExercise',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Obtener un ejercicio por ID
+     */',
+             'namespace' => 'StyleFitness\\Controllers',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'exercise' => 'StyleFitness\\Models\\Exercise',
+              'user' => 'StyleFitness\\Models\\User',
+              'apphelper' => 'StyleFitness\\Helpers\\AppHelper',
+              'exception' => 'Exception',
+              'pdo' => 'PDO',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'id',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        14 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getExercises',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Obtener lista de ejercicios con filtros
+     */',
+             'namespace' => 'StyleFitness\\Controllers',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'exercise' => 'StyleFitness\\Models\\Exercise',
+              'user' => 'StyleFitness\\Models\\User',
+              'apphelper' => 'StyleFitness\\Helpers\\AppHelper',
+              'exception' => 'Exception',
+              'pdo' => 'PDO',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'filters',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => true,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        15 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getRelatedExercises',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Obtener ejercicios relacionados
+     */',
+             'namespace' => 'StyleFitness\\Controllers',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'exercise' => 'StyleFitness\\Models\\Exercise',
+              'user' => 'StyleFitness\\Models\\User',
+              'apphelper' => 'StyleFitness\\Helpers\\AppHelper',
+              'exception' => 'Exception',
+              'pdo' => 'PDO',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'exerciseId',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+            1 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'limit',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => true,
+               'attributes' => 
+              array (
+              ),
+            )),
           ),
            'attributes' => 
           array (
@@ -6496,6 +9239,7 @@ return [
           'database' => 'StyleFitness\\Config\\Database',
           'groupclass' => 'StyleFitness\\Models\\GroupClass',
           'user' => 'StyleFitness\\Models\\User',
+          'room' => 'StyleFitness\\Models\\Room',
           'apphelper' => 'StyleFitness\\Helpers\\AppHelper',
           'exception' => 'Exception',
         ),
@@ -6690,6 +9434,42 @@ return [
           array (
           ),
         )),
+        9 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getRoomLayout',
+           'phpDoc' => NULL,
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        10 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'selectPosition',
+           'phpDoc' => NULL,
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
       ),
        'attributes' => 
       array (
@@ -6713,6 +9493,7 @@ return [
           'database' => 'StyleFitness\\Config\\Database',
           'product' => 'StyleFitness\\Models\\Product',
           'productcategory' => 'StyleFitness\\Models\\ProductCategory',
+          'landingcontroller' => 'StyleFitness\\Controllers\\LandingController',
           'apphelper' => 'StyleFitness\\Helpers\\AppHelper',
           'exception' => 'Exception',
         ),
@@ -6783,6 +9564,1484 @@ return [
            'returnType' => NULL,
            'parameters' => 
           array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+      ),
+       'attributes' => 
+      array (
+      ),
+    )),
+  ),
+  'C:\\trabajos\\stylofitness\\app\\Controllers\\LandingController.php' => 
+  array (
+    0 => 
+    \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state(array(
+       'name' => 'StyleFitness\\Controllers\\LandingController',
+       'phpDoc' => 
+      \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+         'phpDocString' => '/**
+ * Controlador para gestionar las secciones de la landing page
+ * STYLOFITNESS - Sistema de Gestión de Contenido
+ */',
+         'namespace' => 'StyleFitness\\Controllers',
+         'uses' => 
+        array (
+          'specialoffer' => 'StyleFitness\\Models\\SpecialOffer',
+          'whychooseus' => 'StyleFitness\\Models\\WhyChooseUs',
+          'testimonial' => 'StyleFitness\\Models\\Testimonial',
+          'groupclass' => 'StyleFitness\\Models\\GroupClass',
+          'landingpageconfig' => 'StyleFitness\\Models\\LandingPageConfig',
+          'product' => 'StyleFitness\\Models\\Product',
+          'gym' => 'StyleFitness\\Models\\Gym',
+          'apphelper' => 'StyleFitness\\Helpers\\AppHelper',
+        ),
+         'constUses' => 
+        array (
+        ),
+      )),
+       'abstract' => false,
+       'final' => false,
+       'extends' => NULL,
+       'implements' => 
+      array (
+      ),
+       'usedTraits' => 
+      array (
+      ),
+       'traitUseAdaptations' => 
+      array (
+      ),
+       'statements' => 
+      array (
+        0 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => '__construct',
+           'phpDoc' => NULL,
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        1 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getLandingData',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Obtener todos los datos para la landing page
+     */',
+             'namespace' => 'StyleFitness\\Controllers',
+             'uses' => 
+            array (
+              'specialoffer' => 'StyleFitness\\Models\\SpecialOffer',
+              'whychooseus' => 'StyleFitness\\Models\\WhyChooseUs',
+              'testimonial' => 'StyleFitness\\Models\\Testimonial',
+              'groupclass' => 'StyleFitness\\Models\\GroupClass',
+              'landingpageconfig' => 'StyleFitness\\Models\\LandingPageConfig',
+              'product' => 'StyleFitness\\Models\\Product',
+              'gym' => 'StyleFitness\\Models\\Gym',
+              'apphelper' => 'StyleFitness\\Helpers\\AppHelper',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        2 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getGymStats',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Obtener estadísticas del gimnasio
+     */',
+             'namespace' => 'StyleFitness\\Controllers',
+             'uses' => 
+            array (
+              'specialoffer' => 'StyleFitness\\Models\\SpecialOffer',
+              'whychooseus' => 'StyleFitness\\Models\\WhyChooseUs',
+              'testimonial' => 'StyleFitness\\Models\\Testimonial',
+              'groupclass' => 'StyleFitness\\Models\\GroupClass',
+              'landingpageconfig' => 'StyleFitness\\Models\\LandingPageConfig',
+              'product' => 'StyleFitness\\Models\\Product',
+              'gym' => 'StyleFitness\\Models\\Gym',
+              'apphelper' => 'StyleFitness\\Helpers\\AppHelper',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        3 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getSpecialOffers',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Obtener ofertas especiales activas
+     */',
+             'namespace' => 'StyleFitness\\Controllers',
+             'uses' => 
+            array (
+              'specialoffer' => 'StyleFitness\\Models\\SpecialOffer',
+              'whychooseus' => 'StyleFitness\\Models\\WhyChooseUs',
+              'testimonial' => 'StyleFitness\\Models\\Testimonial',
+              'groupclass' => 'StyleFitness\\Models\\GroupClass',
+              'landingpageconfig' => 'StyleFitness\\Models\\LandingPageConfig',
+              'product' => 'StyleFitness\\Models\\Product',
+              'gym' => 'StyleFitness\\Models\\Gym',
+              'apphelper' => 'StyleFitness\\Helpers\\AppHelper',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'limit',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => true,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        4 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getWhyChooseUsFeatures',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Obtener características "Por qué elegirnos"
+     */',
+             'namespace' => 'StyleFitness\\Controllers',
+             'uses' => 
+            array (
+              'specialoffer' => 'StyleFitness\\Models\\SpecialOffer',
+              'whychooseus' => 'StyleFitness\\Models\\WhyChooseUs',
+              'testimonial' => 'StyleFitness\\Models\\Testimonial',
+              'groupclass' => 'StyleFitness\\Models\\GroupClass',
+              'landingpageconfig' => 'StyleFitness\\Models\\LandingPageConfig',
+              'product' => 'StyleFitness\\Models\\Product',
+              'gym' => 'StyleFitness\\Models\\Gym',
+              'apphelper' => 'StyleFitness\\Helpers\\AppHelper',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'limit',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => true,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        5 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getFeaturedProducts',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Obtener productos destacados
+     */',
+             'namespace' => 'StyleFitness\\Controllers',
+             'uses' => 
+            array (
+              'specialoffer' => 'StyleFitness\\Models\\SpecialOffer',
+              'whychooseus' => 'StyleFitness\\Models\\WhyChooseUs',
+              'testimonial' => 'StyleFitness\\Models\\Testimonial',
+              'groupclass' => 'StyleFitness\\Models\\GroupClass',
+              'landingpageconfig' => 'StyleFitness\\Models\\LandingPageConfig',
+              'product' => 'StyleFitness\\Models\\Product',
+              'gym' => 'StyleFitness\\Models\\Gym',
+              'apphelper' => 'StyleFitness\\Helpers\\AppHelper',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'limit',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => true,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        6 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getUpcomingClasses',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Obtener clases grupales próximas
+     */',
+             'namespace' => 'StyleFitness\\Controllers',
+             'uses' => 
+            array (
+              'specialoffer' => 'StyleFitness\\Models\\SpecialOffer',
+              'whychooseus' => 'StyleFitness\\Models\\WhyChooseUs',
+              'testimonial' => 'StyleFitness\\Models\\Testimonial',
+              'groupclass' => 'StyleFitness\\Models\\GroupClass',
+              'landingpageconfig' => 'StyleFitness\\Models\\LandingPageConfig',
+              'product' => 'StyleFitness\\Models\\Product',
+              'gym' => 'StyleFitness\\Models\\Gym',
+              'apphelper' => 'StyleFitness\\Helpers\\AppHelper',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'limit',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => true,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        7 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getFeaturedTestimonials',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Obtener testimonios destacados
+     */',
+             'namespace' => 'StyleFitness\\Controllers',
+             'uses' => 
+            array (
+              'specialoffer' => 'StyleFitness\\Models\\SpecialOffer',
+              'whychooseus' => 'StyleFitness\\Models\\WhyChooseUs',
+              'testimonial' => 'StyleFitness\\Models\\Testimonial',
+              'groupclass' => 'StyleFitness\\Models\\GroupClass',
+              'landingpageconfig' => 'StyleFitness\\Models\\LandingPageConfig',
+              'product' => 'StyleFitness\\Models\\Product',
+              'gym' => 'StyleFitness\\Models\\Gym',
+              'apphelper' => 'StyleFitness\\Helpers\\AppHelper',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'limit',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => true,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        8 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getSectionConfig',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Obtener configuración de una sección específica
+     */',
+             'namespace' => 'StyleFitness\\Controllers',
+             'uses' => 
+            array (
+              'specialoffer' => 'StyleFitness\\Models\\SpecialOffer',
+              'whychooseus' => 'StyleFitness\\Models\\WhyChooseUs',
+              'testimonial' => 'StyleFitness\\Models\\Testimonial',
+              'groupclass' => 'StyleFitness\\Models\\GroupClass',
+              'landingpageconfig' => 'StyleFitness\\Models\\LandingPageConfig',
+              'product' => 'StyleFitness\\Models\\Product',
+              'gym' => 'StyleFitness\\Models\\Gym',
+              'apphelper' => 'StyleFitness\\Helpers\\AppHelper',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'section',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        9 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'updateSectionConfig',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Actualizar configuración de una sección
+     */',
+             'namespace' => 'StyleFitness\\Controllers',
+             'uses' => 
+            array (
+              'specialoffer' => 'StyleFitness\\Models\\SpecialOffer',
+              'whychooseus' => 'StyleFitness\\Models\\WhyChooseUs',
+              'testimonial' => 'StyleFitness\\Models\\Testimonial',
+              'groupclass' => 'StyleFitness\\Models\\GroupClass',
+              'landingpageconfig' => 'StyleFitness\\Models\\LandingPageConfig',
+              'product' => 'StyleFitness\\Models\\Product',
+              'gym' => 'StyleFitness\\Models\\Gym',
+              'apphelper' => 'StyleFitness\\Helpers\\AppHelper',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'section',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+            1 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'config_data',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        10 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getHeroData',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Obtener datos para el hero/banner principal
+     */',
+             'namespace' => 'StyleFitness\\Controllers',
+             'uses' => 
+            array (
+              'specialoffer' => 'StyleFitness\\Models\\SpecialOffer',
+              'whychooseus' => 'StyleFitness\\Models\\WhyChooseUs',
+              'testimonial' => 'StyleFitness\\Models\\Testimonial',
+              'groupclass' => 'StyleFitness\\Models\\GroupClass',
+              'landingpageconfig' => 'StyleFitness\\Models\\LandingPageConfig',
+              'product' => 'StyleFitness\\Models\\Product',
+              'gym' => 'StyleFitness\\Models\\Gym',
+              'apphelper' => 'StyleFitness\\Helpers\\AppHelper',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        11 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getServicesData',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Obtener datos para la sección de servicios
+     */',
+             'namespace' => 'StyleFitness\\Controllers',
+             'uses' => 
+            array (
+              'specialoffer' => 'StyleFitness\\Models\\SpecialOffer',
+              'whychooseus' => 'StyleFitness\\Models\\WhyChooseUs',
+              'testimonial' => 'StyleFitness\\Models\\Testimonial',
+              'groupclass' => 'StyleFitness\\Models\\GroupClass',
+              'landingpageconfig' => 'StyleFitness\\Models\\LandingPageConfig',
+              'product' => 'StyleFitness\\Models\\Product',
+              'gym' => 'StyleFitness\\Models\\Gym',
+              'apphelper' => 'StyleFitness\\Helpers\\AppHelper',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        12 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getProductsData',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Obtener datos para la sección de productos
+     */',
+             'namespace' => 'StyleFitness\\Controllers',
+             'uses' => 
+            array (
+              'specialoffer' => 'StyleFitness\\Models\\SpecialOffer',
+              'whychooseus' => 'StyleFitness\\Models\\WhyChooseUs',
+              'testimonial' => 'StyleFitness\\Models\\Testimonial',
+              'groupclass' => 'StyleFitness\\Models\\GroupClass',
+              'landingpageconfig' => 'StyleFitness\\Models\\LandingPageConfig',
+              'product' => 'StyleFitness\\Models\\Product',
+              'gym' => 'StyleFitness\\Models\\Gym',
+              'apphelper' => 'StyleFitness\\Helpers\\AppHelper',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        13 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getClassesData',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Obtener datos para la sección de clases
+     */',
+             'namespace' => 'StyleFitness\\Controllers',
+             'uses' => 
+            array (
+              'specialoffer' => 'StyleFitness\\Models\\SpecialOffer',
+              'whychooseus' => 'StyleFitness\\Models\\WhyChooseUs',
+              'testimonial' => 'StyleFitness\\Models\\Testimonial',
+              'groupclass' => 'StyleFitness\\Models\\GroupClass',
+              'landingpageconfig' => 'StyleFitness\\Models\\LandingPageConfig',
+              'product' => 'StyleFitness\\Models\\Product',
+              'gym' => 'StyleFitness\\Models\\Gym',
+              'apphelper' => 'StyleFitness\\Helpers\\AppHelper',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        14 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getTestimonialsData',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Obtener datos para la sección de testimonios
+     */',
+             'namespace' => 'StyleFitness\\Controllers',
+             'uses' => 
+            array (
+              'specialoffer' => 'StyleFitness\\Models\\SpecialOffer',
+              'whychooseus' => 'StyleFitness\\Models\\WhyChooseUs',
+              'testimonial' => 'StyleFitness\\Models\\Testimonial',
+              'groupclass' => 'StyleFitness\\Models\\GroupClass',
+              'landingpageconfig' => 'StyleFitness\\Models\\LandingPageConfig',
+              'product' => 'StyleFitness\\Models\\Product',
+              'gym' => 'StyleFitness\\Models\\Gym',
+              'apphelper' => 'StyleFitness\\Helpers\\AppHelper',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        15 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'searchContent',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Buscar contenido en todas las secciones
+     */',
+             'namespace' => 'StyleFitness\\Controllers',
+             'uses' => 
+            array (
+              'specialoffer' => 'StyleFitness\\Models\\SpecialOffer',
+              'whychooseus' => 'StyleFitness\\Models\\WhyChooseUs',
+              'testimonial' => 'StyleFitness\\Models\\Testimonial',
+              'groupclass' => 'StyleFitness\\Models\\GroupClass',
+              'landingpageconfig' => 'StyleFitness\\Models\\LandingPageConfig',
+              'product' => 'StyleFitness\\Models\\Product',
+              'gym' => 'StyleFitness\\Models\\Gym',
+              'apphelper' => 'StyleFitness\\Helpers\\AppHelper',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'term',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+            1 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'section',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => true,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        16 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getAdminSummary',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Obtener resumen de todas las secciones para administración
+     */',
+             'namespace' => 'StyleFitness\\Controllers',
+             'uses' => 
+            array (
+              'specialoffer' => 'StyleFitness\\Models\\SpecialOffer',
+              'whychooseus' => 'StyleFitness\\Models\\WhyChooseUs',
+              'testimonial' => 'StyleFitness\\Models\\Testimonial',
+              'groupclass' => 'StyleFitness\\Models\\GroupClass',
+              'landingpageconfig' => 'StyleFitness\\Models\\LandingPageConfig',
+              'product' => 'StyleFitness\\Models\\Product',
+              'gym' => 'StyleFitness\\Models\\Gym',
+              'apphelper' => 'StyleFitness\\Helpers\\AppHelper',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+      ),
+       'attributes' => 
+      array (
+      ),
+    )),
+  ),
+  'C:\\trabajos\\stylofitness\\app\\Controllers\\RoomController.php' => 
+  array (
+    0 => 
+    \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state(array(
+       'name' => 'StyleFitness\\Controllers\\RoomController',
+       'phpDoc' => 
+      \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+         'phpDocString' => '/**
+ * Controlador de Salas - STYLOFITNESS
+ * Gestión de salas, posiciones específicas y control de aforo
+ */',
+         'namespace' => 'StyleFitness\\Controllers',
+         'uses' => 
+        array (
+          'database' => 'StyleFitness\\Config\\Database',
+          'room' => 'StyleFitness\\Models\\Room',
+          'gym' => 'StyleFitness\\Models\\Gym',
+          'apphelper' => 'StyleFitness\\Helpers\\AppHelper',
+          'exception' => 'Exception',
+        ),
+         'constUses' => 
+        array (
+        ),
+      )),
+       'abstract' => false,
+       'final' => false,
+       'extends' => NULL,
+       'implements' => 
+      array (
+      ),
+       'usedTraits' => 
+      array (
+      ),
+       'traitUseAdaptations' => 
+      array (
+      ),
+       'statements' => 
+      array (
+        0 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => '__construct',
+           'phpDoc' => NULL,
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        1 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'index',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Mostrar lista de salas
+     */',
+             'namespace' => 'StyleFitness\\Controllers',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'room' => 'StyleFitness\\Models\\Room',
+              'gym' => 'StyleFitness\\Models\\Gym',
+              'apphelper' => 'StyleFitness\\Helpers\\AppHelper',
+              'exception' => 'Exception',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        2 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'create',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Mostrar formulario de creación de sala
+     */',
+             'namespace' => 'StyleFitness\\Controllers',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'room' => 'StyleFitness\\Models\\Room',
+              'gym' => 'StyleFitness\\Models\\Gym',
+              'apphelper' => 'StyleFitness\\Helpers\\AppHelper',
+              'exception' => 'Exception',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        3 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'store',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Procesar creación de sala
+     */',
+             'namespace' => 'StyleFitness\\Controllers',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'room' => 'StyleFitness\\Models\\Room',
+              'gym' => 'StyleFitness\\Models\\Gym',
+              'apphelper' => 'StyleFitness\\Helpers\\AppHelper',
+              'exception' => 'Exception',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        4 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'show',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Mostrar detalles de una sala
+     */',
+             'namespace' => 'StyleFitness\\Controllers',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'room' => 'StyleFitness\\Models\\Room',
+              'gym' => 'StyleFitness\\Models\\Gym',
+              'apphelper' => 'StyleFitness\\Helpers\\AppHelper',
+              'exception' => 'Exception',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'id',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        5 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'edit',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Mostrar formulario de edición
+     */',
+             'namespace' => 'StyleFitness\\Controllers',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'room' => 'StyleFitness\\Models\\Room',
+              'gym' => 'StyleFitness\\Models\\Gym',
+              'apphelper' => 'StyleFitness\\Helpers\\AppHelper',
+              'exception' => 'Exception',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'id',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        6 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'update',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Procesar actualización de sala
+     */',
+             'namespace' => 'StyleFitness\\Controllers',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'room' => 'StyleFitness\\Models\\Room',
+              'gym' => 'StyleFitness\\Models\\Gym',
+              'apphelper' => 'StyleFitness\\Helpers\\AppHelper',
+              'exception' => 'Exception',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'id',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        7 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'delete',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Eliminar sala
+     */',
+             'namespace' => 'StyleFitness\\Controllers',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'room' => 'StyleFitness\\Models\\Room',
+              'gym' => 'StyleFitness\\Models\\Gym',
+              'apphelper' => 'StyleFitness\\Helpers\\AppHelper',
+              'exception' => 'Exception',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'id',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        8 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'positions',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Gestionar posiciones de una sala
+     */',
+             'namespace' => 'StyleFitness\\Controllers',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'room' => 'StyleFitness\\Models\\Room',
+              'gym' => 'StyleFitness\\Models\\Gym',
+              'apphelper' => 'StyleFitness\\Helpers\\AppHelper',
+              'exception' => 'Exception',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'id',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        9 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'createPosition',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Crear nueva posición
+     */',
+             'namespace' => 'StyleFitness\\Controllers',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'room' => 'StyleFitness\\Models\\Room',
+              'gym' => 'StyleFitness\\Models\\Gym',
+              'apphelper' => 'StyleFitness\\Helpers\\AppHelper',
+              'exception' => 'Exception',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'roomId',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        10 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'updatePosition',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Actualizar posición
+     */',
+             'namespace' => 'StyleFitness\\Controllers',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'room' => 'StyleFitness\\Models\\Room',
+              'gym' => 'StyleFitness\\Models\\Gym',
+              'apphelper' => 'StyleFitness\\Helpers\\AppHelper',
+              'exception' => 'Exception',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'roomId',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+            1 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'positionId',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        11 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'deletePosition',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Eliminar posición
+     */',
+             'namespace' => 'StyleFitness\\Controllers',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'room' => 'StyleFitness\\Models\\Room',
+              'gym' => 'StyleFitness\\Models\\Gym',
+              'apphelper' => 'StyleFitness\\Helpers\\AppHelper',
+              'exception' => 'Exception',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'roomId',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+            1 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'positionId',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        12 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'apiGetRoomsByGym',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * API: Obtener salas por gimnasio
+     */',
+             'namespace' => 'StyleFitness\\Controllers',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'room' => 'StyleFitness\\Models\\Room',
+              'gym' => 'StyleFitness\\Models\\Gym',
+              'apphelper' => 'StyleFitness\\Helpers\\AppHelper',
+              'exception' => 'Exception',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'gymId',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        13 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'apiGetPositionAvailability',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * API: Obtener disponibilidad de posiciones
+     */',
+             'namespace' => 'StyleFitness\\Controllers',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'room' => 'StyleFitness\\Models\\Room',
+              'gym' => 'StyleFitness\\Models\\Gym',
+              'apphelper' => 'StyleFitness\\Helpers\\AppHelper',
+              'exception' => 'Exception',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'roomId',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        14 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'apiCheckAvailability',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * API: Verificar disponibilidad de sala
+     */',
+             'namespace' => 'StyleFitness\\Controllers',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'room' => 'StyleFitness\\Models\\Room',
+              'gym' => 'StyleFitness\\Models\\Gym',
+              'apphelper' => 'StyleFitness\\Helpers\\AppHelper',
+              'exception' => 'Exception',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'roomId',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
           ),
            'attributes' => 
           array (
@@ -7199,30 +11458,712 @@ return [
       ),
     )),
   ),
-  'C:\\trabajos\\stylofitness\\app\\Controllers\\StoreController.php' => 
+  'C:\\trabajos\\stylofitness\\app\\Controllers\\RoutineTemplateController.php' => 
   array (
     0 => 
     \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state(array(
-       'name' => 'StyleFitness\\Controllers\\StoreController',
+       'name' => 'StyleFitness\\Controllers\\RoutineTemplateController',
        'phpDoc' => 
       \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
          'phpDocString' => '/**
- * Controlador de Tienda - STYLOFITNESS
- * Gestión del catálogo de productos y tienda online
+ * Controlador de Plantillas de Rutinas - STYLOFITNESS
+ * Maneja la creación y gestión de plantillas de rutinas diferenciadas por género
  */',
          'namespace' => 'StyleFitness\\Controllers',
          'uses' => 
         array (
           'database' => 'StyleFitness\\Config\\Database',
-          'product' => 'StyleFitness\\Models\\Product',
-          'productcategory' => 'StyleFitness\\Models\\ProductCategory',
+          'routine' => 'StyleFitness\\Models\\Routine',
+          'exercise' => 'StyleFitness\\Models\\Exercise',
+          'user' => 'StyleFitness\\Models\\User',
           'apphelper' => 'StyleFitness\\Helpers\\AppHelper',
           'exception' => 'Exception',
+          'pdo' => 'PDO',
         ),
          'constUses' => 
         array (
         ),
       )),
+       'abstract' => false,
+       'final' => false,
+       'extends' => NULL,
+       'implements' => 
+      array (
+      ),
+       'usedTraits' => 
+      array (
+      ),
+       'traitUseAdaptations' => 
+      array (
+      ),
+       'statements' => 
+      array (
+        0 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => '__construct',
+           'phpDoc' => NULL,
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        1 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'index',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Página principal de gestión de plantillas
+     */',
+             'namespace' => 'StyleFitness\\Controllers',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'routine' => 'StyleFitness\\Models\\Routine',
+              'exercise' => 'StyleFitness\\Models\\Exercise',
+              'user' => 'StyleFitness\\Models\\User',
+              'apphelper' => 'StyleFitness\\Helpers\\AppHelper',
+              'exception' => 'Exception',
+              'pdo' => 'PDO',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        2 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'create',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Formulario para crear nueva plantilla
+     */',
+             'namespace' => 'StyleFitness\\Controllers',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'routine' => 'StyleFitness\\Models\\Routine',
+              'exercise' => 'StyleFitness\\Models\\Exercise',
+              'user' => 'StyleFitness\\Models\\User',
+              'apphelper' => 'StyleFitness\\Helpers\\AppHelper',
+              'exception' => 'Exception',
+              'pdo' => 'PDO',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        3 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'store',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Procesar creación de plantilla
+     */',
+             'namespace' => 'StyleFitness\\Controllers',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'routine' => 'StyleFitness\\Models\\Routine',
+              'exercise' => 'StyleFitness\\Models\\Exercise',
+              'user' => 'StyleFitness\\Models\\User',
+              'apphelper' => 'StyleFitness\\Helpers\\AppHelper',
+              'exception' => 'Exception',
+              'pdo' => 'PDO',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        4 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'show',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Ver detalles de una plantilla
+     */',
+             'namespace' => 'StyleFitness\\Controllers',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'routine' => 'StyleFitness\\Models\\Routine',
+              'exercise' => 'StyleFitness\\Models\\Exercise',
+              'user' => 'StyleFitness\\Models\\User',
+              'apphelper' => 'StyleFitness\\Helpers\\AppHelper',
+              'exception' => 'Exception',
+              'pdo' => 'PDO',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'id',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        5 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'edit',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Formulario para editar plantilla
+     */',
+             'namespace' => 'StyleFitness\\Controllers',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'routine' => 'StyleFitness\\Models\\Routine',
+              'exercise' => 'StyleFitness\\Models\\Exercise',
+              'user' => 'StyleFitness\\Models\\User',
+              'apphelper' => 'StyleFitness\\Helpers\\AppHelper',
+              'exception' => 'Exception',
+              'pdo' => 'PDO',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'id',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        6 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'update',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Procesar actualización de plantilla
+     */',
+             'namespace' => 'StyleFitness\\Controllers',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'routine' => 'StyleFitness\\Models\\Routine',
+              'exercise' => 'StyleFitness\\Models\\Exercise',
+              'user' => 'StyleFitness\\Models\\User',
+              'apphelper' => 'StyleFitness\\Helpers\\AppHelper',
+              'exception' => 'Exception',
+              'pdo' => 'PDO',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'id',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        7 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'assignToClient',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Asignar plantilla a un cliente
+     */',
+             'namespace' => 'StyleFitness\\Controllers',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'routine' => 'StyleFitness\\Models\\Routine',
+              'exercise' => 'StyleFitness\\Models\\Exercise',
+              'user' => 'StyleFitness\\Models\\User',
+              'apphelper' => 'StyleFitness\\Helpers\\AppHelper',
+              'exception' => 'Exception',
+              'pdo' => 'PDO',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        8 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'duplicate',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Duplicar plantilla
+     */',
+             'namespace' => 'StyleFitness\\Controllers',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'routine' => 'StyleFitness\\Models\\Routine',
+              'exercise' => 'StyleFitness\\Models\\Exercise',
+              'user' => 'StyleFitness\\Models\\User',
+              'apphelper' => 'StyleFitness\\Helpers\\AppHelper',
+              'exception' => 'Exception',
+              'pdo' => 'PDO',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'id',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        9 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getExercisesByBodyZone',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * API para obtener ejercicios por zona corporal (AJAX)
+     */',
+             'namespace' => 'StyleFitness\\Controllers',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'routine' => 'StyleFitness\\Models\\Routine',
+              'exercise' => 'StyleFitness\\Models\\Exercise',
+              'user' => 'StyleFitness\\Models\\User',
+              'apphelper' => 'StyleFitness\\Helpers\\AppHelper',
+              'exception' => 'Exception',
+              'pdo' => 'PDO',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        10 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getTemplates',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Obtener plantillas
+     */',
+             'namespace' => 'StyleFitness\\Controllers',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'routine' => 'StyleFitness\\Models\\Routine',
+              'exercise' => 'StyleFitness\\Models\\Exercise',
+              'user' => 'StyleFitness\\Models\\User',
+              'apphelper' => 'StyleFitness\\Helpers\\AppHelper',
+              'exception' => 'Exception',
+              'pdo' => 'PDO',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        11 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'countTemplates',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Contar plantillas
+     */',
+             'namespace' => 'StyleFitness\\Controllers',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'routine' => 'StyleFitness\\Models\\Routine',
+              'exercise' => 'StyleFitness\\Models\\Exercise',
+              'user' => 'StyleFitness\\Models\\User',
+              'apphelper' => 'StyleFitness\\Helpers\\AppHelper',
+              'exception' => 'Exception',
+              'pdo' => 'PDO',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        12 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'createTemplate',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Crear plantilla
+     */',
+             'namespace' => 'StyleFitness\\Controllers',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'routine' => 'StyleFitness\\Models\\Routine',
+              'exercise' => 'StyleFitness\\Models\\Exercise',
+              'user' => 'StyleFitness\\Models\\User',
+              'apphelper' => 'StyleFitness\\Helpers\\AppHelper',
+              'exception' => 'Exception',
+              'pdo' => 'PDO',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        13 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getTemplateExercisesByZone',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Obtener ejercicios de plantilla por zona corporal (API)
+     */',
+             'namespace' => 'StyleFitness\\Controllers',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'routine' => 'StyleFitness\\Models\\Routine',
+              'exercise' => 'StyleFitness\\Models\\Exercise',
+              'user' => 'StyleFitness\\Models\\User',
+              'apphelper' => 'StyleFitness\\Helpers\\AppHelper',
+              'exception' => 'Exception',
+              'pdo' => 'PDO',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        14 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'addExerciseToTemplate',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Añadir ejercicio a plantilla
+     */',
+             'namespace' => 'StyleFitness\\Controllers',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'routine' => 'StyleFitness\\Models\\Routine',
+              'exercise' => 'StyleFitness\\Models\\Exercise',
+              'user' => 'StyleFitness\\Models\\User',
+              'apphelper' => 'StyleFitness\\Helpers\\AppHelper',
+              'exception' => 'Exception',
+              'pdo' => 'PDO',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        15 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'removeAllTemplateExercises',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Remover todos los ejercicios de una plantilla
+     */',
+             'namespace' => 'StyleFitness\\Controllers',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'routine' => 'StyleFitness\\Models\\Routine',
+              'exercise' => 'StyleFitness\\Models\\Exercise',
+              'user' => 'StyleFitness\\Models\\User',
+              'apphelper' => 'StyleFitness\\Helpers\\AppHelper',
+              'exception' => 'Exception',
+              'pdo' => 'PDO',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        16 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getInstructorClients',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Obtener clientes del instructor
+     */',
+             'namespace' => 'StyleFitness\\Controllers',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'routine' => 'StyleFitness\\Models\\Routine',
+              'exercise' => 'StyleFitness\\Models\\Exercise',
+              'user' => 'StyleFitness\\Models\\User',
+              'apphelper' => 'StyleFitness\\Helpers\\AppHelper',
+              'exception' => 'Exception',
+              'pdo' => 'PDO',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+      ),
+       'attributes' => 
+      array (
+      ),
+    )),
+  ),
+  'C:\\trabajos\\stylofitness\\app\\Controllers\\StoreController.php' => 
+  array (
+    0 => 
+    \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state(array(
+       'name' => 'StyleFitness\\Controllers\\StoreController',
+       'phpDoc' => NULL,
        'abstract' => false,
        'final' => false,
        'extends' => NULL,
@@ -7481,6 +12422,596 @@ return [
       ),
     )),
   ),
+  'C:\\trabajos\\stylofitness\\app\\Controllers\\TrainerProgressController.php' => 
+  array (
+    0 => 
+    \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state(array(
+       'name' => 'StyleFitness\\Controllers\\TrainerProgressController',
+       'phpDoc' => 
+      \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+         'phpDocString' => '/**
+ * Controlador de Seguimiento de Progreso para Entrenadores - STYLOFITNESS
+ * Maneja el seguimiento detallado del progreso de clientes
+ */',
+         'namespace' => 'StyleFitness\\Controllers',
+         'uses' => 
+        array (
+          'database' => 'StyleFitness\\Config\\Database',
+          'workoutlog' => 'StyleFitness\\Models\\WorkoutLog',
+          'routine' => 'StyleFitness\\Models\\Routine',
+          'user' => 'StyleFitness\\Models\\User',
+          'exercise' => 'StyleFitness\\Models\\Exercise',
+          'apphelper' => 'StyleFitness\\Helpers\\AppHelper',
+          'exception' => 'Exception',
+        ),
+         'constUses' => 
+        array (
+        ),
+      )),
+       'abstract' => false,
+       'final' => false,
+       'extends' => NULL,
+       'implements' => 
+      array (
+      ),
+       'usedTraits' => 
+      array (
+      ),
+       'traitUseAdaptations' => 
+      array (
+      ),
+       'statements' => 
+      array (
+        0 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => '__construct',
+           'phpDoc' => NULL,
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        1 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'index',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Dashboard principal de seguimiento
+     */',
+             'namespace' => 'StyleFitness\\Controllers',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'workoutlog' => 'StyleFitness\\Models\\WorkoutLog',
+              'routine' => 'StyleFitness\\Models\\Routine',
+              'user' => 'StyleFitness\\Models\\User',
+              'exercise' => 'StyleFitness\\Models\\Exercise',
+              'apphelper' => 'StyleFitness\\Helpers\\AppHelper',
+              'exception' => 'Exception',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        2 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'clientDetail',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Ver progreso detallado de un cliente específico
+     */',
+             'namespace' => 'StyleFitness\\Controllers',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'workoutlog' => 'StyleFitness\\Models\\WorkoutLog',
+              'routine' => 'StyleFitness\\Models\\Routine',
+              'user' => 'StyleFitness\\Models\\User',
+              'exercise' => 'StyleFitness\\Models\\Exercise',
+              'apphelper' => 'StyleFitness\\Helpers\\AppHelper',
+              'exception' => 'Exception',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => 'void',
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'clientId',
+               'type' => 'int',
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        3 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'clientProgress',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Vista de progreso para el cliente (acceso propio)
+     */',
+             'namespace' => 'StyleFitness\\Controllers',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'workoutlog' => 'StyleFitness\\Models\\WorkoutLog',
+              'routine' => 'StyleFitness\\Models\\Routine',
+              'user' => 'StyleFitness\\Models\\User',
+              'exercise' => 'StyleFitness\\Models\\Exercise',
+              'apphelper' => 'StyleFitness\\Helpers\\AppHelper',
+              'exception' => 'Exception',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        4 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'compareClients',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Comparar progreso entre clientes
+     */',
+             'namespace' => 'StyleFitness\\Controllers',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'workoutlog' => 'StyleFitness\\Models\\WorkoutLog',
+              'routine' => 'StyleFitness\\Models\\Routine',
+              'user' => 'StyleFitness\\Models\\User',
+              'exercise' => 'StyleFitness\\Models\\Exercise',
+              'apphelper' => 'StyleFitness\\Helpers\\AppHelper',
+              'exception' => 'Exception',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        5 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'generateReport',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Generar reporte de progreso
+     */',
+             'namespace' => 'StyleFitness\\Controllers',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'workoutlog' => 'StyleFitness\\Models\\WorkoutLog',
+              'routine' => 'StyleFitness\\Models\\Routine',
+              'user' => 'StyleFitness\\Models\\User',
+              'exercise' => 'StyleFitness\\Models\\Exercise',
+              'apphelper' => 'StyleFitness\\Helpers\\AppHelper',
+              'exception' => 'Exception',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        6 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getProgressData',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * API: Obtener datos de progreso en formato JSON
+     */',
+             'namespace' => 'StyleFitness\\Controllers',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'workoutlog' => 'StyleFitness\\Models\\WorkoutLog',
+              'routine' => 'StyleFitness\\Models\\Routine',
+              'user' => 'StyleFitness\\Models\\User',
+              'exercise' => 'StyleFitness\\Models\\Exercise',
+              'apphelper' => 'StyleFitness\\Helpers\\AppHelper',
+              'exception' => 'Exception',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+      ),
+       'attributes' => 
+      array (
+      ),
+    )),
+  ),
+  'C:\\trabajos\\stylofitness\\app\\Controllers\\UserController.php' => 
+  array (
+    0 => 
+    \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state(array(
+       'name' => 'StyleFitness\\Controllers\\UserController',
+       'phpDoc' => 
+      \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+         'phpDocString' => '/**
+ * Controlador de Usuario - STYLOFITNESS
+ * Maneja el perfil del usuario y sus datos personales
+ */',
+         'namespace' => 'StyleFitness\\Controllers',
+         'uses' => 
+        array (
+          'database' => 'StyleFitness\\Config\\Database',
+          'user' => 'StyleFitness\\Models\\User',
+          'routine' => 'StyleFitness\\Models\\Routine',
+          'order' => 'StyleFitness\\Models\\Order',
+          'apphelper' => 'StyleFitness\\Helpers\\AppHelper',
+          'validationhelper' => 'StyleFitness\\Helpers\\ValidationHelper',
+          'pdo' => 'PDO',
+          'exception' => 'Exception',
+        ),
+         'constUses' => 
+        array (
+        ),
+      )),
+       'abstract' => false,
+       'final' => false,
+       'extends' => NULL,
+       'implements' => 
+      array (
+      ),
+       'usedTraits' => 
+      array (
+      ),
+       'traitUseAdaptations' => 
+      array (
+      ),
+       'statements' => 
+      array (
+        0 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => '__construct',
+           'phpDoc' => NULL,
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        1 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'profile',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Mostrar perfil del usuario
+     */',
+             'namespace' => 'StyleFitness\\Controllers',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'user' => 'StyleFitness\\Models\\User',
+              'routine' => 'StyleFitness\\Models\\Routine',
+              'order' => 'StyleFitness\\Models\\Order',
+              'apphelper' => 'StyleFitness\\Helpers\\AppHelper',
+              'validationhelper' => 'StyleFitness\\Helpers\\ValidationHelper',
+              'pdo' => 'PDO',
+              'exception' => 'Exception',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        2 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'updateProfile',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Actualizar perfil del usuario
+     */',
+             'namespace' => 'StyleFitness\\Controllers',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'user' => 'StyleFitness\\Models\\User',
+              'routine' => 'StyleFitness\\Models\\Routine',
+              'order' => 'StyleFitness\\Models\\Order',
+              'apphelper' => 'StyleFitness\\Helpers\\AppHelper',
+              'validationhelper' => 'StyleFitness\\Helpers\\ValidationHelper',
+              'pdo' => 'PDO',
+              'exception' => 'Exception',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        3 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'updatePassword',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Actualizar contraseña del usuario
+     */',
+             'namespace' => 'StyleFitness\\Controllers',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'user' => 'StyleFitness\\Models\\User',
+              'routine' => 'StyleFitness\\Models\\Routine',
+              'order' => 'StyleFitness\\Models\\Order',
+              'apphelper' => 'StyleFitness\\Helpers\\AppHelper',
+              'validationhelper' => 'StyleFitness\\Helpers\\ValidationHelper',
+              'pdo' => 'PDO',
+              'exception' => 'Exception',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        4 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'updateAvatar',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Actualizar avatar del usuario
+     */',
+             'namespace' => 'StyleFitness\\Controllers',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'user' => 'StyleFitness\\Models\\User',
+              'routine' => 'StyleFitness\\Models\\Routine',
+              'order' => 'StyleFitness\\Models\\Order',
+              'apphelper' => 'StyleFitness\\Helpers\\AppHelper',
+              'validationhelper' => 'StyleFitness\\Helpers\\ValidationHelper',
+              'pdo' => 'PDO',
+              'exception' => 'Exception',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        5 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'myRoutines',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Mostrar las rutinas del usuario
+     */',
+             'namespace' => 'StyleFitness\\Controllers',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'user' => 'StyleFitness\\Models\\User',
+              'routine' => 'StyleFitness\\Models\\Routine',
+              'order' => 'StyleFitness\\Models\\Order',
+              'apphelper' => 'StyleFitness\\Helpers\\AppHelper',
+              'validationhelper' => 'StyleFitness\\Helpers\\ValidationHelper',
+              'pdo' => 'PDO',
+              'exception' => 'Exception',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        6 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'myOrders',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Mostrar los pedidos del usuario
+     */',
+             'namespace' => 'StyleFitness\\Controllers',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'user' => 'StyleFitness\\Models\\User',
+              'routine' => 'StyleFitness\\Models\\Routine',
+              'order' => 'StyleFitness\\Models\\Order',
+              'apphelper' => 'StyleFitness\\Helpers\\AppHelper',
+              'validationhelper' => 'StyleFitness\\Helpers\\ValidationHelper',
+              'pdo' => 'PDO',
+              'exception' => 'Exception',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+      ),
+       'attributes' => 
+      array (
+      ),
+    )),
+  ),
   'C:\\trabajos\\stylofitness\\app\\Controllers\\WebhookController.php' => 
   array (
     0 => 
@@ -7695,7 +13226,7 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => true,
-           'returnType' => NULL,
+           'returnType' => 'bool',
            'parameters' => 
           array (
           ),
@@ -7729,7 +13260,7 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => true,
-           'returnType' => NULL,
+           'returnType' => '?array',
            'parameters' => 
           array (
           ),
@@ -7763,13 +13294,13 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => true,
-           'returnType' => NULL,
+           'returnType' => 'void',
            'parameters' => 
           array (
             0 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'user',
-               'type' => NULL,
+               'type' => 'array',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -7808,7 +13339,7 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => true,
-           'returnType' => NULL,
+           'returnType' => 'void',
            'parameters' => 
           array (
           ),
@@ -7842,13 +13373,13 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => true,
-           'returnType' => NULL,
+           'returnType' => 'bool',
            'parameters' => 
           array (
             0 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'role',
-               'type' => NULL,
+               'type' => 'string|array',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -7887,7 +13418,7 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => true,
-           'returnType' => NULL,
+           'returnType' => 'bool',
            'parameters' => 
           array (
           ),
@@ -7921,7 +13452,7 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => true,
-           'returnType' => NULL,
+           'returnType' => 'bool',
            'parameters' => 
           array (
           ),
@@ -7955,7 +13486,7 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => true,
-           'returnType' => NULL,
+           'returnType' => 'bool',
            'parameters' => 
           array (
           ),
@@ -7989,13 +13520,13 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => true,
-           'returnType' => NULL,
+           'returnType' => 'void',
            'parameters' => 
           array (
             0 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'url',
-               'type' => NULL,
+               'type' => 'string',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -8006,7 +13537,7 @@ return [
             1 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'permanent',
-               'type' => NULL,
+               'type' => 'bool',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => true,
@@ -8045,7 +13576,7 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => true,
-           'returnType' => NULL,
+           'returnType' => 'string',
            'parameters' => 
           array (
           ),
@@ -8079,13 +13610,13 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => true,
-           'returnType' => NULL,
+           'returnType' => 'string',
            'parameters' => 
           array (
             0 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'path',
-               'type' => NULL,
+               'type' => 'string',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => true,
@@ -8124,13 +13655,13 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => true,
-           'returnType' => NULL,
+           'returnType' => 'string',
            'parameters' => 
           array (
             0 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'path',
-               'type' => NULL,
+               'type' => 'string',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => true,
@@ -8169,13 +13700,13 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => true,
-           'returnType' => NULL,
+           'returnType' => 'string',
            'parameters' => 
           array (
             0 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'path',
-               'type' => NULL,
+               'type' => 'string',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -8214,13 +13745,13 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => true,
-           'returnType' => NULL,
+           'returnType' => 'string',
            'parameters' => 
           array (
             0 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'path',
-               'type' => NULL,
+               'type' => 'string',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => true,
@@ -8259,13 +13790,13 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => true,
-           'returnType' => NULL,
+           'returnType' => 'void',
            'parameters' => 
           array (
             0 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'redirectUrl',
-               'type' => NULL,
+               'type' => '?string',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => true,
@@ -8304,13 +13835,13 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => true,
-           'returnType' => NULL,
+           'returnType' => 'void',
            'parameters' => 
           array (
             0 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'role',
-               'type' => NULL,
+               'type' => 'string|array',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -8321,7 +13852,7 @@ return [
             1 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'redirectUrl',
-               'type' => NULL,
+               'type' => 'string',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => true,
@@ -8360,13 +13891,13 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => true,
-           'returnType' => NULL,
+           'returnType' => 'void',
            'parameters' => 
           array (
             0 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'message',
-               'type' => NULL,
+               'type' => 'string',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -8377,7 +13908,7 @@ return [
             1 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'type',
-               'type' => NULL,
+               'type' => 'string',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => true,
@@ -8396,7 +13927,7 @@ return [
            'phpDoc' => 
           \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
              'phpDocString' => '/**
-     * Obtener mensajes flash
+     * Obtener mensaje flash por tipo
      */',
              'namespace' => 'StyleFitness\\Helpers',
              'uses' => 
@@ -8416,15 +13947,71 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => true,
-           'returnType' => NULL,
+           'returnType' => 'mixed',
            'parameters' => 
           array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'type',
+               'type' => '?string',
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => true,
+               'attributes' => 
+              array (
+              ),
+            )),
           ),
            'attributes' => 
           array (
           ),
         )),
         18 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'hasFlashMessage',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Verificar si hay mensaje flash de un tipo específico
+     */',
+             'namespace' => 'StyleFitness\\Helpers',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'exception' => 'Exception',
+              'datetime' => 'DateTime',
+              'simplexmlelement' => 'SimpleXMLElement',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => true,
+           'returnType' => 'bool',
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'type',
+               'type' => 'string',
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        19 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'hasFlashMessages',
            'phpDoc' => 
@@ -8450,7 +14037,7 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => true,
-           'returnType' => NULL,
+           'returnType' => 'bool',
            'parameters' => 
           array (
           ),
@@ -8458,7 +14045,7 @@ return [
           array (
           ),
         )),
-        19 => 
+        20 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'jsonResponse',
            'phpDoc' => 
@@ -8484,13 +14071,13 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => true,
-           'returnType' => NULL,
+           'returnType' => 'void',
            'parameters' => 
           array (
             0 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'data',
-               'type' => NULL,
+               'type' => 'mixed',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -8501,7 +14088,7 @@ return [
             1 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'statusCode',
-               'type' => NULL,
+               'type' => 'int',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => true,
@@ -8514,7 +14101,7 @@ return [
           array (
           ),
         )),
-        20 => 
+        21 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'jsonSuccess',
            'phpDoc' => 
@@ -8540,13 +14127,13 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => true,
-           'returnType' => NULL,
+           'returnType' => 'void',
            'parameters' => 
           array (
             0 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'message',
-               'type' => NULL,
+               'type' => 'string',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => true,
@@ -8557,7 +14144,7 @@ return [
             1 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'data',
-               'type' => NULL,
+               'type' => '?mixed',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => true,
@@ -8570,7 +14157,7 @@ return [
           array (
           ),
         )),
-        21 => 
+        22 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'jsonError',
            'phpDoc' => 
@@ -8596,13 +14183,13 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => true,
-           'returnType' => NULL,
+           'returnType' => 'void',
            'parameters' => 
           array (
             0 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'message',
-               'type' => NULL,
+               'type' => 'string',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => true,
@@ -8613,7 +14200,7 @@ return [
             1 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'statusCode',
-               'type' => NULL,
+               'type' => 'int',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => true,
@@ -8626,7 +14213,7 @@ return [
           array (
           ),
         )),
-        22 => 
+        23 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'validateEmail',
            'phpDoc' => 
@@ -8652,13 +14239,13 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => true,
-           'returnType' => NULL,
+           'returnType' => 'bool',
            'parameters' => 
           array (
             0 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'email',
-               'type' => NULL,
+               'type' => 'string',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -8671,7 +14258,7 @@ return [
           array (
           ),
         )),
-        23 => 
+        24 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'validatePassword',
            'phpDoc' => 
@@ -8697,13 +14284,13 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => true,
-           'returnType' => NULL,
+           'returnType' => 'bool',
            'parameters' => 
           array (
             0 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'password',
-               'type' => NULL,
+               'type' => 'string',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -8716,7 +14303,7 @@ return [
           array (
           ),
         )),
-        24 => 
+        25 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'validatePhone',
            'phpDoc' => 
@@ -8742,13 +14329,13 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => true,
-           'returnType' => NULL,
+           'returnType' => 'int|false',
            'parameters' => 
           array (
             0 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'phone',
-               'type' => NULL,
+               'type' => 'string',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -8761,7 +14348,7 @@ return [
           array (
           ),
         )),
-        25 => 
+        26 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'sanitize',
            'phpDoc' => 
@@ -8787,13 +14374,13 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => true,
-           'returnType' => NULL,
+           'returnType' => 'mixed',
            'parameters' => 
           array (
             0 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'data',
-               'type' => NULL,
+               'type' => 'mixed',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -8806,7 +14393,7 @@ return [
           array (
           ),
         )),
-        26 => 
+        27 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'cleanInput',
            'phpDoc' => 
@@ -8832,13 +14419,13 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => true,
-           'returnType' => NULL,
+           'returnType' => 'string',
            'parameters' => 
           array (
             0 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'input',
-               'type' => NULL,
+               'type' => 'string',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -8851,7 +14438,7 @@ return [
           array (
           ),
         )),
-        27 => 
+        28 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'validateCsrfToken',
            'phpDoc' => 
@@ -8877,13 +14464,13 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => true,
-           'returnType' => NULL,
+           'returnType' => 'bool',
            'parameters' => 
           array (
             0 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'token',
-               'type' => NULL,
+               'type' => 'string',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -8896,7 +14483,7 @@ return [
           array (
           ),
         )),
-        28 => 
+        29 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'generateCsrfToken',
            'phpDoc' => 
@@ -8922,7 +14509,7 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => true,
-           'returnType' => NULL,
+           'returnType' => 'string',
            'parameters' => 
           array (
           ),
@@ -8930,7 +14517,7 @@ return [
           array (
           ),
         )),
-        29 => 
+        30 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'verifyCsrfToken',
            'phpDoc' => 
@@ -8956,13 +14543,13 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => true,
-           'returnType' => NULL,
+           'returnType' => 'bool',
            'parameters' => 
           array (
             0 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'token',
-               'type' => NULL,
+               'type' => 'string',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -8975,7 +14562,7 @@ return [
           array (
           ),
         )),
-        30 => 
+        31 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'validateUser',
            'phpDoc' => 
@@ -9001,13 +14588,13 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => true,
-           'returnType' => NULL,
+           'returnType' => 'array',
            'parameters' => 
           array (
             0 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'data',
-               'type' => NULL,
+               'type' => 'array',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -9020,7 +14607,7 @@ return [
           array (
           ),
         )),
-        31 => 
+        32 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'formatPrice',
            'phpDoc' => 
@@ -9046,13 +14633,13 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => true,
-           'returnType' => NULL,
+           'returnType' => 'string',
            'parameters' => 
           array (
             0 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'price',
-               'type' => NULL,
+               'type' => 'float|int',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -9063,7 +14650,7 @@ return [
             1 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'currency',
-               'type' => NULL,
+               'type' => 'string',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => true,
@@ -9076,7 +14663,7 @@ return [
           array (
           ),
         )),
-        32 => 
+        33 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'formatDate',
            'phpDoc' => 
@@ -9102,13 +14689,13 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => true,
-           'returnType' => NULL,
+           'returnType' => 'string',
            'parameters' => 
           array (
             0 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'date',
-               'type' => NULL,
+               'type' => 'string|DateTime|null',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -9119,7 +14706,7 @@ return [
             1 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'format',
-               'type' => NULL,
+               'type' => 'string',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => true,
@@ -9132,7 +14719,7 @@ return [
           array (
           ),
         )),
-        33 => 
+        34 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'formatDateTime',
            'phpDoc' => 
@@ -9158,13 +14745,13 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => true,
-           'returnType' => NULL,
+           'returnType' => 'string',
            'parameters' => 
           array (
             0 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'datetime',
-               'type' => NULL,
+               'type' => 'string|DateTime|null',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -9175,7 +14762,7 @@ return [
             1 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'format',
-               'type' => NULL,
+               'type' => 'string',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => true,
@@ -9188,7 +14775,7 @@ return [
           array (
           ),
         )),
-        34 => 
+        35 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'timeAgo',
            'phpDoc' => 
@@ -9214,13 +14801,13 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => true,
-           'returnType' => NULL,
+           'returnType' => 'string',
            'parameters' => 
           array (
             0 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'datetime',
-               'type' => NULL,
+               'type' => 'string|DateTime',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -9233,7 +14820,7 @@ return [
           array (
           ),
         )),
-        35 => 
+        36 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'truncate',
            'phpDoc' => 
@@ -9259,13 +14846,13 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => true,
-           'returnType' => NULL,
+           'returnType' => 'string',
            'parameters' => 
           array (
             0 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'text',
-               'type' => NULL,
+               'type' => 'string',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -9276,7 +14863,7 @@ return [
             1 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'length',
-               'type' => NULL,
+               'type' => 'int',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => true,
@@ -9287,7 +14874,7 @@ return [
             2 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'suffix',
-               'type' => NULL,
+               'type' => 'string',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => true,
@@ -9300,7 +14887,7 @@ return [
           array (
           ),
         )),
-        36 => 
+        37 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'generateSlug',
            'phpDoc' => 
@@ -9326,13 +14913,13 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => true,
-           'returnType' => NULL,
+           'returnType' => 'string',
            'parameters' => 
           array (
             0 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'text',
-               'type' => NULL,
+               'type' => 'string',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -9345,7 +14932,7 @@ return [
           array (
           ),
         )),
-        37 => 
+        38 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'createSlug',
            'phpDoc' => 
@@ -9371,13 +14958,13 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => true,
-           'returnType' => NULL,
+           'returnType' => 'string',
            'parameters' => 
           array (
             0 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'text',
-               'type' => NULL,
+               'type' => 'string',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -9390,7 +14977,7 @@ return [
           array (
           ),
         )),
-        38 => 
+        39 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'formatBytes',
            'phpDoc' => 
@@ -9416,13 +15003,13 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => true,
-           'returnType' => NULL,
+           'returnType' => 'string',
            'parameters' => 
           array (
             0 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'size',
-               'type' => NULL,
+               'type' => 'int|float',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -9433,7 +15020,7 @@ return [
             1 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'precision',
-               'type' => NULL,
+               'type' => 'int',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => true,
@@ -9446,7 +15033,7 @@ return [
           array (
           ),
         )),
-        39 => 
+        40 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'getFileExtension',
            'phpDoc' => 
@@ -9472,13 +15059,13 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => true,
-           'returnType' => NULL,
+           'returnType' => 'string',
            'parameters' => 
           array (
             0 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'filename',
-               'type' => NULL,
+               'type' => 'string',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -9491,7 +15078,7 @@ return [
           array (
           ),
         )),
-        40 => 
+        41 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'isImage',
            'phpDoc' => 
@@ -9517,13 +15104,13 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => true,
-           'returnType' => NULL,
+           'returnType' => 'bool',
            'parameters' => 
           array (
             0 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'filename',
-               'type' => NULL,
+               'type' => 'string',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -9536,7 +15123,7 @@ return [
           array (
           ),
         )),
-        41 => 
+        42 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'isVideo',
            'phpDoc' => 
@@ -9562,13 +15149,13 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => true,
-           'returnType' => NULL,
+           'returnType' => 'bool',
            'parameters' => 
           array (
             0 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'filename',
-               'type' => NULL,
+               'type' => 'string',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -9581,7 +15168,7 @@ return [
           array (
           ),
         )),
-        42 => 
+        43 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'generateUniqueFilename',
            'phpDoc' => 
@@ -9607,13 +15194,13 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => true,
-           'returnType' => NULL,
+           'returnType' => 'string',
            'parameters' => 
           array (
             0 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'originalName',
-               'type' => NULL,
+               'type' => 'string',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -9626,7 +15213,7 @@ return [
           array (
           ),
         )),
-        43 => 
+        44 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'generatePagination',
            'phpDoc' => 
@@ -9652,13 +15239,13 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => true,
-           'returnType' => NULL,
+           'returnType' => 'string',
            'parameters' => 
           array (
             0 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'currentPage',
-               'type' => NULL,
+               'type' => 'int',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -9669,7 +15256,7 @@ return [
             1 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'totalPages',
-               'type' => NULL,
+               'type' => 'int',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -9680,7 +15267,7 @@ return [
             2 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'baseUrl',
-               'type' => NULL,
+               'type' => 'string',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -9691,7 +15278,7 @@ return [
             3 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'params',
-               'type' => NULL,
+               'type' => 'array',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => true,
@@ -9704,7 +15291,7 @@ return [
           array (
           ),
         )),
-        44 => 
+        45 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'buildUrl',
            'phpDoc' => 
@@ -9730,13 +15317,13 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => true,
-           'returnType' => NULL,
+           'returnType' => 'string',
            'parameters' => 
           array (
             0 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'baseUrl',
-               'type' => NULL,
+               'type' => 'string',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -9747,7 +15334,7 @@ return [
             1 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'params',
-               'type' => NULL,
+               'type' => 'array',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => true,
@@ -9760,7 +15347,7 @@ return [
           array (
           ),
         )),
-        45 => 
+        46 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'getConfig',
            'phpDoc' => 
@@ -9786,13 +15373,13 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => true,
-           'returnType' => NULL,
+           'returnType' => 'mixed',
            'parameters' => 
           array (
             0 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'key',
-               'type' => NULL,
+               'type' => 'string',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -9803,7 +15390,7 @@ return [
             1 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'default',
-               'type' => NULL,
+               'type' => '?mixed',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => true,
@@ -9816,7 +15403,7 @@ return [
           array (
           ),
         )),
-        46 => 
+        47 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'logActivity',
            'phpDoc' => 
@@ -9842,13 +15429,13 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => true,
-           'returnType' => NULL,
+           'returnType' => 'void',
            'parameters' => 
           array (
             0 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'action',
-               'type' => NULL,
+               'type' => 'string',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -9859,7 +15446,7 @@ return [
             1 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'resourceType',
-               'type' => NULL,
+               'type' => '?string',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => true,
@@ -9870,7 +15457,7 @@ return [
             2 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'resourceId',
-               'type' => NULL,
+               'type' => '?int',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => true,
@@ -9881,7 +15468,7 @@ return [
             3 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'details',
-               'type' => NULL,
+               'type' => 'array',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => true,
@@ -9894,7 +15481,7 @@ return [
           array (
           ),
         )),
-        47 => 
+        48 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'getGymThemeColors',
            'phpDoc' => 
@@ -9920,7 +15507,7 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => true,
-           'returnType' => NULL,
+           'returnType' => 'array',
            'parameters' => 
           array (
           ),
@@ -9928,7 +15515,7 @@ return [
           array (
           ),
         )),
-        48 => 
+        49 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'formatExerciseDuration',
            'phpDoc' => 
@@ -9954,13 +15541,13 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => true,
-           'returnType' => NULL,
+           'returnType' => 'string',
            'parameters' => 
           array (
             0 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'minutes',
-               'type' => NULL,
+               'type' => 'int',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -9973,7 +15560,7 @@ return [
           array (
           ),
         )),
-        49 => 
+        50 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'formatDifficulty',
            'phpDoc' => 
@@ -9999,13 +15586,13 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => true,
-           'returnType' => NULL,
+           'returnType' => 'string',
            'parameters' => 
           array (
             0 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'level',
-               'type' => NULL,
+               'type' => 'string',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -10018,7 +15605,7 @@ return [
           array (
           ),
         )),
-        50 => 
+        51 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'formatObjective',
            'phpDoc' => 
@@ -10044,13 +15631,13 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => true,
-           'returnType' => NULL,
+           'returnType' => 'string',
            'parameters' => 
           array (
             0 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'objective',
-               'type' => NULL,
+               'type' => 'string',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -10063,7 +15650,7 @@ return [
           array (
           ),
         )),
-        51 => 
+        52 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'compressImage',
            'phpDoc' => 
@@ -10089,13 +15676,13 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => true,
-           'returnType' => NULL,
+           'returnType' => 'bool',
            'parameters' => 
           array (
             0 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'source',
-               'type' => NULL,
+               'type' => 'string',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -10106,7 +15693,7 @@ return [
             1 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'destination',
-               'type' => NULL,
+               'type' => 'string',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -10117,7 +15704,7 @@ return [
             2 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'quality',
-               'type' => NULL,
+               'type' => 'int',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => true,
@@ -10130,7 +15717,7 @@ return [
           array (
           ),
         )),
-        52 => 
+        53 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'arrayToXml',
            'phpDoc' => 
@@ -10145,6 +15732,366 @@ return [
               'exception' => 'Exception',
               'datetime' => 'DateTime',
               'simplexmlelement' => 'SimpleXMLElement',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => true,
+           'returnType' => 'string|false',
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'data',
+               'type' => 'array',
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+            1 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'rootElement',
+               'type' => 'string',
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => true,
+               'attributes' => 
+              array (
+              ),
+            )),
+            2 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'xml',
+               'type' => '?SimpleXMLElement',
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => true,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        54 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'loadView',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Cargar una vista con datos
+     */',
+             'namespace' => 'StyleFitness\\Helpers',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'exception' => 'Exception',
+              'datetime' => 'DateTime',
+              'simplexmlelement' => 'SimpleXMLElement',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => true,
+           'returnType' => 'void',
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'viewPath',
+               'type' => 'string',
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+            1 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'data',
+               'type' => 'array',
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => true,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+      ),
+       'attributes' => 
+      array (
+      ),
+    )),
+    1 => 
+    \PHPStan\Dependency\ExportedNode\ExportedFunctionNode::__set_state(array(
+       'name' => 'StyleFitness\\Helpers\\getAppConfig',
+       'phpDoc' => NULL,
+       'byRef' => false,
+       'returnType' => 'mixed',
+       'parameters' => 
+      array (
+        0 => 
+        \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+           'name' => 'key',
+           'type' => 'string',
+           'byRef' => false,
+           'variadic' => false,
+           'hasDefault' => false,
+           'attributes' => 
+          array (
+          ),
+        )),
+        1 => 
+        \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+           'name' => 'default',
+           'type' => '?mixed',
+           'byRef' => false,
+           'variadic' => false,
+           'hasDefault' => true,
+           'attributes' => 
+          array (
+          ),
+        )),
+      ),
+       'attributes' => 
+      array (
+      ),
+    )),
+  ),
+  'C:\\trabajos\\stylofitness\\app\\Helpers\\ProgressHelper.php' => 
+  array (
+    0 => 
+    \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state(array(
+       'name' => 'ProgressHelper',
+       'phpDoc' => 
+      \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+         'phpDocString' => '/**
+ * Helper para el Sistema de Seguimiento de Progreso
+ * StyloFitness - Funciones auxiliares para tracking avanzado
+ */',
+         'namespace' => NULL,
+         'uses' => 
+        array (
+        ),
+         'constUses' => 
+        array (
+        ),
+      )),
+       'abstract' => false,
+       'final' => false,
+       'extends' => NULL,
+       'implements' => 
+      array (
+      ),
+       'usedTraits' => 
+      array (
+      ),
+       'traitUseAdaptations' => 
+      array (
+      ),
+       'statements' => 
+      array (
+        0 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'formatMetricValue',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Formatear valor según tipo de métrica
+     */',
+             'namespace' => NULL,
+             'uses' => 
+            array (
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => true,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'value',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+            1 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'type',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+            2 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'unit',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => true,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        1 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'calculateGoalProgress',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Calcular porcentaje de progreso hacia un objetivo
+     */',
+             'namespace' => NULL,
+             'uses' => 
+            array (
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => true,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'currentValue',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+            1 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'targetValue',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+            2 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'startValue',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => true,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        2 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getProgressColor',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Determinar color según porcentaje de progreso
+     */',
+             'namespace' => NULL,
+             'uses' => 
+            array (
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => true,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'percentage',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        3 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'calculateTrend',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Calcular tendencia de progreso
+     */',
+             'namespace' => NULL,
+             'uses' => 
+            array (
             ),
              'constUses' => 
             array (
@@ -10172,18 +16119,297 @@ return [
             )),
             1 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
-               'name' => 'rootElement',
+               'name' => 'periods',
                'type' => NULL,
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => true,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        4 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getTrendIcon',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Obtener icono según tendencia
+     */',
+             'namespace' => NULL,
+             'uses' => 
+            array (
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => true,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'trend',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        5 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'calculateConsistency',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Calcular consistencia de entrenamiento
+     */',
+             'namespace' => NULL,
+             'uses' => 
+            array (
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => true,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'workoutDates',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+            1 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'totalDays',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => true,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        6 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'generateRecommendations',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Generar recomendaciones basadas en datos
+     */',
+             'namespace' => NULL,
+             'uses' => 
+            array (
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => true,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'clientData',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        7 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'calculateInjuryRisk',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Calcular puntuación de riesgo de lesión
+     */',
+             'namespace' => NULL,
+             'uses' => 
+            array (
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => true,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'workoutData',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        8 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'formatDuration',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Formatear duración en formato legible
+     */',
+             'namespace' => NULL,
+             'uses' => 
+            array (
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => true,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'seconds',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        9 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'estimateCalories',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Calcular calorías estimadas por ejercicio
+     */',
+             'namespace' => NULL,
+             'uses' => 
+            array (
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => true,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'exerciseType',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+            1 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'duration',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
                'attributes' => 
               array (
               ),
             )),
             2 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
-               'name' => 'xml',
+               'name' => 'weight',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => true,
+               'attributes' => 
+              array (
+              ),
+            )),
+            3 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'intensity',
                'type' => NULL,
                'byRef' => false,
                'variadic' => false,
@@ -10197,37 +16423,251 @@ return [
           array (
           ),
         )),
-      ),
-       'attributes' => 
-      array (
-      ),
-    )),
-    1 => 
-    \PHPStan\Dependency\ExportedNode\ExportedFunctionNode::__set_state(array(
-       'name' => 'StyleFitness\\Helpers\\getAppConfig',
-       'phpDoc' => NULL,
-       'byRef' => false,
-       'returnType' => NULL,
-       'parameters' => 
-      array (
-        0 => 
-        \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
-           'name' => 'key',
-           'type' => NULL,
+        10 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'generateProgressChartData',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Generar datos para gráfico de progreso
+     */',
+             'namespace' => NULL,
+             'uses' => 
+            array (
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
            'byRef' => false,
-           'variadic' => false,
-           'hasDefault' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => true,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'data',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+            1 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'period',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => true,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
            'attributes' => 
           array (
           ),
         )),
-        1 => 
-        \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
-           'name' => 'default',
-           'type' => NULL,
+        11 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'validateMetricData',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Validar datos de entrada para métricas
+     */',
+             'namespace' => NULL,
+             'uses' => 
+            array (
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
            'byRef' => false,
-           'variadic' => false,
-           'hasDefault' => true,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => true,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'value',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+            1 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'type',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+            2 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'unit',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => true,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        12 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'generateWeeklySummary',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Generar resumen de actividad semanal
+     */',
+             'namespace' => NULL,
+             'uses' => 
+            array (
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => true,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'workoutData',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        13 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getMotivationalMessage',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Obtener mensaje motivacional basado en progreso
+     */',
+             'namespace' => NULL,
+             'uses' => 
+            array (
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => true,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'progressData',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        14 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'prepareDataForExport',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Convertir datos para exportación
+     */',
+             'namespace' => NULL,
+             'uses' => 
+            array (
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => true,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'data',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+            1 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'format',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => true,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
            'attributes' => 
           array (
           ),
@@ -10295,13 +16735,13 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => true,
-           'returnType' => NULL,
+           'returnType' => 'string',
            'parameters' => 
           array (
             0 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'objective',
-               'type' => NULL,
+               'type' => 'string',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -10337,13 +16777,13 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => true,
-           'returnType' => NULL,
+           'returnType' => 'string',
            'parameters' => 
           array (
             0 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'difficulty',
-               'type' => NULL,
+               'type' => 'string',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -10379,13 +16819,13 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => true,
-           'returnType' => NULL,
+           'returnType' => 'string',
            'parameters' => 
           array (
             0 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'objective',
-               'type' => NULL,
+               'type' => 'string',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -10421,13 +16861,13 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => true,
-           'returnType' => NULL,
+           'returnType' => 'string',
            'parameters' => 
           array (
             0 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'difficulty',
-               'type' => NULL,
+               'type' => 'string',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -10463,13 +16903,13 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => true,
-           'returnType' => NULL,
+           'returnType' => 'array',
            'parameters' => 
           array (
             0 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'routine',
-               'type' => NULL,
+               'type' => 'array',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -10480,7 +16920,7 @@ return [
             1 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'workoutLogs',
-               'type' => NULL,
+               'type' => 'array',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -10516,13 +16956,13 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => true,
-           'returnType' => NULL,
+           'returnType' => 'array',
            'parameters' => 
           array (
             0 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'routine',
-               'type' => NULL,
+               'type' => 'array',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -10533,7 +16973,7 @@ return [
             1 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'userStats',
-               'type' => NULL,
+               'type' => 'array',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => true,
@@ -10569,13 +17009,13 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => true,
-           'returnType' => NULL,
+           'returnType' => 'array',
            'parameters' => 
           array (
             0 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'routineData',
-               'type' => NULL,
+               'type' => 'array',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -10611,13 +17051,13 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => true,
-           'returnType' => NULL,
+           'returnType' => 'array',
            'parameters' => 
           array (
             0 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'routine',
-               'type' => NULL,
+               'type' => 'array',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -10628,7 +17068,7 @@ return [
             1 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'exercises',
-               'type' => NULL,
+               'type' => 'array',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => true,
@@ -10664,13 +17104,13 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => true,
-           'returnType' => NULL,
+           'returnType' => 'array',
            'parameters' => 
           array (
             0 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'routine1',
-               'type' => NULL,
+               'type' => 'array',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -10681,7 +17121,7 @@ return [
             1 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'routine2',
-               'type' => NULL,
+               'type' => 'array',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -10717,13 +17157,13 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => true,
-           'returnType' => NULL,
+           'returnType' => 'string',
            'parameters' => 
           array (
             0 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'routineId',
-               'type' => NULL,
+               'type' => 'int',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -10734,7 +17174,7 @@ return [
             1 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'size',
-               'type' => NULL,
+               'type' => 'int',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => true,
@@ -10770,13 +17210,13 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => true,
-           'returnType' => NULL,
+           'returnType' => 'mixed',
            'parameters' => 
           array (
             0 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'routine',
-               'type' => NULL,
+               'type' => 'array',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -10787,7 +17227,7 @@ return [
             1 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'exercises',
-               'type' => NULL,
+               'type' => 'array',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -10798,7 +17238,7 @@ return [
             2 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'format',
-               'type' => NULL,
+               'type' => 'string',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => true,
@@ -10876,13 +17316,13 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => true,
-           'returnType' => NULL,
+           'returnType' => 'bool',
            'parameters' => 
           array (
             0 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'email',
-               'type' => NULL,
+               'type' => 'string',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -10919,13 +17359,13 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => true,
-           'returnType' => NULL,
+           'returnType' => 'int|false',
            'parameters' => 
           array (
             0 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'phone',
-               'type' => NULL,
+               'type' => 'string',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -10962,13 +17402,13 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => true,
-           'returnType' => NULL,
+           'returnType' => 'bool',
            'parameters' => 
           array (
             0 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'password',
-               'type' => NULL,
+               'type' => 'string',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -11005,13 +17445,13 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => true,
-           'returnType' => NULL,
+           'returnType' => 'bool',
            'parameters' => 
           array (
             0 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'url',
-               'type' => NULL,
+               'type' => 'string',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -11048,13 +17488,13 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => true,
-           'returnType' => NULL,
+           'returnType' => 'bool',
            'parameters' => 
           array (
             0 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'date',
-               'type' => NULL,
+               'type' => 'string',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -11065,7 +17505,7 @@ return [
             1 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'format',
-               'type' => NULL,
+               'type' => 'string',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => true,
@@ -11102,13 +17542,13 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => true,
-           'returnType' => NULL,
+           'returnType' => 'bool',
            'parameters' => 
           array (
             0 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'value',
-               'type' => NULL,
+               'type' => 'float|int',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -11119,7 +17559,7 @@ return [
             1 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'min',
-               'type' => NULL,
+               'type' => 'float|int',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -11130,7 +17570,7 @@ return [
             2 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'max',
-               'type' => NULL,
+               'type' => 'float|int',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -11167,13 +17607,13 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => true,
-           'returnType' => NULL,
+           'returnType' => 'int|false',
            'parameters' => 
           array (
             0 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'sku',
-               'type' => NULL,
+               'type' => 'string',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -11210,13 +17650,13 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => true,
-           'returnType' => NULL,
+           'returnType' => 'int|false',
            'parameters' => 
           array (
             0 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'slug',
-               'type' => NULL,
+               'type' => 'string',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -11253,13 +17693,13 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => true,
-           'returnType' => NULL,
+           'returnType' => 'string',
            'parameters' => 
           array (
             0 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'html',
-               'type' => NULL,
+               'type' => 'string',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -11270,7 +17710,7 @@ return [
             1 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'allowedTags',
-               'type' => NULL,
+               'type' => 'string',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => true,
@@ -11307,13 +17747,13 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => true,
-           'returnType' => NULL,
+           'returnType' => 'array',
            'parameters' => 
           array (
             0 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'file',
-               'type' => NULL,
+               'type' => 'array',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -11350,13 +17790,13 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => true,
-           'returnType' => NULL,
+           'returnType' => 'array',
            'parameters' => 
           array (
             0 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'file',
-               'type' => NULL,
+               'type' => 'array',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -11393,13 +17833,13 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => true,
-           'returnType' => NULL,
+           'returnType' => 'bool',
            'parameters' => 
           array (
             0 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'number',
-               'type' => NULL,
+               'type' => 'string',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -11436,13 +17876,13 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => true,
-           'returnType' => NULL,
+           'returnType' => 'int|false',
            'parameters' => 
           array (
             0 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'code',
-               'type' => NULL,
+               'type' => 'string',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -11479,13 +17919,13 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => true,
-           'returnType' => NULL,
+           'returnType' => 'bool',
            'parameters' => 
           array (
             0 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'ruc',
-               'type' => NULL,
+               'type' => 'string',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -11522,13 +17962,13 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => true,
-           'returnType' => NULL,
+           'returnType' => 'bool',
            'parameters' => 
           array (
             0 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'dni',
-               'type' => NULL,
+               'type' => 'string',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -11565,13 +18005,13 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => true,
-           'returnType' => NULL,
+           'returnType' => 'int|false',
            'parameters' => 
           array (
             0 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'time',
-               'type' => NULL,
+               'type' => 'string',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -11608,13 +18048,13 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => true,
-           'returnType' => NULL,
+           'returnType' => 'bool',
            'parameters' => 
           array (
             0 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'json',
-               'type' => NULL,
+               'type' => 'string',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -11651,13 +18091,13 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => true,
-           'returnType' => NULL,
+           'returnType' => 'array',
            'parameters' => 
           array (
             0 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'formType',
-               'type' => NULL,
+               'type' => 'string',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -11694,13 +18134,13 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => true,
-           'returnType' => NULL,
+           'returnType' => 'array',
            'parameters' => 
           array (
             0 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'data',
-               'type' => NULL,
+               'type' => 'array',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -11711,7 +18151,7 @@ return [
             1 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'rules',
-               'type' => NULL,
+               'type' => 'array',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -11749,13 +18189,13 @@ return [
         ),
       )),
        'byRef' => false,
-       'returnType' => NULL,
+       'returnType' => 'mixed',
        'parameters' => 
       array (
         0 => 
         \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
            'name' => 'key',
-           'type' => NULL,
+           'type' => 'string',
            'byRef' => false,
            'variadic' => false,
            'hasDefault' => false,
@@ -11766,7 +18206,7 @@ return [
         1 => 
         \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
            'name' => 'default',
-           'type' => NULL,
+           'type' => '?mixed',
            'byRef' => false,
            'variadic' => false,
            'hasDefault' => true,
@@ -11796,7 +18236,7 @@ return [
         ),
       )),
        'byRef' => false,
-       'returnType' => NULL,
+       'returnType' => 'bool',
        'parameters' => 
       array (
       ),
@@ -11821,7 +18261,7 @@ return [
         ),
       )),
        'byRef' => false,
-       'returnType' => NULL,
+       'returnType' => 'bool',
        'parameters' => 
       array (
       ),
@@ -11830,6 +18270,54 @@ return [
       ),
     )),
     3 => 
+    \PHPStan\Dependency\ExportedNode\ExportedFunctionNode::__set_state(array(
+       'name' => 'getAppConfig',
+       'phpDoc' => 
+      \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+         'phpDocString' => '/**
+     * Obtener configuración de la aplicación
+     * Función de compatibilidad para el sistema
+     */',
+         'namespace' => NULL,
+         'uses' => 
+        array (
+        ),
+         'constUses' => 
+        array (
+        ),
+      )),
+       'byRef' => false,
+       'returnType' => 'mixed',
+       'parameters' => 
+      array (
+        0 => 
+        \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+           'name' => 'key',
+           'type' => 'string',
+           'byRef' => false,
+           'variadic' => false,
+           'hasDefault' => false,
+           'attributes' => 
+          array (
+          ),
+        )),
+        1 => 
+        \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+           'name' => 'default',
+           'type' => '?mixed',
+           'byRef' => false,
+           'variadic' => false,
+           'hasDefault' => true,
+           'attributes' => 
+          array (
+          ),
+        )),
+      ),
+       'attributes' => 
+      array (
+      ),
+    )),
+    4 => 
     \PHPStan\Dependency\ExportedNode\ExportedFunctionNode::__set_state(array(
        'name' => 'dd',
        'phpDoc' => 
@@ -11865,7 +18353,7 @@ return [
       array (
       ),
     )),
-    4 => 
+    5 => 
     \PHPStan\Dependency\ExportedNode\ExportedFunctionNode::__set_state(array(
        'name' => 'debug_log',
        'phpDoc' => 
@@ -11912,7 +18400,7 @@ return [
       array (
       ),
     )),
-    5 => 
+    6 => 
     \PHPStan\Dependency\ExportedNode\ExportedFunctionNode::__set_state(array(
        'name' => 'generateUuid',
        'phpDoc' => 
@@ -11929,7 +18417,7 @@ return [
         ),
       )),
        'byRef' => false,
-       'returnType' => NULL,
+       'returnType' => 'string',
        'parameters' => 
       array (
       ),
@@ -11937,7 +18425,7 @@ return [
       array (
       ),
     )),
-    6 => 
+    7 => 
     \PHPStan\Dependency\ExportedNode\ExportedFunctionNode::__set_state(array(
        'name' => 'generateSecureToken',
        'phpDoc' => 
@@ -11954,13 +18442,13 @@ return [
         ),
       )),
        'byRef' => false,
-       'returnType' => NULL,
+       'returnType' => 'string',
        'parameters' => 
       array (
         0 => 
         \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
            'name' => 'length',
-           'type' => NULL,
+           'type' => 'int',
            'byRef' => false,
            'variadic' => false,
            'hasDefault' => true,
@@ -11973,7 +18461,7 @@ return [
       array (
       ),
     )),
-    7 => 
+    8 => 
     \PHPStan\Dependency\ExportedNode\ExportedFunctionNode::__set_state(array(
        'name' => 'hashPassword',
        'phpDoc' => 
@@ -11990,13 +18478,13 @@ return [
         ),
       )),
        'byRef' => false,
-       'returnType' => NULL,
+       'returnType' => 'string',
        'parameters' => 
       array (
         0 => 
         \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
            'name' => 'password',
-           'type' => NULL,
+           'type' => 'string',
            'byRef' => false,
            'variadic' => false,
            'hasDefault' => false,
@@ -12009,7 +18497,7 @@ return [
       array (
       ),
     )),
-    8 => 
+    9 => 
     \PHPStan\Dependency\ExportedNode\ExportedFunctionNode::__set_state(array(
        'name' => 'verifyPassword',
        'phpDoc' => 
@@ -12026,13 +18514,13 @@ return [
         ),
       )),
        'byRef' => false,
-       'returnType' => NULL,
+       'returnType' => 'bool',
        'parameters' => 
       array (
         0 => 
         \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
            'name' => 'password',
-           'type' => NULL,
+           'type' => 'string',
            'byRef' => false,
            'variadic' => false,
            'hasDefault' => false,
@@ -12043,7 +18531,7 @@ return [
         1 => 
         \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
            'name' => 'hash',
-           'type' => NULL,
+           'type' => 'string',
            'byRef' => false,
            'variadic' => false,
            'hasDefault' => false,
@@ -12056,7 +18544,7 @@ return [
       array (
       ),
     )),
-    9 => 
+    10 => 
     \PHPStan\Dependency\ExportedNode\ExportedFunctionNode::__set_state(array(
        'name' => 'formatPrice',
        'phpDoc' => 
@@ -12073,13 +18561,13 @@ return [
         ),
       )),
        'byRef' => false,
-       'returnType' => NULL,
+       'returnType' => 'string',
        'parameters' => 
       array (
         0 => 
         \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
            'name' => 'price',
-           'type' => NULL,
+           'type' => 'float',
            'byRef' => false,
            'variadic' => false,
            'hasDefault' => false,
@@ -12090,7 +18578,7 @@ return [
         1 => 
         \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
            'name' => 'currency',
-           'type' => NULL,
+           'type' => 'string',
            'byRef' => false,
            'variadic' => false,
            'hasDefault' => true,
@@ -12103,7 +18591,7 @@ return [
       array (
       ),
     )),
-    10 => 
+    11 => 
     \PHPStan\Dependency\ExportedNode\ExportedFunctionNode::__set_state(array(
        'name' => 'formatDate',
        'phpDoc' => 
@@ -12120,13 +18608,13 @@ return [
         ),
       )),
        'byRef' => false,
-       'returnType' => NULL,
+       'returnType' => 'string',
        'parameters' => 
       array (
         0 => 
         \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
            'name' => 'date',
-           'type' => NULL,
+           'type' => 'string',
            'byRef' => false,
            'variadic' => false,
            'hasDefault' => false,
@@ -12137,7 +18625,7 @@ return [
         1 => 
         \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
            'name' => 'format',
-           'type' => NULL,
+           'type' => 'string',
            'byRef' => false,
            'variadic' => false,
            'hasDefault' => true,
@@ -12150,7 +18638,7 @@ return [
       array (
       ),
     )),
-    11 => 
+    12 => 
     \PHPStan\Dependency\ExportedNode\ExportedFunctionNode::__set_state(array(
        'name' => 'timeAgo',
        'phpDoc' => 
@@ -12167,13 +18655,13 @@ return [
         ),
       )),
        'byRef' => false,
-       'returnType' => NULL,
+       'returnType' => 'string',
        'parameters' => 
       array (
         0 => 
         \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
            'name' => 'datetime',
-           'type' => NULL,
+           'type' => 'string',
            'byRef' => false,
            'variadic' => false,
            'hasDefault' => false,
@@ -12186,7 +18674,7 @@ return [
       array (
       ),
     )),
-    12 => 
+    13 => 
     \PHPStan\Dependency\ExportedNode\ExportedFunctionNode::__set_state(array(
        'name' => 'formatFileSize',
        'phpDoc' => 
@@ -12203,13 +18691,13 @@ return [
         ),
       )),
        'byRef' => false,
-       'returnType' => NULL,
+       'returnType' => 'string',
        'parameters' => 
       array (
         0 => 
         \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
            'name' => 'bytes',
-           'type' => NULL,
+           'type' => 'int',
            'byRef' => false,
            'variadic' => false,
            'hasDefault' => false,
@@ -12222,7 +18710,7 @@ return [
       array (
       ),
     )),
-    13 => 
+    14 => 
     \PHPStan\Dependency\ExportedNode\ExportedFunctionNode::__set_state(array(
        'name' => 'truncate',
        'phpDoc' => 
@@ -12239,13 +18727,13 @@ return [
         ),
       )),
        'byRef' => false,
-       'returnType' => NULL,
+       'returnType' => 'string',
        'parameters' => 
       array (
         0 => 
         \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
            'name' => 'text',
-           'type' => NULL,
+           'type' => 'string',
            'byRef' => false,
            'variadic' => false,
            'hasDefault' => false,
@@ -12256,7 +18744,7 @@ return [
         1 => 
         \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
            'name' => 'length',
-           'type' => NULL,
+           'type' => 'int',
            'byRef' => false,
            'variadic' => false,
            'hasDefault' => true,
@@ -12266,8 +18754,8 @@ return [
         )),
         2 => 
         \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
-           'name' => 'ending',
-           'type' => NULL,
+           'name' => 'suffix',
+           'type' => 'string',
            'byRef' => false,
            'variadic' => false,
            'hasDefault' => true,
@@ -12280,7 +18768,7 @@ return [
       array (
       ),
     )),
-    14 => 
+    15 => 
     \PHPStan\Dependency\ExportedNode\ExportedFunctionNode::__set_state(array(
        'name' => 'pluralize',
        'phpDoc' => 
@@ -12297,13 +18785,13 @@ return [
         ),
       )),
        'byRef' => false,
-       'returnType' => NULL,
+       'returnType' => 'string',
        'parameters' => 
       array (
         0 => 
         \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
            'name' => 'count',
-           'type' => NULL,
+           'type' => 'int',
            'byRef' => false,
            'variadic' => false,
            'hasDefault' => false,
@@ -12314,7 +18802,7 @@ return [
         1 => 
         \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
            'name' => 'singular',
-           'type' => NULL,
+           'type' => 'string',
            'byRef' => false,
            'variadic' => false,
            'hasDefault' => false,
@@ -12325,7 +18813,7 @@ return [
         2 => 
         \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
            'name' => 'plural',
-           'type' => NULL,
+           'type' => '?string',
            'byRef' => false,
            'variadic' => false,
            'hasDefault' => true,
@@ -12338,7 +18826,7 @@ return [
       array (
       ),
     )),
-    15 => 
+    16 => 
     \PHPStan\Dependency\ExportedNode\ExportedFunctionNode::__set_state(array(
        'name' => 'isValidEmail',
        'phpDoc' => 
@@ -12355,13 +18843,13 @@ return [
         ),
       )),
        'byRef' => false,
-       'returnType' => NULL,
+       'returnType' => 'bool',
        'parameters' => 
       array (
         0 => 
         \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
            'name' => 'email',
-           'type' => NULL,
+           'type' => 'string',
            'byRef' => false,
            'variadic' => false,
            'hasDefault' => false,
@@ -12374,7 +18862,7 @@ return [
       array (
       ),
     )),
-    16 => 
+    17 => 
     \PHPStan\Dependency\ExportedNode\ExportedFunctionNode::__set_state(array(
        'name' => 'isValidUrl',
        'phpDoc' => 
@@ -12391,13 +18879,13 @@ return [
         ),
       )),
        'byRef' => false,
-       'returnType' => NULL,
+       'returnType' => 'bool',
        'parameters' => 
       array (
         0 => 
         \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
            'name' => 'url',
-           'type' => NULL,
+           'type' => 'string',
            'byRef' => false,
            'variadic' => false,
            'hasDefault' => false,
@@ -12410,7 +18898,7 @@ return [
       array (
       ),
     )),
-    17 => 
+    18 => 
     \PHPStan\Dependency\ExportedNode\ExportedFunctionNode::__set_state(array(
        'name' => 'isValidPhone',
        'phpDoc' => 
@@ -12427,13 +18915,13 @@ return [
         ),
       )),
        'byRef' => false,
-       'returnType' => NULL,
+       'returnType' => 'bool',
        'parameters' => 
       array (
         0 => 
         \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
            'name' => 'phone',
-           'type' => NULL,
+           'type' => 'string',
            'byRef' => false,
            'variadic' => false,
            'hasDefault' => false,
@@ -12446,7 +18934,7 @@ return [
       array (
       ),
     )),
-    18 => 
+    19 => 
     \PHPStan\Dependency\ExportedNode\ExportedFunctionNode::__set_state(array(
        'name' => 'isValidDNI',
        'phpDoc' => 
@@ -12463,13 +18951,13 @@ return [
         ),
       )),
        'byRef' => false,
-       'returnType' => NULL,
+       'returnType' => 'bool',
        'parameters' => 
       array (
         0 => 
         \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
            'name' => 'dni',
-           'type' => NULL,
+           'type' => 'string',
            'byRef' => false,
            'variadic' => false,
            'hasDefault' => false,
@@ -12482,7 +18970,7 @@ return [
       array (
       ),
     )),
-    19 => 
+    20 => 
     \PHPStan\Dependency\ExportedNode\ExportedFunctionNode::__set_state(array(
        'name' => 'isValidRUC',
        'phpDoc' => 
@@ -12499,13 +18987,13 @@ return [
         ),
       )),
        'byRef' => false,
-       'returnType' => NULL,
+       'returnType' => 'bool',
        'parameters' => 
       array (
         0 => 
         \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
            'name' => 'ruc',
-           'type' => NULL,
+           'type' => 'string',
            'byRef' => false,
            'variadic' => false,
            'hasDefault' => false,
@@ -12518,7 +19006,7 @@ return [
       array (
       ),
     )),
-    20 => 
+    21 => 
     \PHPStan\Dependency\ExportedNode\ExportedFunctionNode::__set_state(array(
        'name' => 'getFileExtension',
        'phpDoc' => 
@@ -12535,13 +19023,13 @@ return [
         ),
       )),
        'byRef' => false,
-       'returnType' => NULL,
+       'returnType' => 'string',
        'parameters' => 
       array (
         0 => 
         \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
            'name' => 'filename',
-           'type' => NULL,
+           'type' => 'string',
            'byRef' => false,
            'variadic' => false,
            'hasDefault' => false,
@@ -12554,7 +19042,7 @@ return [
       array (
       ),
     )),
-    21 => 
+    22 => 
     \PHPStan\Dependency\ExportedNode\ExportedFunctionNode::__set_state(array(
        'name' => 'isImage',
        'phpDoc' => 
@@ -12571,13 +19059,13 @@ return [
         ),
       )),
        'byRef' => false,
-       'returnType' => NULL,
+       'returnType' => 'bool',
        'parameters' => 
       array (
         0 => 
         \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
            'name' => 'filename',
-           'type' => NULL,
+           'type' => 'string',
            'byRef' => false,
            'variadic' => false,
            'hasDefault' => false,
@@ -12590,7 +19078,7 @@ return [
       array (
       ),
     )),
-    22 => 
+    23 => 
     \PHPStan\Dependency\ExportedNode\ExportedFunctionNode::__set_state(array(
        'name' => 'isVideo',
        'phpDoc' => 
@@ -12607,13 +19095,13 @@ return [
         ),
       )),
        'byRef' => false,
-       'returnType' => NULL,
+       'returnType' => 'bool',
        'parameters' => 
       array (
         0 => 
         \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
            'name' => 'filename',
-           'type' => NULL,
+           'type' => 'string',
            'byRef' => false,
            'variadic' => false,
            'hasDefault' => false,
@@ -12626,7 +19114,7 @@ return [
       array (
       ),
     )),
-    23 => 
+    24 => 
     \PHPStan\Dependency\ExportedNode\ExportedFunctionNode::__set_state(array(
        'name' => 'sanitizeFilename',
        'phpDoc' => 
@@ -12643,13 +19131,13 @@ return [
         ),
       )),
        'byRef' => false,
-       'returnType' => NULL,
+       'returnType' => 'string',
        'parameters' => 
       array (
         0 => 
         \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
            'name' => 'filename',
-           'type' => NULL,
+           'type' => 'string',
            'byRef' => false,
            'variadic' => false,
            'hasDefault' => false,
@@ -12662,7 +19150,7 @@ return [
       array (
       ),
     )),
-    24 => 
+    25 => 
     \PHPStan\Dependency\ExportedNode\ExportedFunctionNode::__set_state(array(
        'name' => 'generateUniqueFilename',
        'phpDoc' => 
@@ -12679,13 +19167,13 @@ return [
         ),
       )),
        'byRef' => false,
-       'returnType' => NULL,
+       'returnType' => 'string',
        'parameters' => 
       array (
         0 => 
         \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
            'name' => 'originalName',
-           'type' => NULL,
+           'type' => 'string',
            'byRef' => false,
            'variadic' => false,
            'hasDefault' => false,
@@ -12696,7 +19184,7 @@ return [
         1 => 
         \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
            'name' => 'directory',
-           'type' => NULL,
+           'type' => 'string',
            'byRef' => false,
            'variadic' => false,
            'hasDefault' => true,
@@ -12709,7 +19197,7 @@ return [
       array (
       ),
     )),
-    25 => 
+    26 => 
     \PHPStan\Dependency\ExportedNode\ExportedFunctionNode::__set_state(array(
        'name' => 'array_get',
        'phpDoc' => 
@@ -12726,13 +19214,13 @@ return [
         ),
       )),
        'byRef' => false,
-       'returnType' => NULL,
+       'returnType' => 'mixed',
        'parameters' => 
       array (
         0 => 
         \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
            'name' => 'array',
-           'type' => NULL,
+           'type' => 'array',
            'byRef' => false,
            'variadic' => false,
            'hasDefault' => false,
@@ -12743,7 +19231,7 @@ return [
         1 => 
         \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
            'name' => 'key',
-           'type' => NULL,
+           'type' => 'string',
            'byRef' => false,
            'variadic' => false,
            'hasDefault' => false,
@@ -12754,7 +19242,7 @@ return [
         2 => 
         \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
            'name' => 'default',
-           'type' => NULL,
+           'type' => '?mixed',
            'byRef' => false,
            'variadic' => false,
            'hasDefault' => true,
@@ -12767,7 +19255,7 @@ return [
       array (
       ),
     )),
-    26 => 
+    27 => 
     \PHPStan\Dependency\ExportedNode\ExportedFunctionNode::__set_state(array(
        'name' => 'isAssociativeArray',
        'phpDoc' => 
@@ -12784,13 +19272,13 @@ return [
         ),
       )),
        'byRef' => false,
-       'returnType' => NULL,
+       'returnType' => 'bool',
        'parameters' => 
       array (
         0 => 
         \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
            'name' => 'array',
-           'type' => NULL,
+           'type' => 'array',
            'byRef' => false,
            'variadic' => false,
            'hasDefault' => false,
@@ -12803,7 +19291,7 @@ return [
       array (
       ),
     )),
-    27 => 
+    28 => 
     \PHPStan\Dependency\ExportedNode\ExportedFunctionNode::__set_state(array(
        'name' => 'array_only',
        'phpDoc' => 
@@ -12820,13 +19308,13 @@ return [
         ),
       )),
        'byRef' => false,
-       'returnType' => NULL,
+       'returnType' => 'array',
        'parameters' => 
       array (
         0 => 
         \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
            'name' => 'array',
-           'type' => NULL,
+           'type' => 'array',
            'byRef' => false,
            'variadic' => false,
            'hasDefault' => false,
@@ -12837,7 +19325,7 @@ return [
         1 => 
         \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
            'name' => 'keys',
-           'type' => NULL,
+           'type' => 'array',
            'byRef' => false,
            'variadic' => false,
            'hasDefault' => false,
@@ -12850,7 +19338,7 @@ return [
       array (
       ),
     )),
-    28 => 
+    29 => 
     \PHPStan\Dependency\ExportedNode\ExportedFunctionNode::__set_state(array(
        'name' => 'array_group_by',
        'phpDoc' => 
@@ -12867,13 +19355,13 @@ return [
         ),
       )),
        'byRef' => false,
-       'returnType' => NULL,
+       'returnType' => 'array',
        'parameters' => 
       array (
         0 => 
         \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
            'name' => 'array',
-           'type' => NULL,
+           'type' => 'array',
            'byRef' => false,
            'variadic' => false,
            'hasDefault' => false,
@@ -12884,7 +19372,7 @@ return [
         1 => 
         \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
            'name' => 'key',
-           'type' => NULL,
+           'type' => 'string',
            'byRef' => false,
            'variadic' => false,
            'hasDefault' => false,
@@ -12897,7 +19385,7 @@ return [
       array (
       ),
     )),
-    29 => 
+    30 => 
     \PHPStan\Dependency\ExportedNode\ExportedFunctionNode::__set_state(array(
        'name' => 'str_slug',
        'phpDoc' => 
@@ -12914,13 +19402,13 @@ return [
         ),
       )),
        'byRef' => false,
-       'returnType' => NULL,
+       'returnType' => 'string',
        'parameters' => 
       array (
         0 => 
         \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
            'name' => 'text',
-           'type' => NULL,
+           'type' => 'string',
            'byRef' => false,
            'variadic' => false,
            'hasDefault' => false,
@@ -12931,7 +19419,7 @@ return [
         1 => 
         \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
            'name' => 'separator',
-           'type' => NULL,
+           'type' => 'string',
            'byRef' => false,
            'variadic' => false,
            'hasDefault' => true,
@@ -12944,18 +19432,18 @@ return [
       array (
       ),
     )),
-    30 => 
+    31 => 
     \PHPStan\Dependency\ExportedNode\ExportedFunctionNode::__set_state(array(
        'name' => 'str_contains',
        'phpDoc' => NULL,
        'byRef' => false,
-       'returnType' => NULL,
+       'returnType' => 'bool',
        'parameters' => 
       array (
         0 => 
         \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
            'name' => 'haystack',
-           'type' => NULL,
+           'type' => 'string',
            'byRef' => false,
            'variadic' => false,
            'hasDefault' => false,
@@ -12966,42 +19454,7 @@ return [
         1 => 
         \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
            'name' => 'needle',
-           'type' => NULL,
-           'byRef' => false,
-           'variadic' => false,
-           'hasDefault' => false,
-           'attributes' => 
-          array (
-          ),
-        )),
-      ),
-       'attributes' => 
-      array (
-      ),
-    )),
-    31 => 
-    \PHPStan\Dependency\ExportedNode\ExportedFunctionNode::__set_state(array(
-       'name' => 'str_starts_with',
-       'phpDoc' => NULL,
-       'byRef' => false,
-       'returnType' => NULL,
-       'parameters' => 
-      array (
-        0 => 
-        \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
-           'name' => 'haystack',
-           'type' => NULL,
-           'byRef' => false,
-           'variadic' => false,
-           'hasDefault' => false,
-           'attributes' => 
-          array (
-          ),
-        )),
-        1 => 
-        \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
-           'name' => 'needle',
-           'type' => NULL,
+           'type' => 'string',
            'byRef' => false,
            'variadic' => false,
            'hasDefault' => false,
@@ -13016,16 +19469,16 @@ return [
     )),
     32 => 
     \PHPStan\Dependency\ExportedNode\ExportedFunctionNode::__set_state(array(
-       'name' => 'str_ends_with',
+       'name' => 'str_starts_with',
        'phpDoc' => NULL,
        'byRef' => false,
-       'returnType' => NULL,
+       'returnType' => 'bool',
        'parameters' => 
       array (
         0 => 
         \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
            'name' => 'haystack',
-           'type' => NULL,
+           'type' => 'string',
            'byRef' => false,
            'variadic' => false,
            'hasDefault' => false,
@@ -13036,7 +19489,7 @@ return [
         1 => 
         \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
            'name' => 'needle',
-           'type' => NULL,
+           'type' => 'string',
            'byRef' => false,
            'variadic' => false,
            'hasDefault' => false,
@@ -13050,6 +19503,41 @@ return [
       ),
     )),
     33 => 
+    \PHPStan\Dependency\ExportedNode\ExportedFunctionNode::__set_state(array(
+       'name' => 'str_ends_with',
+       'phpDoc' => NULL,
+       'byRef' => false,
+       'returnType' => 'bool',
+       'parameters' => 
+      array (
+        0 => 
+        \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+           'name' => 'haystack',
+           'type' => 'string',
+           'byRef' => false,
+           'variadic' => false,
+           'hasDefault' => false,
+           'attributes' => 
+          array (
+          ),
+        )),
+        1 => 
+        \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+           'name' => 'needle',
+           'type' => 'string',
+           'byRef' => false,
+           'variadic' => false,
+           'hasDefault' => false,
+           'attributes' => 
+          array (
+          ),
+        )),
+      ),
+       'attributes' => 
+      array (
+      ),
+    )),
+    34 => 
     \PHPStan\Dependency\ExportedNode\ExportedFunctionNode::__set_state(array(
        'name' => 'str_camel',
        'phpDoc' => 
@@ -13066,13 +19554,13 @@ return [
         ),
       )),
        'byRef' => false,
-       'returnType' => NULL,
+       'returnType' => 'string',
        'parameters' => 
       array (
         0 => 
         \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
            'name' => 'string',
-           'type' => NULL,
+           'type' => 'string',
            'byRef' => false,
            'variadic' => false,
            'hasDefault' => false,
@@ -13085,7 +19573,7 @@ return [
       array (
       ),
     )),
-    34 => 
+    35 => 
     \PHPStan\Dependency\ExportedNode\ExportedFunctionNode::__set_state(array(
        'name' => 'str_pascal',
        'phpDoc' => 
@@ -13102,13 +19590,13 @@ return [
         ),
       )),
        'byRef' => false,
-       'returnType' => NULL,
+       'returnType' => 'string',
        'parameters' => 
       array (
         0 => 
         \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
            'name' => 'string',
-           'type' => NULL,
+           'type' => 'string',
            'byRef' => false,
            'variadic' => false,
            'hasDefault' => false,
@@ -13121,7 +19609,7 @@ return [
       array (
       ),
     )),
-    35 => 
+    36 => 
     \PHPStan\Dependency\ExportedNode\ExportedFunctionNode::__set_state(array(
        'name' => 'str_snake',
        'phpDoc' => 
@@ -13138,13 +19626,13 @@ return [
         ),
       )),
        'byRef' => false,
-       'returnType' => NULL,
+       'returnType' => 'string',
        'parameters' => 
       array (
         0 => 
         \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
            'name' => 'string',
-           'type' => NULL,
+           'type' => 'string',
            'byRef' => false,
            'variadic' => false,
            'hasDefault' => false,
@@ -13157,7 +19645,7 @@ return [
       array (
       ),
     )),
-    36 => 
+    37 => 
     \PHPStan\Dependency\ExportedNode\ExportedFunctionNode::__set_state(array(
        'name' => 'request_method',
        'phpDoc' => 
@@ -13174,7 +19662,7 @@ return [
         ),
       )),
        'byRef' => false,
-       'returnType' => NULL,
+       'returnType' => 'string',
        'parameters' => 
       array (
       ),
@@ -13182,7 +19670,7 @@ return [
       array (
       ),
     )),
-    37 => 
+    38 => 
     \PHPStan\Dependency\ExportedNode\ExportedFunctionNode::__set_state(array(
        'name' => 'is_ajax',
        'phpDoc' => 
@@ -13199,7 +19687,7 @@ return [
         ),
       )),
        'byRef' => false,
-       'returnType' => NULL,
+       'returnType' => 'bool',
        'parameters' => 
       array (
       ),
@@ -13207,7 +19695,7 @@ return [
       array (
       ),
     )),
-    38 => 
+    39 => 
     \PHPStan\Dependency\ExportedNode\ExportedFunctionNode::__set_state(array(
        'name' => 'get_client_ip',
        'phpDoc' => 
@@ -13224,7 +19712,7 @@ return [
         ),
       )),
        'byRef' => false,
-       'returnType' => NULL,
+       'returnType' => 'string',
        'parameters' => 
       array (
       ),
@@ -13232,7 +19720,7 @@ return [
       array (
       ),
     )),
-    39 => 
+    40 => 
     \PHPStan\Dependency\ExportedNode\ExportedFunctionNode::__set_state(array(
        'name' => 'get_user_agent',
        'phpDoc' => 
@@ -13249,7 +19737,7 @@ return [
         ),
       )),
        'byRef' => false,
-       'returnType' => NULL,
+       'returnType' => 'string',
        'parameters' => 
       array (
       ),
@@ -13257,7 +19745,7 @@ return [
       array (
       ),
     )),
-    40 => 
+    41 => 
     \PHPStan\Dependency\ExportedNode\ExportedFunctionNode::__set_state(array(
        'name' => 'is_mobile',
        'phpDoc' => 
@@ -13274,7 +19762,7 @@ return [
         ),
       )),
        'byRef' => false,
-       'returnType' => NULL,
+       'returnType' => 'bool',
        'parameters' => 
       array (
       ),
@@ -13282,7 +19770,7 @@ return [
       array (
       ),
     )),
-    41 => 
+    42 => 
     \PHPStan\Dependency\ExportedNode\ExportedFunctionNode::__set_state(array(
        'name' => 'json_response',
        'phpDoc' => 
@@ -13299,13 +19787,13 @@ return [
         ),
       )),
        'byRef' => false,
-       'returnType' => NULL,
+       'returnType' => 'void',
        'parameters' => 
       array (
         0 => 
         \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
            'name' => 'data',
-           'type' => NULL,
+           'type' => 'mixed',
            'byRef' => false,
            'variadic' => false,
            'hasDefault' => false,
@@ -13316,7 +19804,7 @@ return [
         1 => 
         \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
            'name' => 'statusCode',
-           'type' => NULL,
+           'type' => 'int',
            'byRef' => false,
            'variadic' => false,
            'hasDefault' => true,
@@ -13329,7 +19817,7 @@ return [
       array (
       ),
     )),
-    42 => 
+    43 => 
     \PHPStan\Dependency\ExportedNode\ExportedFunctionNode::__set_state(array(
        'name' => 'json_error',
        'phpDoc' => 
@@ -13346,13 +19834,13 @@ return [
         ),
       )),
        'byRef' => false,
-       'returnType' => NULL,
+       'returnType' => 'void',
        'parameters' => 
       array (
         0 => 
         \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
            'name' => 'message',
-           'type' => NULL,
+           'type' => 'string',
            'byRef' => false,
            'variadic' => false,
            'hasDefault' => false,
@@ -13363,7 +19851,7 @@ return [
         1 => 
         \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
            'name' => 'statusCode',
-           'type' => NULL,
+           'type' => 'int',
            'byRef' => false,
            'variadic' => false,
            'hasDefault' => true,
@@ -13374,7 +19862,7 @@ return [
         2 => 
         \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
            'name' => 'details',
-           'type' => NULL,
+           'type' => '?mixed',
            'byRef' => false,
            'variadic' => false,
            'hasDefault' => true,
@@ -13387,7 +19875,7 @@ return [
       array (
       ),
     )),
-    43 => 
+    44 => 
     \PHPStan\Dependency\ExportedNode\ExportedFunctionNode::__set_state(array(
        'name' => 'json_success',
        'phpDoc' => 
@@ -13404,13 +19892,13 @@ return [
         ),
       )),
        'byRef' => false,
-       'returnType' => NULL,
+       'returnType' => 'void',
        'parameters' => 
       array (
         0 => 
         \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
            'name' => 'data',
-           'type' => NULL,
+           'type' => '?mixed',
            'byRef' => false,
            'variadic' => false,
            'hasDefault' => true,
@@ -13421,7 +19909,7 @@ return [
         1 => 
         \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
            'name' => 'message',
-           'type' => NULL,
+           'type' => 'string',
            'byRef' => false,
            'variadic' => false,
            'hasDefault' => true,
@@ -13434,7 +19922,7 @@ return [
       array (
       ),
     )),
-    44 => 
+    45 => 
     \PHPStan\Dependency\ExportedNode\ExportedFunctionNode::__set_state(array(
        'name' => 'now',
        'phpDoc' => 
@@ -13451,7 +19939,7 @@ return [
         ),
       )),
        'byRef' => false,
-       'returnType' => NULL,
+       'returnType' => 'int',
        'parameters' => 
       array (
       ),
@@ -13459,7 +19947,7 @@ return [
       array (
       ),
     )),
-    45 => 
+    46 => 
     \PHPStan\Dependency\ExportedNode\ExportedFunctionNode::__set_state(array(
        'name' => 'today',
        'phpDoc' => 
@@ -13476,7 +19964,7 @@ return [
         ),
       )),
        'byRef' => false,
-       'returnType' => NULL,
+       'returnType' => 'string',
        'parameters' => 
       array (
       ),
@@ -13484,7 +19972,7 @@ return [
       array (
       ),
     )),
-    46 => 
+    47 => 
     \PHPStan\Dependency\ExportedNode\ExportedFunctionNode::__set_state(array(
        'name' => 'current_datetime',
        'phpDoc' => 
@@ -13501,7 +19989,7 @@ return [
         ),
       )),
        'byRef' => false,
-       'returnType' => NULL,
+       'returnType' => 'string',
        'parameters' => 
       array (
       ),
@@ -13509,7 +19997,7 @@ return [
       array (
       ),
     )),
-    47 => 
+    48 => 
     \PHPStan\Dependency\ExportedNode\ExportedFunctionNode::__set_state(array(
        'name' => 'add_days',
        'phpDoc' => 
@@ -13526,13 +20014,13 @@ return [
         ),
       )),
        'byRef' => false,
-       'returnType' => NULL,
+       'returnType' => 'string',
        'parameters' => 
       array (
         0 => 
         \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
            'name' => 'date',
-           'type' => NULL,
+           'type' => 'string',
            'byRef' => false,
            'variadic' => false,
            'hasDefault' => false,
@@ -13543,7 +20031,7 @@ return [
         1 => 
         \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
            'name' => 'days',
-           'type' => NULL,
+           'type' => 'int',
            'byRef' => false,
            'variadic' => false,
            'hasDefault' => false,
@@ -13556,7 +20044,7 @@ return [
       array (
       ),
     )),
-    48 => 
+    49 => 
     \PHPStan\Dependency\ExportedNode\ExportedFunctionNode::__set_state(array(
        'name' => 'days_between',
        'phpDoc' => 
@@ -13573,13 +20061,13 @@ return [
         ),
       )),
        'byRef' => false,
-       'returnType' => NULL,
+       'returnType' => 'int',
        'parameters' => 
       array (
         0 => 
         \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
            'name' => 'date1',
-           'type' => NULL,
+           'type' => 'string',
            'byRef' => false,
            'variadic' => false,
            'hasDefault' => false,
@@ -13590,7 +20078,7 @@ return [
         1 => 
         \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
            'name' => 'date2',
-           'type' => NULL,
+           'type' => 'string',
            'byRef' => false,
            'variadic' => false,
            'hasDefault' => false,
@@ -13603,7 +20091,7 @@ return [
       array (
       ),
     )),
-    49 => 
+    50 => 
     \PHPStan\Dependency\ExportedNode\ExportedFunctionNode::__set_state(array(
        'name' => 'view',
        'phpDoc' => 
@@ -13620,13 +20108,13 @@ return [
         ),
       )),
        'byRef' => false,
-       'returnType' => NULL,
+       'returnType' => 'string',
        'parameters' => 
       array (
         0 => 
         \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
            'name' => 'viewPath',
-           'type' => NULL,
+           'type' => 'string',
            'byRef' => false,
            'variadic' => false,
            'hasDefault' => false,
@@ -13637,7 +20125,7 @@ return [
         1 => 
         \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
            'name' => 'data',
-           'type' => NULL,
+           'type' => 'array',
            'byRef' => false,
            'variadic' => false,
            'hasDefault' => true,
@@ -13650,7 +20138,7 @@ return [
       array (
       ),
     )),
-    50 => 
+    51 => 
     \PHPStan\Dependency\ExportedNode\ExportedFunctionNode::__set_state(array(
        'name' => 'partial',
        'phpDoc' => 
@@ -13667,13 +20155,13 @@ return [
         ),
       )),
        'byRef' => false,
-       'returnType' => NULL,
+       'returnType' => 'void',
        'parameters' => 
       array (
         0 => 
         \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
            'name' => 'partialPath',
-           'type' => NULL,
+           'type' => 'string',
            'byRef' => false,
            'variadic' => false,
            'hasDefault' => false,
@@ -13684,7 +20172,7 @@ return [
         1 => 
         \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
            'name' => 'data',
-           'type' => NULL,
+           'type' => 'array',
            'byRef' => false,
            'variadic' => false,
            'hasDefault' => true,
@@ -13697,7 +20185,7 @@ return [
       array (
       ),
     )),
-    51 => 
+    52 => 
     \PHPStan\Dependency\ExportedNode\ExportedFunctionNode::__set_state(array(
        'name' => 'e',
        'phpDoc' => 
@@ -13714,13 +20202,13 @@ return [
         ),
       )),
        'byRef' => false,
-       'returnType' => NULL,
+       'returnType' => 'string',
        'parameters' => 
       array (
         0 => 
         \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
            'name' => 'value',
-           'type' => NULL,
+           'type' => 'string',
            'byRef' => false,
            'variadic' => false,
            'hasDefault' => false,
@@ -13733,7 +20221,7 @@ return [
       array (
       ),
     )),
-    52 => 
+    53 => 
     \PHPStan\Dependency\ExportedNode\ExportedFunctionNode::__set_state(array(
        'name' => 'clean',
        'phpDoc' => 
@@ -13750,13 +20238,13 @@ return [
         ),
       )),
        'byRef' => false,
-       'returnType' => NULL,
+       'returnType' => 'mixed',
        'parameters' => 
       array (
         0 => 
         \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
            'name' => 'input',
-           'type' => NULL,
+           'type' => 'mixed',
            'byRef' => false,
            'variadic' => false,
            'hasDefault' => false,
@@ -13769,7 +20257,7 @@ return [
       array (
       ),
     )),
-    53 => 
+    54 => 
     \PHPStan\Dependency\ExportedNode\ExportedFunctionNode::__set_state(array(
        'name' => 'csrf_token',
        'phpDoc' => 
@@ -13786,7 +20274,7 @@ return [
         ),
       )),
        'byRef' => false,
-       'returnType' => NULL,
+       'returnType' => 'string',
        'parameters' => 
       array (
       ),
@@ -13794,7 +20282,7 @@ return [
       array (
       ),
     )),
-    54 => 
+    55 => 
     \PHPStan\Dependency\ExportedNode\ExportedFunctionNode::__set_state(array(
        'name' => 'csrf_verify',
        'phpDoc' => 
@@ -13811,13 +20299,13 @@ return [
         ),
       )),
        'byRef' => false,
-       'returnType' => NULL,
+       'returnType' => 'bool',
        'parameters' => 
       array (
         0 => 
         \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
            'name' => 'token',
-           'type' => NULL,
+           'type' => 'string',
            'byRef' => false,
            'variadic' => false,
            'hasDefault' => false,
@@ -13830,7 +20318,7 @@ return [
       array (
       ),
     )),
-    55 => 
+    56 => 
     \PHPStan\Dependency\ExportedNode\ExportedFunctionNode::__set_state(array(
        'name' => 'write_log',
        'phpDoc' => 
@@ -13847,13 +20335,13 @@ return [
         ),
       )),
        'byRef' => false,
-       'returnType' => NULL,
+       'returnType' => 'void',
        'parameters' => 
       array (
         0 => 
         \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
            'name' => 'message',
-           'type' => NULL,
+           'type' => 'string',
            'byRef' => false,
            'variadic' => false,
            'hasDefault' => false,
@@ -13864,7 +20352,7 @@ return [
         1 => 
         \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
            'name' => 'level',
-           'type' => NULL,
+           'type' => 'string',
            'byRef' => false,
            'variadic' => false,
            'hasDefault' => true,
@@ -13877,42 +20365,18 @@ return [
       array (
       ),
     )),
-    56 => 
+    57 => 
     \PHPStan\Dependency\ExportedNode\ExportedFunctionNode::__set_state(array(
        'name' => 'log_info',
        'phpDoc' => NULL,
        'byRef' => false,
-       'returnType' => NULL,
+       'returnType' => 'void',
        'parameters' => 
       array (
         0 => 
         \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
            'name' => 'message',
-           'type' => NULL,
-           'byRef' => false,
-           'variadic' => false,
-           'hasDefault' => false,
-           'attributes' => 
-          array (
-          ),
-        )),
-      ),
-       'attributes' => 
-      array (
-      ),
-    )),
-    57 => 
-    \PHPStan\Dependency\ExportedNode\ExportedFunctionNode::__set_state(array(
-       'name' => 'log_warning',
-       'phpDoc' => NULL,
-       'byRef' => false,
-       'returnType' => NULL,
-       'parameters' => 
-      array (
-        0 => 
-        \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
-           'name' => 'message',
-           'type' => NULL,
+           'type' => 'string',
            'byRef' => false,
            'variadic' => false,
            'hasDefault' => false,
@@ -13927,16 +20391,16 @@ return [
     )),
     58 => 
     \PHPStan\Dependency\ExportedNode\ExportedFunctionNode::__set_state(array(
-       'name' => 'log_error',
+       'name' => 'log_warning',
        'phpDoc' => NULL,
        'byRef' => false,
-       'returnType' => NULL,
+       'returnType' => 'void',
        'parameters' => 
       array (
         0 => 
         \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
            'name' => 'message',
-           'type' => NULL,
+           'type' => 'string',
            'byRef' => false,
            'variadic' => false,
            'hasDefault' => false,
@@ -13951,16 +20415,16 @@ return [
     )),
     59 => 
     \PHPStan\Dependency\ExportedNode\ExportedFunctionNode::__set_state(array(
-       'name' => 'log_debug',
+       'name' => 'log_error',
        'phpDoc' => NULL,
        'byRef' => false,
-       'returnType' => NULL,
+       'returnType' => 'void',
        'parameters' => 
       array (
         0 => 
         \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
            'name' => 'message',
-           'type' => NULL,
+           'type' => 'string',
            'byRef' => false,
            'variadic' => false,
            'hasDefault' => false,
@@ -13974,6 +20438,30 @@ return [
       ),
     )),
     60 => 
+    \PHPStan\Dependency\ExportedNode\ExportedFunctionNode::__set_state(array(
+       'name' => 'log_debug',
+       'phpDoc' => NULL,
+       'byRef' => false,
+       'returnType' => 'void',
+       'parameters' => 
+      array (
+        0 => 
+        \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+           'name' => 'message',
+           'type' => 'string',
+           'byRef' => false,
+           'variadic' => false,
+           'hasDefault' => false,
+           'attributes' => 
+          array (
+          ),
+        )),
+      ),
+       'attributes' => 
+      array (
+      ),
+    )),
+    61 => 
     \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state(array(
        'name' => 'SimpleCache',
        'phpDoc' => 
@@ -14013,13 +20501,13 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => true,
-           'returnType' => NULL,
+           'returnType' => 'mixed',
            'parameters' => 
           array (
             0 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'key',
-               'type' => NULL,
+               'type' => 'string',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -14030,7 +20518,7 @@ return [
             1 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'default',
-               'type' => NULL,
+               'type' => '?mixed',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => true,
@@ -14053,13 +20541,13 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => true,
-           'returnType' => NULL,
+           'returnType' => 'void',
            'parameters' => 
           array (
             0 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'key',
-               'type' => NULL,
+               'type' => 'string',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -14070,7 +20558,7 @@ return [
             1 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'value',
-               'type' => NULL,
+               'type' => 'mixed',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -14081,7 +20569,7 @@ return [
             2 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'ttl',
-               'type' => NULL,
+               'type' => 'int',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => true,
@@ -14104,13 +20592,13 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => true,
-           'returnType' => NULL,
+           'returnType' => 'void',
            'parameters' => 
           array (
             0 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'key',
-               'type' => NULL,
+               'type' => 'string',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -14133,7 +20621,7 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => true,
-           'returnType' => NULL,
+           'returnType' => 'void',
            'parameters' => 
           array (
           ),
@@ -14146,18 +20634,18 @@ return [
       array (
       ),
     )),
-    61 => 
+    62 => 
     \PHPStan\Dependency\ExportedNode\ExportedFunctionNode::__set_state(array(
        'name' => 'cache_get',
        'phpDoc' => NULL,
        'byRef' => false,
-       'returnType' => NULL,
+       'returnType' => 'mixed',
        'parameters' => 
       array (
         0 => 
         \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
            'name' => 'key',
-           'type' => NULL,
+           'type' => 'string',
            'byRef' => false,
            'variadic' => false,
            'hasDefault' => false,
@@ -14168,53 +20656,7 @@ return [
         1 => 
         \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
            'name' => 'default',
-           'type' => NULL,
-           'byRef' => false,
-           'variadic' => false,
-           'hasDefault' => true,
-           'attributes' => 
-          array (
-          ),
-        )),
-      ),
-       'attributes' => 
-      array (
-      ),
-    )),
-    62 => 
-    \PHPStan\Dependency\ExportedNode\ExportedFunctionNode::__set_state(array(
-       'name' => 'cache_put',
-       'phpDoc' => NULL,
-       'byRef' => false,
-       'returnType' => NULL,
-       'parameters' => 
-      array (
-        0 => 
-        \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
-           'name' => 'key',
-           'type' => NULL,
-           'byRef' => false,
-           'variadic' => false,
-           'hasDefault' => false,
-           'attributes' => 
-          array (
-          ),
-        )),
-        1 => 
-        \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
-           'name' => 'value',
-           'type' => NULL,
-           'byRef' => false,
-           'variadic' => false,
-           'hasDefault' => false,
-           'attributes' => 
-          array (
-          ),
-        )),
-        2 => 
-        \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
-           'name' => 'ttl',
-           'type' => NULL,
+           'type' => '?mixed',
            'byRef' => false,
            'variadic' => false,
            'hasDefault' => true,
@@ -14229,16 +20671,62 @@ return [
     )),
     63 => 
     \PHPStan\Dependency\ExportedNode\ExportedFunctionNode::__set_state(array(
-       'name' => 'cache_forget',
+       'name' => 'cache_put',
        'phpDoc' => NULL,
        'byRef' => false,
-       'returnType' => NULL,
+       'returnType' => 'void',
        'parameters' => 
       array (
         0 => 
         \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
            'name' => 'key',
-           'type' => NULL,
+           'type' => 'string',
+           'byRef' => false,
+           'variadic' => false,
+           'hasDefault' => false,
+           'attributes' => 
+          array (
+          ),
+        )),
+        1 => 
+        \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+           'name' => 'value',
+           'type' => 'mixed',
+           'byRef' => false,
+           'variadic' => false,
+           'hasDefault' => false,
+           'attributes' => 
+          array (
+          ),
+        )),
+        2 => 
+        \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+           'name' => 'ttl',
+           'type' => 'int',
+           'byRef' => false,
+           'variadic' => false,
+           'hasDefault' => true,
+           'attributes' => 
+          array (
+          ),
+        )),
+      ),
+       'attributes' => 
+      array (
+      ),
+    )),
+    64 => 
+    \PHPStan\Dependency\ExportedNode\ExportedFunctionNode::__set_state(array(
+       'name' => 'cache_forget',
+       'phpDoc' => NULL,
+       'byRef' => false,
+       'returnType' => 'void',
+       'parameters' => 
+      array (
+        0 => 
+        \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+           'name' => 'key',
+           'type' => 'string',
            'byRef' => false,
            'variadic' => false,
            'hasDefault' => false,
@@ -14251,12 +20739,12 @@ return [
       array (
       ),
     )),
-    64 => 
+    65 => 
     \PHPStan\Dependency\ExportedNode\ExportedFunctionNode::__set_state(array(
        'name' => 'cache_flush',
        'phpDoc' => NULL,
        'byRef' => false,
-       'returnType' => NULL,
+       'returnType' => 'void',
        'parameters' => 
       array (
       ),
@@ -15259,6 +21747,62 @@ return [
         )),
         12 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getExercisesByBodyZone',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Obtener ejercicios por zona corporal
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'apphelper' => 'StyleFitness\\Helpers\\AppHelper',
+              'exception' => 'Exception',
+              'pdo' => 'PDO',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'zone',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+            1 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'limit',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => true,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        13 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'getMuscleGroups',
            'phpDoc' => 
           \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
@@ -15291,7 +21835,7 @@ return [
           array (
           ),
         )),
-        13 => 
+        14 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'getEquipmentTypes',
            'phpDoc' => 
@@ -15325,7 +21869,7 @@ return [
           array (
           ),
         )),
-        14 => 
+        15 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'uploadVideo',
            'phpDoc' => 
@@ -15381,7 +21925,7 @@ return [
           array (
           ),
         )),
-        15 => 
+        16 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'uploadImage',
            'phpDoc' => 
@@ -15437,7 +21981,97 @@ return [
           array (
           ),
         )),
-        16 => 
+        17 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getExerciseIdByName',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Obtener ID de ejercicio por nombre
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'apphelper' => 'StyleFitness\\Helpers\\AppHelper',
+              'exception' => 'Exception',
+              'pdo' => 'PDO',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'name',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        18 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'findByName',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Buscar ejercicio por nombre
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'apphelper' => 'StyleFitness\\Helpers\\AppHelper',
+              'exception' => 'Exception',
+              'pdo' => 'PDO',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'name',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        19 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'getExerciseStats',
            'phpDoc' => 
@@ -16771,6 +23405,2049 @@ return [
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        31 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getPopularClasses',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Obtener clases populares basadas en reservas
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'exception' => 'Exception',
+              'pdo' => 'PDO',
+              'datetime' => 'DateTime',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'limit',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => true,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        32 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getStats',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Obtener estadísticas de clases
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'exception' => 'Exception',
+              'pdo' => 'PDO',
+              'datetime' => 'DateTime',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        33 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'bookClassWithPosition',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Reservar clase con posición específica
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'exception' => 'Exception',
+              'pdo' => 'PDO',
+              'datetime' => 'DateTime',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'userId',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+            1 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'scheduleId',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+            2 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'bookingDate',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+            3 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'positionId',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => true,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        34 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getClassPositionAvailability',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Obtener disponibilidad de posiciones para una clase
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'exception' => 'Exception',
+              'pdo' => 'PDO',
+              'datetime' => 'DateTime',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'scheduleId',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+            1 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'bookingDate',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        35 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getScheduleBookingsWithPositions',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Obtener reservas con posiciones para un horario específico
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'exception' => 'Exception',
+              'pdo' => 'PDO',
+              'datetime' => 'DateTime',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'scheduleId',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+            1 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'bookingDate',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        36 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'changeBookingPosition',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Cambiar posición de una reserva existente
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'exception' => 'Exception',
+              'pdo' => 'PDO',
+              'datetime' => 'DateTime',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'bookingId',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+            1 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'newPositionId',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        37 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'requiresPositionSelection',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Verificar si una clase requiere selección de posición
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'exception' => 'Exception',
+              'pdo' => 'PDO',
+              'datetime' => 'DateTime',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'classId',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        38 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getClassesWithRooms',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Obtener clases con información de salas
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'exception' => 'Exception',
+              'pdo' => 'PDO',
+              'datetime' => 'DateTime',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'filters',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => true,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        39 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'addToWaitlistEnhanced',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Agregar usuario a lista de espera
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'exception' => 'Exception',
+              'pdo' => 'PDO',
+              'datetime' => 'DateTime',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'scheduleId',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+            1 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'userId',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+            2 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'bookingDate',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+      ),
+       'attributes' => 
+      array (
+      ),
+    )),
+  ),
+  'C:\\trabajos\\stylofitness\\app\\Models\\Gym.php' => 
+  array (
+    0 => 
+    \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state(array(
+       'name' => 'StyleFitness\\Models\\Gym',
+       'phpDoc' => 
+      \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+         'phpDocString' => '/**
+ * Modelo de Gimnasios - STYLOFITNESS
+ * Gestión de información de gimnasios
+ */',
+         'namespace' => 'StyleFitness\\Models',
+         'uses' => 
+        array (
+          'database' => 'StyleFitness\\Config\\Database',
+          'exception' => 'Exception',
+          'pdo' => 'PDO',
+        ),
+         'constUses' => 
+        array (
+        ),
+      )),
+       'abstract' => false,
+       'final' => false,
+       'extends' => NULL,
+       'implements' => 
+      array (
+      ),
+       'usedTraits' => 
+      array (
+      ),
+       'traitUseAdaptations' => 
+      array (
+      ),
+       'statements' => 
+      array (
+        0 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => '__construct',
+           'phpDoc' => NULL,
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        1 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'create',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Crear un nuevo gimnasio
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'exception' => 'Exception',
+              'pdo' => 'PDO',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'data',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        2 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getById',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Obtener gimnasio por ID
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'exception' => 'Exception',
+              'pdo' => 'PDO',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'id',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        3 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getActive',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Obtener todos los gimnasios activos
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'exception' => 'Exception',
+              'pdo' => 'PDO',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        4 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getDefault',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Obtener el primer gimnasio activo (para sitios con un solo gimnasio)
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'exception' => 'Exception',
+              'pdo' => 'PDO',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        5 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'update',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Actualizar información del gimnasio
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'exception' => 'Exception',
+              'pdo' => 'PDO',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'id',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+            1 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'data',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        6 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'delete',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Eliminar gimnasio
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'exception' => 'Exception',
+              'pdo' => 'PDO',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'id',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        7 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'toggleStatus',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Cambiar estado activo/inactivo
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'exception' => 'Exception',
+              'pdo' => 'PDO',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'id',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        8 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getSettings',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Obtener configuración del gimnasio
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'exception' => 'Exception',
+              'pdo' => 'PDO',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'gymId',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => true,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        9 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'updateSettings',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Actualizar configuración del gimnasio
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'exception' => 'Exception',
+              'pdo' => 'PDO',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'gymId',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+            1 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'settings',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        10 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'hasGyms',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Verificar si existe al menos un gimnasio
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'exception' => 'Exception',
+              'pdo' => 'PDO',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        11 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getStats',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Obtener estadísticas básicas
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'exception' => 'Exception',
+              'pdo' => 'PDO',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        12 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getActiveGyms',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Alias para getActive() - compatibilidad con LandingController
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'exception' => 'Exception',
+              'pdo' => 'PDO',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+      ),
+       'attributes' => 
+      array (
+      ),
+    )),
+  ),
+  'C:\\trabajos\\stylofitness\\app\\Models\\LandingPageConfig.php' => 
+  array (
+    0 => 
+    \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state(array(
+       'name' => 'StyleFitness\\Models\\LandingPageConfig',
+       'phpDoc' => 
+      \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+         'phpDocString' => '/**
+ * Modelo para gestionar configuración de la landing page
+ * STYLOFITNESS - Sistema de Gestión de Contenido
+ */',
+         'namespace' => 'StyleFitness\\Models',
+         'uses' => 
+        array (
+          'database' => 'StyleFitness\\Config\\Database',
+          'pdo' => 'PDO',
+          'exception' => 'Exception',
+        ),
+         'constUses' => 
+        array (
+        ),
+      )),
+       'abstract' => false,
+       'final' => false,
+       'extends' => NULL,
+       'implements' => 
+      array (
+      ),
+       'usedTraits' => 
+      array (
+      ),
+       'traitUseAdaptations' => 
+      array (
+      ),
+       'statements' => 
+      array (
+        0 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => '__construct',
+           'phpDoc' => NULL,
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        1 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getBySection',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Obtener configuración por sección
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'pdo' => 'PDO',
+              'exception' => 'Exception',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'section',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        2 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getAllActiveConfig',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Obtener toda la configuración activa
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'pdo' => 'PDO',
+              'exception' => 'Exception',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        3 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'create',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Crear nueva configuración
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'pdo' => 'PDO',
+              'exception' => 'Exception',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'data',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        4 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'update',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Actualizar configuración
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'pdo' => 'PDO',
+              'exception' => 'Exception',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'id',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+            1 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'data',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        5 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'updateConfigData',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Actualizar solo los datos de configuración
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'pdo' => 'PDO',
+              'exception' => 'Exception',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'section',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+            1 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'settings',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        6 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'delete',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Eliminar configuración
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'pdo' => 'PDO',
+              'exception' => 'Exception',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'id',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        7 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'toggleStatus',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Activar/Desactivar configuración
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'pdo' => 'PDO',
+              'exception' => 'Exception',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'id',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        8 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getHeroConfig',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Obtener configuración del hero/banner principal
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'pdo' => 'PDO',
+              'exception' => 'Exception',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        9 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getStatsConfig',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Obtener configuración de estadísticas
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'pdo' => 'PDO',
+              'exception' => 'Exception',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        10 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getFeaturesConfig',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Obtener configuración de características
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'pdo' => 'PDO',
+              'exception' => 'Exception',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        11 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getCTAConfig',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Obtener configuración de call-to-action
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'pdo' => 'PDO',
+              'exception' => 'Exception',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        12 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getFooterConfig',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Obtener configuración de footer
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'pdo' => 'PDO',
+              'exception' => 'Exception',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        13 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getAll',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Obtener todas las configuraciones (para administración)
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'pdo' => 'PDO',
+              'exception' => 'Exception',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'page',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => true,
+               'attributes' => 
+              array (
+              ),
+            )),
+            1 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'limit',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => true,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        14 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getTotalCount',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Contar total de configuraciones
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'pdo' => 'PDO',
+              'exception' => 'Exception',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        15 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'search',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Buscar configuraciones
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'pdo' => 'PDO',
+              'exception' => 'Exception',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'term',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+            1 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'limit',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => true,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        16 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'updateDisplayOrder',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Actualizar orden de visualización
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'pdo' => 'PDO',
+              'exception' => 'Exception',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'id',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+            1 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'order',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        17 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getByStatus',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Obtener configuraciones por estado
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'pdo' => 'PDO',
+              'exception' => 'Exception',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'is_enabled',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => true,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        18 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'sectionExists',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Verificar si existe una sección
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'pdo' => 'PDO',
+              'exception' => 'Exception',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'section',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        19 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getById',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Obtener configuración por ID
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'pdo' => 'PDO',
+              'exception' => 'Exception',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'id',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        20 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getStats',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Obtener estadísticas de configuración
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'pdo' => 'PDO',
+              'exception' => 'Exception',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        21 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'duplicate',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Duplicar configuración
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'pdo' => 'PDO',
+              'exception' => 'Exception',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'id',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+            1 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'new_section',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => true,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        22 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'exportConfig',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Exportar configuración
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'pdo' => 'PDO',
+              'exception' => 'Exception',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'section',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => true,
                'attributes' => 
               array (
               ),
@@ -18171,6 +26848,39 @@ return [
           array (
           ),
         )),
+        23 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getActiveCategories',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Obtener categorías activas
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'exception' => 'Exception',
+              'pdo' => 'PDO',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
       ),
        'attributes' => 
       array (
@@ -18874,6 +27584,1397 @@ return [
       ),
     )),
   ),
+  'C:\\trabajos\\stylofitness\\app\\Models\\Room.php' => 
+  array (
+    0 => 
+    \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state(array(
+       'name' => 'StyleFitness\\Models\\Room',
+       'phpDoc' => 
+      \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+         'phpDocString' => '/**
+ * Modelo de Salas - STYLOFITNESS
+ * Gestión de salas, posiciones específicas y control de aforo
+ */',
+         'namespace' => 'StyleFitness\\Models',
+         'uses' => 
+        array (
+          'database' => 'StyleFitness\\Config\\Database',
+          'exception' => 'Exception',
+          'pdo' => 'PDO',
+        ),
+         'constUses' => 
+        array (
+        ),
+      )),
+       'abstract' => false,
+       'final' => false,
+       'extends' => NULL,
+       'implements' => 
+      array (
+      ),
+       'usedTraits' => 
+      array (
+      ),
+       'traitUseAdaptations' => 
+      array (
+      ),
+       'statements' => 
+      array (
+        0 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => '__construct',
+           'phpDoc' => NULL,
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        1 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'create',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Crear una nueva sala
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'exception' => 'Exception',
+              'pdo' => 'PDO',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'data',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        2 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'findById',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Obtener sala por ID
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'exception' => 'Exception',
+              'pdo' => 'PDO',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'id',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        3 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'update',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Actualizar sala
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'exception' => 'Exception',
+              'pdo' => 'PDO',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'id',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+            1 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'data',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        4 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getRooms',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Obtener salas con filtros
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'exception' => 'Exception',
+              'pdo' => 'PDO',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'filters',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => true,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        5 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'countRooms',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Contar salas
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'exception' => 'Exception',
+              'pdo' => 'PDO',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'filters',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => true,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        6 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getRoomPositions',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Obtener posiciones de una sala
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'exception' => 'Exception',
+              'pdo' => 'PDO',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'roomId',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+            1 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'includeAvailability',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => true,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        7 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'createPosition',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Crear posición en sala
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'exception' => 'Exception',
+              'pdo' => 'PDO',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'data',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        8 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'updatePosition',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Actualizar posición
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'exception' => 'Exception',
+              'pdo' => 'PDO',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'id',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+            1 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'data',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        9 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'deletePosition',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Eliminar posición
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'exception' => 'Exception',
+              'pdo' => 'PDO',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'id',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        10 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getPositionAvailability',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Obtener disponibilidad de posiciones para una clase específica
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'exception' => 'Exception',
+              'pdo' => 'PDO',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'roomId',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+            1 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'scheduleId',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+            2 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'bookingDate',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        11 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'reservePosition',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Reservar posición específica
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'exception' => 'Exception',
+              'pdo' => 'PDO',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'bookingId',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+            1 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'positionId',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        12 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'cancelPositionReservation',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Cancelar reserva de posición
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'exception' => 'Exception',
+              'pdo' => 'PDO',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'bookingId',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+            1 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'positionId',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => true,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        13 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getRoomStats',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Obtener estadísticas de una sala
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'exception' => 'Exception',
+              'pdo' => 'PDO',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'id',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        14 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'delete',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Eliminar sala
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'exception' => 'Exception',
+              'pdo' => 'PDO',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'id',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        15 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'validateRoom',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Validar datos de sala
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'exception' => 'Exception',
+              'pdo' => 'PDO',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'data',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        16 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getRoomTypes',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Obtener tipos de sala disponibles
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'exception' => 'Exception',
+              'pdo' => 'PDO',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        17 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getPositionTypes',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Obtener tipos de posición disponibles
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'exception' => 'Exception',
+              'pdo' => 'PDO',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        18 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getRoomsByGym',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Obtener salas por gimnasio
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'exception' => 'Exception',
+              'pdo' => 'PDO',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'gymId',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        19 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'checkRoomAvailability',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Verificar disponibilidad de sala para una fecha y horario
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'exception' => 'Exception',
+              'pdo' => 'PDO',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'roomId',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+            1 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'date',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+            2 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'startTime',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+            3 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'endTime',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+            4 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'excludeClassId',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => true,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        20 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getAvailablePositions',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Obtener posiciones disponibles para una clase específica
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'exception' => 'Exception',
+              'pdo' => 'PDO',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'roomId',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+            1 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'scheduleId',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => true,
+               'attributes' => 
+              array (
+              ),
+            )),
+            2 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'bookingDate',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => true,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        21 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getRoomLayout',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Obtener layout completo de la sala
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'exception' => 'Exception',
+              'pdo' => 'PDO',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'roomId',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        22 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getOccupiedPositions',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Obtener posiciones ocupadas para una clase específica
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'exception' => 'Exception',
+              'pdo' => 'PDO',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'scheduleId',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+            1 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'bookingDate',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        23 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'isPositionAvailable',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Verificar si una posición específica está disponible
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'exception' => 'Exception',
+              'pdo' => 'PDO',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'positionId',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+            1 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'scheduleId',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+            2 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'bookingDate',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        24 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'createTempReservation',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Crear reserva temporal de posición
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'exception' => 'Exception',
+              'pdo' => 'PDO',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'positionId',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+            1 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'scheduleId',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+            2 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'bookingDate',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+            3 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'userId',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        25 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'cleanExpiredTempReservations',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Limpiar reservas temporales expiradas
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'exception' => 'Exception',
+              'pdo' => 'PDO',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        26 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'confirmTempReservation',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Confirmar reserva temporal
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'exception' => 'Exception',
+              'pdo' => 'PDO',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'tempReservationId',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+            1 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'bookingId',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+      ),
+       'attributes' => 
+      array (
+      ),
+    )),
+  ),
   'C:\\trabajos\\stylofitness\\app\\Models\\Routine.php' => 
   array (
     0 => 
@@ -19370,6 +29471,270 @@ return [
         )),
         10 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getTemplates',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Obtener plantillas de rutinas
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'exception' => 'Exception',
+              'pdo' => 'PDO',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'limit',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => true,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        11 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'countTemplates',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Contar plantillas de rutinas
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'exception' => 'Exception',
+              'pdo' => 'PDO',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        12 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'createTemplate',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Crear plantilla de rutina
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'exception' => 'Exception',
+              'pdo' => 'PDO',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'data',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        13 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getTemplateExercisesByZone',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Obtener ejercicios de plantilla por zona corporal
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'exception' => 'Exception',
+              'pdo' => 'PDO',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'templateId',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+            1 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'zone',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        14 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'addExerciseToTemplate',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Agregar ejercicio a plantilla
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'exception' => 'Exception',
+              'pdo' => 'PDO',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'data',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        15 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'removeAllTemplateExercises',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Eliminar todos los ejercicios de una plantilla
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'exception' => 'Exception',
+              'pdo' => 'PDO',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'templateId',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        16 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'getRoutineExercises',
            'phpDoc' => 
           \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
@@ -19412,7 +29777,7 @@ return [
           array (
           ),
         )),
-        11 => 
+        17 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'addExerciseToRoutine',
            'phpDoc' => 
@@ -19456,7 +29821,7 @@ return [
           array (
           ),
         )),
-        12 => 
+        18 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'removeAllExercisesFromRoutine',
            'phpDoc' => 
@@ -19500,7 +29865,7 @@ return [
           array (
           ),
         )),
-        13 => 
+        19 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'update',
            'phpDoc' => 
@@ -19555,7 +29920,7 @@ return [
           array (
           ),
         )),
-        14 => 
+        20 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'delete',
            'phpDoc' => 
@@ -19599,7 +29964,7 @@ return [
           array (
           ),
         )),
-        15 => 
+        21 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'logWorkout',
            'phpDoc' => 
@@ -19643,7 +30008,7 @@ return [
           array (
           ),
         )),
-        16 => 
+        22 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'getClientProgress',
            'phpDoc' => 
@@ -19698,7 +30063,7 @@ return [
           array (
           ),
         )),
-        17 => 
+        23 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'getRoutineStats',
            'phpDoc' => 
@@ -19742,7 +30107,7 @@ return [
           array (
           ),
         )),
-        18 => 
+        24 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'getRoutinesByObjective',
            'phpDoc' => 
@@ -19797,7 +30162,7 @@ return [
           array (
           ),
         )),
-        19 => 
+        25 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'duplicate',
            'phpDoc' => 
@@ -19852,7 +30217,7 @@ return [
           array (
           ),
         )),
-        20 => 
+        26 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'validateRoutine',
            'phpDoc' => 
@@ -19896,7 +30261,7 @@ return [
           array (
           ),
         )),
-        21 => 
+        27 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'getClientStats',
            'phpDoc' => 
@@ -19940,7 +30305,7 @@ return [
           array (
           ),
         )),
-        22 => 
+        28 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'getInstructorStats',
            'phpDoc' => 
@@ -19984,7 +30349,7 @@ return [
           array (
           ),
         )),
-        23 => 
+        29 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'getGlobalStats',
            'phpDoc' => 
@@ -20012,6 +30377,1435 @@ return [
            'returnType' => NULL,
            'parameters' => 
           array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        30 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getClientActiveRoutines',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Obtener rutinas activas de un cliente
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'exception' => 'Exception',
+              'pdo' => 'PDO',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'clientId',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+      ),
+       'attributes' => 
+      array (
+      ),
+    )),
+  ),
+  'C:\\trabajos\\stylofitness\\app\\Models\\SpecialOffer.php' => 
+  array (
+    0 => 
+    \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state(array(
+       'name' => 'StyleFitness\\Models\\SpecialOffer',
+       'phpDoc' => 
+      \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+         'phpDocString' => '/**
+ * Modelo para gestionar ofertas especiales
+ * STYLOFITNESS - Sistema de Gestión de Contenido
+ */',
+         'namespace' => 'StyleFitness\\Models',
+         'uses' => 
+        array (
+          'database' => 'StyleFitness\\Config\\Database',
+          'pdo' => 'PDO',
+          'exception' => 'Exception',
+        ),
+         'constUses' => 
+        array (
+        ),
+      )),
+       'abstract' => false,
+       'final' => false,
+       'extends' => NULL,
+       'implements' => 
+      array (
+      ),
+       'usedTraits' => 
+      array (
+      ),
+       'traitUseAdaptations' => 
+      array (
+      ),
+       'statements' => 
+      array (
+        0 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => '__construct',
+           'phpDoc' => NULL,
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        1 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getActiveOffers',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Obtener todas las ofertas activas
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'pdo' => 'PDO',
+              'exception' => 'Exception',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'limit',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => true,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        2 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getById',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Obtener oferta por ID
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'pdo' => 'PDO',
+              'exception' => 'Exception',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'id',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        3 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'create',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Crear nueva oferta
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'pdo' => 'PDO',
+              'exception' => 'Exception',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'data',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        4 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'update',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Actualizar oferta
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'pdo' => 'PDO',
+              'exception' => 'Exception',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'id',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+            1 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'data',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        5 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'delete',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Eliminar oferta
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'pdo' => 'PDO',
+              'exception' => 'Exception',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'id',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        6 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'toggleStatus',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Activar/Desactivar oferta
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'pdo' => 'PDO',
+              'exception' => 'Exception',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'id',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        7 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getAll',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Obtener todas las ofertas (para administración)
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'pdo' => 'PDO',
+              'exception' => 'Exception',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'page',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => true,
+               'attributes' => 
+              array (
+              ),
+            )),
+            1 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'limit',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => true,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        8 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getTotalCount',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Contar total de ofertas
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'pdo' => 'PDO',
+              'exception' => 'Exception',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        9 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'isOfferValid',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Verificar si una oferta está vigente
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'pdo' => 'PDO',
+              'exception' => 'Exception',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'id',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        10 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'updateDisplayOrder',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Actualizar orden de visualización
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'pdo' => 'PDO',
+              'exception' => 'Exception',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'id',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+            1 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'order',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        11 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getExpiringOffers',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Obtener ofertas próximas a vencer
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'pdo' => 'PDO',
+              'exception' => 'Exception',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'days',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => true,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        12 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getFeaturedOffers',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Obtener ofertas destacadas
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'pdo' => 'PDO',
+              'exception' => 'Exception',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'limit',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => true,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+      ),
+       'attributes' => 
+      array (
+      ),
+    )),
+  ),
+  'C:\\trabajos\\stylofitness\\app\\Models\\Testimonial.php' => 
+  array (
+    0 => 
+    \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state(array(
+       'name' => 'StyleFitness\\Models\\Testimonial',
+       'phpDoc' => 
+      \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+         'phpDocString' => '/**
+ * Modelo para gestionar testimonios
+ * STYLOFITNESS - Sistema de Gestión de Contenido
+ */',
+         'namespace' => 'StyleFitness\\Models',
+         'uses' => 
+        array (
+          'database' => 'StyleFitness\\Config\\Database',
+          'pdo' => 'PDO',
+          'exception' => 'Exception',
+        ),
+         'constUses' => 
+        array (
+        ),
+      )),
+       'abstract' => false,
+       'final' => false,
+       'extends' => NULL,
+       'implements' => 
+      array (
+      ),
+       'usedTraits' => 
+      array (
+      ),
+       'traitUseAdaptations' => 
+      array (
+      ),
+       'statements' => 
+      array (
+        0 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => '__construct',
+           'phpDoc' => NULL,
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        1 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getActiveTestimonials',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Obtener testimonios activos
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'pdo' => 'PDO',
+              'exception' => 'Exception',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'limit',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => true,
+               'attributes' => 
+              array (
+              ),
+            )),
+            1 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'featured_only',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => true,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        2 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getFeaturedTestimonials',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Obtener testimonios destacados para la landing
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'pdo' => 'PDO',
+              'exception' => 'Exception',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'limit',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => true,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        3 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getById',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Obtener testimonial por ID
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'pdo' => 'PDO',
+              'exception' => 'Exception',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'id',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        4 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'create',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Crear nuevo testimonial
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'pdo' => 'PDO',
+              'exception' => 'Exception',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'data',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        5 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'update',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Actualizar testimonial
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'pdo' => 'PDO',
+              'exception' => 'Exception',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'id',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+            1 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'data',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        6 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'delete',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Eliminar testimonial
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'pdo' => 'PDO',
+              'exception' => 'Exception',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'id',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        7 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'toggleStatus',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Activar/Desactivar testimonial
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'pdo' => 'PDO',
+              'exception' => 'Exception',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'id',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        8 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'toggleFeatured',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Marcar/Desmarcar como destacado
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'pdo' => 'PDO',
+              'exception' => 'Exception',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'id',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        9 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getAll',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Obtener todos los testimonials (para administración)
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'pdo' => 'PDO',
+              'exception' => 'Exception',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'page',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => true,
+               'attributes' => 
+              array (
+              ),
+            )),
+            1 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'limit',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => true,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        10 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getTotalCount',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Contar total de testimonials
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'pdo' => 'PDO',
+              'exception' => 'Exception',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        11 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getStats',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Obtener estadísticas de testimonials
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'pdo' => 'PDO',
+              'exception' => 'Exception',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        12 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'search',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Buscar testimonials
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'pdo' => 'PDO',
+              'exception' => 'Exception',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'term',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+            1 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'limit',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => true,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        13 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'updateDisplayOrder',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Actualizar orden de visualización
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'pdo' => 'PDO',
+              'exception' => 'Exception',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'id',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+            1 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'order',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        14 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getByRating',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Obtener testimonials por rating
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'pdo' => 'PDO',
+              'exception' => 'Exception',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'rating',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+            1 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'limit',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => true,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        15 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getRecent',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Obtener testimonials recientes
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'pdo' => 'PDO',
+              'exception' => 'Exception',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'days',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => true,
+               'attributes' => 
+              array (
+              ),
+            )),
+            1 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'limit',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => true,
+               'attributes' => 
+              array (
+              ),
+            )),
           ),
            'attributes' => 
           array (
@@ -20265,6 +32059,52 @@ return [
         )),
         5 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'findByEmailOrUsername',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Buscar usuario por email o username (para login flexible)
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'apphelper' => 'StyleFitness\\Helpers\\AppHelper',
+              'exception' => 'Exception',
+              'pdo' => 'PDO',
+              'datetime' => 'DateTime',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'identifier',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        6 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'emailExists',
            'phpDoc' => 
           \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
@@ -20320,7 +32160,7 @@ return [
           array (
           ),
         )),
-        6 => 
+        7 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'usernameExists',
            'phpDoc' => 
@@ -20377,7 +32217,7 @@ return [
           array (
           ),
         )),
-        7 => 
+        8 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'update',
            'phpDoc' => 
@@ -20434,7 +32274,7 @@ return [
           array (
           ),
         )),
-        8 => 
+        9 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'updatePassword',
            'phpDoc' => 
@@ -20491,7 +32331,7 @@ return [
           array (
           ),
         )),
-        9 => 
+        10 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'getUsers',
            'phpDoc' => 
@@ -20537,7 +32377,7 @@ return [
           array (
           ),
         )),
-        10 => 
+        11 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'countUsers',
            'phpDoc' => 
@@ -20583,7 +32423,7 @@ return [
           array (
           ),
         )),
-        11 => 
+        12 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'getInstructorClients',
            'phpDoc' => 
@@ -20629,7 +32469,7 @@ return [
           array (
           ),
         )),
-        12 => 
+        13 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'getUserStats',
            'phpDoc' => 
@@ -20675,7 +32515,7 @@ return [
           array (
           ),
         )),
-        13 => 
+        14 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'toggleStatus',
            'phpDoc' => 
@@ -20721,7 +32561,7 @@ return [
           array (
           ),
         )),
-        14 => 
+        15 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'delete',
            'phpDoc' => 
@@ -20767,7 +32607,7 @@ return [
           array (
           ),
         )),
-        15 => 
+        16 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'extendMembership',
            'phpDoc' => 
@@ -20824,7 +32664,7 @@ return [
           array (
           ),
         )),
-        16 => 
+        17 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'hasMembershipActive',
            'phpDoc' => 
@@ -20870,7 +32710,7 @@ return [
           array (
           ),
         )),
-        17 => 
+        18 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'uploadProfileImage',
            'phpDoc' => 
@@ -20927,7 +32767,7 @@ return [
           array (
           ),
         )),
-        18 => 
+        19 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'getRecentActivity',
            'phpDoc' => 
@@ -20984,7 +32824,7 @@ return [
           array (
           ),
         )),
-        19 => 
+        20 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'logActivity',
            'phpDoc' => 
@@ -21040,6 +32880,1303 @@ return [
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'details',
                'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => true,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+      ),
+       'attributes' => 
+      array (
+      ),
+    )),
+  ),
+  'C:\\trabajos\\stylofitness\\app\\Models\\WhyChooseUs.php' => 
+  array (
+    0 => 
+    \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state(array(
+       'name' => 'StyleFitness\\Models\\WhyChooseUs',
+       'phpDoc' => 
+      \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+         'phpDocString' => '/**
+ * Modelo para gestionar características "Por qué elegirnos"
+ * STYLOFITNESS - Sistema de Gestión de Contenido
+ */',
+         'namespace' => 'StyleFitness\\Models',
+         'uses' => 
+        array (
+          'database' => 'StyleFitness\\Config\\Database',
+          'pdo' => 'PDO',
+          'exception' => 'Exception',
+        ),
+         'constUses' => 
+        array (
+        ),
+      )),
+       'abstract' => false,
+       'final' => false,
+       'extends' => NULL,
+       'implements' => 
+      array (
+      ),
+       'usedTraits' => 
+      array (
+      ),
+       'traitUseAdaptations' => 
+      array (
+      ),
+       'statements' => 
+      array (
+        0 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => '__construct',
+           'phpDoc' => NULL,
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        1 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getActiveFeatures',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Obtener todas las características activas
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'pdo' => 'PDO',
+              'exception' => 'Exception',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'limit',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => true,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        2 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getById',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Obtener característica por ID
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'pdo' => 'PDO',
+              'exception' => 'Exception',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'id',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        3 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'create',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Crear nueva característica
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'pdo' => 'PDO',
+              'exception' => 'Exception',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'data',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        4 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'update',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Actualizar característica
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'pdo' => 'PDO',
+              'exception' => 'Exception',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'id',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+            1 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'data',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        5 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'delete',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Eliminar característica
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'pdo' => 'PDO',
+              'exception' => 'Exception',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'id',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        6 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'toggleStatus',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Activar/Desactivar característica
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'pdo' => 'PDO',
+              'exception' => 'Exception',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'id',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        7 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getAll',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Obtener todas las características (para administración)
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'pdo' => 'PDO',
+              'exception' => 'Exception',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'page',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => true,
+               'attributes' => 
+              array (
+              ),
+            )),
+            1 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'limit',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => true,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        8 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getTotalCount',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Contar total de características
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'pdo' => 'PDO',
+              'exception' => 'Exception',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        9 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'updateDisplayOrder',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Actualizar orden de visualización
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'pdo' => 'PDO',
+              'exception' => 'Exception',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'id',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+            1 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'order',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        10 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getFeaturesWithProcessedStats',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Obtener características con estadísticas procesadas
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'pdo' => 'PDO',
+              'exception' => 'Exception',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'limit',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => true,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        11 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'search',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Buscar características por término
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'pdo' => 'PDO',
+              'exception' => 'Exception',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'term',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+            1 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'limit',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => true,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+      ),
+       'attributes' => 
+      array (
+      ),
+    )),
+  ),
+  'C:\\trabajos\\stylofitness\\app\\Models\\WorkoutLog.php' => 
+  array (
+    0 => 
+    \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state(array(
+       'name' => 'StyleFitness\\Models\\WorkoutLog',
+       'phpDoc' => 
+      \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+         'phpDocString' => '/**
+ * Modelo WorkoutLog - STYLOFITNESS
+ * Maneja el seguimiento de entrenamientos y progreso de clientes
+ */',
+         'namespace' => 'StyleFitness\\Models',
+         'uses' => 
+        array (
+          'database' => 'StyleFitness\\Config\\Database',
+          'exception' => 'Exception',
+          'pdo' => 'PDO',
+        ),
+         'constUses' => 
+        array (
+        ),
+      )),
+       'abstract' => false,
+       'final' => false,
+       'extends' => NULL,
+       'implements' => 
+      array (
+      ),
+       'usedTraits' => 
+      array (
+      ),
+       'traitUseAdaptations' => 
+      array (
+      ),
+       'statements' => 
+      array (
+        0 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => '__construct',
+           'phpDoc' => NULL,
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        1 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'logExercise',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Registrar un ejercicio completado
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'exception' => 'Exception',
+              'pdo' => 'PDO',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => 'int|false',
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'data',
+               'type' => 'array',
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        2 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getClientWorkoutHistory',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Obtener historial de entrenamientos de un cliente
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'exception' => 'Exception',
+              'pdo' => 'PDO',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => 'array',
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'clientId',
+               'type' => 'int',
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+            1 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'filters',
+               'type' => 'array',
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => true,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        3 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getExerciseProgress',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Obtener progreso de un ejercicio específico
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'exception' => 'Exception',
+              'pdo' => 'PDO',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => 'array',
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'clientId',
+               'type' => 'int',
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+            1 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'exerciseId',
+               'type' => 'int',
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+            2 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'days',
+               'type' => 'int',
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => true,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        4 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getClientProgressStats',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Obtener estadísticas de progreso de un cliente
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'exception' => 'Exception',
+              'pdo' => 'PDO',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => 'array',
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'clientId',
+               'type' => 'int',
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+            1 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'days',
+               'type' => 'int',
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => true,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        5 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getDailyActivitySummary',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Obtener resumen de actividad por día
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'exception' => 'Exception',
+              'pdo' => 'PDO',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => 'array',
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'clientId',
+               'type' => 'int',
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+            1 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'days',
+               'type' => 'int',
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => true,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        6 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getProgressComparison',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Obtener comparativa de progreso entre períodos
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'exception' => 'Exception',
+              'pdo' => 'PDO',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => 'array',
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'clientId',
+               'type' => 'int',
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+            1 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'currentDays',
+               'type' => 'int',
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => true,
+               'attributes' => 
+              array (
+              ),
+            )),
+            2 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'previousDays',
+               'type' => 'int',
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => true,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        7 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getTrainerActiveClients',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Obtener clientes más activos de un entrenador
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'exception' => 'Exception',
+              'pdo' => 'PDO',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => 'array',
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'trainerId',
+               'type' => 'int',
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+            1 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'days',
+               'type' => 'int',
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => true,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        8 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getProgressAlerts',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Obtener alertas de progreso para entrenadores
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'exception' => 'Exception',
+              'pdo' => 'PDO',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => 'array',
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'trainerId',
+               'type' => 'int',
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        9 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'cleanOldLogs',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Eliminar logs antiguos (limpieza de datos)
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'exception' => 'Exception',
+              'pdo' => 'PDO',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => 'bool',
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'daysToKeep',
+               'type' => 'int',
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => true,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        10 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getExerciseStats',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Obtener estadísticas de un ejercicio específico
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'exception' => 'Exception',
+              'pdo' => 'PDO',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => 'array',
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'exerciseId',
+               'type' => 'int',
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+            1 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'clientId',
+               'type' => '?int',
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => true,
+               'attributes' => 
+              array (
+              ),
+            )),
+            2 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'days',
+               'type' => 'int',
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => true,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        11 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getClientRecentWorkouts',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Obtener entrenamientos recientes de un cliente
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'exception' => 'Exception',
+              'pdo' => 'PDO',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => 'array',
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'clientId',
+               'type' => 'int',
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+            1 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'limit',
+               'type' => 'int',
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => true,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        12 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getClientExerciseStats',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Obtener estadísticas de ejercicios de un cliente
+     */',
+             'namespace' => 'StyleFitness\\Models',
+             'uses' => 
+            array (
+              'database' => 'StyleFitness\\Config\\Database',
+              'exception' => 'Exception',
+              'pdo' => 'PDO',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => 'array',
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'clientId',
+               'type' => 'int',
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+            1 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'days',
+               'type' => 'int',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => true,

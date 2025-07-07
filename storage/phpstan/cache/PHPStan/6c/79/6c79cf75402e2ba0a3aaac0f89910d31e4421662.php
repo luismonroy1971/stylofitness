@@ -7,7 +7,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
   array (
     'C:\\trabajos\\stylofitness\\app\\Config\\App.php' => 
     array (
-      0 => '05179fef87a26ba3bf14f26c5ecb9ce048a524e9',
+      0 => 'a56e3a8dcffb61bcb924a98bd93b3060a9da7d40',
       1 => 
       array (
         0 => 'appconfig',
@@ -63,7 +63,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     'C:\\trabajos\\stylofitness\\app\\Config\\Cache.php' => 
     array (
-      0 => '59defd31615306726c1470ba6cd844b1d306c8c3',
+      0 => 'cde488df4192da035207d84421bad866f5f23d1a',
       1 => 
       array (
       ),
@@ -106,7 +106,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     'C:\\trabajos\\stylofitness\\app\\Config\\Database.php' => 
     array (
-      0 => 'b5678deb9f2450fc94a60036707b97e156bf00ae',
+      0 => 'e513ad02c2626929794997987c9979d38c652d3c',
       1 => 
       array (
         0 => 'stylefitness\\config\\database',
@@ -132,7 +132,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     'C:\\trabajos\\stylofitness\\app\\Config\\Environment.php' => 
     array (
-      0 => 'b1e009553625413796cbf42e488a70d3806d74c1',
+      0 => '81deb0d2d61da7f0fb1739f9d2fb9becb7c64b89',
       1 => 
       array (
         0 => 'stylefitness\\config\\environment',
@@ -218,7 +218,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     'C:\\trabajos\\stylofitness\\app\\Config\\Optimize.php' => 
     array (
-      0 => 'f3f75c01ffe3efb8917c2bc208016e7c0721f225',
+      0 => '74f7b5a170f438f25995a30385e328aab95a8cd3',
       1 => 
       array (
       ),
@@ -231,7 +231,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     'C:\\trabajos\\stylofitness\\app\\Config\\RoutineConfig.php' => 
     array (
-      0 => '5199b6cec57f2be1382c95f7302cc705982511c1',
+      0 => 'd6eb3c9f77b21bde869d61501be8e6c688ec5a28',
       1 => 
       array (
       ),
@@ -298,7 +298,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     'C:\\trabajos\\stylofitness\\app\\Config\\Session.php' => 
     array (
-      0 => 'c56b535e24ea897f152ed1b04f4e8bb2b6ab9745',
+      0 => 'd455181b4fa1c03a4daa33c9ef8014e9e56f4afa',
       1 => 
       array (
       ),
@@ -311,7 +311,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     'C:\\trabajos\\stylofitness\\app\\Controllers\\AdminController.php' => 
     array (
-      0 => '59d1a9c15cfc51a044e625dbfe9e389b823c5314',
+      0 => 'aefa5c34188dba79f276d96b4d81463bd304b19c',
       1 => 
       array (
         0 => 'stylefitness\\controllers\\admincontroller',
@@ -328,31 +328,34 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
         6 => 'stylefitness\\controllers\\updateuser',
         7 => 'stylefitness\\controllers\\deleteuser',
         8 => 'stylefitness\\controllers\\products',
-        9 => 'stylefitness\\controllers\\createproduct',
-        10 => 'stylefitness\\controllers\\storeproduct',
-        11 => 'stylefitness\\controllers\\editproduct',
-        12 => 'stylefitness\\controllers\\updateproduct',
-        13 => 'stylefitness\\controllers\\orders',
-        14 => 'stylefitness\\controllers\\routines',
-        15 => 'stylefitness\\controllers\\exercises',
-        16 => 'stylefitness\\controllers\\classes',
-        17 => 'stylefitness\\controllers\\reports',
-        18 => 'stylefitness\\controllers\\settings',
-        19 => 'stylefitness\\controllers\\updatesettings',
-        20 => 'stylefitness\\controllers\\getdashboardstats',
-        21 => 'stylefitness\\controllers\\getchartdata',
-        22 => 'stylefitness\\controllers\\getrecentactivity',
-        23 => 'stylefitness\\controllers\\getsystemalerts',
-        24 => 'stylefitness\\controllers\\calculatepagination',
-        25 => 'stylefitness\\controllers\\processproductimages',
-        26 => 'stylefitness\\controllers\\getsalesreport',
-        27 => 'stylefitness\\controllers\\getusersreport',
-        28 => 'stylefitness\\controllers\\getroutinesreport',
-        29 => 'stylefitness\\controllers\\getoverviewreport',
-        30 => 'stylefitness\\controllers\\__construct',
-        31 => 'stylefitness\\controllers\\getallsettings',
-        32 => 'stylefitness\\controllers\\getsetting',
-        33 => 'stylefitness\\controllers\\updatesetting',
+        9 => 'stylefitness\\controllers\\getproductsajax',
+        10 => 'stylefitness\\controllers\\createproduct',
+        11 => 'stylefitness\\controllers\\storeproduct',
+        12 => 'stylefitness\\controllers\\editproduct',
+        13 => 'stylefitness\\controllers\\updateproduct',
+        14 => 'stylefitness\\controllers\\deleteproduct',
+        15 => 'stylefitness\\controllers\\orders',
+        16 => 'stylefitness\\controllers\\routines',
+        17 => 'stylefitness\\controllers\\exercises',
+        18 => 'stylefitness\\controllers\\classes',
+        19 => 'stylefitness\\controllers\\reports',
+        20 => 'stylefitness\\controllers\\settings',
+        21 => 'stylefitness\\controllers\\updatesettings',
+        22 => 'stylefitness\\controllers\\getdashboardstats',
+        23 => 'stylefitness\\controllers\\getchartdata',
+        24 => 'stylefitness\\controllers\\getrecentactivity',
+        25 => 'stylefitness\\controllers\\getsystemalerts',
+        26 => 'stylefitness\\controllers\\calculatepagination',
+        27 => 'stylefitness\\controllers\\processproductimages',
+        28 => 'stylefitness\\controllers\\getsalesreport',
+        29 => 'stylefitness\\controllers\\getusersreport',
+        30 => 'stylefitness\\controllers\\getroutinesreport',
+        31 => 'stylefitness\\controllers\\getoverviewreport',
+        32 => 'stylefitness\\controllers\\isajaxrequest',
+        33 => 'stylefitness\\controllers\\__construct',
+        34 => 'stylefitness\\controllers\\getallsettings',
+        35 => 'stylefitness\\controllers\\getsetting',
+        36 => 'stylefitness\\controllers\\updatesetting',
       ),
       3 => 
       array (
@@ -360,7 +363,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     'C:\\trabajos\\stylofitness\\app\\Controllers\\ApiController.php' => 
     array (
-      0 => 'ea5ddc83921b44e61d97bc5e58131c640c2e8397',
+      0 => '8243ca92b4b4fff9472893834680b7c90b033209',
       1 => 
       array (
         0 => 'stylefitness\\controllers\\apicontroller',
@@ -382,21 +385,31 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
         12 => 'stylefitness\\controllers\\users',
         13 => 'stylefitness\\controllers\\clients',
         14 => 'stylefitness\\controllers\\instructors',
-        15 => 'stylefitness\\controllers\\dashboardstats',
-        16 => 'stylefitness\\controllers\\routinestats',
-        17 => 'stylefitness\\controllers\\salesstats',
-        18 => 'stylefitness\\controllers\\uploadimage',
-        19 => 'stylefitness\\controllers\\uploadvideo',
-        20 => 'stylefitness\\controllers\\uploaddocument',
-        21 => 'stylefitness\\controllers\\requireauth',
-        22 => 'stylefitness\\controllers\\jsonresponse',
-        23 => 'stylefitness\\controllers\\getjsoninput',
-        24 => 'stylefitness\\controllers\\canviewroutine',
-        25 => 'stylefitness\\controllers\\caneditroutine',
-        26 => 'stylefitness\\controllers\\processroutineexercises',
-        27 => 'stylefitness\\controllers\\getadminstats',
-        28 => 'stylefitness\\controllers\\getinstructorstats',
-        29 => 'stylefitness\\controllers\\getclientstats',
+        15 => 'stylefitness\\controllers\\classes',
+        16 => 'stylefitness\\controllers\\upcomingclasses',
+        17 => 'stylefitness\\controllers\\getclass',
+        18 => 'stylefitness\\controllers\\getclassschedule',
+        19 => 'stylefitness\\controllers\\getscheduleavailability',
+        20 => 'stylefitness\\controllers\\stats',
+        21 => 'stylefitness\\controllers\\dashboardstats',
+        22 => 'stylefitness\\controllers\\routinestats',
+        23 => 'stylefitness\\controllers\\salesstats',
+        24 => 'stylefitness\\controllers\\uploadimage',
+        25 => 'stylefitness\\controllers\\uploadvideo',
+        26 => 'stylefitness\\controllers\\uploaddocument',
+        27 => 'stylefitness\\controllers\\login',
+        28 => 'stylefitness\\controllers\\logout',
+        29 => 'stylefitness\\controllers\\createapisession',
+        30 => 'stylefitness\\controllers\\loguseractivity',
+        31 => 'stylefitness\\controllers\\requireauth',
+        32 => 'stylefitness\\controllers\\jsonresponse',
+        33 => 'stylefitness\\controllers\\getjsoninput',
+        34 => 'stylefitness\\controllers\\canviewroutine',
+        35 => 'stylefitness\\controllers\\caneditroutine',
+        36 => 'stylefitness\\controllers\\processroutineexercises',
+        37 => 'stylefitness\\controllers\\getadminstats',
+        38 => 'stylefitness\\controllers\\getinstructorstats',
+        39 => 'stylefitness\\controllers\\getclientstats',
       ),
       3 => 
       array (
@@ -404,7 +417,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     'C:\\trabajos\\stylofitness\\app\\Controllers\\AuthController.php' => 
     array (
-      0 => 'f57aab0b7fa2ce5d0e18553aec883c98a1dcce43',
+      0 => 'f64f5c42cc000055cc119c23c474387fd845347d',
       1 => 
       array (
         0 => 'stylefitness\\controllers\\authcontroller',
@@ -461,7 +474,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     'C:\\trabajos\\stylofitness\\app\\Controllers\\CheckoutController.php' => 
     array (
-      0 => 'f987100c1e0bb10529d879236fa6fe01b09335f0',
+      0 => 'a6aeb2ac14670f5998eb3577f8232512c191236c',
       1 => 
       array (
         0 => 'stylefitness\\controllers\\checkoutcontroller',
@@ -496,7 +509,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     'C:\\trabajos\\stylofitness\\app\\Controllers\\GroupClassController.php' => 
     array (
-      0 => 'b83d4cdd9fd30f88ff01ee5b89dc953676717fed',
+      0 => '33c8682cf7f141e304aa982c1fbb4da04702c044',
       1 => 
       array (
         0 => 'stylefitness\\controllers\\groupclasscontroller',
@@ -515,6 +528,8 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
         9 => 'stylefitness\\controllers\\hasactivemembership',
         10 => 'stylefitness\\controllers\\sendbookingnotification',
         11 => 'stylefitness\\controllers\\waitlist',
+        12 => 'stylefitness\\controllers\\getroomlayout',
+        13 => 'stylefitness\\controllers\\selectposition',
       ),
       3 => 
       array (
@@ -522,7 +537,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     'C:\\trabajos\\stylofitness\\app\\Controllers\\HomeController.php' => 
     array (
-      0 => '00bd2ac7c4daca146a36c71ce48cde6d157f7e78',
+      0 => '5ddd9103b712d71aab98fe55331114199675f05c',
       1 => 
       array (
         0 => 'stylefitness\\controllers\\homecontroller',
@@ -531,15 +546,17 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
       array (
         0 => 'stylefitness\\controllers\\__construct',
         1 => 'stylefitness\\controllers\\index',
-        2 => 'stylefitness\\controllers\\getfeaturedproducts',
-        3 => 'stylefitness\\controllers\\getpromotionalproducts',
-        4 => 'stylefitness\\controllers\\getupcomingclasses',
-        5 => 'stylefitness\\controllers\\gettestimonials',
-        6 => 'stylefitness\\controllers\\getgymstats',
-        7 => 'stylefitness\\controllers\\dashboard',
-        8 => 'stylefitness\\controllers\\getadmindashboarddata',
-        9 => 'stylefitness\\controllers\\getinstructordashboarddata',
-        10 => 'stylefitness\\controllers\\getclientdashboarddata',
+        2 => 'stylefitness\\controllers\\indexfallback',
+        3 => 'stylefitness\\controllers\\getfeaturedproducts',
+        4 => 'stylefitness\\controllers\\getpromotionalproducts',
+        5 => 'stylefitness\\controllers\\getupcomingclasses',
+        6 => 'stylefitness\\controllers\\gettestimonials',
+        7 => 'stylefitness\\controllers\\getgymstats',
+        8 => 'stylefitness\\controllers\\dashboard',
+        9 => 'stylefitness\\controllers\\getadmindashboarddata',
+        10 => 'stylefitness\\controllers\\getinstructordashboarddata',
+        11 => 'stylefitness\\controllers\\getclientdashboarddata',
+        12 => 'stylefitness\\controllers\\getstaffdashboarddata',
       ),
       3 => 
       array (
@@ -584,7 +601,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     'C:\\trabajos\\stylofitness\\app\\Controllers\\StoreController.php' => 
     array (
-      0 => '021f8867f73aef606e1dea21b283abd96dcc7f33',
+      0 => '86db11ff32e715e412a852ca0168b90c24025548',
       1 => 
       array (
         0 => 'stylefitness\\controllers\\storecontroller',
@@ -611,7 +628,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     'C:\\trabajos\\stylofitness\\app\\Controllers\\WebhookController.php' => 
     array (
-      0 => 'ed647ad08461483b287979ef0f5fd47de9ebfef9',
+      0 => '5ec5639b57f21daca8563b14afe2889f302f10e6',
       1 => 
       array (
         0 => 'stylefitness\\controllers\\webhookcontroller',
@@ -645,7 +662,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     'C:\\trabajos\\stylofitness\\app\\Helpers\\AppHelper.php' => 
     array (
-      0 => '1038ce01f42f779fc3ab4a1796b8321aabd3d609',
+      0 => '9862da10b7ad07107aab1669adb60b4ba124be3a',
       1 => 
       array (
         0 => 'stylefitness\\helpers\\apphelper',
@@ -670,42 +687,44 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
         15 => 'stylefitness\\helpers\\requirerole',
         16 => 'stylefitness\\helpers\\setflashmessage',
         17 => 'stylefitness\\helpers\\getflashmessage',
-        18 => 'stylefitness\\helpers\\hasflashmessages',
-        19 => 'stylefitness\\helpers\\jsonresponse',
-        20 => 'stylefitness\\helpers\\jsonsuccess',
-        21 => 'stylefitness\\helpers\\jsonerror',
-        22 => 'stylefitness\\helpers\\validateemail',
-        23 => 'stylefitness\\helpers\\validatepassword',
-        24 => 'stylefitness\\helpers\\validatephone',
-        25 => 'stylefitness\\helpers\\sanitize',
-        26 => 'stylefitness\\helpers\\cleaninput',
-        27 => 'stylefitness\\helpers\\validatecsrftoken',
-        28 => 'stylefitness\\helpers\\generatecsrftoken',
-        29 => 'stylefitness\\helpers\\verifycsrftoken',
-        30 => 'stylefitness\\helpers\\validateuser',
-        31 => 'stylefitness\\helpers\\formatprice',
-        32 => 'stylefitness\\helpers\\formatdate',
-        33 => 'stylefitness\\helpers\\formatdatetime',
-        34 => 'stylefitness\\helpers\\timeago',
-        35 => 'stylefitness\\helpers\\truncate',
-        36 => 'stylefitness\\helpers\\generateslug',
-        37 => 'stylefitness\\helpers\\createslug',
-        38 => 'stylefitness\\helpers\\formatbytes',
-        39 => 'stylefitness\\helpers\\getfileextension',
-        40 => 'stylefitness\\helpers\\isimage',
-        41 => 'stylefitness\\helpers\\isvideo',
-        42 => 'stylefitness\\helpers\\generateuniquefilename',
-        43 => 'stylefitness\\helpers\\generatepagination',
-        44 => 'stylefitness\\helpers\\buildurl',
-        45 => 'stylefitness\\helpers\\getconfig',
-        46 => 'stylefitness\\helpers\\logactivity',
-        47 => 'stylefitness\\helpers\\getgymthemecolors',
-        48 => 'stylefitness\\helpers\\formatexerciseduration',
-        49 => 'stylefitness\\helpers\\formatdifficulty',
-        50 => 'stylefitness\\helpers\\formatobjective',
-        51 => 'stylefitness\\helpers\\compressimage',
-        52 => 'stylefitness\\helpers\\arraytoxml',
-        53 => 'stylefitness\\helpers\\getappconfig',
+        18 => 'stylefitness\\helpers\\hasflashmessage',
+        19 => 'stylefitness\\helpers\\hasflashmessages',
+        20 => 'stylefitness\\helpers\\jsonresponse',
+        21 => 'stylefitness\\helpers\\jsonsuccess',
+        22 => 'stylefitness\\helpers\\jsonerror',
+        23 => 'stylefitness\\helpers\\validateemail',
+        24 => 'stylefitness\\helpers\\validatepassword',
+        25 => 'stylefitness\\helpers\\validatephone',
+        26 => 'stylefitness\\helpers\\sanitize',
+        27 => 'stylefitness\\helpers\\cleaninput',
+        28 => 'stylefitness\\helpers\\validatecsrftoken',
+        29 => 'stylefitness\\helpers\\generatecsrftoken',
+        30 => 'stylefitness\\helpers\\verifycsrftoken',
+        31 => 'stylefitness\\helpers\\validateuser',
+        32 => 'stylefitness\\helpers\\formatprice',
+        33 => 'stylefitness\\helpers\\formatdate',
+        34 => 'stylefitness\\helpers\\formatdatetime',
+        35 => 'stylefitness\\helpers\\timeago',
+        36 => 'stylefitness\\helpers\\truncate',
+        37 => 'stylefitness\\helpers\\generateslug',
+        38 => 'stylefitness\\helpers\\createslug',
+        39 => 'stylefitness\\helpers\\formatbytes',
+        40 => 'stylefitness\\helpers\\getfileextension',
+        41 => 'stylefitness\\helpers\\isimage',
+        42 => 'stylefitness\\helpers\\isvideo',
+        43 => 'stylefitness\\helpers\\generateuniquefilename',
+        44 => 'stylefitness\\helpers\\generatepagination',
+        45 => 'stylefitness\\helpers\\buildurl',
+        46 => 'stylefitness\\helpers\\getconfig',
+        47 => 'stylefitness\\helpers\\logactivity',
+        48 => 'stylefitness\\helpers\\getgymthemecolors',
+        49 => 'stylefitness\\helpers\\formatexerciseduration',
+        50 => 'stylefitness\\helpers\\formatdifficulty',
+        51 => 'stylefitness\\helpers\\formatobjective',
+        52 => 'stylefitness\\helpers\\compressimage',
+        53 => 'stylefitness\\helpers\\arraytoxml',
+        54 => 'stylefitness\\helpers\\loadview',
+        55 => 'stylefitness\\helpers\\getappconfig',
       ),
       3 => 
       array (
@@ -713,7 +732,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     'C:\\trabajos\\stylofitness\\app\\Helpers\\functions.php' => 
     array (
-      0 => '0b2c518dcb0e3cbec179a7b128ae8b4a910bae06',
+      0 => '6e08d72e7d1570eee827a9d661aee0f67b205135',
       1 => 
       array (
         0 => 'simplecache',
@@ -723,72 +742,73 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
         0 => 'config',
         1 => 'isdebug',
         2 => 'isproduction',
-        3 => 'dd',
-        4 => 'debug_log',
-        5 => 'generateuuid',
-        6 => 'generatesecuretoken',
-        7 => 'hashpassword',
-        8 => 'verifypassword',
-        9 => 'formatprice',
-        10 => 'formatdate',
-        11 => 'timeago',
-        12 => 'formatfilesize',
-        13 => 'truncate',
-        14 => 'pluralize',
-        15 => 'isvalidemail',
-        16 => 'isvalidurl',
-        17 => 'isvalidphone',
-        18 => 'isvaliddni',
-        19 => 'isvalidruc',
-        20 => 'getfileextension',
-        21 => 'isimage',
-        22 => 'isvideo',
-        23 => 'sanitizefilename',
-        24 => 'generateuniquefilename',
-        25 => 'array_get',
-        26 => 'isassociativearray',
-        27 => 'array_only',
-        28 => 'array_group_by',
-        29 => 'str_slug',
-        30 => 'str_contains',
-        31 => 'str_starts_with',
-        32 => 'str_ends_with',
-        33 => 'str_camel',
-        34 => 'str_pascal',
-        35 => 'str_snake',
-        36 => 'request_method',
-        37 => 'is_ajax',
-        38 => 'get_client_ip',
-        39 => 'get_user_agent',
-        40 => 'is_mobile',
-        41 => 'json_response',
-        42 => 'json_error',
-        43 => 'json_success',
-        44 => 'now',
-        45 => 'today',
-        46 => 'current_datetime',
-        47 => 'add_days',
-        48 => 'days_between',
-        49 => 'view',
-        50 => 'partial',
-        51 => 'e',
-        52 => 'clean',
-        53 => 'csrf_token',
-        54 => 'csrf_verify',
-        55 => 'write_log',
-        56 => 'log_info',
-        57 => 'log_warning',
-        58 => 'log_error',
-        59 => 'log_debug',
-        60 => 'getcachedir',
-        61 => 'get',
-        62 => 'put',
-        63 => 'forget',
-        64 => 'flush',
-        65 => 'cache_get',
-        66 => 'cache_put',
-        67 => 'cache_forget',
-        68 => 'cache_flush',
+        3 => 'getappconfig',
+        4 => 'dd',
+        5 => 'debug_log',
+        6 => 'generateuuid',
+        7 => 'generatesecuretoken',
+        8 => 'hashpassword',
+        9 => 'verifypassword',
+        10 => 'formatprice',
+        11 => 'formatdate',
+        12 => 'timeago',
+        13 => 'formatfilesize',
+        14 => 'truncate',
+        15 => 'pluralize',
+        16 => 'isvalidemail',
+        17 => 'isvalidurl',
+        18 => 'isvalidphone',
+        19 => 'isvaliddni',
+        20 => 'isvalidruc',
+        21 => 'getfileextension',
+        22 => 'isimage',
+        23 => 'isvideo',
+        24 => 'sanitizefilename',
+        25 => 'generateuniquefilename',
+        26 => 'array_get',
+        27 => 'isassociativearray',
+        28 => 'array_only',
+        29 => 'array_group_by',
+        30 => 'str_slug',
+        31 => 'str_contains',
+        32 => 'str_starts_with',
+        33 => 'str_ends_with',
+        34 => 'str_camel',
+        35 => 'str_pascal',
+        36 => 'str_snake',
+        37 => 'request_method',
+        38 => 'is_ajax',
+        39 => 'get_client_ip',
+        40 => 'get_user_agent',
+        41 => 'is_mobile',
+        42 => 'json_response',
+        43 => 'json_error',
+        44 => 'json_success',
+        45 => 'now',
+        46 => 'today',
+        47 => 'current_datetime',
+        48 => 'add_days',
+        49 => 'days_between',
+        50 => 'view',
+        51 => 'partial',
+        52 => 'e',
+        53 => 'clean',
+        54 => 'csrf_token',
+        55 => 'csrf_verify',
+        56 => 'write_log',
+        57 => 'log_info',
+        58 => 'log_warning',
+        59 => 'log_error',
+        60 => 'log_debug',
+        61 => 'getcachedir',
+        62 => 'get',
+        63 => 'put',
+        64 => 'forget',
+        65 => 'flush',
+        66 => 'cache_get',
+        67 => 'cache_put',
+        68 => 'cache_forget',
+        69 => 'cache_flush',
       ),
       3 => 
       array (
@@ -797,7 +817,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     'C:\\trabajos\\stylofitness\\app\\Helpers\\RoutineHelper.php' => 
     array (
-      0 => 'ec635fb07fdcddf2ec782e06eb35d14faba1cd32',
+      0 => '0639cc6d20c79929107a294874cc83df8af99daa',
       1 => 
       array (
         0 => 'stylefitness\\helpers\\routinehelper',
@@ -835,7 +855,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     'C:\\trabajos\\stylofitness\\app\\Helpers\\ValidationHelper.php' => 
     array (
-      0 => '149af376720789f561c5b9d2cfa7c1a93d0d251a',
+      0 => '10600bd8d1eb0cf5da7b6d06e22ea1fba7258aa3',
       1 => 
       array (
         0 => 'stylefitness\\helpers\\validationhelper',
@@ -910,7 +930,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     'C:\\trabajos\\stylofitness\\app\\Models\\Exercise.php' => 
     array (
-      0 => '1e60f05cc4762e32ea4fc77db127d414b6a4502c',
+      0 => '74902908c41af46f41e62e3d14d7105523adfd1d',
       1 => 
       array (
         0 => 'stylefitness\\models\\exercise',
@@ -929,11 +949,14 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
         9 => 'stylefitness\\models\\getpopularexercises',
         10 => 'stylefitness\\models\\update',
         11 => 'stylefitness\\models\\delete',
-        12 => 'stylefitness\\models\\getmusclegroups',
-        13 => 'stylefitness\\models\\getequipmenttypes',
-        14 => 'stylefitness\\models\\uploadvideo',
-        15 => 'stylefitness\\models\\uploadimage',
-        16 => 'stylefitness\\models\\getexercisestats',
+        12 => 'stylefitness\\models\\getexercisesbybodyzone',
+        13 => 'stylefitness\\models\\getmusclegroups',
+        14 => 'stylefitness\\models\\getequipmenttypes',
+        15 => 'stylefitness\\models\\uploadvideo',
+        16 => 'stylefitness\\models\\uploadimage',
+        17 => 'stylefitness\\models\\getexerciseidbyname',
+        18 => 'stylefitness\\models\\findbyname',
+        19 => 'stylefitness\\models\\getexercisestats',
       ),
       3 => 
       array (
@@ -941,7 +964,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     'C:\\trabajos\\stylofitness\\app\\Models\\GroupClass.php' => 
     array (
-      0 => 'b9a70f1ca4dbcc1abad69793d1ddaaccbc866808',
+      0 => 'f2949086807a39f9bda8182bdd2e3619c31a3f7a',
       1 => 
       array (
         0 => 'stylefitness\\models\\groupclass',
@@ -980,6 +1003,15 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
         29 => 'stylefitness\\models\\isinwaitlist',
         30 => 'stylefitness\\models\\getnextwaitlistposition',
         31 => 'stylefitness\\models\\addtowaitlist',
+        32 => 'stylefitness\\models\\getpopularclasses',
+        33 => 'stylefitness\\models\\getstats',
+        34 => 'stylefitness\\models\\bookclasswithposition',
+        35 => 'stylefitness\\models\\getclasspositionavailability',
+        36 => 'stylefitness\\models\\getschedulebookingswithpositions',
+        37 => 'stylefitness\\models\\changebookingposition',
+        38 => 'stylefitness\\models\\requirespositionselection',
+        39 => 'stylefitness\\models\\getclasseswithrooms',
+        40 => 'stylefitness\\models\\addtowaitlistenhanced',
       ),
       3 => 
       array (
@@ -987,7 +1019,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     'C:\\trabajos\\stylofitness\\app\\Models\\Order.php' => 
     array (
-      0 => '7661e2efd4c2442481d740c323658719faae3107',
+      0 => '7ad8fb49f7b65dc535fd0c3b45ec7490803a352b',
       1 => 
       array (
         0 => 'stylefitness\\models\\order',
@@ -1022,7 +1054,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     'C:\\trabajos\\stylofitness\\app\\Models\\Product.php' => 
     array (
-      0 => 'd9dab65754dbbc32bc283eba7ed762bb4b3143fb',
+      0 => 'a92f2682589f1367b435285b8d1cc7c1c3339952',
       1 => 
       array (
         0 => 'stylefitness\\models\\product',
@@ -1055,6 +1087,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
         23 => 'stylefitness\\models\\delete',
         24 => 'stylefitness\\models\\generateslug',
         25 => 'stylefitness\\models\\slugexists',
+        26 => 'stylefitness\\models\\getactivecategories',
       ),
       3 => 
       array (
@@ -1103,7 +1136,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     'C:\\trabajos\\stylofitness\\app\\Models\\Routine.php' => 
     array (
-      0 => '30d93b0644b59e12d00ffcf9998b6832904d56e2',
+      0 => '3dac9e3adc4d393181f8d5b9d0ede5e1feb3e2da',
       1 => 
       array (
         0 => 'stylefitness\\models\\routine',
@@ -1120,20 +1153,27 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
         7 => 'stylefitness\\models\\getallroutines',
         8 => 'stylefitness\\models\\countallroutines',
         9 => 'stylefitness\\models\\getpublicroutines',
-        10 => 'stylefitness\\models\\getroutineexercises',
-        11 => 'stylefitness\\models\\addexercisetoroutine',
-        12 => 'stylefitness\\models\\removeallexercisesfromroutine',
-        13 => 'stylefitness\\models\\update',
-        14 => 'stylefitness\\models\\delete',
-        15 => 'stylefitness\\models\\logworkout',
-        16 => 'stylefitness\\models\\getclientprogress',
-        17 => 'stylefitness\\models\\getroutinestats',
-        18 => 'stylefitness\\models\\getroutinesbyobjective',
-        19 => 'stylefitness\\models\\duplicate',
-        20 => 'stylefitness\\models\\validateroutine',
-        21 => 'stylefitness\\models\\getclientstats',
-        22 => 'stylefitness\\models\\getinstructorstats',
-        23 => 'stylefitness\\models\\getglobalstats',
+        10 => 'stylefitness\\models\\gettemplates',
+        11 => 'stylefitness\\models\\counttemplates',
+        12 => 'stylefitness\\models\\createtemplate',
+        13 => 'stylefitness\\models\\gettemplateexercisesbyzone',
+        14 => 'stylefitness\\models\\addexercisetotemplate',
+        15 => 'stylefitness\\models\\removealltemplateexercises',
+        16 => 'stylefitness\\models\\getroutineexercises',
+        17 => 'stylefitness\\models\\addexercisetoroutine',
+        18 => 'stylefitness\\models\\removeallexercisesfromroutine',
+        19 => 'stylefitness\\models\\update',
+        20 => 'stylefitness\\models\\delete',
+        21 => 'stylefitness\\models\\logworkout',
+        22 => 'stylefitness\\models\\getclientprogress',
+        23 => 'stylefitness\\models\\getroutinestats',
+        24 => 'stylefitness\\models\\getroutinesbyobjective',
+        25 => 'stylefitness\\models\\duplicate',
+        26 => 'stylefitness\\models\\validateroutine',
+        27 => 'stylefitness\\models\\getclientstats',
+        28 => 'stylefitness\\models\\getinstructorstats',
+        29 => 'stylefitness\\models\\getglobalstats',
+        30 => 'stylefitness\\models\\getclientactiveroutines',
       ),
       3 => 
       array (
@@ -1141,7 +1181,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     'C:\\trabajos\\stylofitness\\app\\Models\\User.php' => 
     array (
-      0 => '78103db890020738014ac0af9c13aea5542c8c1f',
+      0 => 'a97307a15e51188b9a1b69240d01157a8be11da0',
       1 => 
       array (
         0 => 'stylefitness\\models\\user',
@@ -1153,22 +1193,542 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
         2 => 'stylefitness\\models\\findbyid',
         3 => 'stylefitness\\models\\findbyemail',
         4 => 'stylefitness\\models\\findbyusername',
-        5 => 'stylefitness\\models\\emailexists',
-        6 => 'stylefitness\\models\\usernameexists',
-        7 => 'stylefitness\\models\\update',
-        8 => 'stylefitness\\models\\updatepassword',
-        9 => 'stylefitness\\models\\getusers',
-        10 => 'stylefitness\\models\\countusers',
-        11 => 'stylefitness\\models\\getinstructorclients',
-        12 => 'stylefitness\\models\\getuserstats',
-        13 => 'stylefitness\\models\\togglestatus',
+        5 => 'stylefitness\\models\\findbyemailorusername',
+        6 => 'stylefitness\\models\\emailexists',
+        7 => 'stylefitness\\models\\usernameexists',
+        8 => 'stylefitness\\models\\update',
+        9 => 'stylefitness\\models\\updatepassword',
+        10 => 'stylefitness\\models\\getusers',
+        11 => 'stylefitness\\models\\countusers',
+        12 => 'stylefitness\\models\\getinstructorclients',
+        13 => 'stylefitness\\models\\getuserstats',
+        14 => 'stylefitness\\models\\togglestatus',
+        15 => 'stylefitness\\models\\delete',
+        16 => 'stylefitness\\models\\generateuniqueusername',
+        17 => 'stylefitness\\models\\extendmembership',
+        18 => 'stylefitness\\models\\hasmembershipactive',
+        19 => 'stylefitness\\models\\uploadprofileimage',
+        20 => 'stylefitness\\models\\getrecentactivity',
+        21 => 'stylefitness\\models\\logactivity',
+      ),
+      3 => 
+      array (
+      ),
+    ),
+    'C:\\trabajos\\stylofitness\\app\\Config\\ProgressConfig.php' => 
+    array (
+      0 => '22713550872d698ac847c2dc0ce5d1657d4d5199',
+      1 => 
+      array (
+        0 => 'progressconfig',
+      ),
+      2 => 
+      array (
+        0 => 'getalerttype',
+        1 => 'getseveritylevel',
+        2 => 'getreporttype',
+        3 => 'getoutputformat',
+        4 => 'getmetrictype',
+        5 => 'getgoaltype',
+        6 => 'getgoalstatus',
+        7 => 'getchartcolor',
+        8 => 'getchartperiod',
+        9 => 'getnotificationtype',
+        10 => 'canaccessprogress',
+        11 => 'getcomparisonlimit',
+        12 => 'getprogresschartconfig',
+        13 => 'getdefaultexportconfig',
+      ),
+      3 => 
+      array (
+      ),
+    ),
+    'C:\\trabajos\\stylofitness\\app\\Controllers\\AdminLandingController.php' => 
+    array (
+      0 => '75bde4ec573027a90c318584059dfd5dd22388e7',
+      1 => 
+      array (
+        0 => 'stylefitness\\controllers\\adminlandingcontroller',
+      ),
+      2 => 
+      array (
+        0 => 'stylefitness\\controllers\\__construct',
+        1 => 'stylefitness\\controllers\\specialoffers',
+        2 => 'stylefitness\\controllers\\getspecialoffers',
+        3 => 'stylefitness\\controllers\\createspecialoffer',
+        4 => 'stylefitness\\controllers\\updatespecialoffer',
+        5 => 'stylefitness\\controllers\\deletespecialoffer',
+        6 => 'stylefitness\\controllers\\togglespecialofferstatus',
+        7 => 'stylefitness\\controllers\\whychooseus',
+        8 => 'stylefitness\\controllers\\getwhychooseusfeatures',
+        9 => 'stylefitness\\controllers\\createwhychooseusfeature',
+        10 => 'stylefitness\\controllers\\updatewhychooseusfeature',
+        11 => 'stylefitness\\controllers\\deletewhychooseusfeature',
+        12 => 'stylefitness\\controllers\\testimonials',
+        13 => 'stylefitness\\controllers\\gettestimonials',
+        14 => 'stylefitness\\controllers\\createtestimonial',
+        15 => 'stylefitness\\controllers\\updatetestimonial',
+        16 => 'stylefitness\\controllers\\deletetestimonial',
+        17 => 'stylefitness\\controllers\\config',
+        18 => 'stylefitness\\controllers\\getlandingconfig',
+        19 => 'stylefitness\\controllers\\createlandingconfig',
+        20 => 'stylefitness\\controllers\\updatelandingconfig',
+        21 => 'stylefitness\\controllers\\deletelandingconfig',
+        22 => 'stylefitness\\controllers\\exportlandingconfig',
+        23 => 'stylefitness\\controllers\\validateofferdata',
+        24 => 'stylefitness\\controllers\\validatefeaturedata',
+        25 => 'stylefitness\\controllers\\validatetestimonialdata',
+        26 => 'stylefitness\\controllers\\validateconfigdata',
+        27 => 'stylefitness\\controllers\\uploadimage',
+        28 => 'stylefitness\\controllers\\jsonresponse',
+      ),
+      3 => 
+      array (
+      ),
+    ),
+    'C:\\trabajos\\stylofitness\\app\\Controllers\\ExerciseManagementController.php' => 
+    array (
+      0 => 'd2d5e4ea8aaf2bd0a28a637d37e7ab0d5d34d166',
+      1 => 
+      array (
+        0 => 'stylefitness\\controllers\\exercisemanagementcontroller',
+      ),
+      2 => 
+      array (
+        0 => 'stylefitness\\controllers\\__construct',
+        1 => 'stylefitness\\controllers\\index',
+        2 => 'stylefitness\\controllers\\create',
+        3 => 'stylefitness\\controllers\\store',
+        4 => 'stylefitness\\controllers\\show',
+        5 => 'stylefitness\\controllers\\edit',
+        6 => 'stylefitness\\controllers\\update',
+        7 => 'stylefitness\\controllers\\delete',
+        8 => 'stylefitness\\controllers\\categories',
+        9 => 'stylefitness\\controllers\\getexercisesbycategory',
+        10 => 'stylefitness\\controllers\\getusagestats',
+        11 => 'stylefitness\\controllers\\checkadminpermissions',
+        12 => 'stylefitness\\controllers\\getcategories',
+        13 => 'stylefitness\\controllers\\getgeneralstats',
+        14 => 'stylefitness\\controllers\\getexercise',
+        15 => 'stylefitness\\controllers\\getexercises',
+        16 => 'stylefitness\\controllers\\getrelatedexercises',
+        17 => 'stylefitness\\controllers\\validateexercisedata',
+        18 => 'stylefitness\\controllers\\processvideoupload',
+        19 => 'stylefitness\\controllers\\processimageupload',
+        20 => 'stylefitness\\controllers\\generatevideothumbnail',
+        21 => 'stylefitness\\controllers\\deletevideofile',
+        22 => 'stylefitness\\controllers\\deleteimagefile',
+        23 => 'stylefitness\\controllers\\isexerciseinuse',
+        24 => 'stylefitness\\controllers\\getexerciseusagestats',
+      ),
+      3 => 
+      array (
+      ),
+    ),
+    'C:\\trabajos\\stylofitness\\app\\Controllers\\LandingController.php' => 
+    array (
+      0 => '1f08fe328b655192f6d7d40d80e0526613f47b35',
+      1 => 
+      array (
+        0 => 'stylefitness\\controllers\\landingcontroller',
+      ),
+      2 => 
+      array (
+        0 => 'stylefitness\\controllers\\__construct',
+        1 => 'stylefitness\\controllers\\getlandingdata',
+        2 => 'stylefitness\\controllers\\getdefaultlandingdata',
+        3 => 'stylefitness\\controllers\\getgymstats',
+        4 => 'stylefitness\\controllers\\getspecialoffers',
+        5 => 'stylefitness\\controllers\\getwhychooseusfeatures',
+        6 => 'stylefitness\\controllers\\getfeaturedproducts',
+        7 => 'stylefitness\\controllers\\getupcomingclasses',
+        8 => 'stylefitness\\controllers\\getfeaturedtestimonials',
+        9 => 'stylefitness\\controllers\\getsectionconfig',
+        10 => 'stylefitness\\controllers\\updatesectionconfig',
+        11 => 'stylefitness\\controllers\\getherodata',
+        12 => 'stylefitness\\controllers\\getservicesdata',
+        13 => 'stylefitness\\controllers\\getproductsdata',
+        14 => 'stylefitness\\controllers\\getclassesdata',
+        15 => 'stylefitness\\controllers\\gettestimonialsdata',
+        16 => 'stylefitness\\controllers\\gettotalmembers',
+        17 => 'stylefitness\\controllers\\gettotalclasses',
+        18 => 'stylefitness\\controllers\\gettotaltrainers',
+        19 => 'stylefitness\\controllers\\getsatisfactionrate',
+        20 => 'stylefitness\\controllers\\gettotalgyms',
+        21 => 'stylefitness\\controllers\\gettotalproducts',
+        22 => 'stylefitness\\controllers\\searchcontent',
+        23 => 'stylefitness\\controllers\\getadminsummary',
+        24 => 'stylefitness\\controllers\\validateandsanitize',
+        25 => 'stylefitness\\controllers\\validateofferdata',
+        26 => 'stylefitness\\controllers\\validatefeaturedata',
+        27 => 'stylefitness\\controllers\\validatetestimonialdata',
+      ),
+      3 => 
+      array (
+      ),
+    ),
+    'C:\\trabajos\\stylofitness\\app\\Controllers\\RoomController.php' => 
+    array (
+      0 => '1eea4400fec82904b0a58b2ab0276229f136f431',
+      1 => 
+      array (
+        0 => 'stylefitness\\controllers\\roomcontroller',
+      ),
+      2 => 
+      array (
+        0 => 'stylefitness\\controllers\\__construct',
+        1 => 'stylefitness\\controllers\\index',
+        2 => 'stylefitness\\controllers\\create',
+        3 => 'stylefitness\\controllers\\store',
+        4 => 'stylefitness\\controllers\\show',
+        5 => 'stylefitness\\controllers\\edit',
+        6 => 'stylefitness\\controllers\\update',
+        7 => 'stylefitness\\controllers\\delete',
+        8 => 'stylefitness\\controllers\\positions',
+        9 => 'stylefitness\\controllers\\createposition',
+        10 => 'stylefitness\\controllers\\updateposition',
+        11 => 'stylefitness\\controllers\\deleteposition',
+        12 => 'stylefitness\\controllers\\apigetroomsbygym',
+        13 => 'stylefitness\\controllers\\apigetpositionavailability',
+        14 => 'stylefitness\\controllers\\apicheckavailability',
+      ),
+      3 => 
+      array (
+      ),
+    ),
+    'C:\\trabajos\\stylofitness\\app\\Controllers\\RoutineTemplateController.php' => 
+    array (
+      0 => 'd26c27ce532ffa4cce03a49291d1381bbefbf0ca',
+      1 => 
+      array (
+        0 => 'stylefitness\\controllers\\routinetemplatecontroller',
+      ),
+      2 => 
+      array (
+        0 => 'stylefitness\\controllers\\__construct',
+        1 => 'stylefitness\\controllers\\index',
+        2 => 'stylefitness\\controllers\\create',
+        3 => 'stylefitness\\controllers\\store',
+        4 => 'stylefitness\\controllers\\show',
+        5 => 'stylefitness\\controllers\\edit',
+        6 => 'stylefitness\\controllers\\update',
+        7 => 'stylefitness\\controllers\\assigntoclient',
+        8 => 'stylefitness\\controllers\\duplicate',
+        9 => 'stylefitness\\controllers\\getexercisesbybodyzone',
+        10 => 'stylefitness\\controllers\\checkpermissions',
+        11 => 'stylefitness\\controllers\\gettemplates',
+        12 => 'stylefitness\\controllers\\counttemplates',
+        13 => 'stylefitness\\controllers\\createtemplate',
+        14 => 'stylefitness\\controllers\\gettemplateexercisesbyzone',
+        15 => 'stylefitness\\controllers\\addexercisetotemplate',
+        16 => 'stylefitness\\controllers\\removealltemplateexercises',
+        17 => 'stylefitness\\controllers\\getinstructorclients',
+        18 => 'stylefitness\\controllers\\checkinstructorpermissions',
+        19 => 'stylefitness\\controllers\\canviewtemplate',
+        20 => 'stylefitness\\controllers\\canedittemplate',
+        21 => 'stylefitness\\controllers\\canusetemplate',
+        22 => 'stylefitness\\controllers\\validatetemplatedata',
+        23 => 'stylefitness\\controllers\\organizeexercisesbybodyzone',
+        24 => 'stylefitness\\controllers\\mapmusclegrouptobodyzone',
+        25 => 'stylefitness\\controllers\\processtemplatebodyzones',
+        26 => 'stylefitness\\controllers\\updatetemplatebodyzones',
+        27 => 'stylefitness\\controllers\\createroutinefromtemplate',
+        28 => 'stylefitness\\controllers\\copytemplateexercisestoroutine',
+        29 => 'stylefitness\\controllers\\duplicatetemplate',
+        30 => 'stylefitness\\controllers\\gettemplateusagestats',
+      ),
+      3 => 
+      array (
+      ),
+    ),
+    'C:\\trabajos\\stylofitness\\app\\Controllers\\TrainerProgressController.php' => 
+    array (
+      0 => '2ba047f886b5f353a7203e2f735968afde500956',
+      1 => 
+      array (
+        0 => 'stylefitness\\controllers\\trainerprogresscontroller',
+      ),
+      2 => 
+      array (
+        0 => 'stylefitness\\controllers\\__construct',
+        1 => 'stylefitness\\controllers\\index',
+        2 => 'stylefitness\\controllers\\clientdetail',
+        3 => 'stylefitness\\controllers\\clientprogress',
+        4 => 'stylefitness\\controllers\\compareclients',
+        5 => 'stylefitness\\controllers\\generatereport',
+        6 => 'stylefitness\\controllers\\getprogressdata',
+        7 => 'stylefitness\\controllers\\gettraineroverviewstats',
+        8 => 'stylefitness\\controllers\\getclientexerciseprogress',
+        9 => 'stylefitness\\controllers\\generatereportdata',
+        10 => 'stylefitness\\controllers\\generatepdfreport',
+      ),
+      3 => 
+      array (
+      ),
+    ),
+    'C:\\trabajos\\stylofitness\\app\\Controllers\\UserController.php' => 
+    array (
+      0 => '7de7ff046506756b03f6b291889c329626d9d52d',
+      1 => 
+      array (
+        0 => 'stylefitness\\controllers\\usercontroller',
+      ),
+      2 => 
+      array (
+        0 => 'stylefitness\\controllers\\__construct',
+        1 => 'stylefitness\\controllers\\profile',
+        2 => 'stylefitness\\controllers\\updateprofile',
+        3 => 'stylefitness\\controllers\\updatepassword',
+        4 => 'stylefitness\\controllers\\updateavatar',
+        5 => 'stylefitness\\controllers\\myroutines',
+        6 => 'stylefitness\\controllers\\myorders',
+      ),
+      3 => 
+      array (
+      ),
+    ),
+    'C:\\trabajos\\stylofitness\\app\\Helpers\\ProgressHelper.php' => 
+    array (
+      0 => '884690f753b2d66f41b980aa1bf0d4e6360c5ac5',
+      1 => 
+      array (
+        0 => 'progresshelper',
+      ),
+      2 => 
+      array (
+        0 => 'formatmetricvalue',
+        1 => 'calculategoalprogress',
+        2 => 'getprogresscolor',
+        3 => 'calculatetrend',
+        4 => 'gettrendicon',
+        5 => 'calculateconsistency',
+        6 => 'generaterecommendations',
+        7 => 'calculateinjuryrisk',
+        8 => 'getinjuryrisklevel',
+        9 => 'formatduration',
+        10 => 'estimatecalories',
+        11 => 'generateprogresschartdata',
+        12 => 'validatemetricdata',
+        13 => 'generateweeklysummary',
+        14 => 'getmotivationalmessage',
+        15 => 'preparedataforexport',
+      ),
+      3 => 
+      array (
+      ),
+    ),
+    'C:\\trabajos\\stylofitness\\app\\Models\\Gym.php' => 
+    array (
+      0 => 'cc82bcaf7fec87feae1978015564854bfb1d6ec9',
+      1 => 
+      array (
+        0 => 'stylefitness\\models\\gym',
+      ),
+      2 => 
+      array (
+        0 => 'stylefitness\\models\\__construct',
+        1 => 'stylefitness\\models\\create',
+        2 => 'stylefitness\\models\\getbyid',
+        3 => 'stylefitness\\models\\getactive',
+        4 => 'stylefitness\\models\\getdefault',
+        5 => 'stylefitness\\models\\update',
+        6 => 'stylefitness\\models\\delete',
+        7 => 'stylefitness\\models\\togglestatus',
+        8 => 'stylefitness\\models\\getsettings',
+        9 => 'stylefitness\\models\\updatesettings',
+        10 => 'stylefitness\\models\\formatgymdata',
+        11 => 'stylefitness\\models\\hasgyms',
+        12 => 'stylefitness\\models\\getstats',
+        13 => 'stylefitness\\models\\getactivegyms',
+      ),
+      3 => 
+      array (
+      ),
+    ),
+    'C:\\trabajos\\stylofitness\\app\\Models\\LandingPageConfig.php' => 
+    array (
+      0 => '1d2f1092e275fc47145c269b91d0f7cf9e4ba53f',
+      1 => 
+      array (
+        0 => 'stylefitness\\models\\landingpageconfig',
+      ),
+      2 => 
+      array (
+        0 => 'stylefitness\\models\\__construct',
+        1 => 'stylefitness\\models\\getbysection',
+        2 => 'stylefitness\\models\\getallactiveconfig',
+        3 => 'stylefitness\\models\\create',
+        4 => 'stylefitness\\models\\update',
+        5 => 'stylefitness\\models\\updateconfigdata',
+        6 => 'stylefitness\\models\\delete',
+        7 => 'stylefitness\\models\\togglestatus',
+        8 => 'stylefitness\\models\\getheroconfig',
+        9 => 'stylefitness\\models\\getstatsconfig',
+        10 => 'stylefitness\\models\\getfeaturesconfig',
+        11 => 'stylefitness\\models\\getctaconfig',
+        12 => 'stylefitness\\models\\getfooterconfig',
+        13 => 'stylefitness\\models\\getall',
+        14 => 'stylefitness\\models\\gettotalcount',
+        15 => 'stylefitness\\models\\search',
+        16 => 'stylefitness\\models\\updatedisplayorder',
+        17 => 'stylefitness\\models\\getbystatus',
+        18 => 'stylefitness\\models\\sectionexists',
+        19 => 'stylefitness\\models\\getbyid',
+        20 => 'stylefitness\\models\\getstats',
+        21 => 'stylefitness\\models\\duplicate',
+        22 => 'stylefitness\\models\\exportconfig',
+      ),
+      3 => 
+      array (
+      ),
+    ),
+    'C:\\trabajos\\stylofitness\\app\\Models\\Room.php' => 
+    array (
+      0 => '96db5784495dc117a61b38953c7e0fcd2520567d',
+      1 => 
+      array (
+        0 => 'stylefitness\\models\\room',
+      ),
+      2 => 
+      array (
+        0 => 'stylefitness\\models\\__construct',
+        1 => 'stylefitness\\models\\create',
+        2 => 'stylefitness\\models\\findbyid',
+        3 => 'stylefitness\\models\\update',
+        4 => 'stylefitness\\models\\getrooms',
+        5 => 'stylefitness\\models\\countrooms',
+        6 => 'stylefitness\\models\\getroompositions',
+        7 => 'stylefitness\\models\\createposition',
+        8 => 'stylefitness\\models\\updateposition',
+        9 => 'stylefitness\\models\\deleteposition',
+        10 => 'stylefitness\\models\\getpositionavailability',
+        11 => 'stylefitness\\models\\reserveposition',
+        12 => 'stylefitness\\models\\cancelpositionreservation',
+        13 => 'stylefitness\\models\\getroomstats',
         14 => 'stylefitness\\models\\delete',
-        15 => 'stylefitness\\models\\generateuniqueusername',
-        16 => 'stylefitness\\models\\extendmembership',
-        17 => 'stylefitness\\models\\hasmembershipactive',
-        18 => 'stylefitness\\models\\uploadprofileimage',
-        19 => 'stylefitness\\models\\getrecentactivity',
-        20 => 'stylefitness\\models\\logactivity',
+        15 => 'stylefitness\\models\\validateroom',
+        16 => 'stylefitness\\models\\getroomtypes',
+        17 => 'stylefitness\\models\\getpositiontypes',
+        18 => 'stylefitness\\models\\getroomsbygym',
+        19 => 'stylefitness\\models\\checkroomavailability',
+        20 => 'stylefitness\\models\\getavailablepositions',
+        21 => 'stylefitness\\models\\getroomlayout',
+        22 => 'stylefitness\\models\\getoccupiedpositions',
+        23 => 'stylefitness\\models\\ispositionavailable',
+        24 => 'stylefitness\\models\\createtempreservation',
+        25 => 'stylefitness\\models\\cleanexpiredtempreservations',
+        26 => 'stylefitness\\models\\confirmtempreservation',
+      ),
+      3 => 
+      array (
+      ),
+    ),
+    'C:\\trabajos\\stylofitness\\app\\Models\\SpecialOffer.php' => 
+    array (
+      0 => 'e59d51767495dd6ba5d905051410531ccbd88f93',
+      1 => 
+      array (
+        0 => 'stylefitness\\models\\specialoffer',
+      ),
+      2 => 
+      array (
+        0 => 'stylefitness\\models\\__construct',
+        1 => 'stylefitness\\models\\getactiveoffers',
+        2 => 'stylefitness\\models\\getbyid',
+        3 => 'stylefitness\\models\\create',
+        4 => 'stylefitness\\models\\update',
+        5 => 'stylefitness\\models\\delete',
+        6 => 'stylefitness\\models\\togglestatus',
+        7 => 'stylefitness\\models\\getall',
+        8 => 'stylefitness\\models\\gettotalcount',
+        9 => 'stylefitness\\models\\isoffervalid',
+        10 => 'stylefitness\\models\\updatedisplayorder',
+        11 => 'stylefitness\\models\\getexpiringoffers',
+        12 => 'stylefitness\\models\\getfeaturedoffers',
+      ),
+      3 => 
+      array (
+      ),
+    ),
+    'C:\\trabajos\\stylofitness\\app\\Models\\Testimonial.php' => 
+    array (
+      0 => '0ec9f4243347a48143e07f9538c224f48e2c839b',
+      1 => 
+      array (
+        0 => 'stylefitness\\models\\testimonial',
+      ),
+      2 => 
+      array (
+        0 => 'stylefitness\\models\\__construct',
+        1 => 'stylefitness\\models\\getactivetestimonials',
+        2 => 'stylefitness\\models\\getfeaturedtestimonials',
+        3 => 'stylefitness\\models\\getbyid',
+        4 => 'stylefitness\\models\\create',
+        5 => 'stylefitness\\models\\update',
+        6 => 'stylefitness\\models\\delete',
+        7 => 'stylefitness\\models\\togglestatus',
+        8 => 'stylefitness\\models\\togglefeatured',
+        9 => 'stylefitness\\models\\getall',
+        10 => 'stylefitness\\models\\gettotalcount',
+        11 => 'stylefitness\\models\\getstats',
+        12 => 'stylefitness\\models\\search',
+        13 => 'stylefitness\\models\\updatedisplayorder',
+        14 => 'stylefitness\\models\\getbyrating',
+        15 => 'stylefitness\\models\\generatestarsarray',
+        16 => 'stylefitness\\models\\getrecent',
+      ),
+      3 => 
+      array (
+      ),
+    ),
+    'C:\\trabajos\\stylofitness\\app\\Models\\WhyChooseUs.php' => 
+    array (
+      0 => '57424d8a82dd917207b5d5a37d2fb9be330dfbe8',
+      1 => 
+      array (
+        0 => 'stylefitness\\models\\whychooseus',
+      ),
+      2 => 
+      array (
+        0 => 'stylefitness\\models\\__construct',
+        1 => 'stylefitness\\models\\getactivefeatures',
+        2 => 'stylefitness\\models\\getbyid',
+        3 => 'stylefitness\\models\\create',
+        4 => 'stylefitness\\models\\update',
+        5 => 'stylefitness\\models\\delete',
+        6 => 'stylefitness\\models\\togglestatus',
+        7 => 'stylefitness\\models\\getall',
+        8 => 'stylefitness\\models\\gettotalcount',
+        9 => 'stylefitness\\models\\updatedisplayorder',
+        10 => 'stylefitness\\models\\getfeatureswithprocessedstats',
+        11 => 'stylefitness\\models\\search',
+      ),
+      3 => 
+      array (
+      ),
+    ),
+    'C:\\trabajos\\stylofitness\\app\\Models\\WorkoutLog.php' => 
+    array (
+      0 => 'f5fc7e3b2d4ab267cfedf81d9eaea8ef87f13d1f',
+      1 => 
+      array (
+        0 => 'stylefitness\\models\\workoutlog',
+      ),
+      2 => 
+      array (
+        0 => 'stylefitness\\models\\__construct',
+        1 => 'stylefitness\\models\\logexercise',
+        2 => 'stylefitness\\models\\getclientworkouthistory',
+        3 => 'stylefitness\\models\\getexerciseprogress',
+        4 => 'stylefitness\\models\\getclientprogressstats',
+        5 => 'stylefitness\\models\\getdailyactivitysummary',
+        6 => 'stylefitness\\models\\getprogresscomparison',
+        7 => 'stylefitness\\models\\gettraineractiveclients',
+        8 => 'stylefitness\\models\\getprogressalerts',
+        9 => 'stylefitness\\models\\cleanoldlogs',
+        10 => 'stylefitness\\models\\getexercisestats',
+        11 => 'stylefitness\\models\\getclientrecentworkouts',
+        12 => 'stylefitness\\models\\getclientexercisestats',
       ),
       3 => 
       array (

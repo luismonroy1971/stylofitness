@@ -2,6 +2,6 @@
 
 // variadic-method-StyleFitness\Models\Routine-getClientRoutines-C:\trabajos\stylofitness\app\Models\Routine.php
 return \PHPStan\Cache\CacheItem::__set_state(array(
-   'variableKey' => '1751250933-v4',
+   'variableKey' => '1751751237-v4',
    'data' => false,
 ));

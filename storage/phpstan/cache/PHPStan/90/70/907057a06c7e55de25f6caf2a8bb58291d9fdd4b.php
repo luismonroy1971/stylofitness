@@ -7,7 +7,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
   array (
     'C:\\trabajos\\stylofitness\\app\\Config\\App.php' => 
     array (
-      0 => '05179fef87a26ba3bf14f26c5ecb9ce048a524e9',
+      0 => 'a56e3a8dcffb61bcb924a98bd93b3060a9da7d40',
       1 => 
       array (
         0 => 'appconfig',
@@ -63,7 +63,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     'C:\\trabajos\\stylofitness\\app\\Config\\Cache.php' => 
     array (
-      0 => '59defd31615306726c1470ba6cd844b1d306c8c3',
+      0 => 'cde488df4192da035207d84421bad866f5f23d1a',
       1 => 
       array (
       ),
@@ -106,7 +106,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     'C:\\trabajos\\stylofitness\\app\\Config\\Database.php' => 
     array (
-      0 => 'b5678deb9f2450fc94a60036707b97e156bf00ae',
+      0 => 'e513ad02c2626929794997987c9979d38c652d3c',
       1 => 
       array (
         0 => 'stylefitness\\config\\database',
@@ -132,7 +132,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     'C:\\trabajos\\stylofitness\\app\\Config\\Environment.php' => 
     array (
-      0 => 'b1e009553625413796cbf42e488a70d3806d74c1',
+      0 => '81deb0d2d61da7f0fb1739f9d2fb9becb7c64b89',
       1 => 
       array (
         0 => 'stylefitness\\config\\environment',
@@ -218,7 +218,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     'C:\\trabajos\\stylofitness\\app\\Config\\Optimize.php' => 
     array (
-      0 => 'f3f75c01ffe3efb8917c2bc208016e7c0721f225',
+      0 => '74f7b5a170f438f25995a30385e328aab95a8cd3',
       1 => 
       array (
       ),
@@ -231,7 +231,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     'C:\\trabajos\\stylofitness\\app\\Config\\RoutineConfig.php' => 
     array (
-      0 => '5199b6cec57f2be1382c95f7302cc705982511c1',
+      0 => 'd6eb3c9f77b21bde869d61501be8e6c688ec5a28',
       1 => 
       array (
       ),
@@ -298,12 +298,40 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     'C:\\trabajos\\stylofitness\\app\\Config\\Session.php' => 
     array (
-      0 => 'c56b535e24ea897f152ed1b04f4e8bb2b6ab9745',
+      0 => 'd455181b4fa1c03a4daa33c9ef8014e9e56f4afa',
       1 => 
       array (
       ),
       2 => 
       array (
+      ),
+      3 => 
+      array (
+      ),
+    ),
+    'C:\\trabajos\\stylofitness\\app\\Config\\ProgressConfig.php' => 
+    array (
+      0 => '22713550872d698ac847c2dc0ce5d1657d4d5199',
+      1 => 
+      array (
+        0 => 'progressconfig',
+      ),
+      2 => 
+      array (
+        0 => 'getalerttype',
+        1 => 'getseveritylevel',
+        2 => 'getreporttype',
+        3 => 'getoutputformat',
+        4 => 'getmetrictype',
+        5 => 'getgoaltype',
+        6 => 'getgoalstatus',
+        7 => 'getchartcolor',
+        8 => 'getchartperiod',
+        9 => 'getnotificationtype',
+        10 => 'canaccessprogress',
+        11 => 'getcomparisonlimit',
+        12 => 'getprogresschartconfig',
+        13 => 'getdefaultexportconfig',
       ),
       3 => 
       array (

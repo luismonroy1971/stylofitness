@@ -14,7 +14,7 @@ class RoutineHelper
     /**
      * Formatear objetivo de rutina
      */
-    public static function formatObjective($objective)
+    public static function formatObjective(string $objective): string
     {
         $objectives = [
             'weight_loss' => 'Pérdida de Peso',
@@ -30,7 +30,7 @@ class RoutineHelper
     /**
      * Formatear nivel de dificultad
      */
-    public static function formatDifficulty($difficulty)
+    public static function formatDifficulty(string $difficulty): string
     {
         $difficulties = [
             'beginner' => 'Principiante',
@@ -44,7 +44,7 @@ class RoutineHelper
     /**
      * Obtener clase CSS para objetivo
      */
-    public static function getObjectiveClass($objective)
+    public static function getObjectiveClass(string $objective): string
     {
         $classes = [
             'weight_loss' => 'badge-danger',
@@ -60,7 +60,7 @@ class RoutineHelper
     /**
      * Obtener clase CSS para dificultad
      */
-    public static function getDifficultyClass($difficulty)
+    public static function getDifficultyClass(string $difficulty): string
     {
         $classes = [
             'beginner' => 'badge-success',
@@ -74,7 +74,7 @@ class RoutineHelper
     /**
      * Calcular progreso de rutina
      */
-    public static function calculateProgress($routine, $workoutLogs)
+    public static function calculateProgress(array $routine, array $workoutLogs): array
     {
         if (empty($routine) || empty($workoutLogs)) {
             return [
@@ -104,7 +104,7 @@ class RoutineHelper
             return $log['completed_at'] >= $thirtyDaysAgo;
         });
 
-        $expectedSessions = $routine['sessions_per_week'] * 4; // 4 semanas aproximadas
+        $expectedSessions = ($routine['sessions_per_week'] ?? 3) * 4; // 4 semanas aproximadas
         $actualSessions = count($recentLogs);
         $consistencyScore = min(100, ($actualSessions / max(1, $expectedSessions)) * 100);
 
@@ -122,10 +122,10 @@ class RoutineHelper
     /**
      * Generar recomendaciones para rutina
      */
-    public static function generateRecommendations($routine, $userStats = [])
+    public static function generateRecommendations(array $routine, array $userStats = []): array
     {
         $recommendations = [];
-        $objective = $routine['objective'];
+        $objective = $routine['objective'] ?? 'general';
 
         // Recomendaciones basadas en objetivo
         switch ($objective) {
@@ -192,7 +192,7 @@ class RoutineHelper
     /**
      * Verificar si la rutina tiene ejercicios de cardio
      */
-    private static function hasCardioExercises($routine)
+    private static function hasCardioExercises(array $routine): bool
     {
         if (empty($routine['exercises'])) {
             return false;
@@ -211,7 +211,7 @@ class RoutineHelper
     /**
      * Verificar si la rutina tiene exceso de cardio
      */
-    private static function hasExcessiveCardio($routine)
+    private static function hasExcessiveCardio(array $routine): bool
     {
         if (empty($routine['exercises'])) {
             return false;
@@ -233,7 +233,7 @@ class RoutineHelper
     /**
      * Verificar si la rutina tiene ejercicios compuestos
      */
-    private static function hasCompoundExercises($routine)
+    private static function hasCompoundExercises(array $routine): bool
     {
         if (empty($routine['exercises'])) {
             return false;
@@ -259,7 +259,7 @@ class RoutineHelper
     /**
      * Analizar balance muscular de la rutina
      */
-    private static function analyzeMuscleBalance($routine)
+    private static function analyzeMuscleBalance(array $routine): array
     {
         $muscleGroups = [
             'pectorales' => 0,
@@ -307,7 +307,7 @@ class RoutineHelper
     /**
      * Calcular puntuación de balance
      */
-    private static function calculateBalanceScore($muscleGroups)
+    private static function calculateBalanceScore(array $muscleGroups): float
     {
         $values = array_values($muscleGroups);
         $mean = array_sum($values) / count($values);
@@ -332,7 +332,7 @@ class RoutineHelper
     /**
      * Obtener recomendaciones de productos
      */
-    private static function getProductRecommendations($objective)
+    private static function getProductRecommendations(string $objective): array
     {
         $recommendations = [
             'weight_loss' => [
@@ -359,7 +359,7 @@ class RoutineHelper
     /**
      * Validar estructura de rutina
      */
-    public static function validateRoutineStructure($routineData)
+    public static function validateRoutineStructure(array $routineData): array
     {
         $errors = [];
 
@@ -404,7 +404,7 @@ class RoutineHelper
     /**
      * Validar ejercicios de rutina
      */
-    private static function validateExercises($exercises)
+    private static function validateExercises(array $exercises): array
     {
         $errors = [];
 
@@ -442,7 +442,7 @@ class RoutineHelper
     /**
      * Generar resumen de rutina
      */
-    public static function generateRoutineSummary($routine, $exercises = [])
+    public static function generateRoutineSummary(array $routine, array $exercises = []): array
     {
         $summary = [
             'total_exercises' => 0,
@@ -506,7 +506,7 @@ class RoutineHelper
     /**
      * Comparar rutinas
      */
-    public static function compareRoutines($routine1, $routine2)
+    public static function compareRoutines(array $routine1, array $routine2): array
     {
         $comparison = [
             'difficulty' => self::compareDifficulty($routine1, $routine2),
@@ -532,19 +532,19 @@ class RoutineHelper
     /**
      * Comparar dificultad entre rutinas
      */
-    private static function compareDifficulty($routine1, $routine2)
+    private static function compareDifficulty(array $routine1, array $routine2): array
     {
         $difficultyScores = ['beginner' => 1, 'intermediate' => 2, 'advanced' => 3];
 
-        $score1 = $difficultyScores[$routine1['difficulty_level']] ?? 2;
-        $score2 = $difficultyScores[$routine2['difficulty_level']] ?? 2;
+        $score1 = $difficultyScores[$routine1['difficulty_level'] ?? 'intermediate'] ?? 2;
+        $score2 = $difficultyScores[$routine2['difficulty_level'] ?? 'intermediate'] ?? 2;
 
         $difference = abs($score1 - $score2);
         $similarity = max(0, 100 - ($difference * 33.33)); // 0-100 scale
 
         return [
-            'routine1' => $routine1['difficulty_level'],
-            'routine2' => $routine2['difficulty_level'],
+            'routine1' => $routine1['difficulty_level'] ?? 'intermediate',
+            'routine2' => $routine2['difficulty_level'] ?? 'intermediate',
             'difference' => $difference,
             'score' => $similarity,
         ];
@@ -553,7 +553,7 @@ class RoutineHelper
     /**
      * Comparar duración entre rutinas
      */
-    private static function compareDuration($routine1, $routine2)
+    private static function compareDuration(array $routine1, array $routine2): array
     {
         $duration1 = intval($routine1['estimated_duration_minutes'] ?? 60);
         $duration2 = intval($routine2['estimated_duration_minutes'] ?? 60);
@@ -574,7 +574,7 @@ class RoutineHelper
     /**
      * Comparar intensidad entre rutinas
      */
-    private static function compareIntensity($routine1, $routine2)
+    private static function compareIntensity(array $routine1, array $routine2): array
     {
         // Calcular intensidad basada en sesiones por semana y duración
         $intensity1 = (intval($routine1['sessions_per_week'] ?? 3) *
@@ -598,7 +598,7 @@ class RoutineHelper
     /**
      * Comparar cobertura de grupos musculares
      */
-    private static function compareMuscleGroups($routine1, $routine2)
+    private static function compareMuscleGroups(array $routine1, array $routine2): array
     {
         // Simplificado - en una implementación real analizaría los ejercicios
         $muscles1 = self::extractMuscleGroups($routine1);
@@ -620,7 +620,7 @@ class RoutineHelper
     /**
      * Extraer grupos musculares de rutina
      */
-    private static function extractMuscleGroups($routine)
+    private static function extractMuscleGroups(array $routine): array
     {
         // Mapeo simplificado basado en objetivo
         $muscleMapping = [
@@ -631,15 +631,15 @@ class RoutineHelper
             'flexibility' => ['todo_el_cuerpo', 'core'],
         ];
 
-        return $muscleMapping[$routine['objective']] ?? ['general'];
+        return $muscleMapping[$routine['objective'] ?? 'general'] ?? ['general'];
     }
 
     /**
      * Generar código QR para rutina
      */
-    public static function generateRoutineQR($routineId, $size = 200)
+    public static function generateRoutineQR(int $routineId, int $size = 200): string
     {
-        $url = getAppConfig('app_url') . '/routines/view/' . $routineId;
+        $url = (getAppConfig('app_url') ?? 'http://localhost') . '/routines/view/' . $routineId;
         $qrUrl = "https://api.qrserver.com/v1/create-qr-code/?size={$size}x{$size}&data=" . urlencode($url);
 
         return $qrUrl;
@@ -648,7 +648,7 @@ class RoutineHelper
     /**
      * Exportar rutina a diferentes formatos
      */
-    public static function exportRoutine($routine, $exercises, $format = 'array')
+    public static function exportRoutine(array $routine, array $exercises, string $format = 'array'): mixed
     {
         switch ($format) {
             case 'json':
@@ -679,23 +679,23 @@ class RoutineHelper
     /**
      * Exportar rutina a CSV
      */
-    private static function exportRoutineToCSV($routine, $exercises)
+    private static function exportRoutineToCSV(array $routine, array $exercises): string
     {
-        $csv = 'Rutina: ' . $routine['name'] . "\n";
-        $csv .= 'Objetivo: ' . self::formatObjective($routine['objective']) . "\n";
-        $csv .= 'Dificultad: ' . self::formatDifficulty($routine['difficulty_level']) . "\n\n";
+        $csv = 'Rutina: ' . ($routine['name'] ?? 'Sin nombre') . "\n";
+        $csv .= 'Objetivo: ' . self::formatObjective($routine['objective'] ?? 'general') . "\n";
+        $csv .= 'Dificultad: ' . self::formatDifficulty($routine['difficulty_level'] ?? 'intermediate') . "\n\n";
 
         $csv .= "Día,Orden,Ejercicio,Series,Repeticiones,Peso,Descanso,Notas\n";
 
         foreach ($exercises as $exercise) {
             $csv .= implode(',', [
-                $exercise['day_number'],
-                $exercise['order_index'],
-                '"' . $exercise['exercise_name'] . '"',
-                $exercise['sets'],
-                '"' . $exercise['reps'] . '"',
+                $exercise['day_number'] ?? 1,
+                $exercise['order_index'] ?? 1,
+                '"' . ($exercise['exercise_name'] ?? 'Sin nombre') . '"',
+                $exercise['sets'] ?? 3,
+                '"' . ($exercise['reps'] ?? '10') . '"',
                 '"' . ($exercise['weight'] ?? '') . '"',
-                $exercise['rest_seconds'],
+                $exercise['rest_seconds'] ?? 60,
                 '"' . ($exercise['notes'] ?? '') . '"',
             ]) . "\n";
         }
