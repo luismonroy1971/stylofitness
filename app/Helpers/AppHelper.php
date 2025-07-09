@@ -979,6 +979,48 @@ class AppHelper
         $cleaned = self::cleanDescription($description, $maxLength);
         return htmlspecialchars($cleaned, ENT_QUOTES | ENT_HTML5, 'UTF-8');
     }
+
+    /**
+     * Truncar texto a un número específico de palabras
+     * @param string $text El texto a truncar
+     * @param int $wordLimit Número máximo de palabras
+     * @param string $suffix Sufijo a agregar cuando se trunca (por defecto "...")
+     * @return string Texto truncado
+     */
+    public static function truncateWords(string $text, int $wordLimit = 10, string $suffix = '...'): string
+    {
+        if (empty($text)) {
+            return '';
+        }
+
+        // Limpiar el texto primero
+        $cleaned = self::cleanDescription($text);
+        
+        // Dividir en palabras
+        $words = preg_split('/\s+/', $cleaned, -1, PREG_SPLIT_NO_EMPTY);
+        
+        // Si tiene menos palabras que el límite, devolver el texto completo
+        if (count($words) <= $wordLimit) {
+            return $cleaned;
+        }
+        
+        // Tomar solo las primeras palabras y agregar sufijo
+        $truncated = implode(' ', array_slice($words, 0, $wordLimit));
+        return $truncated . $suffix;
+    }
+
+    /**
+     * Truncar descripción de producto de forma segura para HTML
+     * @param string $description La descripción a truncar
+     * @param int $wordLimit Número máximo de palabras
+     * @param string $suffix Sufijo a agregar cuando se trunca
+     * @return string Descripción truncada y escapada para HTML
+     */
+    public static function safeTruncatedDescription(string $description, int $wordLimit = 10, string $suffix = '...'): string
+    {
+        $truncated = self::truncateWords($description, $wordLimit, $suffix);
+        return htmlspecialchars($truncated, ENT_QUOTES | ENT_HTML5, 'UTF-8');
+    }
 }
 
 // Función global para obtener configuración (shortcut)

@@ -99,7 +99,7 @@ $discountPercentage = $hasDiscount ? round((($normalPrice - $salePrice) / $norma
             $description = isset($product['short_description']) && !empty($product['short_description']) 
                 ? $product['short_description'] 
                 : (isset($product['description']) ? $product['description'] : 'Sin descripción disponible');
-            echo AppHelper::safeDescription($description, 100);
+            echo AppHelper::safeTruncatedDescription($description, 10);
             ?>
         </div>
         

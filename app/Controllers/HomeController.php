@@ -27,6 +27,16 @@ class HomeController
 
     public function index()
     {
+        // Headers anti-caché agresivos para prevenir cacheo en navegadores
+        if (!headers_sent()) {
+            header('Cache-Control: no-cache, no-store, must-revalidate, max-age=0, private');
+            header('Pragma: no-cache');
+            header('Expires: Thu, 01 Jan 1970 00:00:00 GMT');
+            header('Last-Modified: ' . gmdate('D, d M Y H:i:s') . ' GMT');
+            header('Vary: *');
+            header('X-Accel-Expires: 0');
+        }
+        
         try {
             // Obtener todos los datos de la landing page usando el nuevo controlador
             $landingData = $this->landingController->getLandingData();

@@ -4,6 +4,52 @@
  */
 
 // =============================================
+// ANTI-CACHÉ Y FORZAR RECARGA
+// =============================================
+(function() {
+    'use strict';
+    
+    // Detectar si la página viene del caché del navegador
+    window.addEventListener('pageshow', function(event) {
+        if (event.persisted) {
+            // La página viene del caché, forzar recarga
+            window.location.reload(true);
+        }
+    });
+    
+    // Forzar recarga si se detecta navegación desde otra página
+    if (performance.navigation.type === 2) {
+        // Navegación desde historial (botón atrás/adelante)
+        window.location.reload(true);
+    }
+    
+    // Agregar timestamp a todas las peticiones AJAX para evitar caché
+    const originalFetch = window.fetch;
+    window.fetch = function(url, options = {}) {
+        if (typeof url === 'string') {
+            const separator = url.includes('?') ? '&' : '?';
+            url += separator + '_t=' + Date.now();
+        }
+        return originalFetch(url, options);
+    };
+    
+    // Prevenir caché en formularios
+    document.addEventListener('DOMContentLoaded', function() {
+        const forms = document.querySelectorAll('form');
+        forms.forEach(form => {
+            form.addEventListener('submit', function() {
+                // Agregar timestamp oculto para prevenir caché
+                const timestampInput = document.createElement('input');
+                timestampInput.type = 'hidden';
+                timestampInput.name = '_timestamp';
+                timestampInput.value = Date.now();
+                form.appendChild(timestampInput);
+            });
+        });
+    });
+})();
+
+// =============================================
 // CONFIGURACIÓN GLOBAL
 // =============================================
 const STYLOFITNESS = {

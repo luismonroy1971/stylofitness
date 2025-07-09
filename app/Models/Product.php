@@ -316,13 +316,19 @@ class Product
         return $this->db->count($sql, $params);
     }
 
-    public function getFeaturedProducts($limit = 8)
+    public function getFeaturedProducts($limit = null)
     {
-        return $this->getProducts([
+        $filters = [
             'is_featured' => true,
-            'limit' => $limit,
             'sort' => 'popular',
-        ]);
+        ];
+        
+        // Solo agregar límite si se especifica
+        if ($limit !== null) {
+            $filters['limit'] = $limit;
+        }
+        
+        return $this->getProducts($filters);
     }
 
     public function getPromotionalProducts($limit = 10)

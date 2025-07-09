@@ -24,6 +24,16 @@ class StoreController {
     }
     
     public function index() {
+        // Headers anti-caché agresivos para prevenir cacheo en navegadores
+        if (!headers_sent()) {
+            header('Cache-Control: no-cache, no-store, must-revalidate, max-age=0, private');
+            header('Pragma: no-cache');
+            header('Expires: Thu, 01 Jan 1970 00:00:00 GMT');
+            header('Last-Modified: ' . gmdate('D, d M Y H:i:s') . ' GMT');
+            header('Vary: *');
+            header('X-Accel-Expires: 0');
+        }
+        
         $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
         $perPage = 12;
         $offset = ($page - 1) * $perPage;
@@ -88,6 +98,16 @@ class StoreController {
     }
     
     public function category($categorySlug) {
+        // Headers anti-caché agresivos para prevenir cacheo en navegadores
+        if (!headers_sent()) {
+            header('Cache-Control: no-cache, no-store, must-revalidate, max-age=0, private');
+            header('Pragma: no-cache');
+            header('Expires: Thu, 01 Jan 1970 00:00:00 GMT');
+            header('Last-Modified: ' . gmdate('D, d M Y H:i:s') . ' GMT');
+            header('Vary: *');
+            header('X-Accel-Expires: 0');
+        }
+        
         $category = $this->categoryModel->findBySlug($categorySlug);
         
         if (!$category) {
@@ -154,6 +174,16 @@ class StoreController {
     }
     
     public function product($productSlug) {
+        // Headers anti-caché agresivos para prevenir cacheo en navegadores
+        if (!headers_sent()) {
+            header('Cache-Control: no-cache, no-store, must-revalidate, max-age=0, private');
+            header('Pragma: no-cache');
+            header('Expires: Thu, 01 Jan 1970 00:00:00 GMT');
+            header('Last-Modified: ' . gmdate('D, d M Y H:i:s') . ' GMT');
+            header('Vary: *');
+            header('X-Accel-Expires: 0');
+        }
+        
         $product = $this->productModel->findBySlug($productSlug);
         
         if (!$product) {

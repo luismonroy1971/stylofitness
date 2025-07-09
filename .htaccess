@@ -137,6 +137,20 @@ RewriteRule ^(.*)$ index.php [L,QSA]
         Header set Cache-Control "no-cache, no-store, must-revalidate, max-age=0"
         Header set Pragma "no-cache"
         Header set Expires "Thu, 01 Jan 1970 00:00:00 GMT"
+        Header set Last-Modified "Thu, 01 Jan 1970 00:00:00 GMT"
+        Header unset ETag
+        Header set Vary "*"
+    </If>
+    
+    # No cache agresivo para la página principal
+    <If "%{REQUEST_URI} == '/' || %{REQUEST_URI} == '/index.php'">
+        Header set Cache-Control "no-cache, no-store, must-revalidate, max-age=0, private"
+        Header set Pragma "no-cache"
+        Header set Expires "Thu, 01 Jan 1970 00:00:00 GMT"
+        Header set Last-Modified "Thu, 01 Jan 1970 00:00:00 GMT"
+        Header unset ETag
+        Header set Vary "*"
+        Header set X-Accel-Expires "0"
     </If>
 </IfModule>
 

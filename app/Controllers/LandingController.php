@@ -49,8 +49,8 @@ class LandingController
                 // Por qué elegirnos
                 'why_choose_us' => $this->whyChooseUsModel->getActiveFeatures(6),
                 
-                // Productos destacados
-                'featured_products' => $this->productModel->getFeaturedProducts(8),
+                // Productos destacados (todos los disponibles)
+                'featured_products' => $this->productModel->getFeaturedProducts(),
                 
                 // Clases grupales próximas
                 'upcoming_classes' => $this->groupClassModel->getUpcomingClasses(6),
@@ -176,7 +176,7 @@ class LandingController
     /**
      * Obtener productos destacados
      */
-    public function getFeaturedProducts($limit = 8)
+    public function getFeaturedProducts($limit = null)
     {
         return $this->productModel->getFeaturedProducts($limit);
     }

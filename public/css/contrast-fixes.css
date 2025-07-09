@@ -98,7 +98,7 @@
     opacity: 1 !important;
     visibility: visible !important;
     display: block !important;
-    background: #FFFFFF !important;
+    background: #F0F0F0 !important;
     border: 2px solid rgba(255, 107, 0, 0.1) !important;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1) !important;
     transition: all 0.3s ease !important;
@@ -127,7 +127,7 @@
 /* Información de productos con mejor contraste */
 .product-info-enhanced {
     padding: 1rem !important;
-    background: #FFFFFF !important;
+    background: #F0F0F0 !important;
     color: #2A2A2A !important;
 }
 
