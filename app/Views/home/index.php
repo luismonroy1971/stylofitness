@@ -3136,17 +3136,32 @@ document.addEventListener('DOMContentLoaded', function() {
 /* Grid de testimonios */
 .testimonials-grid-ultra {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: 2.5rem;
     margin-bottom: 4rem;
     position: relative;
     z-index: 10;
 }
 
+/* Responsive para tablet */
+@media (max-width: 768px) {
+    .testimonials-grid-ultra {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Responsive para móvil */
+@media (max-width: 480px) {
+    .testimonials-grid-ultra {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+}
+
 /* Tarjetas de testimonios ultra modernas */
 .testimonial-card-ultra {
-    background: rgba(0, 0, 0, 0.4);
-    border: 1px solid rgba(255, 107, 0, 0.2);
+    background: rgba(126, 65, 7, 0.9);
+    border: 1px solid rgba(175, 76, 6, 0.61);
     border-radius: 30px;
     padding: 0;
     overflow: hidden;
@@ -3160,6 +3175,7 @@ document.addEventListener('DOMContentLoaded', function() {
 .testimonial-card-ultra:hover {
     transform: translateY(-15px) rotateX(2deg) rotateY(2deg);
     border-color: rgba(255, 107, 0, 0.6);
+     border-radius: 30px;
     box-shadow: 
         0 25px 80px rgba(255, 107, 0, 0.3),
         0 0 50px rgba(255, 107, 0, 0.2);
@@ -3167,14 +3183,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
 .testimonial-card-inner {
     position: relative;
+    border-radius: 30px;
     z-index: 2;
     height: 100%;
+    background-color:rgb(58, 28, 8);
 }
 
 /* Header de tarjeta */
 .testimonial-header-ultra {
-    background: rgba(0, 0, 0, 0.4);
-    padding: 2rem;
+    background: rgba(77, 49, 18, 0.1);
+    padding: 0.1rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -3195,13 +3213,14 @@ document.addEventListener('DOMContentLoaded', function() {
 }
 
 .testimonial-card-ultra:hover .testimonial-header-ultra {
-    background: rgba(0, 0, 0, 0.4);
+    background: radial-gradient(rgba(255, 255, 255, 0) 0%, transparent 100%);
+    margin: 10px;
 }
 
 .testimonial-avatar-section-ultra {
     display: flex;
     align-items: center;
-    gap: 1.5rem;
+    gap: 0.1rem;
     position: relative;
     z-index: 2;
 }
@@ -3247,9 +3266,8 @@ document.addEventListener('DOMContentLoaded', function() {
 .testimonial-verified-ultra {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    background: rgba(255, 255, 255, 0.2);
-    padding: 0.5rem 1rem;
+    gap: 0.1rem;
+    padding: 0.5rem 0.5rem;
     border-radius: 20px;
     color: white;
     font-size: 0.8rem;
@@ -3449,7 +3467,7 @@ document.addEventListener('DOMContentLoaded', function() {
     left: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle at center, rgba(255, 107, 0, 0.1) 0%, transparent 70%);
+    background: radial-gradient(circle at center, rgba(17, 4, 39, 0.1) 30%, transparent 50%);
     opacity: 0;
     transition: opacity 0.4s ease;
     border-radius: 30px;
@@ -3458,6 +3476,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 .testimonial-card-ultra:hover .card-glow-effect-ultra {
     opacity: 1;
+    background: radial-gradient(circle at center, rgba(17, 4, 39, 0.1) 30%, transparent 1%);
 }
 
 .card-border-animation {
@@ -4098,7 +4117,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 .featured-products-section-enhanced {
     padding: 120px 0;
-    background: linear-gradient(135deg, #1a0033 0%, #330066 30%, #4d0099 70%, #6600cc 100%);
+    background: linear-gradient(135deg, #2c1810 0%, #8b4513 30%, #d2691e 70%, #ff8c00 100%);
     position: relative;
     overflow: hidden;
     border-top: 5px solid #6600cc;
@@ -4113,11 +4132,10 @@ document.addEventListener('DOMContentLoaded', function() {
     right: 0;
     bottom: 0;
     background: 
-        radial-gradient(circle at 25% 25%, rgba(102, 0, 204, 0.3) 0%, transparent 50%),
-        radial-gradient(circle at 75% 75%, rgba(153, 51, 255, 0.2) 0%, transparent 50%),
+        radial-gradient(circle at 25% 25%, rgba(99, 89, 2, 0.3) 10%, transparent 40%),
+        radial-gradient(circle at 75% 75%, rgba(138, 118, 8, 0.2) 10%, transparent 40%),
         linear-gradient(45deg, transparent 40%, rgba(102, 0, 204, 0.1) 60%, transparent 80%);
     pointer-events: none;
-    animation: featuredBackgroundShift 10s ease-in-out infinite alternate;
 }
 
 @keyframes featuredBackgroundShift {

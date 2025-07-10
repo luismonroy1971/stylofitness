@@ -2,8 +2,8 @@
 use StyleFitness\Helpers\AppHelper;
 
 /**
- * Vista: Perfil de Usuario - STYLOFITNESS
- * Permite al usuario ver y editar su información personal
+ * Vista de Perfil de Usuario - STYLOFITNESS
+ * Gestión del perfil personal del usuario
  */
 
 $currentUser = AppHelper::getCurrentUser();
@@ -17,10 +17,10 @@ $currentUser = AppHelper::getCurrentUser();
                 <div class="profile-sidebar">
                     <div class="profile-avatar-section">
                         <div class="avatar-container">
-                            <?php if (!empty($currentUser['avatar'])): ?>
-                                <img src="<?= htmlspecialchars($currentUser['avatar']) ?>" 
-                                     alt="Avatar" class="profile-avatar">
-                            <?php else: ?>
+                            <?php if (!empty($currentUser['profile_image'])): ?>
+                            <img src="<?= htmlspecialchars($currentUser['profile_image']) ?>" 
+                                 alt="Avatar" class="profile-avatar">
+                        <?php else: ?>
                                 <div class="avatar-placeholder">
                                     <?= strtoupper(substr($currentUser['first_name'], 0, 1) . substr($currentUser['last_name'], 0, 1)) ?>
                                 </div>
@@ -108,7 +108,7 @@ $currentUser = AppHelper::getCurrentUser();
                                 </div>
                                 <div class="card-body">
                                     <form method="POST" action="/profile/update">
-                                        <?= AppHelper::generateCSRFToken() ?>
+                                        <?= AppHelper::generateCsrfToken() ?>
                                         
                                         <div class="row">
                                             <div class="col-md-6">
@@ -186,8 +186,8 @@ $currentUser = AppHelper::getCurrentUser();
                                     </h5>
                                 </div>
                                 <div class="card-body">
-                                    <form method="POST" action="/profile/password">
-                                        <?= AppHelper::generateCSRFToken() ?>
+                                    <form method="POST" action="/profile/update-password">
+                                        <?= AppHelper::generateCsrfToken() ?>
                                         
                                         <div class="mb-3">
                                             <label for="current_password" class="form-label">Contraseña Actual *</label>
@@ -231,7 +231,7 @@ $currentUser = AppHelper::getCurrentUser();
                                 </div>
                                 <div class="card-body">
                                     <form method="POST" action="/profile/update">
-                                        <?= AppHelper::generateCSRFToken() ?>
+                                        <?= AppHelper::generateCsrfToken() ?>
                                         
                                         <div class="row">
                                             <div class="col-md-6">
@@ -302,7 +302,7 @@ $currentUser = AppHelper::getCurrentUser();
                                 </div>
                                 <div class="card-body">
                                     <form method="POST" action="/profile/update">
-                                        <?= AppHelper::generateCSRFToken() ?>
+                                        <?= AppHelper::generateCsrfToken() ?>
                                         
                                         <div class="mb-3">
                                             <label for="emergency_contact_name" class="form-label">Nombre del Contacto</label>
@@ -344,9 +344,9 @@ $currentUser = AppHelper::getCurrentUser();
                 <h5 class="modal-title">Cambiar Foto de Perfil</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
-            <form method="POST" action="/profile/avatar" enctype="multipart/form-data">
+            <form method="POST" action="/profile/update-avatar" enctype="multipart/form-data">
                 <div class="modal-body">
-                    <?= AppHelper::generateCSRFToken() ?>
+                    <?= AppHelper::generateCsrfToken() ?>
                     
                     <div class="mb-3">
                         <label for="avatar" class="form-label">Seleccionar Imagen</label>

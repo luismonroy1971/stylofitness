@@ -290,7 +290,7 @@
 }
 
 .feature-item {
-    background: rgba(0, 0, 0, 0.9) !important;
+    background: linear-gradient(135deg, rgba(121, 85, 72, 0.7), rgba(141, 110, 99, 0.5)) !important;
     padding: 1rem !important;
     border-radius: 10px !important;
     border: 1px solid rgba(255, 255, 255, 0.2) !important;

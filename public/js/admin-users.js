@@ -472,6 +472,12 @@ function deleteUser(userId) {
 
 // Inicializar cuando el DOM esté listo
 document.addEventListener('DOMContentLoaded', function() {
+    // Ocultar pantalla de carga
+    const loadingScreen = document.getElementById('loading-screen');
+    if (loadingScreen) {
+        loadingScreen.style.display = 'none';
+    }
+    
     window.adminUsersManager = new AdminUsersManager();
 });
 

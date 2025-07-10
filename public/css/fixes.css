@@ -1147,6 +1147,7 @@
     margin: 0 auto !important;
     padding: 0 2rem !important;
     min-height: 450px !important;
+     background: linear-gradient(135deg, #2c1810 0%, #8b4513 30%, #d2691e 70%, #ff8c00 100%);
 }
 
 /* =============================================

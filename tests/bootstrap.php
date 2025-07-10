@@ -17,7 +17,7 @@ Environment::load();
 // Set testing environment
 $_ENV['APP_ENV'] = 'testing';
 $_ENV['DB_DATABASE'] = 'stylofitness_test';
-$_ENV['CACHE_DRIVER'] = 'array';
+
 
 // Start session for testing
 if (session_status() === PHP_SESSION_NONE) {

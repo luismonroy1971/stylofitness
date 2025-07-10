@@ -480,6 +480,15 @@ class GroupClass
         return $this->db->query('DELETE FROM group_classes WHERE id = ?', [$id]);
     }
 
+    /**
+     * Contar clases asignadas a un instructor
+     */
+    public function countClassesByInstructor($instructorId)
+    {
+        $sql = "SELECT COUNT(*) FROM group_classes WHERE instructor_id = ?";
+        return $this->db->count($sql, [$instructorId]);
+    }
+    
     private function generateSessions($schedule, $limit)
     {
         $sessions = [];

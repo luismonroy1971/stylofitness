@@ -761,6 +761,57 @@ use StyleFitness\Helpers\AppHelper;
     </div>
 
     <script>
+        // CRÍTICO: Asegurar que no hay pantallas de carga bloqueando
+        (function() {
+            function removeAllLoadingScreens() {
+                // Buscar y eliminar cualquier pantalla de carga
+                const loadingScreens = [
+                    document.getElementById('loading-screen'),
+                    document.querySelector('.loading-screen'),
+                    document.querySelector('.loading-overlay'),
+                    document.querySelector('.loader'),
+                    document.querySelector('.spinner-overlay')
+                ];
+                
+                loadingScreens.forEach(screen => {
+                    if (screen) {
+                        console.log('🚀 Eliminando pantalla de carga:', screen.className || screen.id);
+                        screen.style.display = 'none';
+                        screen.style.opacity = '0';
+                        screen.style.visibility = 'hidden';
+                        screen.style.pointerEvents = 'none';
+                        screen.style.zIndex = '-9999';
+                        
+                        // Eliminar del DOM
+                        setTimeout(() => {
+                            if (screen.parentNode) {
+                                screen.parentNode.removeChild(screen);
+                            }
+                        }, 50);
+                    }
+                });
+                
+                // Asegurar que el body esté visible
+                document.body.style.visibility = 'visible';
+                document.body.style.opacity = '1';
+                
+                console.log('✅ Login screen completamente cargado');
+            }
+            
+            // Ejecutar inmediatamente
+            removeAllLoadingScreens();
+            
+            // Ejecutar cuando el DOM esté listo
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', removeAllLoadingScreens);
+            }
+            
+            // Fallback múltiples para asegurar que se ejecute
+            setTimeout(removeAllLoadingScreens, 100);
+            setTimeout(removeAllLoadingScreens, 500);
+            setTimeout(removeAllLoadingScreens, 1000);
+        })();
+
         // Toggle de contraseña
         document.getElementById('password-toggle').addEventListener('click', function() {
             const password = document.getElementById('password');

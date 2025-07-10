@@ -1,5 +1,10 @@
 <?php
 use StyleFitness\Helpers\AppHelper;
+
+/**
+ * Dashboard de Administración - STYLOFITNESS
+ * Panel principal de administración con estadísticas y accesos rápidos
+ */
 ?>
 
 <div class="admin-dashboard">

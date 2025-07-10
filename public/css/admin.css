@@ -416,6 +416,28 @@
     margin-bottom: 2rem;
 }
 
+.admin-table-container.scrollable {
+    overflow-x: auto;
+    max-width: 100%;
+}
+
+.instructors-table-container,
+.classes-table-container,
+.routines-table-container {
+    overflow-x: auto;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.instructors-table,
+.classes-table,
+.routines-table {
+    min-width: 800px;
+    width: 100%;
+    border-collapse: collapse;
+}
+
 .table-header {
     padding: 1.5rem 2rem;
     border-bottom: 1px solid #eee;

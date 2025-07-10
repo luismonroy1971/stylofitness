@@ -1,4 +1,11 @@
-<?php use StyleFitness\Helpers\AppHelper; ?>
+<?php
+use StyleFitness\Helpers\AppHelper;
+
+/**
+ * Header principal del sitio - STYLOFITNESS
+ * Incluye navegación, meta tags y estilos
+ */
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -49,6 +56,9 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
     <!-- Font Awesome para iconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
@@ -60,6 +70,12 @@
     
     <!-- Correcciones CSS críticas -->
     <link rel="stylesheet" href="<?php echo AppHelper::asset('css/fixes.css'); ?>">
+    
+    <!-- Correcciones de dropdown -->
+    <link rel="stylesheet" href="<?php echo AppHelper::asset('css/dropdown-fix.css'); ?>">
+    
+    <!-- Correcciones de desbordamiento del header -->
+    <link rel="stylesheet" href="<?php echo AppHelper::asset('css/header-overflow-fix.css'); ?>">
     
     <!-- Estilos Homepage Mejorados - v2.0 -->
     <link rel="stylesheet" href="<?php echo AppHelper::asset('css/homepage-enhanced.css'); ?>?v=<?php echo time(); ?>">
@@ -244,6 +260,65 @@
             50% { background-position: 100% 50%; }
         }
         
+        /* DROPDOWN USUARIO - FORZAR VISIBILIDAD */
+        .header {
+            overflow: visible !important;
+        }
+        
+        .header .container {
+            overflow: visible !important;
+        }
+        
+        .navbar {
+            overflow: visible !important;
+        }
+        
+        .navbar-actions {
+            overflow: visible !important;
+        }
+        
+        .user-menu {
+            overflow: visible !important;
+        }
+        
+        .user-dropdown {
+            position: relative !important;
+            z-index: 99999 !important;
+            overflow: visible !important;
+        }
+        
+        .user-dropdown-menu {
+            position: absolute !important;
+            top: 100% !important;
+            right: 0 !important;
+            left: auto !important;
+            z-index: 99999 !important;
+            background: white !important;
+            border-radius: 15px !important;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3) !important;
+            min-width: 250px !important;
+            padding: 1rem 0 !important;
+            margin-top: 5px !important;
+            display: none !important;
+            opacity: 0 !important;
+            visibility: hidden !important;
+            transform: translateY(-10px) !important;
+            transition: all 0.3s ease !important;
+        }
+        
+        .user-dropdown-menu.show,
+        .user-dropdown-menu.active {
+            display: block !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+            transform: translateY(0) !important;
+        }
+        
+        .dropdown-menu.show {
+            display: block !important;
+            z-index: 99999 !important;
+        }
+        
         /* MEJORAS NAVBAR COMPACTO */
         .header {
             padding: 0.25rem 0 !important;
@@ -410,14 +485,7 @@
                             Clases
                         </a>
                     </li>
-                    <?php if (AppHelper::hasRole('admin') || AppHelper::hasRole('instructor')): ?>
-                    <li class="nav-item">
-                        <a href="<?php echo AppHelper::baseUrl('admin'); ?>" class="nav-link <?php echo (strpos($_SERVER['REQUEST_URI'], '/admin') === 0 ? 'active' : ''); ?>">
-                            <i class="fas fa-cog"></i>
-                            Admin
-                        </a>
-                    </li>
-                    <?php endif; ?>
+
                 </ul>
                 
                 <!-- Buscador -->
@@ -458,7 +526,7 @@
                         <?php if (AppHelper::isLoggedIn()): ?>
                             <?php $user = AppHelper::getCurrentUser(); ?>
                             <div class="user-dropdown">
-                                <button class="user-trigger" id="user-menu-trigger">
+                                <button class="user-trigger" id="user-menu-trigger" data-bs-toggle="dropdown" aria-expanded="false">
                                     <?php if ($user['profile_image']): ?>
                                         <img src="<?php echo AppHelper::uploadUrl($user['profile_image']); ?>" 
                                              alt="<?php echo htmlspecialchars($user['first_name']); ?>" 
@@ -472,7 +540,7 @@
                                     <i class="fas fa-chevron-down"></i>
                                 </button>
                                 
-                                <div class="user-dropdown-menu" id="user-dropdown-menu">
+                                <div class="user-dropdown-menu dropdown-menu" id="user-dropdown-menu">
                                     <div class="user-info">
                                         <strong><?php echo htmlspecialchars($user['first_name'] . ' ' . $user['last_name']); ?></strong>
                                         <small><?php echo htmlspecialchars($user['email']); ?></small>

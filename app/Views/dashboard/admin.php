@@ -123,8 +123,8 @@ $user = AppHelper::getCurrentUser();
                         </tbody>
                     </table>
                     <div class="table-footer">
-                        <a href="/admin/users" class="view-all-link">Ver todos los usuarios <i class="fas fa-arrow-right"></i></a>
-                    </div>
+        <a href="/admin/users" class="btn btn-view-all">Ver todos los usuarios <i class="fas fa-arrow-right"></i></a>
+    </div>
                 </div>
             </div>
 
@@ -179,8 +179,8 @@ $user = AppHelper::getCurrentUser();
                         </tbody>
                     </table>
                     <div class="table-footer">
-                        <a href="/admin/products" class="view-all-link">Ver todos los productos <i class="fas fa-arrow-right"></i></a>
-                    </div>
+        <a href="/admin/products" class="btn btn-view-all">Ver todos los productos <i class="fas fa-arrow-right"></i></a>
+    </div>
                 </div>
             </div>
 
@@ -229,8 +229,8 @@ $user = AppHelper::getCurrentUser();
                         </tbody>
                     </table>
                     <div class="table-footer">
-                        <a href="/admin/orders" class="view-all-link">Ver todos los pedidos <i class="fas fa-arrow-right"></i></a>
-                    </div>
+        <a href="/admin/orders" class="btn btn-view-all">Ver todos los pedidos <i class="fas fa-arrow-right"></i></a>
+    </div>
                 </div>
             </div>
 
@@ -283,8 +283,8 @@ $user = AppHelper::getCurrentUser();
                         </tbody>
                     </table>
                     <div class="table-footer">
-                        <a href="/admin/classes" class="view-all-link">Ver todas las clases <i class="fas fa-arrow-right"></i></a>
-                    </div>
+        <a href="/admin/classes" class="btn btn-view-all">Ver todas las clases <i class="fas fa-arrow-right"></i></a>
+    </div>
                 </div>
             </div>
 
@@ -337,8 +337,8 @@ $user = AppHelper::getCurrentUser();
                         </tbody>
                     </table>
                     <div class="table-footer">
-                        <a href="/admin/routines" class="view-all-link">Ver todas las rutinas <i class="fas fa-arrow-right"></i></a>
-                    </div>
+        <a href="/admin/routines" class="btn btn-view-all">Ver todas las rutinas <i class="fas fa-arrow-right"></i></a>
+    </div>
                 </div>
             </div>
 
@@ -400,8 +400,8 @@ $user = AppHelper::getCurrentUser();
                         </tbody>
                     </table>
                     <div class="table-footer">
-                        <a href="/admin/instructors" class="view-all-link">Ver todos los instructores <i class="fas fa-arrow-right"></i></a>
-                    </div>
+        <a href="/admin/instructors" class="btn btn-view-all">Ver todos los instructores <i class="fas fa-arrow-right"></i></a>
+    </div>
                 </div>
             </div>
 
@@ -750,27 +750,37 @@ $user = AppHelper::getCurrentUser();
 
 /* Footer de tabla */
 .table-footer {
-    padding: 16px;
+    padding: 20px;
     background: rgba(255, 255, 255, 0.05);
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     text-align: center;
+    display: flex;
+    justify-content: center;
 }
 
-.view-all-link {
-    color: #ff6b35;
+.btn-view-all {
+    background: linear-gradient(135deg, #ff6b35, #f7931e);
+    color: white;
     text-decoration: none;
-    font-weight: 500;
-    font-size: 14px;
+    font-weight: 600;
+    font-size: 15px;
     display: inline-flex;
     align-items: center;
-    gap: 6px;
+    justify-content: center;
+    gap: 8px;
     transition: all 0.3s ease;
+    padding: 10px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    min-width: 200px;
 }
 
-.view-all-link:hover {
-    color: #f7931e;
+.btn-view-all:hover {
+    background: linear-gradient(135deg, #e55a2b, #e8851a);
+    color: white;
     text-decoration: none;
-    transform: translateX(2px);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
 .text-center {

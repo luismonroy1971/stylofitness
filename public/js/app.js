@@ -79,7 +79,6 @@ STYLOFITNESS.initMegaCarousel = function() {
     try {
         const megaCarousel = document.getElementById('hero-products-carousel');
         if (!megaCarousel) {
-            console.log('Mega carousel element not found');
             return;
         }
         
@@ -91,7 +90,6 @@ STYLOFITNESS.initMegaCarousel = function() {
         const progressBar = document.getElementById('carousel-progress');
         
         if (!track || slides.length === 0) {
-            console.log('Mega carousel track or slides not found');
             return;
         }
     
@@ -414,12 +412,20 @@ STYLOFITNESS.init = function() {
     // Cachear elementos importantes
     this.cacheElements();
     
+    // Verificar si estamos en páginas de administración
+    const isAdminPage = window.location.pathname.includes('/admin/');
+    
     // Inicializar componentes
     this.initLoadingScreen();
     this.initNavigation();
-    this.initMegaCarousel(); // Nuevo carrusel de ofertas
-    this.initHeroProductsCarousel(); // Carrusel de productos destacados
-    this.initCarousel();
+    
+    // Solo inicializar Megacarrusel en páginas públicas (home)
+    if (!isAdminPage) {
+        this.initMegaCarousel(); // Nuevo carrusel de ofertas
+        this.initHeroProductsCarousel(); // Carrusel de productos destacados
+        this.initCarousel();
+    }
+    
     this.initScrollEffects();
     this.initAnimations();
     this.initForms();
@@ -439,27 +445,14 @@ STYLOFITNESS.init = function() {
 // CACHE DE ELEMENTOS DOM
 // =============================================
 STYLOFITNESS.cacheElements = function() {
+    // Verificar si estamos en páginas de administración
+    const isAdminPage = window.location.pathname.includes('/admin/');
+    
     this.elements = {
         header: document.querySelector('.header'),
         navToggle: document.querySelector('.nav-toggle'),
         navMenu: document.querySelector('.nav-menu'),
         
-        // Carrusel normal
-        carousel: document.querySelector('.product-carousel'),
-        carouselContainer: document.querySelector('.carousel-container'),
-        carouselDots: document.querySelectorAll('.carousel-dot'),
-        carouselPrev: document.querySelector('.carousel-prev'),
-        carouselNext: document.querySelector('.carousel-next'),
-        
-        // Mega carrusel de ofertas
-        megaCarousel: document.getElementById('mega-offers-carousel'),
-        megaTrack: document.getElementById('offers-track'),
-        megaDots: document.querySelectorAll('.mega-dot'),
-        megaPrev: document.getElementById('mega-prev'),
-        megaNext: document.getElementById('mega-next'),
-        
-        productCards: document.querySelectorAll('.product-card'),
-        classCards: document.querySelectorAll('.class-card'),
         cartIcon: document.querySelector('.cart-icon'),
         cartCount: document.querySelector('.cart-count'),
         loadingSpinner: document.querySelector('.loading-spinner'),
@@ -467,6 +460,25 @@ STYLOFITNESS.cacheElements = function() {
         videos: document.querySelectorAll('video'),
         lazyImages: document.querySelectorAll('img[data-src]')
     };
+    
+    // Solo cachear elementos de carrusel en páginas públicas
+    if (!isAdminPage) {
+        this.elements.carousel = document.querySelector('.product-carousel');
+        this.elements.carouselContainer = document.querySelector('.carousel-container');
+        this.elements.carouselDots = document.querySelectorAll('.carousel-dot');
+        this.elements.carouselPrev = document.querySelector('.carousel-prev');
+        this.elements.carouselNext = document.querySelector('.carousel-next');
+        
+        // Mega carrusel de ofertas
+        this.elements.megaCarousel = document.getElementById('mega-offers-carousel');
+        this.elements.megaTrack = document.getElementById('offers-track');
+        this.elements.megaDots = document.querySelectorAll('.mega-dot');
+        this.elements.megaPrev = document.getElementById('mega-prev');
+        this.elements.megaNext = document.getElementById('mega-next');
+        
+        this.elements.productCards = document.querySelectorAll('.product-card');
+        this.elements.classCards = document.querySelectorAll('.class-card');
+    }
 };
 
 // =============================================

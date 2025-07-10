@@ -349,8 +349,6 @@ define('BACKUP_SETTINGS', [
 
 // Configuración de performance
 define('PERFORMANCE_SETTINGS', [
-    'enable_caching' => true,
-    'cache_driver' => 'file',
     'enable_compression' => true,
     'minify_assets' => true,
     'lazy_load_images' => true,

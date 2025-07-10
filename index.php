@@ -482,6 +482,7 @@ $router->get('/my-orders', 'UserController@myOrders');
 // ==========================================
 
 $router->get('/admin', 'AdminController@dashboard');
+$router->get('/admin/dashboard', 'AdminController@dashboard');
 $router->get('/admin/users', 'AdminController@users');
 $router->get('/admin/users/create', 'AdminController@createUser');
 $router->post('/admin/users/store', 'AdminController@storeUser');
@@ -500,6 +501,7 @@ $router->get('/admin/routines', 'AdminController@routines');
 $router->get('/admin/exercises', 'AdminController@exercises');
 $router->get('/admin/orders', 'AdminController@orders');
 $router->get('/admin/classes', 'AdminController@classes');
+$router->get('/admin/instructors', 'AdminController@instructors');
 $router->get('/admin/reports', 'AdminController@reports');
 $router->get('/admin/settings', 'AdminController@settings');
 $router->post('/admin/settings/update', 'AdminController@updateSettings');

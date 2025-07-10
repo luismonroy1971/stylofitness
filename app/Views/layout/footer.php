@@ -1386,7 +1386,18 @@ use StyleFitness\Helpers\AppHelper;
         };
     </script>
     
-    <!-- JavaScript principal -->
+    <!-- JavaScript principal - Solo en página home -->
+    <?php 
+    $currentUri = $_SERVER['REQUEST_URI'] ?? '';
+    $isHomePage = ($currentUri === '/' || $currentUri === '' || $currentUri === '/index.php');
+    ?>
+    <!-- Bootstrap JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Dropdown initialization -->
+    <script src="<?php echo AppHelper::asset('js/dropdown-init.js'); ?>"></script>
+    
+    <!-- Incluir app.js en todas las páginas para manejar el loading screen -->
     <script src="<?php echo AppHelper::asset('js/app.js'); ?>" defer></script>
     
     <!-- Scripts adicionales según la página -->

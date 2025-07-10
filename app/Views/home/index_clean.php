@@ -3048,7 +3048,7 @@ document.addEventListener('DOMContentLoaded', function() {
 /* Grid de testimonios */
 .testimonials-grid-ultra {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: 2.5rem;
     margin-bottom: 4rem;
     position: relative;

@@ -287,7 +287,7 @@ class AuthController
     {
         switch ($role) {
             case 'admin':
-                return '/admin';
+                return '/admin/dashboard';
             case 'instructor':
             case 'trainer':
                 return '/trainer/progress/dashboard';

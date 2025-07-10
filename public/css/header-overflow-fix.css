@@ -1,0 +1,338 @@
+/*
+ * Solución para el desbordamiento de botones en el header
+ * Optimiza el espacio y previene overflow en pantallas pequeñas
+ */
+
+/* Ajustes generales del navbar */
+.navbar {
+    flex-wrap: nowrap;
+    overflow: visible !important;
+    gap: 0.5rem;
+}
+
+/* Optimización del logo */
+.navbar-brand {
+    flex-shrink: 0;
+    min-width: 0;
+    padding-right: 0.5rem;
+    padding-left: 0.25rem;
+}
+
+.logo {
+    font-size: 1.3rem;
+    white-space: nowrap;
+}
+
+/* Menú principal más compacto */
+.nav-menu {
+    flex-shrink: 1;
+    min-width: 0;
+    gap: 0.2rem;
+}
+
+.nav-link {
+    padding: 0.3rem 0.4rem;
+    font-size: 0.7rem;
+    white-space: nowrap;
+}
+
+.nav-link i {
+    font-size: 0.8rem;
+}
+
+/* Buscador más compacto */
+.navbar-search {
+    flex-shrink: 1;
+    margin: 0 0.25rem;
+}
+
+.search-input {
+    width: 140px;
+    padding: 0.3rem 0.4rem;
+    padding-right: 26px;
+    font-size: 0.65rem;
+}
+
+/* Acciones del navbar optimizadas */
+.navbar-actions {
+    flex-shrink: 0;
+    gap: 0.2rem;
+    align-items: center;
+}
+
+.cart-icon,
+.wishlist-icon {
+    width: 28px;
+    height: 28px;
+    font-size: 0.8rem;
+    padding: 0.3rem;
+}
+
+.user-trigger {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.7rem;
+    border-radius: 14px;
+}
+
+.user-avatar,
+.user-avatar-placeholder {
+    width: 20px;
+    height: 20px;
+}
+
+.user-name {
+    max-width: 80px;
+    font-size: 0.7rem;
+}
+
+/* Botón de login compacto */
+.btn-login {
+    padding: 0.3rem 0.5rem;
+    font-size: 0.7rem;
+    border-radius: 14px;
+    white-space: nowrap;
+}
+
+/* Toggle móvil optimizado */
+.nav-toggle {
+    width: 40px;
+    height: 40px;
+    padding: 0.4rem;
+    flex-shrink: 0;
+}
+
+.nav-toggle-bar {
+    width: 22px;
+    height: 2px;
+}
+
+/* Media queries para diferentes tamaños */
+@media (max-width: 1024px) {
+    .navbar {
+        gap: 0.3rem;
+    }
+    
+    .nav-menu {
+        gap: 0.1rem;
+    }
+    
+    .nav-link {
+        padding: 0.25rem 0.35rem;
+        font-size: 0.65rem;
+    }
+    
+    .search-input {
+        width: 120px;
+    }
+    
+    .user-name {
+        max-width: 60px;
+    }
+}
+
+@media (max-width: 900px) {
+    .navbar-search {
+        display: none;
+    }
+    
+    .nav-menu {
+        gap: 0.15rem;
+    }
+    
+    .nav-link {
+        padding: 0.25rem 0.3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    /* En móvil, ocultar el menú principal y mostrar solo acciones */
+    .nav-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 280px;
+        height: 100vh;
+        background: var(--gradient-dark);
+        flex-direction: column;
+        justify-content: flex-start;
+        padding: 3.5rem 1.5rem 2rem;
+        gap: 1rem;
+        box-shadow: var(--shadow-heavy);
+        transition: var(--transition-medium);
+        z-index: 1000;
+        overflow-y: auto;
+    }
+    
+    .nav-menu.active {
+        right: 0;
+    }
+    
+    .nav-toggle {
+        display: flex;
+    }
+    
+    .navbar-actions {
+        gap: 0.3rem;
+    }
+    
+    .cart-icon,
+    .wishlist-icon {
+        width: 36px;
+        height: 36px;
+        font-size: 1rem;
+    }
+    
+    .user-trigger {
+        padding: 0.4rem;
+    }
+    
+    .user-name {
+        display: none;
+    }
+    
+    .btn-login {
+        width: 40px;
+        height: 40px;
+        border-radius: 8px;
+        padding: 0.4rem;
+        font-size: 1rem;
+        justify-content: center;
+    }
+    
+    .btn-login .btn-text {
+        display: none;
+    }
+    
+    .btn-login .btn-icon {
+        display: inline;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar {
+        height: 40px;
+        gap: 0.2rem;
+    }
+    
+    .logo {
+        font-size: 1.2rem;
+    }
+    
+    .navbar-actions {
+        gap: 0.15rem;
+    }
+    
+    .cart-icon,
+    .wishlist-icon {
+        width: 32px;
+        height: 32px;
+        font-size: 0.9rem;
+    }
+    
+    .user-trigger {
+        padding: 0.3rem;
+    }
+    
+    .user-avatar,
+    .user-avatar-placeholder {
+        width: 26px;
+        height: 26px;
+    }
+    
+    .btn-login {
+        width: 36px;
+        height: 36px;
+        padding: 0.3rem;
+        font-size: 0.9rem;
+    }
+    
+    .nav-toggle {
+        width: 36px;
+        height: 36px;
+        padding: 0.3rem;
+    }
+    
+    .nav-toggle-bar {
+        width: 20px;
+        height: 2px;
+    }
+}
+
+/* Prevenir desbordamiento horizontal pero permitir dropdown */
+.header {
+    overflow-x: hidden;
+    overflow-y: visible;
+}
+
+.container {
+    overflow-x: hidden;
+    overflow-y: visible;
+}
+
+/* Asegurar que los dropdowns sean visibles */
+.user-dropdown {
+    position: relative;
+    z-index: 10050;
+}
+
+.user-dropdown-menu {
+    position: absolute !important;
+    z-index: 10055 !important;
+    top: 100% !important;
+    right: 0 !important;
+    left: auto !important;
+    margin-top: 5px !important;
+    display: none !important;
+}
+
+.user-dropdown-menu.show {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateY(0) !important;
+}
+
+/* Asegurar que Bootstrap dropdown funcione */
+.dropdown-menu.show {
+    display: block !important;
+    z-index: 10055 !important;
+}
+
+/* Asegurar que el header no interfiera */
+.header {
+    z-index: 1040 !important;
+}
+
+.navbar {
+    z-index: 1040 !important;
+}
+
+/* Asegurar que el navbar-actions no corte el dropdown */
+.navbar-actions {
+    position: relative;
+    z-index: 1002;
+    overflow: visible;
+}
+
+/* Asegurar que el navbar permita el dropdown */
+.navbar {
+    overflow-x: hidden;
+    overflow-y: visible;
+    position: relative;
+}
+
+/* Asegurar que todos los elementos flexibles respeten el contenedor */
+.navbar > * {
+    min-width: 0;
+}
+
+/* Ocultar elementos no esenciales en pantallas muy pequeñas */
+@media (max-width: 360px) {
+    .wishlist-wrapper {
+        display: none;
+    }
+    
+    .user-trigger i.fa-chevron-down {
+        display: none;
+    }
+}

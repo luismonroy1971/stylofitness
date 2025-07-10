@@ -617,6 +617,8 @@ body.nav-open {
     right: 0;
     bottom: 0;
     z-index: 1;
+     background: linear-gradient(135deg, #1a1a1a 30%, #2d2d2d 50%, #1a1a1a 100%);
+    
 }
 
 .bg-overlay {
@@ -660,6 +662,7 @@ body.nav-open {
     margin: 0 auto;
     padding: 0 2rem;
     min-height: 350px;
+    background: linear-gradient(135deg, #2c1810 0%, #8b4513 30%, #d2691e 70%, #ff8c00 100%);
 }
 
 /* Información del producto - Columna 1 */
@@ -1538,6 +1541,7 @@ body.nav-open {
         gap: 2rem;
         text-align: center;
         min-height: 400px; /* CAMBIO: Altura mínima reducida */
+        background: linear-gradient(135deg, #221102 20%, #723f05 50%, #b36d05 100%);
     }
     
     .mega-image-container {
@@ -2089,7 +2093,8 @@ body.nav-open {
     transition: var(--transition-fast);
 }
 
-.user-dropdown-menu.active {
+.user-dropdown-menu.active,
+.user-dropdown-menu.show {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
@@ -2292,7 +2297,7 @@ body.nav-open {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(255, 107, 0, 0.7);
     z-index: 999;
     opacity: 0;
     visibility: hidden;

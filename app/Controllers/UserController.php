@@ -40,8 +40,8 @@ class UserController
             return;
         }
 
-        $user = AppHelper::getCurrentUser();
-        $userId = $user['id'];
+        $currentUser = AppHelper::getCurrentUser();
+        $userId = $currentUser['id'];
 
         // Obtener estadísticas del usuario
         $stats = [
@@ -54,7 +54,7 @@ class UserController
 
         try {
             // Estadísticas de rutinas
-            if ($user['role'] === 'client') {
+            if ($currentUser['role'] === 'client') {
                 $routines = $this->routineModel->getClientRoutines($userId);
                 $stats['total_routines'] = count($routines);
                 $stats['active_routines'] = count(array_filter($routines, function($r) {
@@ -96,8 +96,8 @@ class UserController
             return;
         }
 
-        $user = AppHelper::getCurrentUser();
-        $userId = $user['id'];
+        $currentUser = AppHelper::getCurrentUser();
+        $userId = $currentUser['id'];
 
         // Validar token CSRF
         if (!AppHelper::validateCSRFToken($_POST['csrf_token'] ?? '')) {
@@ -184,8 +184,8 @@ class UserController
             return;
         }
 
-        $user = AppHelper::getCurrentUser();
-        $userId = $user['id'];
+        $currentUser = AppHelper::getCurrentUser();
+        $userId = $currentUser['id'];
 
         // Validar token CSRF
         if (!AppHelper::validateCSRFToken($_POST['csrf_token'] ?? '')) {
@@ -216,7 +216,7 @@ class UserController
         }
 
         // Verificar contraseña actual
-        if (!password_verify($currentPassword, $user['password'])) {
+        if (!password_verify($currentPassword, $currentUser['password'])) {
             $errors[] = 'La contraseña actual es incorrecta';
         }
 
@@ -257,8 +257,8 @@ class UserController
             return;
         }
 
-        $user = AppHelper::getCurrentUser();
-        $userId = $user['id'];
+        $currentUser = AppHelper::getCurrentUser();
+        $userId = $currentUser['id'];
 
         // Validar token CSRF
         if (!AppHelper::validateCSRFToken($_POST['csrf_token'] ?? '')) {
@@ -305,17 +305,17 @@ class UserController
         // Mover archivo
         if (move_uploaded_file($file['tmp_name'], $filepath)) {
             // Eliminar avatar anterior si existe
-            if (!empty($user['avatar']) && file_exists(PUBLIC_PATH . $user['avatar'])) {
-                unlink(PUBLIC_PATH . $user['avatar']);
+            if (!empty($currentUser['profile_image']) && file_exists(PUBLIC_PATH . $currentUser['profile_image'])) {
+                unlink(PUBLIC_PATH . $currentUser['profile_image']);
             }
 
             // Actualizar base de datos
             $avatarPath = '/uploads/avatars/' . $filename;
-            $success = $this->userModel->update($userId, ['avatar' => $avatarPath]);
+            $success = $this->userModel->update($userId, ['profile_image' => $avatarPath]);
             
             if ($success) {
                 // Actualizar sesión
-                $_SESSION['user']['avatar'] = $avatarPath;
+                $_SESSION['user']['profile_image'] = $avatarPath;
                 AppHelper::setFlashMessage('success', 'Avatar actualizado exitosamente');
             } else {
                 AppHelper::setFlashMessage('error', 'Error al guardar el avatar en la base de datos');

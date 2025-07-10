@@ -415,49 +415,5 @@ class CacheManager
         return round($bytes, 2) . ' ' . $units[$i];
     }
 
-    /**
-     * Cache products for store
-     *
-     * @param array $products
-     * @param string $category
-     * @return bool
-     */
-    public function cacheProducts(array $products, string $category = 'all'): bool
-    {
-        return $this->set("products_{$category}", $products, 1800); // 30 minutes
-    }
 
-    /**
-     * Get cached products
-     *
-     * @param string $category
-     * @return array|null
-     */
-    public function getCachedProducts(string $category = 'all'): ?array
-    {
-        return $this->get("products_{$category}");
-    }
-
-    /**
-     * Cache user routines
-     *
-     * @param int $userId
-     * @param array $routines
-     * @return bool
-     */
-    public function cacheUserRoutines(int $userId, array $routines): bool
-    {
-        return $this->set("user_routines_{$userId}", $routines, 3600); // 1 hour
-    }
-
-    /**
-     * Get cached user routines
-     *
-     * @param int $userId
-     * @return array|null
-     */
-    public function getCachedUserRoutines(int $userId): ?array
-    {
-        return $this->get("user_routines_{$userId}");
-    }
 }

@@ -46,8 +46,7 @@ class Environment
             'DB_USERNAME' => 'root',
             'DB_PASSWORD' => '',
             'DB_CHARSET' => 'utf8mb4',
-            'CACHE_DRIVER' => 'file',
-            'CACHE_TTL' => '3600',
+
             'SESSION_LIFETIME' => '120',
             'SESSION_DRIVER' => 'file',
             'MAIL_DRIVER' => 'smtp',
@@ -206,19 +205,7 @@ class Environment
         ];
     }
 
-    /**
-     * Get cache configuration
-     *
-     * @return array
-     */
-    public static function getCacheConfig(): array
-    {
-        return [
-            'driver' => self::get('CACHE_DRIVER'),
-            'ttl' => self::getInt('CACHE_TTL'),
-            'path' => ROOT_PATH . '/storage/cache',
-        ];
-    }
+
 
     /**
      * Get session configuration

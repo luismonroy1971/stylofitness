@@ -1,5 +1,7 @@
 <!-- Vista de Carrito de Compras - STYLOFITNESS -->
-<?php use StyleFitness\Helpers\AppHelper; ?>
+<?php
+use StyleFitness\Helpers\AppHelper;
+?>
 <div class="cart-page">
     <div class="container">
         <div class="page-header">

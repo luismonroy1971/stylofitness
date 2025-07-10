@@ -11,7 +11,7 @@
     text-align: center !important;
     padding: 0.75rem 0 !important;
     margin-bottom: 0.25rem !important;
-    background: rgba(0, 0, 0, 0.1) !important;
+    background: rgba(255, 107, 0, 0.1) !important;
     border-radius: 15px !important;
     backdrop-filter: blur(10px) !important;
     border: 1px solid rgba(255, 107, 0, 0.2) !important;
@@ -79,7 +79,7 @@
    ============================================= */
 
 .hero-config-section {
-    background: linear-gradient(135deg, #2A2A2A 0%, #8A8A8A 50%, #2A2A2A 100%) !important;
+    background: linear-gradient(135deg, #130e00  30%,  #130e00  70%, #363535 100%) !important;
     position: relative !important;
     overflow: hidden !important;
     padding: 8rem 0 !important;
@@ -167,6 +167,7 @@
     transition: all 0.3s ease !important;
     box-shadow: 0 8px 25px rgba(255, 107, 0, 0.4) !important;
     border: 2px solid transparent !important;
+    background: radial-gradient(circle at 30% 20%, rgba(255, 107, 0, 0.1) 0%, transparent 50%) !important;
 }
 
 .hero-config-cta:hover {
@@ -186,7 +187,7 @@
 
 .hero-config-stat {
     text-align: center !important;
-    background: rgba(0, 0, 0, 0.6) !important;
+    background: rgba(255, 107, 0, 0.6) !important;
     padding: 1.5rem 2rem !important;
     border-radius: 15px !important;
     backdrop-filter: blur(10px) !important;
@@ -196,7 +197,7 @@
 .hero-config-stat-number {
     font-size: 2.5rem !important;
     font-weight: 900 !important;
-    color: var(--primary-color) !important;
+    color: black;
     display: block !important;
     margin-bottom: 0.5rem !important;
 }
@@ -224,7 +225,7 @@
 
 /* Estilos específicos para sección de características configurada */
 .features-config-section {
-    background: linear-gradient(135deg, #2d1b69 0%, #11998e 50%, #38ef7d 100%) !important;
+    background: linear-gradient(135deg, #421406 0%, #998b11 50%, #e03e15 100%) !important;
     position: relative !important;
     overflow: hidden !important;
     padding: 6rem 0 !important;
@@ -447,7 +448,7 @@
     left: 0 !important;
     width: 100% !important;
     height: 100% !important;
-    background: rgba(0, 0, 0, 0.6) !important;
+    background: rgba(255, 107, 0, 0.6) !important;
 }
 
 .section-badge-classes {
@@ -923,7 +924,7 @@
 }
 
 .modern-feature-card {
-    background: rgba(255, 255, 255, 0.05) !important;
+    background: rgba(22, 14, 1, 0.3) !important;
     border: 1px solid rgba(255, 107, 0, 0.2) !important;
     border-radius: 20px !important;
     padding: 2rem !important;
@@ -1173,7 +1174,7 @@
     left: 0 !important;
     width: 100% !important;
     height: 100% !important;
-    background: rgba(0, 0, 0, 0.8) !important;
+    background: rgba(255, 107, 0, 0.8) !important;
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
@@ -1908,7 +1909,7 @@
     left: 0 !important;
     width: 100% !important;
     height: 100% !important;
-    background: rgba(0, 0, 0, 0.8) !important;
+    background: rgba(255, 107, 0, 0.8) !important;
 }
 
 .footer-particles {
@@ -2312,7 +2313,7 @@
     bottom: 120% !important;
     left: 50% !important;
     transform: translateX(-50%) !important;
-    background: rgba(0, 0, 0, 0.8) !important;
+    background: rgba(255, 107, 0, 0.8) !important;
     color: white !important;
     padding: 0.5rem 0.75rem !important;
     border-radius: 6px !important;

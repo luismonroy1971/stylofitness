@@ -304,6 +304,19 @@ class User
 
         return $this->db->fetchAll($sql, [$instructorId]);
     }
+    
+    /**
+     * Contar clientes de un instructor
+     */
+    public function countInstructorClients($instructorId)
+    {
+        $sql = "SELECT COUNT(DISTINCT u.id) 
+                FROM {$this->table} u 
+                INNER JOIN routines r ON u.id = r.client_id 
+                WHERE r.instructor_id = ? AND u.is_active = 1";
+
+        return $this->db->count($sql, [$instructorId]);
+    }
 
     /**
      * Obtener estadísticas del usuario

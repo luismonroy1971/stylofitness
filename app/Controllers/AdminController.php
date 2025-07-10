@@ -53,8 +53,8 @@ class AdminController
         $additionalJS = ['admin-dashboard.js', 'chart.js'];
 
         include APP_PATH . '/Views/layout/header.php';
-        include APP_PATH . '/Views/admin/dashboard.php';
-        include APP_PATH . '/Views/layout/footer.php';
+        include APP_PATH . '/Views/admin/dashboard/index.php';
+        include APP_PATH . '/Views/includes/admin_footer.php';
     }
 
     public function users(): void
@@ -93,7 +93,7 @@ class AdminController
 
         include APP_PATH . '/Views/layout/header.php';
         include APP_PATH . '/Views/admin/users.php';
-        include APP_PATH . '/Views/layout/footer.php';
+        include APP_PATH . '/Views/includes/admin_footer.php';
     }
 
     private function getUsersAjax(): void
@@ -148,7 +148,7 @@ class AdminController
 
         include APP_PATH . '/Views/layout/header.php';
         include APP_PATH . '/Views/admin/user-form.php';
-        include APP_PATH . '/Views/layout/footer.php';
+        include APP_PATH . '/Views/includes/admin_footer.php';
     }
 
     public function storeUser(): void
@@ -211,7 +211,7 @@ class AdminController
 
         include APP_PATH . '/Views/layout/header.php';
         include APP_PATH . '/Views/admin/user-form.php';
-        include APP_PATH . '/Views/layout/footer.php';
+        include APP_PATH . '/Views/includes/admin_footer.php';
     }
 
     public function updateUser(int $id): void
@@ -345,7 +345,7 @@ class AdminController
 
         include APP_PATH . '/Views/layout/header.php';
         include APP_PATH . '/Views/admin/products.php';
-        include APP_PATH . '/Views/layout/footer.php';
+        include APP_PATH . '/Views/includes/admin_footer.php';
     }
 
     public function getProductsAjax(): void
@@ -390,7 +390,7 @@ class AdminController
 
         include APP_PATH . '/Views/layout/header.php';
         include APP_PATH . '/Views/admin/product-form.php';
-        include APP_PATH . '/Views/layout/footer.php';
+        include APP_PATH . '/Views/includes/admin_footer.php';
     }
 
     public function storeProduct(): void
@@ -462,7 +462,7 @@ class AdminController
 
         include APP_PATH . '/Views/layout/header.php';
         include APP_PATH . '/Views/admin/product-form.php';
-        include APP_PATH . '/Views/layout/footer.php';
+        include APP_PATH . '/Views/includes/admin_footer.php';
     }
 
     public function updateProduct(int $id): void
@@ -634,7 +634,7 @@ class AdminController
 
         include APP_PATH . '/Views/layout/header.php';
         include APP_PATH . '/Views/admin/orders.php';
-        include APP_PATH . '/Views/layout/footer.php';
+        include APP_PATH . '/Views/includes/admin_footer.php';
     }
 
     public function routines(): void
@@ -664,7 +664,7 @@ class AdminController
 
         include APP_PATH . '/Views/layout/header.php';
         include APP_PATH . '/Views/admin/routines.php';
-        include APP_PATH . '/Views/layout/footer.php';
+        include APP_PATH . '/Views/includes/admin_footer.php';
     }
 
     public function exercises(): void
@@ -695,7 +695,7 @@ class AdminController
 
         include APP_PATH . '/Views/layout/header.php';
         include APP_PATH . '/Views/admin/exercises.php';
-        include APP_PATH . '/Views/layout/footer.php';
+        include APP_PATH . '/Views/includes/admin_footer.php';
     }
 
     public function classes(): void
@@ -727,7 +727,7 @@ class AdminController
 
         include APP_PATH . '/Views/layout/header.php';
         include APP_PATH . '/Views/admin/classes.php';
-        include APP_PATH . '/Views/layout/footer.php';
+        include APP_PATH . '/Views/includes/admin_footer.php';
     }
 
     public function reports(): void
@@ -760,7 +760,7 @@ class AdminController
 
         include APP_PATH . '/Views/layout/header.php';
         include APP_PATH . '/Views/admin/reports.php';
-        include APP_PATH . '/Views/layout/footer.php';
+        include APP_PATH . '/Views/includes/admin_footer.php';
     }
 
     public function settings(): void
@@ -774,7 +774,7 @@ class AdminController
 
         include APP_PATH . '/Views/layout/header.php';
         include APP_PATH . '/Views/admin/settings.php';
-        include APP_PATH . '/Views/layout/footer.php';
+        include APP_PATH . '/Views/includes/admin_footer.php';
     }
 
     public function updateSettings(): void
@@ -1008,6 +1008,112 @@ class AdminController
     {
         return !empty($_SERVER['HTTP_X_REQUESTED_WITH']) && 
                strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest';
+    }
+    
+    public function instructors(): void
+    {
+        // Si es una petición AJAX, devolver solo los datos
+        if (isset($_GET['ajax']) && $_GET['ajax'] === '1') {
+            $this->getInstructorsAjax();
+            return;
+        }
+
+        $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+        $perPage = 20;
+        $offset = ($page - 1) * $perPage;
+
+        $filters = [
+            'search' => AppHelper::sanitize($_GET['search'] ?? ''),
+            'specialty' => AppHelper::sanitize($_GET['specialty'] ?? ''),
+            'role' => 'instructor', // Filtrar solo instructores
+            'limit' => $perPage,
+            'offset' => $offset,
+        ];
+        
+        // Manejar el filtro de status correctamente
+        if (isset($_GET['status']) && $_GET['status'] !== '') {
+            $filters['is_active'] = (int)$_GET['status'];
+        }
+
+        $userModel = new User();
+        $instructors = $userModel->getUsers($filters);
+        
+        // Obtener estadísticas adicionales para cada instructor
+        foreach ($instructors as &$instructor) {
+            // Contar clases asignadas al instructor
+            $classModel = new GroupClass();
+            $instructor['class_count'] = $classModel->countClassesByInstructor($instructor['id']);
+            
+            // Contar clientes asignados al instructor
+            $instructor['client_count'] = $userModel->countInstructorClients($instructor['id']);
+        }
+        
+        $totalInstructors = $userModel->countUsers($filters);
+        $pagination = $this->calculatePagination($page, $totalInstructors, $perPage);
+
+        $pageTitle = 'Gestión de Instructores - STYLOFITNESS';
+        $additionalCSS = ['admin.css'];
+        $additionalJS = ['admin-instructors.js'];
+
+        include APP_PATH . '/Views/layout/header.php';
+        include APP_PATH . '/Views/admin/instructors.php';
+        include APP_PATH . '/Views/includes/admin_footer.php';
+    }
+    
+    private function getInstructorsAjax(): void
+    {
+        $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+        $perPage = 20;
+        $offset = ($page - 1) * $perPage;
+
+        $filters = [
+            'search' => AppHelper::sanitize($_GET['search'] ?? ''),
+            'specialty' => AppHelper::sanitize($_GET['specialty'] ?? ''),
+            'role' => 'instructor', // Filtrar solo instructores
+            'limit' => $perPage,
+            'offset' => $offset,
+        ];
+        
+        // Manejar el filtro de status correctamente
+        if (isset($_GET['status']) && $_GET['status'] !== '') {
+            $filters['is_active'] = (int)$_GET['status'];
+        }
+
+        $userModel = new User();
+        $instructors = $userModel->getUsers($filters);
+        
+        // Obtener estadísticas adicionales para cada instructor
+        foreach ($instructors as &$instructor) {
+            // Contar clases asignadas al instructor
+            $classModel = new GroupClass();
+            $instructor['class_count'] = $classModel->countClassesByInstructor($instructor['id']);
+            
+            // Contar clientes asignados al instructor
+            $instructor['client_count'] = $userModel->countInstructorClients($instructor['id']);
+        }
+        
+        $totalInstructors = $userModel->countUsers($filters);
+        $pagination = $this->calculatePagination($page, $totalInstructors, $perPage);
+
+        // Generar HTML de la tabla
+        ob_start();
+        include APP_PATH . '/Views/admin/instructors-table.php';
+        $tableHtml = ob_get_clean();
+
+        // Generar HTML de la paginación
+        ob_start();
+        include APP_PATH . '/Views/admin/instructors-pagination.php';
+        $paginationHtml = ob_get_clean();
+
+        header('Content-Type: application/json');
+        echo json_encode([
+            'success' => true,
+            'tableHtml' => $tableHtml,
+            'paginationHtml' => $paginationHtml,
+            'totalInstructors' => $totalInstructors,
+            'currentPage' => $page,
+            'totalPages' => $pagination['total_pages']
+        ]);
     }
 }
 
