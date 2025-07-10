@@ -76,7 +76,7 @@ $heroConfig = $heroData['config'];
                                             <?php 
                                             $productImages = is_string($product['images']) ? json_decode($product['images'], true) : $product['images'];
                                             $mainImage = !empty($productImages) ? 
-                                (strpos($productImages[0], '/uploads/') === 0 ? AppHelper::getBaseUrl() . ltrim($productImages[0], '/') : AppHelper::uploadUrl($productImages[0])) : 
+                                AppHelper::uploadUrl($productImages[0]) : 
                                 AppHelper::asset('images/placeholder.jpg');
                                             ?>
                                             <img src="<?php echo $mainImage; ?>" 
@@ -559,7 +559,7 @@ $whyChooseUsItems = $servicesData['why_choose_us'];
                             <?php 
                             $productImages = is_string($product['images']) ? json_decode($product['images'], true) : $product['images'];
                             $mainImage = !empty($productImages) ? 
-                                (strpos($productImages[0], '/uploads/') === 0 ? AppHelper::getBaseUrl() . ltrim($productImages[0], '/') : AppHelper::uploadUrl($productImages[0])) : 
+                                AppHelper::uploadUrl($productImages[0]) : 
                                 AppHelper::asset('images/placeholder.jpg');
                             ?>
                             <img src="<?php echo $mainImage; ?>" 

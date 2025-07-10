@@ -1,12 +1,18 @@
 <?php
 
-namespace Database\Seeders;
+require_once __DIR__ . '/../../app/Config/Database.php';
 
-use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
+use StyleFitness\Config\Database;
 
-class LandingPageConfigSeeder extends Seeder
+class LandingPageConfigSeeder
 {
+    private $db;
+    
+    public function __construct()
+    {
+        $this->db = Database::getInstance();
+    }
+    
     /**
      * Run the database seeds.
      *
@@ -14,7 +20,10 @@ class LandingPageConfigSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('landing_page_config')->insert([
+        try {
+            $currentTime = date('Y-m-d H:i:s');
+            
+            $configs = [
             [
                 'section_name' => 'special_offers',
                 'is_enabled' => 1,
@@ -33,8 +42,8 @@ class LandingPageConfigSeeder extends Seeder
                         'desktop' => ['items' => 3]
                     ]
                 ]),
-                'created_at' => now(),
-                'updated_at' => now()
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
             [
                 'section_name' => 'why_choose_us',
@@ -56,8 +65,8 @@ class LandingPageConfigSeeder extends Seeder
                         'desktop' => ['columns' => 3]
                     ]
                 ]),
-                'created_at' => now(),
-                'updated_at' => now()
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
             [
                 'section_name' => 'featured_products',
@@ -80,8 +89,8 @@ class LandingPageConfigSeeder extends Seeder
                         'desktop' => ['items_per_row' => 4]
                     ]
                 ]),
-                'created_at' => now(),
-                'updated_at' => now()
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
             [
                 'section_name' => 'group_classes',
@@ -103,8 +112,8 @@ class LandingPageConfigSeeder extends Seeder
                         'desktop' => ['layout' => 'grid']
                     ]
                 ]),
-                'created_at' => now(),
-                'updated_at' => now()
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
             [
                 'section_name' => 'testimonials',
@@ -128,8 +137,8 @@ class LandingPageConfigSeeder extends Seeder
                         'desktop' => ['items_per_slide' => 3]
                     ]
                 ]),
-                'created_at' => now(),
-                'updated_at' => now()
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
             [
                 'section_name' => 'hero_banner',
@@ -151,8 +160,8 @@ class LandingPageConfigSeeder extends Seeder
                         'desktop' => ['min_height' => '100vh']
                     ]
                 ]),
-                'created_at' => now(),
-                'updated_at' => now()
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
             [
                 'section_name' => 'contact_form',
@@ -174,8 +183,8 @@ class LandingPageConfigSeeder extends Seeder
                         'desktop' => ['layout' => 'side-by-side']
                     ]
                 ]),
-                'created_at' => now(),
-                'updated_at' => now()
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
             [
                 'section_name' => 'footer',
@@ -196,9 +205,31 @@ class LandingPageConfigSeeder extends Seeder
                         'desktop' => ['layout' => 'grid']
                     ]
                 ]),
-                'created_at' => now(),
-                'updated_at' => now()
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ]
-        ]);
+        ];
+        
+        foreach ($configs as $config) {
+            $sql = "INSERT INTO landing_page_config (section_name, is_enabled, display_order, custom_css, custom_js, config_data, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+            
+            $this->db->query($sql, [
+                $config['section_name'],
+                $config['is_enabled'],
+                $config['display_order'],
+                $config['custom_css'],
+                $config['custom_js'],
+                $config['config_data'],
+                $config['created_at'],
+                $config['updated_at']
+            ]);
+        }
+        
+        echo "LandingPageConfigSeeder: Configuraciones insertadas correctamente.\n";
+        
+        } catch (Exception $e) {
+            echo "Error en LandingPageConfigSeeder: " . $e->getMessage() . "\n";
+            throw $e;
+        }
     }
 }

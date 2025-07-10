@@ -1,12 +1,18 @@
 <?php
 
-namespace Database\Seeders;
+require_once __DIR__ . '/../../app/Config/Database.php';
 
-use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
+use StyleFitness\Config\Database;
 
-class WhyChooseUsSeeder extends Seeder
+class WhyChooseUsSeeder
 {
+    private $db;
+    
+    public function __construct()
+    {
+        $this->db = Database::getInstance();
+    }
+    
     /**
      * Run the database seeds.
      *
@@ -14,7 +20,10 @@ class WhyChooseUsSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('why_choose_us')->insert([
+        try {
+            $currentTime = date('Y-m-d H:i:s');
+            
+            $whyChooseUs = [
             [
                 'title' => 'Rutinas Personalizadas',
                 'subtitle' => 'Entrenamientos inteligentes con IA',
@@ -35,8 +44,8 @@ class WhyChooseUsSeeder extends Seeder
                 ]),
                 'is_active' => 1,
                 'display_order' => 1,
-                'created_at' => now(),
-                'updated_at' => now()
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
             [
                 'title' => 'Tienda Especializada',
@@ -58,8 +67,8 @@ class WhyChooseUsSeeder extends Seeder
                 ]),
                 'is_active' => 1,
                 'display_order' => 2,
-                'created_at' => now(),
-                'updated_at' => now()
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
             [
                 'title' => 'Clases Grupales',
@@ -81,8 +90,8 @@ class WhyChooseUsSeeder extends Seeder
                 ]),
                 'is_active' => 1,
                 'display_order' => 3,
-                'created_at' => now(),
-                'updated_at' => now()
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
             [
                 'title' => 'Tecnología Avanzada',
@@ -104,8 +113,8 @@ class WhyChooseUsSeeder extends Seeder
                 ]),
                 'is_active' => 1,
                 'display_order' => 4,
-                'created_at' => now(),
-                'updated_at' => now()
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
             [
                 'title' => 'Nutrición Especializada',
@@ -127,8 +136,8 @@ class WhyChooseUsSeeder extends Seeder
                 ]),
                 'is_active' => 1,
                 'display_order' => 5,
-                'created_at' => now(),
-                'updated_at' => now()
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
             [
                 'title' => 'Comunidad Activa',
@@ -150,9 +159,35 @@ class WhyChooseUsSeeder extends Seeder
                 ]),
                 'is_active' => 1,
                 'display_order' => 6,
-                'created_at' => now(),
-                'updated_at' => now()
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ]
-        ]);
+        ];
+        
+        foreach ($whyChooseUs as $item) {
+            $sql = "INSERT INTO why_choose_us (title, subtitle, description, icon, icon_color, background_gradient, highlights, stats, is_active, display_order, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            
+            $this->db->query($sql, [
+                $item['title'],
+                $item['subtitle'],
+                $item['description'],
+                $item['icon'],
+                $item['icon_color'],
+                $item['background_gradient'],
+                $item['highlights'],
+                $item['stats'],
+                $item['is_active'],
+                $item['display_order'],
+                $item['created_at'],
+                $item['updated_at']
+            ]);
+        }
+        
+        echo "WhyChooseUsSeeder: Elementos insertados correctamente.\n";
+        
+        } catch (Exception $e) {
+            echo "Error en WhyChooseUsSeeder: " . $e->getMessage() . "\n";
+            throw $e;
+        }
     }
 }

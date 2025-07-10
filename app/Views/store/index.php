@@ -141,7 +141,7 @@
                     $uploadFullPath = __DIR__ . '/../../../public/' . $uploadImagePath;
                     if (file_exists($uploadFullPath)) {
                         $hasImage = true;
-                        $imagePath = AppHelper::baseUrl($uploadImagePath);
+                        $imagePath = AppHelper::uploadUrl($uploadImagePath);
                     }
                 }
                 

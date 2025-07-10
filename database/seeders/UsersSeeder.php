@@ -1,13 +1,18 @@
 <?php
 
-namespace Database\Seeders;
+require_once __DIR__ . '/../../app/Config/Database.php';
 
-use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
+use StyleFitness\Config\Database;
 
-class UsersSeeder extends Seeder
+class UsersSeeder
 {
+    private $db;
+    
+    public function __construct()
+    {
+        $this->db = Database::getInstance();
+    }
+    
     /**
      * Run the database seeds.
      *
@@ -15,12 +20,15 @@ class UsersSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users')->insert([
-            [
+        try {
+            $currentTime = date('Y-m-d H:i:s');
+            
+            $users = [
+                [
                 'gym_id' => 1,
                 'username' => 'admin',
                 'email' => 'admin@stylofitness.com',
-                'password' => Hash::make('admin123'),
+                'password' => password_hash('admin123', PASSWORD_DEFAULT),
                 'first_name' => 'Administrador',
                 'last_name' => 'Sistema',
                 'phone' => '+51987654321',
@@ -48,17 +56,17 @@ class UsersSeeder extends Seeder
                     'medications' => [],
                     'notes' => 'Sin restricciones médicas'
                 ]),
-                'email_verified_at' => now(),
-                'last_login_at' => now(),
+                'email_verified_at' => $currentTime,
+                'last_login_at' => $currentTime,
                 'login_count' => 25,
-                'created_at' => now(),
-                'updated_at' => now()
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
             [
                 'gym_id' => 1,
                 'username' => 'instructor1',
                 'email' => 'carlos.rodriguez@stylofitness.com',
-                'password' => Hash::make('instructor123'),
+                'password' => password_hash('instructor123', PASSWORD_DEFAULT),
                 'first_name' => 'Carlos',
                 'last_name' => 'Rodríguez',
                 'phone' => '+51987654323',
@@ -85,17 +93,17 @@ class UsersSeeder extends Seeder
                     'experience_years' => 5,
                     'specializations' => ['Pérdida de peso', 'Ganancia muscular']
                 ]),
-                'email_verified_at' => now(),
-                'last_login_at' => now(),
+                'email_verified_at' => $currentTime,
+                'last_login_at' => $currentTime,
                 'login_count' => 45,
-                'created_at' => now(),
-                'updated_at' => now()
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
             [
                 'gym_id' => 1,
                 'username' => 'maria.gonzalez',
                 'email' => 'maria.gonzalez@email.com',
-                'password' => Hash::make('cliente123'),
+                'password' => password_hash('cliente123', PASSWORD_DEFAULT),
                 'first_name' => 'María',
                 'last_name' => 'González',
                 'phone' => '+51987654325',
@@ -125,17 +133,17 @@ class UsersSeeder extends Seeder
                     'fitness_level' => 'intermediate',
                     'goals' => 'Pérdida de peso y tonificación'
                 ]),
-                'email_verified_at' => now(),
-                'last_login_at' => now(),
+                'email_verified_at' => $currentTime,
+                'last_login_at' => $currentTime,
                 'login_count' => 15,
-                'created_at' => now(),
-                'updated_at' => now()
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
             [
                 'gym_id' => 2,
                 'username' => 'ana.morales',
                 'email' => 'ana.morales@email.com',
-                'password' => Hash::make('cliente123'),
+                'password' => password_hash('cliente123', PASSWORD_DEFAULT),
                 'first_name' => 'Ana',
                 'last_name' => 'Morales',
                 'phone' => '+51987654327',
@@ -165,12 +173,48 @@ class UsersSeeder extends Seeder
                     'fitness_level' => 'beginner',
                     'goals' => 'Mantenerse en forma y saludable'
                 ]),
-                'email_verified_at' => now(),
-                'last_login_at' => now(),
+                'email_verified_at' => $currentTime,
+                'last_login_at' => $currentTime,
                 'login_count' => 8,
-                'created_at' => now(),
-                'updated_at' => now()
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ]
-        ]);
+        ];
+        
+        foreach ($users as $user) {
+            $sql = "INSERT INTO users (gym_id, username, email, password, first_name, last_name, phone, date_of_birth, gender, role, profile_image, is_active, membership_type, membership_expires, preferences, emergency_contact, medical_info, email_verified_at, last_login_at, login_count, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            
+            $this->db->query($sql, [
+                $user['gym_id'],
+                $user['username'],
+                $user['email'],
+                $user['password'],
+                $user['first_name'],
+                $user['last_name'],
+                $user['phone'],
+                $user['date_of_birth'],
+                $user['gender'],
+                $user['role'],
+                $user['profile_image'],
+                $user['is_active'],
+                $user['membership_type'],
+                $user['membership_expires'],
+                $user['preferences'],
+                $user['emergency_contact'],
+                $user['medical_info'],
+                $user['email_verified_at'],
+                $user['last_login_at'],
+                $user['login_count'],
+                $user['created_at'],
+                $user['updated_at']
+            ]);
+        }
+        
+        echo "UsersSeeder: Usuarios insertados correctamente.\n";
+        
+        } catch (Exception $e) {
+            echo "Error en UsersSeeder: " . $e->getMessage() . "\n";
+            throw $e;
+        }
     }
 }

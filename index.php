@@ -61,16 +61,25 @@ spl_autoload_register(function ($class) {
     }
 });
 
-// Validación automática de remember token
+// Validación automática de remember token (optimizada)
 if (!isset($_SESSION['user_id']) && isset($_COOKIE['remember_token'])) {
     try {
+        // Agregar timeout para evitar bloqueos
+        set_time_limit(10);
+        
         $db = Database::getInstance()->getConnection();
         $token = $_COOKIE['remember_token'];
         
-        // Buscar el token en la tabla security_tokens
+        // Verificar que el token no esté vacío
+        if (empty($token)) {
+            setcookie('remember_token', '', time() - 3600, '/');
+            goto skip_token_validation;
+        }
+        
+        // Buscar el token en la tabla security_tokens con timeout
         $stmt = $db->prepare("SELECT u.* FROM users u 
                              INNER JOIN security_tokens st ON u.id = st.user_id 
-                             WHERE st.token = ? AND st.type = 'remember_me' AND st.expires_at > NOW()");
+                             WHERE st.token = ? AND st.type = 'remember_me' AND st.expires_at > NOW() LIMIT 1");
         $stmt->execute([hash('sha256', $token)]);
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
         
@@ -93,9 +102,13 @@ if (!isset($_SESSION['user_id']) && isset($_COOKIE['remember_token'])) {
                 'membership_expires' => $user['membership_expires'],
             ];
             
-            // Actualizar último acceso
-            $updateStmt = $db->prepare("UPDATE users SET last_login_at = NOW() WHERE id = ?");
-            $updateStmt->execute([$user['id']]);
+            // Actualizar último acceso (sin bloquear si falla)
+            try {
+                $updateStmt = $db->prepare("UPDATE users SET last_login_at = NOW() WHERE id = ?");
+                $updateStmt->execute([$user['id']]);
+            } catch (Exception $updateError) {
+                error_log("Failed to update last_login_at: " . $updateError->getMessage());
+            }
             
             error_log("Auto-login successful for user: " . $user['email']);
         } else {
@@ -107,8 +120,13 @@ if (!isset($_SESSION['user_id']) && isset($_COOKIE['remember_token'])) {
         error_log("Remember token validation error: " . $e->getMessage());
         // En caso de error, eliminar cookie por seguridad
         setcookie('remember_token', '', time() - 3600, '/');
+    } finally {
+        // Restaurar tiempo límite original
+        set_time_limit(30);
     }
 }
+
+skip_token_validation:
 
 // Sistema de enrutamiento mejorado
 class Router {
@@ -131,53 +149,78 @@ class Router {
     }
     
     public function resolve() {
-        $requestUri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
-        $requestMethod = $_SERVER['REQUEST_METHOD'];
+        // Prevenir bucles infinitos
+        static $resolveCount = 0;
+        $resolveCount++;
         
-        // Remover el directorio base si existe
-        $scriptName = $_SERVER['SCRIPT_NAME'];
-        $basePath = str_replace('\\', '/', dirname($scriptName));
-        
-        // Si estamos en un subdirectorio, removerlo de la URI
-        if ($basePath !== '/' && strpos($requestUri, $basePath) === 0) {
-            $requestUri = substr($requestUri, strlen($basePath));
+        if ($resolveCount > 1) {
+            error_log("Router resolve called multiple times, preventing infinite loop");
+            http_response_code(500);
+            echo '<h1>Error interno del servidor</h1>';
+            return;
         }
         
-        // Limpiar la URI
-        $requestUri = '/' . ltrim($requestUri, '/');
-        $requestUri = $requestUri === '/' ? '/' : rtrim($requestUri, '/');
-        
-        // Debug logging
-        error_log("Routing Debug - Method: {$requestMethod}, Original URI: {$_SERVER['REQUEST_URI']}, Processed URI: {$requestUri}, Base: {$basePath}, Script: {$scriptName}");
-        
-        // Buscar ruta exacta primero
-        $callback = $this->routes[$requestMethod][$requestUri] ?? null;
-        
-        if ($callback) {
-            error_log("Found exact route for {$requestMethod} {$requestUri}");
-            return $this->executeCallback($callback);
-        }
-        
-        // Buscar rutas con parámetros
-        foreach ($this->routes[$requestMethod] ?? [] as $route => $callback) {
-            $pattern = $this->convertRouteToRegex($route);
-            if (preg_match($pattern, $requestUri, $matches)) {
-                array_shift($matches); // Remover el match completo
-                error_log("Found parametric route {$route} for {$requestMethod} {$requestUri}");
-                return $this->executeCallback($callback, $matches);
+        try {
+            $requestUri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+            $requestMethod = $_SERVER['REQUEST_METHOD'];
+            
+            // Remover el directorio base si existe
+            $scriptName = $_SERVER['SCRIPT_NAME'];
+            $basePath = str_replace('\\', '/', dirname($scriptName));
+            
+            // Si estamos en un subdirectorio, removerlo de la URI
+            if ($basePath !== '/' && strpos($requestUri, $basePath) === 0) {
+                $requestUri = substr($requestUri, strlen($basePath));
             }
-        }
-        
-        // Log para debugging 404
-        error_log("404 - No route found for {$requestMethod} {$requestUri}");
-        error_log("Available routes for {$requestMethod}: " . implode(', ', array_keys($this->routes[$requestMethod] ?? [])));
-        
-        // Ruta 404
-        http_response_code(404);
-        if (file_exists(APP_PATH . '/Views/errors/404.php')) {
-            include APP_PATH . '/Views/errors/404.php';
-        } else {
-            $this->render404();
+            
+            // Limpiar la URI
+            $requestUri = '/' . ltrim($requestUri, '/');
+            $requestUri = $requestUri === '/' ? '/' : rtrim($requestUri, '/');
+            
+            // Debug logging (solo en desarrollo)
+            if (defined('APP_ENV') && APP_ENV !== 'production') {
+                error_log("Routing Debug - Method: {$requestMethod}, Original URI: {$_SERVER['REQUEST_URI']}, Processed URI: {$requestUri}, Base: {$basePath}, Script: {$scriptName}");
+            }
+            
+            // Buscar ruta exacta primero
+            $callback = $this->routes[$requestMethod][$requestUri] ?? null;
+            
+            if ($callback) {
+                if (defined('APP_ENV') && APP_ENV !== 'production') {
+                    error_log("Found exact route for {$requestMethod} {$requestUri}");
+                }
+                return $this->executeCallback($callback);
+            }
+            
+            // Buscar rutas con parámetros
+            foreach ($this->routes[$requestMethod] ?? [] as $route => $callback) {
+                $pattern = $this->convertRouteToRegex($route);
+                if (preg_match($pattern, $requestUri, $matches)) {
+                    array_shift($matches); // Remover el match completo
+                    if (defined('APP_ENV') && APP_ENV !== 'production') {
+                        error_log("Found parametric route {$route} for {$requestMethod} {$requestUri}");
+                    }
+                    return $this->executeCallback($callback, $matches);
+                }
+            }
+            
+            // Log para debugging 404 (solo en desarrollo)
+            if (defined('APP_ENV') && APP_ENV !== 'production') {
+                error_log("404 - No route found for {$requestMethod} {$requestUri}");
+                error_log("Available routes for {$requestMethod}: " . implode(', ', array_keys($this->routes[$requestMethod] ?? [])));
+            }
+            
+            // Ruta 404
+            http_response_code(404);
+            if (file_exists(APP_PATH . '/Views/errors/404.php')) {
+                include APP_PATH . '/Views/errors/404.php';
+            } else {
+                $this->render404();
+            }
+        } catch (Exception $e) {
+            error_log("Router resolve error: " . $e->getMessage());
+            http_response_code(500);
+            echo '<h1>Error interno del servidor</h1>';
         }
     }
     
@@ -606,9 +649,14 @@ if (function_exists('getAppConfig') && getAppConfig('debug_enabled', false)) {
     $router->get('/dev/clear-cache', 'DevController@clearCache');
 }
 
-// Manejo de errores
+// Manejo de errores optimizado
 set_exception_handler(function($exception) {
     error_log("Uncaught exception: " . $exception->getMessage());
+    
+    // Evitar output múltiple
+    if (headers_sent()) {
+        return;
+    }
     
     if (function_exists('getAppConfig') && getAppConfig('debug_enabled', false)) {
         echo '<pre>' . $exception->getTraceAsString() . '</pre>';
@@ -622,15 +670,29 @@ set_exception_handler(function($exception) {
     }
 });
 
-// Resolver ruta
+// Resolver ruta con protección adicional
 try {
-    $router->resolve();
+    // Verificar que no se haya enviado output antes
+    if (!headers_sent()) {
+        $router->resolve();
+    } else {
+        error_log("Headers already sent, skipping router resolution");
+    }
 } catch (Exception $e) {
     error_log("Router exception: " . $e->getMessage());
     
-    if (function_exists('getAppConfig') && getAppConfig('debug_enabled', false)) {
-        echo '<pre>Error: ' . $e->getMessage() . '</pre>';
-    } else {
+    if (!headers_sent()) {
+        if (function_exists('getAppConfig') && getAppConfig('debug_enabled', false)) {
+            echo '<pre>Error: ' . $e->getMessage() . '</pre>';
+        } else {
+            http_response_code(500);
+            echo '<h1>Error interno del servidor</h1>';
+        }
+    }
+} catch (Error $e) {
+    error_log("Router fatal error: " . $e->getMessage());
+    
+    if (!headers_sent()) {
         http_response_code(500);
         echo '<h1>Error interno del servidor</h1>';
     }

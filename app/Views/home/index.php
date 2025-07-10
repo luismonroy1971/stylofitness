@@ -120,7 +120,7 @@ $heroConfig = $heroData['config'];
                                 // Verificar si el archivo existe
                                 $fullPath = 'public' . $imagePath;
                                 if (file_exists($fullPath)) {
-                                    $mainImage = AppHelper::baseUrl(ltrim($imagePath, '/'));
+                                    $mainImage = AppHelper::uploadUrl(ltrim($imagePath, '/'));
                                 } else {
                                     $mainImage = AppHelper::asset('images/placeholder.jpg');
                                 }
@@ -620,7 +620,7 @@ $whyChooseUsItems = $servicesData['why_choose_us'];
                             <?php 
                             $productImages = is_string($product['images']) ? json_decode($product['images'], true) : $product['images'];
                             $mainImage = !empty($productImages) ? 
-                                (strpos($productImages[0], '/uploads/') === 0 ? AppHelper::getBaseUrl() . ltrim($productImages[0], '/') : AppHelper::uploadUrl($productImages[0])) : 
+                                AppHelper::uploadUrl($productImages[0]) : 
                                 AppHelper::asset('images/placeholder.jpg');
                             ?>
                             <img src="<?php echo $mainImage; ?>" 

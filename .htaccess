@@ -9,6 +9,14 @@ RewriteEngine On
 # RewriteCond %{HTTPS} off
 # RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
+# Excluir archivos estáticos del enrutamiento
+RewriteCond %{REQUEST_URI} !\.(css|js|png|jpg|jpeg|gif|ico|svg|woff|woff2|eot|ttf|mp4|webm|pdf|webp)$ [NC]
+RewriteCond %{REQUEST_URI} !^/public/ [NC]
+RewriteCond %{REQUEST_URI} !^/uploads/ [NC]
+RewriteCond %{REQUEST_URI} !^/images/ [NC]
+RewriteCond %{REQUEST_URI} !^/css/ [NC]
+RewriteCond %{REQUEST_URI} !^/js/ [NC]
+RewriteCond %{REQUEST_URI} !^/assets/ [NC]
 # Redireccionar todas las peticiones al index.php
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
@@ -161,11 +169,16 @@ RewriteRule ^(.*)$ index.php [L,QSA]
 # Deshabilitar server signature
 ServerSignature Off
 
-# Aumentar límites para uploads
+# Optimizar límites para evitar timeouts
 php_value upload_max_filesize 50M
 php_value post_max_size 50M
-php_value max_execution_time 300
+php_value max_execution_time 30
+php_value max_input_time 30
 php_value memory_limit 256M
+php_flag log_errors on
+php_value error_log logs/php_errors.log
+php_flag display_errors off
+php_flag display_startup_errors off
 
 # Optimización de índices
 DirectoryIndex index.php index.html

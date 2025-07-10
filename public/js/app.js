@@ -76,17 +76,24 @@ const STYLOFITNESS = {
 // MEGA CARRUSEL DE OFERTAS ESPECIALES
 // =============================================
 STYLOFITNESS.initMegaCarousel = function() {
-    const megaCarousel = document.getElementById('hero-products-carousel');
-    if (!megaCarousel) return;
-    
-    const track = document.getElementById('hero-track');
-    const slides = document.querySelectorAll('.mega-slide');
-    const dots = document.querySelectorAll('.mega-dot');
-    const prevBtn = document.getElementById('mega-prev');
-    const nextBtn = document.getElementById('mega-next');
-    const progressBar = document.getElementById('carousel-progress');
-    
-    if (!track || slides.length === 0) return;
+    try {
+        const megaCarousel = document.getElementById('hero-products-carousel');
+        if (!megaCarousel) {
+            console.log('Mega carousel element not found');
+            return;
+        }
+        
+        const track = document.getElementById('hero-track');
+        const slides = document.querySelectorAll('.mega-slide');
+        const dots = document.querySelectorAll('.mega-dot');
+        const prevBtn = document.getElementById('mega-prev');
+        const nextBtn = document.getElementById('mega-next');
+        const progressBar = document.getElementById('carousel-progress');
+        
+        if (!track || slides.length === 0) {
+            console.log('Mega carousel track or slides not found');
+            return;
+        }
     
     let currentSlide = 0;
     const totalSlides = slides.length;
@@ -233,12 +240,16 @@ STYLOFITNESS.initMegaCarousel = function() {
         }
     });
     
-    // Inicializar carrusel
-    moveToSlide(0);
-    startAutoplay();
-    
-    // Inicializar contadores de tiempo
-    this.initCountdownTimers();
+        // Inicializar carrusel
+        moveToSlide(0);
+        startAutoplay();
+        
+        // Inicializar contadores de tiempo
+        this.initCountdownTimers();
+        
+    } catch (error) {
+        console.error('Error initializing mega carousel:', error);
+    }
 };
 
 // =============================================

@@ -1,13 +1,18 @@
 <?php
 
-namespace Database\Seeders;
+require_once __DIR__ . '/../../app/Config/Database.php';
 
-use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
-use Carbon\Carbon;
+use StyleFitness\Config\Database;
 
-class SpecialOffersSeeder extends Seeder
+class SpecialOffersSeeder
 {
+    private $db;
+    
+    public function __construct()
+    {
+        $this->db = Database::getInstance();
+    }
+    
     /**
      * Run the database seeds.
      *
@@ -15,7 +20,11 @@ class SpecialOffersSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('special_offers')->insert([
+        try {
+            $currentTime = date('Y-m-d H:i:s');
+            $startDate = date('Y-m-d H:i:s');
+            
+            $offers = [
             [
                 'title' => '¡MEGA DESCUENTO!',
                 'subtitle' => 'Hasta 50% OFF en Suplementos',
@@ -27,12 +36,12 @@ class SpecialOffersSeeder extends Seeder
                 'text_color' => '#ffffff',
                 'button_text' => 'Ver Ofertas',
                 'button_link' => '/store?category=suplementos',
-                'start_date' => Carbon::now(),
-                'end_date' => Carbon::now()->addDays(30),
+                'start_date' => $startDate,
+                'end_date' => date('Y-m-d H:i:s', strtotime('+30 days')),
                 'is_active' => 1,
                 'display_order' => 1,
-                'created_at' => now(),
-                'updated_at' => now()
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
             [
                 'title' => 'MEMBRESÍA PREMIUM',
@@ -45,12 +54,12 @@ class SpecialOffersSeeder extends Seeder
                 'text_color' => '#ffffff',
                 'button_text' => 'Suscribirse',
                 'button_link' => '/membership',
-                'start_date' => Carbon::now(),
-                'end_date' => Carbon::now()->addDays(15),
+                'start_date' => $startDate,
+                'end_date' => date('Y-m-d H:i:s', strtotime('+15 days')),
                 'is_active' => 1,
                 'display_order' => 2,
-                'created_at' => now(),
-                'updated_at' => now()
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
             [
                 'title' => 'RUTINAS PERSONALIZADAS',
@@ -63,12 +72,12 @@ class SpecialOffersSeeder extends Seeder
                 'text_color' => '#ffffff',
                 'button_text' => 'Empezar Ahora',
                 'button_link' => '/routines',
-                'start_date' => Carbon::now(),
-                'end_date' => Carbon::now()->addDays(45),
+                'start_date' => $startDate,
+                'end_date' => date('Y-m-d H:i:s', strtotime('+45 days')),
                 'is_active' => 1,
                 'display_order' => 3,
-                'created_at' => now(),
-                'updated_at' => now()
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
             [
                 'title' => 'CLASES GRUPALES',
@@ -81,12 +90,12 @@ class SpecialOffersSeeder extends Seeder
                 'text_color' => '#ffffff',
                 'button_text' => 'Reservar Clase',
                 'button_link' => '/classes',
-                'start_date' => Carbon::now(),
-                'end_date' => Carbon::now()->addDays(60),
+                'start_date' => $startDate,
+                'end_date' => date('Y-m-d H:i:s', strtotime('+60 days')),
                 'is_active' => 1,
                 'display_order' => 4,
-                'created_at' => now(),
-                'updated_at' => now()
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
             [
                 'title' => 'EVALUACIÓN NUTRICIONAL',
@@ -99,13 +108,43 @@ class SpecialOffersSeeder extends Seeder
                 'text_color' => '#ffffff',
                 'button_text' => 'Agendar Cita',
                 'button_link' => '/nutrition',
-                'start_date' => Carbon::now(),
-                'end_date' => Carbon::now()->addDays(20),
+                'start_date' => $startDate,
+                'end_date' => date('Y-m-d H:i:s', strtotime('+20 days')),
                 'is_active' => 1,
                 'display_order' => 5,
-                'created_at' => now(),
-                'updated_at' => now()
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ]
-        ]);
+        ];
+        
+        foreach ($offers as $offer) {
+            $sql = "INSERT INTO special_offers (title, subtitle, description, discount_percentage, discount_amount, image, background_color, text_color, button_text, button_link, start_date, end_date, is_active, display_order, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            
+            $this->db->query($sql, [
+                $offer['title'],
+                $offer['subtitle'],
+                $offer['description'],
+                $offer['discount_percentage'],
+                $offer['discount_amount'],
+                $offer['image'],
+                $offer['background_color'],
+                $offer['text_color'],
+                $offer['button_text'],
+                $offer['button_link'],
+                $offer['start_date'],
+                $offer['end_date'],
+                $offer['is_active'],
+                $offer['display_order'],
+                $offer['created_at'],
+                $offer['updated_at']
+            ]);
+        }
+        
+        echo "SpecialOffersSeeder: Ofertas especiales insertadas correctamente.\n";
+        
+        } catch (Exception $e) {
+            echo "Error en SpecialOffersSeeder: " . $e->getMessage() . "\n";
+            throw $e;
+        }
     }
 }

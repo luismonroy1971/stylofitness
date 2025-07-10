@@ -59,7 +59,7 @@ $finalPrice = $hasDiscount ? $salePrice : $normalPrice;
             <!-- Galería de imágenes -->
             <div class="product-gallery">
                 <div class="main-image-container">
-                    <img id="mainProductImage" src="<?= AppHelper::baseUrl($productImages[0]) ?>" alt="<?= htmlspecialchars($product['name']) ?>" class="main-product-image">
+                    <img id="mainProductImage" src="<?= AppHelper::uploadUrl($productImages[0]) ?>" alt="<?= htmlspecialchars($product['name']) ?>" class="main-product-image">
                     <?php if ($hasDiscount): ?>
                     <div class="discount-badge">-<?= $discountPercentage ?>%</div>
                     <?php endif; ?>
@@ -76,9 +76,9 @@ $finalPrice = $hasDiscount ? $salePrice : $normalPrice;
                 <?php if (count($productImages) > 1): ?>
                 <div class="image-thumbnails">
                     <?php foreach ($productImages as $index => $image): ?>
-                    <img src="<?= AppHelper::baseUrl($image) ?>" alt="<?= htmlspecialchars($product['name']) ?> - Imagen <?= $index + 1 ?>" 
+                    <img src="<?= AppHelper::uploadUrl($image) ?>" alt="<?= htmlspecialchars($product['name']) ?> - Imagen <?= $index + 1 ?>" 
                          class="thumbnail-image <?= $index === 0 ? 'active' : '' ?>" 
-                         onclick="changeMainImage('<?= AppHelper::baseUrl($image) ?>', this)">
+                         onclick="changeMainImage('<?= AppHelper::uploadUrl($image) ?>', this)">
                     <?php endforeach; ?>
                 </div>
                 <?php endif; ?>
@@ -228,7 +228,7 @@ $finalPrice = $hasDiscount ? $salePrice : $normalPrice;
                             }
                             $relatedImageSrc = !empty($relatedImages) ? $relatedImages[0] : '/images/placeholder.jpg';
                             ?>
-                            <img src="<?= AppHelper::baseUrl($relatedImageSrc) ?>" alt="<?= htmlspecialchars($relatedProduct['name']) ?>" class="product-image">
+                            <img src="<?= AppHelper::uploadUrl($relatedImageSrc) ?>" alt="<?= htmlspecialchars($relatedProduct['name']) ?>" class="product-image">
                             <?php 
                             $relatedHasDiscount = !empty($relatedProduct['sale_price']) && $relatedProduct['sale_price'] > 0;
                             if ($relatedHasDiscount): 

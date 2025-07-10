@@ -203,9 +203,21 @@ class AppHelper
     {
         $cleanPath = ltrim($path, '/');
         
-        // Para el servidor de desarrollo de PHP, no agregar 'public/' 
-        // ya que el router.php maneja la redirección a la carpeta public
-        return self::getBaseUrl() . $cleanPath;
+        // Detectar si estamos en desarrollo local o en hosting
+        $isLocalDev = (
+            $_SERVER['HTTP_HOST'] === 'localhost' || 
+            strpos($_SERVER['HTTP_HOST'], 'localhost:') === 0 ||
+            $_SERVER['HTTP_HOST'] === '127.0.0.1' ||
+            strpos($_SERVER['HTTP_HOST'], '127.0.0.1:') === 0
+        );
+        
+        // En desarrollo local, el router.php maneja la redirección
+        // En hosting, necesitamos agregar 'public/' explícitamente
+        if ($isLocalDev) {
+            return self::getBaseUrl() . $cleanPath;
+        } else {
+            return self::getBaseUrl() . 'public/' . $cleanPath;
+        }
     }
 
     /**
@@ -213,11 +225,31 @@ class AppHelper
      */
     public static function uploadUrl(string $path = ''): string
     {
+        $cleanPath = ltrim($path, '/');
+        
+        // Detectar si estamos en desarrollo local o en hosting
+        $isLocalDev = (
+            $_SERVER['HTTP_HOST'] === 'localhost' || 
+            strpos($_SERVER['HTTP_HOST'], 'localhost:') === 0 ||
+            $_SERVER['HTTP_HOST'] === '127.0.0.1' ||
+            strpos($_SERVER['HTTP_HOST'], '127.0.0.1:') === 0
+        );
+        
         // Si el path ya incluye 'uploads/', no duplicar
-        if (strpos($path, '/uploads/') === 0 || strpos($path, 'uploads/') === 0) {
-            return self::getBaseUrl() . ltrim($path, '/');
+        if (strpos($cleanPath, 'uploads/') === 0) {
+            if ($isLocalDev) {
+                return self::getBaseUrl() . $cleanPath;
+            } else {
+                return self::getBaseUrl() . 'public/' . $cleanPath;
+            }
         }
-        return self::getBaseUrl() . 'uploads/' . ltrim($path, '/');
+        
+        // Agregar 'uploads/' al path
+        if ($isLocalDev) {
+            return self::getBaseUrl() . 'uploads/' . $cleanPath;
+        } else {
+            return self::getBaseUrl() . 'public/uploads/' . $cleanPath;
+        }
     }
 
     /**

@@ -1,0 +1,52 @@
+# ==========================================
+# STYLOFITNESS - Configuración para carpeta public
+# ==========================================
+
+# Habilitar motor de reescritura
+RewriteEngine On
+
+# Permitir acceso directo a archivos estáticos
+# CSS, JS, imágenes, fuentes, videos
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule \.(css|js|png|jpg|jpeg|gif|ico|svg|woff|woff2|eot|ttf|mp4|webm|pdf|webp)$ - [L]
+
+# Headers de cache para archivos estáticos
+<IfModule mod_headers.c>
+    # Cache para recursos estáticos
+    <FilesMatch "\.(css|js|png|jpg|jpeg|gif|ico|svg|woff|woff2|eot|ttf)$">
+        Header set Cache-Control "public, max-age=2592000"
+        Header set Expires "Thu, 31 Dec 2025 23:59:59 GMT"
+    </FilesMatch>
+    
+    # Headers de seguridad
+    Header always set X-Content-Type-Options nosniff
+    Header always set X-Frame-Options SAMEORIGIN
+</IfModule>
+
+# Configurar tipos MIME
+<IfModule mod_mime.c>
+    AddType text/css .css
+    AddType application/javascript .js
+    AddType image/webp .webp
+    AddType font/woff .woff
+    AddType font/woff2 .woff2
+</IfModule>
+
+# Compresión GZIP
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/css
+    AddOutputFilterByType DEFLATE application/javascript
+    AddOutputFilterByType DEFLATE text/javascript
+</IfModule>
+
+# Prevenir acceso a archivos de configuración
+<Files ~ "^\.(htaccess|htpasswd|env)$">
+    Order allow,deny
+    Deny from all
+</Files>
+
+# Deshabilitar listado de directorios
+Options -Indexes
+
+# Seguir enlaces simbólicos
+Options +FollowSymLinks
