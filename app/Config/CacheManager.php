@@ -15,7 +15,25 @@ class CacheManager
 
         // Create cache directory if it doesn't exist
         if (!is_dir($this->cacheDir)) {
-            mkdir($this->cacheDir, 0755, true);
+            try {
+                mkdir($this->cacheDir, 0755, true);
+                // Verificar que se creó correctamente
+                if (!is_dir($this->cacheDir)) {
+                    error_log('Error: No se pudo crear el directorio de caché: ' . $this->cacheDir);
+                }
+            } catch (\Exception $e) {
+                error_log('Error al crear directorio de caché: ' . $e->getMessage());
+                // Usar un directorio temporal como alternativa
+                $this->cacheDir = sys_get_temp_dir() . '/stylofitness_cache';
+                if (!is_dir($this->cacheDir)) {
+                    mkdir($this->cacheDir, 0755, true);
+                }
+            }
+        }
+        
+        // Verificar permisos de escritura
+        if (!is_writable($this->cacheDir)) {
+            error_log('Error: El directorio de caché no tiene permisos de escritura: ' . $this->cacheDir);
         }
     }
 
@@ -43,18 +61,44 @@ class CacheManager
      */
     public function set(string $key, $data, ?int $ttl = null): bool
     {
-        $ttl = $ttl ?? $this->defaultTtl;
-        $filename = $this->getCacheFilename($key);
+        try {
+            // Verificar que el directorio de caché exista y sea escribible
+            if (!is_dir($this->cacheDir)) {
+                if (!mkdir($this->cacheDir, 0755, true) && !is_dir($this->cacheDir)) {
+                    error_log('Error: No se pudo crear el directorio de caché: ' . $this->cacheDir);
+                    return false;
+                }
+            }
+            
+            if (!is_writable($this->cacheDir)) {
+                error_log('Error: El directorio de caché no tiene permisos de escritura: ' . $this->cacheDir);
+                return false;
+            }
+            
+            $ttl = $ttl ?? $this->defaultTtl;
+            $filename = $this->getCacheFilename($key);
 
-        $cacheData = [
-            'data' => $data,
-            'expires_at' => time() + $ttl,
-            'created_at' => time(),
-        ];
+            $cacheData = [
+                'data' => $data,
+                'expires_at' => time() + $ttl,
+                'created_at' => time(),
+            ];
 
-        $serialized = serialize($cacheData);
-
-        return file_put_contents($filename, $serialized, LOCK_EX) !== false;
+            $serialized = serialize($cacheData);
+            
+            // Intentar escribir el archivo
+            $result = file_put_contents($filename, $serialized, LOCK_EX);
+            
+            if ($result === false) {
+                error_log('Error: No se pudo escribir en el archivo de caché: ' . $filename);
+                return false;
+            }
+            
+            return true;
+        } catch (\Exception $e) {
+            error_log('Error al guardar en caché: ' . $e->getMessage());
+            return false;
+        }
     }
 
     /**
@@ -66,29 +110,50 @@ class CacheManager
      */
     public function get(string $key, $default = null)
     {
-        $filename = $this->getCacheFilename($key);
+        try {
+            $filename = $this->getCacheFilename($key);
 
-        if (!file_exists($filename)) {
+            if (!file_exists($filename)) {
+                return $default;
+            }
+
+            if (!is_readable($filename)) {
+                error_log('Error: El archivo de caché no es legible: ' . $filename);
+                return $default;
+            }
+
+            $content = file_get_contents($filename);
+            if ($content === false) {
+                error_log('Error: No se pudo leer el archivo de caché: ' . $filename);
+                return $default;
+            }
+
+            $cacheData = @unserialize($content);
+            if ($cacheData === false) {
+                // El archivo de caché está corrupto, eliminarlo
+                error_log('Error: Archivo de caché corrupto: ' . $filename);
+                @unlink($filename);
+                return $default;
+            }
+
+            // Verificar estructura del caché
+            if (!isset($cacheData['expires_at']) || !isset($cacheData['data'])) {
+                error_log('Error: Estructura de caché inválida: ' . $filename);
+                @unlink($filename);
+                return $default;
+            }
+
+            // Check if cache has expired
+            if (time() > $cacheData['expires_at']) {
+                $this->delete($key);
+                return $default;
+            }
+
+            return $cacheData['data'];
+        } catch (\Exception $e) {
+            error_log('Error al recuperar caché: ' . $e->getMessage());
             return $default;
         }
-
-        $content = file_get_contents($filename);
-        if ($content === false) {
-            return $default;
-        }
-
-        $cacheData = unserialize($content);
-        if ($cacheData === false) {
-            return $default;
-        }
-
-        // Check if cache has expired
-        if (time() > $cacheData['expires_at']) {
-            $this->delete($key);
-            return $default;
-        }
-
-        return $cacheData['data'];
     }
 
     /**
@@ -99,29 +164,50 @@ class CacheManager
      */
     public function has(string $key): bool
     {
-        $filename = $this->getCacheFilename($key);
+        try {
+            $filename = $this->getCacheFilename($key);
 
-        if (!file_exists($filename)) {
+            if (!file_exists($filename)) {
+                return false;
+            }
+
+            if (!is_readable($filename)) {
+                error_log('Error: El archivo de caché no es legible: ' . $filename);
+                return false;
+            }
+
+            $content = file_get_contents($filename);
+            if ($content === false) {
+                error_log('Error: No se pudo leer el archivo de caché: ' . $filename);
+                return false;
+            }
+
+            $cacheData = @unserialize($content);
+            if ($cacheData === false) {
+                // El archivo de caché está corrupto, eliminarlo
+                error_log('Error: Archivo de caché corrupto: ' . $filename);
+                @unlink($filename);
+                return false;
+            }
+
+            // Verificar estructura del caché
+            if (!isset($cacheData['expires_at'])) {
+                error_log('Error: Estructura de caché inválida: ' . $filename);
+                @unlink($filename);
+                return false;
+            }
+
+            // Check if cache has expired
+            if (time() > $cacheData['expires_at']) {
+                $this->delete($key);
+                return false;
+            }
+
+            return true;
+        } catch (\Exception $e) {
+            error_log('Error al verificar caché: ' . $e->getMessage());
             return false;
         }
-
-        $content = file_get_contents($filename);
-        if ($content === false) {
-            return false;
-        }
-
-        $cacheData = unserialize($content);
-        if ($cacheData === false) {
-            return false;
-        }
-
-        // Check if cache has expired
-        if (time() > $cacheData['expires_at']) {
-            $this->delete($key);
-            return false;
-        }
-
-        return true;
     }
 
     /**
@@ -132,13 +218,27 @@ class CacheManager
      */
     public function delete(string $key): bool
     {
-        $filename = $this->getCacheFilename($key);
+        try {
+            $filename = $this->getCacheFilename($key);
 
-        if (file_exists($filename)) {
-            return unlink($filename);
+            if (file_exists($filename)) {
+                if (!is_writable($filename)) {
+                    error_log('Error: El archivo de caché no es escribible: ' . $filename);
+                    return false;
+                }
+                
+                $result = @unlink($filename);
+                if (!$result) {
+                    error_log('Error: No se pudo eliminar el archivo de caché: ' . $filename);
+                    return false;
+                }
+            }
+
+            return true;
+        } catch (\Exception $e) {
+            error_log('Error al eliminar caché: ' . $e->getMessage());
+            return false;
         }
-
-        return true;
     }
 
     /**
@@ -148,15 +248,39 @@ class CacheManager
      */
     public function clear(): bool
     {
-        $files = glob($this->cacheDir . '/*.cache');
-
-        foreach ($files as $file) {
-            if (is_file($file)) {
-                unlink($file);
+        try {
+            if (!is_dir($this->cacheDir)) {
+                // Si el directorio no existe, no hay nada que limpiar
+                return true;
             }
-        }
+            
+            $files = glob($this->cacheDir . '/*.cache');
+            if ($files === false) {
+                error_log('Error: No se pudo leer el directorio de caché: ' . $this->cacheDir);
+                return false;
+            }
 
-        return true;
+            $success = true;
+            foreach ($files as $file) {
+                if (is_file($file)) {
+                    if (!is_writable($file)) {
+                        error_log('Error: El archivo de caché no es escribible: ' . $file);
+                        $success = false;
+                        continue;
+                    }
+                    
+                    if (!@unlink($file)) {
+                        error_log('Error: No se pudo eliminar el archivo de caché: ' . $file);
+                        $success = false;
+                    }
+                }
+            }
+
+            return $success;
+        } catch (\Exception $e) {
+            error_log('Error al limpiar caché: ' . $e->getMessage());
+            return false;
+        }
     }
 
     /**

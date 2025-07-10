@@ -1572,6 +1572,12 @@ use StyleFitness\Helpers\AppHelper;
                     })
                     .catch(function(registrationError) {
                         console.log('SW registration failed: ', registrationError);
+                        // Desregistrar el service worker si hay error
+                        navigator.serviceWorker.getRegistrations().then(function(registrations) {
+                            for(let registration of registrations) {
+                                registration.unregister();
+                            }
+                        });
                     });
             });
         }

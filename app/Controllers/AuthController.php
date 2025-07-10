@@ -289,7 +289,10 @@ class AuthController
             case 'admin':
                 return '/admin';
             case 'instructor':
-                return '/instructor/dashboard';
+            case 'trainer':
+                return '/trainer/progress/dashboard';
+            case 'staff':
+                return '/dashboard';
             case 'client':
             default:
                 return '/dashboard';

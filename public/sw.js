@@ -1,7 +1,6 @@
 // Service Worker para STYLOFITNESS
 const CACHE_NAME = 'stylofitness-v1';
 const urlsToCache = [
-  '/',
   '/css/styles.css',
   '/js/app.js',
   '/images/favicon.ico'
@@ -12,7 +11,14 @@ self.addEventListener('install', function(event) {
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then(function(cache) {
-        return cache.addAll(urlsToCache);
+        // Añadir archivos uno por uno para evitar fallos
+        return Promise.all(
+          urlsToCache.map(function(url) {
+            return cache.add(url).catch(function(error) {
+              console.error('Error al cachear: ' + url, error);
+            });
+          })
+        );
       })
   );
 });
