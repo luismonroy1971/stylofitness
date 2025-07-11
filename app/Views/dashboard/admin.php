@@ -447,7 +447,7 @@ $user = AppHelper::getCurrentUser();
 <style>
 .admin-dashboard {
     min-height: 100vh;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg,rgb(99, 53, 10) 0%,rgb(161, 122, 13) 100%);
     padding-top: 2rem;
 }
 
@@ -538,7 +538,7 @@ $user = AppHelper::getCurrentUser();
 }
 
 .card-header {
-    background: linear-gradient(45deg, #667eea, #764ba2);
+    background: linear-gradient(45deg,rgb(44, 38, 2), #764ba2);
     color: white;
     padding: 1rem 1.5rem;
 }

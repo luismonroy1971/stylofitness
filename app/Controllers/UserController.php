@@ -156,7 +156,7 @@ class UserController
             if ($success) {
                 // Actualizar sesión con nuevos datos
                 $updatedUser = $this->userModel->findById($userId);
-                $_SESSION['user'] = $updatedUser;
+                $_SESSION['user_data'] = $updatedUser;
                 
                 AppHelper::setFlashMessage('success', 'Perfil actualizado exitosamente');
             } else {
@@ -315,7 +315,7 @@ class UserController
             
             if ($success) {
                 // Actualizar sesión
-                $_SESSION['user']['profile_image'] = $avatarPath;
+                $_SESSION['user_data']['profile_image'] = $avatarPath;
                 AppHelper::setFlashMessage('success', 'Avatar actualizado exitosamente');
             } else {
                 AppHelper::setFlashMessage('error', 'Error al guardar el avatar en la base de datos');

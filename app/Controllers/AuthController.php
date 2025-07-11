@@ -87,22 +87,67 @@ class AuthController
                 return;
             }
 
-            // Iniciar sesión
-            $this->createSession($user);
+            try {
+                // Debug: Log inicio del proceso de autenticación
+                error_log("AuthController: Starting authentication process for user: {$user['email']}");
+                
+                // Iniciar sesión
+                $this->createSession($user);
+                error_log("AuthController: Session created successfully");
 
-            // Recordar usuario si se seleccionó
-            if ($remember) {
-                $this->createRememberToken($user['id']);
+                // Recordar usuario si se seleccionó
+                if ($remember) {
+                    $this->createRememberToken($user['id']);
+                    error_log("AuthController: Remember token created");
+                }
+
+                // Registrar login
+                $this->logUserActivity($user['id'], 'login');
+                error_log("AuthController: User activity logged");
+
+                // Establecer mensaje de éxito
+                AppHelper::setFlashMessage('¡Bienvenido de vuelta!', 'success');
+                error_log("AuthController: Flash message set");
+
+                // Obtener URL de redirección
+                $redirectUrl = $this->getRedirectUrl($user['role']);
+                error_log("AuthController: Redirect URL determined: {$redirectUrl} for role: {$user['role']}");
+                
+                // Verificar que la sesión se creó correctamente
+                if (!AppHelper::isLoggedIn()) {
+                    error_log("AuthController: ERROR - Session not properly created!");
+                    AppHelper::setFlashMessage('Error en el sistema de autenticación', 'error');
+                    AppHelper::redirect('/login');
+                    return;
+                }
+                
+                // Debug: Verificar estado antes de redirección
+                error_log("AuthController: User logged in status: " . (AppHelper::isLoggedIn() ? 'true' : 'false'));
+                error_log("AuthController: Session user_id: " . ($_SESSION['user_id'] ?? 'not set'));
+                
+                // Asegurar que no hay output antes de la redirección
+                while (ob_get_level()) {
+                    ob_end_clean();
+                }
+                
+                // Verificar si ya se enviaron headers
+                if (headers_sent($file, $line)) {
+                    error_log("AuthController: Headers already sent in {$file} on line {$line}. Cannot redirect normally.");
+                    // Usar redirección JavaScript como fallback
+                    echo "<script>window.location.href = '{$redirectUrl}';</script>";
+                    echo "<noscript><meta http-equiv='refresh' content='0;url={$redirectUrl}'></noscript>";
+                    exit();
+                }
+                
+                error_log("AuthController: About to redirect to: {$redirectUrl}");
+                AppHelper::redirect($redirectUrl);
+                
+            } catch (Exception $e) {
+                error_log("AuthController: Exception during authentication: " . $e->getMessage());
+                error_log("AuthController: Exception trace: " . $e->getTraceAsString());
+                AppHelper::setFlashMessage('Error interno durante la autenticación', 'error');
+                AppHelper::redirect('/login');
             }
-
-            // Registrar login
-            $this->logUserActivity($user['id'], 'login');
-
-            AppHelper::setFlashMessage('¡Bienvenido de vuelta!', 'success');
-
-            // Redirigir según rol
-            $redirectUrl = $this->getRedirectUrl($user['role']);
-            AppHelper::redirect($redirectUrl);
 
         } else {
             AppHelper::setFlashMessage('Credenciales incorrectas', 'error');

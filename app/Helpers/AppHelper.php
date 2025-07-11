@@ -160,6 +160,22 @@ class AppHelper
             $url = $baseUrl . $cleanUrl;
         }
 
+        // Debug logging
+        error_log("AppHelper::redirect: Redirecting to: {$url} with status: {$statusCode}");
+        
+        // Limpiar cualquier output buffer que pueda interferir
+        while (ob_get_level()) {
+            ob_end_clean();
+        }
+        
+        // Verificar si ya se enviaron headers
+        if (headers_sent($file, $line)) {
+            error_log("AppHelper::redirect: Headers already sent in {$file} on line {$line}. Using JavaScript redirect.");
+            echo "<script>window.location.href = '{$url}';</script>";
+            echo "<noscript><meta http-equiv='refresh' content='0;url={$url}'></noscript>";
+            exit();
+        }
+
         header("Location: $url", true, $statusCode);
         exit();
     }
