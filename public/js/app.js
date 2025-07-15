@@ -1487,6 +1487,9 @@ STYLOFITNESS.initLoadingScreen = function() {
     const loadingScreen = document.getElementById('loading-screen');
     
     if (loadingScreen) {
+        // Verificar si estamos en páginas de administración
+        const isAdminPage = window.location.pathname.includes('/admin/');
+        
         // Función para ocultar el loading screen
         const hideLoadingScreen = () => {
             loadingScreen.style.opacity = '0';
@@ -1495,7 +1498,13 @@ STYLOFITNESS.initLoadingScreen = function() {
             }, 500);
         };
         
-        // Ocultar loading screen cuando la página esté lista
+        // Para páginas de admin, ocultar inmediatamente para evitar interferencia con redirecciones
+        if (isAdminPage) {
+            hideLoadingScreen();
+            return;
+        }
+        
+        // Para páginas públicas, comportamiento normal
         if (document.readyState === 'complete') {
             // Si la página ya está cargada, ocultar inmediatamente
             setTimeout(hideLoadingScreen, 500);

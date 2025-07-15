@@ -546,11 +546,18 @@ function showNotification(message, type = 'info') {
 
 // Inicializar cuando el DOM esté listo
 document.addEventListener('DOMContentLoaded', function() {
-    // Ocultar pantalla de carga
+    // Ocultar pantalla de carga inmediatamente para páginas de admin
     const loadingScreen = document.getElementById('loading-screen');
     if (loadingScreen) {
         loadingScreen.style.display = 'none';
+        loadingScreen.style.opacity = '0';
+        loadingScreen.style.visibility = 'hidden';
+        loadingScreen.style.pointerEvents = 'none';
     }
+    
+    // Asegurar que el contenido sea visible
+    document.body.style.visibility = 'visible';
+    document.body.style.opacity = '1';
     
     window.adminProductsManager = new AdminProductsManager();
 });
