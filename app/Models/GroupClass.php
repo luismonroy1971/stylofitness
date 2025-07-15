@@ -1104,4 +1104,180 @@ class GroupClass
             return ['error' => 'Error al agregar a lista de espera'];
         }
     }
-}
+
+    // ==========================================
+    // MÉTODOS PARA ACCESO TEMPORAL A CLASES
+    // ==========================================
+
+    /**
+     * Verificar si un usuario puede acceder a una clase grupal
+     * Permite acceso 15 minutos antes del inicio y 10 minutos después
+     */
+    public function canAccessClass($scheduleId, $bookingDate, $userId)
+    {
+        // Verificar si el usuario tiene una reserva válida
+        if (!$this->hasUserBooking($scheduleId, $userId, $bookingDate)) {
+            return [
+                'can_access' => false,
+                'reason' => 'no_booking',
+                'message' => 'No tienes una reserva para esta clase'
+            ];
+        }
+
+        // Obtener información del horario
+        $schedule = $this->getScheduleById($scheduleId);
+        if (!$schedule) {
+            return [
+                'can_access' => false,
+                'reason' => 'schedule_not_found',
+                'message' => 'Horario de clase no encontrado'
+            ];
+        }
+
+        // Calcular ventana de acceso
+        $classDateTime = strtotime($bookingDate . ' ' . $schedule['start_time']);
+        $accessStartTime = $classDateTime - (15 * 60); // 15 minutos antes
+        $accessEndTime = $classDateTime + (10 * 60);   // 10 minutos después
+        $currentTime = time();
+
+        // Verificar si está dentro de la ventana de acceso
+        if ($currentTime < $accessStartTime) {
+            $minutesUntilAccess = ceil(($accessStartTime - $currentTime) / 60);
+            return [
+                'can_access' => false,
+                'reason' => 'too_early',
+                'message' => "El acceso estará disponible en {$minutesUntilAccess} minutos",
+                'access_starts_at' => date('H:i', $accessStartTime),
+                'minutes_until_access' => $minutesUntilAccess
+            ];
+        }
+
+        if ($currentTime > $accessEndTime) {
+            return [
+                'can_access' => false,
+                'reason' => 'too_late',
+                'message' => 'El tiempo de acceso para esta clase ha expirado'
+            ];
+        }
+
+        // El usuario puede acceder
+        $minutesRemaining = ceil(($accessEndTime - $currentTime) / 60);
+        return [
+            'can_access' => true,
+            'reason' => 'access_granted',
+            'message' => 'Acceso permitido a la clase',
+            'access_ends_at' => date('H:i', $accessEndTime),
+            'minutes_remaining' => $minutesRemaining
+        ];
+    }
+
+    /**
+     * Obtener el estado de acceso para múltiples clases del usuario
+     */
+    public function getUserClassAccessStatus($userId, $date = null)
+    {
+        if (!$date) {
+            $date = date('Y-m-d');
+        }
+
+        // Obtener reservas del usuario para la fecha
+        $bookings = $this->db->fetchAll(
+            "SELECT cb.*, cs.start_time, cs.end_time, cs.day_of_week,
+             gc.name as class_name, gc.description
+             FROM class_bookings cb
+             JOIN class_schedules cs ON cb.schedule_id = cs.id
+             JOIN group_classes gc ON cs.class_id = gc.id
+             WHERE cb.user_id = ? AND cb.booking_date = ?
+             AND cb.status IN ('booked', 'confirmed')
+             ORDER BY cs.start_time ASC",
+            [$userId, $date]
+        );
+
+        $accessStatuses = [];
+        foreach ($bookings as $booking) {
+            $accessStatus = $this->canAccessClass(
+                $booking['schedule_id'],
+                $booking['booking_date'],
+                $userId
+            );
+
+            $accessStatuses[] = array_merge($booking, [
+                'access_status' => $accessStatus
+            ]);
+        }
+
+        return $accessStatuses;
+    }
+
+    /**
+     * Verificar si una clase está actualmente en su ventana de acceso
+     */
+    public function isClassAccessible($scheduleId, $bookingDate)
+    {
+        $schedule = $this->getScheduleById($scheduleId);
+        if (!$schedule) {
+            return false;
+        }
+
+        $classDateTime = strtotime($bookingDate . ' ' . $schedule['start_time']);
+        $accessStartTime = $classDateTime - (15 * 60); // 15 minutos antes
+        $accessEndTime = $classDateTime + (10 * 60);   // 10 minutos después
+        $currentTime = time();
+
+        return $currentTime >= $accessStartTime && $currentTime <= $accessEndTime;
+    }
+
+    /**
+     * Obtener próximas clases con acceso disponible
+     */
+    public function getUpcomingAccessibleClasses($userId, $limit = 5)
+    {
+        $sql = "SELECT cb.*, cs.start_time, cs.end_time, cs.day_of_week,
+                gc.name as class_name, gc.description, gc.duration_minutes
+                FROM class_bookings cb
+                JOIN class_schedules cs ON cb.schedule_id = cs.id
+                JOIN group_classes gc ON cs.class_id = gc.id
+                WHERE cb.user_id = ? AND cb.booking_date >= CURDATE()
+                AND cb.status IN ('booked', 'confirmed')
+                ORDER BY cb.booking_date ASC, cs.start_time ASC
+                LIMIT ?";
+
+        $bookings = $this->db->fetchAll($sql, [$userId, $limit]);
+        $accessibleClasses = [];
+
+        foreach ($bookings as $booking) {
+            $classDateTime = strtotime($booking['booking_date'] . ' ' . $booking['start_time']);
+            $accessStartTime = $classDateTime - (15 * 60);
+            $currentTime = time();
+
+            // Solo incluir clases que aún no han pasado su ventana de acceso
+            if ($currentTime <= ($classDateTime + (10 * 60))) {
+                $booking['access_starts_at'] = date('Y-m-d H:i:s', $accessStartTime);
+                $booking['class_starts_at'] = date('Y-m-d H:i:s', $classDateTime);
+                $booking['access_ends_at'] = date('Y-m-d H:i:s', $classDateTime + (10 * 60));
+                $booking['is_accessible_now'] = $this->isClassAccessible(
+                    $booking['schedule_id'],
+                    $booking['booking_date']
+                );
+                $accessibleClasses[] = $booking;
+            }
+        }
+
+        return $accessibleClasses;
+     }
+
+     /**
+      * Obtener ID de reserva de un usuario para una clase específica
+      */
+     public function getUserBookingId($scheduleId, $userId, $bookingDate)
+     {
+         $booking = $this->db->fetch(
+             "SELECT id FROM class_bookings 
+              WHERE schedule_id = ? AND user_id = ? AND booking_date = ?
+              AND status IN ('booked', 'confirmed')",
+             [$scheduleId, $userId, $bookingDate]
+         );
+
+         return $booking ? $booking['id'] : null;
+     }
+ }

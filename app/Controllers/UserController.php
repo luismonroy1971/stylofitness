@@ -139,7 +139,7 @@ class UserController
         }
 
         // Verificar si el email ya existe (excepto el usuario actual)
-        if ($this->userModel->emailExists($data['email']) && $data['email'] !== $user['email']) {
+        if ($this->userModel->emailExists($data['email']) && $data['email'] !== $currentUser['email']) {
             $errors[] = 'Este email ya está registrado';
         }
 

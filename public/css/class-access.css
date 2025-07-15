@@ -1,0 +1,481 @@
+/* Estilos para la vista de acceso a clases grupales */
+
+.class-access-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+}
+
+/* Header de la clase */
+.class-access-header {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    padding: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.class-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 15px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.class-meta {
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.class-meta span {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1.1rem;
+    color: #555;
+    background: #f8f9fa;
+    padding: 8px 15px;
+    border-radius: 25px;
+    border: 2px solid #e9ecef;
+}
+
+.class-meta i {
+    color: #667eea;
+    font-size: 1.2rem;
+}
+
+/* Estado de acceso */
+.access-status {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 20px;
+    border-radius: 12px;
+    min-width: 300px;
+}
+
+.access-status.active {
+    background: linear-gradient(135deg, #4CAF50, #45a049);
+    color: white;
+}
+
+.access-status.inactive {
+    background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+    color: white;
+}
+
+.status-indicator {
+    font-size: 2.5rem;
+    opacity: 0.9;
+}
+
+.status-text h3 {
+    margin: 0 0 5px 0;
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.status-text p {
+    margin: 0 0 8px 0;
+    opacity: 0.9;
+}
+
+.time-remaining {
+    font-size: 0.9rem;
+    font-weight: 500;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 4px 10px;
+    border-radius: 15px;
+}
+
+/* Contenido de la clase */
+.class-content {
+    margin-top: 30px;
+}
+
+/* Cards generales */
+.class-details-card,
+.class-routine-card,
+.access-timer-card,
+.quick-actions-card,
+.personal-progress-card {
+    background: white;
+    border-radius: 15px;
+    padding: 25px;
+    margin-bottom: 25px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.class-details-card h3,
+.class-routine-card h3,
+.access-timer-card h3,
+.quick-actions-card h3,
+.personal-progress-card h3 {
+    color: #2c3e50;
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.class-details-card h3 i,
+.class-routine-card h3 i,
+.access-timer-card h3 i,
+.quick-actions-card h3 i,
+.personal-progress-card h3 i {
+    color: #667eea;
+    font-size: 1.3rem;
+}
+
+/* Detalles de la clase */
+.class-description {
+    margin-bottom: 25px;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #555;
+}
+
+.class-attributes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.attribute {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 15px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border-left: 4px solid #667eea;
+}
+
+.attribute .label {
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.attribute .value {
+    color: #555;
+    font-weight: 500;
+}
+
+/* Rutina de la clase */
+.routine-content {
+    display: grid;
+    gap: 20px;
+}
+
+.routine-phase {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    border-left: 5px solid #667eea;
+}
+
+.routine-phase h4 {
+    color: #2c3e50;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.routine-phase ul {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.routine-phase li {
+    margin-bottom: 8px;
+    color: #555;
+    line-height: 1.5;
+}
+
+/* Timer de acceso */
+.timer-display {
+    text-align: center;
+    padding: 25px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    border-radius: 15px;
+    color: white;
+    margin-bottom: 15px;
+}
+
+.time-value {
+    display: block;
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.time-label {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.timer-info {
+    text-align: center;
+    color: #666;
+    font-size: 0.95rem;
+}
+
+/* Acciones rápidas */
+.action-buttons {
+    display: grid;
+    gap: 12px;
+}
+
+.action-buttons .btn {
+    padding: 12px 20px;
+    font-weight: 500;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.action-buttons .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.action-buttons .btn-primary {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    border: none;
+}
+
+.action-buttons .btn-outline-secondary {
+    border: 2px solid #6c757d;
+    color: #6c757d;
+}
+
+.action-buttons .btn-outline-info {
+    border: 2px solid #17a2b8;
+    color: #17a2b8;
+}
+
+/* Progreso personal */
+.progress-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.stat {
+    text-align: center;
+    padding: 20px;
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+    border-radius: 10px;
+    border: 2px solid #dee2e6;
+}
+
+.stat-value {
+    display: block;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #667eea;
+    line-height: 1;
+    margin-bottom: 5px;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Acceso denegado */
+.access-denied {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 400px;
+    background: white;
+    border-radius: 15px;
+    margin-top: 30px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.denied-content {
+    text-align: center;
+    padding: 40px;
+    max-width: 500px;
+}
+
+.denied-content i {
+    color: #ff6b6b;
+    margin-bottom: 20px;
+}
+
+.denied-content h3 {
+    color: #2c3e50;
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.denied-content p {
+    color: #666;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+.access-info {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px 0;
+    border-left: 4px solid #667eea;
+}
+
+.access-time {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #667eea;
+}
+
+.denied-actions {
+    margin-top: 30px;
+}
+
+.denied-actions .btn {
+    padding: 12px 25px;
+    font-size: 1.1rem;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    border: none;
+    color: white;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+}
+
+.denied-actions .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+    color: white;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .class-access-container {
+        padding: 15px;
+    }
+    
+    .class-access-header {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px;
+    }
+    
+    .class-title {
+        font-size: 2rem;
+    }
+    
+    .class-meta {
+        justify-content: center;
+        gap: 15px;
+    }
+    
+    .access-status {
+        min-width: auto;
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+    }
+    
+    .class-attributes {
+        grid-template-columns: 1fr;
+    }
+    
+    .progress-stats {
+        grid-template-columns: 1fr;
+    }
+    
+    .time-value {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .class-meta {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .class-meta span {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .denied-content {
+        padding: 20px;
+    }
+    
+    .class-title {
+        font-size: 1.8rem;
+    }
+}
+
+/* Animaciones */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.class-access-header,
+.class-details-card,
+.class-routine-card,
+.access-timer-card,
+.quick-actions-card,
+.personal-progress-card {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.class-details-card {
+    animation-delay: 0.1s;
+}
+
+.class-routine-card {
+    animation-delay: 0.2s;
+}
+
+.access-timer-card {
+    animation-delay: 0.3s;
+}
+
+.quick-actions-card {
+    animation-delay: 0.4s;
+}
+
+.personal-progress-card {
+    animation-delay: 0.5s;
+}

@@ -529,4 +529,126 @@ class GroupClassController
             echo json_encode(['error' => 'Error al reservar posición']);
         }
     }
+
+    // ==========================================
+    // MÉTODOS PARA ACCESO TEMPORAL A CLASES
+    // ==========================================
+
+    /**
+     * Verificar acceso temporal a una clase específica
+     */
+    public function checkClassAccess()
+    {
+        if (!AppHelper::isLoggedIn()) {
+            http_response_code(401);
+            echo json_encode(['error' => 'No autorizado']);
+            exit();
+        }
+
+        $scheduleId = isset($_GET['schedule_id']) ? (int)$_GET['schedule_id'] : 0;
+        $bookingDate = AppHelper::sanitize($_GET['booking_date'] ?? '');
+
+        if (!$scheduleId || !$bookingDate) {
+            http_response_code(400);
+            echo json_encode(['error' => 'Parámetros requeridos: schedule_id, booking_date']);
+            exit();
+        }
+
+        $user = AppHelper::getCurrentUser();
+        $accessStatus = $this->classModel->canAccessClass($scheduleId, $bookingDate, $user['id']);
+
+        header('Content-Type: application/json');
+        echo json_encode($accessStatus);
+    }
+
+    /**
+     * Obtener estado de acceso para todas las clases del usuario
+     */
+    public function getMyClassAccess()
+    {
+        if (!AppHelper::isLoggedIn()) {
+            http_response_code(401);
+            echo json_encode(['error' => 'No autorizado']);
+            exit();
+        }
+
+        $user = AppHelper::getCurrentUser();
+        $date = AppHelper::sanitize($_GET['date'] ?? date('Y-m-d'));
+
+        $accessStatuses = $this->classModel->getUserClassAccessStatus($user['id'], $date);
+
+        header('Content-Type: application/json');
+        echo json_encode([
+            'success' => true,
+            'date' => $date,
+            'classes' => $accessStatuses
+        ]);
+    }
+
+    /**
+     * Acceder a una clase grupal (solo si está en ventana de acceso)
+     */
+    public function accessClass()
+    {
+        if (!AppHelper::isLoggedIn()) {
+            AppHelper::redirect('/login');
+            return;
+        }
+
+        $scheduleId = isset($_GET['schedule_id']) ? (int)$_GET['schedule_id'] : 0;
+        $bookingDate = AppHelper::sanitize($_GET['booking_date'] ?? '');
+
+        if (!$scheduleId || !$bookingDate) {
+            AppHelper::setFlashMessage('error', 'Parámetros de acceso inválidos');
+            AppHelper::redirect('/classes/my-bookings');
+            return;
+        }
+
+        $user = AppHelper::getCurrentUser();
+        $accessStatus = $this->classModel->canAccessClass($scheduleId, $bookingDate, $user['id']);
+
+        if (!$accessStatus['can_access']) {
+            AppHelper::setFlashMessage('error', $accessStatus['message']);
+            AppHelper::redirect('/classes/my-bookings');
+            return;
+        }
+
+        // Obtener información de la clase
+        $schedule = $this->classModel->getScheduleById($scheduleId);
+        $class = $this->classModel->findById($schedule['class_id']);
+        $booking = $this->classModel->getBookingById(
+            $this->classModel->getUserBookingId($scheduleId, $user['id'], $bookingDate)
+        );
+
+        $pageTitle = 'Acceso a Clase: ' . $class['name'] . ' - STYLOFITNESS';
+        $additionalCSS = ['class-access.css'];
+        $additionalJS = ['class-access.js'];
+
+        include APP_PATH . '/Views/layout/header.php';
+        include APP_PATH . '/Views/classes/access.php';
+        include APP_PATH . '/Views/layout/footer.php';
+    }
+
+    /**
+     * Obtener próximas clases accesibles del usuario
+     */
+    public function getUpcomingAccessibleClasses()
+    {
+        if (!AppHelper::isLoggedIn()) {
+            http_response_code(401);
+            echo json_encode(['error' => 'No autorizado']);
+            exit();
+        }
+
+        $user = AppHelper::getCurrentUser();
+        $limit = isset($_GET['limit']) ? (int)$_GET['limit'] : 5;
+
+        $accessibleClasses = $this->classModel->getUpcomingAccessibleClasses($user['id'], $limit);
+
+        header('Content-Type: application/json');
+        echo json_encode([
+            'success' => true,
+            'classes' => $accessibleClasses
+        ]);
+    }
 }
